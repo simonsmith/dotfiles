@@ -1,0 +1,22 @@
+# ~/.tmuxinator/bbcthree.yml
+
+name: bbcthree
+root: ~/Sites/bbc/bbcthree-web
+
+windows:
+  - main:
+      layout: 9700,208x64,0,0{110x64,0,0,0,97x64,111,0[97x31,111,0,1,97x32,111,32,2]}
+      panes:
+        - main:
+          - git fetch
+          - git --no-pager log --oneline --decorate --color --graph -10
+          - git status
+        - server:
+          - cd server
+          - npm run build
+          - nodemon server.js
+        - watch:
+          - cd client
+          - gulp css
+          - gulp webpack
+          - gulp watch
