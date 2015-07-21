@@ -51,6 +51,7 @@ brew install heroku
 brew install p7zip
 brew install tree
 brew install webkit2png
+brew install reattach-to-user-namespace
 
 # Remove outdated versions from the cellar.
 brew cleanup
