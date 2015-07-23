@@ -18,8 +18,8 @@ brew cask install deluge 2> /dev/null
 brew cask install firefox 2> /dev/null
 brew cask install flux 2> /dev/null
 brew cask install gitx 2> /dev/null
-brew cask install gitter 2> /dev/null
 brew cask install google-chrome-beta 2> /dev/null
+brew cask install google-chrome-canary 2> /dev/null
 brew cask install google-drive 2> /dev/null
 brew cask install google-hangouts 2> /dev/null
 brew cask install gpgtools 2> /dev/null
@@ -45,9 +45,9 @@ brew cask install steam 2> /dev/null
 brew cask install spotify-notifications 2> /dev/null
 brew cask install the-unarchiver 2> /dev/null
 brew cask install transmit 2> /dev/null
-brew cask install totalfinder 2> /dev/null
 brew cask install torbrowser 2> /dev/null
 brew cask install viscosity 2> /dev/null
 brew cask install vlc 2> /dev/null
 brew cask install vmware-fusion 2> /dev/null
+brew cask install xtrafinder 2> /dev/null
 
