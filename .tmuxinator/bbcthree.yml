@@ -2,6 +2,7 @@
 
 name: bbcthree
 root: ~/Sites/bbc/bbcthree-web
+startup_window: main
 
 windows:
   - main:
@@ -20,3 +21,6 @@ windows:
           - gulp css
           - gulp webpack
           - gulp watch
+  - redis:
+    - redis-cli shutdown
+    - redis-server
