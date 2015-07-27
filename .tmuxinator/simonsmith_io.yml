@@ -2,16 +2,14 @@
 
 name: simonsmith_io
 root: ~/Sites/simonsmith.io
+startup_window: git
 
 windows:
-  - main:
-      layout: 9700,208x64,0,0{110x64,0,0,0,97x64,111,0[97x31,111,0,1,97x32,111,32,2]}
-      panes:
-        - main:
-          - git status
-        - server:
-          - bundle exec middleman -p=9000
-        - watch:
-          - gulp
-          - gulp watch
+  - git:
+    - git status
+  - server:
+    - bundle exec middleman -p=9000
+  - gulp:
+    - gulp
+    - gulp watch
 

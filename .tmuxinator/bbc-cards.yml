@@ -2,16 +2,14 @@
 
 name: bbc-cards
 root: ~/Sites/bbc/bbc-cards
+startup_window: git
 
 windows:
-  - main:
-      layout: 9700,208x64,0,0{110x64,0,0,0,97x64,111,0[97x31,111,0,1,97x32,111,32,2]}
-      panes:
-        - main:
-          - git fetch
-          - git --no-pager log --oneline --decorate --color --graph -10
-          - git status
-        - server:
-          - gulp serve-docs
-        - watch:
-          - gulp watch
+  - git:
+    - git fetch
+    - git --no-pager log --oneline --decorate --color --graph -10
+    - git status
+  - middleman:
+    - gulp serve-docs
+  - gulp:
+    - gulp watch
