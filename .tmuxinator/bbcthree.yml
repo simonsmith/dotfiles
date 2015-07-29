@@ -10,9 +10,14 @@ windows:
     - git --no-pager log --oneline --decorate --color --graph -10
     - git status
   - node:
-    - cd server
-    - npm run build
-    - nodemon server.js
+      layout: even-vertical
+      panes:
+        - server:
+          - cd server
+          - nodemon server.js
+        - watch:
+          - cd server
+          - webpack --watch
   - gulp:
     - cd client
     - gulp css
