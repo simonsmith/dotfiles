@@ -6,7 +6,6 @@ startup_window: git
 
 windows:
   - git:
-    - git fetch
     - git --no-pager log --oneline --decorate --color --graph -10
     - git status
   - node:
