@@ -6,7 +6,6 @@ brew tap caskroom/versions
 
 # Applications
 
-brew cask install alfred 2> /dev/null
 brew cask install appcleaner 2> /dev/null
 brew cask install bartender 2> /dev/null
 brew cask install beardedspice 2> /dev/null
@@ -30,6 +29,7 @@ brew cask install imazing 2> /dev/null
 brew cask install jq 2> /dev/null
 brew cask install kaleidoscope 2> /dev/null
 brew cask install keepingyouawake 2> /dev/null
+brew cask install launchbar 2> /dev/null
 brew cask install max 2> /dev/null
 brew cask install mamp 2> /dev/null
 brew cask install 1password 2> /dev/null
