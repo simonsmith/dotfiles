@@ -10,9 +10,6 @@ export ZSH=~/.oh-my-zsh
 ZSH_THEME="agnoster"
 DEFAULT_USER="simonsmith"
 
-# Enable command auto-correction
-ENABLE_CORRECTION="true"
-
 # Load plugins
 # https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins
 plugins=(git npm z sublime brew tmux bundler)
