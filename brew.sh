@@ -36,10 +36,11 @@ brew install bash-completion2
 # Install `wget` with IRI support.
 brew install wget --enable-iri
 
-# Install more recent versions of some OS X tools.
+# Use neovim
 brew tap neovim/neovim
 brew install --HEAD neovim
 
+# Install more recent versions of some OS X tools.
 brew install homebrew/dupes/grep
 brew install homebrew/dupes/screen
 brew install homebrew/php/php55 --with-gmp
@@ -54,6 +55,7 @@ brew install git
 brew install imagemagick --with-webp
 brew install ucspi-tcp # `tcpserver` et al.
 brew install redis
+brew install the_silver_searcher
 brew install tmux
 brew install phantomjs
 brew install heroku
