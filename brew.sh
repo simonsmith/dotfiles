@@ -37,7 +37,7 @@ brew install bash-completion2
 brew install wget --enable-iri
 
 # Use neovim
-brew tap neovim/neovim
+brew tap neovim/neovim --override-system-vi
 brew install --HEAD neovim
 
 # Install more recent versions of some OS X tools.
