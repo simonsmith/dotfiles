@@ -24,6 +24,8 @@ Plugin 'tpope/vim-commentary'
 Plugin 'amirh/HTML-AutoCloseTag'
 Plugin 'gorodinskiy/vim-coloresque'
 Plugin 'editorconfig/editorconfig-vim'
+Plugin 'jeetsukumaran/vim-buffergator'
+Plugin 'tpope/vim-surround'
 
 " Status bar
 Plugin 'bling/vim-airline'
@@ -47,11 +49,15 @@ filetype plugin indent on
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_error_symbol='✗'
+let g:syntastic_warning_symbol='⚠'
+let g:syntastic_style_error_symbol = '✗'
+let g:syntastic_style_warning_symbol = '⚠'
+let g:syntastic_aggregate_errors = 1
 
 " indentLine
 let g:indentLine_char = '|'
@@ -83,6 +89,12 @@ let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline_powerline_fonts = 1
 
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
+
 " Visual
 "*********************
 
@@ -91,6 +103,10 @@ set background=dark
 set colorcolumn=80
 syntax on
 set number
+set hidden
+set autoindent
+set copyindent
+set showmatch
 set cursorline
 set softtabstop=2
 set shiftwidth=2
@@ -101,12 +117,22 @@ set nostartofline
 set ruler
 " Highlight searches
 set hlsearch
+set incsearch
 " Highlight tailing whitespace
 set list listchars=tab:\ \ ,trail:·
+" remove whitespace on save
+autocmd BufWritePre * :%s/\s\+$//e
+
+"" Remember cursor position
+augroup vimrc-remember-cursor-position
+  autocmd!
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+augroup END
 
 " General
 "*********************
-
+" Path to python3
+let g:python_host_prog = '/usr/bin/python'
 " Make Vim more useful
 set nocompatible
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
@@ -176,7 +202,35 @@ endif
 " Start scrolling three lines before the horizontal window border
 set scrolloff=3
 
+" Mappings
+" ********************
+"
+" Open nerdtree
 nmap <leader>ne :NERDTreeToggle<cr>
+
+" Save file with <leader>s
+nnoremap <leader>s :w<cr>
+inoremap <leader>s <C-c>:w<cr>
+
+" Clone paragraph
+noremap cp yap<S-}>p
+
+" Split
+noremap <Leader>h :<C-u>split<CR>
+noremap <Leader>v :<C-u>vsplit<CR>
+
+"" Close buffer
+noremap <leader>c :bd<CR>
+
+"" Clean search (highlight)
+nnoremap <silent> <leader>l :noh<cr>
+
+" remap escape to kj
+inoremap kj <Esc>`^
+
+" Press enter for newline without insert
+nmap <S-Enter> O<Esc>
+nmap <CR> o<Esc>
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
@@ -184,12 +238,6 @@ let g:html_indent_tags = 'li\|p'
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
 set splitright
-
-" Quicker window movement
-"oremap <C-j> <C-w>j
-"oremap <C-k> <C-w>k
-"oremap <C-h> <C-w>h
-"oremap <C-l> <C-w>l
 
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()

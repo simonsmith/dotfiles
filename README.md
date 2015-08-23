@@ -42,6 +42,10 @@ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/i
 
 https://github.com/powerline/fonts
 
+### Install Bullet train theme
+
+https://github.com/caiogondim/bullet-train-oh-my-zsh-theme
+
 ### Install tmuxinator
 
 https://github.com/tmuxinator/tmuxinator
@@ -54,9 +58,7 @@ gem install tmuxinator
 
 https://github.com/gmarik/Vundle.vim#quick-start
 
-### Install Oceanic Next for Vim/iTerm
-
-https://github.com/voronianski/oceanic-next-color-scheme
+Install all plugins
 
 ### Install nvm
 
