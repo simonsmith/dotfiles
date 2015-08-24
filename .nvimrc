@@ -13,7 +13,6 @@ Plugin 'morhetz/gruvbox'
 " Some general plugins
 Plugin 'Yggdroot/indentLine'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'scrooloose/nerdtree'
 Plugin 'mattn/emmet-vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'sheerun/vim-polyglot' " Language pack
@@ -26,6 +25,8 @@ Plugin 'gorodinskiy/vim-coloresque'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'tpope/vim-surround'
+Plugin 'moll/vim-node'
+Plugin 'tpope/vim-vinegar'
 
 " Status bar
 Plugin 'bling/vim-airline'
