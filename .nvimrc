@@ -206,9 +206,6 @@ set scrolloff=3
 " Mappings
 " ********************
 "
-" Open nerdtree
-nmap <leader>ne :NERDTreeToggle<cr>
-
 " Save file with <leader>s
 nnoremap <leader>s :w<cr>
 inoremap <leader>s <C-c>:w<cr>
