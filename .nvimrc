@@ -27,6 +27,8 @@ Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'tpope/vim-surround'
 Plugin 'moll/vim-node'
 Plugin 'tpope/vim-vinegar'
+Plugin 'tmux-plugins/vim-tmux-focus-events'
+Plugin 'mattn/webapi-vim'
 
 " Status bar
 Plugin 'bling/vim-airline'
@@ -35,7 +37,6 @@ Plugin 'edkolev/tmuxline.vim'
 
 " Git
 Plugin 'tpope/vim-fugitive'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'airblade/vim-gitgutter'
 
 " JavaScript
@@ -96,6 +97,12 @@ let g:airline#extensions#tabline#enabled = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
 
+" Emmet
+" should expand with tab
+let g:user_emmet_expandabbr_key = '<Tab>'
+" Load snippets.json
+let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/emmet/snippets.json')), "\n"))
+
 " Visual
 "*********************
 
@@ -114,6 +121,8 @@ set shiftwidth=2
 set updatetime=650
 set expandtab
 set nowrap
+" JSON should have quotes
+set conceallevel=0
 set nostartofline
 set ruler
 " Highlight searches
@@ -132,8 +141,6 @@ augroup END
 
 " General
 "*********************
-" Path to python3
-let g:python_host_prog = '/usr/bin/python'
 " Make Vim more useful
 set nocompatible
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
@@ -151,7 +158,7 @@ set gdefault
 " Use UTF-8 without BOM
 set encoding=utf-8 nobomb
 " Change mapleader
-let mapleader=" "
+let mapleader=","
 " Don’t add empty newlines at the end of files
 set binary
 set noeol
@@ -217,14 +224,18 @@ noremap cp yap<S-}>p
 noremap <Leader>h :<C-u>split<CR>
 noremap <Leader>v :<C-u>vsplit<CR>
 
-"" Close buffer
+" Close buffer
 noremap <leader>c :bd<CR>
 
-"" Clean search (highlight)
-nnoremap <silent> <leader>l :noh<cr>
+" Clean search (highlight)
+nnoremap <silent> <leader><space> :noh<cr>
 
-" remap escape to kj
-inoremap kj <Esc>`^
+" Use tab to navigate brackets
+nnoremap <tab> %
+vnoremap <tab> %
+
+" remap escape to jj
+inoremap jj <Esc>`^
 
 " Press enter for newline without insert
 nmap <S-Enter> O<Esc>
@@ -241,6 +252,12 @@ set splitright
 " manually here
 nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
 
+" nnoremap
+"
+
+" Open .nvimrc in a new split
+nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
   let save_cursor = getpos(".")
@@ -256,7 +273,9 @@ if has("autocmd")
   " Enable file type detection
   filetype on
   " Treat .json files as .js
-  autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
+  "autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
+  " Save all on focus lost
+  au FocusLost * :wa
   " Treat .md files as Markdown
   autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
 endif
