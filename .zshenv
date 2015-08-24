@@ -28,5 +28,11 @@ export GREP_OPTIONS="--color=auto"
 # Link Homebrew casks in `/Applications` rather than `~/Applications`
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
+# Force terminal 256 colour with iterm
+export TERM='xterm-256color'
+
+# Change cursor to line in insert mode
+export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+
 # Node dev
 export NODE_ENV=development
