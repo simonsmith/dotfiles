@@ -29,6 +29,7 @@ Plugin 'moll/vim-node'
 Plugin 'tpope/vim-vinegar'
 Plugin 'tmux-plugins/vim-tmux-focus-events'
 Plugin 'mattn/webapi-vim'
+Plugin 'mileszs/ack.vim'
 
 " Status bar
 Plugin 'bling/vim-airline'
@@ -243,6 +244,10 @@ nmap <CR> o<Esc>
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
+
+" Search with Ack
+nnoremap <leader>a :Ack!<space>
+let g:ackprg = 'ag --smart-case --nogroup --nocolor --column'
 
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
