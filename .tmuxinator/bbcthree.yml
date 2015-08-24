@@ -2,12 +2,17 @@
 
 name: bbcthree
 root: ~/Sites/bbc/bbcthree-web
-startup_window: git
+startup_window: vim
 
 windows:
-  - git:
-    - git --no-pager log --oneline --decorate --color --graph -10
-    - git status
+  - vim:
+      layout: 25f5,318x90,0,0{199x90,0,0,0,118x90,200,0,1}
+      panes:
+        - vim:
+          - vim
+        - git:
+          - git --no-pager log --oneline --decorate --color --graph -10
+          - git status
   - node:
       layout: even-vertical
       panes:
