@@ -258,3 +258,6 @@ if has("autocmd")
   " Treat .md files as Markdown
   autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
 endif
+
+" Move to the top of a git commit
+au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
