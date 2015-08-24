@@ -27,5 +27,6 @@ export PATH="~/bin:$PATH"
 source ~/git-hub/init
 source ~/.nvm/nvm.sh
 eval "$(rbenv init -)"
+source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette_osx.sh"
 
 source $ZSH/oh-my-zsh.sh
