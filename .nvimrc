@@ -239,6 +239,10 @@ let g:html_indent_tags = 'li\|p'
 set splitbelow
 set splitright
 
+" vim-tmux-navigator seems to have issues with going left, so bind it
+" manually here
+nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
+
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
   let save_cursor = getpos(".")
