@@ -166,6 +166,12 @@ set esckeys
 set backspace=indent,eol,start
 " Optimize for fast terminal connections
 set ttyfast
+" Fix background not filling window correctly when moving panes around with
+" tmux
+if &term =~ '256color'
+  " disable Background Color Erase (BCE)
+  set t_ut=
+endif
 " Auto save changes before switching buffer
 set autowrite
 " Add the g flag to search/replace by default
