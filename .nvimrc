@@ -30,6 +30,8 @@ Plugin 'tpope/vim-vinegar'
 Plugin 'tmux-plugins/vim-tmux-focus-events'
 Plugin 'mattn/webapi-vim'
 Plugin 'mileszs/ack.vim'
+Plugin 'henrik/vim-qargs'
+Plugin 'schickling/vim-bufonly'
 
 " Status bar
 Plugin 'bling/vim-airline'
@@ -154,6 +156,8 @@ set esckeys
 set backspace=indent,eol,start
 " Optimize for fast terminal connections
 set ttyfast
+" Auto save changes before switching buffer
+set autowrite
 " Add the g flag to search/replace by default
 set gdefault
 " Use UTF-8 without BOM
@@ -228,6 +232,9 @@ noremap <Leader>v :<C-u>vsplit<CR>
 " Close buffer
 noremap <leader>c :bd<CR>
 
+" Close all but current buffer
+noremap <leader>ca :BufOnly
+
 " Clean search (highlight)
 nnoremap <silent> <leader><space> :noh<cr>
 
@@ -249,6 +256,9 @@ let g:html_indent_tags = 'li\|p'
 nnoremap <leader>a :Ack!<space>
 let g:ackprg = 'ag --smart-case --nogroup --nocolor --column'
 
+" Replace with Qdo
+nnoremap <leader>r :Qdo<space> :%s/
+
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
 set splitright
@@ -256,9 +266,6 @@ set splitright
 " vim-tmux-navigator seems to have issues with going left, so bind it
 " manually here
 nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
-
-" nnoremap
-"
 
 " Open .nvimrc in a new split
 nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
