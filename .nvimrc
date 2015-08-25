@@ -148,6 +148,16 @@ augroup END
 set nocompatible
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
 set clipboard=unnamed
+" Spell checking
+set spelllang=en
+highlight clear SpellBad
+highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
+highlight clear SpellCap
+highlight SpellCap term=underline cterm=underline
+highlight clear SpellRare
+highlight SpellRare term=underline cterm=underline
+highlight clear SpellLocal
+highlight SpellLocal term=underline cterm=underline
 " Enhance command-line completion
 set wildmenu
 " Allow cursor keys in insert mode
@@ -229,6 +239,10 @@ noremap cp yap<S-}>p
 noremap <Leader>h :<C-u>split<CR>
 noremap <Leader>v :<C-u>vsplit<CR>
 
+" Spellcheck
+noremap <Leader>sp :set spell<cr>
+noremap <Leader>nsp :set nospell<cr>
+
 " Close buffer
 noremap <leader>c :bd<CR>
 
@@ -290,6 +304,8 @@ if has("autocmd")
   au FocusLost * :wa
   " Treat .md files as Markdown
   autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
+  " Spelling in markdown automatically
+	autocmd BufRead,BufNewFile *.md setlocal spell
 endif
 
 " Move to the top of a git commit
