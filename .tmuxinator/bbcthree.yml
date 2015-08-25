@@ -6,7 +6,7 @@ startup_window: vim
 
 windows:
   - vim:
-      layout: 25f5,318x90,0,0{199x90,0,0,0,118x90,200,0,1}
+      layout: even-vertical
       panes:
         - vim:
           - vim
