@@ -123,6 +123,10 @@ set hidden
 set autoindent
 set copyindent
 set showmatch
+set lazyredraw
+set noshowmode      " don't display the current mode (Insert, Visual, Replace)
+                    " in the status line. This info is already shown in the
+                    " Airline status bar.
 set cursorline
 set softtabstop=2
 set shiftwidth=2
