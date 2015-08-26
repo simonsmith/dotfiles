@@ -59,6 +59,7 @@ Plugin 'edkolev/tmuxline.vim'
 " Git
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'gregsexton/gitv'
 
 " JavaScript
 Plugin 'mxw/vim-jsx'
@@ -277,6 +278,20 @@ endif
 " Start scrolling three lines before the horizontal window border
 set scrolloff=3
 
+" Remap annoying mistakes to something useful
+cnoreabbrev W! w!
+cnoreabbrev Q! q!
+cnoreabbrev Qall! qall!
+cnoreabbrev Wq wq
+cnoreabbrev Wa wa
+cnoreabbrev wQ wq
+cnoreabbrev WQ wq
+cnoreabbrev W w
+cnoreabbrev Q q
+cnoreabbrev Qa q
+cnoreabbrev Qall qall
+
+
 " -----------------------------------------------------------------------------
 " Key mappings
 " -----------------------------------------------------------------------------
@@ -331,6 +346,15 @@ nmap <CR> o<Esc>
 " NERD tree
 nmap <leader>t :NERDTreeToggle<CR>
 nmap <leader>tt :NERDTreeFind<CR>
+
+" Git
+noremap <Leader>ga :Gwrite<CR>
+noremap <Leader>gc :Gcommit<CR>
+noremap <Leader>gp :Gpush<CR>
+noremap <Leader>gl :Gpull<CR>
+noremap <Leader>gs :Gstatus<CR>
+noremap <Leader>gd :Gvdiff<CR>
+noremap <Leader>gv :Gitv<CR>
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
