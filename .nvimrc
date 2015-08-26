@@ -101,9 +101,6 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 
 " Emmet
-" should expand with tab
-let g:user_emmet_expandabbr_key = '<Tab>'
-" Load snippets.json
 let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/emmet/snippets.json')), "\n"))
 
 " Visual
@@ -144,6 +141,7 @@ augroup END
 
 " General
 "*********************
+
 " Make Vim more useful
 set nocompatible
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
@@ -261,6 +259,12 @@ nnoremap <silent> <leader><space> :noh<cr>
 " Use tab to navigate brackets
 nnoremap <tab> %
 vnoremap <tab> %
+
+" Open new buffers
+" Single window
+nnoremap <leader>nb :enew<cr>
+" Split vertical
+nnoremap <leader>nbv :vnew<cr>
 
 " remap escape to jj
 inoremap jj <Esc>`^
