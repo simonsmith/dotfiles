@@ -355,6 +355,7 @@ noremap <Leader>gl :Gpull<CR>
 noremap <Leader>gs :Gstatus<CR>
 noremap <Leader>gd :Gvdiff<CR>
 noremap <Leader>gv :Gitv<CR>
+noremap <Leader>gg :Git<space>
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
