@@ -46,8 +46,8 @@ Plugin 'airblade/vim-gitgutter'
 " Nerdtree
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
-nmap <leader>m :NERDTreeToggle<CR>
-nmap <leader>n :NERDTreeFind<CR>
+nmap <leader>t :NERDTreeToggle<CR>
+nmap <leader>tt :NERDTreeFind<CR>
 
 " JavaScript
 Plugin 'mxw/vim-jsx'
