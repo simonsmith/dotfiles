@@ -244,12 +244,14 @@ set scrolloff=3
 " Mappings
 " ********************
 
+" set space to leader
+let mapleader = ' '
+
 " Remap emmet
 imap hh <C-y>,
 
 " Save file with <leader>s
 nnoremap <leader>s :w<cr>
-inoremap <leader>s <C-c>:w<cr>
 
 " Clone paragraph
 noremap cp yap<S-}>p
