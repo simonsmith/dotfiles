@@ -49,8 +49,6 @@ Plugin 'airblade/vim-gitgutter'
 " Nerdtree
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
-nmap <leader>t :NERDTreeToggle<CR>
-nmap <leader>tt :NERDTreeFind<CR>
 
 " JavaScript
 Plugin 'mxw/vim-jsx'
@@ -285,6 +283,10 @@ inoremap jj <Esc>`^
 " Press enter for newline without insert
 nmap <S-Enter> O<Esc>
 nmap <CR> o<Esc>
+
+" NERD tree mappings
+nmap <leader>t :NERDTreeToggle<CR>
+nmap <leader>tt :NERDTreeFind<CR>
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
