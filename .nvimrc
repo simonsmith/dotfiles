@@ -32,6 +32,7 @@ Plugin 'mattn/webapi-vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'henrik/vim-qargs'
 Plugin 'schickling/vim-bufonly'
+Plugin 'ervandew/supertab'
 
 " Status bar
 Plugin 'bling/vim-airline'
