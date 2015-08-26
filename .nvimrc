@@ -1,8 +1,7 @@
-" Python
-let g:python_host_prog = '/usr/local/bin/python'
 
-" Vundle
-"*********************
+" -----------------------------------------------------------------------------
+"  Vim package manager
+" -----------------------------------------------------------------------------
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.nvim/bundle/Vundle.vim
@@ -10,32 +9,47 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-" theme
+
+" Theme
 Plugin 'morhetz/gruvbox'
 
-" Some general plugins
-Plugin 'Yggdroot/indentLine'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'mattn/emmet-vim'
-Plugin 'scrooloose/syntastic'
-Plugin 'sheerun/vim-polyglot' " Language pack
-Plugin 'Raimondi/delimitMate'
+" tmux
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'tmux-plugins/vim-tmux-focus-events'
+
+" Finding and replacing
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'mileszs/ack.vim'
+Plugin 'henrik/vim-qargs'
+
+" Nerdtree
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+
+" Buffers
+Plugin 'schickling/vim-bufonly'
+Plugin 'jlanzarotta/bufexplorer'
+
+" Language pack
+Plugin 'sheerun/vim-polyglot'
+
+" General editing
+Plugin 'Yggdroot/indentLine'
+Plugin 'scrooloose/syntastic'
+Plugin 'Raimondi/delimitMate'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-commentary'
-Plugin 'amirh/HTML-AutoCloseTag'
-Plugin 'ap/vim-css-color'
 Plugin 'editorconfig/editorconfig-vim'
-Plugin 'jlanzarotta/bufexplorer'
 Plugin 'tpope/vim-surround'
 Plugin 'moll/vim-node'
 Plugin 'tpope/vim-vinegar'
-Plugin 'tmux-plugins/vim-tmux-focus-events'
-Plugin 'mattn/webapi-vim'
-Plugin 'mileszs/ack.vim'
-Plugin 'henrik/vim-qargs'
-Plugin 'schickling/vim-bufonly'
 Plugin 'ervandew/supertab'
+
+" HTML/CSS
+Plugin 'ap/vim-css-color'
+Plugin 'amirh/HTML-AutoCloseTag'
+Plugin 'mattn/emmet-vim'
+Plugin 'mattn/webapi-vim' " Allows use of snippets.json
 
 " Status bar
 Plugin 'bling/vim-airline'
@@ -46,10 +60,6 @@ Plugin 'edkolev/tmuxline.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 
-" Nerdtree
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-
 " JavaScript
 Plugin 'mxw/vim-jsx'
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
@@ -57,6 +67,15 @@ let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 " All of your Plugins must be added before the following line
 call vundle#end()
 filetype plugin indent on
+
+
+" -----------------------------------------------------------------------------
+"  Plugin settings
+" -----------------------------------------------------------------------------
+
+" Python
+" Assume install from Homebrew
+let g:python_host_prog = '/usr/local/bin/python'
 
 " Syntastic
 set statusline+=%#warningmsg#
@@ -109,15 +128,19 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 
 " Emmet
+" Load snippets.json
 let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/emmet/snippets.json')), "\n"))
 
+" -----------------------------------------------------------------------------
 " Visual
-"*********************
+" -----------------------------------------------------------------------------
 
+" Theme
 colorscheme gruvbox
 set background=dark
-set colorcolumn=80
 syntax on
+
+set colorcolumn=80
 set number
 set hidden
 set autoindent
@@ -133,15 +156,18 @@ set shiftwidth=2
 set updatetime=650
 set expandtab
 set nowrap
-" JSON should have quotes
-set conceallevel=0
+
+set conceallevel=0 " JSON should have quotes
 set nostartofline
 set ruler
+
 " Highlight searches
 set hlsearch
 set incsearch
+
 " Highlight tailing whitespace
 set list listchars=tab:\ \ ,trail:·
+
 " remove whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
 
@@ -151,14 +177,13 @@ augroup vimrc-remember-cursor-position
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 augroup END
 
-" General
-"*********************
 
 " Make Vim more useful
 set nocompatible
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
 set clipboard=unnamed
-" Spell checking
+
+" Spell check
 set spelllang=en
 highlight clear SpellBad
 highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
@@ -168,6 +193,7 @@ highlight clear SpellRare
 highlight SpellRare term=underline cterm=underline
 highlight clear SpellLocal
 highlight SpellLocal term=underline cterm=underline
+
 " Enhance command-line completion
 set wildmenu
 " Allow cursor keys in insert mode
@@ -176,40 +202,48 @@ set esckeys
 set backspace=indent,eol,start
 " Optimize for fast terminal connections
 set ttyfast
+
 " Fix background not filling window correctly when moving panes around with
 " tmux
 if &term =~ '256color'
   " disable Background Color Erase (BCE)
   set t_ut=
 endif
+
 " Auto save changes before switching buffer
 set autowrite
 " Add the g flag to search/replace by default
 set gdefault
 " Use UTF-8 without BOM
 set encoding=utf-8 nobomb
-" Change mapleader
-let mapleader=","
+
 " Don’t add empty newlines at the end of files
 set binary
 set noeol
+
 " Centralize backups, swapfiles and undo history
 set backupdir=~/.nvim/backups
-set directory=.,$TEMP
+set directory=.,$TEMP " Stop the swp file warning
+
 if exists("&undodir")
   set undodir=~/.nvim/undo
 endif
+
 " Don’t create backups when editing files in certain directories
 set backupskip=/tmp/*,/private/tmp/*
+
 " Respect modeline in files
 set modeline
 set modelines=4
+
 " Enable per-directory .vimrc files and disable unsafe commands in them
 set exrc
 set secure
+
 " Show “invisible” characters
 set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
 set list
+
 " Ignore case of searches
 set ignorecase
 " Highlight dynamically as pattern is typed
@@ -233,17 +267,20 @@ set showmode
 set title
 " Show the (partial) command as it’s being typed
 set showcmd
+
 " Use relative line numbers
 if exists("&relativenumber")
   set relativenumber
   au BufReadPost * set relativenumber
 endif
+
 " Start scrolling three lines before the horizontal window border
 set scrolloff=3
 
-" Mappings
-" ********************
-
+" -----------------------------------------------------------------------------
+" Key mappings
+" -----------------------------------------------------------------------------
+"
 " set space to leader
 let mapleader = ' '
 
@@ -270,7 +307,7 @@ noremap <leader>c :bd<CR>
 " Close all but current buffer
 noremap <leader>ca :BufOnly
 
-" Clean search (highlight)
+" Clear search (highlight)
 nnoremap <silent> <leader><space> :noh<cr>
 
 " Use tab to navigate brackets
@@ -278,6 +315,7 @@ nnoremap <tab> %
 vnoremap <tab> %
 
 " Open new buffers
+"
 " Single window
 nnoremap <leader>nb :enew<cr>
 " Split vertical
@@ -290,7 +328,7 @@ inoremap jj <Esc>`^
 nmap <S-Enter> O<Esc>
 nmap <CR> o<Esc>
 
-" NERD tree mappings
+" NERD tree
 nmap <leader>t :NERDTreeToggle<CR>
 nmap <leader>tt :NERDTreeFind<CR>
 
@@ -309,7 +347,7 @@ set splitbelow
 set splitright
 
 " vim-tmux-navigator seems to have issues with going left, so bind it
-" manually here
+" manually here. Other directions work fine out the box
 nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
 
 " Open .nvimrc in a new split
@@ -329,15 +367,16 @@ noremap <leader>ss :call StripWhitespace()<CR>
 if has("autocmd")
   " Enable file type detection
   filetype on
-  " Treat .json files as .js
-  "autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
+
   " Save all on focus lost
   au FocusLost * :wa
+
   " Treat .md files as Markdown
   autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
+
   " Spelling in markdown automatically
 	autocmd BufRead,BufNewFile *.md setlocal spell
-endif
 
 " Move to the top of a git commit
-au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+  au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+endif
