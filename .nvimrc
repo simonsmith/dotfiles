@@ -231,7 +231,10 @@ set scrolloff=3
 
 " Mappings
 " ********************
-"
+
+" Remap emmet
+imap hh <C-y>,
+
 " Save file with <leader>s
 nnoremap <leader>s :w<cr>
 inoremap <leader>s <C-c>:w<cr>
