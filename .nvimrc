@@ -264,7 +264,7 @@ au CursorHold * checktime
 set noswapfile
 " Don’t show the intro message when starting Vim
 set shortmess=atI
-" Show the filename in the window titlebar
+" Show the current mode
 set title
 " Show the (partial) command as it’s being typed
 set showcmd
@@ -335,6 +335,10 @@ vnoremap <tab> %
 nnoremap <leader>nb :enew<cr>
 " Split vertical
 nnoremap <leader>nbv :vnew<cr>
+
+" Cycle through buffers
+nnoremap <leader>] :bnext<cr>
+nnoremap <leader>[ :bprev<cr>
 
 " remap escape to jj
 inoremap jj <Esc>`^
