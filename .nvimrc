@@ -44,6 +44,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'moll/vim-node'
 Plugin 'tpope/vim-vinegar'
 Plugin 'ervandew/supertab'
+Plugin 'easymotion/vim-easymotion'
 
 " HTML/CSS
 Plugin 'ap/vim-css-color'
@@ -77,6 +78,21 @@ filetype plugin indent on
 " Python
 " Assume install from Homebrew
 let g:python_host_prog = '/usr/local/bin/python'
+
+" Easymotion
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" Bi-directional find motion
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" `s{char}{label}`
+nmap s <Plug>(easymotion-s)
+
+" Turn on case insensitive feature
+let g:EasyMotion_smartcase = 1
+
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
 
 " Syntastic
 set statusline+=%#warningmsg#
