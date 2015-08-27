@@ -111,6 +111,7 @@ let g:syntastic_aggregate_errors = 1
 " indentLine
 let g:indentLine_char = '|'
 let g:indentLine_color_term = 239
+let g:indentLine_noConcealCursor="" " Don't mess with JSON concealing
 
 " gitgutter
 let g:gitgutter_realtime = 200
@@ -176,7 +177,6 @@ set updatetime=650
 set expandtab
 set nowrap
 
-set conceallevel=0 " JSON should have quotes
 set nostartofline
 set ruler
 
