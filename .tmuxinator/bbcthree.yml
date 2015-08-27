@@ -14,7 +14,7 @@ windows:
           - git --no-pager log --oneline --decorate --color --graph -10
           - git status
   - node:
-      layout: even-vertical
+      layout: even-horizontal
       panes:
         - server:
           - cd server
