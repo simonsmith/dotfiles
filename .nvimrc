@@ -63,6 +63,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'gregsexton/gitv'
 
 " JavaScript
+Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'mxw/vim-jsx'
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
@@ -144,6 +145,9 @@ let g:airline#extensions#tabline#enabled = 1
 
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
+
+" JS lib syntax
+let g:used_javascript_libs = 'underscore,jquery,react,requirejs,jasmine,chai'
 
 " Emmet
 " Load snippets.json
