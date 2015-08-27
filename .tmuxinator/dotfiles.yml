@@ -1,0 +1,14 @@
+# ~/.tmuxinator/dotfiles.yml
+
+name: dotfiles
+root: ~/dotfiles
+startup_window: vim
+
+windows:
+  - vim:
+      layout: even-horizontal
+      panes:
+        - vim:
+          - vim
+        - git:
+          - git status
