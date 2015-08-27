@@ -132,6 +132,8 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 " Load snippets.json
 let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/emmet/snippets.json')), "\n"))
 
+" Buf explorer
+let g:bufExplorerShowNoName=1 " Show buffers with no name
 " -----------------------------------------------------------------------------
 " Visual
 " -----------------------------------------------------------------------------
