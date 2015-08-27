@@ -417,6 +417,9 @@ if has("autocmd")
   " Save all on focus lost
   au FocusLost * :wa
 
+  " Resize splits when vim changes size (like with tmux opening/closing)
+  autocmd VimResized * wincmd =
+
   " Treat .md files as Markdown
   autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
 
