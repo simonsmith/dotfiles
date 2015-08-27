@@ -172,10 +172,11 @@ set noshowmode      " don't display the current mode (Insert, Visual, Replace)
                     " Airline status bar.
 set cursorline
 set softtabstop=2
+set tabstop=2
 set shiftwidth=2
 set updatetime=650
-set expandtab
 set nowrap
+set expandtab
 
 set nostartofline
 set ruler
@@ -420,7 +421,7 @@ if has("autocmd")
   autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
 
   " Spelling in markdown automatically
-	autocmd BufRead,BufNewFile *.md setlocal spell
+  autocmd BufRead,BufNewFile *.md setlocal spell
 
 " Move to the top of a git commit
   au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
