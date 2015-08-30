@@ -86,7 +86,7 @@ let g:EasyMotion_do_mapping = 0 " Disable default mappings
 " Bi-directional find motion
 " Jump to anywhere you want with minimal keystrokes, with just one key binding.
 " `s{char}{label}`
-nmap s <Plug>(easymotion-s)
+nmap ss <Plug>(easymotion-s)
 
 " Turn on case insensitive feature
 let g:EasyMotion_smartcase = 1
@@ -324,7 +324,7 @@ let mapleader = ' '
 imap hh <C-y>,
 
 " Save file with <leader>s
-nnoremap <leader>s :w<cr>
+nnoremap <leader>w :w<cr>
 
 " Clone paragraph
 noremap cp yap<S-}>p
