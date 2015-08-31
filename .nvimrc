@@ -114,7 +114,8 @@ let g:indentLine_color_term = 239
 let g:indentLine_noConcealCursor="" " Don't mess with JSON concealing
 
 " gitgutter
-let g:gitgutter_realtime = 200
+let g:gitgutter_realtime = 100
+let g:gitgutter_eager = 100
 
 " ctrlP
 " set-up ctrlp to include hidden files in its search
