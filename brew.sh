@@ -56,7 +56,7 @@ brew install ucspi-tcp # `tcpserver` et al.
 brew install redis
 brew install the_silver_searcher
 brew install tmux
-brew install python3
+brew install python
 brew install phantomjs
 brew install heroku
 brew install p7zip
