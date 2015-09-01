@@ -334,12 +334,7 @@ noremap <leader>ca :BufOnly
 " Clear search (highlight)
 nnoremap <silent> <leader><space> :noh<cr>
 
-" Use tab to navigate brackets
-nnoremap <tab> %
-vnoremap <tab> %
-
 " Open new buffers
-"
 " Single window
 nnoremap <leader>nb :enew<cr>
 " Split vertical
