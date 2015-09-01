@@ -51,7 +51,6 @@ NeoBundle 'tpope/vim-commentary'
 NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-vinegar'
-NeoBundle 'ervandew/supertab'
 NeoBundle 'easymotion/vim-easymotion'
 
 " HTML/CSS
@@ -247,7 +246,7 @@ if &term =~ '256color'
 endif
 
 "Eliminate delay when switching modes
-set timeoutlen=500
+set timeoutlen=1000 ttimeoutlen=0
 
 "Auto save changes before switching buffer
 set autowrite
