@@ -27,6 +27,9 @@ export PATH="~/bin:$PATH"
 source ~/git-hub/init
 source ~/.nvm/nvm.sh
 eval "$(rbenv init -)"
-source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette_osx.sh"
+source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
+
+export TERM='xterm-256color'
+export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 source $ZSH/oh-my-zsh.sh

@@ -42,10 +42,6 @@ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/i
 
 https://github.com/powerline/fonts
 
-### Install Bullet train theme
-
-https://github.com/caiogondim/bullet-train-oh-my-zsh-theme
-
 ### Install tmuxinator
 
 https://github.com/tmuxinator/tmuxinator
@@ -54,9 +50,9 @@ https://github.com/tmuxinator/tmuxinator
 gem install tmuxinator
 ```
 
-### Install Vundle
+### Install NeoBundle
 
-https://github.com/gmarik/Vundle.vim#quick-start
+https://github.com/Shougo/neobundle.vim#1-install-neobundl://github.com/Shougo/neobundle.vim#1-install-neobundle
 
 Install all plugins
 

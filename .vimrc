@@ -1,84 +1,94 @@
 
 " -----------------------------------------------------------------------------
-"  Vim package manager
+" NeoBundle
 " -----------------------------------------------------------------------------
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.nvim/bundle/Vundle.vim
-call vundle#begin()
+if has('vim_starting')
+  if &compatible
+    set nocompatible               " Be iMproved
+  endif
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+  " Required:
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+" Required:
+call neobundle#begin(expand('~/.vim/bundle'))
+
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Theme
-Plugin 'morhetz/gruvbox'
+NeoBundle 'morhetz/gruvbox'
 
 " tmux
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'tmux-plugins/vim-tmux-focus-events'
+NeoBundle 'christoomey/vim-tmux-navigator'
+NeoBundle 'tmux-plugins/vim-tmux-focus-events'
 
 " Finding and replacing
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'mileszs/ack.vim'
-Plugin 'henrik/vim-qargs'
+NeoBundle 'ctrlpvim/ctrlp.vim'
+NeoBundle 'mileszs/ack.vim'
+NeoBundle 'henrik/vim-qargs'
 
 " Nerdtree
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'Xuyuanp/nerdtree-git-plugin'
 
 " Buffers
-Plugin 'schickling/vim-bufonly'
-Plugin 'jlanzarotta/bufexplorer'
+NeoBundle 'schickling/vim-bufonly'
+NeoBundle 'jlanzarotta/bufexplorer'
 
 " Language pack
-Plugin 'sheerun/vim-polyglot'
+NeoBundle 'sheerun/vim-polyglot'
 
 " General editing
-Plugin 'Yggdroot/indentLine'
-Plugin 'scrooloose/syntastic'
-Plugin 'Raimondi/delimitMate'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'tpope/vim-commentary'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'tpope/vim-surround'
-Plugin 'moll/vim-node'
-Plugin 'tpope/vim-vinegar'
-Plugin 'ervandew/supertab'
-Plugin 'easymotion/vim-easymotion'
+NeoBundle 'Yggdroot/indentLine'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'Raimondi/delimitMate'
+NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle 'tpope/vim-commentary'
+NeoBundle 'editorconfig/editorconfig-vim'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-vinegar'
+NeoBundle 'ervandew/supertab'
+NeoBundle 'easymotion/vim-easymotion'
 
 " HTML/CSS
-Plugin 'ap/vim-css-color'
-Plugin 'amirh/HTML-AutoCloseTag'
-Plugin 'mattn/emmet-vim'
-Plugin 'mattn/webapi-vim' " Allows use of snippets.json
+NeoBundle 'ap/vim-css-color'
+NeoBundle 'mattn/emmet-vim'
+NeoBundle 'mattn/webapi-vim' " Allows use of snippets.json
 
 " Status bar
-Plugin 'bling/vim-airline'
-Plugin 'paranoida/vim-airlineish'
-Plugin 'edkolev/tmuxline.vim'
+NeoBundle 'bling/vim-airline'
+NeoBundle 'paranoida/vim-airlineish'
+NeoBundle 'edkolev/tmuxline.vim'
 
 " Git
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'gregsexton/gitv'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'gregsexton/gitv'
 
 " JavaScript
-Plugin 'othree/javascript-libraries-syntax.vim'
-Plugin 'mxw/vim-jsx'
-let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+NeoBundle 'othree/javascript-libraries-syntax.vim'
+NeoBundle 'mxw/vim-jsx'
 
-" All of your Plugins must be added before the following line
-call vundle#end()
+" Required:
+call neobundle#end()
+
+" Required:
 filetype plugin indent on
 
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
+
+" Eliminate delay when switching modes
+set timeoutlen=1000 ttimeoutlen=0
 
 " -----------------------------------------------------------------------------
 "  Plugin settings
 " -----------------------------------------------------------------------------
-
-" Python
-" Assume install from Homebrew
-let g:python_host_prog = '/usr/local/bin/python'
 
 " Easymotion
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
@@ -89,6 +99,9 @@ nmap <Leader>s <Plug>(easymotion-s)
 
 " Turn on case insensitive feature
 let g:EasyMotion_smartcase = 1
+
+" Allow JSX in normal JS files
+let g:jsx_ext_required = 0
 
 " JK motions: Line motions
 map <Leader>j <Plug>(easymotion-j)
@@ -155,6 +168,7 @@ let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/emmet/sni
 
 " Buf explorer
 let g:bufExplorerShowNoName=1 " Show buffers with no name
+
 " -----------------------------------------------------------------------------
 " Visual
 " -----------------------------------------------------------------------------
@@ -192,6 +206,10 @@ set incsearch
 " Highlight tailing whitespace
 set list listchars=tab:\ \ ,trail:·
 
+" Change cursor based on mode
+let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+
 " remove whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
 
@@ -201,9 +219,6 @@ augroup vimrc-remember-cursor-position
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 augroup END
 
-
-" Make Vim more useful
-set nocompatible
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
 set clipboard=unnamed
 
@@ -246,11 +261,11 @@ set binary
 set noeol
 
 " Centralize backups, swapfiles and undo history
-set backupdir=~/.nvim/backups
+set backupdir=~/.vim/backups
 set directory=.,$TEMP " Stop the swp file warning
 
 if exists("&undodir")
-  set undodir=~/.nvim/undo
+  set undodir=~/.vim/undo
 endif
 
 " Don’t create backups when editing files in certain directories
@@ -400,7 +415,7 @@ set splitright
 " manually here. Other directions work fine out the box
 nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
 
-" Open .nvimrc in a new split
+" Open .vimrc in a new split
 nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 
 " Strip trailing whitespace (,ss)
