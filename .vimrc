@@ -13,8 +13,7 @@ Plug 'mileszs/ack.vim'
 Plug 'henrik/vim-qargs'
 
 " Nerdtree
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind']} | Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Buffers
 Plug 'schickling/vim-bufonly'
@@ -36,8 +35,7 @@ Plug 'easymotion/vim-easymotion'
 
 " HTML/CSS
 Plug 'ap/vim-css-color'
-Plug 'mattn/emmet-vim'
-Plug 'mattn/webapi-vim' " Allows use of snippets.json
+Plug 'mattn/emmet-vim', {'for': ['htmldjango', 'html', 'css']} | Plug 'mattn/webapi-vim'
 
 " Status bar
 Plug 'bling/vim-airline'
@@ -50,7 +48,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'gregsexton/gitv'
 
 " JavaScript
-Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'othree/javascript-libraries-syntax.vim', {'for': 'javascript.jsx'}
 Plug 'mxw/vim-jsx'
 
 call plug#end()
