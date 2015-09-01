@@ -1,86 +1,59 @@
-
-" -----------------------------------------------------------------------------
-" NeoBundle
-" -----------------------------------------------------------------------------
-
-if has('vim_starting')
-  if &compatible
-    set nocompatible               " Be iMproved
-  endif
-
-  " Required:
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
-
-" Required:
-call neobundle#begin(expand('~/.vim/bundle'))
-
-" Let NeoBundle manage NeoBundle
-" Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
+call plug#begin('~/.vim/plugged')
 
 " Theme
-NeoBundle 'morhetz/gruvbox'
+Plug 'morhetz/gruvbox'
 
 " tmux
-NeoBundle 'christoomey/vim-tmux-navigator'
-NeoBundle 'tmux-plugins/vim-tmux-focus-events'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'tmux-plugins/vim-tmux-focus-events'
 
 " Finding and replacing
-NeoBundle 'ctrlpvim/ctrlp.vim'
-NeoBundle 'mileszs/ack.vim'
-NeoBundle 'henrik/vim-qargs'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'mileszs/ack.vim'
+Plug 'henrik/vim-qargs'
 
 " Nerdtree
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'Xuyuanp/nerdtree-git-plugin'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Buffers
-NeoBundle 'schickling/vim-bufonly'
-NeoBundle 'jlanzarotta/bufexplorer'
+Plug 'schickling/vim-bufonly'
+Plug 'jlanzarotta/bufexplorer'
 
 " Language pack
-NeoBundle 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot'
 
 " General editing
-NeoBundle 'Yggdroot/indentLine'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'Raimondi/delimitMate'
-NeoBundle 'terryma/vim-multiple-cursors'
-NeoBundle 'tpope/vim-commentary'
-NeoBundle 'editorconfig/editorconfig-vim'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'tpope/vim-vinegar'
-NeoBundle 'easymotion/vim-easymotion'
+Plug 'Yggdroot/indentLine'
+Plug 'scrooloose/syntastic'
+Plug 'Raimondi/delimitMate'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-commentary'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-vinegar'
+Plug 'easymotion/vim-easymotion'
 
 " HTML/CSS
-NeoBundle 'ap/vim-css-color'
-NeoBundle 'mattn/emmet-vim'
-NeoBundle 'mattn/webapi-vim' " Allows use of snippets.json
+Plug 'ap/vim-css-color'
+Plug 'mattn/emmet-vim'
+Plug 'mattn/webapi-vim' " Allows use of snippets.json
 
 " Status bar
-NeoBundle 'bling/vim-airline'
-NeoBundle 'paranoida/vim-airlineish'
-NeoBundle 'edkolev/tmuxline.vim'
+Plug 'bling/vim-airline'
+Plug 'paranoida/vim-airlineish'
+Plug 'edkolev/tmuxline.vim'
 
 " Git
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'gregsexton/gitv'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'gregsexton/gitv'
 
 " JavaScript
-NeoBundle 'othree/javascript-libraries-syntax.vim'
-NeoBundle 'mxw/vim-jsx'
+Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'mxw/vim-jsx'
 
-" Required:
-call neobundle#end()
-
-" Required:
-filetype plugin indent on
-
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
+call plug#end()
 
 " -----------------------------------------------------------------------------
 "  Plugin settings
@@ -96,12 +69,12 @@ nmap <Leader>s <Plug>(easymotion-s)
 " Turn on case insensitive feature
 let g:EasyMotion_smartcase = 1
 
-" Allow JSX in normal JS files
-let g:jsx_ext_required = 0
-
 " JK motions: Line motions
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
+
+" Allow JSX in normal JS files
+let g:jsx_ext_required = 0
 
 " Syntastic
 set statusline+=%#warningmsg#
