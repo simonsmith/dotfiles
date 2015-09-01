@@ -83,9 +83,6 @@ filetype plugin indent on
 " this will conveniently prompt you to install them.
 NeoBundleCheck
 
-" Eliminate delay when switching modes
-set timeoutlen=1000 ttimeoutlen=0
-
 " -----------------------------------------------------------------------------
 "  Plugin settings
 " -----------------------------------------------------------------------------
@@ -249,7 +246,10 @@ if &term =~ '256color'
   set t_ut=
 endif
 
-" Auto save changes before switching buffer
+"Eliminate delay when switching modes
+set timeoutlen=500
+
+"Auto save changes before switching buffer
 set autowrite
 " Add the g flag to search/replace by default
 set gdefault
