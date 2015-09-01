@@ -50,9 +50,9 @@ https://github.com/tmuxinator/tmuxinator
 gem install tmuxinator
 ```
 
-### Install NeoBundle
+### Install vim-plug
 
-https://github.com/Shougo/neobundle.vim#1-install-neobundl://github.com/Shougo/neobundle.vim#1-install-neobundle
+https://github.com/junegunn/vim-plug#installation
 
 Install all plugins
 
