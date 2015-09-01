@@ -42,6 +42,9 @@ Plug 'bling/vim-airline'
 Plug 'paranoida/vim-airlineish'
 Plug 'edkolev/tmuxline.vim'
 
+" Snippets
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
