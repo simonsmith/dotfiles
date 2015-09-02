@@ -130,7 +130,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 
 " JS lib syntax
-let g:used_javascript_libs = 'underscore,jquery,react,requirejs,jasmine,chai'
+let g:used_javascript_libs = 'underscore,jquery,requirejs,jasmine,chai'
 
 " Emmet
 " Load snippets.json
