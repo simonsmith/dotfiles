@@ -65,7 +65,7 @@ let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
 " Bi-directional find motion
 " Jump to anywhere you want with minimal keystrokes, with just one key binding.
-nmap <Leader>s <Plug>(easymotion-s)
+nmap ss <Plug>(easymotion-s)
 
 " Turn on case insensitive feature
 let g:EasyMotion_smartcase = 1
