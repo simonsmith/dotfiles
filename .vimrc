@@ -407,6 +407,9 @@ if has("autocmd")
   " Resize splits when vim changes size (like with tmux opening/closing)
   autocmd VimResized * wincmd =
 
+  " Force html syntax to be used on html files
+  autocmd BufNewFile,BufRead *.html  set syntax=html
+
   " Treat .md files as Markdown
   autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
 
