@@ -13,7 +13,7 @@ Plug 'mileszs/ack.vim'
 Plug 'henrik/vim-qargs'
 
 " Nerdtree
-Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind']} | Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'scrooloose/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Buffers
 Plug 'schickling/vim-bufonly'
