@@ -45,6 +45,9 @@ Plug 'edkolev/tmuxline.vim'
 " Snippets
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
+" Autocomplete
+Plug 'ervandew/supertab'
+
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
