@@ -120,6 +120,9 @@ else
   let g:ctrlp_user_command = "find %s -type f | grep -Ev '"+ g:ctrlp_custom_ignore +"'"
 endif
 
+" delimitMate
+let delimitMate_expand_cr = 1
+
 " vim-airline
 let g:airline_theme = 'airlineish'
 let g:airline#extensions#syntastic#enabled = 1
