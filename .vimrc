@@ -35,7 +35,7 @@ Plug 'easymotion/vim-easymotion'
 
 " HTML/CSS
 Plug 'ap/vim-css-color'
-Plug 'mattn/emmet-vim', {'for': ['htmldjango', 'html', 'css']} | Plug 'mattn/webapi-vim'
+Plug 'mattn/emmet-vim', {'for': ['htmldjango', 'html', 'css']}
 
 " Status bar
 Plug 'bling/vim-airline'
@@ -134,10 +134,6 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 
 " JS lib syntax
 let g:used_javascript_libs = 'underscore,jquery,react,requirejs,jasmine,chai'
-
-" Emmet
-" Load snippets.json
-let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/emmet/snippets.json')), "\n"))
 
 " Buf explorer
 let g:bufExplorerShowNoName=1 " Show buffers with no name
