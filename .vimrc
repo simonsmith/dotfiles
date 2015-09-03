@@ -139,7 +139,7 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:used_javascript_libs = 'underscore,jquery,react,requirejs,jasmine,chai'
 
 " Buf explorer
-let g:bufExplorerShowNoName=1 " Show buffers with no name
+let g:bufExplorerShowNoName = 1 " Show buffers with no name
 
 " -----------------------------------------------------------------------------
 " Visual
