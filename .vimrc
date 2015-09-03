@@ -35,7 +35,7 @@ Plug 'easymotion/vim-easymotion'
 
 " HTML/CSS
 Plug 'ap/vim-css-color'
-Plug 'mattn/emmet-vim', {'for': ['htmldjango', 'html', 'css']}
+Plug 'mattn/emmet-vim'
 
 " Status bar
 Plug 'bling/vim-airline'
