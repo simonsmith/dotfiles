@@ -32,10 +32,7 @@ alias gurl='curl --compressed'
 alias week='date +%V'
 
 # Git shortcuts
-alias amend='git commit --amend'
 alias gdtc='git difftool --cached'
-alias wip='git add . && git commit -m "WIP"'
-alias nowip='git reset HEAD~'
 alias gac='git add . && git commit'
 
 # Stopwatch
