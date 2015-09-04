@@ -32,6 +32,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'easymotion/vim-easymotion'
+Plug 'sjl/vitality.vim'
 
 " HTML/CSS
 Plug 'ap/vim-css-color'
