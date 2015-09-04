@@ -179,9 +179,9 @@ set incsearch
 " Highlight tailing whitespace
 set list listchars=tab:\ \ ,trail:·
 
-" Change cursor based on mode
-let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+" " Change cursor based on mode
+" let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+" let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 
 " remove whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
