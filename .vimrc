@@ -404,9 +404,6 @@ if has("autocmd")
   " Enable file type detection
   filetype on
 
-  " Save all on focus lost
-  au FocusLost * :wa
-
   " Resize splits when vim changes size (like with tmux opening/closing)
   autocmd VimResized * wincmd =
 
