@@ -36,6 +36,7 @@ Plug 'sjl/vitality.vim'
 
 " Copy/Paste behaviour
 Plug 'svermeulen/vim-easyclip'
+Plug 'ConradIrwin/vim-bracketed-paste'
 
 " Sessions
 Plug 'xolox/vim-misc'
