@@ -379,14 +379,7 @@ nmap <leader>t :NERDTreeToggle<cr>
 nmap <leader>tt :NERDTreeFind<cr>
 
 " Git
-noremap <leader>ga :Gwrite<cr>
-noremap <leader>gc :Gcommit<cr>
-noremap <leader>gp :Gpush<cr>
-noremap <leader>gl :Gpull<cr>
-noremap <leader>gs :Gstatus<cr>
-noremap <leader>gd :Gvdiff<cr>
 noremap <leader>gv :Gitv<cr>
-noremap <leader>gg :Git<space>
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
