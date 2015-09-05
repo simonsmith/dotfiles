@@ -1,4 +1,5 @@
 # Install native apps
+
 # Usage: `brew bundle Caskfile`
 
 brew install caskroom/cask/brew-cask
@@ -17,6 +18,7 @@ brew cask install deluge 2> /dev/null
 brew cask install firefox 2> /dev/null
 brew cask install flux 2> /dev/null
 brew cask install gitx 2> /dev/null
+brew cask install gitify 2> /dev/null
 brew cask install google-chrome-beta 2> /dev/null
 brew cask install google-chrome-canary 2> /dev/null
 brew cask install google-drive 2> /dev/null
