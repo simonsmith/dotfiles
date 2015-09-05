@@ -329,15 +329,15 @@ nnoremap <leader>w :w<cr>
 noremap cp yap<S-}>p
 
 " Split
-noremap <Leader>h :<C-u>split<CR>
-noremap <Leader>v :<C-u>vsplit<CR>
+noremap <leader>h :<C-u>split<cr>
+noremap <leader>v :<C-u>vsplit<cr>
 
 " Spellcheck
-noremap <Leader>sp :set spell<cr>
-noremap <Leader>nsp :set nospell<cr>
+noremap <leader>sp :set spell<cr>
+noremap <leader>nsp :set nospell<cr>
 
 " Close buffer
-noremap <leader>c :bd<CR>
+noremap <leader>c :bd<cr>
 
 " Close all but current buffer
 noremap <leader>ca :BufOnly
@@ -365,21 +365,21 @@ nnoremap <leader>b "_
 
 " Press enter for newline without insert
 nmap <S-Enter> O<Esc>
-nmap <CR> o<Esc>
+nmap <cr> o<Esc>
 
 " NERD tree
-nmap <leader>t :NERDTreeToggle<CR>
-nmap <leader>tt :NERDTreeFind<CR>
+nmap <leader>t :NERDTreeToggle<cr>
+nmap <leader>tt :NERDTreeFind<cr>
 
 " Git
-noremap <Leader>ga :Gwrite<CR>
-noremap <Leader>gc :Gcommit<CR>
-noremap <Leader>gp :Gpush<CR>
-noremap <Leader>gl :Gpull<CR>
-noremap <Leader>gs :Gstatus<CR>
-noremap <Leader>gd :Gvdiff<CR>
-noremap <Leader>gv :Gitv<CR>
-noremap <Leader>gg :Git<space>
+noremap <leader>ga :Gwrite<cr>
+noremap <leader>gc :Gcommit<cr>
+noremap <leader>gp :Gpush<cr>
+noremap <leader>gl :Gpull<cr>
+noremap <leader>gs :Gstatus<cr>
+noremap <leader>gd :Gvdiff<cr>
+noremap <leader>gv :Gitv<cr>
+noremap <leader>gg :Git<space>
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
@@ -410,7 +410,7 @@ function! StripWhitespace()
   call setpos('.', save_cursor)
   call setreg('/', old_query)
 endfunction
-noremap <leader>ss :call StripWhitespace()<CR>
+noremap <leader>ss :call StripWhitespace()<cr>
 
 " Automatic commands
 if has("autocmd")
