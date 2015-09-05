@@ -317,6 +317,8 @@ cnoreabbrev Q q
 cnoreabbrev Qa q
 cnoreabbrev Qall qall
 
+" Filetype indentation
+filetype plugin indent on
 
 " -----------------------------------------------------------------------------
 " Key mappings
