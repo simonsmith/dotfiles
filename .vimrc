@@ -30,9 +30,12 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-vinegar'
 Plug 'easymotion/vim-easymotion'
 Plug 'sjl/vitality.vim'
+
+" Sessions
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-session'
 
 " HTML/CSS
 Plug 'ap/vim-css-color'
@@ -69,6 +72,9 @@ call plug#end()
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+" Sessions
+let g:session_autosave = 'yes'
 
 " Easymotion
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
