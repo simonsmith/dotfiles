@@ -78,9 +78,6 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
-" Use `s` for substitutes
-let g:EasyClipUseSubstituteDefaults = 1
-
 " Sessions
 let g:session_autosave = 'yes'
 
