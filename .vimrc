@@ -47,7 +47,8 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 " Autocomplete
-Plug 'ervandew/supertab'
+Plug 'jordwalke/AutoComplPop'
+Plug 'jordwalke/VimCompleteLikeAModernEditor'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -63,6 +64,11 @@ call plug#end()
 " -----------------------------------------------------------------------------
 "  Plugin settings
 " -----------------------------------------------------------------------------
+
+" UltiSnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " Easymotion
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
