@@ -74,10 +74,6 @@ nmap ss <Plug>(easymotion-s)
 " Turn on case insensitive feature
 let g:EasyMotion_smartcase = 1
 
-" JK motions: Line motions
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
-
 " Allow JSX in normal JS files
 let g:jsx_ext_required = 0
 
@@ -335,13 +331,15 @@ noremap <leader>c :bd<CR>
 noremap <leader>ca :BufOnly
 
 " Clear search (highlight)
-nnoremap <silent> <leader><space> :noh<cr>
+nnoremap <silent> <leader>k :noh<cr>
 
 " Open new buffers
 " Single window
 nnoremap <leader>nb :enew<cr>
 " Split vertical
 nnoremap <leader>nbv :vnew<cr>
+
+nnoremap <leader><space> :BufExplorer<cr>
 
 " Cycle through buffers
 nnoremap <leader>] :bnext<cr>
