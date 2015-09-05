@@ -24,6 +24,7 @@ Plug 'sheerun/vim-polyglot'
 
 " General editing
 Plug 'Yggdroot/indentLine'
+Plug 'tpope/vim-repeat'
 Plug 'scrooloose/syntastic'
 Plug 'Raimondi/delimitMate'
 Plug 'terryma/vim-multiple-cursors'
@@ -32,6 +33,9 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
 Plug 'sjl/vitality.vim'
+
+" Copy/Paste behaviour
+Plug 'svermeulen/vim-easyclip'
 
 " Sessions
 Plug 'xolox/vim-misc'
@@ -72,6 +76,9 @@ call plug#end()
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+" Use `s` for substitutes
+let g:EasyClipUseSubstituteDefaults = 1
 
 " Sessions
 let g:session_autosave = 'yes'
