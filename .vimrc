@@ -365,9 +365,6 @@ nnoremap <leader>[ :bprev<cr>
 " remap escape to jj
 inoremap jj <Esc>`^
 
-" Delete without a register
-nnoremap <leader>b "_
-
 " Press enter for newline without insert
 nmap <S-Enter> O<Esc>
 nmap <cr> o<Esc>
