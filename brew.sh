@@ -58,6 +58,7 @@ brew install the_silver_searcher
 brew install tmux
 brew install python
 brew install tig
+brew install tidy-html5
 brew install phantomjs
 brew install heroku
 brew install p7zip
