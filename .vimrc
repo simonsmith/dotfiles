@@ -33,6 +33,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
 Plug 'sjl/vitality.vim'
+Plug 'sjl/gundo.vim'
 
 " Copy/Paste behaviour
 Plug 'svermeulen/vim-easyclip'
@@ -155,6 +156,9 @@ let g:used_javascript_libs = 'underscore,jquery,react,requirejs,jasmine,chai'
 
 " Buf explorer
 let g:bufExplorerShowNoName = 1 " Show buffers with no name
+
+" Gundo
+nnoremap <f5> :GundoToggle<cr>
 
 " -----------------------------------------------------------------------------
 " Visual
