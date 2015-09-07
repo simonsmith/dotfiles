@@ -34,6 +34,7 @@ alias week='date +%V'
 # Git shortcuts
 alias gdtc='git difftool --cached'
 alias gac='git add . && git commit -v'
+alias gs='git status'
 
 # Stopwatch
 alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'
