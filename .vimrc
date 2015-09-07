@@ -149,7 +149,6 @@ let g:airline#extensions#tmuxline#enabled = 0
 " Tmuxline
 let g:tmuxline_preset = {
       \'a'    : '#S',
-      \'c'    : '#(id -un)',
       \'win'  : '#I #W',
       \'cwin' : '#I #W',
 			\'y'		:[ '#(tmux-mem-cpu-load --interval 2)', '#(battery -p -t)'],
