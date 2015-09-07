@@ -56,6 +56,9 @@ brew install ucspi-tcp # `tcpserver` et al.
 brew install redis
 brew install the_silver_searcher
 brew install tmux
+brew install tmux-mem-cpu-load
+brew install battery
+brew install spark
 brew install python
 brew install tig
 brew install tidy-html5

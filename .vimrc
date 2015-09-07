@@ -149,11 +149,11 @@ let g:airline#extensions#tmuxline#enabled = 0
 " Tmuxline
 let g:tmuxline_preset = {
       \'a'    : '#S',
-      \'c'    : '#W',
+      \'c'    : '#(id -un)',
       \'win'  : '#I #W',
       \'cwin' : '#I #W',
-      \'z'    : ['%H:%M', '%d-%m-%Y'],
-      \'y'    : ['#(whoami)', '#(curl icanhazip.com)'],
+			\'y'		:[ '#(tmux-mem-cpu-load --interval 2)', '#(battery -p -t)'],
+      \'z'    : ['%R', '%d-%m-%Y'],
       \'options' : {'status-justify' : 'left'}}
 
 " Enable the list of buffers
