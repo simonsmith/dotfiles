@@ -144,6 +144,17 @@ let g:airline_theme = 'airlineish'
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tmuxline#enabled = 0
+
+" Tmuxline
+let g:tmuxline_preset = {
+      \'a'    : '#S',
+      \'c'    : '#W',
+      \'win'  : '#I #W',
+      \'cwin' : '#I #W',
+      \'z'    : ['%H:%M', '%d-%m-%Y'],
+      \'y'    : ['#(whoami)', '#(curl icanhazip.com)'],
+      \'options' : {'status-justify' : 'left'}}
 
 " Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
