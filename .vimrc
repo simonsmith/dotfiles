@@ -145,6 +145,8 @@ let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tmuxline#enabled = 0
+let g:airline#extensions#tabline#enabled = 1 " Enable the list of buffers
+let g:airline#extensions#tabline#fnamemod = ':t' " Show just the filename
 
 " Tmuxline
 let g:tmuxline_preset = {
@@ -155,20 +157,12 @@ let g:tmuxline_preset = {
       \'z'    : ['%R', '%d-%m-%Y'],
       \'options' : {'status-justify' : 'left'}}
 
-" Enable the list of buffers
-let g:airline#extensions#tabline#enabled = 1
-
-" Show just the filename
-let g:airline#extensions#tabline#fnamemod = ':t'
 
 " JS lib syntax
 let g:used_javascript_libs = 'underscore,jquery,react,requirejs,jasmine,chai'
 
 " Buf explorer
 let g:bufExplorerShowNoName = 1 " Show buffers with no name
-
-" Gundo
-nnoremap <f5> :GundoToggle<cr>
 
 " -----------------------------------------------------------------------------
 " Visual
@@ -363,6 +357,9 @@ noremap <leader>c :bd<cr>
 
 " Close all but current buffer
 noremap <leader>ca :BufOnly
+
+" Gundo
+nnoremap <f5> :GundoToggle<cr>
 
 " Clear search (highlight)
 nnoremap <silent> <leader>k :noh<cr>
