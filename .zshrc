@@ -20,8 +20,6 @@ plugins=(git npm z sublime brew tmux bundler)
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
 # rbenv
 export PATH="~/.rbenv/shims:$PATH"
-# Add ~/bin dir for things like `subl`
-export PATH="~/bin:$PATH"
 
 # Load some additional things
 source ~/git-hub/init
