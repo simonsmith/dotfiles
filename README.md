@@ -25,6 +25,11 @@ Wipe the dock icons
 ```bash
 defaults write com.apple.dock persistent-apps -array ""
 ```
+### Install oh-my-zsh
+
+``` bash
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+```
 
 ### Install Homebrew formulae
 
@@ -32,15 +37,15 @@ defaults write com.apple.dock persistent-apps -array ""
 ./brew.sh
 ```
 
-### Install oh-my-zsh
+### Install git-hub
 
-``` bash
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-```
+https://github.com/ingydotnet/git-hub#installation
 
 ### Install powerline fonts
 
 https://github.com/powerline/fonts
+
+Droid Sans all the things
 
 ### Install tmuxinator
 
@@ -66,7 +71,7 @@ nvm install 0.10
 ### Install global npm packages
 
 ```bash
-./.npm_global
+./npmglobal.sh
 ```
 
 ### Install native apps with `brew cask`
@@ -76,18 +81,6 @@ Install native apps with [`brew cask`](https://github.com/phinze/homebrew-cask):
 ```bash
 ./cask.sh
 ```
-
-## Icons
-
-Muir Icons
- - http://dewith.com/2014/muir-yosemite-creative-suite-icons/
- - http://dewith.com/2014/muir-yosemite-icons-volume-ii/
-
-Others
- - https://gumroad.com/l/yosemite
- - https://dribbble.com/shots/1622794-OSX-Yosemite-Replacement-Icons
-
-
 ## Menubar
 
 Layout - http://cl.ly/c00h
