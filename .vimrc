@@ -344,6 +344,9 @@ nnoremap <leader>w :w<cr>
 " Clone paragraph
 noremap cp yap<S-}>p
 
+" Make `Y` work from the cursor to the end of line
+nnoremap Y y$
+
 " Split
 noremap <leader>h :<C-u>split<cr>
 noremap <leader>v :<C-u>vsplit<cr>
