@@ -33,7 +33,8 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
 Plug 'sjl/vitality.vim'
-Plug 'sjl/gundo.vim'
+" Plug 'sjl/gundo.vim'
+Plug 'mbbill/undotree'
 
 " Copy/Paste behaviour
 Plug 'svermeulen/vim-easyclip'
@@ -114,6 +115,7 @@ let g:syntastic_html_tidy_exec = 'tidy5'
 let g:indentLine_char = '|'
 let g:indentLine_color_term = 239
 let g:indentLine_noConcealCursor="" " Don't mess with JSON concealing
+let g:indentLine_faster = 1
 
 " gitgutter
 let g:gitgutter_realtime = 100
@@ -362,7 +364,7 @@ noremap <leader>c :bd<cr>
 noremap <leader>ca :BufOnly
 
 " Gundo
-nnoremap <f5> :GundoToggle<cr>
+nnoremap <f5> :UndotreeToggle<cr>
 
 " Clear search (highlight)
 nnoremap <silent> <leader>k :noh<cr>
