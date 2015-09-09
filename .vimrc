@@ -113,7 +113,7 @@ let g:syntastic_html_tidy_exec = 'tidy5'
 
 " indentLine
 let g:indentLine_char = '|'
-let g:indentLine_color_term = 239
+let g:indentLine_color_term = 237
 let g:indentLine_noConcealCursor="" " Don't mess with JSON concealing
 let g:indentLine_faster = 1
 
