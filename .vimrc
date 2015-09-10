@@ -381,6 +381,7 @@ nnoremap <leader>nb :enew<cr>
 nnoremap <leader>nbv :vnew<cr>
 
 nnoremap <leader><space> :BufExplorer<cr>
+nnoremap <c-i> :CtrlPBuffer<cr>
 
 " Cycle through buffers
 nnoremap <leader>] :bnext<cr>
