@@ -25,11 +25,6 @@ Wipe the dock icons
 ```bash
 defaults write com.apple.dock persistent-apps -array ""
 ```
-### Install oh-my-zsh
-
-``` bash
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-```
 
 ### Install Homebrew formulae
 
@@ -37,15 +32,23 @@ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/i
 ./brew.sh
 ```
 
-### Install git-hub
+### Install oh-my-zsh
 
-https://github.com/ingydotnet/git-hub#installation
+``` bash
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+```
+Add `/usr/local/bin/zsh` to `/etc/shells`
+Then run `chsh -s $(which zsh)`
 
 ### Install powerline fonts
 
 https://github.com/powerline/fonts
 
 Droid Sans all the things
+
+### Install git-hub
+
+https://github.com/ingydotnet/git-hub#installation
 
 ### Install tmuxinator
 

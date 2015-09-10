@@ -26,12 +26,8 @@ brew install findutils
 # Install GNU `sed`, overwriting the built-in `sed`.
 brew install gnu-sed --default-names
 
-# Install Bash 4.
-# Note: don’t forget to add `/usr/local/bin/bash` to `/etc/shells` before
-# running `chsh`.
-brew install bash
-brew tap homebrew/versions
-brew install bash-completion2
+# Install zsh
+brew install zsh
 
 # Install `wget` with IRI support.
 brew install wget --enable-iri
