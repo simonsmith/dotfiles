@@ -158,7 +158,7 @@ let g:tmuxline_preset = {
       \'a'    : '#S',
       \'win'  : '#I #W',
       \'cwin' : '#I #W',
-			\'y'		:[ '#(tmux-mem-cpu-load --interval 2)', '#(battery -p -t)'],
+      \'y'    : ['#(tmux-mem-cpu-load --interval 2)', '#(ipconfig getifaddr en0)', '#(battery -p -t)'],
       \'z'    : ['%R', '%d-%m-%Y'],
       \'options' : {'status-justify' : 'left'}}
 
