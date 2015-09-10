@@ -12,7 +12,7 @@ DEFAULT_USER="simonsmith"
 
 # Load plugins
 # https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins
-plugins=(git npm z sublime brew tmux bundler)
+plugins=(git npm z sublime brew tmux bundler vi-mode)
 
 # $PATH
 #

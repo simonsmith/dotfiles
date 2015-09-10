@@ -4,6 +4,11 @@
 # Make vim the default editor
 export EDITOR="vim"
 
+# vi mode
+export MODE_INDICATOR="[NORMAL]"
+export KEYTIMEOUT=1
+bindkey '^r' history-incremental-search-backward
+
 # Larger bash history (allow 32³ entries; default is 500)
 export HISTSIZE=32768
 export HISTFILESIZE=$HISTSIZE
