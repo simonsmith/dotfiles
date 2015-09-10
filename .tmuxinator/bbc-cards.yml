@@ -2,9 +2,11 @@
 
 name: bbc-cards
 root: ~/Sites/bbc/bbc-cards
-startup_window: git
+startup_window: vim
 
 windows:
+  - vim:
+    - vim
   - git:
     - git --no-pager log --oneline --decorate --color --graph -10
     - git status
