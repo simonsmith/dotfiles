@@ -37,7 +37,9 @@ defaults write com.apple.dock persistent-apps -array ""
 ``` bash
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ```
+
 Add `/usr/local/bin/zsh` to `/etc/shells`
+
 Then run `chsh -s $(which zsh)`
 
 ### Install powerline fonts
@@ -86,4 +88,4 @@ Install native apps with [`brew cask`](https://github.com/phinze/homebrew-cask):
 ```
 ## Menubar
 
-Layout - http://cl.ly/c00h
+Layout - http://cl.ly/d3ao
