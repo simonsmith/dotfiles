@@ -34,6 +34,7 @@ Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
 Plug 'sjl/vitality.vim'
 Plug 'mbbill/undotree'
+Plug 'AndrewRadev/splitjoin.vim'
 
 " Copy/Paste behaviour
 Plug 'svermeulen/vim-easyclip'
