@@ -368,7 +368,6 @@ for i in range(1, 99)
     execute printf('nnoremap <leader>d%d :Bdelete %d<cr>', i, i)
 endfor
 
-" Gundo
 nnoremap <f5> :UndotreeToggle<cr>
 
 " Clear search (highlight)
@@ -397,6 +396,8 @@ nmap <cr> o<Esc>
 " NERD tree
 nmap <leader>t :NERDTreeToggle<cr>
 nmap <leader>tt :NERDTreeFind<cr>
+
+nmap <leader>il :IndentLinesToggle<cr>
 
 " Git
 noremap <leader>gv :Gitv<cr>
