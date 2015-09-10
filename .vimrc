@@ -178,6 +178,10 @@ colorscheme gruvbox
 set background=dark
 syntax on
 
+" Don’t add empty newlines at the end of files
+set binary
+set noeol
+
 set colorcolumn=80
 set number
 set hidden
@@ -253,10 +257,6 @@ set autowrite
 set gdefault
 " Use UTF-8 without BOM
 set encoding=utf-8 nobomb
-
-" Don’t add empty newlines at the end of files
-set binary
-set noeol
 
 " Centralize backups, swapfiles and undo history
 set backupdir=~/.vim/backups
