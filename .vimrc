@@ -33,7 +33,6 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
 Plug 'sjl/vitality.vim'
-" Plug 'sjl/gundo.vim'
 Plug 'mbbill/undotree'
 
 " Copy/Paste behaviour
@@ -66,7 +65,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'gregsexton/gitv'
 
 " JavaScript
-Plug 'othree/javascript-libraries-syntax.vim', {'for': 'javascript.jsx'}
+Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 
 call plug#end()
@@ -178,21 +178,20 @@ syntax on
 set colorcolumn=80
 set number
 set hidden
-set autoindent
-set copyindent
 set showmatch
 set lazyredraw
 set noshowmode      " don't display the current mode (Insert, Visual, Replace)
                     " in the status line. This info is already shown in the
                     " Airline status bar.
 set cursorline
+set smartindent
+set cindent
+set cino=(0,W4
 set softtabstop=2
-set tabstop=2
 set shiftwidth=2
 set updatetime=650
 set nowrap
 set expandtab
-
 set nostartofline
 set ruler
 
@@ -202,10 +201,6 @@ set incsearch
 
 " Highlight tailing whitespace
 set list listchars=tab:\ \ ,trail:·
-
-" " Change cursor based on mode
-" let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-" let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 
 " remove whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
@@ -327,9 +322,6 @@ cnoreabbrev Q q
 cnoreabbrev Qa q
 cnoreabbrev Qall qall
 
-" Filetype indentation
-filetype plugin indent on
-
 " -----------------------------------------------------------------------------
 " Key mappings
 " -----------------------------------------------------------------------------
@@ -430,6 +422,8 @@ noremap <leader>ss :call StripWhitespace()<cr>
 if has("autocmd")
   " Enable file type detection
   filetype on
+  filetype plugin on
+  filetype indent on
 
   " Resize splits when vim changes size (like with tmux opening/closing)
   autocmd VimResized * wincmd =
