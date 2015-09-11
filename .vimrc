@@ -152,7 +152,6 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tmuxline#enabled = 0
 let g:airline#extensions#tabline#enabled = 1 " Enable the list of buffers
 let g:airline#extensions#tabline#fnamemod = ':t' " Show just the filename
-let g:airline#extensions#tabline#buffer_nr_show = 1
 
 " Tmuxline
 let g:tmuxline_preset = {
@@ -357,17 +356,6 @@ noremap <leader>nsp :set nospell<cr>
 nnoremap <Leader>q :Bdelete<cr>
 nnoremap <leader>qa :bufdo :Bdelete<cr>
 
-" Quick Buffer switch mappings
-" The idea is to press <leader> and then the number from normal mode to switch
-" e.g. `,2` would switch to the second buffer (listed at the top of the
-" airline strip
-
-for i in range(1, 99)
-    execute printf('nnoremap <leader>%d :%db<cr>', i, i)
-endfor
-for i in range(1, 99)
-    execute printf('nnoremap <leader>d%d :Bdelete %d<cr>', i, i)
-endfor
 
 nnoremap <f5> :UndotreeToggle<cr>
 
