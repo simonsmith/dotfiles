@@ -36,6 +36,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'sjl/vitality.vim'
 Plug 'mbbill/undotree'
 Plug 'AndrewRadev/splitjoin.vim'
+Plug 'junegunn/vim-easy-align'
 
 " Copy/Paste behaviour
 Plug 'svermeulen/vim-easyclip'
@@ -411,6 +412,11 @@ let g:ackprg = 'ag --smart-case --nogroup --nocolor --column'
 
 " Replace with Qdo
 nnoremap <leader>r :Qdo<space> :%s/
+
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vmap <Enter> <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
