@@ -14,6 +14,9 @@ DEFAULT_USER="simonsmith"
 # https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins
 plugins=(git npm z sublime brew tmux bundler vi-mode)
 
+# Stop z polluting the home dir
+export _Z_DATA="$HOME/.zdata/.z"
+
 # $PATH
 #
 # Initial
