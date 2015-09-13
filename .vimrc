@@ -12,7 +12,7 @@ if filereadable(expand("~/.vim/.plugin-conf.vim"))
   source ~/.vim/.plugin-conf.vim"
 endif
 
-" set space to leader
+" Set space to leader
 let mapleader = ' '
 
 " Theme
@@ -39,7 +39,7 @@ set number
 set hidden
 set showmatch
 set lazyredraw
-set noshowmode      " don't display the current mode (Insert, Visual, Replace)
+set noshowmode      " Don't display the current mode (Insert, Visual, Replace)
                     " in the status line. This info is already shown in the
                     " Airline status bar.
 set cursorline
@@ -236,7 +236,7 @@ nmap <cr> o<Esc>
 nmap <leader>t :NERDTreeToggle<cr>
 nmap <leader>tt :NERDTreeFind<cr>
 
-" indentLines
+" IndentLines
 nmap <leader>il :IndentLinesToggle<cr>
 
 " Git tree
