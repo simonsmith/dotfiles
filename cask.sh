@@ -14,6 +14,7 @@ brew cask install bettertouchtool 2> /dev/null
 brew cask install burn 2> /dev/null
 brew cask install cloud 2> /dev/null
 brew cask install dropbox 2> /dev/null
+brew cask install daisydisk 2> /dev/null
 brew cask install deluge 2> /dev/null
 brew cask install firefox 2> /dev/null
 brew cask install flux 2> /dev/null
