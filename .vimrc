@@ -37,6 +37,7 @@ Plug 'sjl/vitality.vim'
 Plug 'mbbill/undotree'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'junegunn/vim-easy-align'
+Plug 'regedarek/ZoomWin'
 
 " Copy/Paste behaviour
 Plug 'svermeulen/vim-easyclip'
