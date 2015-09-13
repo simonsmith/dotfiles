@@ -34,24 +34,47 @@ filetype indent on
 set binary
 set noeol
 
+" Add column/margin
 set colorcolumn=80
+
+" Line numbers
 set number
+
+" With :set hidden, opening a new file when the current buffer has unsaved
+" changes causes files to be hidden instead of closed
 set hidden
+" Briefly move the cursor to the matching brace
 set showmatch
+
+" Lazyredraw attempts to solve Vim lag by reducing the amount of
+" processing required. When enabled, any action that is not typed
+" will not cause the screen to redraw
 set lazyredraw
-set noshowmode      " Don't display the current mode (Insert, Visual, Replace)
-                    " in the status line. This info is already shown in the
-                    " Airline status bar.
+
+" Don't display the current mode (Insert, Visual, Replace)
+" in the status line. This info is already shown in the
+" Airline status bar.
+set noshowmode
+
+" Highlight current line
 set cursorline
+
+" Various settings to control spaces and indents
 set smartindent
 set cindent
 set cino=(0,W4
 set softtabstop=2
 set shiftwidth=2
+
 set updatetime=650
+
+" Don't wrap lines
 set nowrap
+" Use spaces, not tabs
 set expandtab
+" Keep the cursor in the same place when switching buffers
 set nostartofline
+" Show col and line position in the statusbar
 set ruler
 
 " Open new split panes to right and bottom, which feels more natural
