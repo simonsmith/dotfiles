@@ -38,12 +38,6 @@ let g:syntastic_style_warning_symbol = '⚠'
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_html_tidy_exec = 'tidy5'
 
-" indentLine
-let g:indentLine_char = '|'
-let g:indentLine_color_term = 237
-let g:indentLine_noConcealCursor="" " Don't mess with JSON concealing
-let g:indentLine_faster = 1
-
 " gitgutter
 let g:gitgutter_realtime = 100
 let g:gitgutter_eager = 100
@@ -92,4 +86,3 @@ let g:used_javascript_libs = 'underscore,jquery,react,requirejs,jasmine,chai'
 
 " Buf explorer
 let g:bufExplorerShowNoName = 1 " Show buffers with no name
-

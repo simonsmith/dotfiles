@@ -25,7 +25,7 @@ Plug 'moll/vim-bbye'
 Plug 'sheerun/vim-polyglot'
 
 " General editing
-Plug 'Yggdroot/indentLine'
+Plug 'nathanaelkane/vim-indent-guides'
 Plug 'tpope/vim-repeat'
 Plug 'scrooloose/syntastic'
 Plug 'Raimondi/delimitMate'

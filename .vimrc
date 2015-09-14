@@ -258,9 +258,6 @@ nmap <cr> o<Esc>
 nmap <leader>t :NERDTreeToggle<cr>
 nmap <leader>tt :NERDTreeFind<cr>
 
-" IndentLines
-nmap <leader>il :IndentLinesToggle<cr>
-
 " Git tree
 noremap <leader>gv :Gitv<cr>
 
