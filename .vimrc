@@ -169,7 +169,6 @@ set mouse=a
 set noerrorbells
 " Auto reload files on change
 set autoread
-au CursorHold * checktime
 
 " Don’t show the intro message when starting Vim
 set shortmess=atI
@@ -309,6 +308,9 @@ if has("autocmd")
 
   " Spelling in markdown automatically
   autocmd BufRead,BufNewFile *.md setlocal spell
+
+  " Periodically check for file changes
+  autocmd CursorHold * silent! checktime
 
   " Move to the top of a git commit
   au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
