@@ -261,6 +261,11 @@ nmap <leader>tt :NERDTreeFind<cr>
 " Git tree
 noremap <leader>gv :Gitv<cr>
 
+" IndentGuides
+" Add this here because this plugin is loaded ondemand so this mapping is not
+" present on initial load
+nmap <leader>ig :IndentGuidesToggle<cr>
+
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
 

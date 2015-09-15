@@ -25,7 +25,7 @@ Plug 'moll/vim-bbye'
 Plug 'sheerun/vim-polyglot'
 
 " General editing
-Plug 'nathanaelkane/vim-indent-guides'
+Plug 'nathanaelkane/vim-indent-guides', {'on': 'IndentGuidesToggle'}
 Plug 'tpope/vim-repeat'
 Plug 'scrooloose/syntastic'
 Plug 'Raimondi/delimitMate'
@@ -35,7 +35,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
 Plug 'sjl/vitality.vim'
-Plug 'mbbill/undotree'
+Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'regedarek/ZoomWin'
@@ -49,7 +49,7 @@ Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 
 " HTML/CSS
-Plug 'ap/vim-css-color'
+Plug 'ap/vim-css-color', {'for': 'css'}
 Plug 'mattn/emmet-vim'
 
 " Status bar
@@ -67,11 +67,10 @@ Plug 'jordwalke/VimCompleteLikeAModernEditor'
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-Plug 'gregsexton/gitv'
 
 " JavaScript
-Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
+Plug 'othree/javascript-libraries-syntax.vim', {'for': 'javascript.jsx'}
+Plug 'pangloss/vim-javascript', {'for': 'javascript.jsx'}
+Plug 'mxw/vim-jsx', {'for': 'javascript.jsx'}
 
 call plug#end()
