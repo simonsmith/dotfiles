@@ -46,6 +46,7 @@ let g:gitgutter_eager = 100
 " set-up ctrlp to include hidden files in its search
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_max_height = 30
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 " The Silver Searcher
 if executable('ag')
