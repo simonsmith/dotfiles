@@ -37,6 +37,7 @@ let g:syntastic_style_error_symbol = '✗'
 let g:syntastic_style_warning_symbol = '⚠'
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_html_tidy_exec = 'tidy5'
+let g:syntastic_loc_list_height = 5
 
 " gitgutter
 let g:gitgutter_realtime = 100
