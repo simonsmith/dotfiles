@@ -15,7 +15,7 @@ windows:
       panes:
         - server:
           - cd server
-          - nodemon server.js
+          - nodemon -e js,html,svg server.js
         - watch:
           - cd server
           - webpack --watch
