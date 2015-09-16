@@ -221,8 +221,7 @@ noremap <leader>h :<C-u>split<cr>
 noremap <leader>v :<C-u>vsplit<cr>
 
 " Spellcheck
-noremap <leader>sp :set spell<cr>
-noremap <leader>nsp :set nospell<cr>
+map <F6> :setlocal spell!<cr>
 
 " Close buffer
 nnoremap <Leader>q :Bdelete<cr>
