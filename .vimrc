@@ -28,11 +28,10 @@ set nowb
 filetype plugin on
 filetype indent on
 
-" Don’t add empty newlines at the end of files
+" Allow editing of binary files
 " Must be set before expandtab
 " http://stackoverflow.com/a/26901774
 set binary
-set noeol
 
 " Add column/margin
 set colorcolumn=80
