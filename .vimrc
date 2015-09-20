@@ -33,8 +33,9 @@ filetype indent on
 " http://stackoverflow.com/a/26901774
 set binary
 
-" Add column/margin
-set colorcolumn=80
+" Make it obvious where 80 characters is
+set textwidth=80
+set colorcolumn=+1
 
 " Line numbers
 set number
@@ -305,6 +306,13 @@ if has("autocmd")
 
   " Wrap text and turn on spell for markdown files
   autocmd BufNewFile,BufRead *.md setlocal wrap linebreak spell filetype=markdown
+
+" Automatically wrap at 72 characters and spell check git commit messages
+  autocmd FileType gitcommit setlocal textwidth=72
+  autocmd FileType gitcommit setlocal spell
+
+" Allow stylesheets to autocomplete hyphenated words
+  autocmd FileType css,scss,sass setlocal iskeyword+=-
 
   " Periodically check for file changes
   autocmd CursorHold * silent! checktime
