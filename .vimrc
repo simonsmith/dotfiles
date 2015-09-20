@@ -9,7 +9,7 @@ endif
 
 " Configure plugins
 if filereadable(expand("~/.vim/.plugin-conf.vim"))
-  source ~/.vim/.plugin-conf.vim"
+  source ~/.vim/.plugin-conf.vim
 endif
 
 " Set space to leader
