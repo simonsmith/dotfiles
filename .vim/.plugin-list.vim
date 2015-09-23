@@ -69,8 +69,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 " JavaScript
-Plug 'othree/javascript-libraries-syntax.vim', {'for': 'javascript.jsx'}
-Plug 'pangloss/vim-javascript', {'for': 'javascript.jsx'}
-Plug 'mxw/vim-jsx', {'for': 'javascript.jsx'}
+Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'sheerun/yajs.vim'
+Plug 'mxw/vim-jsx'
 
 call plug#end()
