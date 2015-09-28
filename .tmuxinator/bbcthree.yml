@@ -26,4 +26,4 @@ windows:
     - gulp watch
   - redis:
     - redis-cli shutdown
-    - redis-server
+    - redis-server ~/redis.conf
