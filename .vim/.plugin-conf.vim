@@ -47,6 +47,8 @@ let g:gitgutter_eager = 100
 " set-up ctrlp to include hidden files in its search
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_max_height = 30
+" Open multiple files in hidden buffers, and jump to the first one
+let g:ctrlp_open_multiple_files = 'ij'
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 " The Silver Searcher
