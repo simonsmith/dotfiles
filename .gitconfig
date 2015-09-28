@@ -64,7 +64,7 @@
 	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
 	trustctime = false
 	editor = vim
-  pager = less -F -X -R
+  pager = zsh -lc 'diff-highlight | strip_diff_leading_symbols | less -F -X -R'
 
 [color]
 	# Use colors in Git commands that are capable of colored output when
@@ -84,6 +84,11 @@
 	added = green
 	changed = red
 	untracked = cyan
+[color "diff-highlight"]
+  oldNormal = "red bold"
+  oldHighlight = "red bold 52"
+  newNormal = "green bold"
+  newHighlight = "green bold 22"
 
 # Kaleidoscope
 [difftool "Kaleidoscope"]

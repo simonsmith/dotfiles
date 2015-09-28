@@ -1,5 +1,5 @@
 # Load the shell dotfiles
-for file in ~/.{functions,extra,aliases}; do
+for file in ~/.{extra,aliases}; do
   [ -r "$file" ] && [ -f "$file" ] && source "$file"
 done
 unset file
@@ -18,11 +18,9 @@ plugins=(git npm z brew tmux bundler vi-mode)
 export _Z_DATA="$HOME/.zdata/.z"
 
 # $PATH
-#
-# Initial
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
-# rbenv
 export PATH="~/.rbenv/shims:$PATH"
+export PATH="/usr/local/share/git-core/contrib/diff-highlight:$PATH"
 
 # Load some additional things
 source ~/git-hub/init
