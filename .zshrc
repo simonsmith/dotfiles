@@ -29,3 +29,7 @@ eval "$(rbenv init -)"
 source "$HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh"
 
 source $ZSH/oh-my-zsh.sh
+
+# https://github.com/zsh-users/zsh-syntax-highlighting
+# Must be sourced last
+source "/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
