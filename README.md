@@ -3,10 +3,7 @@
 These are my personal Mac OS configs and setup steps.
 
 <div style="text-align: center">
-![](http://f.cl.ly/items/411H2Q3p3g3h3b3D120N/Screen%20Shot%202015-09-29%20at%2014.54.35.png)
-</div>
-<div style="text-align: center">
-![](http://f.cl.ly/items/2x43082h2g1Q1d3T3D0z/Screen%20Shot%202015-09-29%20at%2014.56.11.png)
+<img src="http://f.cl.ly/items/411H2Q3p3g3h3b3D120N/Screen%20Shot%202015-09-29%20at%2014.54.35.png">
 </div>
 
 ## First steps
