@@ -127,10 +127,10 @@ if &term =~ '256color'
   set t_ut=
 endif
 
-"Eliminate delay when switching modes
+" Eliminate delay when switching modes
 set timeoutlen=1000 ttimeoutlen=0
 
-"Auto save changes before switching buffer
+" Auto save changes before switching buffer
 set autowrite
 " Add the g flag to search/replace by default
 set gdefault
@@ -156,7 +156,7 @@ set exrc
 set secure
 
 " Show “invisible” characters
-set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
+set lcs=tab:▸\ ,trail:·,nbsp:_
 set list
 
 " Ignore case of searches
