@@ -207,7 +207,7 @@ cnoreabbrev Qall qall
 " Remap emmet
 imap hh <C-y>,
 
-" Save file with <leader>s
+" Save file
 nnoremap <leader>w :w<cr>
 
 " Clone paragraph
@@ -269,7 +269,7 @@ nmap <leader>ig :IndentGuidesToggle<cr>
 let g:html_indent_tags = 'li\|p'
 
 " Search with Ack
-nnoremap <leader>a :Ack!<space>
+nnoremap <leader>a :Ack!<space>-Q<space>
 let g:ackprg = 'ag --smart-case --nogroup --nocolor --column'
 
 " Replace with Qdo
@@ -307,11 +307,11 @@ if has("autocmd")
   " Wrap text and turn on spell for markdown files
   autocmd BufNewFile,BufRead *.md setlocal wrap linebreak spell filetype=markdown
 
-" Automatically wrap at 72 characters and spell check git commit messages
+  " Automatically wrap at 72 characters and spell check git commit messages
   autocmd FileType gitcommit setlocal textwidth=72
   autocmd FileType gitcommit setlocal spell
 
-" Allow stylesheets to autocomplete hyphenated words
+  " Allow stylesheets to autocomplete hyphenated words
   autocmd FileType css,scss,sass setlocal iskeyword+=-
 
   " Periodically check for file changes
