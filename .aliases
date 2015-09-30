@@ -110,6 +110,9 @@ alias plistbuddy="/usr/libexec/PlistBuddy"
 # (useful when executing time-consuming commands)
 alias badge="tput bel"
 
+# Launch iOS Simulator
+alias ios="open -a /Applications/Xcode.app/Contents/Developer/Applications/iOS\ Simulator.app"
+
 # Intuitive map function
 # For example, to list all directories that contain a certain file:
 # find . -name .gitattributes | map dirname
