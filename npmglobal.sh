@@ -6,6 +6,7 @@ PACKAGES="caniuse-cmd
           npm-check-updates
           gulp
           npmlist
+          babel
           mversion
           webpack
           nodemon
