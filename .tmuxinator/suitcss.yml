@@ -1,0 +1,10 @@
+# ~/.tmuxinator/bbc-cards.yml
+
+name: suitcss
+root: ~/Sites/suitcss
+startup_window: vim
+
+windows:
+  - vim: vim
+  - git: ll
+
