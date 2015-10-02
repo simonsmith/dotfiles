@@ -19,6 +19,7 @@ brew cask install google-drive 2> /dev/null
 
 # Comms
 brew cask install slack 2> /dev/null
+brew cask install gitter 2> /dev/null
 brew cask install skype 2> /dev/null
 brew cask install google-hangouts 2> /dev/null
 
