@@ -14,6 +14,9 @@ DEFAULT_USER="simonsmith"
 # https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins
 plugins=(git npm z tmux bundler vi-mode)
 
+# Highlight syntax when using `less`
+export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
+
 # Stop z polluting the home dir
 export _Z_DATA="$HOME/.zdata/.z"
 

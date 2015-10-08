@@ -30,6 +30,9 @@ brew install gnu-sed --default-names
 brew install zsh
 brew install zsh-syntax-highlighting
 
+# less highlighting
+brew install source-highlight
+
 # Install `wget` with IRI support.
 brew install wget --enable-iri
 
