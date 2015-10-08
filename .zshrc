@@ -7,29 +7,33 @@ unset file
 ZSH_THEME="bullet-train"
 DEFAULT_USER="simonsmith"
 
+
 # Plugins
 # https://github.com/robbyrussell/oh-my-zsh/wiki/Plugin
 # ---------------------------------------------------------------
-
 plugins=(git npm z tmux bundler vi-mode)
+
+
+# Oh my zsh
+# ---------------------------------------------------------------
+export ZSH=~/.oh-my-zsh
+source $ZSH/oh-my-zsh.sh
+
 
 # Exports
 # ---------------------------------------------------------------
-
-# Path to oh-my-zsh installation.
-export ZSH=~/.oh-my-zsh
-
 # Make vim the default editor
 export EDITOR="vim"
-
-# LESS
-# Syntax highlighting
-export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
 
 # vi mode
 export MODE_INDICATOR="[NORMAL]"
 export KEYTIMEOUT=1
 bindkey '^r' history-incremental-search-backward
+
+# LESS
+# Syntax highlighting
+export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
+export LESS='-RJMI'
 
 # Larger history (allow 32³ entries; default is 500)
 export HISTSIZE=32768
@@ -64,21 +68,20 @@ export NODE_ENV=development
 # Stop z polluting the home dir
 export _Z_DATA="$HOME/.zdata/.z"
 
+
 # PATH
 # ---------------------------------------------------------------
-
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH="~/.rbenv/shims:$PATH"
 export PATH="/usr/local/share/git-core/contrib/diff-highlight:$PATH"
 
-# Load some misc things
+
+# Misc
 # ---------------------------------------------------------------
 source ~/git-hub/init
 source ~/.nvm/nvm.sh
 eval "$(rbenv init -)"
 source "$HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh"
-
-source $ZSH/oh-my-zsh.sh
 
 # https://github.com/zsh-users/zsh-syntax-highlighting
 # Must be sourced last
