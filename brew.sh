@@ -39,28 +39,33 @@ brew install wget --enable-iri
 # Use brew vim
 brew install vim --override-system-vi
 
+# tmux
+brew install tmux
+# Used for stats in tmuxline
+brew install tmux-mem-cpu-load
+brew install battery
+brew install spark
+
+# git
+brew install git
+brew install tig
+
 # Install more recent versions of some OS X tools.
 brew install homebrew/dupes/grep
 brew install homebrew/dupes/screen
-brew install homebrew/php/php55 --with-gmp
 brew install composer --ignore-dependencies
 
 # Ruby
-brew install rbenv ruby-build
+brew install rbenv
+brew install ruby-build
 
 # Install other useful binaries.
 brew install ack
-brew install git
 brew install imagemagick --with-webp
 brew install ucspi-tcp # `tcpserver` et al.
 brew install redis
 brew install the_silver_searcher
-brew install tmux
-brew install tmux-mem-cpu-load
-brew install battery
-brew install spark
 brew install python
-brew install tig
 brew install tidy-html5
 brew install phantomjs
 brew install heroku
