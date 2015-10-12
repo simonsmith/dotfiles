@@ -31,6 +31,36 @@ export MODE_INDICATOR="[NORMAL]"
 bindkey -M viins 'jj' vi-cmd-mode
 bindkey '^r' history-incremental-search-backward
 
+# Change cursor shape based on vi mode
+zle-line-init () {
+  zle -K viins
+  echo -ne "\033]12;Gray\007"
+  echo -ne "\033[4 q"
+}
+
+zle -N zle-line-init
+zle-keymap-select () {
+  if [[ $KEYMAP == vicmd ]]; then
+    if [[ -z $TMUX ]]; then
+      printf "\033]12;Green\007"
+      printf "\033[2 q"
+    else
+      printf "\033Ptmux;\033\033]12;red\007\033\\"
+      printf "\033Ptmux;\033\033[2 q\033\\"
+    fi
+  else
+    if [[ -z $TMUX ]]; then
+      printf "\033]12;Grey\007"
+      printf "\033[4 q"
+    else
+      printf "\033Ptmux;\033\033]12;grey\007\033\\"
+      printf "\033Ptmux;\033\033[4 q\033\\"
+    fi
+  fi
+}
+
+zle -N zle-keymap-select
+
 # LESS
 # Syntax highlighting
 export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
