@@ -27,7 +27,8 @@ export EDITOR="vim"
 
 # vi mode
 export MODE_INDICATOR="[NORMAL]"
-export KEYTIMEOUT=1
+# Rebind `jj` to esc
+bindkey -M viins 'jj' vi-cmd-mode
 bindkey '^r' history-incremental-search-backward
 
 # LESS
