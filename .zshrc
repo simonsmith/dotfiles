@@ -26,7 +26,7 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR="vim"
 
 # vi mode
-export MODE_INDICATOR="[NORMAL]"
+export MODE_INDICATOR="******** [NORMAL] ********"
 # Rebind `jj` to esc
 bindkey -M viins 'jj' vi-cmd-mode
 bindkey '^r' history-incremental-search-backward
