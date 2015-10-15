@@ -283,12 +283,6 @@ let g:ackprg = 'ag --smart-case --nogroup --nocolor --column'
 " Replace with Qdo
 nnoremap <leader>r :Qdo<space> :%s/
 
-" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
-vmap <Enter> <Plug>(EasyAlign)
-
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
-
 " vim-tmux-navigator seems to have issues with going left, so bind it
 " manually here. Other directions work fine out the box
 nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
