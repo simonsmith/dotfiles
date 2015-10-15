@@ -56,6 +56,10 @@ set lazyredraw
 " Airline status bar.
 set noshowmode
 
+" Stop vim trying to syntax highlight long lines, typically found in minified
+" files. This greatly reduces lag yet is still wide enough for large displays
+set synmaxcol=500
+
 " Highlight current line
 set cursorline
 
