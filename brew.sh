@@ -67,6 +67,7 @@ brew install redis
 brew install the_silver_searcher
 brew install python
 brew install tidy-html5
+brew install weechat
 brew install phantomjs
 brew install heroku
 brew install p7zip
