@@ -70,6 +70,13 @@ https://github.com/junegunn/vim-plug#installation
 
 Install all plugins
 
+### Weechat
+
+Most config should work from the `.weechat` dir, but some useful links
+
+https://gist.github.com/allcentury/e1ed5800d0a98a8828a9
+http://stackoverflow.com/a/32490506/617615
+
 ### Install nvm
 
 ``` bash
