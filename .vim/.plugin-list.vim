@@ -38,7 +38,6 @@ Plug 'sjl/vitality.vim'
 Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'regedarek/ZoomWin'
-Plug 'mhinz/vim-startify'
 
 " Copy/Paste behaviour
 Plug 'svermeulen/vim-easyclip'
