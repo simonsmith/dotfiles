@@ -61,7 +61,7 @@ export GREP_OPTIONS="--color=auto"
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 # Force terminal 256 colour with iterm
-export TERM='xterm-256color'
+export TERM='screen-256color'
 
 # Node dev
 export NODE_ENV=development
