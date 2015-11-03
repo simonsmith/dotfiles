@@ -2,6 +2,9 @@
 "  Plugin settings
 " -----------------------------------------------------------------------------
 
+" Undotree
+let g:undotree_WindowLayout = 2
+
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"

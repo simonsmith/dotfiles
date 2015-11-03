@@ -148,6 +148,11 @@ if exists("&undodir")
   set undodir=~/.vim/undo
 endif
 
+if has("persistent_undo")
+  set undodir=~/.vim/undo
+  set undofile
+endif
+
 " Don’t create backups when editing files in certain directories
 set backupskip=/tmp/*,/private/tmp/*
 
