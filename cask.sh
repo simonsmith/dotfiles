@@ -15,7 +15,6 @@ brew cask install torbrowser 2> /dev/null
 # Cloud
 brew cask install cloud 2> /dev/null
 brew cask install dropbox 2> /dev/null
-brew cask install google-drive 2> /dev/null
 
 # Comms
 brew cask install slack 2> /dev/null
@@ -32,7 +31,6 @@ brew cask install max 2> /dev/null
 brew cask install beardedspice 2> /dev/null
 
 # Development
-brew cask install gitx 2> /dev/null
 brew cask install gitify 2> /dev/null
 brew cask install mamp 2> /dev/null
 brew cask install transmit 2> /dev/null
