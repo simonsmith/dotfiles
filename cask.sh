@@ -52,7 +52,7 @@ brew cask install little-snitch 2> /dev/null
 brew cask install paragon-ntfs 2> /dev/null
 brew cask install shortcat 2> /dev/null
 brew cask install the-unarchiver 2> /dev/null
-brew cask install xtrafinder 2> /dev/null
+brew cask install totalfinder 2> /dev/null
 
 # Other stuff
 brew cask install viscosity 2> /dev/null
