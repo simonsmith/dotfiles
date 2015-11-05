@@ -283,7 +283,6 @@ let g:html_indent_tags = 'li\|p'
 
 " Search with Ack
 nnoremap <leader>a :Ack!<space>-Q<space>
-let g:ackprg = 'ag --smart-case --nogroup --nocolor --column'
 
 " Replace with Qdo
 nnoremap <leader>r :Qdo<space> :%s/
