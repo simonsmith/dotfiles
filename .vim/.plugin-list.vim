@@ -24,20 +24,24 @@ Plug 'moll/vim-bbye'
 " Language pack
 Plug 'sheerun/vim-polyglot'
 
-" General editing
+" Editing
+Plug 'Raimondi/delimitMate'
+Plug 'easymotion/vim-easymotion'
 Plug 'nathanaelkane/vim-indent-guides', {'on': 'IndentGuidesToggle'}
 Plug 'tpope/vim-repeat'
 Plug 'scrooloose/syntastic'
-Plug 'Raimondi/delimitMate'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
+
+" General
 Plug 'editorconfig/editorconfig-vim'
-Plug 'tpope/vim-surround'
-Plug 'easymotion/vim-easymotion'
 Plug 'sjl/vitality.vim'
 Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
-Plug 'AndrewRadev/splitjoin.vim'
 Plug 'regedarek/ZoomWin'
+
+" Refactoring
+Plug 'terryma/vim-multiple-cursors'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'tpope/vim-surround'
 
 " Copy/Paste behaviour
 Plug 'svermeulen/vim-easyclip'
