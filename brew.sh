@@ -66,6 +66,7 @@ brew install ucspi-tcp # `tcpserver` et al.
 brew install redis
 brew install the_silver_searcher
 brew install fzf
+brew install scmpuff
 brew install python
 brew install tidy-html5
 brew install weechat
