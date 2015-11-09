@@ -94,7 +94,7 @@ export PATH="/usr/local/share/git-core/contrib/diff-highlight:$PATH"
 source ~/git-hub/init
 source ~/.nvm/nvm.sh
 eval "$(rbenv init -)"
-eval "$(scmpuff init -s)"
+eval "$(scmpuff init -s --aliases=false)"
 source "$HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh"
 
 # https://github.com/zsh-users/zsh-syntax-highlighting

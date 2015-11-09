@@ -31,7 +31,7 @@ alias week='date +%V'
 alias gdtc='git difftool --cached'
 alias gac='git add . && git commit -v'
 alias gdc='git diff --cached'
-alias gs='git status'
+alias gs='scmpuff_status'
 
 # Stopwatch
 alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'
