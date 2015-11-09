@@ -40,6 +40,7 @@ Plug 'regedarek/ZoomWin'
 
 " Refactoring
 Plug 'terryma/vim-multiple-cursors'
+Plug 'PeterRincker/vim-argumentative'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'tpope/vim-surround'
 
