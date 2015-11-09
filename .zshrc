@@ -69,6 +69,16 @@ export NODE_ENV=development
 # Stop z polluting the home dir
 export _Z_DATA="$HOME/.zdata/.z"
 
+# fzf
+#
+# Setting ag as the default source for fzf - include hidden files
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+# To apply the command to CTRL-T as well
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+# default options
+export FZF_DEFAULT_OPTS="--multi --inline-info"
+# Shell integration
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # PATH
 # ---------------------------------------------------------------
@@ -87,3 +97,4 @@ source "$HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh"
 # https://github.com/zsh-users/zsh-syntax-highlighting
 # Must be sourced last
 source "/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
