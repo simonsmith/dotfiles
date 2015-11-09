@@ -75,8 +75,10 @@ export _Z_DATA="$HOME/.zdata/.z"
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 # To apply the command to CTRL-T as well
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-# default options
+# Default options
 export FZF_DEFAULT_OPTS="--multi --inline-info"
+# tmux pane height
+export FZF_TMUX_HEIGHT=40%
 # Shell integration
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

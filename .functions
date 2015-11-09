@@ -152,7 +152,7 @@ rule() {
 #   - Exit if there's no match (--exit-0)
 fe() {
   local file
-  file=$(fzf --query="$1" --select-1 --exit-0)
+  file=$(fzf-tmux --query="$1" --select-1 --exit-0)
   [ -n "$file" ] && ${EDITOR:-vim} "$file"
 }
 
@@ -160,5 +160,5 @@ fe() {
 cdf() {
    local file
    local dir
-   file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
+   file=$(fzf-tmux +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
 }
