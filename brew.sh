@@ -77,5 +77,8 @@ brew install tree
 brew install webkit2png
 brew install reattach-to-user-namespace
 
+# Python packages
+pip install glances
+
 # Remove outdated versions from the cellar.
 brew cleanup
