@@ -113,7 +113,7 @@ alias plistbuddy="/usr/libexec/PlistBuddy"
 alias badge="tput bel"
 
 # Launch iOS Simulator
-alias ios="open -a /Applications/Xcode.app/Contents/Developer/Applications/iOS\ Simulator.app"
+alias ios="open -a /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app"
 
 # Intuitive map function
 # For example, to list all directories that contain a certain file:
