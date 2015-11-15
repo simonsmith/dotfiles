@@ -11,7 +11,7 @@ DEFAULT_USER="simonsmith"
 # Plugins
 # https://github.com/robbyrussell/oh-my-zsh/wiki/Plugin
 # ---------------------------------------------------------------
-plugins=(git npm z tmux bundler vi-mode)
+plugins=(git npm z tmux vi-mode)
 
 
 # Oh my zsh
