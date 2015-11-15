@@ -4,6 +4,7 @@ PACKAGES="caniuse-cmd
           bower
           postcss
           npm-check-updates
+          npm-upgrade
           gulp
           npmlist
           babel
