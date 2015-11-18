@@ -259,9 +259,6 @@ nnoremap <c-i> :CtrlPBuffer<cr>
 nnoremap <leader>] :bnext<cr>
 nnoremap <leader>[ :bprev<cr>
 
-" remap escape to jj
-inoremap jj <Esc>`^
-
 " Press enter for newline without insert
 nmap <S-Enter> O<Esc>
 nmap <cr> o<Esc>
