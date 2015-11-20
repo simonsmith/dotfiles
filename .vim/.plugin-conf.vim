@@ -12,6 +12,7 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " Sessions
 let g:session_autosave = 'yes'
+let g:session_autoload = 'no'
 
 " Easymotion
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
