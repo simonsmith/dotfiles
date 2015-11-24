@@ -37,6 +37,10 @@ set binary
 set textwidth=80
 set colorcolumn=+1
 
+" Use `indent` based folding
+set foldmethod=indent
+set foldlevelstart=10
+
 " Line numbers
 set number
 
