@@ -2,11 +2,13 @@
 
 PACKAGES="caniuse-cmd
           bower
-          postcss
-          npm-check-updates
+          postcss-cli
           npm-upgrade
           gulp
           npmlist
+          eslint
+          stylelint
+          stylelint-config-suitcss
           babel
           mversion
           webpack

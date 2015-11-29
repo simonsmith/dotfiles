@@ -42,8 +42,11 @@ let g:syntastic_style_warning_symbol = '⚠'
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_html_tidy_exec = 'tidy5'
 let g:syntastic_loc_list_height = 5
-" Disable scss
-let g:syntastic_scss_checkers=['']
+
+" Set checkers
+let g:syntastic_scss_checkers = ['']
+let g:syntastic_css_checkers = ['stylelint']
+let g:syntastic_javascript_checkers = ['eslint']
 
 " gitgutter
 let g:gitgutter_realtime = 100
