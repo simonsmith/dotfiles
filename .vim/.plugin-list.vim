@@ -37,6 +37,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'sjl/vitality.vim'
 Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 Plug 'regedarek/ZoomWin'
+Plug 'embear/vim-localvimrc'
 
 " Refactoring
 Plug 'terryma/vim-multiple-cursors'
