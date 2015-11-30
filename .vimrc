@@ -259,6 +259,10 @@ nnoremap <leader>nbv :vnew<cr>
 nnoremap <leader><space> :BufExplorer<cr>
 nnoremap <c-i> :CtrlPBuffer<cr>
 
+" Cycle through location list
+nnoremap [l :lprev<cr>
+nnoremap ]l :lnext<cr>
+
 " Cycle through buffers
 nnoremap <leader>] :bnext<cr>
 nnoremap <leader>[ :bprev<cr>
