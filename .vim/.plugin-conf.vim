@@ -48,6 +48,9 @@ let g:syntastic_scss_checkers = ['']
 let g:syntastic_css_checkers = ['stylelint']
 let g:syntastic_javascript_checkers = ['eslint']
 
+" Local vimrc
+let g:localvimrc_ask = 0
+
 " gitgutter
 let g:gitgutter_realtime = 100
 let g:gitgutter_eager = 100
