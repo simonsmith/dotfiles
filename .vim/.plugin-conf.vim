@@ -81,7 +81,7 @@ endif
 let delimitMate_expand_cr = 1
 
 " vim-airline
-let g:airline_theme = 'airlineish'
+let g:airline_theme = 'wombat'
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline_powerline_fonts = 1

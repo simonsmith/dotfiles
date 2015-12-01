@@ -59,7 +59,6 @@ Plug 'mattn/emmet-vim'
 
 " Status bar
 Plug 'bling/vim-airline'
-Plug 'paranoida/vim-airlineish'
 Plug 'edkolev/tmuxline.vim'
 
 " Snippets
