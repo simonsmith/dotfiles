@@ -21,8 +21,8 @@ unset file
 
 # Theme
 export BULLETTRAIN_RUBY_SHOW=false
-export BULLETTRAIN_GIT_COLORIZE_DIRTY=true
 export BULLETTRAIN_NVM_SHOW=true
+export BULLETTRAIN_DIR_EXTENDED=0
 
 # Make vim the default editor
 export EDITOR="vim"
