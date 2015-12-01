@@ -92,6 +92,7 @@ export PATH="/usr/local/share/git-core/contrib/diff-highlight:$PATH"
 
 # GO
 export GOPATH="$HOME/go"
+export PATH="$PATH:$GOPATH/bin"
 
 # Misc
 # ---------------------------------------------------------------
