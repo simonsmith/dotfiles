@@ -9,10 +9,10 @@ if [ ! -f $HOME/zgen/zgen.zsh ]; then
   popd
 fi
 
-# Only source zgen.zsh if needed
-# https://github.com/tarjoilija/zgen/issues/46
-if ! source "$HOME/.zgen/init.zsh"; then
-  source "$HOME/zgen/zgen.zsh"
+source $HOME/zgen/zgen.zsh
+
+# check if there's no init script
+if ! zgen saved; then
 
   # zgen will load oh-my-zsh and download it if required
   zgen oh-my-zsh
