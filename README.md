@@ -36,15 +36,13 @@ defaults write com.apple.dock persistent-apps -array ""
 ./brew.sh
 ```
 
-### Install oh-my-zsh
-
-``` bash
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-```
+### Use zsh
 
 Add `/usr/local/bin/zsh` to `/etc/shells`
 
-Then run `chsh -s $(which zsh)`
+Run `chsh -s $(which zsh)`
+
+zgen should install everything when `.zshrc` is loaded
 
 ### Install powerline fonts
 

@@ -1,14 +1,36 @@
 
-ZSH_THEME="bullet-train"
-DEFAULT_USER="simonsmith"
-
-# Oh my zsh
+# zgen
 # ---------------------------------------------------------------
 
-plugins=(git z tmux vi-mode)
+# Clone zgen if we haven't already
+if [ ! -f $HOME/zgen/zgen.zsh ]; then
+  pushd ~
+  git clone git@github.com:tarjoilija/zgen.git
+  popd
+fi
 
-export ZSH=~/.oh-my-zsh
-source $ZSH/oh-my-zsh.sh
+source $HOME/zgen/zgen.zsh
+
+# check if there's no init script
+if ! zgen saved; then
+
+  # zgen will load oh-my-zsh and download it if required
+  zgen oh-my-zsh
+
+  # oh-my-zsh plugins
+  zgen oh-my-zsh plugins/git
+  zgen oh-my-zsh plugins/tmux
+  zgen oh-my-zsh plugins/vi-mode
+  zgen oh-my-zsh plugins/z
+
+  # https://github.com/zsh-users/zsh-completions
+  zgen load zsh-users/zsh-completions src
+  zgen load zsh-users/zsh-syntax-highlighting
+
+  zgen load caiogondim/bullet-train-oh-my-zsh-theme bullet-train
+
+  zgen save
+fi
 
 # Load my dotfiles after oh-my-zsh
 for file in ~/.{extra,aliases}; do
@@ -28,8 +50,6 @@ export EDITOR="vim"
 
 # vi mode
 export MODE_INDICATOR="******** [NORMAL] ********"
-# Rebind `jj` to esc
-bindkey -M viins 'jj' vi-cmd-mode
 bindkey '^r' history-incremental-search-backward
 
 # LESS
@@ -104,7 +124,3 @@ source ~/.nvm/nvm.sh
 eval "$(rbenv init -)"
 eval "$(scmpuff init -s --aliases=false)"
 source "$HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh"
-
-# https://github.com/zsh-users/zsh-syntax-highlighting
-# Must be sourced last
-source "/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
