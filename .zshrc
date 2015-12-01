@@ -2,18 +2,13 @@
 ZSH_THEME="bullet-train"
 DEFAULT_USER="simonsmith"
 
-
-# Plugins
-# https://github.com/robbyrussell/oh-my-zsh/wiki/Plugin
-# ---------------------------------------------------------------
-plugins=(git z tmux vi-mode)
-
-
 # Oh my zsh
 # ---------------------------------------------------------------
+
+plugins=(git z tmux vi-mode)
+
 export ZSH=~/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
-
 
 # Load my dotfiles after oh-my-zsh
 for file in ~/.{extra,aliases}; do
@@ -21,9 +16,14 @@ for file in ~/.{extra,aliases}; do
 done
 unset file
 
-
 # Exports
 # ---------------------------------------------------------------
+
+# Theme
+export BULLETTRAIN_RUBY_SHOW=false
+export BULLETTRAIN_GIT_COLORIZE_DIRTY=true
+export BULLETTRAIN_NVM_SHOW=true
+
 # Make vim the default editor
 export EDITOR="vim"
 
@@ -72,7 +72,9 @@ export NODE_ENV=development
 export _Z_DATA="$HOME/.zdata/.z"
 
 # fzf
-#
+# https://github.com/junegunn/fzf
+# ---------------------------------------------------------------
+
 # Setting ag as the default source for fzf - include hidden files
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 # To apply the command to CTRL-T as well
@@ -86,6 +88,7 @@ export FZF_TMUX_HEIGHT=35%
 
 # PATH
 # ---------------------------------------------------------------
+
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH="~/.rbenv/shims:$PATH"
 export PATH="/usr/local/share/git-core/contrib/diff-highlight:$PATH"
@@ -96,6 +99,7 @@ export PATH="$PATH:$GOPATH/bin"
 
 # Misc
 # ---------------------------------------------------------------
+
 source ~/git-hub/init
 source ~/.nvm/nvm.sh
 eval "$(rbenv init -)"
@@ -105,4 +109,3 @@ source "$HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh"
 # https://github.com/zsh-users/zsh-syntax-highlighting
 # Must be sourced last
 source "/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-
