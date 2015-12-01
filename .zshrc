@@ -1,8 +1,3 @@
-# Load the shell dotfiles
-for file in ~/.{extra,aliases}; do
-  [ -r "$file" ] && [ -f "$file" ] && source "$file"
-done
-unset file
 
 ZSH_THEME="bullet-train"
 DEFAULT_USER="simonsmith"
@@ -18,6 +13,13 @@ plugins=(git npm z tmux vi-mode)
 # ---------------------------------------------------------------
 export ZSH=~/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
+
+
+# Load my dotfiles after oh-my-zsh
+for file in ~/.{extra,aliases}; do
+  [ -r "$file" ] && [ -f "$file" ] && source "$file"
+done
+unset file
 
 
 # Exports
