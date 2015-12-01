@@ -88,6 +88,8 @@ export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH="~/.rbenv/shims:$PATH"
 export PATH="/usr/local/share/git-core/contrib/diff-highlight:$PATH"
 
+# GO
+export GOPATH="$HOME/go"
 
 # Misc
 # ---------------------------------------------------------------
