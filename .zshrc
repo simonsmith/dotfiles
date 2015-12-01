@@ -9,10 +9,10 @@ if [ ! -f $HOME/zgen/zgen.zsh ]; then
   popd
 fi
 
-source $HOME/zgen/zgen.zsh
-
-# check if there's no init script
-if ! zgen saved; then
+# Only source zgen.zsh if needed
+# https://github.com/tarjoilija/zgen/issues/46
+if ! source "$HOME/.zgen/init.zsh"; then
+  source "$HOME/zgen/zgen.zsh"
 
   # zgen will load oh-my-zsh and download it if required
   zgen oh-my-zsh
@@ -32,7 +32,7 @@ if ! zgen saved; then
   zgen save
 fi
 
-# Load my dotfiles after oh-my-zsh
+# Load my dotfiles after
 for file in ~/.{extra,aliases}; do
   [ -r "$file" ] && [ -f "$file" ] && source "$file"
 done
