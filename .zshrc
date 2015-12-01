@@ -22,7 +22,6 @@ unset file
 # Theme
 export BULLETTRAIN_RUBY_SHOW=false
 export BULLETTRAIN_NVM_SHOW=true
-export BULLETTRAIN_DIR_EXTENDED=0
 
 # Make vim the default editor
 export EDITOR="vim"
@@ -82,7 +81,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # Default options
 export FZF_DEFAULT_OPTS="--multi --inline-info"
 # tmux pane height
-export FZF_TMUX_HEIGHT=35%
+export FZF_TMUX_HEIGHT=30%
 # Shell integration
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
