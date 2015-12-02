@@ -9,9 +9,10 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 
 " Finding and replacing
-Plug 'ctrlpvim/ctrlp.vim' | Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'mileszs/ack.vim'
 Plug 'henrik/vim-qargs'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 " Nerdtree
 Plug 'scrooloose/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'

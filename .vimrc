@@ -255,9 +255,12 @@ nnoremap <silent> <leader>k :noh<cr>
 nnoremap <leader>nb :enew<cr>
 " Split vertical
 nnoremap <leader>nbv :vnew<cr>
-
 nnoremap <leader><space> :BufExplorer<cr>
-nnoremap <c-i> :CtrlPBuffer<cr>
+
+" fzf
+nnoremap <c-p> :FZF<cr>
+nnoremap <c-i> :Buffers<cr>
+nnoremap <c-g> :Commits<cr>
 
 " Cycle through location list
 nnoremap [l :lprev<cr>
@@ -274,9 +277,6 @@ nmap <cr> o<Esc>
 " NERD tree
 nmap <leader>t :NERDTreeToggle<cr>
 nmap <leader>tt :NERDTreeFind<cr>
-
-" Git tree
-noremap <leader>gv :Gitv<cr>
 
 " IndentGuides
 " Add this here because this plugin is loaded ondemand so this mapping is not

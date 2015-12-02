@@ -55,26 +55,12 @@ let g:localvimrc_ask = 0
 let g:gitgutter_realtime = 100
 let g:gitgutter_eager = 100
 
-" ctrlP
-" set-up ctrlp to include hidden files in its search
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_max_height = 30
-" Open multiple files in hidden buffers, and jump to the first one
-let g:ctrlp_open_multiple_files = 'ij'
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-
 " The Silver Searcher
 if executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
   " Use ag with ack.vim - https://github.com/ggreer/the_silver_searcher#vim
   let g:ackprg = 'ag --smart-case --nogroup --nocolor --column'
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden --ignore .git -g ""'
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-else
-  let g:ctrlp_user_command = "find %s -type f | grep -Ev '"+ g:ctrlp_custom_ignore +"'"
 endif
 
 " delimitMate
