@@ -242,7 +242,6 @@ map <F6> :setlocal spell!<cr>
 
 " Close buffer
 nnoremap <Leader>q :Bdelete<cr>
-nnoremap <leader>qa :bufdo :Bdelete<cr>
 
 " UndoTree
 nnoremap <f5> :UndotreeToggle<cr>
