@@ -252,8 +252,6 @@ nnoremap <silent> <leader>k :noh<cr>
 " Open new buffers
 " Single window
 nnoremap <leader>nb :enew<cr>
-" Split vertical
-nnoremap <leader>nbv :vnew<cr>
 nnoremap <leader><space> :BufExplorer<cr>
 
 " fzf
