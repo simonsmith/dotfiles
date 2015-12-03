@@ -10,6 +10,7 @@ windows:
   - git:
     - git --no-pager log --oneline --decorate --color --graph -10
     - git status
+  - tests:
   - node:
       layout: even-horizontal
       panes:
