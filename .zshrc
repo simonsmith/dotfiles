@@ -101,7 +101,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # Default options
 export FZF_DEFAULT_OPTS="--multi --inline-info"
 # tmux pane height
-export FZF_TMUX_HEIGHT=30%
+export FZF_TMUX_HEIGHT=20%
 # Shell integration
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

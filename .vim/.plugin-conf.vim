@@ -51,6 +51,9 @@ let g:syntastic_javascript_checkers = ['eslint']
 " Local vimrc
 let g:localvimrc_ask = 0
 
+" Set fzf height to something smaller
+let g:fzf_height = '20%'
+
 " gitgutter
 let g:gitgutter_realtime = 100
 let g:gitgutter_eager = 100
