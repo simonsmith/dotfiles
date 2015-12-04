@@ -8,9 +8,10 @@ windows:
   - vim:
     - vim
   - git:
-    - git --no-pager log --oneline --decorate --color --graph -10
+    - cd client
     - git status
   - tests:
+    - cd client
   - node:
       layout: even-horizontal
       panes:
@@ -19,12 +20,10 @@ windows:
           - cd server
           - nodemon -e js,html,svg server.js
         - watch:
-          - nvm use 0.12.7
           - cd server
           - webpack --watch
   - gulp:
     - cd client
-    - nvm use 0.12.7
     - gulp css
     - gulp webpack
     - gulp watch
