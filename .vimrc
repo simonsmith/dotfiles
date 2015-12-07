@@ -440,8 +440,7 @@ nmap <S-Enter> O<Esc>
 nmap <cr> o<Esc>
 
 " NERD tree
-nmap <leader>t :NERDTreeToggle<cr>
-nmap <leader>ft :NERDTreeFind<cr>
+nmap <leader>t :NERDTreeFind<cr>
 
 " fzf
 nnoremap <c-p> :FZF<cr>
