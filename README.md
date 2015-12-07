@@ -3,7 +3,7 @@
 These are my personal Mac OS configs and setup steps.
 
 <div style="text-align: center">
-<img src="http://f.cl.ly/items/411H2Q3p3g3h3b3D120N/Screen%20Shot%202015-09-29%20at%2014.54.35.png">
+<img src="http://cl.ly/e1UK/Screen%20Shot%202015-12-07%20at%2023.27.54.png">
 </div>
 
 ## First steps
