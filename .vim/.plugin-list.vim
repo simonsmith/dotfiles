@@ -21,6 +21,7 @@ Plug 'scrooloose/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'schickling/vim-bufonly'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'moll/vim-bbye'
+Plug 'wesQ3/vim-windowswap'
 
 " Language pack
 Plug 'sheerun/vim-polyglot'

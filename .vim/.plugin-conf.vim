@@ -51,8 +51,16 @@ let g:syntastic_javascript_checkers = ['eslint']
 " Local vimrc
 let g:localvimrc_ask = 0
 
-" Set fzf height to something smaller
+" fzf
+" Set height to something smaller
 let g:fzf_height = '20%'
+nnoremap <c-p> :FZF<cr>
+nnoremap <c-i> :Buffers<cr>
+nnoremap <c-g> :Commits<cr>
+
+" window swap
+let g:windowswap_map_keys = 0 " prevent default bindings
+nnoremap <silent> <leader>sw :call WindowSwap#EasyWindowSwap()<CR>
 
 " gitgutter
 let g:gitgutter_realtime = 100

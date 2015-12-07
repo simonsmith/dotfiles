@@ -254,11 +254,6 @@ nnoremap <silent> <leader>k :noh<cr>
 nnoremap <leader>nb :enew<cr>
 nnoremap <leader><space> :BufExplorer<cr>
 
-" fzf
-nnoremap <c-p> :FZF<cr>
-nnoremap <c-i> :Buffers<cr>
-nnoremap <c-g> :Commits<cr>
-
 " Cycle through location list
 nnoremap [l :lprev<cr>
 nnoremap ]l :lnext<cr>
