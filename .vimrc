@@ -268,7 +268,7 @@ nmap <cr> o<Esc>
 
 " NERD tree
 nmap <leader>t :NERDTreeToggle<cr>
-nmap <leader>tt :NERDTreeFind<cr>
+nmap <leader>ft :NERDTreeFind<cr>
 
 " IndentGuides
 " Add this here because this plugin is loaded ondemand so this mapping is not
