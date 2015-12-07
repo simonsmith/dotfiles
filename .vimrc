@@ -2,15 +2,189 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
-" Load all required plugins
-if filereadable(expand("~/.vim/.plugin-list.vim"))
-  source ~/.vim/.plugin-list.vim
+" Plugin install
+" https://github.com/junegunn/vim-plug
+" -----------------------------------------------------------------------------
+
+call plug#begin('~/.vim/plugged')
+
+" Theme
+Plug 'morhetz/gruvbox'
+
+" tmux
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'tmux-plugins/vim-tmux-focus-events'
+
+" Finding and replacing
+Plug 'mileszs/ack.vim'
+Plug 'henrik/vim-qargs'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+" Nerdtree
+Plug 'scrooloose/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
+
+" Buffers
+Plug 'schickling/vim-bufonly'
+Plug 'jlanzarotta/bufexplorer'
+Plug 'moll/vim-bbye'
+Plug 'wesQ3/vim-windowswap'
+
+" Language pack
+Plug 'sheerun/vim-polyglot'
+
+" Editing
+Plug 'Raimondi/delimitMate'
+Plug 'easymotion/vim-easymotion'
+Plug 'nathanaelkane/vim-indent-guides', {'on': 'IndentGuidesToggle'}
+Plug 'tpope/vim-repeat'
+Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-commentary'
+
+" General
+Plug 'editorconfig/editorconfig-vim'
+Plug 'sjl/vitality.vim'
+Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
+Plug 'regedarek/ZoomWin'
+Plug 'embear/vim-localvimrc'
+
+" Refactoring
+Plug 'terryma/vim-multiple-cursors'
+Plug 'PeterRincker/vim-argumentative'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'tpope/vim-surround'
+
+" Copy/Paste behaviour
+Plug 'svermeulen/vim-easyclip'
+Plug 'ConradIrwin/vim-bracketed-paste'
+
+" Sessions
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-session'
+
+" HTML/CSS
+Plug 'ap/vim-css-color', {'for': 'css'}
+Plug 'mattn/emmet-vim'
+
+" Status bar
+Plug 'bling/vim-airline'
+Plug 'edkolev/tmuxline.vim'
+
+" Snippets
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+
+" Autocomplete
+Plug 'jordwalke/AutoComplPop'
+Plug 'jordwalke/VimCompleteLikeAModernEditor'
+
+" Git
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
+" JavaScript
+Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'sheerun/yajs.vim'
+Plug 'mxw/vim-jsx'
+
+call plug#end()
+
+"  Plugin config
+" -----------------------------------------------------------------------------
+
+" Undotree
+let g:undotree_WindowLayout = 2
+
+" UltiSnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+" Sessions
+let g:session_autosave = 'yes'
+let g:session_autoload = 'no'
+
+" Easymotion
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+nmap ss <Plug>(easymotion-s)
+" Turn on case insensitive feature
+let g:EasyMotion_smartcase = 1
+
+" Allow JSX in normal JS files
+let g:jsx_ext_required = 0
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_error_symbol='✗'
+let g:syntastic_warning_symbol='⚠'
+let g:syntastic_style_error_symbol = '✗'
+let g:syntastic_style_warning_symbol = '⚠'
+let g:syntastic_aggregate_errors = 1
+let g:syntastic_html_tidy_exec = 'tidy5'
+let g:syntastic_loc_list_height = 5
+
+" Set checkers
+let g:syntastic_scss_checkers = ['']
+let g:syntastic_css_checkers = ['stylelint']
+let g:syntastic_javascript_checkers = ['eslint']
+
+" Local vimrc
+" Stop it asking for confirmation each time
+let g:localvimrc_ask = 0
+
+" fzf
+let g:fzf_height = '20%' " Set height to something smaller
+
+" Window swap
+let g:windowswap_map_keys = 0 " prevent default bindings
+
+" gitgutter
+let g:gitgutter_realtime = 100
+let g:gitgutter_eager = 100
+
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+  " Use ag with ack.vim - https://github.com/ggreer/the_silver_searcher#vim
+  let g:ackprg = 'ag --smart-case --nogroup --nocolor --column'
 endif
 
-" Configure plugins
-if filereadable(expand("~/.vim/.plugin-conf.vim"))
-  source ~/.vim/.plugin-conf.vim
-endif
+" delimitMate
+let delimitMate_expand_cr = 1
+
+" vim-airline
+let g:airline_theme = 'wombat'
+let g:airline#extensions#syntastic#enabled = 1
+let g:airline#extensions#branch#enabled = 1
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tmuxline#enabled = 0
+let g:airline#extensions#tabline#enabled = 1 " Enable the list of buffers
+let g:airline#extensions#tabline#fnamemod = ':t' " Show just the filename
+
+" Tmuxline
+let g:tmuxline_preset = {
+      \'a'    : '#S',
+      \'win'  : '#I #W',
+      \'cwin' : '#I #W',
+      \'y'    : ['#(tmux-mem-cpu-load --interval 2)', '#(ipconfig getifaddr en0)', '#(battery -p -t)'],
+      \'z'    : ['%R', '%d-%m-%Y'],
+      \'options' : {'status-justify' : 'left'}}
+
+" JS lib syntax
+let g:used_javascript_libs = 'underscore,jquery,react,requirejs,jasmine,chai'
+
+" Buf explorer
+let g:bufExplorerShowNoName = 1 " Show buffers with no name
+
+"  Vim config
+" -----------------------------------------------------------------------------
 
 " Set space to leader
 let mapleader = ' '
@@ -213,10 +387,9 @@ cnoreabbrev Q q
 cnoreabbrev Qa q
 cnoreabbrev Qall qall
 
-" -----------------------------------------------------------------------------
 " Key mappings
 " -----------------------------------------------------------------------------
-"
+
 " Remap emmet
 imap hh <C-y>,
 
@@ -269,6 +442,14 @@ nmap <cr> o<Esc>
 " NERD tree
 nmap <leader>t :NERDTreeToggle<cr>
 nmap <leader>ft :NERDTreeFind<cr>
+
+" fzf
+nnoremap <c-p> :FZF<cr>
+nnoremap <c-i> :Buffers<cr>
+nnoremap <c-g> :Commits<cr>
+
+" Window swap
+nnoremap <silent> <leader>sw :call WindowSwap#EasyWindowSwap()<CR>
 
 " IndentGuides
 " Add this here because this plugin is loaded ondemand so this mapping is not
