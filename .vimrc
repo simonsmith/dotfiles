@@ -134,6 +134,9 @@ let g:syntastic_scss_checkers = ['']
 let g:syntastic_css_checkers = ['stylelint']
 let g:syntastic_javascript_checkers = ['eslint']
 
+" NERD tree
+let g:NERDTreeWinSize = 40
+
 " Local vimrc
 " Stop it asking for confirmation each time
 let g:localvimrc_ask = 0
