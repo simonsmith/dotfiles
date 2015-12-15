@@ -18,5 +18,4 @@ PACKAGES="caniuse-cmd
 echo "Installing global npm packages:
       $PACKAGES"
 
-npm install $PACKAGES --global --quiet
-
+npm install $PACKAGES --global
