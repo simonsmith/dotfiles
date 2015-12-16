@@ -1,3 +1,7 @@
+fancy_echo() {
+  local fmt="$1"; shift
+  printf "\n$fmt\n" "$@"
+}
 
 brew_install_or_upgrade() {
   if brew_is_installed "$1"; then
@@ -42,7 +46,7 @@ else
 fi
 
 echo "Updating Homebrew formulas ..."
-# brew update
+brew update
 
 echo "Installing/Upgrading formulas ..."
 
