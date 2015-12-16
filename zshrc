@@ -2,13 +2,6 @@
 # zgen
 # ---------------------------------------------------------------
 
-# Clone zgen if we haven't already
-if [ ! -f $HOME/zgen/zgen.zsh ]; then
-  pushd ~
-  git clone git@github.com:tarjoilija/zgen.git
-  popd
-fi
-
 source $HOME/zgen/zgen.zsh
 
 # check if there's no init script
