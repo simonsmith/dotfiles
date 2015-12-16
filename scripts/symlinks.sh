@@ -29,8 +29,6 @@ symlink_dotfile zshenv
 symlink_dotfile zshrc
 symlink redis.conf
 
-symlink_dotfile tmuxinator
-
 echo "Creating directories ..."
 
 mkdir "$HOME/.zdata"
