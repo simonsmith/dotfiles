@@ -15,7 +15,6 @@ PACKAGES="caniuse-cmd
           nodemon
           modernizr"
 
-echo "Installing global npm packages:
-      $PACKAGES"
+echo "Installing global npm packages  $PACKAGES"
 
-npm install $PACKAGES --global
+npm install $PACKAGES --global --quiet
