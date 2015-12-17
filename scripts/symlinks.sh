@@ -29,6 +29,11 @@ symlink_dotfile zshenv
 symlink_dotfile zshrc
 symlink redis.conf
 
+# Remove first so folders don't become nested if this runs
+# more than once
+rm ~/.tmuxinator
+symlink_dotfile tmuxinator
+
 echo "Creating directories ..."
 
 mkdir "$HOME/.zdata"
