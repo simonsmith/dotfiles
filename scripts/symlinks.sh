@@ -1,10 +1,10 @@
 
 symlink_dotfile() {
-  ln -sv $(grealpath $1) "$HOME/.$1"
+  ln -sfv $(grealpath $1) "$HOME/.$1"
 }
 
 symlink() {
-  ln -sv $(grealpath $1) "$HOME/$1"
+  ln -sfv $(grealpath $1) "$HOME/$1"
 }
 
 echo "Creating symlinks ..."
