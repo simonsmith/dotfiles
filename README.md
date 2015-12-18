@@ -10,7 +10,7 @@ Mac config and setup steps.
 
 1. [Install command line](http://osxdaily.com/2014/02/12/install-command-line-tools-mac-os-x/) developer tools - `xcode-select --install`
 
-## Install dotfiles in home directory
+## Clone dotfiles in home directory
 
 ```bash
 git clone https://github.com/simonsmith/dotfiles.git
@@ -37,15 +37,8 @@ defaults write com.apple.dock persistent-apps -array ""
 ```
 
 This script will check existence of things before installing so it can be run
-multiple times without incident
+multiple times
 
-### Install tmuxinator
-
-https://github.com/tmuxinator/tmuxinator
-
-```bash
-gem install tmuxinator
-```
 
 ### Weechat
 
