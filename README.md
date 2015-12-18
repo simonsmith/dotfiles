@@ -39,10 +39,6 @@ defaults write com.apple.dock persistent-apps -array ""
 This script will check existence of things before installing so it can be run
 multiple times without incident
 
-### Install git-hub
-
-https://github.com/ingydotnet/git-hub#installation
-
 ### Install tmuxinator
 
 https://github.com/tmuxinator/tmuxinator

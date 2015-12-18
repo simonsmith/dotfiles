@@ -118,7 +118,7 @@ export NVM_DIR="$HOME/.nvm"
 # Misc
 # ---------------------------------------------------------------
 
-source ~/git-hub/init
+source "$HOME/git-hub/init"
 eval "$(rbenv init -)"
 eval "$(scmpuff init -s --aliases=false)"
 source "$HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh"
