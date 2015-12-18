@@ -16,9 +16,9 @@ Mac config and setup steps.
 git clone https://github.com/simonsmith/dotfiles.git
 ```
 
-## New mac steps
+## New mac
 
-When setting up a new Mac, set some OS X defaults:
+Set some OS X defaults:
 
 ```
 ./scripts/osx.sh
@@ -39,6 +39,7 @@ defaults write com.apple.dock persistent-apps -array ""
 This script will check existence of things before installing so it can be run
 multiple times
 
+Add private dotfiles to home directory (`.extra` and `.gitconfig.local`)
 
 ### Weechat
 
@@ -49,4 +50,4 @@ http://stackoverflow.com/a/32490506/617615
 
 ## Menubar
 
-Layout - http://cl.ly/d3ao
+![](https://s3.amazonaws.com/f.cl.ly/items/2z1z052B3z2a2S391Q3b/Screen%20Shot%202015-12-18%20at%2020.02.34.png?v=6db497bc)
