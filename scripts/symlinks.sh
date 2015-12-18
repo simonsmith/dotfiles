@@ -16,7 +16,6 @@ symlink_dotfile aliases
 symlink_dotfile caniuse.json
 symlink_dotfile curlrc
 symlink_dotfile editorconfig
-symlink_dotfile fzf.zsh
 symlink_dotfile functions
 symlink_dotfile gitignore
 symlink_dotfile gitconfig
