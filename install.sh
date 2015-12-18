@@ -10,4 +10,5 @@ source ./scripts/homebrew.sh
 source ./scripts/zsh.sh
 source ./scripts/symlinks.sh
 source ./scripts/node.sh
+source ./scripts/fonts.sh
 
