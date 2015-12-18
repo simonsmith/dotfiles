@@ -8,7 +8,7 @@ Mac config and setup steps.
 
 ## First step
 
-1. [Install command line](http://osxdaily.com/2014/02/12/install-command-line-tools-mac-os-x/) developer tools - `xcode-select --install`
+[Install command line](http://osxdaily.com/2014/02/12/install-command-line-tools-mac-os-x/) developer tools - `xcode-select --install`
 
 ## Clone dotfiles in home directory
 
@@ -40,6 +40,8 @@ This script will check existence of things before installing so it can be run
 multiple times
 
 Add private dotfiles to home directory (`.extra` and `.gitconfig.local`)
+
+Load Vim and `:PlugInstall` to install plugins.
 
 ### Weechat
 
