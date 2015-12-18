@@ -37,9 +37,11 @@ brew_expand_alias() {
   brew info "$1" 2>/dev/null | head -1 | awk '{gsub(/:/, ""); print $1}'
 }
 
+# Check for homebrew and install if needed
+echo "Installing homebrew ..."
+
 which -s brew
 if [[ $? != 0 ]] ; then
-  echo "Installing homebrew ..."
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 else
   echo "Homebrew already installed ..."
@@ -48,7 +50,7 @@ fi
 echo "Updating Homebrew formulas ..."
 brew update
 
-echo "Installing/Upgrading formulas ..."
+echo "Installing & upgrading formulas ..."
 
 # Install GNU core utilities (those that come with OS X are outdated).
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
