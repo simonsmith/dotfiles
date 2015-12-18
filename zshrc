@@ -102,7 +102,7 @@ export FZF_TMUX_HEIGHT=20%
 # ---------------------------------------------------------------
 
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
-export PATH="~/.rbenv/shims:$PATH"
+export PATH="$HOME/.rbenv/shims:$PATH"
 export PATH="/usr/local/share/git-core/contrib/diff-highlight:$PATH"
 
 # GO
@@ -118,7 +118,7 @@ export NVM_DIR="$HOME/.nvm"
 # Misc
 # ---------------------------------------------------------------
 
-source "$HOME/git-hub/init"
+[ -s "$HOME/git-hub/init" ] && source "$HOME/git-hub/init"
 eval "$(rbenv init -)"
 eval "$(scmpuff init -s --aliases=false)"
 source "$HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh"
