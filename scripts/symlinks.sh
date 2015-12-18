@@ -37,4 +37,3 @@ symlink_dotfile tmuxinator
 echo "Creating directories ..."
 
 mkdir "$HOME/.zdata"
-mkdir "$HOME/.vim"
