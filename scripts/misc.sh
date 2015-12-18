@@ -1,5 +1,5 @@
 # Install fzf
-/usr/local/opt/fzf/install
+yes | /usr/local/opt/fzf/install
 
 # Install git-hub
 echo "Installing git-hub CLI tool"
