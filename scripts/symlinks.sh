@@ -34,6 +34,9 @@ symlink redis.conf
 rm ~/.tmuxinator
 symlink_dotfile tmuxinator
 
+rm ~/emmet
+symlink emmet
+
 echo "Creating directories ..."
 
 mkdir "$HOME/.zdata"
