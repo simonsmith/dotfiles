@@ -27,7 +27,7 @@ gem_install_or_update 'bundler'
 gem_install_or_update 'middleman'
 gem_install_or_update 'tmuxinator'
 
-echo  "Configuring Bundler ..."
+echo "Configuring Bundler ..."
   number_of_cores=$(sysctl -n hw.ncpu)
   bundle config --global jobs $((number_of_cores - 1))
 echo "Bundler configured ..."
