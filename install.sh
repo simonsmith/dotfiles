@@ -7,6 +7,7 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 source ./scripts/homebrew.sh
+source ./scripts/cask.sh
 source ./scripts/zsh.sh
 source ./scripts/symlinks.sh
 source ./scripts/node.sh
