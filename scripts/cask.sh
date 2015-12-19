@@ -1,4 +1,3 @@
-
 casks="$(brew cask list)"
 
 install_cask() {

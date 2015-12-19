@@ -1,5 +1,3 @@
-# Install nvm
-
 echo "Installing nvm ..."
 if [ ! -s "$NVM_DIR/nvm.sh" ] ; then
   curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh | zsh

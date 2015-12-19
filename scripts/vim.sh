@@ -1,4 +1,3 @@
-
 mkdir "$HOME/.vim"
 mkdir "$HOME/.vim/autoload"
 
