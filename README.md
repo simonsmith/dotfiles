@@ -53,3 +53,9 @@ http://stackoverflow.com/a/32490506/617615
 ## Menubar
 
 ![](https://s3.amazonaws.com/f.cl.ly/items/2z1z052B3z2a2S391Q3b/Screen%20Shot%202015-12-18%20at%2020.02.34.png?v=6db497bc)
+
+## Credit
+
+* [Mathias Bynens](https://github.com/mathiasbynens/dotfiles/)
+* [ismay](https://github.com/ismay/dotfiles)
+* [thoughtbot](https://github.com/thoughtbot/laptop)
