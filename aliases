@@ -12,8 +12,7 @@ alias art="php artisan"
 alias cask="brew cask"
 
 alias l="lsp"
-alias ll="lsp -l"
-alias ls="lsp -s"
+alias ll="ls -laF ${colorflag}"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
