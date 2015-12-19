@@ -11,8 +11,10 @@ alias sites="cd ~/Sites"
 alias art="php artisan"
 alias cask="brew cask"
 
-alias l="lsp"
-alias ll="ls -laF ${colorflag}"
+# https://github.com/ogham/exa
+alias l="exa -lbha --git"
+alias t="exa -Ta"
+
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`

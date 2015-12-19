@@ -57,6 +57,7 @@ install_cask 'the-unarchiver'
 install_cask 'totalfinder'
 install_cask 'karabiner'
 install_cask 'seil'
+install_cask 'exa'
 
 # Other stuff
 install_cask 'viscosity'
