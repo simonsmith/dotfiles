@@ -6,9 +6,5 @@ startup_window: vim
 
 windows:
   - vim:
-      layout: even-horizontal
-      panes:
-        - vim:
-          - vim
-        - git:
-          - git status
+    - vim
+  - git:
