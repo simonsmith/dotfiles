@@ -20,7 +20,7 @@ fi
 if [ ! -f $HOME/zgen/zgen.zsh ]; then
   echo "Installing zgen ..."
   pushd ~
-  git clone git@github.com:tarjoilija/zgen.git
+  git clone https://github.com/tarjoilija/zgen.git
   popd
 else
   echo "zgen is already installed ..."
