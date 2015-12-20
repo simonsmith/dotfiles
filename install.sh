@@ -5,9 +5,9 @@ sudo -v
 # https://gist.github.com/cowboy/3118588
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-fancy_echo() {
+fancy_log() {
   local fmt="$1"; shift
-  printf "\n$fmt\n" "$@"
+  printf "\n\e[94m$fmt\n" "$@"
 }
 
 source ./scripts/homebrew.sh
@@ -20,6 +20,6 @@ source ./scripts/vim.sh
 source ./scripts/ruby.sh
 source ./scripts/misc.sh
 
-echo "Sourcing .zshrc ..."
+fancy_log "Sourcing .zshrc ..."
 source "$HOME/.zshrc"
-echo "\n\n\nInstallation complete!"
+fancy_log "Installation complete!"

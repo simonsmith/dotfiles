@@ -6,7 +6,7 @@ symlink() {
   ln -sfv $(grealpath $1) "$HOME/$1"
 }
 
-echo "Creating symlinks ..."
+fancy_log "Creating symlinks ..."
 
 symlink_dotfile vimrc
 symlink_dotfile ackrc
@@ -18,7 +18,7 @@ symlink_dotfile editorconfig
 symlink_dotfile functions
 symlink_dotfile gitignore
 symlink_dotfile gitconfig
-symlink_dotfile hushlogin
+symlink_dotfile hushfancy_login
 symlink_dotfile jshintrc
 symlink_dotfile tmux.conf
 symlink_dotfile tmuxline_snapshot
@@ -40,6 +40,6 @@ symlink iterm
 rm "$HOME/bin"
 symlink bin
 
-echo "Creating directories ..."
+fancy_log "Creating directories ..."
 
 mkdir "$HOME/.zdata"

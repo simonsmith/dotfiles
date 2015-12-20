@@ -1,26 +1,26 @@
 node_install_version=5.3.0
 
-echo "Installing nvm ..."
+fancy_log "Installing nvm ..."
 if [ ! -s "$NVM_DIR/nvm.sh" ] ; then
   curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh | zsh
   source "$HOME/.nvm/nvm.sh"
-  echo "Installing node $node_install_version ..."
+  fancy_log "Installing node $node_install_version ..."
   nvm install "$node_install_version"
   nvm use "$node_install_version"
   nvm alias default node
 else
-  echo "nvm already installed ..."
+  fancy_log "nvm already installed ..."
 fi
 
-echo "Installing npm global packages ..."
+fancy_log "Installing npm global packages ..."
 
 npm_packages="$(npm list -g --depth=0)"
 
 install_global_npm_package() {
   if echo $npm_packages | grep $1@ > /dev/null 2>&1; then
-    fancy_echo "Already have %s installed. Skipping ..." "$1"
+    fancy_log "Already have %s installed. Skipping ..." "$1"
   else
-    fancy_echo "Installing %s ..." "$1"
+    fancy_log "Installing %s ..." "$1"
     npm i -g "$@" --quiet
   fi
 }

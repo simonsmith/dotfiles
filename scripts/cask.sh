@@ -2,9 +2,9 @@ casks="$(brew cask list)"
 
 install_cask() {
   if echo $casks | grep -w $1 > /dev/null 2>&1; then
-    fancy_echo "Already have %s installed. Skipping ..." "$1"
+    fancy_log "Already have %s installed. Skipping ..." "$1"
   else
-    fancy_echo "Installing %s ..." "$1"
+    fancy_log "Installing %s ..." "$1"
     brew cask install "$@" 2> /dev/null
   fi
 }
