@@ -57,7 +57,7 @@ brew_install_or_upgrade 'moreutils'
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
 brew_install_or_upgrade 'findutils'
 # Install GNU `sed`, overwriting the built-in `sed`.
-brew_install_or_upgrade 'gnu-sed' '--default-names'
+brew_install_or_upgrade 'gnu-sed' '--with-default-names'
 
 # Install zsh
 brew_install_or_upgrade 'zsh'
