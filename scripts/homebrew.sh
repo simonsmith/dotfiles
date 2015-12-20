@@ -37,7 +37,7 @@ echo "Installing homebrew ..."
 
 which -s brew
 if [[ $? != 0 ]] ; then
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  yes | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 else
   echo "Homebrew already installed ..."
 fi
