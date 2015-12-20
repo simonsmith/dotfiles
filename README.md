@@ -6,42 +6,41 @@ Mac config and setup steps.
   <img src="http://cl.ly/e1UK/Screen%20Shot%202015-12-07%20at%2023.27.54.png">
 </div>
 
-## First step
+## First steps
 
-[Install](http://osxdaily.com/2014/02/12/install-command-line-tools-mac-os-x/) command line developer tools - `xcode-select --install`
+[Install](http://osxdaily.com/2014/02/12/install-command-line-tools-mac-os-x/) command line developer tools:
 
-## Clone dotfiles in home directory
+```
+xcode-select --install`
+```
 
-```bash
+Clone dotfiles to home directory
+
+```
 git clone https://github.com/simonsmith/dotfiles.git
 ```
 
-## New mac
+## Install
 
-Set some OS X defaults:
+Set OS X defaults:
 
 ```
 ./scripts/osx.sh
 ```
 
-Wipe the dock icons:
-
-```
-defaults write com.apple.dock persistent-apps -array ""
-```
-
-## Install all the things
+Run install script
 
 ```
 ./install.sh
 ```
 
-This script will check existence of things before installing so it can be run
-multiple times.
+When complete, open new terminal window to trigger `zgen` plugin downloads.
 
-Add private dotfiles to home directory (`.extra` and `.gitconfig.local`).
+## Manual steps
 
 Load Vim and `:PlugInstall` to install plugins.
+
+Add private dotfiles to home directory (`.extra` and `.gitconfig.local`).
 
 ### Weechat
 
