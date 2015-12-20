@@ -108,6 +108,7 @@ brew_install_or_upgrade 'heroku'
 brew_install_or_upgrade 'p7zip'
 brew_install_or_upgrade 'tree'
 brew_install_or_upgrade 'webkit2png'
+brew_install_or_upgrade 'httpie'
 brew_install_or_upgrade 'reattach-to-user-namespace'
 
 brew cleanup
