@@ -36,9 +36,11 @@ When complete, open new terminal window to trigger `zgen` plugin downloads.
 
 ## Manual steps
 
-Load Vim and `:PlugInstall` to install plugins.
+* Load custom iterm settings
 
-Add private dotfiles to home directory (`.extra` and `.gitconfig.local`).
+* Open Vim and `:PlugInstall` to install plugins.
+
+* Add private dotfiles to home directory (`.extra` and `.gitconfig.local`).
 
 ### Weechat
 

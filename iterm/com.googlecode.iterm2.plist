@@ -386,7 +386,7 @@
 	<key>NSNavLastRootDirectory</key>
 	<string>~/dotfiles/iterm</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
-	<string>{712, 448}</string>
+	<string>{712, 459}</string>
 	<key>NSQuotedKeystrokeBinding</key>
 	<string></string>
 	<key>NSRepeatCountBinding</key>
@@ -420,11 +420,11 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>845 110 769 385 0 0 1680 1027 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>742 1227 606 456 0 0 3008 1692 </string>
+	<string>269 590 606 456 0 0 1680 1050 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>1194 976 620 392 0 0 3008 1692 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 3008 1692 0 0 3008 1669 </string>
+	<string>0 0 1680 1050 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>409 0 1680 1046 0 0 1680 1027 </string>
 	<key>NeverWarnAboutMeta</key>
@@ -1227,7 +1227,7 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>/Users/simonsmith/Dropbox/Software/iterm</string>
+	<string>/Users/simonsmith/dotfiles/iterm</string>
 	<key>PromptOnQuit</key>
 	<false/>
 	<key>SUEnableAutomaticChecks</key>
@@ -1239,7 +1239,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2015-12-01T14:24:26Z</date>
+	<date>2015-12-20T22:57:39Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>TabStyle</key>
