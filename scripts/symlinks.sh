@@ -35,6 +35,8 @@ rm "$HOME/.tmuxinator"
 symlink_dotfile tmuxinator
 rm "$HOME/emmet"
 symlink emmet
+rm "$HOME/iterm"
+symlink iterm
 rm "$HOME/bin"
 symlink bin
 
