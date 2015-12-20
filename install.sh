@@ -20,4 +20,6 @@ source ./scripts/vim.sh
 source ./scripts/ruby.sh
 source ./scripts/misc.sh
 
+echo "Sourcing .zshrc ..."
+source "$HOME/.zshrc"
 echo "\n\n\nInstallation complete!"
