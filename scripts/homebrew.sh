@@ -76,6 +76,7 @@ brew_install_or_upgrade 'vim' '--override-system-vi'
 brew_install_or_upgrade 'tmux'
 # Used for stats in tmuxline
 brew_install_or_upgrade 'tmux-mem-cpu-load'
+brew tap Goles/battery
 brew_install_or_upgrade 'battery'
 brew_install_or_upgrade 'spark'
 
