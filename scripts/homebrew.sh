@@ -2,7 +2,7 @@ brew_install_or_upgrade() {
   if brew_is_installed "$1"; then
     if brew_is_upgradable "$1"; then
       fancy_echo "Upgrading %s ..." "$1"
-      brew upgrade "$@"
+      brew upgrade "$1"
     else
       fancy_echo "Already using the latest version of %s. Skipping ..." "$1"
     fi
@@ -57,7 +57,7 @@ brew_install_or_upgrade 'moreutils'
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
 brew_install_or_upgrade 'findutils'
 # Install GNU `sed`, overwriting the built-in `sed`.
-brew_install_or_upgrade 'gnu-sed --default-names'
+brew_install_or_upgrade 'gnu-sed' '--default-names'
 
 # Install zsh
 brew_install_or_upgrade 'zsh'
@@ -67,10 +67,10 @@ brew_install_or_upgrade 'zsh-syntax-highlighting'
 brew_install_or_upgrade 'source-highlight'
 
 # Install `wget` with IRI support.
-brew_install_or_upgrade 'wget --enable-iri'
+brew_install_or_upgrade 'wget' '--enable-iri'
 
 # Use brew vim
-brew_install_or_upgrade 'vim --override-system-vi'
+brew_install_or_upgrade 'vim' '--override-system-vi'
 
 # tmux
 brew_install_or_upgrade 'tmux'
@@ -86,7 +86,7 @@ brew_install_or_upgrade 'tig'
 # Install more recent versions of some OS X tools.
 brew_install_or_upgrade 'homebrew/dupes/grep'
 brew_install_or_upgrade 'homebrew/dupes/screen'
-brew_install_or_upgrade 'composer --ignore-dependencies'
+brew_install_or_upgrade 'composer' '--ignore-dependencies'
 
 # Ruby
 brew_install_or_upgrade 'rbenv'
@@ -94,7 +94,7 @@ brew_install_or_upgrade 'ruby-build'
 
 # Install other useful binaries.
 brew_install_or_upgrade 'ack'
-brew_install_or_upgrade 'imagemagick --with-webp'
+brew_install_or_upgrade 'imagemagick' '--with-webp'
 brew_install_or_upgrade 'ucspi-tcp' # `tcpserver` et al.
 brew_install_or_upgrade 'redis'
 brew_install_or_upgrade 'the_silver_searcher'
