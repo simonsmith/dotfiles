@@ -2,9 +2,7 @@
 
 Mac config and setup steps.
 
-<div style="text-align: center">
-  <img src="http://cl.ly/e1UK/Screen%20Shot%202015-12-07%20at%2023.27.54.png">
-</div>
+![](http://f.cl.ly/items/2E2b0v0b3G1H0r0j1l2B/Screen%20Shot%202015-12-20%20at%2023.06.52.png)
 
 ## First steps
 
