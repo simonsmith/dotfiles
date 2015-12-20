@@ -81,12 +81,10 @@ brew_install_or_upgrade 'spark'
 
 # git
 brew_install_or_upgrade 'git'
-brew_install_or_upgrade 'tig'
 
 # Install more recent versions of some OS X tools.
 brew_install_or_upgrade 'homebrew/dupes/grep'
 brew_install_or_upgrade 'homebrew/dupes/screen'
-brew_install_or_upgrade 'composer' '--ignore-dependencies'
 
 # Ruby
 brew_install_or_upgrade 'rbenv'
@@ -94,8 +92,6 @@ brew_install_or_upgrade 'ruby-build'
 
 # Install other useful binaries.
 brew_install_or_upgrade 'ack'
-brew_install_or_upgrade 'imagemagick' '--with-webp'
-brew_install_or_upgrade 'ucspi-tcp' # `tcpserver` et al.
 brew_install_or_upgrade 'redis'
 brew_install_or_upgrade 'the_silver_searcher'
 brew_install_or_upgrade 'fzf'
