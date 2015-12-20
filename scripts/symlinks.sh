@@ -27,13 +27,16 @@ symlink_dotfile zshenv
 symlink_dotfile zshrc
 symlink redis.conf
 
+# Directories
+
 # Remove first so folders don't become nested if this runs
 # more than once
-rm ~/.tmuxinator
+rm "$HOME/.tmuxinator"
 symlink_dotfile tmuxinator
-
-rm ~/emmet
+rm "$HOME/emmet"
 symlink emmet
+rm "$HOME/bin"
+symlink bin
 
 echo "Creating directories ..."
 

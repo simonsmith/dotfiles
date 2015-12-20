@@ -104,6 +104,7 @@ export FZF_TMUX_HEIGHT=20%
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH="$HOME/.rbenv/shims:$PATH"
 export PATH="/usr/local/share/git-core/contrib/diff-highlight:$PATH"
+export PATH="$HOME/bin:$PATH"
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 
 # GO
