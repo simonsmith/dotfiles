@@ -26,7 +26,7 @@ Set OS X defaults:
 ./scripts/osx.sh
 ```
 
-Run install script
+Change to `~/dotfiles` directory and run install script:
 
 ```
 ./install.sh
