@@ -4,7 +4,7 @@ if grep -Fxq "/usr/local/bin/zsh" /etc/shells > /dev/null 2>&1; then
 else
   # If not found
   fancy_log "Adding zsh to list of accepted shells ..."
-  sudo sh -c 'fancy_log "/usr/local/bin/zsh" >> /etc/shells'
+  sudo sh -c 'echo "/usr/local/bin/zsh" >> /etc/shells'
 fi
 
 # Check if zsh is default shell
