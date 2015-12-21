@@ -37,6 +37,7 @@ alias gdtc='git difftool --cached'
 alias gac='git add . && git commit -v'
 alias gdc='git diff --cached'
 alias gs='scmpuff_status'
+alias gunwip='git log -1 | grep -q -c "\-\-wip\-\-" && git reset HEAD~1'
 
 # Stopwatch
 alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'
