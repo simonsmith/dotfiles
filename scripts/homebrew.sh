@@ -67,7 +67,7 @@ brew_install_or_upgrade 'zsh-syntax-highlighting'
 brew_install_or_upgrade 'source-highlight'
 
 # Install `wget` with IRI support.
-brew_install_or_upgrade 'wget' '--enable-iri'
+brew_install_or_upgrade 'wget' '--with-iri'
 
 # Use brew vim
 brew_install_or_upgrade 'vim' '--override-system-vi'
