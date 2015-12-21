@@ -9,7 +9,7 @@ Mac config and setup steps.
 [Install](http://osxdaily.com/2014/02/12/install-command-line-tools-mac-os-x/) command line developer tools:
 
 ```
-xcode-select --install
+make
 ```
 
 Clone dotfiles to home directory
