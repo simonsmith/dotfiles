@@ -84,8 +84,9 @@ brew_install_or_upgrade 'spark'
 brew_install_or_upgrade 'git'
 
 # Install more recent versions of some OS X tools.
-brew_install_or_upgrade 'homebrew/dupes/grep'
-brew_install_or_upgrade 'homebrew/dupes/screen'
+brew tap homebrew/dupes
+brew_install_or_upgrade 'grep' '--with-default-names'
+brew_install_or_upgrade 'screen'
 
 # Ruby
 brew_install_or_upgrade 'rbenv'
