@@ -18,5 +18,3 @@ install_font() {
 }
 
 install_font 'font-droid-sans-mono-for-powerline'
-install_font 'font-anonymous-pro-for-powerline'
-install_font 'font-open-sans'
