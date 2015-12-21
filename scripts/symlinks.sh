@@ -8,6 +8,7 @@ symlink() {
 
 log "Creating symlinks ..."
 
+pushd ./dots
 symlink_dotfile vimrc
 symlink_dotfile ackrc
 symlink_dotfile agignore
@@ -26,6 +27,7 @@ symlink_dotfile wgetrc
 symlink_dotfile zshenv
 symlink_dotfile zshrc
 symlink redis.conf
+popd
 
 # Directories
 
