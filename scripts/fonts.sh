@@ -1,4 +1,4 @@
-fancy_log "Installing fonts ..."
+log "Installing fonts ..."
 
 # Check if brew uses the fonts repo
 brew tap | grep "caskroom/fonts" > /dev/null
@@ -10,10 +10,10 @@ fi
 install_font() {
   brew cask list | grep $1 > /dev/null 2>&1
   if [[ $? != 0 ]] ; then
-    fancy_log "Installing $1 ..."
+    log "Installing $1 ..."
     brew cask install $1
   else
-    fancy_log "Skipping $1 installation ..."
+    log "Skipping $1 installation ..."
   fi
 }
 

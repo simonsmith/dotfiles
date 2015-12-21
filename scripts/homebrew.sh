@@ -1,13 +1,13 @@
 brew_install_or_upgrade() {
   if brew_is_installed "$1"; then
     if brew_is_upgradable "$1"; then
-      fancy_log "Upgrading %s ..." "$1"
+      log "Upgrading %s ..." "$1"
       brew upgrade "$1"
     else
-      fancy_log "Already using the latest version of %s. Skipping ..." "$1"
+      log "Already using the latest version of %s. Skipping ..." "$1"
     fi
   else
-    fancy_log "Installing %s ..." "$1"
+    log "Installing %s ..." "$1"
     brew install "$@"
   fi
 }
@@ -33,19 +33,19 @@ brew_expand_alias() {
 }
 
 # Check for homebrew and install if needed
-fancy_log "Installing homebrew ..."
+log "Installing homebrew ..."
 
 which -s brew
 if [[ $? != 0 ]] ; then
   yes | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 else
-  fancy_log "Homebrew already installed ..."
+  log "Homebrew already installed ..."
 fi
 
-fancy_log "Updating Homebrew formulas ..."
+log "Updating Homebrew formulas ..."
 brew update
 
-fancy_log "Installing & upgrading formulas ..."
+log "Installing & upgrading formulas ..."
 
 # Install GNU core utilities (those that come with OS X are outdated).
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.

@@ -1,28 +1,28 @@
 # Check if zsh is in list of accepted shells
 if grep -Fxq "/usr/local/bin/zsh" /etc/shells > /dev/null 2>&1; then
-  fancy_log "zsh is already in the list of accepted shells ..."
+  log "zsh is already in the list of accepted shells ..."
 else
   # If not found
-  fancy_log "Adding zsh to list of accepted shells ..."
+  log "Adding zsh to list of accepted shells ..."
   sudo sh -c 'echo "/usr/local/bin/zsh" >> /etc/shells'
 fi
 
 # Check if zsh is default shell
 if echo $SHELL | grep /bin/bash > /dev/null 2>&1; then
-  fancy_log "Setting zsh as default shell ..."
+  log "Setting zsh as default shell ..."
   chsh -s /usr/local/bin/zsh
 else
-  fancy_log "zsh is already the default shell ..."
+  log "zsh is already the default shell ..."
 fi
 
 # Get zgen if it doesn't exist
 # https://github.com/tarjoilija/zgen
 if [ ! -f $HOME/zgen/zgen.zsh ]; then
-  fancy_log "Installing zgen ..."
+  log "Installing zgen ..."
   pushd ~
   git clone https://github.com/tarjoilija/zgen.git
   source "$HOME/.zshrc"
   popd
 else
-  fancy_log "zgen is already installed ..."
+  log "zgen is already installed ..."
 fi

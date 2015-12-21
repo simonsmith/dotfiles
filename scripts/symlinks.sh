@@ -6,7 +6,7 @@ symlink() {
   ln -sfv $(grealpath $1) "$HOME/$1"
 }
 
-fancy_log "Creating symlinks ..."
+log "Creating symlinks ..."
 
 symlink_dotfile vimrc
 symlink_dotfile ackrc
