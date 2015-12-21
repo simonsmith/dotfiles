@@ -21,7 +21,6 @@ if [ ! -f $HOME/zgen/zgen.zsh ]; then
   log "Installing zgen ..."
   pushd ~
   git clone https://github.com/tarjoilija/zgen.git
-  source "$HOME/.zshrc"
   popd
 else
   log "zgen is already installed ..."
