@@ -40,6 +40,5 @@ symlink iterm
 rm "$HOME/bin"
 symlink bin
 
-fancy_log "Creating directories ..."
-
 mkdir "$HOME/.zdata"
+touch "$HOME/.zdata/.z"
