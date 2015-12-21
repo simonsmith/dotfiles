@@ -18,7 +18,7 @@ symlink_dotfile editorconfig
 symlink_dotfile functions
 symlink_dotfile gitignore
 symlink_dotfile gitconfig
-symlink_dotfile hushfancy_login
+symlink_dotfile hushlogin
 symlink_dotfile jshintrc
 symlink_dotfile tmux.conf
 symlink_dotfile tmuxline_snapshot
