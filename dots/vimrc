@@ -434,6 +434,10 @@ nnoremap <leader><space> :BufExplorer<cr>
 nnoremap [l :lprev<cr>
 nnoremap ]l :lnext<cr>
 
+" Automatically 'gv' (go to previously selected visual block) after indenting or unindenting.
+vnoremap < <gv
+vnoremap > >gv
+
 " Cycle through buffers
 nnoremap <leader>] :bnext<cr>
 nnoremap <leader>[ :bprev<cr>
