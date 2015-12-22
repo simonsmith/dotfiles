@@ -2,14 +2,14 @@
 
 name: simonsmith_io
 root: ~/Sites/simonsmith.io
-startup_window: git
+startup_window: vim
 
 windows:
+  - vim:
   - git:
     - git status
   - server:
     - bundle exec middleman -p=9000
-  - gulp:
-    - gulp
-    - gulp watch
+  - watch:
+    - npm run watch
 
