@@ -75,7 +75,8 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 " Autocomplete
 Plug 'jordwalke/AutoComplPop'
-Plug 'jordwalke/VimCompleteLikeAModernEditor'
+Plug 'Valloric/YouCompleteMe'
+Plug 'ervandew/supertab'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -98,6 +99,11 @@ let g:undotree_WindowLayout = 2
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+" Make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
 
 " Sessions
 let g:session_autosave = 'yes'
@@ -501,6 +507,9 @@ if has("autocmd")
   " Automatically wrap at 72 characters and spell check git commit messages
   autocmd FileType gitcommit setlocal textwidth=72
   autocmd FileType gitcommit setlocal spell
+
+  " Close YCM window after autocomplete is done
+  autocmd CompleteDone * pclose
 
   " Allow stylesheets to autocomplete hyphenated words
   autocmd FileType css,scss,sass setlocal iskeyword+=-

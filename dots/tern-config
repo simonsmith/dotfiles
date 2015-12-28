@@ -1,0 +1,18 @@
+{
+  "libs": [
+    "browser",
+    "ecma5",
+    "ecma6",
+    "jquery",
+    "chai"
+  ],
+  "plugins": {
+    "node": {},
+    "doc_comment": {},
+    "modules": {},
+    "es_modules": {},
+    "node_resolve": {},
+    "complete_strings": {},
+    "commonjs": {}
+  }
+}
