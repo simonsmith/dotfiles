@@ -41,6 +41,7 @@ module.exports = {
     'no-void': 2,
     'no-with': 2,
     'radix': [2, 'as-needed'],
+    'strict': [2, 'never'],
     'wrap-iife': [2, 'any'],
     'yoda': 2
   }
