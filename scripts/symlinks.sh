@@ -44,6 +44,8 @@ rm "$HOME/iterm"
 symlink iterm
 rm "$HOME/bin"
 symlink bin
+rm "$HOME/eslint"
+symlink eslint
 
 mkdir "$HOME/.zdata"
 touch "$HOME/.zdata/.z"
