@@ -21,6 +21,7 @@ symlink_dotfile gitignore
 symlink_dotfile gitconfig
 symlink_dotfile hushlogin
 symlink_dotfile jshintrc
+symlink_dotfile eslintrc
 symlink_dotfile tmux.conf
 symlink_dotfile tmuxline_snapshot
 symlink_dotfile wgetrc
