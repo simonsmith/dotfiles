@@ -1,0 +1,17 @@
+{
+  "rules": {
+    "at-rule-no-vendor-prefix": true,
+    "block-no-empty": true,
+    "function-linear-gradient-no-nonstandard-direction": true,
+    "function-url-quotes": "double",
+    "indentation": 2,
+    "no-eol-whitespace": true,
+    "no-missing-eof-newline": true,
+    "number-leading-zero": "always",
+    "number-no-trailing-zeros": true,
+    "number-zero-length-no-unit": true,
+    "property-no-vendor-prefix": true,
+    "rule-trailing-semicolon": "always",
+    "string-quotes": "double",
+  }
+}
