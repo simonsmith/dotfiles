@@ -11,7 +11,6 @@ module.exports = {
     'func-style': [2, 'declaration', {'allowArrowFunctions': true}],
     'indent': [2, 2],
     'key-spacing': 2,
-    'max-len': [1, 80, 2],
     'new-cap': 2,
     'no-mixed-spaces-and-tabs': 2,
     'no-multiple-empty-lines': [2, {'max': 2, 'maxEOF': 1}],
