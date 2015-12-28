@@ -13,9 +13,9 @@ brew tap caskroom/cask
 brew tap caskroom/versions
 
 # Browsers
+install_cask 'firefox'
 install_cask 'google-chrome-beta'
 install_cask 'google-chrome-canary'
-install_cask 'firefox'
 install_cask 'opera'
 install_cask 'torbrowser'
 
@@ -24,48 +24,48 @@ install_cask 'cloud'
 install_cask 'dropbox'
 
 # Comms
-install_cask 'skype'
 install_cask 'google-hangouts'
+install_cask 'skype'
 
 # Media
+install_cask 'beardedspice'
 install_cask 'burn'
+install_cask 'max'
 install_cask 'sonos'
 install_cask 'spotify'
 install_cask 'spotify-notifications'
 install_cask 'vlc'
-install_cask 'max'
-install_cask 'beardedspice'
 
 # Development
 install_cask 'gitify'
+install_cask 'iterm2-beta'
+install_cask 'jq'
+install_cask 'kaleidoscope'
 install_cask 'transmit'
 install_cask 'vmware-fusion'
-install_cask 'iterm2-beta'
-install_cask 'kaleidoscope'
-install_cask 'jq'
 
 # Mac OS Enhancements
 install_cask 'bartender'
 install_cask 'bettertouchtool'
+install_cask 'exa'
 install_cask 'gpgtools'
 install_cask 'istat-menus'
+install_cask 'karabiner'
 install_cask 'keepingyouawake'
 install_cask 'launchbar'
 install_cask 'paragon-ntfs'
+install_cask 'seil'
 install_cask 'shortcat'
 install_cask 'the-unarchiver'
 install_cask 'totalfinder'
-install_cask 'karabiner'
-install_cask 'seil'
-install_cask 'exa'
 
 # Other stuff
-install_cask 'viscosity'
+install_cask 'appcleaner'
+install_cask 'daisydisk'
 install_cask 'deluge'
 install_cask 'flux'
-install_cask 'appcleaner'
 install_cask 'imazing'
 install_cask 'steam'
-install_cask 'daisydisk'
+install_cask 'viscosity'
 
 brew cask cleanup
