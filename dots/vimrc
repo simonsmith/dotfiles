@@ -415,6 +415,9 @@ nnoremap Y y$
 nnoremap H ^
 nnoremap L $
 
+" Remap 0 to first non-blank character
+map 0 ^
+
 " Split
 noremap <leader>h :<C-u>split<cr>
 noremap <leader>v :<C-u>vsplit<cr>
@@ -498,7 +501,7 @@ if has("autocmd")
   autocmd VimResized * wincmd =
 
   " Override some syntaxes so things look better
-  autocmd BufNewFile,BufRead *.html  set syntax=html
+  autocmd BufNewFile,BufRead *.html set syntax=html
   autocmd BufNewFile,BufRead *.css set syntax=scss
 
   " Wrap text and turn on spell for markdown files
