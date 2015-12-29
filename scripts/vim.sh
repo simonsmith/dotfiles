@@ -1,7 +1,7 @@
 mkdir "$HOME/.vim"
 mkdir "$HOME/.vim/autoload"
 
-log "Installing vim plug"
+log "Installing vim plug ..."
 
 if [ -e "$HOME/.vim/autoload/plug.vim" ]; then
   log "vim plug exists, skipping ..."
