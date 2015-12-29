@@ -142,6 +142,11 @@ let g:syntastic_javascript_checkers = ['eslint']
 
 " NERD tree
 let g:NERDTreeWinSize = 40
+let NERDTreeIgnore = ['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
+let NERDTreeChDirMode = 0
+let NERDTreeQuitOnOpen = 1
+let NERDTreeMouseMode = 2
+let NERDTreeShowHidden = 1
 
 " Local vimrc
 " Stop it asking for confirmation each time
@@ -152,6 +157,15 @@ let g:fzf_height = '20%' " Set height to something smaller
 
 " Window swap
 let g:windowswap_map_keys = 0 " prevent default bindings
+
+" YouCompleteMe
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
 " gitgutter
 let g:gitgutter_realtime = 100
@@ -227,6 +241,12 @@ set foldlevelstart=10
 " Line numbers
 set number
 
+" Abbrev. of messages (avoids 'hit enter')
+set shortmess+=filmnrxoOtT
+
+" Store more history (default is 50)
+set history=1000
+
 " With :set hidden, opening a new file when the current buffer has unsaved
 " changes causes files to be hidden instead of closed
 set hidden
@@ -251,12 +271,13 @@ set synmaxcol=500
 set cursorline
 
 " Various settings to control spaces and indents
-set smartindent
-set cindent
+set autoindent
 set cino=(0,W4
 set softtabstop=2
 set shiftwidth=2
 
+" This is set low so that gitgutter updates reasonably quickly
+" https://github.com/airblade/vim-gitgutter#when-are-the-signs-updated
 set updatetime=650
 
 " Don't wrap lines
@@ -278,9 +299,6 @@ set incsearch
 
 " Highlight tailing whitespace
 set list listchars=tab:\ \ ,trail:·
-
-" Remove whitespace on save
-autocmd BufWritePre * :%s/\s\+$//e
 
 " Remember cursor position
 augroup vimrc-remember-cursor-position
@@ -304,6 +322,8 @@ highlight SpellLocal term=underline cterm=underline
 
 " Enhance command-line completion
 set wildmenu
+" Command <Tab> completion, list matches, then longest common part, then all.
+set wildmode=list:longest,full
 " Allow cursor keys in insert mode
 set esckeys
 " Allow backspace in insert mode
@@ -357,6 +377,8 @@ set list
 
 " Ignore case of searches
 set ignorecase
+" Case sensitive when uppercase is present
+set smartcase
 " Always show status line
 set laststatus=2
 " Enable mouse in all modes
@@ -414,9 +436,6 @@ nnoremap Y y$
 " Easier shortcuts to jump to start/end of line
 nnoremap H ^
 nnoremap L $
-
-" Remap 0 to first non-blank character
-map 0 ^
 
 " Split
 noremap <leader>h :<C-u>split<cr>
@@ -516,6 +535,9 @@ if has("autocmd")
 
   " Allow stylesheets to autocomplete hyphenated words
   autocmd FileType css,scss,sass setlocal iskeyword+=-
+
+  " Remove whitespace on save
+  autocmd BufWritePre * :%s/\s\+$//e
 
   " Periodically check for file changes
   autocmd CursorHold * silent! checktime
