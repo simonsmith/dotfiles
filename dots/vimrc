@@ -46,7 +46,6 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'sjl/vitality.vim'
 Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 Plug 'regedarek/ZoomWin'
-Plug 'embear/vim-localvimrc'
 
 " Refactoring
 Plug 'terryma/vim-multiple-cursors'
@@ -147,10 +146,6 @@ let NERDTreeChDirMode = 0
 let NERDTreeQuitOnOpen = 1
 let NERDTreeMouseMode = 2
 let NERDTreeShowHidden = 1
-
-" Local vimrc
-" Stop it asking for confirmation each time
-let g:localvimrc_ask = 0
 
 " fzf
 let g:fzf_height = '20%' " Set height to something smaller
