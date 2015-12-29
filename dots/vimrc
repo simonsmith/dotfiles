@@ -233,9 +233,6 @@ set colorcolumn=+1
 set foldmethod=indent
 set foldlevelstart=10
 
-" Line numbers
-set number
-
 " Abbrev. of messages (avoids 'hit enter')
 set shortmess+=filmnrxoOtT
 
@@ -407,13 +404,26 @@ set title
 " Show the (partial) command as it’s being typed
 set showcmd
 
-" Use relative line numbers
-if exists("&relativenumber")
-  set relativenumber
-  au BufReadPost * set relativenumber
-endif
+" Line numbers
+set number
+set relativenumber
 
-set scrolloff=8         "Start scrolling when we're 8 lines away from margins
+" Switch between normal and relative line numbers
+" https://gist.github.com/dlo/3012145
+augroup linenumbers
+  autocmd!
+  autocmd BufEnter * :set relativenumber
+  autocmd BufLeave * :set number norelativenumber
+  autocmd WinEnter * :set relativenumber
+  autocmd WinLeave * :set number norelativenumber
+  autocmd InsertEnter * :set number norelativenumber
+  autocmd InsertLeave * :set relativenumber
+  autocmd FocusLost * :set number norelativenumber
+  autocmd FocusGained * :set relativenumber
+augroup END
+
+" Start scrolling when 8 lines away from margins
+set scrolloff=8
 set sidescrolloff=15
 set sidescroll=1
 
