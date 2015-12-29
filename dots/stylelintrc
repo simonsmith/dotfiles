@@ -23,7 +23,7 @@
     "indentation": 2,
     "no-eol-whitespace": true,
     "no-missing-eof-newline": true,
-    "number-leading-zero": "always",
+    "number-leading-zero": "never",
     "number-no-trailing-zeros": true,
     "number-zero-length-no-unit": true,
     "property-no-vendor-prefix": true,
