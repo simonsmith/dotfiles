@@ -43,6 +43,7 @@ install_cask 'jq'
 install_cask 'kaleidoscope'
 install_cask 'transmit'
 install_cask 'vmware-fusion'
+install_cask 'atom'
 
 # Mac OS Enhancements
 install_cask 'bartender'
