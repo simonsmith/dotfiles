@@ -25,6 +25,9 @@ install_global_npm_package() {
   fi
 }
 
+# Switch to latest 2.x npm
+npm i -g npm@2.14.15
+
 install_global_npm_package 'babel'
 install_global_npm_package 'bower'
 install_global_npm_package 'caniuse-cmd'
