@@ -22,6 +22,7 @@ install_cask 'torbrowser'
 # Cloud
 install_cask 'cloud'
 install_cask 'dropbox'
+install_cask 'google-drive'
 
 # Comms
 install_cask 'google-hangouts'
