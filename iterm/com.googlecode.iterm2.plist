@@ -375,6 +375,10 @@
 	<false/>
 	<key>FlashTabBarInFullscreen</key>
 	<false/>
+	<key>HideMenuBarInFullscreen</key>
+	<true/>
+	<key>HideScrollbar</key>
+	<true/>
 	<key>HideTab</key>
 	<true/>
 	<key>JobName</key>
@@ -420,11 +424,11 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>845 110 769 385 0 0 1680 1027 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>269 590 606 456 0 0 1680 1050 </string>
+	<string>742 1204 606 456 0 0 3008 1669 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>1194 976 620 392 0 0 3008 1692 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 1680 1050 0 0 1680 1027 </string>
+	<string>0 16 1498 1653 0 0 3008 1669 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>409 0 1680 1046 0 0 1680 1027 </string>
 	<key>NeverWarnAboutMeta</key>
@@ -1239,9 +1243,13 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2015-12-20T22:57:39Z</date>
+	<date>2016-01-10T13:24:11Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
+	<key>ShowFullScreenTabBar</key>
+	<true/>
+	<key>ShowPaneTitles</key>
+	<true/>
 	<key>TabStyle</key>
 	<integer>1</integer>
 	<key>UseBorder</key>
@@ -1251,7 +1259,7 @@
 	<key>WindowNumber</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>2.9.20151111</string>
+	<string>2.9.20160102</string>
 	<key>kCommandHistoryHasEverBeenUsed</key>
 	<true/>
 </dict>
