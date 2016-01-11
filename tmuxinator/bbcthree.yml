@@ -10,6 +10,11 @@ windows:
   - git:
     - cd client
     - git status
+  - gulp:
+    - cd client
+    - gulp css
+    - gulp webpack
+    - gulp watch
   - tests:
     - cd client
   - node:
@@ -22,11 +27,6 @@ windows:
         - watch:
           - cd server
           - webpack --watch
-  - gulp:
-    - cd client
-    - gulp css
-    - gulp webpack
-    - gulp watch
   - redis:
     - redis-cli shutdown
     - redis-server ~/redis.conf
