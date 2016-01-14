@@ -540,7 +540,7 @@ if has("autocmd")
   autocmd VimResized * wincmd =
 
   " Override some syntaxes so things look better
-  autocmd BufNewFile,BufRead *.html set syntax=html
+  autocmd BufNewFile,BufRead *.html set syntax=jinja
   autocmd BufNewFile,BufRead *.css set syntax=scss
 
   " Wrap text and turn on spell for markdown files
