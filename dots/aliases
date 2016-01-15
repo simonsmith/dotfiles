@@ -15,12 +15,14 @@ alias cask="brew cask"
 alias l="exa -lbha --git"
 alias t="exa -Ta"
 
-
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
 
 # Gzip-enabled `curl`
 alias gurl='curl --compressed'
+
+# Screensaver
+alias ss='open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app'
 
 # Get week number
 alias week='date +%V'
