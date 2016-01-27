@@ -2,7 +2,7 @@ module.exports = {
   'ecmaFeatures': {
     'arrowFunctions': true,
     'blockBindings': true,
-    'classes': false,
+    'classes': true,
     'defaultParams': true,
     'destructuring': true,
     'forOf': true,
