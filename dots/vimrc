@@ -167,10 +167,6 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
-" gitgutter
-let g:gitgutter_realtime = 100
-let g:gitgutter_eager = 100
-
 " The Silver Searcher
 if executable('ag')
   " Use ag over grep
@@ -281,7 +277,7 @@ set shiftwidth=2
 
 " This is set low so that gitgutter updates reasonably quickly
 " https://github.com/airblade/vim-gitgutter#when-are-the-signs-updated
-set updatetime=650
+set updatetime=300
 
 " Don't wrap lines
 set nowrap
