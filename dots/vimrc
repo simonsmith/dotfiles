@@ -508,6 +508,12 @@ nnoremap <silent> <leader>sw :call WindowSwap#EasyWindowSwap()<CR>
 " present on initial load
 nmap <leader>ig :IndentGuidesToggle<cr>
 
+" Tabs
+nnoremap th :tabprev<CR>
+nnoremap tl :tabnext<CR>
+nnoremap tn :tabnew<CR>
+nnoremap td :tabclose<CR>
+
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
 
