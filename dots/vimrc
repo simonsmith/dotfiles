@@ -153,7 +153,7 @@ let NERDTreeMouseMode = 2
 let NERDTreeShowHidden = 1
 
 " fzf
-let g:fzf_height = '20%' " Set height to something smaller
+let g:fzf_height = '30%'
 
 " Window swap
 let g:windowswap_map_keys = 0 " prevent default bindings
