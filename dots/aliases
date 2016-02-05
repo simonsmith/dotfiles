@@ -12,10 +12,10 @@ alias art="php artisan"
 alias cask="brew cask"
 
 # npm
-alias ni='pnpm install'
-alias nis='pnpm install --save'
-alias nid='pnpm install --save-dev'
-alias nig='pnpm install --global'
+alias ni='npm install'
+alias nis='npm install --save'
+alias nid='npm install --save-dev'
+alias nig='npm install --global'
 alias nt='npm test'
 alias nit='npm install && npm test'
 alias nk='npm link'
