@@ -9,6 +9,7 @@ module.exports = {
     'generators': true,
     'jsx': false,
     'modules': true,
+    'experimentalObjectRestSpread': true,
     'objectLiteralComputedProperties': true,
     'objectLiteralDuplicateProperties': false,
     'objectLiteralShorthandMethods': true,
