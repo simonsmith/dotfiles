@@ -468,6 +468,9 @@ nnoremap <Leader>q :Bdelete<cr>
 " UndoTree
 nnoremap <f5> :UndotreeToggle<cr>
 
+" Change to the working directory of current file
+nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
+
 " Clear search (highlight)
 nnoremap <silent> <leader>k :noh<cr>
 
