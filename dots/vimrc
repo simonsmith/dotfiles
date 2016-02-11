@@ -48,6 +48,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'sjl/vitality.vim'
 Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 Plug 'regedarek/ZoomWin'
+Plug 'airblade/vim-rooter'
 
 " Refactoring
 Plug 'terryma/vim-multiple-cursors'
@@ -71,6 +72,10 @@ Plug 'mattn/emmet-vim'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
+
+" Tabs
+Plug 'gcmt/taboo.vim'
+Plug 'bling/vim-bufferline'
 
 " Snippets
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
@@ -123,6 +128,12 @@ let g:EasyMotion_smartcase = 1
 
 " Allow JSX in normal JS files
 let g:jsx_ext_required = 0
+
+" Taboo
+let g:taboo_tabline = 0 " Let airline handle it all
+let g:taboo_renamed_tab_format = '%l%m'
+
+let g:bufferline_echo = 0 " Display buffers in the statusline
 
 " Syntastic
 set statusline+=%#warningmsg#
@@ -186,6 +197,7 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tmuxline#enabled = 0
 let g:airline#extensions#tabline#enabled = 1 " Enable the list of buffers
 let g:airline#extensions#tabline#fnamemod = ':t' " Show just the filename
+let g:airline#extensions#tabline#tab_nr_type = 1 " Show tab number
 
 " vim-signature
 let g:SignatureMap = {
@@ -468,9 +480,6 @@ nnoremap <Leader>q :Bdelete<cr>
 " UndoTree
 nnoremap <f5> :UndotreeToggle<cr>
 
-" Change to the working directory of current file
-nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
-
 " Clear search (highlight)
 nnoremap <silent> <leader>k :noh<cr>
 
@@ -516,6 +525,8 @@ nnoremap th :tabprev<CR>
 nnoremap tl :tabnext<CR>
 nnoremap tn :tabnew<CR>
 nnoremap td :tabclose<CR>
+nnoremap to :TabooOpen<space>
+nnoremap tr :TabooRename<space>
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
