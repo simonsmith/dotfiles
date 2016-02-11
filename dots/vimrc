@@ -261,6 +261,9 @@ set history=1000
 " changes causes files to be hidden instead of closed
 set hidden
 
+" Allow tab names to be remembered in sessions
+set sessionoptions+=tabpages,globals
+
 " Briefly move the cursor to the matching brace
 set showmatch
 
