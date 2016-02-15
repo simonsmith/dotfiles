@@ -18,6 +18,12 @@ Clone dotfiles to home directory
 git clone https://github.com/simonsmith/dotfiles.git
 ```
 
+If permissions are not set (they should be) then do it manually
+
+```
+chmod u+x ./install.sh ./scripts/*.sh
+```
+
 ## Install
 
 Set OS X defaults:
