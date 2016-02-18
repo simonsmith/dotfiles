@@ -95,7 +95,6 @@ Plug 'pangloss/vim-javascript'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'mxw/vim-jsx'
 Plug 'mattn/webapi-vim'
-Plug 'jbgutierrez/vim-babel'
 
 call plug#end()
 
