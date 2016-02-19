@@ -1,4 +1,4 @@
-node_install_version=5.4.0
+node_install_version=5.6.0
 
 log "Installing nvm ..."
 if [ ! -s "$NVM_DIR/nvm.sh" ] ; then
