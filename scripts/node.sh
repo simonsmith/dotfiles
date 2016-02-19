@@ -12,10 +12,10 @@ else
   log "nvm already installed ..."
 fi
 
-log "Installing npm global packages ..."
+log "Installing npm 2.14.15 ..."
+npm i -g npm@2.14.15
 
 npm_packages="$(npm list -g --depth=0)"
-
 install_global_npm_package() {
   if echo $npm_packages | grep $1@ > /dev/null 2>&1; then
     log "Already have %s installed. Skipping ..." "$1"
@@ -25,8 +25,7 @@ install_global_npm_package() {
   fi
 }
 
-# Switch to latest 2.x npm
-npm i -g npm@2.14.15
+log "Installing npm global packages ..."
 
 install_global_npm_package 'babel'
 install_global_npm_package 'bower'
