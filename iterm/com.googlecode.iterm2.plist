@@ -422,15 +422,15 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame NSFontPanel</key>
-	<string>845 110 769 385 0 0 1680 1027 </string>
+	<string>678 110 936 426 0 0 1680 1027 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>742 1204 606 456 0 0 3008 1669 </string>
+	<string>269 593 606 456 0 0 1680 1050 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>1194 976 620 392 0 0 3008 1692 </string>
+	<string>970 787 620 392 0 0 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 16 1498 1653 0 0 3008 1669 </string>
+	<string>0 0 1680 1050 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>409 0 1680 1046 0 0 1680 1027 </string>
+	<string>339 168 570 452 0 0 1680 1027 </string>
 	<key>NeverWarnAboutMeta</key>
 	<true/>
 	<key>NeverWarnAboutMeta_selection</key>
@@ -1089,7 +1089,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>DroidSansMonoForPowerline 14</string>
+			<string>Hack-Regular 14</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -1177,22 +1177,12 @@
 			<string>/Users/simonsmith</string>
 		</dict>
 	</array>
-	<key>NoSyncDoNotWarnBeforeMultilinePaste</key>
-	<true/>
-	<key>NoSyncDoNotWarnBeforeMultilinePaste_selection</key>
-	<integer>0</integer>
-	<key>NoSyncLastTipTime</key>
-	<real>463609011.740502</real>
-	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
-	<true/>
-	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
-	<integer>0</integer>
-	<key>NoSyncSuppressAnnyoingBellOffer</key>
+	<key>NoSyncPermissionToShowTip</key>
+	<false/>
+	<key>NoSyncSilenceAnnoyingBellAutomatically</key>
 	<true/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
-	<real>465494367.15984899</real>
-	<key>NoSyncTipsDisabled</key>
-	<true/>
+	<real>476017767.57082897</real>
 	<key>OpenArrangementAtStartup</key>
 	<false/>
 	<key>OpenNoWindowsAtStartup</key>
@@ -1243,7 +1233,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-01-10T13:24:11Z</date>
+	<date>2016-02-20T13:13:26Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
@@ -1259,7 +1249,7 @@
 	<key>WindowNumber</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>2.9.20160102</string>
+	<string>2.9.20160206</string>
 	<key>kCommandHistoryHasEverBeenUsed</key>
 	<true/>
 </dict>
