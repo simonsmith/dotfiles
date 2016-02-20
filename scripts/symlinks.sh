@@ -16,6 +16,7 @@ symlink_dotfile aliases
 symlink_dotfile caniuse.json
 symlink_dotfile curlrc
 symlink_dotfile editorconfig
+symlink_dotfile honukai.zsh-theme
 symlink_dotfile eslintrc
 symlink_dotfile functions
 symlink_dotfile gitconfig

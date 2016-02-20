@@ -20,8 +20,6 @@ if ! zgen saved; then
   zgen load zsh-users/zsh-completions src
   zgen load zsh-users/zsh-syntax-highlighting
 
-  zgen load caiogondim/bullet-train-oh-my-zsh-theme bullet-train
-
   zgen save
 fi
 
@@ -33,10 +31,6 @@ unset file
 
 # Exports
 # ---------------------------------------------------------------
-
-# Theme
-export BULLETTRAIN_RUBY_SHOW=false
-export BULLETTRAIN_NVM_SHOW=true
 
 # Make vim the default editor
 export EDITOR="vim"
@@ -116,6 +110,12 @@ export PATH="$PATH:$GOPATH/bin"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
+# Theme
+# https://github.com/oskarkrawczyk/honukai-iterm-zsh
+# ---------------------------------------------------------------
+
+[ -s "$HOME/.honukai.zsh-theme" ] && source "$HOME/.honukai.zsh-theme"
 
 # Misc
 # ---------------------------------------------------------------
