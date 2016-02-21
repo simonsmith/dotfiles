@@ -118,8 +118,6 @@ let g:session_autoload = 'no'
 
 " Easymotion
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
-" Jump to anywhere you want with minimal keystrokes, with just one key binding.
-nmap ss <Plug>(easymotion-s)
 " Turn on case insensitive feature
 let g:EasyMotion_smartcase = 1
 
@@ -506,6 +504,15 @@ nmap <cr> o<Esc>
 
 " NERD tree
 nmap <leader>t :NERDTreeFind<cr>
+
+" Easymotion
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+nmap ss <Plug>(easymotion-s)
+" Move in directions
+map <Leader>l <Plug>(easymotion-lineforward)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map <Leader>h <Plug>(easymotion-linebackward)
 
 " fzf
 nnoremap <c-p> :FZF<cr>
