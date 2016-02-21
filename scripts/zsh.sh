@@ -25,3 +25,14 @@ if [ ! -f $HOME/zgen/zgen.zsh ]; then
 else
   log "zgen is already installed ..."
 fi
+
+# Install zsh-git-prompt
+# https://github.com/olivierverdier/zsh-git-prompt
+if [ ! -d $HOME/zsh-git-prompt ]; then
+  log "Installing zsh-git-prompt ..."
+  pushd ~
+  git clone https://github.com/olivierverdier/zsh-git-prompt.git
+  popd
+else
+  log "zsh-git-prompt already installed ..."
+fi
