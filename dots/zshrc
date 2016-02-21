@@ -115,6 +115,7 @@ export NVM_DIR="$HOME/.nvm"
 # https://github.com/oskarkrawczyk/honukai-iterm-zsh
 # ---------------------------------------------------------------
 
+[ -s "$HOME/zsh-git-prompt/zshrc.sh" ] && source "$HOME/zsh-git-prompt/zshrc.sh"
 [ -s "$HOME/.honukai.zsh-theme" ] && source "$HOME/.honukai.zsh-theme"
 
 # Misc
