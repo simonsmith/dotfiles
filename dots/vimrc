@@ -52,7 +52,6 @@ Plug 'regedarek/ZoomWin'
 Plug 'airblade/vim-rooter'
 
 " Refactoring
-Plug 'terryma/vim-multiple-cursors'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'tpope/vim-surround'
 
