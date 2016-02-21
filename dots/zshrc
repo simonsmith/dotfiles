@@ -36,7 +36,7 @@ unset file
 export EDITOR="vim"
 
 # vi mode
-export MODE_INDICATOR="******** [NORMAL] ********"
+export MODE_INDICATOR="[NORMAL]"
 bindkey '^r' history-incremental-search-backward
 
 # LESS
