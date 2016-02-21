@@ -42,6 +42,7 @@ Plug 'tpope/vim-repeat'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-commentary'
 Plug 'kshenoy/vim-signature'
+Plug 'wellle/targets.vim'
 
 " General
 Plug 'editorconfig/editorconfig-vim'
