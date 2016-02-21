@@ -52,7 +52,6 @@ Plug 'airblade/vim-rooter'
 
 " Refactoring
 Plug 'terryma/vim-multiple-cursors'
-Plug 'PeterRincker/vim-argumentative'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'tpope/vim-surround'
 
@@ -94,7 +93,6 @@ Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'mxw/vim-jsx'
-Plug 'mattn/webapi-vim'
 
 call plug#end()
 
