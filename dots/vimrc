@@ -312,6 +312,13 @@ set splitright
 set hlsearch
 set incsearch
 
+" Ignore case of searches
+set ignorecase
+
+" If a pattern contains an uppercase letter
+" it is case sensitive, otherwise, it is not
+set smartcase
+
 " Highlight tailing whitespace
 set list listchars=tab:\ \ ,trail:·
 
@@ -395,12 +402,6 @@ set secure
 " Show “invisible” characters
 set lcs=tab:▸\ ,trail:·,nbsp:_
 set list
-
-" Ignore case of searches
-set ignorecase
-
-" Case sensitive when uppercase is present
-set smartcase
 
 " Always show status line
 set laststatus=2
