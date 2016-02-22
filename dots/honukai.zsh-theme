@@ -34,7 +34,7 @@ ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[blue]%}◒"
 
 # Prompt format: \n # DIRECTORY on BRANCH STATE [TIME] \n $
 PROMPT="
-%{$terminfo[bold]$fg[green]%}node $(nvm current) \
+%{$fg[cyan]%}%n \
 %{$fg[white]%}in \
 %{$terminfo[bold]$fg[yellow]%}${current_dir}%{$reset_color%}\
 ${git_info} \
