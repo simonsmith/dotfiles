@@ -2,7 +2,7 @@
 
 Mac config and setup steps.
 
-![](http://f.cl.ly/items/3g0U1g430g0D13073f1o/Screen%20Shot%202016-02-21%20at%2010.25.44.png)
+![](http://cl.ly/fD1z/Screen%20Shot%202016-02-22%20at%2009.39.03.png)
 
 ## First steps
 
