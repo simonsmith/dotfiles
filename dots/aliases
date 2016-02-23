@@ -43,6 +43,8 @@ alias gdtc='git difftool --cached'
 alias gac='git add . && git commit -v'
 alias gdc='git diff --cached'
 alias gh='git hub'
+alias gta='git tag -m '' -a'
+alias gpo='git push origin'
 alias gs='scmpuff_status'
 alias gunwip='git log -1 | grep -q -c "\-\-wip\-\-" && git reset HEAD~1'
 
