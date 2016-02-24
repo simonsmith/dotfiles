@@ -25,6 +25,9 @@ alias nf='npm cache clean && rm -rf node_modules && npm install'
 # https://github.com/ogham/exa
 alias l="exa -lbha --git"
 alias t="exa -Ta"
+alias t1="exa -Ta -L 1"
+alias t2="exa -Ta -L 2"
+alias t3="exa -Ta -L 3"
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
