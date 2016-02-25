@@ -513,14 +513,11 @@ nmap <leader>t :NERDTreeFind<cr>
 " Jump to anywhere you want with minimal keystrokes, with just one key binding.
 nmap ss <Plug>(easymotion-s)
 
-" Move in directions
-map <leader>j <Plug>(easymotion-j)
-map <leader>k <Plug>(easymotion-k)
-
 " fzf
 nnoremap <c-p> :FZF<cr>
 nnoremap <c-i> :Buffers<cr>
 nnoremap <c-g> :Commits<cr>
+nmap <silent> <BS> :History<CR>
 nnoremap q/ :History/<cr>
 nnoremap <silent> <leader>; :BLines<CR>
 nnoremap <silent> <leader>. :Lines<CR>
