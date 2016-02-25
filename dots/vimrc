@@ -521,6 +521,12 @@ map <leader>k <Plug>(easymotion-k)
 nnoremap <c-p> :FZF<cr>
 nnoremap <c-i> :Buffers<cr>
 nnoremap <c-g> :Commits<cr>
+nnoremap q/ :History/<cr>
+nnoremap <silent> <leader>; :BLines<CR>
+nnoremap <silent> <leader>. :Lines<CR>
+" Stop the annoying accidental command history press, and use fzf
+nnoremap q' :History:<cr>
+nnoremap q: <nop>
 
 " Window swap
 nnoremap <silent> <leader>sw :call WindowSwap#EasyWindowSwap()<CR>
