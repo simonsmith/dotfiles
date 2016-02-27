@@ -46,7 +46,8 @@ When complete, open new terminal window to trigger `zgen` plugin downloads.
 
 * Open Vim and `:PlugInstall` to install plugins.
 
-* Setup [YCM](https://github.com/Valloric/YouCompleteMe#mac-os-x-installation) and [Tern](https://github.com/ternjs/tern_for_vim)
+* Setup [YCM](https://github.com/Valloric/YouCompleteMe#mac-os-x-installation)
+  and [Tern](https://github.com/ternjs/tern_for_vim)
 
 * Add private dotfiles to home directory (`.extra` and `.gitconfig.local`).
 
