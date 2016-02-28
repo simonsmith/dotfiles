@@ -7,8 +7,6 @@ alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias h="history"
 alias j="jobs"
-alias sites="cd ~/Sites"
-alias art="php artisan"
 alias cask="brew cask"
 
 # npm
