@@ -22,8 +22,10 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'google/vim-searchindex'
 
-" Nerdtree
-Plug 'scrooloose/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
+" File management
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tpope/vim-vinegar'
 
 " Buffers
 Plug 'schickling/vim-bufonly'
@@ -162,9 +164,8 @@ let g:syntastic_javascript_checkers = ['eslint']
 " NERD tree
 let g:NERDTreeWinSize = 40
 let NERDTreeIgnore = ['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
-let NERDTreeChDirMode = 0
-let NERDTreeMouseMode = 2
 let NERDTreeShowHidden = 1
+let NERDTreeHijackNetrw = 1
 
 " fzf
 let g:fzf_height = '30%'
