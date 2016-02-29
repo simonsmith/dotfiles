@@ -474,8 +474,8 @@ noremap cp yap<S-}>p
 " Make `Y` work from the cursor to the end of line
 nnoremap Y y$
 
-" Reformat whole file
-nnoremap g= gg=G
+" Reformat whole file and move back to original position
+nnoremap g= gg=G``
 
 " Split
 noremap <leader>h :<C-u>split<cr>
