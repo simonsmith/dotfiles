@@ -29,7 +29,6 @@ Plug 'tpope/vim-vinegar'
 
 " Buffers
 Plug 'schickling/vim-bufonly'
-Plug 'jlanzarotta/bufexplorer'
 Plug 'moll/vim-bbye'
 
 " Language pack
@@ -216,9 +215,6 @@ let g:tmuxline_preset = {
 
 " JS lib syntax
 let g:used_javascript_libs = 'underscore,jquery,react,requirejs,jasmine,chai'
-
-" Buf explorer
-let g:bufExplorerShowNoName = 1 " Show buffers with no name
 
 "  Vim config
 " -----------------------------------------------------------------------------
@@ -495,7 +491,6 @@ nnoremap <silent> <leader>k :noh<cr>
 " Open new buffers
 " Single window
 nnoremap <leader>nb :enew<cr>
-nnoremap <leader><space> :BufExplorer<cr>
 
 " Cycle through location list
 nnoremap [l :lprev<cr>
