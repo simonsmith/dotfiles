@@ -187,7 +187,7 @@ let delimitMate_expand_cr = 1
 
 " Bufferline
 let g:bufferline_echo = 0 " Display buffers in the statusline
-let g:bufferline_show_bufnr = 0
+let g:bufferline_show_bufnr = 0 " Hide buffer number
 
 " vim-airline
 let g:airline_theme = 'base16_summerfruit'
