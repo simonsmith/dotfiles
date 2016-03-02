@@ -447,6 +447,7 @@ set sidescroll=1
 " Remap annoying mistakes to something useful
 cnoreabbrev W! w!
 cnoreabbrev Q! q!
+cnoreabbrev q: :q
 cnoreabbrev Qall! qall!
 cnoreabbrev Wq wq
 cnoreabbrev Wa wa
@@ -523,13 +524,9 @@ nmap ss <Plug>(easymotion-s)
 nnoremap <c-p> :FZF<cr>
 nnoremap <c-i> :Buffers<cr>
 nnoremap <c-g> :BCommits<cr>
-nmap <silent> <BS> :History<CR>
-nnoremap q/ :History/<cr>
 nnoremap <silent> <leader>; :BLines<CR>
 nnoremap <silent> <leader>. :Lines<CR>
-" Stop the annoying accidental command history press, and use fzf
-nnoremap q' :History:<cr>
-nnoremap q: <nop>
+nmap <silent> <BS> :History:<CR>
 
 " IndentGuides
 " Add this here because this plugin is loaded ondemand so this mapping is not
