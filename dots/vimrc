@@ -521,7 +521,7 @@ nmap ss <Plug>(easymotion-s)
 " fzf
 nnoremap <c-p> :FZF<cr>
 nnoremap <c-i> :Buffers<cr>
-nnoremap <c-g> :Commits<cr>
+nnoremap <c-g> :BCommits<cr>
 nmap <silent> <BS> :History<CR>
 nnoremap q/ :History/<cr>
 nnoremap <silent> <leader>; :BLines<CR>
