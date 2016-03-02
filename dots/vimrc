@@ -66,13 +66,13 @@ Plug 'ap/vim-css-color', {'for': 'css'}
 Plug 'mattn/emmet-vim'
 
 " Status bar
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'bling/vim-bufferline'
 Plug 'edkolev/tmuxline.vim'
 
 " Tabs
 Plug 'gcmt/taboo.vim'
-Plug 'bling/vim-bufferline'
 
 " Snippets
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
