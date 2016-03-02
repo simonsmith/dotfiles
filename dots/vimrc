@@ -190,7 +190,7 @@ let g:bufferline_echo = 0 " Display buffers in the statusline
 let g:bufferline_show_bufnr = 0
 
 " vim-airline
-let g:airline_theme = 'base16_eighties'
+let g:airline_theme = 'base16_summerfruit'
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline_powerline_fonts = 1
