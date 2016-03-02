@@ -132,8 +132,6 @@ let g:jsx_ext_required = 0
 let g:taboo_tabline = 0 " Let airline handle it all
 let g:taboo_renamed_tab_format = '%l%m'
 
-let g:bufferline_echo = 0 " Display buffers in the statusline
-
 " Syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -190,6 +188,10 @@ endif
 
 " delimitMate
 let delimitMate_expand_cr = 1
+
+" Bufferline
+let g:bufferline_echo = 0 " Display buffers in the statusline
+let g:bufferline_show_bufnr = 0
 
 " vim-airline
 let g:airline_theme = 'base16_eighties'
