@@ -36,7 +36,6 @@ Plug 'sheerun/vim-polyglot'
 
 " Editing
 Plug 'Raimondi/delimitMate'
-Plug 'easymotion/vim-easymotion'
 Plug 'nathanaelkane/vim-indent-guides', {'on': 'IndentGuidesToggle'}
 Plug 'tpope/vim-repeat'
 Plug 'scrooloose/syntastic'
@@ -117,11 +116,6 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 " Sessions
 let g:session_autosave = 'yes'
 let g:session_autoload = 'no'
-
-" Easymotion
-let g:EasyMotion_do_mapping = 0 " Disable default mappings
-" Turn on case insensitive feature
-let g:EasyMotion_smartcase = 1
 
 " Allow JSX in normal JS files
 let g:jsx_ext_required = 0
@@ -510,10 +504,6 @@ nmap <cr> o<Esc>
 
 " NERD tree
 nmap <leader>t :NERDTreeFind<cr>
-
-" Easymotion
-" Jump to anywhere you want with minimal keystrokes, with just one key binding.
-nmap ss <Plug>(easymotion-s)
 
 " fzf
 nnoremap <c-p> :FZF<cr>
