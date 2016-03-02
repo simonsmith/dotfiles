@@ -192,7 +192,7 @@ endif
 let delimitMate_expand_cr = 1
 
 " vim-airline
-let g:airline_theme = 'wombat'
+let g:airline_theme = 'base16_chalk'
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline_powerline_fonts = 1
@@ -210,7 +210,7 @@ let g:tmuxline_preset = {
       \'a'    : '#S',
       \'win'  : '#I #W',
       \'cwin' : '#I #W',
-      \'y'    : ['#(tmux-mem-cpu-load --interval 2)', '#(ipconfig getifaddr en0)', '#(battery -p -t)'],
+      \'y'    : ['#(tmux-mem-cpu-load --interval 2)', '#(ipconfig getifaddr en0)', '#(battery -p -t) '],
       \'z'    : ['%R', '%d-%m-%Y'],
       \'options' : {'status-justify' : 'left'}}
 
