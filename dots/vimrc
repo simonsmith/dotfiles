@@ -519,8 +519,7 @@ nmap ss <Plug>(easymotion-s)
 nnoremap <c-p> :FZF<cr>
 nnoremap <c-i> :Buffers<cr>
 nnoremap <c-g> :BCommits<cr>
-nnoremap <silent> <leader>; :BLines<CR>
-nnoremap <silent> <leader>. :Lines<CR>
+nnoremap <leader><space> :Ag<cr>
 nmap <silent> <BS> :History:<CR>
 
 " IndentGuides
