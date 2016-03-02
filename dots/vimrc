@@ -40,7 +40,6 @@ Plug 'nathanaelkane/vim-indent-guides', {'on': 'IndentGuidesToggle'}
 Plug 'tpope/vim-repeat'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-commentary'
-Plug 'kshenoy/vim-signature'
 Plug 'wellle/targets.vim'
 
 " General
@@ -192,11 +191,6 @@ let g:airline#extensions#tmuxline#enabled = 0
 let g:airline#extensions#tabline#enabled = 1 " Enable the list of buffers
 let g:airline#extensions#tabline#fnamemod = ':t' " Show just the filename
 let g:airline#extensions#tabline#tab_nr_type = 1 " Show tab number
-
-" vim-signature
-let g:SignatureMap = {
-      \ 'Leader': "gm",
-      \ }
 
 " Tmuxline
 let g:tmuxline_preset = {
