@@ -559,10 +559,23 @@ endfunction
 
 noremap <leader>ss :call StripWhitespace()<cr>
 
+" Allow options to be passed to FZF :Ag
+" Probably quite hacky until a better solution appears
+" https://github.com/junegunn/fzf.vim/issues/92#issuecomment-191248596
+function! s:ag_with_opts(arg, bang)
+  let tokens  = split(a:arg)
+  let ag_opts = join(filter(copy(tokens), 'v:val =~ "^-"'))
+  let query   = join(filter(copy(tokens), 'v:val !~ "^-"'))
+  call fzf#vim#ag(query, '--hidden --ignore .git', a:bang ? {} : {'down': '40%'})
+endfunction
+
 " Automatic commands
 if has("autocmd")
   " Resize splits when vim changes size (like with tmux opening/closing)
   autocmd VimResized * wincmd =
+
+  " fzf
+  autocmd VimEnter * command! -nargs=* -bang Ag call s:ag_with_opts(<q-args>, <bang>0)
 
   " Override some syntaxes so things look better
   autocmd BufNewFile,BufRead *.html set syntax=jinja
