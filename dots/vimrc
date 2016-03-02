@@ -31,7 +31,6 @@ Plug 'tpope/vim-vinegar'
 Plug 'schickling/vim-bufonly'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'moll/vim-bbye'
-Plug 'wesQ3/vim-windowswap'
 
 " Language pack
 Plug 'sheerun/vim-polyglot'
@@ -165,9 +164,6 @@ let NERDTreeHijackNetrw = 1
 
 " fzf
 let g:fzf_height = '30%'
-
-" Window swap
-let g:windowswap_map_keys = 0 " prevent default bindings
 
 " YouCompleteMe
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -533,9 +529,6 @@ nnoremap <silent> <leader>. :Lines<CR>
 " Stop the annoying accidental command history press, and use fzf
 nnoremap q' :History:<cr>
 nnoremap q: <nop>
-
-" Window swap
-nnoremap <silent> <leader>sw :call WindowSwap#EasyWindowSwap()<CR>
 
 " IndentGuides
 " Add this here because this plugin is loaded ondemand so this mapping is not
