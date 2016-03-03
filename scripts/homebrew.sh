@@ -82,6 +82,7 @@ brew_install_or_upgrade 'spark'
 
 # git
 brew_install_or_upgrade 'git'
+brew_install_or_upgrade 'diff-so-fancy'
 
 # Install more recent versions of some OS X tools.
 brew tap homebrew/dupes
