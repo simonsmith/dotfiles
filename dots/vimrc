@@ -153,6 +153,7 @@ let g:NERDTreeWinSize = 40
 let NERDTreeIgnore = ['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
 let NERDTreeShowHidden = 1
 let NERDTreeHijackNetrw = 1
+let NERDTreeAutoDeleteBuffer = 1
 
 " fzf
 let g:fzf_height = '30%'
