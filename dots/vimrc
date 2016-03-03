@@ -38,8 +38,9 @@ Plug 'sheerun/vim-polyglot'
 Plug 'Raimondi/delimitMate'
 Plug 'nathanaelkane/vim-indent-guides', {'on': 'IndentGuidesToggle'}
 Plug 'tpope/vim-repeat'
-Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-commentary'
+Plug 'scrooloose/syntastic'
 
 " Text objects
 Plug 'wellle/targets.vim'
@@ -490,17 +491,9 @@ nnoremap <silent> <leader>k :noh<cr>
 " Single window
 nnoremap <leader>nb :enew<cr>
 
-" Cycle through location list
-nnoremap [l :lprev<cr>
-nnoremap ]l :lnext<cr>
-
 " Automatically 'gv' (go to previously selected visual block) after indenting or unindenting.
 vnoremap < <gv
 vnoremap > >gv
-
-" Cycle through buffers
-nnoremap <leader>] :bnext<cr>
-nnoremap <leader>[ :bprev<cr>
 
 " Press enter for newline without insert
 nmap <S-Enter> O<Esc>
