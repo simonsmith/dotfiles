@@ -95,9 +95,13 @@ export FZF_TMUX_HEIGHT=30%
 # PATH
 # ---------------------------------------------------------------
 
+# Default path
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
+# rbenv
 export PATH="$HOME/.rbenv/shims:$PATH"
+# Allow any custom binaries
 export PATH="$HOME/bin:$PATH"
+# Add brew coreutils
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 
 # GO
