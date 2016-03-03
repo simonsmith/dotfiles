@@ -562,6 +562,12 @@ if has("autocmd")
   " Resize splits when vim changes size (like with tmux opening/closing)
   autocmd VimResized * wincmd =
 
+  " Open help in a vertical split
+  augroup vimrc_help
+    autocmd!
+    autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | endif
+  augroup END
+
   " fzf
   autocmd VimEnter * command! -nargs=* -bang Ag call s:ag_with_opts(<q-args>, <bang>0)
 
