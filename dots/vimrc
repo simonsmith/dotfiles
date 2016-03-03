@@ -472,7 +472,7 @@ nnoremap Y y$
 nnoremap g= gg=G``
 
 " Split
-noremap <leader>h :<C-u>split<cr>
+noremap <leader>x :<C-u>split<cr>
 noremap <leader>v :<C-u>vsplit<cr>
 
 " Spellcheck
