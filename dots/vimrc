@@ -64,6 +64,7 @@ Plug 'xolox/vim-session'
 " HTML/CSS
 Plug 'ap/vim-css-color', {'for': 'css'}
 Plug 'mattn/emmet-vim'
+Plug 'alvan/vim-closetag'
 
 " Status bar
 Plug 'vim-airline/vim-airline'
