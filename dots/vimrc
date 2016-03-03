@@ -40,6 +40,8 @@ Plug 'nathanaelkane/vim-indent-guides', {'on': 'IndentGuidesToggle'}
 Plug 'tpope/vim-repeat'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-commentary'
+
+" Text objects
 Plug 'wellle/targets.vim'
 
 " General
