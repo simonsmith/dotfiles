@@ -15,8 +15,6 @@ windows:
     - gulp css
     - gulp webpack
     - gulp watch
-  - tests:
-    - cd client
   - node:
       layout: even-horizontal
       panes:
@@ -27,6 +25,8 @@ windows:
         - watch:
           - cd server
           - webpack --watch
+  - tests:
+    - cd client
   - redis:
     - redis-cli shutdown
     - redis-server ~/redis.conf
