@@ -50,6 +50,7 @@ alias gs='scmpuff_status'
 # Override some oh-my-zsh aliases
 alias gunwip='git log -1 | grep -q -c "\-\-wip\-\-" && git reset HEAD~1'
 alias glog='fshow'
+alias glg='g lg'
 
 # Stopwatch
 alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'
