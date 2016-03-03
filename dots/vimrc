@@ -160,6 +160,7 @@ let NERDTreeAutoDeleteBuffer = 1
 let g:fzf_height = '30%'
 let g:fzf_commits_log_options = '--color --graph --pretty=format:"%C(yellow)%h%Creset -%C(auto)%d%Creset %s %C(bold blue)(%cr) %Cred<%an>%Creset" --abbrev-commit'
 
+
 " YouCompleteMe
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -512,6 +513,7 @@ nnoremap <c-i> :Buffers<cr>
 nnoremap <c-g> :BCommits<cr>
 nnoremap <leader><space> :Ag<cr>
 nmap <silent> <BS> :History:<CR>
+imap <c-x><c-f> <plug>(fzf-complete-file-ag)
 
 " IndentGuides
 " Add this here because this plugin is loaded ondemand so this mapping is not
