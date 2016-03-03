@@ -84,7 +84,7 @@ Plug 'ervandew/supertab'
 
 " Git
 Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
+Plug 'mhinz/vim-signify'
 
 " JavaScript
 Plug 'othree/javascript-libraries-syntax.vim'
@@ -191,6 +191,11 @@ let g:airline#extensions#tmuxline#enabled = 0
 let g:airline#extensions#tabline#enabled = 1 " Enable the list of buffers
 let g:airline#extensions#tabline#fnamemod = ':t' " Show just the filename
 let g:airline#extensions#tabline#tab_nr_type = 1 " Show tab number
+
+" vim-signify
+let g:signify_vcs_list = ['git']
+let g:signify_update_on_focusgained = 1
+let g:signify_update_on_bufenter = 1
 
 " Tmuxline
 let g:tmuxline_preset = {
