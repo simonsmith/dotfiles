@@ -475,6 +475,9 @@ nnoremap g= gg=G``
 noremap <leader>x :<C-u>split<cr>
 noremap <leader>v :<C-u>vsplit<cr>
 
+" JSON beautifier
+nnoremap <Leader>z :%!jq '.'<CR>
+
 " Spellcheck
 map <F6> :setlocal spell!<cr>
 
