@@ -24,7 +24,7 @@ if ! zgen saved; then
 fi
 
 # Load my dotfiles after
-for file in ~/.{extra,aliases}; do
+for file in ~/.{extra,aliases,functions}; do
   [ -r "$file" ] && [ -f "$file" ] && source "$file"
 done
 unset file
