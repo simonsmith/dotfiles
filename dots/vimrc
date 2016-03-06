@@ -278,8 +278,16 @@ set autoindent
 set cino=(0,W4
 set softtabstop=2
 set shiftwidth=2
-set complete-=i
+
+" Use spaces, not tabs
+set expandtab
+
+" Use 'shiftwidth' when using `<Tab>` in front of a line.
+" By default it's used only for shift commands (`<`, `>`).
 set smarttab
+
+" Don't scan included files. The .tags file is more performant.
+set complete-=i
 
 " This is set low so that gitgutter updates reasonably quickly
 " https://github.com/airblade/vim-gitgutter#when-are-the-signs-updated
@@ -287,9 +295,6 @@ set updatetime=300
 
 " Don't wrap lines
 set nowrap
-
-" Use spaces, not tabs
-set expandtab
 
 " Keep the cursor in the same place when switching buffers
 set nostartofline
@@ -332,8 +337,8 @@ highlight SpellLocal term=underline cterm=underline
 " Enhance command-line completion
 set wildmenu
 
-" Command <Tab> completion, list matches, then longest common part, then all.
-set wildmode=list:longest,full
+" For autocompletion, complete as much as you can.
+set wildmode=longest,full
 
 " Allow cursor keys in insert mode
 set esckeys
@@ -355,7 +360,7 @@ if &term =~ '256color'
 endif
 
 " Eliminate delay when switching modes
-set timeoutlen=1000 ttimeoutlen=0
+set ttimeoutlen=0
 
 " Auto save changes before switching buffer
 set autowrite
@@ -455,18 +460,22 @@ nnoremap Y y$
 " Reformat whole file and move back to original position
 nnoremap g= gg=G``
 
+" Auto center on matched string.
+noremap n nzz
+noremap N Nzz
+
 " Split
 noremap <leader>x :<C-u>split<cr>
 noremap <leader>v :<C-u>vsplit<cr>
 
 " JSON beautifier
-nnoremap <Leader>z :%!jq '.'<cr>
+nnoremap <leader>z :%!jq '.'<cr>
 
 " Spellcheck
 map <F6> :setlocal spell!<cr>
 
 " Close buffer
-nnoremap <Leader>q :Bdelete<cr>
+nnoremap <silent> Q :Bdelete<cr>
 
 " UndoTree
 nnoremap <f5> :UndotreeToggle<cr>
