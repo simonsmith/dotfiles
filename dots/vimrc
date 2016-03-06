@@ -460,7 +460,7 @@ noremap <leader>x :<C-u>split<cr>
 noremap <leader>v :<C-u>vsplit<cr>
 
 " JSON beautifier
-nnoremap <Leader>z :%!jq '.'<CR>
+nnoremap <Leader>z :%!jq '.'<cr>
 
 " Spellcheck
 map <F6> :setlocal spell!<cr>
@@ -494,7 +494,7 @@ nnoremap <c-p> :FZF<cr>
 nnoremap <c-i> :Buffers<cr>
 nnoremap <c-g> :BCommits<cr>
 nnoremap <leader><space> :Ag<cr>
-nmap <silent> <BS> :History:<CR>
+nmap <silent> <BS> :History:<cr>
 imap <c-x><c-f> <plug>(fzf-complete-file-ag)
 
 " Allow quick edits and sourcing of vimrc
@@ -507,10 +507,10 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 nmap <leader>ig :IndentGuidesToggle<cr>
 
 " Tabs
-nnoremap th :tabprev<CR>
-nnoremap tl :tabnext<CR>
-nnoremap tn :tabnew<CR>
-nnoremap td :tabclose<CR>
+nnoremap th :tabprev<cr>
+nnoremap tl :tabnext<cr>
+nnoremap tn :tabnew<cr>
+nnoremap td :tabclose<cr>
 nnoremap to :TabooOpen<space>
 nnoremap tr :TabooRename<space>
 
