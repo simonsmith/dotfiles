@@ -500,6 +500,7 @@ nmap <leader>t :NERDTreeFind<cr>
 nnoremap <c-p> :FZF<cr>
 nnoremap <c-i> :Buffers<cr>
 nnoremap <c-g> :BCommits<cr>
+nnoremap <leader>l :BLines<cr>
 nnoremap <leader><space> :Ag<cr>
 nmap <silent> <BS> :History:<cr>
 imap <c-x><c-f> <plug>(fzf-complete-file-ag)
