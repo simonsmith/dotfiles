@@ -224,8 +224,8 @@ set noswapfile
 set nobackup
 set nowb
 
-filetype plugin on
-filetype indent on
+" Allow vim to determine the type from the file contents
+filetype plugin indent on
 
 " Allow editing of binary files
 " Must be set before expandtab
