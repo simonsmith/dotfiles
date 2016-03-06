@@ -497,6 +497,10 @@ nnoremap <leader><space> :Ag<cr>
 nmap <silent> <BS> :History:<CR>
 imap <c-x><c-f> <plug>(fzf-complete-file-ag)
 
+" Allow quick edits and sourcing of vimrc
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
 " IndentGuides
 " Add this here because this plugin is loaded ondemand so this mapping is not
 " present on initial load
