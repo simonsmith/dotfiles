@@ -120,6 +120,9 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 let g:session_autosave = 'yes'
 let g:session_autoload = 'no'
 
+" Treat <li> and <p> tags like the block tags they are
+let g:html_indent_tags = 'li\|p'
+
 " Allow JSX in normal JS files
 let g:jsx_ext_required = 0
 
@@ -162,16 +165,6 @@ let NERDTreeAutoDeleteBuffer = 1
 " fzf
 let g:fzf_height = '30%'
 let g:fzf_commits_log_options = '--color --graph --pretty=format:"%C(yellow)%h%Creset -%C(auto)%d%Creset %s %C(bold blue)(%cr) %Cred<%an>%Creset" --abbrev-commit'
-
-
-" YouCompleteMe
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
 " The Silver Searcher
 if executable('ag')
@@ -322,12 +315,6 @@ set smartcase
 " Highlight tailing whitespace
 set list listchars=tab:\ \ ,trail:·
 
-" Remember cursor position
-augroup vimrc-remember-cursor-position
-  autocmd!
-  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-augroup END
-
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
 set clipboard=unnamed
 
@@ -431,14 +418,6 @@ set showcmd
 set number
 set relativenumber
 
-" Switch between normal and relative line numbers
-" https://gist.github.com/dlo/3012145
-augroup linenumbers
-  autocmd!
-  autocmd InsertEnter * :set number norelativenumber
-  autocmd InsertLeave * :set relativenumber
-augroup END
-
 " Start scrolling before cursor gets to the edge
 set scrolloff=5
 set sidescrolloff=15
@@ -531,9 +510,6 @@ nnoremap td :tabclose<CR>
 nnoremap to :TabooOpen<space>
 nnoremap tr :TabooRename<space>
 
-" Treat <li> and <p> tags like the block tags they are
-let g:html_indent_tags = 'li\|p'
-
 " Search with Ack
 nnoremap <leader>a :Ack!<space>-Q<space>
 
@@ -577,6 +553,12 @@ if has("autocmd")
     autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | endif
   augroup END
 
+  " Remember cursor position
+  augroup vimrc-remember-cursor-position
+    autocmd!
+    autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+  augroup END
+
   " fzf
   autocmd VimEnter * command! -nargs=* -bang Ag call s:ag_with_opts(<q-args>, <bang>0)
 
@@ -597,6 +579,14 @@ if has("autocmd")
   " Allow stylesheets to autocomplete hyphenated words
   autocmd FileType css,scss,sass setlocal iskeyword+=-
 
+  " Switch between normal and relative line numbers
+  " https://gist.github.com/dlo/3012145
+  augroup linenumbers
+    autocmd!
+    autocmd InsertEnter * :set number norelativenumber
+    autocmd InsertLeave * :set relativenumber
+  augroup END
+
   " Remove whitespace on save
   autocmd BufWritePre * :%s/\s\+$//e
 
@@ -605,4 +595,13 @@ if has("autocmd")
 
   " Move to the top of a git commit
   au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+
+  " YouCompleteMe
+  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+  autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+  autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 endif
