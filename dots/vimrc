@@ -563,7 +563,8 @@ endfunction
 " Automatic commands
 if has("autocmd")
   " Resize splits when vim changes size (like with tmux opening/closing)
-  autocmd VimResized * wincmd =
+  " Disable to see if it fixes a bug
+  " autocmd VimResized * wincmd =
 
   " Open help in a vertical split
   augroup vimrc_help
