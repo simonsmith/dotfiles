@@ -1,4 +1,5 @@
 {
+  "ecmaVersion": 6,
   "libs": [
     "browser",
     "ecma5",
@@ -10,6 +11,7 @@
     "node": {},
     "doc_comment": {},
     "modules": {},
+    "lint": {},
     "es_modules": {},
     "node_resolve": {},
     "complete_strings": {},
