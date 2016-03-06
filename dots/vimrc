@@ -224,7 +224,7 @@ let mapleader = ' '
 " Theme
 colorscheme gruvbox
 set background=dark
-syntax on
+syntax enable
 
 " Turn off swapfiles
 set noswapfile
@@ -285,6 +285,8 @@ set autoindent
 set cino=(0,W4
 set softtabstop=2
 set shiftwidth=2
+set complete-=i
+set smarttab
 
 " This is set low so that gitgutter updates reasonably quickly
 " https://github.com/airblade/vim-gitgutter#when-are-the-signs-updated
@@ -354,6 +356,9 @@ set backspace=indent,eol,start
 
 " Optimize for fast terminal connections
 set ttyfast
+
+" Delete comment character when joining commented lines
+set formatoptions+=j
 
 " Fix background not filling window correctly when moving panes around with
 " tmux
@@ -434,8 +439,8 @@ augroup linenumbers
   autocmd InsertLeave * :set relativenumber
 augroup END
 
-" Start scrolling when 8 lines away from margins
-set scrolloff=8
+" Start scrolling before cursor gets to the edge
+set scrolloff=5
 set sidescrolloff=15
 set sidescroll=1
 
