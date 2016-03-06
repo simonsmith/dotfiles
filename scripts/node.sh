@@ -30,6 +30,7 @@ log "Installing npm global packages ..."
 install_global_npm_package 'babel'
 install_global_npm_package 'bower'
 install_global_npm_package 'caniuse-cmd'
+install_global_npm_package 'diff-so-fancy'
 install_global_npm_package 'eslint'
 install_global_npm_package 'gulp'
 install_global_npm_package 'http-server'
