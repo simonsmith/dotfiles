@@ -272,9 +272,10 @@ set synmaxcol=500
 " Highlight current line
 set cursorline
 
-" Various settings to control spaces and indents
+" Autoindent when starting new line, or using `o` or `O`.
 set autoindent
-set cino=(0,W4
+
+" Indent using two spaces.
 set softtabstop=2
 set shiftwidth=2
 
