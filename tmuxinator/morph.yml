@@ -1,13 +1,10 @@
 # ~/.tmuxinator/morph.yml
 
 name: morph
-root: ~/Sites/bbc/morph-renderer
+root: ~/Sites/bbc/morph-modules
 startup_window: vim
 
 windows:
   - vim:
     - vim
   - git:
-    - git status
-  - tests:
-    - nvm use 0.12.7
