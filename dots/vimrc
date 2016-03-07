@@ -528,21 +528,6 @@ nnoremap <leader>a :Ack!<space>-Q<space>
 " Replace with Qdo
 nnoremap <leader>r :Qdo<space> :%s/
 
-" vim-tmux-navigator seems to have issues with going left, so bind it
-" manually here. Other directions work fine out the box
-nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
-
-" Strip trailing whitespace (,ss)
-function! StripWhitespace()
-  let save_cursor = getpos(".")
-  let old_query = getreg('/')
-  :%s/\s\+$//e
-  call setpos('.', save_cursor)
-  call setreg('/', old_query)
-endfunction
-
-noremap <leader>ss :call StripWhitespace()<cr>
-
 " Allow options to be passed to FZF :Ag
 " Probably quite hacky until a better solution appears
 " https://github.com/junegunn/fzf.vim/issues/92#issuecomment-191248596
