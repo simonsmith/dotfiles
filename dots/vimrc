@@ -91,8 +91,6 @@ Plug 'mhinz/vim-signify'
 
 " JavaScript
 Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'pangloss/vim-javascript'
-Plug 'jelera/vim-javascript-syntax'
 Plug 'ternjs/tern_for_vim'
 Plug 'mxw/vim-jsx'
 Plug 'moll/vim-node'
