@@ -1,23 +1,10 @@
 module.exports = {
-  'ecmaFeatures': {
-    'arrowFunctions': true,
-    'blockBindings': true,
-    'classes': true,
-    'defaultParams': true,
-    'destructuring': true,
-    'forOf': true,
-    'generators': true,
-    'jsx': false,
-    'modules': true,
-    'experimentalObjectRestSpread': true,
-    'objectLiteralComputedProperties': true,
-    'objectLiteralDuplicateProperties': false,
-    'objectLiteralShorthandMethods': true,
-    'objectLiteralShorthandProperties': true,
-    'restParams': true,
-    'spread': true,
-    'superInFunctions': false,
-    'templateStrings': true
+  'parserOptions': {
+    'ecmaVersion': 6,
+    'sourceType': 'module',
+    'ecmaFeatures': {
+      'jsx': true
+    }
   },
   'rules': {
     'arrow-body-style': [2, 'as-needed'],
