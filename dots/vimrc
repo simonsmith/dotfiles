@@ -63,11 +63,6 @@ Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 
-" HTML/CSS
-Plug 'ap/vim-css-color', {'for': 'css'}
-Plug 'mattn/emmet-vim'
-Plug 'alvan/vim-closetag'
-
 " Status bar
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -88,6 +83,11 @@ Plug 'ervandew/supertab'
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
+
+" HTML/CSS
+Plug 'ap/vim-css-color', {'for': 'css'}
+Plug 'mattn/emmet-vim'
+Plug 'alvan/vim-closetag'
 
 " JavaScript
 Plug 'othree/javascript-libraries-syntax.vim'
