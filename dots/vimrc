@@ -50,6 +50,7 @@ Plug 'sjl/vitality.vim'
 Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 Plug 'regedarek/ZoomWin'
 Plug 'airblade/vim-rooter'
+Plug 'suan/vim-instant-markdown'
 
 " Refactoring
 Plug 'AndrewRadev/splitjoin.vim'
