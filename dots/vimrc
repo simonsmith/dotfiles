@@ -144,9 +144,6 @@ let g:syntastic_aggregate_errors = 1
 let g:syntastic_html_tidy_exec = 'tidy5'
 let g:syntastic_loc_list_height = 5
 
-" Rooter
-let g:rooter_patterns = ['package.json', '.git', '.git/']
-
 " Tern
 " enable keyboard shortcuts
 let g:tern_map_keys = 1

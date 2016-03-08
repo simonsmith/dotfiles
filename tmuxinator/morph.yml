@@ -6,5 +6,6 @@ startup_window: vim
 
 windows:
   - vim:
-    - vim
+    - vim --cmd "let g:rooter_patterns = ['package.json', '.git']"
   - git:
+    - nvm use 0.12.7
