@@ -2,9 +2,9 @@
   "extends": [
     "eslint:recommended",
     "./eslint/best-practice.js",
-    "./eslint/style.js",
-    "./eslint/es6.js",
-    "./eslint/vars.js",
-    "./eslint/node.js"
-  ]
+    "./eslint/node.js",
+  ],
+  "rules": {
+    'semi': 2
+  }
 }
