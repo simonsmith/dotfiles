@@ -153,6 +153,9 @@ let g:syntastic_scss_checkers = ['']
 let g:syntastic_css_checkers = ['stylelint']
 let g:syntastic_javascript_checkers = ['eslint']
 
+" Stop markdown opening in the browser automatically
+let g:instant_markdown_autostart = 0
+
 " NERD tree
 let g:NERDTreeWinSize = 30
 let NERDTreeIgnore = ['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
