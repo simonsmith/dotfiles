@@ -189,8 +189,10 @@ let g:airline#extensions#branch#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tmuxline#enabled = 0
 let g:airline#extensions#tabline#enabled = 1 " Enable the list of buffers
-let g:airline#extensions#tabline#fnamemod = ':t' " Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t' " Show the filename
+let g:airline#extensions#tabline#fnamecollapse = 0
 let g:airline#extensions#tabline#tab_nr_type = 1 " Show tab number
+let g:airline#extensions#tabline#buffer_nr_show = 1
 
 " vim-signify
 let g:signify_vcs_list = ['git']
