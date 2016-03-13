@@ -1,12 +1,11 @@
-" Use Vim settings, rather then Vi settings.
-" This must be first, because it changes other options as a side effect.
-set nocompatible
+" Auto install vim plug
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall
+endif
 
-" Plugin install
-" https://github.com/junegunn/vim-plug
-" -----------------------------------------------------------------------------
-
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 
 " Theme
 Plug 'morhetz/gruvbox'
@@ -39,18 +38,15 @@ Plug 'nathanaelkane/vim-indent-guides', {'on': 'IndentGuidesToggle'}
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-commentary'
-Plug 'scrooloose/syntastic'
+Plug 'benekastah/neomake'
 
 " Text objects
 Plug 'wellle/targets.vim'
 
 " General
 Plug 'editorconfig/editorconfig-vim'
-Plug 'sjl/vitality.vim'
 Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
-Plug 'regedarek/ZoomWin'
 Plug 'airblade/vim-rooter'
-Plug 'suan/vim-instant-markdown'
 
 " Refactoring
 Plug 'AndrewRadev/splitjoin.vim'
@@ -59,6 +55,10 @@ Plug 'tpope/vim-surround'
 " Copy/Paste behaviour
 Plug 'svermeulen/vim-easyclip'
 Plug 'ConradIrwin/vim-bracketed-paste'
+
+" Autocomplete
+Plug 'Shougo/deoplete.nvim'
+Plug 'carlitux/deoplete-ternjs'
 
 " Sessions
 Plug 'xolox/vim-misc'
@@ -71,14 +71,10 @@ Plug 'edkolev/tmuxline.vim'
 
 " Tabs
 Plug 'gcmt/taboo.vim'
+Plug 'troydm/zoomwintab.vim'
 
 " Snippets
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-
-" Autocomplete
-Plug 'jordwalke/AutoComplPop'
-Plug 'Valloric/YouCompleteMe'
-Plug 'ervandew/supertab'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -91,123 +87,19 @@ Plug 'alvan/vim-closetag'
 
 " JavaScript
 Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
 Plug 'mxw/vim-jsx'
 Plug 'moll/vim-node'
 
 call plug#end()
 
-"  Plugin config
+"  Vim config
 " -----------------------------------------------------------------------------
 
-" Undotree
-let g:undotree_WindowLayout = 2
-
-" UltiSnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
-" Make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
-
-" Sessions
-let g:session_autosave = 'yes'
-let g:session_autoload = 'no'
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
-
-" Allow JSX in normal JS files
-let g:jsx_ext_required = 0
-
-" Taboo
-let g:taboo_tabline = 0 " Let airline handle it all
-let g:taboo_renamed_tab_format = '%l%m'
-
-" Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_error_symbol='✗'
-let g:syntastic_warning_symbol='⚠'
-let g:syntastic_style_error_symbol = '✗'
-let g:syntastic_style_warning_symbol = '⚠'
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_html_tidy_exec = 'tidy5'
-let g:syntastic_loc_list_height = 5
-
-" Tern
-" enable keyboard shortcuts
-let g:tern_map_keys = 1
-
-" Set checkers
-let g:syntastic_scss_checkers = ['']
-let g:syntastic_css_checkers = ['stylelint']
-let g:syntastic_javascript_checkers = ['eslint']
-
-" Stop markdown opening in the browser automatically
-let g:instant_markdown_autostart = 0
-
-" NERD tree
-let g:NERDTreeWinSize = 30
-let NERDTreeIgnore = ['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
-let NERDTreeShowHidden = 1
-let NERDTreeHijackNetrw = 1
-let NERDTreeAutoDeleteBuffer = 1
-
-" fzf
-let g:fzf_height = '30%'
-let g:fzf_commits_log_options = '--color --graph --pretty=format:"%C(yellow)%h%Creset -%C(auto)%d%Creset %s %C(bold blue)(%cr) %Cred<%an>%Creset" --abbrev-commit'
-
-" The Silver Searcher
-if executable('ag')
-  " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
-  " Use ag with ack.vim - https://github.com/ggreer/the_silver_searcher#vim
-  let g:ackprg = 'ag --smart-case --nogroup --nocolor --column'
-endif
-
-" delimitMate
-let delimitMate_expand_cr = 1
-
-" vim-airline
-let g:airline_theme = 'base16_colors'
-let g:airline#extensions#syntastic#enabled = 1
-let g:airline#extensions#branch#enabled = 1
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tmuxline#enabled = 0
-let g:airline#extensions#tabline#enabled = 1 " Enable the list of buffers
-let g:airline#extensions#tabline#fnamemod = ':t' " Show the filename
-let g:airline#extensions#tabline#fnamecollapse = 0
-let g:airline#extensions#tabline#tab_nr_type = 1 " Show tab number
-let g:airline#extensions#tabline#buffer_nr_show = 1
-
-" vim-signify
-let g:signify_vcs_list = ['git']
-let g:signify_update_on_focusgained = 1
-let g:signify_update_on_bufenter = 1
-
-" Tmuxline
-let g:tmuxline_preset = {
-      \'a'    : '#S',
-      \'win'  : '#I #W',
-      \'cwin' : '#I #W',
-      \'y'    : ['#(tmux-mem-cpu-load --interval 2)', '#(ipconfig getifaddr en0)', '#(battery -p -t) '],
-      \'z'    : ['%R', '%d-%m-%Y'],
-      \'options' : {'status-justify' : 'left'}}
-
-" JS lib syntax
-let g:used_javascript_libs = 'underscore,jquery,react,requirejs,jasmine,chai'
-
-"  Vim config
-" -----------------------------------------------------------------------------
 
 " Set space to leader
 let mapleader = ' '
@@ -215,15 +107,11 @@ let mapleader = ' '
 " Theme
 colorscheme gruvbox
 set background=dark
-syntax enable
 
 " Turn off swapfiles
 set noswapfile
 set nobackup
 set nowb
-
-" Allow vim to determine the type from the file contents
-filetype plugin indent on
 
 " Allow editing of binary files
 " Must be set before expandtab
@@ -240,9 +128,6 @@ set foldlevelstart=10
 
 " Abbrev. of messages (avoids 'hit enter')
 set shortmess+=filmnrxoOtT
-
-" Store more history (default is 50)
-set history=1000
 
 " With :set hidden, opening a new file when the current buffer has unsaved
 " changes causes files to be hidden instead of closed
@@ -271,9 +156,6 @@ set synmaxcol=500
 " Highlight current line
 set cursorline
 
-" Autoindent when starting new line, or using `o` or `O`.
-set autoindent
-
 " Indent using two spaces.
 set softtabstop=2
 set shiftwidth=2
@@ -281,12 +163,12 @@ set shiftwidth=2
 " Use spaces, not tabs
 set expandtab
 
-" Use 'shiftwidth' when using `<Tab>` in front of a line.
-" By default it's used only for shift commands (`<`, `>`).
-set smarttab
-
 " Don't scan included files. The .tags file is more performant.
 set complete-=i
+set complete+=kspell
+
+" Prevent autocomplete options opening in scratchpad
+set completeopt-=preview
 
 " This is set low so that gitgutter updates reasonably quickly
 " https://github.com/airblade/vim-gitgutter#when-are-the-signs-updated
@@ -305,10 +187,6 @@ set ruler
 set splitbelow
 set splitright
 
-" Highlight searches
-set hlsearch
-set incsearch
-
 " Ignore case of searches
 set ignorecase
 
@@ -324,8 +202,7 @@ set clipboard=unnamed
 
 " Spell check
 set spelllang=en
-highlight clear SpellBad
-highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
+highlight SpellBad term=standout ctermbg=red ctermfg=white term=underline cterm=underline
 highlight clear SpellCap
 highlight SpellCap term=underline cterm=underline
 highlight clear SpellRare
@@ -333,30 +210,14 @@ highlight SpellRare term=underline cterm=underline
 highlight clear SpellLocal
 highlight SpellLocal term=underline cterm=underline
 
-" Enhance command-line completion
-set wildmenu
+" Where it should get the dictionary files
+let g:spellfile_URL = 'http://ftp.vim.org/vim/runtime/spell'
 
 " For autocompletion, complete as much as you can.
 set wildmode=longest,full
 
 " Allow cursor keys in insert mode
 set esckeys
-
-" Allow backspace in insert mode
-set backspace=indent,eol,start
-
-" Optimize for fast terminal connections
-set ttyfast
-
-" Delete comment character when joining commented lines
-set formatoptions+=j
-
-" Fix background not filling window correctly when moving panes around with
-" tmux
-if &term =~ '256color'
-  " disable Background Color Erase (BCE)
-  set t_ut=
-endif
 
 " Eliminate delay when switching modes
 set ttimeoutlen=0
@@ -367,18 +228,15 @@ set autowrite
 " Add the g flag to search/replace by default
 set gdefault
 
-" Use UTF-8 without BOM
-set encoding=utf-8 nobomb
-
 " Centralize backups, swapfiles and undo history
-set backupdir=~/.vim/backups
+set backupdir=~/.config/nvim/backups
 set directory=.,$TEMP " Stop the swp file warning
 if exists("&undodir")
-  set undodir=~/.vim/undo
+  set undodir=~/.config/nvim/undo
 endif
 
 if has("persistent_undo")
-  set undodir=~/.vim/undo
+  set undodir=~/.config/nvim/undo
   set undofile
 endif
 
@@ -397,17 +255,8 @@ set secure
 set lcs=tab:▸\ ,trail:·,nbsp:_
 set list
 
-" Always show status line
-set laststatus=2
-
-" Enable mouse in all modes
-set mouse=a
-
 " Disable error bells
 set noerrorbells
-
-" Auto reload files on change
-set autoread
 
 " Don’t show the intro message when starting Vim
 set shortmess=atI
@@ -440,11 +289,8 @@ cnoreabbrev W w
 cnoreabbrev Qa q
 cnoreabbrev Qall qall
 
-" Key mappings
+" General key mappings
 " -----------------------------------------------------------------------------
-
-" Remap emmet
-imap hh <C-y>,
 
 " Save file
 nnoremap <leader>w :w<cr>
@@ -469,17 +315,8 @@ noremap N Nzz
 noremap <leader>x :<C-u>split<cr>
 noremap <leader>v :<C-u>vsplit<cr>
 
-" JSON beautifier
-nnoremap <leader>z :%!jq '.'<cr>
-
 " Spellcheck
 map <F6> :setlocal spell!<cr>
-
-" Close buffer
-nnoremap <silent> Q :Bdelete<cr>
-
-" UndoTree
-nnoremap <f5> :UndotreeToggle<cr>
 
 " Clear search (highlight)
 nnoremap <silent> <leader>k :noh<cr>
@@ -496,34 +333,9 @@ vnoremap > >gv
 nmap <S-Enter> O<Esc>
 nmap <cr> o<Esc>
 
-" NERD tree
-nmap <leader>t :NERDTreeFind<cr>
-
-" fzf
-nnoremap <c-p> :FZF<cr>
-nnoremap <c-i> :Buffers<cr>
-nnoremap <c-g> :BCommits<cr>
-nnoremap <leader>l :BLines<cr>
-nnoremap <leader><space> :Ag<cr>
-nmap <silent> <BS> :History:<cr>
-imap <c-x><c-f> <plug>(fzf-complete-file-ag)
-
 " Allow quick edits and sourcing of vimrc
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
-
-" IndentGuides
-" Add this here because this plugin is loaded ondemand so this mapping is not
-" present on initial load
-nmap <leader>ig :IndentGuidesToggle<cr>
-
-" Tabs
-nnoremap th :tabprev<cr>
-nnoremap tl :tabnext<cr>
-nnoremap tn :tabnew<cr>
-nnoremap td :tabclose<cr>
-nnoremap to :TabooOpen<space>
-nnoremap tr :TabooRename<space>
 
 " Search with Ack
 nnoremap <leader>a :Ack!<space>-Q<space>
@@ -531,21 +343,190 @@ nnoremap <leader>a :Ack!<space>-Q<space>
 " Replace with Qdo
 nnoremap <leader>r :Qdo<space> :%s/
 
-" Allow options to be passed to FZF :Ag
-" Probably quite hacky until a better solution appears
-" https://github.com/junegunn/fzf.vim/issues/92#issuecomment-191248596
-function! s:ag_with_opts(arg, bang)
-  let tokens  = split(a:arg)
-  let ag_opts = join(filter(copy(tokens), 'v:val =~ "^-"'))
-  let query   = join(filter(copy(tokens), 'v:val !~ "^-"'))
-  call fzf#vim#ag(query, '--hidden --ignore .git', a:bang ? {} : {'down': '40%'})
-endfunction
+" Open neovim terminal
+nmap <leader>t :term<cr>
 
-" Automatic commands
+"  Plugin config
+" -----------------------------------------------------------------------------
+
+" Undotree
+if exists('g:plugs["undotree"]')
+  let g:undotree_WindowLayout = 2
+
+  nnoremap <f5> :UndotreeToggle<cr>
+endif
+
+" UltiSnips
+if exists('g:plugs["ultisnips"]')
+  let g:UltiSnipsExpandTrigger="<tab>"
+  let g:UltiSnipsJumpForwardTrigger="<tab>"
+  let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+endif
+
+" Deoplete
+if exists('g:plugs["deoplete.nvim"]')
+  let g:deoplete#enable_at_startup = 1
+  let g:deoplete#auto_completion_start_length = 1
+  let g:deoplete#sources = {}
+  let g:deoplete#sources.python = ['ultisnips']
+endif
+
+" Deoplete tern
+if exists('g:plugs["deoplete-ternjs"]')
+  let g:tern_show_signature_in_pum = 1
+endif
+
+" Sessions
+if exists('g:plugs["vim-session"]')
+  let g:session_autosave = 'yes'
+  let g:session_autoload = 'no'
+endif
+
+" IndentGuides
+if exists('g:plugs["vim-indent-guides"]')
+  " Add this here because this plugin is loaded ondemand so this mapping is not
+  " present on initial load
+  nmap <leader>ig :IndentGuidesToggle<cr>
+endif
+
+" JSX
+if exists('g:plugs["vim-jsx"]')
+  let g:jsx_ext_required = 0
+endif
+
+if exists('g:plugs["vim-bbye"]')
+  nnoremap <silent> Q :Bdelete<cr>
+endif
+
+" Taboo
+if exists('g:plugs["taboo.vim"]')
+  let g:taboo_tabline = 0 " Let airline handle it all
+  let g:taboo_renamed_tab_format = '%l%m'
+
+  nnoremap th :tabprev<cr>
+  nnoremap tl :tabnext<cr>
+  nnoremap tn :tabnew<cr>
+  nnoremap td :tabclose<cr>
+  nnoremap to :TabooOpen<space>
+  nnoremap tr :TabooRename<space>
+endif
+
+" NERD tree
+if exists('g:plugs["nerdtree"]')
+  let g:NERDTreeWinSize = 30
+  let NERDTreeIgnore = ['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
+  let NERDTreeShowHidden = 1
+  let NERDTreeHijackNetrw = 1
+  let NERDTreeAutoDeleteBuffer = 1
+endif
+
+" fzf
+if exists('g:plugs["fzf.vim"]')
+  let g:fzf_height = '30%'
+  let g:fzf_commits_log_options = '--color --graph --pretty=format:"%C(yellow)%h%Creset -%C(auto)%d%Creset %s %C(bold blue)(%cr) %Cred<%an>%Creset" --abbrev-commit'
+
+  nnoremap <c-p> :FZF<cr>
+  nnoremap <c-i> :Buffers<cr>
+  nnoremap <c-g> :BCommits<cr>
+  nnoremap <leader>l :BLines<cr>
+  nnoremap <leader><space> :Ag<cr>
+  nmap <silent> <BS> :History:<cr>
+  imap <c-x><c-f> <plug>(fzf-complete-file-ag)
+
+  " Allow options to be passed to FZF :Ag
+  " Probably quite hacky until a better solution appears
+  " https://github.com/junegunn/fzf.vim/issues/92#issuecomment-191248596
+  function! s:ag_with_opts(arg, bang)
+    let tokens  = split(a:arg)
+    let ag_opts = join(filter(copy(tokens), 'v:val =~ "^-"'))
+    let query   = join(filter(copy(tokens), 'v:val !~ "^-"'))
+    call fzf#vim#ag(query, '--hidden --ignore .git', a:bang ? {} : {'down': '40%'})
+  endfunction
+
+  if has("autocmd")
+    autocmd VimEnter * command! -nargs=* -bang Ag call s:ag_with_opts(<q-args>, <bang>0)
+  endif
+endif
+
+" Ag
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+  " Use ag with ack.vim - https://github.com/ggreer/the_silver_searcher#vim
+  let g:ackprg = 'ag --smart-case --nogroup --nocolor --column'
+endif
+
+" jq
+if executable('jq')
+  " JSON beautifier
+  nnoremap <leader>z :%!jq '.'<cr>
+endif
+
+" delimitMate
+if exists('g:plugs["delimitMate"]')
+  let delimitMate_expand_cr = 1
+endif
+
+" vim-airline
+if exists('g:plugs["vim-airline"]')
+  let g:airline_theme = 'base16_colors'
+  let g:airline#extensions#branch#enabled = 1
+  let g:airline_powerline_fonts = 1
+  let g:airline#extensions#tmuxline#enabled = 0
+  let g:airline#extensions#tabline#enabled = 1 " Enable the list of buffers
+  let g:airline#extensions#tabline#fnamemod = ':t' " Show the filename
+  let g:airline#extensions#tabline#fnamecollapse = 0
+  let g:airline#extensions#tabline#tab_nr_type = 1 " Show tab number
+  let g:airline#extensions#tabline#buffer_nr_show = 1
+endif
+
+" vim-signify
+if exists('g:plugs["vim-signify"]')
+  let g:signify_vcs_list = ['git']
+  let g:signify_update_on_focusgained = 1
+  let g:signify_update_on_bufenter = 1
+endif
+
+" Neomake
+if exists('g:plugs["neomake"]')
+  let g:neomake_error_sign = {'text': '✗'}
+  let g:neomake_warning_sign = {'text': '⚠'}
+  let g:neomake_open_list = 2
+  let g:neomake_list_height = 6
+
+  if has("autocmd")
+    autocmd! BufWritePost,BufEnter * Neomake
+    autocmd! QuitPre * let g:neomake_verbose = 0
+  endif
+endif
+
+" Tmuxline
+if exists('g:plugs["tmuxline.vim"]')
+  let g:tmuxline_preset = {
+        \'a'    : '#S',
+        \'win'  : '#I #W',
+        \'cwin' : '#I #W',
+        \'y'    : ['#(tmux-mem-cpu-load --interval 2)', '#(ipconfig getifaddr en0)', '#(battery -p -t) '],
+        \'z'    : ['%R', '%d-%m-%Y'],
+        \'options' : {'status-justify' : 'left'}}
+endif
+
+" JS lib syntax
+if exists('g:plugs["javascript-libraries-syntax.vim"]')
+  let g:used_javascript_libs = 'underscore,jquery,react,requirejs,jasmine,chai'
+endif
+
+if exists('g:plugs["emmet-vim"]')
+  imap hh <C-y>,
+endif
+
+" Automatic commands"
+" -----------------------------------------------------------------------------
+"
 if has("autocmd")
   " Resize splits when vim changes size (like with tmux opening/closing)
   " Disable to see if it fixes a bug
-  " autocmd VimResized * wincmd =
+  autocmd VimResized * wincmd =
 
   " Open help in a vertical split
   augroup vimrc_help
@@ -559,9 +540,6 @@ if has("autocmd")
     autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
   augroup END
 
-  " fzf
-  autocmd VimEnter * command! -nargs=* -bang Ag call s:ag_with_opts(<q-args>, <bang>0)
-
   " Override some syntaxes so things look better
   autocmd BufNewFile,BufRead *.html set syntax=jinja
   autocmd BufNewFile,BufRead *.css set syntax=scss
@@ -572,9 +550,6 @@ if has("autocmd")
   " Automatically wrap at 72 characters and spell check git commit messages
   autocmd FileType gitcommit setlocal textwidth=72
   autocmd FileType gitcommit setlocal spell
-
-  " Close YCM window after autocomplete is done
-  autocmd CompleteDone * pclose
 
   " Allow stylesheets to autocomplete hyphenated words
   autocmd FileType css,scss,sass setlocal iskeyword+=-
@@ -596,12 +571,13 @@ if has("autocmd")
   " Move to the top of a git commit
   au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 
-  " YouCompleteMe
-  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-  autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-  autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+  " Autocomplete
+  augroup omnifuncs
+    autocmd!
+    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+  augroup endif
 endif

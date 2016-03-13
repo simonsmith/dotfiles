@@ -24,13 +24,14 @@ symlink_dotfile gitignore
 symlink_dotfile hushlogin
 symlink_dotfile jshintrc
 symlink_dotfile stylelintrc
-symlink_dotfile tern-config
+symlink_dotfile tern-project
 symlink_dotfile tmux.conf
 symlink_dotfile tmuxline_snapshot
 symlink_dotfile vimrc
 symlink_dotfile wgetrc
 symlink_dotfile zshenv
 symlink_dotfile zshrc
+ln -sfv $(grealpath nvimrc) "$HOME/.config/nvim/init.vim"
 popd
 
 # Directories

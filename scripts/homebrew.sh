@@ -72,6 +72,13 @@ brew_install_or_upgrade 'wget' '--with-iri'
 # Use brew vim
 brew_install_or_upgrade 'vim' '--override-system-vi'
 
+# neovim
+brew_install_or_upgrade 'python'
+brew_install_or_upgrade 'python3'
+brew tap neovim/neovim
+brew install --HEAD neovim
+pip3 install neovim
+
 # tmux
 brew_install_or_upgrade 'tmux'
 # Used for stats in tmuxline
@@ -99,7 +106,6 @@ brew_install_or_upgrade 'heroku'
 brew_install_or_upgrade 'httpie'
 brew_install_or_upgrade 'p7zip'
 brew_install_or_upgrade 'phantomjs'
-brew_install_or_upgrade 'python'
 brew_install_or_upgrade 'reattach-to-user-namespace'
 brew_install_or_upgrade 'redis'
 brew_install_or_upgrade 'scmpuff'
