@@ -32,6 +32,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-commentary'
 Plug 'benekastah/neomake'
+Plug 'Valloric/ListToggle'
 
 " Text objects
 Plug 'wellle/targets.vim'
@@ -419,7 +420,6 @@ if exists('g:plugs["fzf.vim"]')
   nnoremap <c-p> :FZF<cr>
   nnoremap <c-i> :Buffers<cr>
   nnoremap <c-g> :BCommits<cr>
-  nnoremap <leader>l :BLines<cr>
   nnoremap <leader><space> :Ag<cr>
   nmap <silent> <BS> :History:<cr>
   imap <c-x><c-f> <plug>(fzf-complete-file-ag)
@@ -437,6 +437,10 @@ if exists('g:plugs["fzf.vim"]')
   if has("autocmd")
     autocmd VimEnter * command! -nargs=* -bang Ag call s:ag_with_opts(<q-args>, <bang>0)
   endif
+endif
+
+if exists('g:plugs["ListToggle"]')
+  let g:lt_height = 6
 endif
 
 " Ag
