@@ -90,6 +90,7 @@ Plug 'alvan/vim-closetag'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'mxw/vim-jsx'
 Plug 'moll/vim-node'
+Plug 'elzr/vim-json'
 
 call plug#end()
 
@@ -379,6 +380,10 @@ endif
 if exists('g:plugs["vim-session"]')
   let g:session_autosave = 'yes'
   let g:session_autoload = 'no'
+endif
+
+if exists('g:plugs["vim-polyglot"]')
+  let g:polyglot_disabled = ['json']
 endif
 
 " IndentGuides
