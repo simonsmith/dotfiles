@@ -446,7 +446,7 @@ if exists('g:plugs["fzf.vim"]')
     call fzf#vim#ag(query, '--hidden --ignore .git', a:bang ? {} : {'down': '40%'})
   endfunction
 
-  if has("autocmd")
+  if has('autocmd')
     autocmd VimEnter * command! -nargs=* -bang Ag call s:ag_with_opts(<q-args>, <bang>0)
   endif
 endif
@@ -529,7 +529,7 @@ endif
 " Automatic commands
 " -----------------------------------------------------------------------------
 "
-if has("autocmd")
+if has('autocmd')
   " Resize splits when vim changes size (like with tmux opening/closing)
   autocmd VimResized * wincmd =
 
