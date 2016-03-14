@@ -559,12 +559,14 @@ if has('autocmd')
   " Allow stylesheets to autocomplete hyphenated words
   autocmd FileType css,scss,sass setlocal iskeyword+=-
 
-  " Switch between normal and relative line numbers
-  " https://gist.github.com/dlo/3012145
-  augroup linenumbers
+  " Switch between normal and relative line numbers and cursorline
+  " when switching modes
+  augroup highlight-when-switching-modes
     autocmd!
-    autocmd InsertEnter * :set number norelativenumber
-    autocmd InsertLeave * :set relativenumber
+    autocmd InsertEnter * setlocal number norelativenumber
+    autocmd InsertLeave * setlocal relativenumber
+    autocmd InsertEnter * setlocal number nocursorline
+    autocmd InsertLeave * setlocal cursorline
   augroup END
 
   " Remove whitespace on save
