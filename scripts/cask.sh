@@ -39,7 +39,7 @@ install_cask 'vlc'
 
 # Development
 install_cask 'gitify'
-install_cask 'iterm2-beta'
+install_cask 'iterm2-nightly'
 install_cask 'jq'
 install_cask 'kaleidoscope'
 install_cask 'transmit'
