@@ -2,11 +2,10 @@
 
 name: bbcthree
 root: ~/Sites/bbc/bbcthree-web
-startup_window: vim
+startup_window: nvim
 
 windows:
-  - vim:
-    - vim
+  - nvim: nvim
   - git:
     - cd client
     - git status

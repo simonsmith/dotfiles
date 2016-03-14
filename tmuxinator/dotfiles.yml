@@ -2,9 +2,8 @@
 
 name: dotfiles
 root: ~/dotfiles
-startup_window: vim
+startup_window: nvim
 
 windows:
-  - vim:
-    - vim
+  - nvim: nvim
   - git:

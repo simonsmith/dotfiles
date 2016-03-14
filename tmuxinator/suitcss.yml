@@ -2,9 +2,9 @@
 
 name: suitcss
 root: ~/Sites/suitcss
-startup_window: vim
+startup_window: nvim
 
 windows:
-  - vim: vim
+  - nvim: nvim
   - git: ll
 

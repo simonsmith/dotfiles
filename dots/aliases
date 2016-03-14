@@ -8,8 +8,7 @@ alias dt="cd ~/Desktop"
 alias h="history"
 alias j="jobs"
 alias cask="brew cask"
-alias v="vim"
-alias vim="nvim"
+alias v="nvim"
 
 # npm
 alias ni='npm install'

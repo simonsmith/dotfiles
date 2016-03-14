@@ -2,10 +2,10 @@
 
 name: simonsmith_io
 root: ~/Sites/simonsmith.io
-startup_window: vim
+startup_window: nvim
 
 windows:
-  - vim:
+  - nvim: nvim
   - git:
     - git status
   - server:
