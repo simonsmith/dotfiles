@@ -73,7 +73,6 @@ brew_install_or_upgrade 'wget' '--with-iri'
 brew_install_or_upgrade 'vim' '--override-system-vi'
 
 # neovim
-brew_install_or_upgrade 'python'
 brew_install_or_upgrade 'python3'
 brew tap neovim/neovim
 brew install --HEAD neovim
@@ -106,6 +105,7 @@ brew_install_or_upgrade 'heroku'
 brew_install_or_upgrade 'httpie'
 brew_install_or_upgrade 'p7zip'
 brew_install_or_upgrade 'phantomjs'
+brew_install_or_upgrade 'python'
 brew_install_or_upgrade 'reattach-to-user-namespace'
 brew_install_or_upgrade 'redis'
 brew_install_or_upgrade 'scmpuff'

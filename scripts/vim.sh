@@ -1,9 +1,6 @@
-mkdir "$HOME/.vim"
-mkdir "$HOME/.vim/autoload"
+mkdir -p "$HOME/.config/nvim/autoload"
 
-log "Installing vim plug ..."
-
-if [ -e "$HOME/.vim/autoload/plug.vim" ]; then
+if [ -e "$HOME/.config/nvim/autoload/plug.vim" ]; then
   log "vim plug exists, skipping ..."
 else
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
