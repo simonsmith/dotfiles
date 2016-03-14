@@ -18,12 +18,6 @@ Clone dotfiles to home directory
 git clone https://github.com/simonsmith/dotfiles.git
 ```
 
-If permissions are not set (they should be) then do it manually
-
-```
-chmod u+x ./install.sh ./scripts/*.sh
-```
-
 ## Install
 
 Set OS X defaults:
@@ -44,10 +38,7 @@ When complete, open new terminal window to trigger `zgen` plugin downloads.
 
 * Load custom iterm settings
 
-* Open Vim and `:PlugInstall` to install plugins.
-
-* Setup [YCM](https://github.com/Valloric/YouCompleteMe#mac-os-x-installation)
-  and [Tern](https://github.com/ternjs/tern_for_vim)
+* Open neovim and `:PlugInstall` to install plugins.
 
 * Add private dotfiles to home directory (`.extra` and `.gitconfig.local`).
 
