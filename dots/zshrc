@@ -68,9 +68,6 @@ export GREP_OPTIONS="--color=auto"
 # Link Homebrew casks in `/Applications` rather than `~/Applications`
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
-# Force terminal 256 colour with iterm
-export TERM='screen-256color'
-
 # Node dev
 export NODE_ENV=development
 
