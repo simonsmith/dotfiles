@@ -224,13 +224,11 @@ set gdefault
 " Centralize backups, swapfiles and undo history
 set backupdir=~/.config/nvim/backups
 set directory=.,$TEMP " Stop the swp file warning
-if exists("&undodir")
-  set undodir=~/.config/nvim/undo
-endif
-
 if has("persistent_undo")
   set undodir=~/.config/nvim/undo
   set undofile
+  set undolevels=1000
+  set undoreload=10000
 endif
 
 " Don’t create backups when editing files in certain directories
