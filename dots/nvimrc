@@ -1,4 +1,5 @@
-" Install vim-plug if needed
+"  Vim plug
+" -----------------------------------------------------------------------------
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
   silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -94,7 +95,7 @@ Plug 'elzr/vim-json'
 
 call plug#end()
 
-"  Vim config
+"  General config
 " -----------------------------------------------------------------------------
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -289,7 +290,7 @@ cnoreabbrev W w
 cnoreabbrev Qa q
 cnoreabbrev Qall qall
 
-" General key mappings
+" Key mappings
 " -----------------------------------------------------------------------------
 
 " Save file
@@ -349,22 +350,27 @@ nmap <leader>t :term<cr>
 "  Plugin config
 " -----------------------------------------------------------------------------
 
+function! s:has_plugin(plugin)
+  let lookup = 'g:plugs["' . a:plugin . '"]'
+  return exists(lookup)
+endfunction
+
 " Undotree
-if exists('g:plugs["undotree"]')
+if s:has_plugin('undotree')
   let g:undotree_WindowLayout = 2
 
   nnoremap <f5> :UndotreeToggle<cr>
 endif
 
 " UltiSnips
-if exists('g:plugs["ultisnips"]')
+if s:has_plugin('ultisnips')
   let g:UltiSnipsExpandTrigger="<tab>"
   let g:UltiSnipsJumpForwardTrigger="<tab>"
   let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 endif
 
 " Deoplete
-if exists('g:plugs["deoplete.nvim"]')
+if s:has_plugin('deoplete.nvim')
   let g:deoplete#enable_at_startup = 1
   let g:deoplete#auto_completion_start_length = 1
   let g:deoplete#sources = {}
@@ -372,38 +378,38 @@ if exists('g:plugs["deoplete.nvim"]')
 endif
 
 " Deoplete tern
-if exists('g:plugs["deoplete-ternjs"]')
+if s:has_plugin('deoplete-ternjs')
   let g:tern_show_signature_in_pum = 1
 endif
 
 " Sessions
-if exists('g:plugs["vim-session"]')
+if s:has_plugin('vim-session')
   let g:session_autosave = 'yes'
   let g:session_autoload = 'no'
 endif
 
-if exists('g:plugs["vim-polyglot"]')
+if s:has_plugin('vim-polyglot')
   let g:polyglot_disabled = ['json']
 endif
 
 " IndentGuides
-if exists('g:plugs["vim-indent-guides"]')
+if s:has_plugin('vim-indent-guides')
   " Add this here because this plugin is loaded ondemand so this mapping is not
   " present on initial load
   nmap <leader>ig :IndentGuidesToggle<cr>
 endif
 
 " JSX
-if exists('g:plugs["vim-jsx"]')
+if s:has_plugin('vim-jsx')
   let g:jsx_ext_required = 0
 endif
 
-if exists('g:plugs["vim-bbye"]')
+if s:has_plugin('vim-bbye')
   nnoremap <silent> Q :Bdelete<cr>
 endif
 
 " Taboo
-if exists('g:plugs["taboo.vim"]')
+if s:has_plugin('taboo.vim')
   let g:taboo_tabline = 0 " Let airline handle it all
   let g:taboo_renamed_tab_format = '%l%m'
 
@@ -416,7 +422,7 @@ if exists('g:plugs["taboo.vim"]')
 endif
 
 " NERD tree
-if exists('g:plugs["nerdtree"]')
+if s:has_plugin('nerdtree')
   let g:NERDTreeWinSize = 30
   let NERDTreeIgnore = ['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
   let NERDTreeShowHidden = 1
@@ -425,7 +431,7 @@ if exists('g:plugs["nerdtree"]')
 endif
 
 " fzf
-if exists('g:plugs["fzf.vim"]')
+if s:has_plugin('fzf.vim')
   let g:fzf_height = '30%'
   let g:fzf_commits_log_options = '--color --graph --pretty=format:"%C(yellow)%h%Creset -%C(auto)%d%Creset %s %C(bold blue)(%cr) %Cred<%an>%Creset" --abbrev-commit'
 
@@ -451,7 +457,7 @@ if exists('g:plugs["fzf.vim"]')
   endif
 endif
 
-if exists('g:plugs["ListToggle"]')
+if s:has_plugin('ListToggle')
   let g:lt_height = 6
 endif
 
@@ -470,12 +476,12 @@ if executable('jq')
 endif
 
 " delimitMate
-if exists('g:plugs["delimitMate"]')
+if s:has_plugin('delimitMate')
   let delimitMate_expand_cr = 1
 endif
 
 " vim-airline
-if exists('g:plugs["vim-airline"]')
+if s:has_plugin('vim-airline')
   let g:airline_theme = 'base16_colors'
   let g:airline#extensions#branch#enabled = 1
   let g:airline_powerline_fonts = 1
@@ -488,14 +494,14 @@ if exists('g:plugs["vim-airline"]')
 endif
 
 " vim-signify
-if exists('g:plugs["vim-signify"]')
+if s:has_plugin('vim-signify')
   let g:signify_vcs_list = ['git']
   let g:signify_update_on_focusgained = 1
   let g:signify_update_on_bufenter = 1
 endif
 
 " Neomake
-if exists('g:plugs["neomake"]')
+if s:has_plugin('neomake')
   let g:neomake_error_sign = {'text': '✗', 'texthl': 'GruvboxRedSign'}
   let g:neomake_warning_sign = {'text': '⚠', 'texthl': 'GruvboxYellowSign'}
   let g:neomake_list_height = 6
@@ -507,7 +513,7 @@ if exists('g:plugs["neomake"]')
 endif
 
 " Tmuxline
-if exists('g:plugs["tmuxline.vim"]')
+if s:has_plugin('tmuxline.vim')
   let g:tmuxline_preset = {
         \'a'    : '#S',
         \'win'  : '#I #W',
@@ -518,11 +524,11 @@ if exists('g:plugs["tmuxline.vim"]')
 endif
 
 " JS lib syntax
-if exists('g:plugs["javascript-libraries-syntax.vim"]')
+if s:has_plugin('javascript-libraries-syntax.vim')
   let g:used_javascript_libs = 'underscore,jquery,react,requirejs,jasmine,chai'
 endif
 
-if exists('g:plugs["emmet-vim"]')
+if s:has_plugin('emmet-vim')
   imap hh <C-y>,
 endif
 
@@ -546,8 +552,8 @@ if has('autocmd')
   augroup END
 
   " Override some syntaxes so things look better
-  autocmd BufNewFile,BufRead *.html set syntax=jinja
-  autocmd BufNewFile,BufRead *.css set syntax=scss
+  autocmd BufNewFile,BufRead *.html setlocal syntax=jinja
+  autocmd BufNewFile,BufRead *.css setlocal syntax=scss
 
   " Wrap text and turn on spell for markdown files
   autocmd BufNewFile,BufRead *.md setlocal wrap linebreak spell filetype=markdown
