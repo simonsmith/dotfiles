@@ -2,10 +2,9 @@
 
 name: morph
 root: ~/Sites/bbc/morph-modules
-startup_window: vim
+startup_window: nvim
 
 windows:
-  - vim:
-    - vim --cmd "let g:rooter_patterns = ['package.json', '.git']"
+  - nvim: nvim
   - git:
     - nvm use 0.12.7
