@@ -484,12 +484,11 @@ endif
 
 " Neomake
 if exists('g:plugs["neomake"]')
-  let g:neomake_error_sign = {'text': '✗'}
-  let g:neomake_warning_sign = {'text': '⚠'}
-  let g:neomake_open_list = 2
+  let g:neomake_error_sign = {'text': '✗', 'texthl': 'GruvboxRed'}
+  let g:neomake_warning_sign = {'text': '⚠', 'texthl': 'GruvboxYellow'}
   let g:neomake_list_height = 6
 
-  if has("autocmd")
+  if has('autocmd')
     autocmd! BufWritePost,BufEnter * Neomake
     autocmd! QuitPre * let g:neomake_verbose = 0
   endif
