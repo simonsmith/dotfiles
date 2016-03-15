@@ -569,7 +569,7 @@ endif
 
 " vim-airline
 if s:has_plugin('vim-airline')
-  let g:airline_theme = 'base16_colors'
+  let g:airline_theme = 'base16_eighties'
   let g:airline#extensions#branch#enabled = 1
   let g:airline_powerline_fonts = 1
   let g:airline#extensions#tmuxline#enabled = 0
@@ -605,7 +605,7 @@ if s:has_plugin('tmuxline.vim')
         \'a'    : '#S',
         \'win'  : '#I #W',
         \'cwin' : '#I #W',
-        \'y'    : ['#(tmux-mem-cpu-load --interval 2)', '#(ipconfig getifaddr en0)', '#(battery -a -p -t) '],
+        \'y'    : ['#(spotify.sh)', '#(ipconfig getifaddr en0)', '#(battery -a -p -t)'],
         \'z'    : ['%R', '%d-%m-%Y'],
         \'options' : {'status-justify' : 'left'}}
 endif
