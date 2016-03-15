@@ -321,8 +321,6 @@ set noerrorbells
 " Don’t show the intro message when starting Vim
 set shortmess=atI
 
-" Ensure command line stays small
-set cmdheight=1
 
 " Show the current mode
 set title
