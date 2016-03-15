@@ -38,8 +38,6 @@ When complete, open new terminal window to trigger `zgen` plugin downloads.
 
 * Load custom iterm settings
 
-* Open neovim and `:PlugInstall` to install plugins.
-
 * Add private dotfiles to home directory (`.extra` and `.gitconfig.local`).
 
 ### Weechat
