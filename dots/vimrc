@@ -275,7 +275,7 @@ highlight SpellLocal term=underline cterm=underline
 let g:spellfile_URL = 'http://ftp.vim.org/vim/runtime/spell'
 
 " For autocompletion, complete as much as you can.
-set wildmode=longest,full
+set wildmode=list:longest,full
 
 " Allow cursor keys in insert mode
 set esckeys
