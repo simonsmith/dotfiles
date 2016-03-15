@@ -102,6 +102,7 @@ if has('nvim')
   Plug 'carlitux/deoplete-ternjs'
 else
   Plug 'scrooloose/syntastic'
+  Plug 'sjl/vitality.vim'
   " Autocomplete
   Plug 'jordwalke/AutoComplPop'
   Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
