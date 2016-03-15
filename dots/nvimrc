@@ -1,19 +1,24 @@
 "  Vim plug
+" https://github.com/junegunn/vim-plug
 " -----------------------------------------------------------------------------
-if empty(glob('~/.config/nvim/autoload/plug.vim'))
-  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall | source $MYVIMRC
+
+if has('nvim')
+  let g:plugin_path = '~/.config/nvim/plugged'
+else
+  let g:plugin_path = '~/.vim/plugged'
 endif
 
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin(g:plugin_path)
 
 " Theme
 Plug 'morhetz/gruvbox'
 
 " tmux
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'tmux-plugins/vim-tmux-focus-events'
+if executable('tmux')
+  Plug 'christoomey/vim-tmux-navigator'
+  Plug 'tmux-plugins/vim-tmux-focus-events'
+  Plug 'edkolev/tmuxline.vim'
+endif
 
 " Finding and replacing
 Plug 'mileszs/ack.vim'
@@ -39,7 +44,6 @@ Plug 'nathanaelkane/vim-indent-guides', {'on': 'IndentGuidesToggle'}
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-commentary'
-Plug 'benekastah/neomake'
 Plug 'Valloric/ListToggle'
 
 " Text objects
@@ -58,10 +62,6 @@ Plug 'tpope/vim-surround'
 Plug 'svermeulen/vim-easyclip'
 Plug 'ConradIrwin/vim-bracketed-paste'
 
-" Autocomplete
-Plug 'Shougo/deoplete.nvim'
-Plug 'carlitux/deoplete-ternjs'
-
 " Sessions
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
@@ -69,7 +69,6 @@ Plug 'xolox/vim-session'
 " Status bar
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'edkolev/tmuxline.vim'
 
 " Tabs
 Plug 'gcmt/taboo.vim'
@@ -95,7 +94,28 @@ Plug 'moll/vim-node', {'for': ['javascript', 'javascript.jsx']}
 Plug 'elzr/vim-json', {'for': ['javascript', 'javascript.jsx', 'json']}
 Plug 'jason0x43/vim-js-indent', {'for': ['javascript', 'javascript.jsx']}
 
+
+if has('nvim')
+  Plug 'benekastah/neomake'
+  " Autocomplete
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'carlitux/deoplete-ternjs'
+else
+  Plug 'scrooloose/syntastic'
+  " Autocomplete
+  Plug 'jordwalke/AutoComplPop'
+  Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
+  Plug 'Valloric/YouCompleteMe'
+  Plug 'ervandew/supertab'
+endif
+
 call plug#end()
+
+" Shortcut for checking if a plugin is loaded
+function! s:has_plugin(plugin)
+  let lookup = 'g:plugs["' . a:plugin . '"]'
+  return exists(lookup)
+endfunction
 
 "  General config
 " -----------------------------------------------------------------------------
@@ -110,8 +130,10 @@ let g:html_indent_tags = 'li\|p'
 let mapleader = ' '
 
 " Theme
-colorscheme gruvbox
-set background=dark
+if s:has_plugin('gruvbox')
+  colorscheme gruvbox
+  set background=dark
+endif
 
 " Turn off swapfiles
 set noswapfile
@@ -264,6 +286,9 @@ set noerrorbells
 " Don’t show the intro message when starting Vim
 set shortmess=atI
 
+" Ensure command line stays small
+set cmdheight=1
+
 " Show the current mode
 set title
 
@@ -351,11 +376,6 @@ nmap <leader>t :term<cr>
 
 "  Plugin config
 " -----------------------------------------------------------------------------
-
-function! s:has_plugin(plugin)
-  let lookup = 'g:plugs["' . a:plugin . '"]'
-  return exists(lookup)
-endfunction
 
 " Undotree
 if s:has_plugin('undotree')
