@@ -18,7 +18,7 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 " Finding and replacing
 Plug 'mileszs/ack.vim'
 Plug 'henrik/vim-qargs'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim'
 
 " File management
@@ -27,7 +27,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-vinegar'
 
 " Buffers
-Plug 'schickling/vim-bufonly'
+Plug 'schickling/vim-bufonly', {'on': 'BufOnly'}
 Plug 'moll/vim-bbye'
 
 " Language pack
@@ -76,7 +76,8 @@ Plug 'gcmt/taboo.vim'
 Plug 'troydm/zoomwintab.vim'
 
 " Snippets
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -88,10 +89,11 @@ Plug 'mattn/emmet-vim'
 Plug 'alvan/vim-closetag'
 
 " JavaScript
-Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'mxw/vim-jsx'
-Plug 'moll/vim-node'
-Plug 'elzr/vim-json'
+Plug 'othree/javascript-libraries-syntax.vim', {'for': 'javascript'}
+Plug 'mxw/vim-jsx', {'for': 'javascript'}
+Plug 'moll/vim-node', {'for': 'javascript'}
+Plug 'elzr/vim-json', {'for': 'javascript'}
+Plug 'jason0x43/vim-js-indent', {'for': 'javascript'}
 
 call plug#end()
 
