@@ -291,6 +291,7 @@ set gdefault
 " Centralize backups, swapfiles and undo history
 set backupdir=~/.config/nvim/backups
 set directory=.,$TEMP " Stop the swp file warning
+
 if has("persistent_undo")
   set undodir=~/.config/nvim/undo
   set undofile
@@ -405,7 +406,9 @@ nnoremap <leader>a :Ack!<space>-Q<space>
 nnoremap <leader>r :Qdo<space> :%s/
 
 " Open neovim terminal
-nmap <leader>t :term<cr>
+if exists(':tnoremap')
+  nmap <leader>t :term<cr>
+endif
 
 "  Plugin config
 " -----------------------------------------------------------------------------
