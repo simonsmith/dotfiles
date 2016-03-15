@@ -120,8 +120,41 @@ endfunction
 "  General config
 " -----------------------------------------------------------------------------
 
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+if has('nvim')
+  let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
+  let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
+else
+  " Allow vim to determine the type from the file contents
+  filetype plugin indent on
+  syntax on
+  " Autoindent when starting new line, or using `o` or `O`.
+  set autoindent
+  " Auto reload files on change
+  set autoread
+  " Allow backspace in insert mode
+  set backspace=indent,eol,start
+  " Use UTF-8 without BOM
+  set encoding=utf-8 nobomb
+  " Delete comment character when joining commented lines
+  set formatoptions+=j
+  " Store more history (default is 50)
+  set history=1000
+  " Highlight searches
+  set hlsearch
+  set incsearch
+  " Always show status line
+  set laststatus=2
+  " Enable mouse in all modes
+  set mouse=a
+  set nocompatible
+  " Use 'shiftwidth' when using `<Tab>` in front of a line.
+  " By default it's used only for shift commands (`<`, `>`).
+  set smarttab
+  " Optimize for fast terminal connections
+  set ttyfast
+  " Enhance command-line completion
+  set wildmenu
+endif
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
@@ -384,11 +417,41 @@ if s:has_plugin('undotree')
   nnoremap <f5> :UndotreeToggle<cr>
 endif
 
+if s:has_plugin('YouCompleteMe')
+  let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+  let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+endif
+
+if s:has_plugin('supertab')
+  let g:SuperTabDefaultCompletionType = '<C-n>'
+endif
+
 " UltiSnips
 if s:has_plugin('ultisnips')
   let g:UltiSnipsExpandTrigger="<tab>"
   let g:UltiSnipsJumpForwardTrigger="<tab>"
   let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+endif
+
+" Syntastic
+if s:has_plugin('syntastic')
+  set statusline+=%#warningmsg#
+  set statusline+=%{SyntasticStatuslineFlag()}
+  set statusline+=%*
+  let g:syntastic_always_populate_loc_list = 1
+  let g:syntastic_auto_loc_list = 0
+  let g:syntastic_check_on_open = 1
+  let g:syntastic_check_on_wq = 0
+  let g:syntastic_error_symbol='✗'
+  let g:syntastic_warning_symbol='⚠'
+  let g:syntastic_style_error_symbol = '✗'
+  let g:syntastic_style_warning_symbol = '⚠'
+  let g:syntastic_aggregate_errors = 1
+  let g:syntastic_html_tidy_exec = 'tidy5'
+  let g:syntastic_loc_list_height = 5
+  let g:syntastic_scss_checkers = ['']
+  let g:syntastic_css_checkers = ['stylelint']
+  let g:syntastic_javascript_checkers = ['eslint']
 endif
 
 " Deoplete
