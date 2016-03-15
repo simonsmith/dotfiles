@@ -89,11 +89,11 @@ Plug 'mattn/emmet-vim'
 Plug 'alvan/vim-closetag'
 
 " JavaScript
-Plug 'othree/javascript-libraries-syntax.vim', {'for': 'javascript'}
-Plug 'mxw/vim-jsx', {'for': 'javascript'}
-Plug 'moll/vim-node', {'for': 'javascript'}
-Plug 'elzr/vim-json', {'for': 'javascript'}
-Plug 'jason0x43/vim-js-indent', {'for': 'javascript'}
+Plug 'othree/javascript-libraries-syntax.vim', {'for': ['javascript', 'javascript.jsx']}
+Plug 'mxw/vim-jsx', {'for': ['javascript', 'javascript.jsx']}
+Plug 'moll/vim-node', {'for': ['javascript', 'javascript.jsx']}
+Plug 'elzr/vim-json', {'for': ['javascript', 'javascript.jsx', 'json']}
+Plug 'jason0x43/vim-js-indent', {'for': ['javascript', 'javascript.jsx']}
 
 call plug#end()
 
