@@ -38,6 +38,8 @@ When complete, open new terminal window to trigger `zgen` plugin downloads.
 
 * Load custom iterm settings
 
+* Install downloaded [Knack](https://github.com/ryanoasis/nerd-fonts) font
+
 * Add private dotfiles to home directory (`.extra` and `.gitconfig.local`).
 
 ### Weechat
