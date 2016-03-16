@@ -8,15 +8,12 @@ windows:
   - nvim: nvim
   - git:
     - cd client
-    - git status
-  - gulp:
-    - cd client
-    - gulp css
-    - gulp webpack
-    - gulp watch
   - node:
-      layout: even-horizontal
+      layout: tiled
       panes:
+        - gulp:
+          - cd client
+          - gulp watch
         - server:
           - nvm use 0.12.7
           - cd server
@@ -24,8 +21,6 @@ windows:
         - watch:
           - cd server
           - webpack --watch
-  - tests:
-    - cd client
-  - redis:
-    - redis-cli shutdown
-    - redis-server ~/redis.conf
+        - redis:
+          - redis-cli shutdown
+          - redis-server ~/redis.conf
