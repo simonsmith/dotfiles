@@ -34,7 +34,6 @@ install_cask 'burn'
 install_cask 'max'
 install_cask 'sonos'
 install_cask 'spotify'
-install_cask 'spotify-notifications'
 install_cask 'vlc'
 
 # Development
