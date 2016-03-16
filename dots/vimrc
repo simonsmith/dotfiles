@@ -94,6 +94,8 @@ Plug 'moll/vim-node', {'for': ['javascript', 'javascript.jsx']}
 Plug 'elzr/vim-json', {'for': ['javascript', 'javascript.jsx', 'json']}
 Plug 'jason0x43/vim-js-indent', {'for': ['javascript', 'javascript.jsx']}
 
+" Devicons have to come after other plugins
+Plug 'ryanoasis/vim-devicons'
 
 if has('nvim')
   Plug 'benekastah/neomake'
