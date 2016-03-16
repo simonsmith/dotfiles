@@ -88,11 +88,11 @@ Plug 'mattn/emmet-vim'
 Plug 'alvan/vim-closetag'
 
 " JavaScript
-Plug 'othree/javascript-libraries-syntax.vim', {'for': ['javascript', 'javascript.jsx']}
-Plug 'mxw/vim-jsx', {'for': ['javascript', 'javascript.jsx']}
-Plug 'moll/vim-node', {'for': ['javascript', 'javascript.jsx']}
+Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'mxw/vim-jsx'
+Plug 'moll/vim-node'
 Plug 'elzr/vim-json', {'for': ['javascript', 'javascript.jsx', 'json']}
-Plug 'jason0x43/vim-js-indent', {'for': ['javascript', 'javascript.jsx']}
+Plug 'jason0x43/vim-js-indent'
 
 " Devicons have to come after other plugins
 Plug 'ryanoasis/vim-devicons'
@@ -579,7 +579,7 @@ if s:has_plugin('vim-airline')
   let g:airline#extensions#tabline#fnamemod = ':t' " Show the filename
   let g:airline#extensions#tabline#fnamecollapse = 0
   let g:airline#extensions#tabline#tab_nr_type = 1 " Show tab number
-  let g:airline#extensions#tabline#buffer_nr_show = 1
+  let g:airline#extensions#tabline#buffer_nr_show = 0
 endif
 
 " vim-signify
