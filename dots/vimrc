@@ -607,7 +607,7 @@ if s:has_plugin('tmuxline.vim')
         \'a'    : '#S',
         \'win'  : '#I #W',
         \'cwin' : '#I #W',
-        \'y'    : ['#(spotify.sh)', '#(ipconfig getifaddr en0)', '#(battery -a -p -t)'],
+        \'y'    : ['#(spotify)', '#(ipconfig getifaddr en0)', '#(battery -a -p -t)'],
         \'z'    : ['%R', '%d-%m-%Y'],
         \'options' : {'status-justify' : 'left'}}
 endif
