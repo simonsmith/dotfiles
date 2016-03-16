@@ -48,6 +48,10 @@ Plug 'Valloric/ListToggle'
 
 " Text objects
 Plug 'wellle/targets.vim'
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-function'
+Plug 'thinca/vim-textobj-function-javascript'
+Plug 'jasonlong/vim-textobj-css'
 
 " General
 Plug 'editorconfig/editorconfig-vim'
