@@ -324,9 +324,10 @@ set list
 " Disable error bells
 set noerrorbells
 
-" Don’t show the intro message when starting Vim
-set shortmess=atI
-
+" Don't show the intro message when starting Vim
+" Also suppress several 'Press Enter to continue messages' especially
+" with FZF
+set shortmess=aoOtI
 
 " Show the current mode
 set title
