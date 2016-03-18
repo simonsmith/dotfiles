@@ -1,3 +1,5 @@
+source $(dirname $0)/log.sh
+
 # Check if zsh is in list of accepted shells
 if grep -Fxq "/usr/local/bin/zsh" /etc/shells > /dev/null 2>&1; then
   log "zsh is already in the list of accepted shells ..."

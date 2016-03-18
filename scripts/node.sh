@@ -1,3 +1,5 @@
+source $(dirname $0)/log.sh
+
 node_install_version=5.7.0
 
 log "Installing nvm ..."

@@ -1,3 +1,5 @@
+source $(dirname $0)/log.sh
+
 log "Installing fonts ..."
 
 brew cask install caskroom/fonts/font-hack

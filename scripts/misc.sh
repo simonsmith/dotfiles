@@ -1,3 +1,5 @@
+source $(dirname $0)/log.sh
+
 # Install fzf
 log "Setting up fzf ..."
 yes | /usr/local/opt/fzf/install

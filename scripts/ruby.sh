@@ -1,3 +1,5 @@
+source $(dirname $0)/log.sh
+
 gem_install_or_update() {
   if gem list "$1" --installed > /dev/null; then
     log "Updating %s ..." "$1"

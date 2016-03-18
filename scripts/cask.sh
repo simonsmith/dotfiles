@@ -1,3 +1,4 @@
+source $(dirname $0)/log.sh
 casks="$(brew cask list)"
 
 install_cask() {

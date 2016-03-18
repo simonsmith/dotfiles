@@ -1,3 +1,5 @@
+source $(dirname $0)/log.sh
+
 symlink_dotfile() {
   ln -sfv $(grealpath $1) "$HOME/.$1"
 }

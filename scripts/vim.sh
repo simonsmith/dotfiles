@@ -1,3 +1,5 @@
+source $(dirname $0)/log.sh
+
 # Create directories
 mkdir -p "$HOME/.config/nvim/"
 mkdir -p "$HOME/.vim/"
