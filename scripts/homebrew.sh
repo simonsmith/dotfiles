@@ -80,11 +80,7 @@ brew tap neovim/neovim
 brew install --HEAD neovim
 pip3 install neovim
 
-# tmux
 brew_install_or_upgrade 'tmux'
-
-# Used for stats in tmuxline
-brew_install_or_upgrade 'tmux-mem-cpu-load'
 
 # git
 brew_install_or_upgrade 'git'
