@@ -16,5 +16,5 @@ source ./scripts/ruby.sh
 source ./scripts/misc.sh
 
 echo "Sourcing .zshrc ..."
-source "$HOME/.zshrc"
+# source "$HOME/.zshrc"
 echo "Installation complete!"

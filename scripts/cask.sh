@@ -1,4 +1,5 @@
-source $(dirname $0)/log.sh
+source "${BASH_SOURCE%/*}/log.sh"
+
 casks="$(brew cask list)"
 
 install_cask() {

@@ -1,4 +1,4 @@
-source $(dirname $0)/log.sh
+source "${BASH_SOURCE%/*}/log.sh"
 
 brew_install_or_upgrade() {
   if brew_is_installed "$1"; then

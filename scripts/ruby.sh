@@ -1,4 +1,4 @@
-source $(dirname $0)/log.sh
+source "${BASH_SOURCE%/*}/log.sh"
 
 gem_install_or_update() {
   if gem list "$1" --installed > /dev/null; then

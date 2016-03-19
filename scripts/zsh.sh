@@ -1,4 +1,4 @@
-source $(dirname $0)/log.sh
+source "${BASH_SOURCE%/*}/log.sh"
 
 # Check if zsh is in list of accepted shells
 if grep -Fxq "/usr/local/bin/zsh" /etc/shells > /dev/null 2>&1; then

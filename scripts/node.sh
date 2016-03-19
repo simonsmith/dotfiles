@@ -1,4 +1,4 @@
-source $(dirname $0)/log.sh
+source "${BASH_SOURCE%/*}/log.sh"
 
 node_install_version=5.7.0
 

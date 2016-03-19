@@ -1,4 +1,4 @@
-source $(dirname $0)/log.sh
+source "${BASH_SOURCE%/*}/log.sh"
 
 # Install fzf
 log "Setting up fzf ..."
