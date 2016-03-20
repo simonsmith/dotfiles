@@ -26,6 +26,7 @@ endif
 " Finding and replacing
 Plug 'mileszs/ack.vim'
 Plug 'henrik/vim-qargs'
+Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim'
 
 " File management
