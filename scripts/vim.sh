@@ -9,7 +9,6 @@ if [ -e "$HOME/.config/nvim/autoload/plug.vim" ]; then
   echo "vim plug exists for neovim, skipping ..."
 else
   curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  nvim -c PlugInstall -c quitall
 fi
 
 # Vim
@@ -17,7 +16,6 @@ if [ -e "$HOME/.vim/autoload/plug.vim" ]; then
   echo "vim plug exists for vim, skipping ..."
 else
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  vim -c PlugInstall -c quitall
 fi
 
 # Allow CTRL-H mapping to work in neovim
