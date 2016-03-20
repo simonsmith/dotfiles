@@ -83,6 +83,10 @@ brew tap neovim/neovim
 brew install --HEAD neovim
 pip3 install neovim
 
+# fzf
+brew_install_or_upgrade 'fzf'
+yes | /usr/local/opt/fzf/install
+
 brew_install_or_upgrade 'tmux'
 
 # git
@@ -99,7 +103,6 @@ brew_install_or_upgrade 'ruby-build'
 
 # Install other useful binaries.
 brew_install_or_upgrade 'ack'
-brew_install_or_upgrade 'fzf'
 brew_install_or_upgrade 'heroku'
 brew_install_or_upgrade 'httpie'
 brew_install_or_upgrade 'p7zip'
