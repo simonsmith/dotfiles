@@ -42,7 +42,7 @@ log "Installing homebrew ..."
 
 which -s brew
 if [[ $? != 0 ]] ; then
-  yes | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  yes | /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 else
   log "Homebrew already installed ..."
 fi
