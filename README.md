@@ -26,7 +26,7 @@ Set OS X defaults:
 ./scripts/osx.sh
 ```
 
-Change to `~/dotfiles` directory and run install script:
+Run install script:
 
 ```
 ./install.sh
@@ -38,7 +38,7 @@ When complete, open new terminal window to trigger `zgen` plugin downloads.
 
 * Load custom iterm settings
 
-* Install downloaded [Knack](https://github.com/ryanoasis/nerd-fonts) font
+* Install [Knack](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack/Regular/complete) font
 
 * Add private dotfiles to home directory (`.extra` and `.gitconfig.local`).
 
