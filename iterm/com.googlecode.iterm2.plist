@@ -426,7 +426,7 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>678 110 936 426 0 0 1680 1027 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>269 593 606 456 0 0 1680 1050 </string>
+	<string>741 1233 606 456 0 0 3008 1692 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>1194 976 620 392 0 0 3008 1692 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
@@ -1157,6 +1157,8 @@
 			<array/>
 			<key>Terminal Type</key>
 			<string>xterm-256color</string>
+			<key>Thin Strokes</key>
+			<integer>2</integer>
 			<key>Transparency</key>
 			<real>0.0</real>
 			<key>Unlimited Scrollback</key>
@@ -1179,6 +1181,10 @@
 			<string>/Users/simonsmith</string>
 		</dict>
 	</array>
+	<key>NoSyncDoNotWarnBeforeMultilinePaste</key>
+	<true/>
+	<key>NoSyncDoNotWarnBeforeMultilinePaste_selection</key>
+	<integer>0</integer>
 	<key>NoSyncPermissionToShowTip</key>
 	<false/>
 	<key>NoSyncSilenceAnnoyingBellAutomatically</key>
@@ -1235,7 +1241,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-03-15T19:04:38Z</date>
+	<date>2016-03-18T15:21:25Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
@@ -1251,7 +1257,7 @@
 	<key>WindowNumber</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>2.9.20160314-nightly</string>
+	<string>2.9.20160318-nightly</string>
 	<key>kCommandHistoryHasEverBeenUsed</key>
 	<true/>
 </dict>
