@@ -137,10 +137,8 @@ let g:html_indent_tags = 'li\|p'
 let mapleader = ' '
 
 " Theme
-if s:has_plugin('gruvbox')
-  colorscheme gruvbox
-  set background=dark
-endif
+silent! colorscheme gruvbox
+set background=dark
 
 " Turn off swapfiles
 set noswapfile
