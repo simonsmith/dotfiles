@@ -1,4 +1,7 @@
-source "${BASH_SOURCE%/*}/log.sh"
+log() {
+  local fmt="$1"; shift
+  printf "\n\e[94m$fmt\n" "$@"
+}
 
 node_install_version=5.7.0
 

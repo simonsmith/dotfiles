@@ -1,4 +1,3 @@
-source $(dirname $0)/log.sh
 
 symlink_dotfile() {
   ln -sfv $(grealpath $1) "$HOME/.$1"
@@ -8,7 +7,7 @@ symlink() {
   ln -sfv $(grealpath $1) "$HOME/$1"
 }
 
-log "Creating symlinks ..."
+echo "Creating symlinks ..."
 
 pushd ./dots
 symlink redis.conf

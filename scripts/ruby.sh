@@ -1,4 +1,7 @@
-source "${BASH_SOURCE%/*}/log.sh"
+log() {
+  local fmt="$1"; shift
+  printf "\n\e[94m$fmt\n" "$@"
+}
 
 gem_install_or_update() {
   if gem list "$1" --installed > /dev/null; then
