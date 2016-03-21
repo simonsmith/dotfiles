@@ -56,7 +56,9 @@ Plug 'chip/vim-fat-finger'
 Plug 'wellle/targets.vim'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-function'
+Plug 'kana/vim-textobj-entire'
 Plug 'thinca/vim-textobj-function-javascript'
+Plug 'Julian/vim-textobj-brace'
 Plug 'jasonlong/vim-textobj-css'
 
 " General
