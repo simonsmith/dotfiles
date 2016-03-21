@@ -82,3 +82,8 @@ function o() {
 function tre() {
   tree -aC -I '.git|node_modules|bower_components|.idea' --dirsfirst "$@" | less -FRNX
 }
+
+# Local IP
+function localip() {
+  ipconfig getifaddr en0
+}
