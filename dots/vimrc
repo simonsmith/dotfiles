@@ -619,6 +619,12 @@ if s:has_plugin('neomake')
 endif
 
 " Tmuxline
+" To have an independent theme to Airline, select the airline theme and run
+" :Tmuxline airline (or airline_insert, airline_visual).
+"
+" :AirlineTheme base16_default
+" :Tmuxline airline_insert
+" :TmuxlineSnapshot
 if s:has_plugin('tmuxline.vim')
   let g:tmuxline_preset = {
         \'a'    : '#S',
