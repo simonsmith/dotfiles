@@ -632,6 +632,10 @@ if s:has_plugin('javascript-libraries-syntax.vim')
   let g:used_javascript_libs = 'underscore,jquery,react,requirejs,jasmine,chai'
 endif
 
+if s:has_plugin('quick-scope')
+  let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+endif
+
 if s:has_plugin('emmet-vim')
   imap hh <C-y>,
 endif
