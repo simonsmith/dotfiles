@@ -28,6 +28,7 @@ Plug 'mileszs/ack.vim'
 Plug 'henrik/vim-qargs'
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim'
+Plug 'ironhouzi/vim-stim'
 
 " File management
 Plug 'scrooloose/nerdtree'
@@ -48,6 +49,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-commentary'
 Plug 'Valloric/ListToggle'
+Plug 'unblevable/quick-scope'
 
 " Text objects
 Plug 'wellle/targets.vim'
