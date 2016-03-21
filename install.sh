@@ -5,10 +5,10 @@ sudo -v
 # https://gist.github.com/cowboy/3118588
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-source ./scripts/symlinks.sh
 source ./scripts/homebrew.sh
 source ./scripts/cask.sh
 source ./scripts/zsh.sh
+source ./scripts/symlinks.sh
 source ./scripts/vim.sh
 source ./scripts/fonts.sh
 source ./scripts/node.sh
