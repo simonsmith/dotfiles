@@ -622,7 +622,7 @@ if s:has_plugin('tmuxline.vim')
         \'a'    : '#S',
         \'win'  : '#I #W',
         \'cwin' : '#I #W',
-        \'y'    : ['#(spotify)', '#(ipconfig getifaddr en0)', '#(battery -a -p -t)'],
+        \'y'    : ['#(spotify)', '#(tmux-mem-cpu-load -g 0 -m 1 -i 4)', '#(ipconfig getifaddr en0)', '#(battery -a -p -t)'],
         \'z'    : ['%R', '%d-%m-%Y'],
         \'options' : {'status-justify' : 'left'}}
 endif
