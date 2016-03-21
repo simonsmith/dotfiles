@@ -50,6 +50,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-commentary'
 Plug 'Valloric/ListToggle'
 Plug 'unblevable/quick-scope'
+Plug 'chip/vim-fat-finger'
 
 " Text objects
 Plug 'wellle/targets.vim'
@@ -246,6 +247,12 @@ let g:spellfile_URL = 'http://ftp.vim.org/vim/runtime/spell'
 
 " For autocompletion, complete as much as you can.
 set wildmode=list:longest,full
+
+" don't add extra space after ., !, etc. when joining
+set nojoinspaces
+
+" use K to join current line with line above, just like J does with line below
+nnoremap K kJ
 
 " Allow cursor keys in insert mode
 set esckeys
