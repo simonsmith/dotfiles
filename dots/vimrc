@@ -426,7 +426,6 @@ nnoremap <leader>r :Qdo<space> :%s/
 " Open neovim terminal
 if exists(':tnoremap')
   nmap <leader>t :term<cr>
-  tnoremap <esc><esc> <C-\><C-n>
 endif
 
 "  Plugin config
