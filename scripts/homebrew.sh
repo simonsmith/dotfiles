@@ -58,61 +58,61 @@ brew_install_or_upgrade coreutils
 sudo ln -sv /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
 
 # Install some other useful utilities like `sponge`.
-brew_install_or_upgrade 'moreutils'
+brew_install_or_upgrade moreutils
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
-brew_install_or_upgrade 'findutils'
+brew_install_or_upgrade findutils
 # Install GNU `sed`, overwriting the built-in `sed`.
-brew_install_or_upgrade 'gnu-sed' '--with-default-names'
+brew_install_or_upgrade gnu-sed --with-default-names
 
 # Install zsh
-brew_install_or_upgrade 'zsh'
-brew_install_or_upgrade 'zsh-syntax-highlighting'
+brew_install_or_upgrade zsh
+brew_install_or_upgrade zsh-syntax-highlighting
 
 # less highlighting
-brew_install_or_upgrade 'source-highlight'
+brew_install_or_upgrade source-highlight
 
 # Install `wget` with IRI support.
-brew_install_or_upgrade 'wget' '--with-iri'
+brew_install_or_upgrade wget --with-iri
 
 # Use brew vim
-brew_install_or_upgrade 'vim' '--override-system-vi'
+brew_install_or_upgrade vim --override-system-vi
 
 # neovim
-brew_install_or_upgrade 'python3'
+brew_install_or_upgrade python3
 brew tap neovim/neovim
 brew install --HEAD neovim
 pip3 install neovim
 
 # fzf
-brew_install_or_upgrade 'fzf'
+brew_install_or_upgrade fzf
 yes | /usr/local/opt/fzf/install
 
-brew_install_or_upgrade 'tmux'
+brew_install_or_upgrade tmux
 
 # git
-brew_install_or_upgrade 'git'
+brew_install_or_upgrade git
 
 # Install more recent versions of some OS X tools.
 brew tap homebrew/dupes
-brew_install_or_upgrade 'grep' '--with-default-names'
-brew_install_or_upgrade 'screen'
+brew_install_or_upgrade grep --with-default-names
+brew_install_or_upgrade screen
 
 # Ruby
-brew_install_or_upgrade 'rbenv'
-brew_install_or_upgrade 'ruby-build'
+brew_install_or_upgrade rbenv
+brew_install_or_upgrade ruby-build
 
 # Install other useful binaries.
-brew_install_or_upgrade 'ack'
-brew_install_or_upgrade 'heroku'
-brew_install_or_upgrade 'httpie'
-brew_install_or_upgrade 'p7zip'
-brew_install_or_upgrade 'phantomjs'
-brew_install_or_upgrade 'python'
-brew_install_or_upgrade 'reattach-to-user-namespace'
-brew_install_or_upgrade 'redis'
-brew_install_or_upgrade 'scmpuff'
-brew_install_or_upgrade 'the_silver_searcher'
-brew_install_or_upgrade 'tidy-html5'
-brew_install_or_upgrade 'weechat'
+brew_install_or_upgrade ack
+brew_install_or_upgrade heroku
+brew_install_or_upgrade httpie
+brew_install_or_upgrade p7zip
+brew_install_or_upgrade phantomjs
+brew_install_or_upgrade python
+brew_install_or_upgrade reattach-to-user-namespace
+brew_install_or_upgrade redis
+brew_install_or_upgrade scmpuff
+brew_install_or_upgrade the_silver_searcher
+brew_install_or_upgrade tidy-html5
+brew_install_or_upgrade weechat
 
 brew cleanup
