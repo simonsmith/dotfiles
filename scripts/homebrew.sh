@@ -87,10 +87,16 @@ pip3 install neovim
 brew_install_or_upgrade fzf
 yes | /usr/local/opt/fzf/install
 
+# Ag - fzf is configured to use this
+brew_install_or_upgrade the_silver_searcher
+
+# tmux
 brew_install_or_upgrade tmux
+brew_install_or_upgrade reattach-to-user-namespace
 
 # git
 brew_install_or_upgrade git
+brew_install_or_upgrade scmpuff
 
 # Install more recent versions of some OS X tools.
 brew tap homebrew/dupes
@@ -108,10 +114,7 @@ brew_install_or_upgrade httpie
 brew_install_or_upgrade p7zip
 brew_install_or_upgrade phantomjs
 brew_install_or_upgrade python
-brew_install_or_upgrade reattach-to-user-namespace
 brew_install_or_upgrade redis
-brew_install_or_upgrade scmpuff
-brew_install_or_upgrade the_silver_searcher
 brew_install_or_upgrade tidy-html5
 brew_install_or_upgrade weechat
 
