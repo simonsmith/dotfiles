@@ -122,6 +122,11 @@ export NVM_DIR="$HOME/.nvm"
 # Misc
 # ---------------------------------------------------------------
 
+# https://github.com/ingydotnet/git-hub
 [ -s "$HOME/git-hub/.rc" ] && source "$HOME/git-hub/.rc"
+
+# https://github.com/rbenv/rbenv
 eval "$(rbenv init -)"
+
+# https://github.com/mroth/scmpuff
 eval "$(scmpuff init -s --aliases=false)"
