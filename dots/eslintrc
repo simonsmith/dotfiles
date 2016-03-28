@@ -3,8 +3,11 @@
     "eslint:recommended",
     "./eslint/best-practice.js",
     "./eslint/node.js",
+    "./eslint/es6.js"
   ],
   "rules": {
-    'semi': 2
+    'semi': 2,
+    'quotes': [2, 'single', 'avoid-escape'],
+    'semi-spacing': 2,
   }
 }
