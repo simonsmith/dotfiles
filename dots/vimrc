@@ -371,6 +371,12 @@ endif
 " Save file
 nnoremap <leader>w :w<cr>
 
+" Adjust window size with arrow keys
+noremap <right> <C-w>>
+noremap <left> <C-w><
+noremap <up> <C-w>+
+noremap <down> <C-w>-
+
 " Shortcut to change inner word
 nnoremap s ciw
 
