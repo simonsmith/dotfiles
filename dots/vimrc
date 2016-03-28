@@ -382,9 +382,6 @@ noremap <left> <C-w><
 noremap <up> <C-w>+
 noremap <down> <C-w>-
 
-" Shortcut to change inner word
-nnoremap s ciw
-
 " Clone paragraph
 noremap cp yap<S-}>p
 
@@ -466,6 +463,13 @@ if s:has_plugin('ultisnips')
   let g:UltiSnipsExpandTrigger="<tab>"
   let g:UltiSnipsJumpForwardTrigger="<tab>"
   let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+endif
+
+if s:has_plugin('vim-easyclip')
+  let g:EasyClipUseSubstituteDefaults = 1
+  imap <c-v> <plug>EasyClipInsertModePaste
+  " Place a mark (m taken by easyclip)
+  nnoremap gm m
 endif
 
 " Syntastic
