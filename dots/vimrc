@@ -371,6 +371,10 @@ endif
 " Save file
 nnoremap <leader>w :w<cr>
 
+" Force j and k to work on display lines
+nnoremap k gk
+nnoremap j gj
+
 " Adjust window size with arrow keys
 noremap <right> <C-w>>
 noremap <left> <C-w><
