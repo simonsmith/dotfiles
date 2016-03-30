@@ -111,6 +111,7 @@ Plug 'ryanoasis/vim-devicons'
 
 if has('nvim')
   Plug 'benekastah/neomake'
+  Plug 'benjie/neomake-local-eslint.vim'
   " Autocomplete
   Plug 'Shougo/deoplete.nvim'
   Plug 'carlitux/deoplete-ternjs'
@@ -674,11 +675,8 @@ endif
 " -----------------------------------------------------------------------------
 "
 if has('autocmd')
-  " Resize splits when vim changes size (like with tmux opening/closing)
-  autocmd VimResized * wincmd =
-
   " Open help in a vertical split
-  augroup vimrc_help
+  augroup vimrc-help
     autocmd!
     autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | endif
   augroup END
@@ -689,19 +687,24 @@ if has('autocmd')
     autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
   augroup END
 
-  " Override some syntaxes so things look better
-  autocmd BufNewFile,BufRead *.html setlocal syntax=jinja
-  autocmd BufNewFile,BufRead *.css setlocal syntax=scss
+  augroup file-types
+    autocmd!
 
-  " Wrap text and turn on spell for markdown files
-  autocmd BufNewFile,BufRead *.md setlocal wrap linebreak spell filetype=markdown
+    " Override some syntaxes so things look better
+    autocmd BufNewFile,BufRead *.html setlocal syntax=jinja
+    autocmd BufNewFile,BufRead *.css setlocal syntax=scss
+    autocmd BufNewFile,BufRead *.js setlocal syntax=javascript
 
-  " Automatically wrap at 72 characters and spell check git commit messages
-  autocmd FileType gitcommit setlocal textwidth=72
-  autocmd FileType gitcommit setlocal spell
+    " Wrap text and turn on spell for markdown files
+    autocmd BufNewFile,BufRead *.md setlocal wrap linebreak spell filetype=markdown
 
-  " Allow stylesheets to autocomplete hyphenated words
-  autocmd FileType css,scss,sass setlocal iskeyword+=-
+    " Automatically wrap at 72 characters and spell check git commit messages
+    autocmd FileType gitcommit setlocal textwidth=72
+    autocmd FileType gitcommit setlocal spell
+
+    " Allow stylesheets to autocomplete hyphenated words
+    autocmd FileType css,scss,sass setlocal iskeyword+=-
+  augroup END
 
   " Switch between normal and relative line numbers and cursorline
   " when switching modes
@@ -714,13 +717,28 @@ if has('autocmd')
   augroup END
 
   " Remove whitespace on save
-  autocmd BufWritePre * :%s/\s\+$//e
+  augroup whitespace
+    autocmd!
+    autocmd BufWritePre * :%s/\s\+$//e
+  augroup END
 
   " Periodically check for file changes
-  autocmd CursorHold * silent! checktime
+  augroup checktime
+    autocmd!
+    autocmd CursorHold * silent! checktime
+  augroup END
 
   " Move to the top of a git commit
-  au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+  augroup move-to-top-of-commit
+    autocmd!
+    au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+  augroup END
+
+  " Resize splits when vim changes size (like with tmux opening/closing)
+  augroup auto-resize
+    autocmd!
+    autocmd VimResized * wincmd =
+  augroup END
 
   " Autocomplete
   augroup omnifuncs
