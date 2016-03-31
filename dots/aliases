@@ -48,6 +48,7 @@ alias gh='git hub'
 alias gta='git tag -m '' -a'
 alias gpo='git push origin'
 alias gs='scmpuff_status'
+alias glr='git pull --rebase'
 # Override some oh-my-zsh aliases
 alias gunwip='git log -1 | grep -q -c "\-\-wip\-\-" && git reset HEAD~1'
 alias glog='fshow'
