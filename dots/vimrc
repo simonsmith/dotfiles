@@ -162,7 +162,8 @@ set colorcolumn=+1
 
 " Use `indent` based folding
 set foldmethod=indent
-set foldlevelstart=10
+" Disable all folds on file open until `zc` or `zM` etc is used
+set nofoldenable
 
 " With :set hidden, opening a new file when the current buffer has unsaved
 " changes causes files to be hidden instead of closed
