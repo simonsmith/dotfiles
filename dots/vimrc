@@ -581,6 +581,7 @@ if s:has_plugin('fzf.vim')
   nnoremap <c-p> :FZF<cr>
   nnoremap <c-i> :Buffers<cr>
   nnoremap <c-g> :BCommits<cr>
+  nnoremap <c-t> :Tags<cr>
   nnoremap <leader><space> :Ag<cr>
   nmap <silent> <BS> :History:<cr>
   imap <c-x><c-f> <plug>(fzf-complete-file-ag)
