@@ -128,3 +128,6 @@ eval "$(rbenv init -)"
 
 # https://github.com/mroth/scmpuff
 eval "$(scmpuff init -s --aliases=false)"
+
+# Show archey on startup
+archey
