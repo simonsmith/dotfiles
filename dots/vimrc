@@ -505,6 +505,11 @@ endif
 " Gutentags
 if s:has_plugin('vim-gutentags')
   let g:gutentags_tagfile = 'vim_tags'
+  let g:gutentags_exclude = [
+        \ 'node_modules',
+        \ 'dist',
+        \ 'vendor',
+        \ 'bower_components']
 endif
 
 " Deoplete
