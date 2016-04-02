@@ -32,6 +32,16 @@ fcs() {
   echo -n $(echo "$commit" | sed "s/ .*//")
 }
 
+# fkill - kill process
+fkill() {
+  pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
+
+  if [ "x$pid" != "x" ]
+  then
+    kill -${1:-9} $pid
+  fi
+}
+
 # like normal z when used with arguments but displays an fzf prompt when used without.
 unalias z 2> /dev/null
 z() {
