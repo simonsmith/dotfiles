@@ -59,6 +59,9 @@ ehthumbs.db
 *.tmPreferences.cache
 *.stTheme.cache
 
+# Vim tags
+vim_tags
+
 # workspace files are user-specific
 *.sublime-workspace
 

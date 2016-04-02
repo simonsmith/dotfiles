@@ -42,6 +42,9 @@ Plug 'moll/vim-bbye'
 " Language pack
 Plug 'sheerun/vim-polyglot'
 
+" Tags
+Plug 'ludovicchabant/vim-gutentags'
+
 " Editing
 Plug 'Raimondi/delimitMate'
 Plug 'nathanaelkane/vim-indent-guides', {'on': 'IndentGuidesToggle'}
@@ -497,6 +500,11 @@ if s:has_plugin('syntastic')
   let g:syntastic_scss_checkers = ['']
   let g:syntastic_css_checkers = ['stylelint']
   let g:syntastic_javascript_checkers = ['eslint']
+endif
+
+" Gutentags
+if s:has_plugin('vim-gutentags')
+  let g:gutentags_tagfile = 'vim_tags'
 endif
 
 " Deoplete

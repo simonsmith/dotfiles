@@ -15,6 +15,7 @@ symlink_dotfile ackrc
 symlink_dotfile agignore
 symlink_dotfile aliases
 symlink_dotfile caniuse.json
+symlink_dotfile ctags
 symlink_dotfile curlrc
 symlink_dotfile editorconfig
 symlink_dotfile honukai.zsh-theme
