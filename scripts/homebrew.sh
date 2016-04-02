@@ -110,6 +110,7 @@ brew_install_or_upgrade ruby-build
 # Install other useful binaries.
 brew_install_or_upgrade ack
 brew_install_or_upgrade archey
+brew_install_or_upgrade ctags
 brew_install_or_upgrade htop
 brew_install_or_upgrade heroku
 brew_install_or_upgrade httpie
