@@ -18,11 +18,11 @@ symlink_dotfile caniuse.json
 symlink_dotfile ctags
 symlink_dotfile curlrc
 symlink_dotfile editorconfig
-symlink_dotfile honukai.zsh-theme
 symlink_dotfile eslintrc
 symlink_dotfile functions
 symlink_dotfile gitconfig
 symlink_dotfile gitignore
+symlink_dotfile honukai.zsh-theme
 symlink_dotfile hushlogin
 symlink_dotfile jshintrc
 symlink_dotfile stylelintrc
