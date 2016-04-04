@@ -626,7 +626,7 @@ endif
 
 " vim-airline
 if s:has_plugin('vim-airline')
-  let g:airline_theme = 'base16_eighties'
+  let g:airline_theme = 'bubblegum'
   let g:airline#extensions#branch#enabled = 1
   let g:airline_powerline_fonts = 1
   let g:airline#extensions#tmuxline#enabled = 0
@@ -660,8 +660,8 @@ endif
 " To have an independent theme to Airline, select the airline theme and run
 " :Tmuxline airline (or airline_insert, airline_visual).
 "
-" :AirlineTheme base16_default
-" :Tmuxline airline_insert
+" :AirlineTheme zenburn
+" :Tmuxline airline
 " :TmuxlineSnapshot
 if s:has_plugin('tmuxline.vim')
   let g:tmuxline_preset = {
