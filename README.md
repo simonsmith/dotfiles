@@ -2,7 +2,7 @@
 
 Mac config and setup steps.
 
-![](http://cl.ly/fXSG/vim.png)
+![](http://cl.ly/fbkC/Screen%20Shot%202016-04-05%20at%2020.09.31.png)
 
 ## First steps
 
