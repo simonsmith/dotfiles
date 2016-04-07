@@ -400,10 +400,6 @@ nnoremap g= gg=G``
 " use K to join current line with line above, just like J does with line below
 nnoremap K kJ
 
-" Auto center on matched string.
-noremap n nzz
-noremap N Nzz
-
 " Split
 noremap <leader>x :<C-u>split<cr>
 noremap <leader>v :<C-u>vsplit<cr>
