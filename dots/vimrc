@@ -103,6 +103,7 @@ Plug 'mhinz/vim-signify'
 Plug 'ap/vim-css-color', {'for': 'css'}
 Plug 'mattn/emmet-vim'
 Plug 'alvan/vim-closetag'
+Plug 'Valloric/MatchTagAlways'
 
 " JavaScript
 Plug 'othree/javascript-libraries-syntax.vim'
@@ -477,6 +478,10 @@ if s:has_plugin('vim-easyclip')
   imap <c-v> <plug>EasyClipInsertModePaste
   " Place a mark (m taken by easyclip)
   nnoremap gm m
+endif
+
+if s:has_plugin('MatchTagAlways')
+  nnoremap <leader>% :MtaJumpToOtherTag<cr>
 endif
 
 " Syntastic
