@@ -55,6 +55,7 @@ Plug 'tpope/vim-commentary'
 Plug 'Valloric/ListToggle'
 Plug 'unblevable/quick-scope'
 Plug 'chip/vim-fat-finger'
+Plug 'Konfekt/FastFold'
 
 " Text objects
 Plug 'wellle/targets.vim'
