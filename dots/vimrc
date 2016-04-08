@@ -730,7 +730,9 @@ if has('autocmd')
     autocmd!
     autocmd InsertEnter * setlocal number norelativenumber
     autocmd InsertLeave * setlocal relativenumber
-    autocmd InsertEnter * setlocal number nocursorline
+    autocmd WinEnter    * setlocal cursorline
+    autocmd WinLeave    * setlocal nocursorline
+    autocmd InsertEnter * setlocal nocursorline
     autocmd InsertLeave * setlocal cursorline
   augroup END
 
