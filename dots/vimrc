@@ -29,7 +29,6 @@ Plug 'henrik/vim-qargs'
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim'
 Plug 'ironhouzi/vim-stim'
-Plug 'google/vim-searchindex'
 
 " File management
 Plug 'scrooloose/nerdtree'
