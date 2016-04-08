@@ -47,7 +47,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'ludovicchabant/vim-gutentags'
 
 " Editing
-Plug 'Raimondi/delimitMate'
+Plug 'jiangmiao/auto-pairs'
 Plug 'nathanaelkane/vim-indent-guides', {'on': 'IndentGuidesToggle'}
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
