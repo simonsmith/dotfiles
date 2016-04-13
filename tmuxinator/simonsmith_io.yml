@@ -8,8 +8,10 @@ windows:
   - nvim: nvim
   - git:
     - git status
-  - server:
-    - bundle exec middleman -p=9000
-  - watch:
-    - npm run watch
-
+  - node:
+      layout: tiled
+      panes:
+        - server:
+          - bundle exec middleman -p=9000
+        - watch:
+          - npm run watch
