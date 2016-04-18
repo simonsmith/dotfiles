@@ -634,7 +634,7 @@ endif
 
 " vim-airline
 if s:has_plugin('vim-airline')
-  let g:airline_theme = 'bubblegum'
+  let g:airline_theme = 'dark'
   let g:airline#extensions#branch#enabled = 1
   let g:airline_powerline_fonts = 1
   let g:airline#extensions#tmuxline#enabled = 0
