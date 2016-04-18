@@ -384,9 +384,6 @@ nnoremap <leader>w :w<cr>
 nnoremap k gk
 nnoremap j gj
 
-" Do not show q: window
-map q: :q
-
 " Adjust window size with arrow keys
 noremap <right> <C-w>>
 noremap <left> <C-w><
