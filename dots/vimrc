@@ -54,6 +54,7 @@ Plug 'Valloric/ListToggle'
 Plug 'unblevable/quick-scope'
 Plug 'chip/vim-fat-finger'
 Plug 'Konfekt/FastFold'
+Plug 't9md/vim-choosewin'
 
 " Text objects
 Plug 'wellle/targets.vim'
@@ -547,6 +548,11 @@ if s:has_plugin('vim-indent-guides')
   " Add this here because this plugin is loaded ondemand so this mapping is not
   " present on initial load
   nmap <leader>ig :IndentGuidesToggle<cr>
+endif
+
+if s:has_plugin('vim-choosewin')
+  nmap  -  <plug>(choosewin)
+  let g:choosewin_label_fill = 1
 endif
 
 " JSX
