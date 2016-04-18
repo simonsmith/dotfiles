@@ -554,8 +554,9 @@ if s:has_plugin('vim-indent-guides')
 endif
 
 if s:has_plugin('vim-choosewin')
-  nmap  -  <plug>(choosewin)
-  let g:choosewin_label_fill = 1
+  nmap  <leader>g <plug>(choosewin)
+  let g:choosewin_label_fill = 0
+  let g:choosewin_blink_on_land = 0
 endif
 
 " JSX
@@ -587,7 +588,6 @@ if s:has_plugin('nerdtree')
   let NERDTreeShowHidden = 1
   let NERDTreeHijackNetrw = 1
   let NERDTreeAutoDeleteBuffer = 1
-  nmap <leader>] :NERDTreeToggle<cr>
 endif
 
 " fzf
