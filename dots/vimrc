@@ -584,6 +584,7 @@ if s:has_plugin('nerdtree')
   let NERDTreeShowHidden = 1
   let NERDTreeHijackNetrw = 1
   let NERDTreeAutoDeleteBuffer = 1
+  nmap <leader>] :NERDTreeToggle<cr>
 endif
 
 " fzf
