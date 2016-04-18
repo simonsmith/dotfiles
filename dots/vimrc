@@ -33,6 +33,7 @@ Plug 'ironhouzi/vim-stim'
 " File management
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tpope/vim-vinegar'
 
 " Buffers
 Plug 'schickling/vim-bufonly', {'on': 'BufOnly'}
