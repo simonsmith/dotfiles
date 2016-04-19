@@ -562,6 +562,10 @@ if s:has_plugin('vim-jsx')
   let g:jsx_ext_required = 0
 endif
 
+if s:has_plugin('auto-pairs')
+  let g:AutoPairsCenterLine = 0
+endif
+
 if s:has_plugin('vim-bbye')
   nnoremap <silent> Q :Bdelete<cr>
 endif
