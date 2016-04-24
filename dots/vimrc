@@ -767,7 +767,7 @@ if has('autocmd')
   " Move to the top of a git commit
   augroup move-to-top-of-commit
     autocmd!
-    au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+    au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 2, 1, 0])
   augroup END
 
   " Resize splits when vim changes size (like with tmux opening/closing)
