@@ -51,6 +51,9 @@
 	# Detect whitespace errors when applying a patch
 	whitespace = fix
 
+[commit]
+  template = ~/.gitmessage
+
 [core]
 	# Use custom `.gitignore` and `.gitattributes`
 	excludesfile = ~/.gitignore
