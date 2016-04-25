@@ -28,7 +28,7 @@ Plug 'mileszs/ack.vim'
 Plug 'henrik/vim-qargs'
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim'
-Plug 'ironhouzi/vim-stim'
+Plug 'junegunn/vim-pseudocl' | Plug 'junegunn/vim-oblique'
 
 " File management
 Plug 'scrooloose/nerdtree'
