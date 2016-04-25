@@ -22,6 +22,7 @@ symlink_dotfile eslintrc
 symlink_dotfile functions
 symlink_dotfile gitconfig
 symlink_dotfile gitignore
+symlink_dotfile gitmessage
 symlink_dotfile honukai.zsh-theme
 symlink_dotfile hushlogin
 symlink_dotfile jshintrc
