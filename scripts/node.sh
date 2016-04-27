@@ -17,9 +17,6 @@ else
   log "nvm already installed ..."
 fi
 
-log "Installing npm 2.14.15 ..."
-npm i -g npm@2.14.15
-
 npm_packages="$(npm list -g --depth=0)"
 install_global_npm_package() {
   if echo $npm_packages | grep $1@ > /dev/null 2>&1; then
