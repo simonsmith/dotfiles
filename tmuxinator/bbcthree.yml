@@ -5,13 +5,17 @@ root: ~/Sites/bbc/bbcthree-web
 startup_window: nvim
 
 windows:
-  - nvim: nvim
+  - nvim:
+    - nvm use 0.12.7
+    - nvim
   - git:
+    - nvm use 0.12.7
     - cd client
   - node:
       layout: tiled
       panes:
         - gulp:
+          - nvm use 0.12.7
           - cd client
           - gulp watch
         - server:
@@ -19,6 +23,7 @@ windows:
           - cd server
           - nodemon -e js,html,svg server.js
         - watch:
+          - nvm use 0.12.7
           - cd server
           - webpack --watch
         - redis:
