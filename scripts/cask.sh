@@ -31,7 +31,6 @@ install_cask google-drive
 
 # Comms
 install_cask google-hangouts
-install_cask franz
 install_cask skype
 
 # Media
