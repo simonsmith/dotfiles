@@ -203,6 +203,9 @@ set cursorline
 set softtabstop=2
 set shiftwidth=2
 
+" Smoother scrolling when moving horizontally
+set sidescroll=1
+
 " Use spaces, not tabs
 set expandtab
 
