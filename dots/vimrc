@@ -41,6 +41,7 @@ Plug 'moll/vim-bbye'
 
 " Language pack
 Plug 'sheerun/vim-polyglot'
+Plug 'Glench/Vim-Jinja2-Syntax'
 
 " Tags
 Plug 'ludovicchabant/vim-gutentags'
