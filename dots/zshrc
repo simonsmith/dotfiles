@@ -111,7 +111,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 # Theme
-# https://github.com/oskarkrawczyk/honukai-iterm-zsh
+# Modified from https://github.com/oskarkrawczyk/honukai-iterm-zsh
 # ---------------------------------------------------------------
 
 ZSH_GIT_PROMPT="$HOME/zsh-git-prompt/zshrc.sh"
