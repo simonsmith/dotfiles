@@ -14,7 +14,8 @@ endif
 call plug#begin(g:plugin_path)
 
 " Theme
-Plug 'morhetz/gruvbox'
+Plug 'joshdick/onedark.vim'
+Plug 'joshdick/airline-onedark.vim'
 
 " tmux
 if executable('tmux')
@@ -150,8 +151,11 @@ let g:html_indent_tags = 'li\|p'
 let mapleader = ' '
 
 " Theme
-silent! colorscheme gruvbox
+if !has('nvim')
+  let g:onedark_termcolors=16
+endif
 set background=dark
+silent! colorscheme onedark
 
 " Turn off swapfiles
 set noswapfile
@@ -649,7 +653,7 @@ endif
 
 " vim-airline
 if s:has_plugin('vim-airline')
-  let g:airline_theme = 'dark'
+  let g:airline_theme = 'onedark'
   let g:airline#extensions#branch#enabled = 1
   let g:airline_powerline_fonts = 1
   let g:airline#extensions#tmuxline#enabled = 0
@@ -669,8 +673,8 @@ endif
 
 " Neomake
 if s:has_plugin('neomake')
-  let g:neomake_error_sign = {'text': '✗', 'texthl': 'GruvboxRedSign'}
-  let g:neomake_warning_sign = {'text': '⚠', 'texthl': 'GruvboxYellowSign'}
+  let g:neomake_error_sign = {'text': '✗', 'texthl': 'DiffDelete'}
+  let g:neomake_warning_sign = {'text': '⚠'}
   let g:neomake_list_height = 6
 
   if has('autocmd')
@@ -680,12 +684,6 @@ if s:has_plugin('neomake')
 endif
 
 " Tmuxline
-" To have an independent theme to Airline, select the airline theme and run
-" :Tmuxline airline (or airline_insert, airline_visual).
-"
-" :AirlineTheme zenburn
-" :Tmuxline airline
-" :TmuxlineSnapshot
 if s:has_plugin('tmuxline.vim')
   let g:tmuxline_preset = {
         \'a'    : '#S',
