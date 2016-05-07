@@ -114,14 +114,18 @@ export NVM_DIR="$HOME/.nvm"
 # https://github.com/oskarkrawczyk/honukai-iterm-zsh
 # ---------------------------------------------------------------
 
-[ -s "$HOME/zsh-git-prompt/zshrc.sh" ] && source "$HOME/zsh-git-prompt/zshrc.sh"
-[ -s "$HOME/.honukai.zsh-theme" ] && source "$HOME/.honukai.zsh-theme"
+ZSH_GIT_PROMPT="$HOME/zsh-git-prompt/zshrc.sh"
+ZSH_THEME="$HOME/.honukai.zsh-theme"
+
+[ -s $ZSH_GIT_PROMPT ] && source $ZSH_GIT_PROMPT
+[ -s $ZSH_THEME ] && source $ZSH_THEME
 
 # Misc
 # ---------------------------------------------------------------
 
 # https://github.com/ingydotnet/git-hub
-[ -s "$HOME/git-hub/.rc" ] && source "$HOME/git-hub/.rc"
+GIT_HUB_RC="$HOME/git-hub/.rc"
+[ -s $GIT_HUB_RC ] && source $GIT_HUB_RC
 
 # https://github.com/rbenv/rbenv
 eval "$(rbenv init -)"
