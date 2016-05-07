@@ -632,8 +632,8 @@ endif
 
 " Neomake
 if s:has_plugin('neomake')
-  let g:neomake_error_sign = {'text': '✗', 'texthl': 'DiffDelete'}
-  let g:neomake_warning_sign = {'text': '⚠'}
+  let g:neomake_error_sign = {'text': '✗', 'texthl': 'GitGutterDelete'}
+  let g:neomake_warning_sign = {'text': '⚠', 'texthl': 'GitGutterChange'}
   let g:neomake_list_height = 6
 
   if has('autocmd')
