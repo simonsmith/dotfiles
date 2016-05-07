@@ -9,6 +9,7 @@ alias h="history"
 alias j="jobs"
 alias cask="brew cask"
 alias nv="nvim"
+alias mux="tmuxinator"
 
 # npm
 alias ni='npm install'
