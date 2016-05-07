@@ -144,18 +144,18 @@ endfunction
 "  General config
 " -----------------------------------------------------------------------------
 
-" Treat <li> and <p> tags like the block tags they are
-let g:html_indent_tags = 'li\|p'
-
-" Set space to leader
-let mapleader = ' '
-
 " Theme
 if !has('nvim')
   let g:onedark_termcolors=16
 endif
 set background=dark
 silent! colorscheme onedark
+
+" Treat <li> and <p> tags like the block tags they are
+let g:html_indent_tags = 'li\|p'
+
+" Set space to leader
+let mapleader = ' '
 
 " Turn off swapfiles
 set noswapfile
