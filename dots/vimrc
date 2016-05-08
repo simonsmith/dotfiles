@@ -763,7 +763,7 @@ if has('autocmd')
   " Open help in a vertical split
   augroup vimrc-help
     autocmd!
-    autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | endif
+    autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | setlocal relativenumber | endif
   augroup END
 
   augroup file-types
