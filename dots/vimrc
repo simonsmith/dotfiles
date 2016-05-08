@@ -99,6 +99,8 @@ Plug 'chip/vim-fat-finger'
 Plug 'Konfekt/FastFold'
 " Move between windows and allow swapping position
 Plug 't9md/vim-choosewin'
+" Remember cursor position in closed buffers
+Plug 'dietsche/vim-lastplace'
 
 " Text objects
 " ------------------------------------------------------------------------------
@@ -755,12 +757,6 @@ if has('autocmd')
   augroup vimrc-help
     autocmd!
     autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | endif
-  augroup END
-
-  " Remember cursor position
-  augroup vimrc-remember-cursor-position
-    autocmd!
-    autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
   augroup END
 
   augroup file-types
