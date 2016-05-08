@@ -112,6 +112,7 @@ Plug 'kana/vim-textobj-function'
 Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-line'
 Plug 'thinca/vim-textobj-function-javascript'
+Plug 'whatyouhide/vim-textobj-erb'
 Plug 'jasonlong/vim-textobj-css'
 
 " General
