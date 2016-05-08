@@ -111,9 +111,9 @@ Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-function'
 Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-line'
-Plug 'thinca/vim-textobj-function-javascript'
-Plug 'whatyouhide/vim-textobj-erb'
-Plug 'jasonlong/vim-textobj-css'
+Plug 'thinca/vim-textobj-function-javascript', {'for': ['javascript', 'javascript.jsx', 'json']}
+Plug 'whatyouhide/vim-textobj-erb', {'for': 'eruby'}
+Plug 'jasonlong/vim-textobj-css', {'for': ['css', 'scss']}
 
 " General
 " ------------------------------------------------------------------------------
@@ -177,7 +177,7 @@ Plug 'mhinz/vim-signify'
 " ------------------------------------------------------------------------------
 
 " Highlight css colors with their color
-Plug 'ap/vim-css-color', {'for': 'css'}
+Plug 'ap/vim-css-color', {'for': ['css', 'scss']}
 " Easy HTML and CSS generation
 Plug 'mattn/emmet-vim'
 
@@ -188,10 +188,10 @@ Plug 'alvan/vim-closetag'
 " ------------------------------------------------------------------------------
 
 Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'mxw/vim-jsx'
-Plug 'moll/vim-node'
+Plug 'mxw/vim-jsx', {'for': ['javascript', 'javascript.jsx', 'json']}
+Plug 'moll/vim-node', {'for': ['javascript', 'javascript.jsx', 'json']}
 Plug 'elzr/vim-json', {'for': ['javascript', 'javascript.jsx', 'json']}
-Plug 'jason0x43/vim-js-indent'
+Plug 'jason0x43/vim-js-indent', {'for': ['javascript', 'javascript.jsx', 'json']}
 
 if has('nvim')
   " Linting
