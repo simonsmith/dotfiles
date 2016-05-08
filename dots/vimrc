@@ -69,8 +69,7 @@ Plug 'moll/vim-bbye'
 
 " Syntax and highlighting for every language
 Plug 'sheerun/vim-polyglot'
-" Adds support for braces in HTML, like Swig/Mustache
-Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'blockloop/vim-swigjs'
 
 " Tags
 " ------------------------------------------------------------------------------
@@ -770,7 +769,7 @@ if has('autocmd')
     autocmd!
 
     " Override some syntaxes so things look better
-    autocmd BufNewFile,BufRead *.html setlocal syntax=jinja
+    autocmd BufNewFile,BufRead *.html setlocal syntax=swig
     autocmd BufNewFile,BufRead *.css setlocal syntax=scss
     autocmd BufNewFile,BufRead *.js setlocal syntax=javascript
 
