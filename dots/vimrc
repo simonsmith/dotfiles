@@ -249,10 +249,10 @@ set binary
 set textwidth=80
 set colorcolumn=+1
 
-" Use `indent` based folding
+" Use ``indent`` based folding
 set foldmethod=indent
-" Force everything to fold on file open
-set foldlevelstart=0
+" Disable all folds on file open until `zc` or `zM` etc is used
+set nofoldenable
 
 " With :set hidden, opening a new file when the current buffer has unsaved
 " changes causes files to be hidden instead of closed
@@ -781,7 +781,7 @@ if has('autocmd')
     autocmd FileType gitcommit setlocal textwidth=72
     autocmd FileType gitcommit setlocal spell
 
-    " Allow stylesheets to autocomplete hyphenated words and set fold level
+    " Allow stylesheets to autocomplete hyphenated words
     autocmd FileType css,scss,sass setlocal iskeyword+=-
   augroup END
 
