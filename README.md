@@ -2,11 +2,7 @@
 
 Mac config and setup steps.
 
-<div style="display: flex;">
-  <img src="http://cl.ly/g6W0/Screen%20Shot%202016-05-08%20at%2011.39.20.png">
-  <img src="http://cl.ly/g6xG/Screen%20Shot%202016-05-08%20at%2011.41.49.png">
-</div>
-
+![](http://cl.ly/g6W0/Screen%20Shot%202016-05-08%20at%2011.39.20.png)
 
 ## First steps
 
