@@ -1,6 +1,6 @@
 "  Vim plug
 " https://github.com/junegunn/vim-plug
-" -----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
 
 if has('nvim')
   let g:plugin_path = '~/.config/nvim/plugged'
@@ -14,53 +14,99 @@ endif
 call plug#begin(g:plugin_path)
 
 " Theme
+" ------------------------------------------------------------------------------
+
+" Atom theme
 Plug 'joshdick/onedark.vim'
 Plug 'joshdick/airline-onedark.vim'
 
 " tmux
+" ------------------------------------------------------------------------------
+
 if executable('tmux')
+  " Navigate between vim and tmux splits
   Plug 'christoomey/vim-tmux-navigator'
+  " Restore `FocusLost` and `FocusGained` events in tmux
   Plug 'tmux-plugins/vim-tmux-focus-events'
+  " tmux statusline generator
   Plug 'edkolev/tmuxline.vim'
 endif
 
 " Finding and replacing
+" ------------------------------------------------------------------------------
+
+" Run Ack from inside Vim
 Plug 'mileszs/ack.vim'
+" Execute operations on the files in the quickfix list
 Plug 'henrik/vim-qargs'
+" Fuzzy finding anything
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
+" fzf integration for Vim
 Plug 'junegunn/fzf.vim'
+" Improved search in Vim
 Plug 'junegunn/vim-pseudocl' | Plug 'junegunn/vim-oblique'
 
 " File management
+" ------------------------------------------------------------------------------
+
+" File browser
 Plug 'scrooloose/nerdtree'
+" Show git changes in NERDTree
 Plug 'Xuyuanp/nerdtree-git-plugin'
+" Easy directory browsing with `-`, integrates with NERDTree
 Plug 'tpope/vim-vinegar'
 
 " Buffers
+" ------------------------------------------------------------------------------
+
+" Close all buffers except current
 Plug 'schickling/vim-bufonly', {'on': 'BufOnly'}
+" Close buffers without losing window layout
 Plug 'moll/vim-bbye'
 
 " Language pack
+" ------------------------------------------------------------------------------
+
+" Syntax and highlighting for every language
 Plug 'sheerun/vim-polyglot'
+" Adds support for braces in HTML, like Swig/Mustache
 Plug 'Glench/Vim-Jinja2-Syntax'
 
 " Tags
+" ------------------------------------------------------------------------------
+
+" Generates ctags automatically
 Plug 'ludovicchabant/vim-gutentags'
 
 " Editing
+" ------------------------------------------------------------------------------
+
+" Insert or delete brackets, parens, quotes in pair.
 Plug 'jiangmiao/auto-pairs'
+" Display indent levels
 Plug 'nathanaelkane/vim-indent-guides', {'on': 'IndentGuidesToggle'}
+" Allow plugins to be repeated
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-unimpaired'
+" Comment out blocks of code
 Plug 'tpope/vim-commentary'
+" Toggle location and quickfix lists
 Plug 'Valloric/ListToggle'
+" Highlight characters for motions (f,F,t,T)
 Plug 'unblevable/quick-scope'
+" Correct common typos
 Plug 'chip/vim-fat-finger'
+" Keep folds performant
 Plug 'Konfekt/FastFold'
+" Move between windows and allow swapping position
 Plug 't9md/vim-choosewin'
 
 " Text objects
+" ------------------------------------------------------------------------------
+
+" Improve text objects for arguments, brackets etc
 Plug 'wellle/targets.vim'
+
+" Add various text objects
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-function'
 Plug 'kana/vim-textobj-entire'
@@ -69,45 +115,77 @@ Plug 'thinca/vim-textobj-function-javascript'
 Plug 'jasonlong/vim-textobj-css'
 
 " General
+" ------------------------------------------------------------------------------
+
+" Set spaces and other settings on a per project basis
 Plug 'editorconfig/editorconfig-vim'
+" GUI for the undo tree
 Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
+" Switch the cwd based on the file location
 Plug 'airblade/vim-rooter'
 
 " Refactoring
+" ------------------------------------------------------------------------------
+
+" Split and join HTML tags, JS objects etc
 Plug 'AndrewRadev/splitjoin.vim'
+" Make it easy to add/remove/change brackets, quotes etc
 Plug 'tpope/vim-surround'
 
 " Copy/Paste behaviour
+" ------------------------------------------------------------------------------
+
+" Stop everything saving to a register and instead rely on just `m` for cut
 Plug 'svermeulen/vim-easyclip'
+" Improve pasting code from the clipboard
 Plug 'ConradIrwin/vim-bracketed-paste'
 
 " Sessions
+" ------------------------------------------------------------------------------
+
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 
 " Status bar
+" ------------------------------------------------------------------------------
+"
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " Tabs
+" ------------------------------------------------------------------------------
+
+" Make managing tabs easier with rename, add, delete etc
 Plug 'gcmt/taboo.vim'
+" Allow a window to be fully viewed. Useful when multiple splits are in use
 Plug 'troydm/zoomwintab.vim'
 
 " Snippets
+" ------------------------------------------------------------------------------
+
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 " Git
+" ------------------------------------------------------------------------------
+
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
 
 " HTML/CSS
+" ------------------------------------------------------------------------------
+
+" Highlight css colors with their color
 Plug 'ap/vim-css-color', {'for': 'css'}
+" Easy HTML and CSS generation
 Plug 'mattn/emmet-vim'
+
+" Automatically add a closing HTML tag
 Plug 'alvan/vim-closetag'
-Plug 'Valloric/MatchTagAlways'
 
 " JavaScript
+" ------------------------------------------------------------------------------
+
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'mxw/vim-jsx'
 Plug 'moll/vim-node'
@@ -115,6 +193,7 @@ Plug 'elzr/vim-json', {'for': ['javascript', 'javascript.jsx', 'json']}
 Plug 'jason0x43/vim-js-indent'
 
 if has('nvim')
+  " Linting
   Plug 'benekastah/neomake'
   Plug 'benjie/neomake-local-eslint.vim'
   " Autocomplete
@@ -136,7 +215,7 @@ function! s:has_plugin(plugin)
 endfunction
 
 "  General config
-" -----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
 
 " Theme
 if !has('nvim')
@@ -146,10 +225,10 @@ set background=dark
 silent! colorscheme onedark
 
 " Treat <li> and <p> tags like the block tags they are
-let g:html_indent_tags = 'li\|p'
+let g:html_indent_tags='li\|p'
 
-" Set space to leader
-let mapleader = ' '
+" Set <space> to leader
+let mapleader=' '
 
 " Turn off swapfiles
 set noswapfile
@@ -165,7 +244,7 @@ set binary
 set textwidth=80
 set colorcolumn=+1
 
-" Use `indent` based folding
+" Use ``indent`` based folding
 set foldmethod=indent
 " Disable all folds on file open until `zc` or `zM` etc is used
 set nofoldenable
@@ -377,7 +456,7 @@ if !has('nvim')
 endif
 
 " Key mappings
-" -----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
 
 " Save file
 nnoremap <leader>w :w<cr>
@@ -427,7 +506,8 @@ nnoremap <silent> <leader>k :noh<cr>
 " Single window
 nnoremap <leader>nb :enew<cr>
 
-" Automatically 'gv' (go to previously selected visual block) after indenting or unindenting.
+" Automatically 'gv' (go to previously selected visual block)
+" after indenting or unindenting.
 vnoremap < <gv
 vnoremap > >gv
 
@@ -451,7 +531,7 @@ if exists(':tnoremap')
 endif
 
 "  Plugin config
-" -----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
 
 " Undotree
 if s:has_plugin('undotree')
@@ -667,7 +747,7 @@ if s:has_plugin('emmet-vim')
 endif
 
 " Automatic commands
-" -----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
 "
 if has('autocmd')
   " Open help in a vertical split
