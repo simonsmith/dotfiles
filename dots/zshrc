@@ -115,10 +115,10 @@ export NVM_DIR="$HOME/.nvm"
 # ---------------------------------------------------------------
 
 ZSH_GIT_PROMPT="$HOME/zsh-git-prompt/zshrc.sh"
-ZSH_THEME="$HOME/.honukai.zsh-theme"
+THEME="$HOME/.honukai.zsh-theme"
 
 [ -s $ZSH_GIT_PROMPT ] && source $ZSH_GIT_PROMPT
-[ -s $ZSH_THEME ] && source $ZSH_THEME
+[ -s $THEME ] && source $THEME
 
 # Misc
 # ---------------------------------------------------------------
