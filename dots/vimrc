@@ -329,7 +329,7 @@ set clipboard=unnamed
 
 " Spell check
 set spelllang=en
-highlight SpellBad term=underline cterm=underline
+highlight SpellBad term=standout ctermbg=red ctermfg=white term=underline cterm=underline
 highlight clear SpellCap
 highlight SpellCap term=underline cterm=underline
 highlight clear SpellRare
@@ -773,8 +773,8 @@ if has('autocmd')
     autocmd BufNewFile,BufRead *.css setlocal syntax=scss
     autocmd BufNewFile,BufRead *.js setlocal syntax=javascript
 
-    " Wrap text in markdown files
-    autocmd BufNewFile,BufRead *.md setlocal wrap linebreak
+    " Wrap text and turn on spell for markdown files
+    autocmd BufNewFile,BufRead *.md setlocal wrap linebreak spell filetype=markdown
 
     " Automatically wrap at 72 characters and spell check git commit messages
     autocmd FileType gitcommit setlocal textwidth=72
