@@ -190,7 +190,6 @@ Plug 'alvan/vim-closetag'
 " JavaScript
 " ------------------------------------------------------------------------------
 
-Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'mxw/vim-jsx', {'for': ['javascript', 'javascript.jsx', 'json']}
 Plug 'moll/vim-node', {'for': ['javascript', 'javascript.jsx', 'json']}
 Plug 'elzr/vim-json', {'for': ['javascript', 'javascript.jsx', 'json']}
