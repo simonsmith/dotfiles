@@ -505,10 +505,6 @@ map <F6> :setlocal spell!<cr>
 " Clear search (highlight)
 nnoremap <silent> <leader>k :noh<cr>
 
-" Open new buffers
-" Single window
-nnoremap <leader>nb :enew<cr>
-
 " Automatically 'gv' (go to previously selected visual block)
 " after indenting or unindenting.
 vnoremap < <gv
