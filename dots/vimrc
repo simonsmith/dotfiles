@@ -150,7 +150,7 @@ Plug 'xolox/vim-session'
 
 " Status bar
 " ------------------------------------------------------------------------------
-"
+
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -326,13 +326,6 @@ set clipboard=unnamed
 
 " Spell check
 set spelllang=en
-highlight SpellBad term=standout ctermbg=red ctermfg=white term=underline cterm=underline
-highlight clear SpellCap
-highlight SpellCap term=underline cterm=underline
-highlight clear SpellRare
-highlight SpellRare term=underline cterm=underline
-highlight clear SpellLocal
-highlight SpellLocal term=underline cterm=underline
 
 " Where it should get the dictionary files
 let g:spellfile_URL = 'http://ftp.vim.org/vim/runtime/spell'
