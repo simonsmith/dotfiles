@@ -90,8 +90,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 " Toggle location and quickfix lists
 Plug 'Valloric/ListToggle'
-" Highlight characters for motions (f,F,t,T)
-Plug 'unblevable/quick-scope'
 " Advanced movement similar to motions
 Plug 'justinmk/vim-sneak'
 " Correct common typos
@@ -572,8 +570,23 @@ if s:has_plugin('vim-gutentags')
 endif
 
 if s:has_plugin('vim-sneak')
-  let g:sneak#s_next=1
-  let g:sneak#use_ic_scs=0
+  let g:sneak#use_ic_scs = 0
+  nmap gs <Plug>Sneak_s
+  nmap gS <Plug>Sneak_S
+  "replace 'f' with 1-char Sneak
+  nmap f <Plug>Sneak_f
+  nmap F <Plug>Sneak_F
+  xmap f <Plug>Sneak_f
+  xmap F <Plug>Sneak_F
+  omap f <Plug>Sneak_f
+  omap F <Plug>Sneak_F
+  "replace 't' with 1-char Sneak
+  nmap t <Plug>Sneak_t
+  nmap T <Plug>Sneak_T
+  xmap t <Plug>Sneak_t
+  xmap T <Plug>Sneak_T
+  omap t <Plug>Sneak_t
+  omap T <Plug>Sneak_T
 endif
 
 " Deoplete
@@ -740,10 +753,6 @@ endif
 " JS lib syntax
 if s:has_plugin('javascript-libraries-syntax.vim')
   let g:used_javascript_libs = 'underscore,jquery,react,requirejs,jasmine,chai'
-endif
-
-if s:has_plugin('quick-scope')
-  let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 endif
 
 if s:has_plugin('emmet-vim')
