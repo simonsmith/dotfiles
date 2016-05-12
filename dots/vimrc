@@ -546,10 +546,8 @@ endif
 
 if s:has_plugin('vim-easyclip')
   let g:EasyClipUseSubstituteDefaults = 0
-  " Use `gs` for substitute
-  nmap <silent> gs <plug>SubstituteOverMotionMap
-  nmap gss <plug>SubstituteLine
-  xmap gs <plug>XEasyClipPaste
+  nmap s <plug>SubstituteOverMotionMap
+  xmap s <plug>XEasyClipPaste
   imap <c-v> <plug>EasyClipInsertModePaste
   " Place a mark (m taken by easyclip)
   nnoremap gm m
