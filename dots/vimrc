@@ -611,6 +611,13 @@ if s:has_plugin('vim-polyglot')
   let g:polyglot_disabled = ['json']
 endif
 
+if s:has_plugin('splitjoin.vim')
+  let g:splitjoin_split_mapping = ''
+  let g:splitjoin_join_mapping = ''
+  nmap gj :SplitjoinSplit<cr>
+  nmap gk :SplitjoinJoin<cr>
+endif
+
 " IndentGuides
 if s:has_plugin('vim-indent-guides')
   " Add this here because this plugin is loaded ondemand so this mapping is not
