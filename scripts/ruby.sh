@@ -31,7 +31,7 @@ gem update --system
 gem_install_or_update bundler
 gem_install_or_update middleman
 gem_install_or_update tmuxinator
-gem_install_or_update circle-ci
+gem_install_or_update circle-cli
 
 log "Configuring Bundler ..."
   number_of_cores=$(sysctl -n hw.ncpu)
