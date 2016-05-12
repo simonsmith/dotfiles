@@ -530,14 +530,11 @@ endif
 "  Plugin config
 " ------------------------------------------------------------------------------
 
-" Undotree
 if s:has_plugin('undotree')
   let g:undotree_WindowLayout = 2
-
   nnoremap <f5> :UndotreeToggle<cr>
 endif
 
-" UltiSnips
 if s:has_plugin('ultisnips')
   let g:UltiSnipsExpandTrigger="<tab>"
   let g:UltiSnipsJumpForwardTrigger="<tab>"
@@ -557,7 +554,6 @@ if s:has_plugin('MatchTagAlways')
   nnoremap <leader>% :MtaJumpToOtherTag<cr>
 endif
 
-" Gutentags
 if s:has_plugin('vim-gutentags')
   let g:gutentags_tagfile = 'vim_tags'
   let g:gutentags_exclude = [
@@ -587,7 +583,6 @@ if s:has_plugin('vim-sneak')
   omap T <Plug>Sneak_T
 endif
 
-" Deoplete
 if s:has_plugin('deoplete.nvim')
   let g:deoplete#enable_at_startup = 1
   let g:deoplete#auto_completion_start_length = 1
@@ -595,13 +590,11 @@ if s:has_plugin('deoplete.nvim')
   let g:deoplete#sources.python = ['ultisnips']
 endif
 
-" Deoplete tern
 if s:has_plugin('deoplete-ternjs')
   let g:tern_show_signature_in_pum = 1
   let g:tern_request_timeout = 1
 endif
 
-" Sessions
 if s:has_plugin('vim-session')
   let g:session_autosave = 'yes'
   let g:session_autoload = 'no'
@@ -618,7 +611,6 @@ if s:has_plugin('splitjoin.vim')
   nmap gk :SplitjoinJoin<cr>
 endif
 
-" IndentGuides
 if s:has_plugin('vim-indent-guides')
   " Add this here because this plugin is loaded ondemand so this mapping is not
   " present on initial load
@@ -631,7 +623,6 @@ if s:has_plugin('vim-choosewin')
   let g:choosewin_blink_on_land = 0
 endif
 
-" JSX
 if s:has_plugin('vim-jsx')
   let g:jsx_ext_required = 0
 endif
@@ -644,11 +635,9 @@ if s:has_plugin('vim-bbye')
   nnoremap <silent> Q :Bdelete<cr>
 endif
 
-" Taboo
 if s:has_plugin('taboo.vim')
   let g:taboo_tabline = 0 " Let airline handle it all
   let g:taboo_renamed_tab_format = '%l%m'
-
   nnoremap th :tabprev<cr>
   nnoremap tl :tabnext<cr>
   nnoremap tn :tabnew<cr>
@@ -657,7 +646,6 @@ if s:has_plugin('taboo.vim')
   nnoremap tr :TabooRename<space>
 endif
 
-" NERD tree
 if s:has_plugin('nerdtree')
   let g:NERDTreeWinSize = 30
   let NERDTreeIgnore = ['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
@@ -666,7 +654,6 @@ if s:has_plugin('nerdtree')
   let NERDTreeAutoDeleteBuffer = 1
 endif
 
-" fzf
 if s:has_plugin('fzf.vim')
   let g:fzf_height = '30%'
   let g:fzf_commits_log_options = '--color --graph --pretty=format:"%C(yellow)%h%Creset -%C(auto)%d%Creset %s %C(bold blue)(%cr) %Cred<%an>%Creset" --abbrev-commit'
@@ -698,7 +685,6 @@ if s:has_plugin('ListToggle')
   let g:lt_height = 6
 endif
 
-" Ag
 if executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
@@ -706,13 +692,11 @@ if executable('ag')
   let g:ackprg = 'ag --smart-case --nogroup --nocolor --column'
 endif
 
-" jq
 if executable('jq')
   " JSON beautifier
   nnoremap <leader>z :%!jq '.'<cr>
 endif
 
-" vim-airline
 if s:has_plugin('vim-airline')
   let g:airline_theme = 'onedark'
   let g:airline#extensions#branch#enabled = 1
@@ -725,14 +709,12 @@ if s:has_plugin('vim-airline')
   let g:airline#extensions#tabline#buffer_nr_show = 0
 endif
 
-" vim-signify
 if s:has_plugin('vim-signify')
   let g:signify_vcs_list = ['git']
   let g:signify_update_on_focusgained = 1
   let g:signify_update_on_bufenter = 1
 endif
 
-" Neomake
 if s:has_plugin('neomake')
   let g:neomake_error_sign = {'text': '✗', 'texthl': 'GitGutterDelete'}
   let g:neomake_warning_sign = {'text': '⚠', 'texthl': 'GitGutterChange'}
@@ -744,7 +726,6 @@ if s:has_plugin('neomake')
   endif
 endif
 
-" Tmuxline
 if s:has_plugin('tmuxline.vim')
   let g:tmuxline_preset = {
         \'a'    : '#S',
@@ -755,7 +736,6 @@ if s:has_plugin('tmuxline.vim')
         \'options' : {'status-justify' : 'left'}}
 endif
 
-" JS lib syntax
 if s:has_plugin('javascript-libraries-syntax.vim')
   let g:used_javascript_libs = 'underscore,jquery,react,requirejs,jasmine,chai'
 endif
