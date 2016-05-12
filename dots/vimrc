@@ -764,6 +764,11 @@ if s:has_plugin('emmet-vim')
   imap hh <C-y>,
 endif
 
+" Output the current syntax group
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
 " Automatic commands
 " ------------------------------------------------------------------------------
 "
