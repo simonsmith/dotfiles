@@ -51,8 +51,6 @@ Plug 'junegunn/vim-pseudocl' | Plug 'junegunn/vim-oblique'
 
 " File browser
 Plug 'scrooloose/nerdtree'
-" Show git changes in NERDTree
-Plug 'Xuyuanp/nerdtree-git-plugin'
 " Easy directory browsing with `-`, integrates with NERDTree
 Plug 'tpope/vim-vinegar'
 
