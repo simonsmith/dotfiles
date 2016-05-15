@@ -172,6 +172,12 @@ Plug 'honza/vim-snippets'
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
 
+" Linting
+" ------------------------------------------------------------------------------
+
+Plug 'benekastah/neomake'
+Plug 'benjie/neomake-local-eslint.vim'
+
 " HTML/CSS
 " ------------------------------------------------------------------------------
 
@@ -192,11 +198,11 @@ Plug 'elzr/vim-json', {'for': ['javascript', 'javascript.jsx', 'json']}
 Plug 'jason0x43/vim-js-indent', {'for': ['javascript', 'javascript.jsx', 'json']}
 
 if has('nvim')
-  " Linting
-  Plug 'benekastah/neomake'
-  Plug 'benjie/neomake-local-eslint.vim'
   " Autocomplete
-  Plug 'Shougo/deoplete.nvim'
+  function! DoRemote(arg)
+    UpdateRemotePlugins
+  endfunction
+  Plug 'Shougo/deoplete.nvim', {'do': function('DoRemote')}
   Plug 'carlitux/deoplete-ternjs'
 else
   Plug 'sjl/vitality.vim'
