@@ -23,7 +23,6 @@ windows:
           - cd server
           - nodemon -e js,html,svg server.js
         - watch:
-          - nvm use 0.12.7
           - cd server
           - webpack --watch
         - redis:
