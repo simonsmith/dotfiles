@@ -614,7 +614,7 @@ if s:has_plugin('vim-indent-guides')
 endif
 
 if s:has_plugin('vim-choosewin')
-  nmap  <leader>g <plug>(choosewin)
+  nmap  <leader>h <plug>(choosewin)
   let g:choosewin_label_fill = 0
   let g:choosewin_blink_on_land = 0
 endif
