@@ -597,6 +597,7 @@ endif
 
 if s:has_plugin('vim-polyglot')
   let g:polyglot_disabled = ['json']
+  let g:jsx_ext_required = 0
 endif
 
 if s:has_plugin('splitjoin.vim')
@@ -616,10 +617,6 @@ if s:has_plugin('vim-choosewin')
   nmap  <leader>h <plug>(choosewin)
   let g:choosewin_label_fill = 0
   let g:choosewin_blink_on_land = 0
-endif
-
-if s:has_plugin('vim-jsx')
-  let g:jsx_ext_required = 0
 endif
 
 if s:has_plugin('auto-pairs')
@@ -765,7 +762,6 @@ if has('autocmd')
     " Override some syntaxes so things look better
     autocmd BufNewFile,BufRead *.html setlocal syntax=swig
     autocmd BufNewFile,BufRead *.css setlocal syntax=scss
-    autocmd BufNewFile,BufRead *.js setlocal syntax=javascript
 
     " Wrap text and turn on spell for markdown files
     autocmd BufNewFile,BufRead *.md setlocal wrap linebreak spell filetype=markdown
