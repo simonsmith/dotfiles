@@ -1,14 +1,26 @@
 {
   "extends": [
-    "eslint:recommended",
-    "./eslint/node.js",
-    "./eslint/es6.js"
+    "eslint:recommended"
   ],
+  "env": {
+    "node": true,
+    "mocha": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
   "rules": {
-    'semi': 2,
-    'no-console': 0,
-    'comma-dangle': 0,
-    'quotes': [2, 'single', 'avoid-escape'],
-    'semi-spacing': 2,
+    "arrow-body-style": [2, "as-needed"],
+    "arrow-parens": [2, "as-needed"],
+    "arrow-spacing": 2,
+    "semi": 1,
+    "no-console": 0,
+    "comma-dangle": 0,
+    "quotes": [1, "single", "avoid-escape"],
+    "semi-spacing": 2
   }
 }
