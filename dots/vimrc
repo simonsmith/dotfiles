@@ -765,6 +765,7 @@ if has('autocmd')
     " Override some syntaxes so things look better
     autocmd BufNewFile,BufRead *.html setlocal syntax=swig
     autocmd BufNewFile,BufRead *.css setlocal syntax=scss
+    autocmd BufNewFile,BufRead *.sss setlocal syntax=stylus
     autocmd BufNewFile,BufRead *stylelintrc,*eslintrc,*babelrc,*jshintrc setlocal syntax=json
 
     " Wrap text and turn on spell for markdown files
