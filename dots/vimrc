@@ -606,6 +606,10 @@ if s:has_plugin('splitjoin.vim')
   nmap gk :SplitjoinJoin<cr>
 endif
 
+if s:has_plugin('vim-closetag')
+  let g:closetag_filenames = "*.html,*.js,*.jsx"
+endif
+
 if s:has_plugin('vim-indent-guides')
   " Add this here because this plugin is loaded ondemand so this mapping is not
   " present on initial load
