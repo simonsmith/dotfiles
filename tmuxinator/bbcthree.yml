@@ -15,7 +15,6 @@ windows:
       layout: tiled
       panes:
         - gulp:
-          - nvm use 0.12.7
           - cd client
           - gulp watch
         - server:
