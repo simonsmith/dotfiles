@@ -55,7 +55,7 @@ log "Installing & upgrading formulas ..."
 # Install GNU core utilities (those that come with OS X are outdated).
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
 brew_install_or_upgrade coreutils
-sudo ln -sv /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
+ln -sv /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
 
 # Install some other useful utilities like `sponge`.
 brew_install_or_upgrade moreutils
