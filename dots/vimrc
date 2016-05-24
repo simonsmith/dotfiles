@@ -560,12 +560,12 @@ if s:has_plugin('mocha.vim')
   autocmd FileType javascript,javascript.jsx nnoremap <buffer> <localleader>N :FocusPreviousTest<cr>
 endif
 
-if s:has_plugin('ack.vim')
+if s:has_plugin('vim-qargs')
   " Replace with Qdo
   nnoremap <leader>r :Qdo<space> :%s/
 endif
 
-if s:has_plugin('vim-qargs')
+if s:has_plugin('ack.vim')
   " Search with Ack
   nnoremap <leader>a :Ack!<space>-Q<space>
 endif
