@@ -479,9 +479,6 @@ noremap <left> <C-w><
 noremap <up> <C-w>+
 noremap <down> <C-w>-
 
-" Clone paragraph
-noremap cp yap<S-}>p
-
 " Make `Y` work from the cursor to the end of line
 nnoremap Y y$
 
@@ -528,11 +525,6 @@ nnoremap <leader>a :Ack!<space>-Q<space>
 
 " Replace with Qdo
 nnoremap <leader>r :Qdo<space> :%s/
-
-" Open neovim terminal
-if exists(':tnoremap')
-  nmap <leader>t :term<cr>
-endif
 
 "  Plugin config
 " ------------------------------------------------------------------------------
