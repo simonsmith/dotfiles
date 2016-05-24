@@ -204,6 +204,7 @@ Plug 'alvan/vim-closetag'
 Plug 'moll/vim-node', {'for': ['javascript', 'javascript.jsx', 'json']}
 Plug 'elzr/vim-json', {'for': ['javascript', 'javascript.jsx', 'json']}
 Plug 'jason0x43/vim-js-indent', {'for': ['javascript', 'javascript.jsx', 'json']}
+Plug 'peteyy/mocha.vim', {'for': ['javascript', 'javascript.jsx']}
 
 if has('nvim')
   " Autocomplete
@@ -567,6 +568,12 @@ if s:has_plugin('vim-gutentags')
         \ 'dist',
         \ 'vendor',
         \ 'bower_components']
+endif
+
+if s:has_plugin('mocha.vim')
+  autocmd FileType javascript,javascript.jsx nnoremap <buffer> <localleader>o :ToggleOnly<cr>
+  autocmd FileType javascript,javascript.jsx nnoremap <buffer> <localleader>n :FocusNextTest<cr>
+  autocmd FileType javascript,javascript.jsx nnoremap <buffer> <localleader>N :FocusPreviousTest<cr>
 endif
 
 if s:has_plugin('vim-sneak')
