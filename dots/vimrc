@@ -119,8 +119,6 @@ Plug 'thinca/vim-textobj-function-javascript', {'for': ['javascript', 'javascrip
 Plug 'whatyouhide/vim-textobj-erb', {'for': 'eruby'}
 " ac
 Plug 'jasonlong/vim-textobj-css', {'for': ['css', 'scss']}
-" aq
-Plug 'beloglazov/vim-textobj-quotes'
 " ax
 Plug 'whatyouhide/vim-textobj-xmlattr'
 
