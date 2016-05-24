@@ -520,12 +520,6 @@ nmap <cr> o<Esc>
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
-" Search with Ack
-nnoremap <leader>a :Ack!<space>-Q<space>
-
-" Replace with Qdo
-nnoremap <leader>r :Qdo<space> :%s/
-
 "  Plugin config
 " ------------------------------------------------------------------------------
 
@@ -566,6 +560,16 @@ if s:has_plugin('mocha.vim')
   autocmd FileType javascript,javascript.jsx nnoremap <buffer> <localleader>o :ToggleOnly<cr>
   autocmd FileType javascript,javascript.jsx nnoremap <buffer> <localleader>n :FocusNextTest<cr>
   autocmd FileType javascript,javascript.jsx nnoremap <buffer> <localleader>N :FocusPreviousTest<cr>
+endif
+
+if s:has_plugin('ack.vim')
+  " Replace with Qdo
+  nnoremap <leader>r :Qdo<space> :%s/
+endif
+
+if s:has_plugin('vim-qargs')
+  " Search with Ack
+  nnoremap <leader>a :Ack!<space>-Q<space>
 endif
 
 if s:has_plugin('vim-sneak')
