@@ -242,6 +242,7 @@ let g:html_indent_tags='li\|p'
 
 " Set <space> to leader
 let mapleader=' '
+let maplocalleader='\'
 
 " Turn off swapfiles
 set noswapfile
