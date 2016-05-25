@@ -470,6 +470,8 @@ nnoremap <leader>w :w<cr>
 " Force j and k to work on display lines
 nnoremap k gk
 nnoremap j gj
+vnoremap k gk
+vnoremap j gj
 
 " Adjust window size with arrow keys
 noremap <right> <C-w>>
@@ -500,7 +502,7 @@ nnoremap <silent> H :bp<CR>
 nnoremap <silent> L :bn<CR>
 
 " Spellcheck
-map <F6> :setlocal spell!<cr>
+nnoremap <F6> :setlocal spell!<cr>
 
 " Clear search (highlight)
 nnoremap <silent> <leader>k :noh<cr>
@@ -511,8 +513,7 @@ vnoremap < <gv
 vnoremap > >gv
 
 " Press enter for newline without insert
-nmap <S-Enter> O<Esc>
-nmap <cr> o<Esc>
+nnoremap <cr> o<esc>
 
 " Allow quick edits and sourcing of vimrc
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
@@ -615,7 +616,7 @@ endif
 if s:has_plugin('vim-indent-guides')
   " Add this here because this plugin is loaded ondemand so this mapping is not
   " present on initial load
-  nmap <leader>ig :IndentGuidesToggle<cr>
+   nnoremap <leader>ig :IndentGuidesToggle<cr>
 endif
 
 if s:has_plugin('vim-choosewin')
@@ -660,8 +661,8 @@ if s:has_plugin('fzf.vim')
   nnoremap <c-g> :BCommits<cr>
   nnoremap <c-t> :Tags<cr>
   nnoremap <leader><space> :Ag<cr>
-  nmap <silent> <BS> :History:<cr>
-  imap <c-x><c-f> <plug>(fzf-complete-file-ag)
+  nnoremap <silent> <BS> :History:<cr>
+  inoremap <c-x><c-f> <plug>(fzf-complete-file-ag)
 
   " Allow options to be passed to FZF :Ag
   " Probably quite hacky until a better solution appears
@@ -743,13 +744,13 @@ if s:has_plugin('javascript-libraries-syntax.vim')
 endif
 
 if s:has_plugin('emmet-vim')
-  imap hh <C-y>,
+  inoremap hh <C-y>,
 endif
 
 " Output the current syntax group
-map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+nnoremap <f10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<cr>
 
 " Automatic commands
 " ------------------------------------------------------------------------------
