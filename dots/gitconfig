@@ -93,24 +93,6 @@
   newNormal = "green bold"
   newHighlight = "green bold 22"
 
-# Kaleidoscope
-[difftool "Kaleidoscope"]
-	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
-[diff]
-	tool = Kaleidoscope
-  renames = copies
-[difftool]
-	prompt = false
-[mergetool "Kaleidoscope"]
-	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-	trustExitCode = true
-[mergetool]
-	prompt = false
-[merge]
-    # Include summaries of merged commits in newly created merge commit messages
-	log = true
-	tool = Kaleidoscope
-
 [help]
 	autocorrect = 1
 
