@@ -473,6 +473,9 @@ nnoremap j gj
 vnoremap k gk
 vnoremap j gj
 
+" Move back a tab faster
+nnoremap tg gT
+
 " Adjust window size with arrow keys
 noremap <right> <C-w>>
 noremap <left> <C-w><
