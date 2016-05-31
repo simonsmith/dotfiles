@@ -522,6 +522,16 @@ nnoremap <cr> o<esc>
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
+if exists(':tnoremap')
+  " Open a new term instance
+  nnoremap <leader>t :term<cr>
+  " Allow movement seamlessly with terminals
+  tnoremap <C-h> <C-\><C-n><C-w>h
+  tnoremap <C-j> <C-\><C-n><C-w>j
+  tnoremap <C-k> <C-\><C-n><C-w>k
+  tnoremap <C-l> <C-\><C-n><C-w>l
+endif
+
 "  Plugin config
 " ------------------------------------------------------------------------------
 
