@@ -20,7 +20,7 @@
     "semi": 1,
     "no-console": 0,
     "comma-dangle": 0,
-    "quotes": [1, "single", "avoid-escape"],
+    "quotes": [1, "single", {"avoidEscape": true, "allowTemplateLiterals": true}],
     "semi-spacing": 2
   }
 }
