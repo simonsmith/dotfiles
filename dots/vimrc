@@ -765,7 +765,7 @@ if s:has_plugin('javascript-libraries-syntax.vim')
 endif
 
 if s:has_plugin('emmet-vim')
-  inoremap hh <C-y>,
+  imap hh <C-y>,
 endif
 
 " Output the current syntax group
