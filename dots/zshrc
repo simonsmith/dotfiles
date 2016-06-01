@@ -123,6 +123,9 @@ THEME="$HOME/.honukai.zsh-theme"
 # Misc
 # ---------------------------------------------------------------
 
+# https://github.com/carlitux/deoplete-ternjs#vim-configuration-example
+ulimit -n 2048
+
 # https://github.com/ingydotnet/git-hub
 GIT_HUB_RC="$HOME/git-hub/.rc"
 [ -s $GIT_HUB_RC ] && source $GIT_HUB_RC
