@@ -255,6 +255,12 @@ set nowb
 " http://stackoverflow.com/a/26901774
 set binary
 
+" Enable term 24 bit colour in latest neovim
+" https://github.com/neovim/neovim/wiki/Following-HEAD#20160511
+if (has('termguicolors'))
+  set termguicolors
+endif
+
 " Make it obvious where 80 characters is
 set textwidth=80
 set colorcolumn=+1
