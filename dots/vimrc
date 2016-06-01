@@ -98,6 +98,8 @@ Plug 'Konfekt/FastFold'
 Plug 't9md/vim-choosewin'
 " Remember cursor position in closed buffers
 Plug 'dietsche/vim-lastplace'
+" Useful mappings
+Plug 'tpope/vim-unimpaired'
 
 " Text objects
 " ------------------------------------------------------------------------------
