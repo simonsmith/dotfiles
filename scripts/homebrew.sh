@@ -75,7 +75,7 @@ brew_install_or_upgrade source-highlight
 brew_install_or_upgrade wget --with-iri
 
 # Use brew vim
-brew_install_or_upgrade vim --override-system-vi
+brew_install_or_upgrade vim --with-override-system-vi
 
 # neovim
 brew_install_or_upgrade python3
