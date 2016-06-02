@@ -97,7 +97,7 @@ brew_install_or_upgrade reattach-to-user-namespace
 # git
 brew_install_or_upgrade git
 brew_install_or_upgrade scmpuff
-pip3 install cdiff
+brew_install_or_upgrade cdiff
 
 # Install more recent versions of some OS X tools.
 brew tap homebrew/dupes
