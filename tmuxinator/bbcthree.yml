@@ -10,20 +10,18 @@ windows:
     - nvim
   - git:
     - nvm use 0.12.7
-    - cd client
   - node:
-      layout: tiled
+      layout: 88fe,317x82,0,0[318x40,0,0{158x40,0,0,2,159x40,159,0,3},318x42,0,41{74x42,0,41,4,83x42,75,41,20,159x42,159,41,5}]
       panes:
         - gulp:
-          - cd client
           - gulp watch
         - server:
           - nvm use 0.12.7
-          - cd server
           - nodemon -e js,html,svg server.js
-        - watch:
-          - cd server
-          - webpack --watch
+        - watchClient:
+          - npm run server_watch_client
+        - watchServer:
+          - npm run server_watch_server
         - redis:
           - redis-cli shutdown
           - redis-server ~/redis.conf
