@@ -2,6 +2,9 @@
   "async": true,
   "fetchTimeout": 2500,
   "ecmaVersion": 6,
+  "dontLoad": [
+    "node_modules"
+  ],
   "libs": [
     "browser",
     "ecma5",
