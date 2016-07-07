@@ -509,6 +509,9 @@ vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
 
+" Log out the word under the cursor
+nmap <leader>cl yiwoconsole.log('<c-r>"', <c-r>");<esc>^
+
 " Split
 noremap <leader>x :<C-u>split<cr>
 noremap <leader>v :<C-u>vsplit<cr>
