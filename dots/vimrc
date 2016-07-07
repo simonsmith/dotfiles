@@ -501,7 +501,7 @@ nnoremap Y y$
 " Reformat whole file and move back to original position
 nnoremap g= gg=G``
 
-" use K to join current line with line above, just like J does with line below
+" Use K to join current line with line above, just like J does with line below
 nnoremap K kJ
 
 " Automatically jump to end of pasted text
