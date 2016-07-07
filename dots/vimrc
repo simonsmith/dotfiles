@@ -100,6 +100,8 @@ Plug 't9md/vim-choosewin'
 Plug 'dietsche/vim-lastplace'
 " Useful mappings
 Plug 'tpope/vim-unimpaired'
+" Open files from Quickfix
+Plug 'yssl/QFEnter'
 
 " Text objects
 " ------------------------------------------------------------------------------
