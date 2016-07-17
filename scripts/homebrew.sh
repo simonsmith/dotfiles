@@ -102,7 +102,6 @@ brew_install_or_upgrade cdiff
 # Install more recent versions of some OS X tools.
 brew tap homebrew/dupes
 brew_install_or_upgrade grep --with-default-names
-brew_install_or_upgrade screen
 
 # Ruby
 brew_install_or_upgrade rbenv
