@@ -42,19 +42,21 @@ alias ss='open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Re
 alias week='date +%V'
 
 # Git shortcuts
-alias gdtc='git difftool --cached'
 alias gac='git add . && git commit -v'
+alias gcf='git commit --fixup `fcs`'
 alias gdc='git diff --cached'
+alias gdtc='git difftool --cached'
 alias gh='git hub'
-alias rbm='gcm && gl && gco - && grbm'
-alias gta='git tag -m '' -a'
+alias gho='git hub open'
+alias glg='git lg'
+alias glog='fshow'
+alias glr='git pull --rebase'
+alias gpf='git push -f'
 alias gpo='git push origin'
 alias gs='scmpuff_status'
-alias glr='git pull --rebase'
+alias gta='git tag -m '' -a'
 alias gunwip='git log -1 | grep -q -c "\-\-wip\-\-" && git reset HEAD~1'
-alias glog='fshow'
-alias gcf='git commit --fixup `fcs`'
-alias glg='g lg'
+alias rbm='gcm && gl && gco - && grbm'
 
 # Stopwatch
 alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'
