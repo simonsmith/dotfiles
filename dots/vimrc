@@ -632,7 +632,7 @@ if s:has_plugin('vim-session')
 endif
 
 if s:has_plugin('vim-polyglot')
-  let g:polyglot_disabled = ['json']
+  let g:polyglot_disabled = ['json', 'markdown']
   let g:jsx_ext_required = 0
 endif
 
