@@ -51,8 +51,6 @@ Most config should work from the `.weechat` dir, but some useful links:
 
 ## UserStyles
 
-* [GitHub Dark](https://userstyles.org/styles/37035/github-dark) (#c787de)
-* [Gitter Dark](https://userstyles.org/styles/112547/matu-s-dark-gitter)
 * [Slack Dark](https://userstyles.org/styles/117475/slack-night-mode-black)
 * [YouTube Dark](https://userstyles.org/styles/117673/darktube)
 * [Hacker News](https://github.com/oskarkrawczyk/hackernews-userstyles)
