@@ -3,7 +3,7 @@
   "fetchTimeout": 2500,
   "ecmaVersion": 6,
   "dontLoad": [
-    "node_modules"
+    "node_modules/**.js"
   ],
   "libs": [
     "browser",
