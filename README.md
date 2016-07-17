@@ -20,10 +20,10 @@ git clone https://github.com/simonsmith/dotfiles.git
 
 ## Install
 
-Set OS X defaults:
+Set macOS defaults:
 
 ```
-./scripts/osx.sh
+./scripts/macos.sh
 ```
 
 Run install script:
