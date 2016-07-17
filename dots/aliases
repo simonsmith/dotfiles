@@ -12,12 +12,19 @@ alias nv="nvim"
 alias mux="tmuxinator"
 
 # npm
+alias n='npm'
+# install
 alias ni='npm install'
 alias nis='npm install --save'
 alias nid='npm install --save-dev'
 alias nig='npm install --global'
+# uninstall
+alias nu='npm uninstall'
+alias nus='npm uninstall --save'
+alias nud='npm uninstall --save-dev'
+alias nug='npm uninstall --global'
+# misc
 alias nt='npm test'
-alias nit='npm install && npm test'
 alias nk='npm link'
 alias nr='npm run'
 alias nf='npm cache clean && rm -rf node_modules && npm install'
@@ -37,9 +44,6 @@ alias gurl='curl --compressed'
 
 # Screensaver
 alias ss='open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app'
-
-# Get week number
-alias week='date +%V'
 
 # Git shortcuts
 alias gac='git add . && git commit -v'
