@@ -93,6 +93,7 @@ brew_install_or_upgrade the_silver_searcher
 # tmux
 brew_install_or_upgrade tmux
 brew_install_or_upgrade reattach-to-user-namespace
+brew_install_or_upgrade urlview
 
 # git
 brew_install_or_upgrade git
