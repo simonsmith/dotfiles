@@ -413,11 +413,11 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>678 110 936 426 0 0 1680 1027 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>269 593 606 456 0 0 1680 1050 </string>
+	<string>741 1233 606 456 0 0 3008 1692 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>530 494 620 392 0 0 1680 1050 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 2560 1440 0 0 2560 1417 </string>
+	<string>0 0 1680 1050 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>339 168 570 452 0 0 1680 1027 </string>
 	<key>NeverWarnAboutMeta</key>
@@ -1080,11 +1080,11 @@
 			<key>Normal Font</key>
 			<string>KnackNerdFontComplete 14</string>
 			<key>Option Key Sends</key>
-			<integer>2</integer>
+			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
 			<false/>
 			<key>Right Option Key Sends</key>
-			<integer>0</integer>
+			<integer>2</integer>
 			<key>Rows</key>
 			<integer>500</integer>
 			<key>Screen</key>
@@ -1219,7 +1219,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-07-16T07:44:05Z</date>
+	<date>2016-07-22T13:01:40Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
