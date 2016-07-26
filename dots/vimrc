@@ -107,6 +107,9 @@ Plug 'yssl/QFEnter'
 " Improve text objects for arguments, brackets etc
 Plug 'wellle/targets.vim'
 
+" Common operations with [ and ]
+Plug 'tpope/vim-unimpaired'
+
 " Move arguments
 Plug 'AndrewRadev/sideways.vim'
 
@@ -577,8 +580,8 @@ if s:has_plugin('MatchTagAlways')
 endif
 
 if s:has_plugin('sideways.vim')
-  nmap ]a :SidewaysRight<cr>
-  nmap [a :SidewaysLeft<cr>
+  nnoremap ]j :SidewaysRight<cr>
+  nnoremap [j :SidewaysLeft<cr>
 endif
 
 if s:has_plugin('vim-gutentags')
