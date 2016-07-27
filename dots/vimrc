@@ -16,7 +16,6 @@ call plug#begin(g:plugin_path)
 " Theme
 " ------------------------------------------------------------------------------
 
-" Atom theme
 Plug 'joshdick/onedark.vim'
 Plug 'joshdick/airline-onedark.vim'
 
@@ -823,12 +822,10 @@ if has('autocmd')
   " when switching modes
   augroup highlight-when-switching-modes
     autocmd!
-    autocmd InsertEnter * setlocal number norelativenumber
-    autocmd InsertLeave * setlocal relativenumber
+    autocmd InsertEnter * setlocal number norelativenumber nocursorline
+    autocmd InsertLeave * setlocal relativenumber cursorline
     autocmd WinEnter    * setlocal cursorline
     autocmd WinLeave    * setlocal nocursorline
-    autocmd InsertEnter * setlocal nocursorline
-    autocmd InsertLeave * setlocal cursorline
   augroup END
 
   " Remove whitespace on save
