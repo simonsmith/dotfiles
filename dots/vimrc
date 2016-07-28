@@ -498,6 +498,9 @@ noremap <left> <C-w><
 noremap <up> <C-w>+
 noremap <down> <C-w>-
 
+" Delete line but preserve the space
+nnoremap dD S<Esc>
+
 " Make `Y` work from the cursor to the end of line
 nnoremap Y y$
 
