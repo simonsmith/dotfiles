@@ -583,6 +583,12 @@ if s:has_plugin('sideways.vim')
   nnoremap [j :SidewaysLeft<cr>
 endif
 
+if s:has_plugin('vim-vinegar')
+  " Remap as this is too easy to hit by accident with 0 and = nearby
+  autocmd VimEnter * nmap - <nop>
+  autocmd VimEnter * nmap _ <Plug>VinegarUp
+endif
+
 if s:has_plugin('vim-gutentags')
   let g:gutentags_tagfile = 'vim_tags'
   let g:gutentags_exclude = [
