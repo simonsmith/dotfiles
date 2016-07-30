@@ -42,13 +42,6 @@ When complete, open new terminal window to trigger `zgen` plugin downloads.
 
 * Add private dotfiles to home directory (`.extra` and `.gitconfig.local`).
 
-### Weechat
-
-Most config should work from the `.weechat` dir, but some useful links:
-
-* https://gist.github.com/allcentury/e1ed5800d0a98a8828a9
-* http://stackoverflow.com/a/32490506/617615
-
 ## UserStyles
 
 * [Slack Dark](https://userstyles.org/styles/117475/slack-night-mode-black)
