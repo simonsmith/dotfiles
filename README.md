@@ -2,7 +2,7 @@
 
 Mac config and setup steps.
 
-![](http://cl.ly/g6W0/Screen%20Shot%202016-05-08%20at%2011.39.20.png)
+![](https://cl.ly/gq4w/Screen%20Shot%202016-07-30%20at%2007.00.34.png)
 
 ## First steps
 
@@ -57,7 +57,7 @@ Most config should work from the `.weechat` dir, but some useful links:
 
 ## Menubar
 
-![](http://f.cl.ly/items/1m1l40172O38401e1F2U/Screen%20Shot%202016-01-14%20at%2010.31.24.png)
+![](https://cl.ly/gpd7/Image%202016-07-30%20at%207.02.42%20am.png)
 
 ## Credit
 
