@@ -59,6 +59,9 @@ export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help"
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
+# Shorter timeout when pressing ESC
+export KEYTIMEOUT=1
+
 # Highlight section titles in manual pages
 export LESS_TERMCAP_md="$ORANGE"
 
@@ -113,8 +116,6 @@ export PATH="$PATH:$GOPATH/bin"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-
-export KEYTIMEOUT=2
 
 # Theme
 # Modified from https://github.com/oskarkrawczyk/honukai-iterm-zsh
