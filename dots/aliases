@@ -11,6 +11,9 @@ alias cask="brew cask"
 alias nv="nvim"
 alias mux="tmuxinator"
 
+# Add line numbers here as they aren't desirable by default (make git log ugly)
+alias less='less -N'
+
 # npm
 alias n='npm'
 # install

@@ -45,7 +45,8 @@ bindkey '^r' history-incremental-search-backward
 # LESS
 # Syntax highlighting
 export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
-export LESS='-RJMI'
+# Default flags used in all LESS instances
+export LESS='-rJmIug'
 
 # Larger history (allow 32³ entries; default is 500)
 export HISTSIZE=32768
