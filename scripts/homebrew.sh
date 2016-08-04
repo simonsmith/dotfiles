@@ -109,6 +109,7 @@ brew_install_or_upgrade rbenv
 brew_install_or_upgrade ruby-build
 
 # Install other useful binaries.
+brew_install_or_upgrade direnv
 brew_install_or_upgrade ack
 brew_install_or_upgrade ctags
 brew_install_or_upgrade htop
