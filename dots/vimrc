@@ -104,7 +104,7 @@ Plug 'yssl/QFEnter'
 " ------------------------------------------------------------------------------
 
 " Improve text objects for arguments, brackets etc
-" Plug 'wellle/targets.vim'
+Plug 'wellle/targets.vim'
 
 " Common operations with [ and ]
 Plug 'tpope/vim-unimpaired'
