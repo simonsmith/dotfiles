@@ -101,6 +101,7 @@ Plug 'dietsche/vim-lastplace'
 Plug 'yssl/QFEnter'
 " Distraction free writing
 Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 
 " Text objects
 " ------------------------------------------------------------------------------
