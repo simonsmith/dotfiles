@@ -99,6 +99,8 @@ Plug 't9md/vim-choosewin'
 Plug 'dietsche/vim-lastplace'
 " Open files from Quickfix
 Plug 'yssl/QFEnter'
+" Distraction free writing
+Plug 'junegunn/goyo.vim'
 
 " Text objects
 " ------------------------------------------------------------------------------
@@ -579,6 +581,11 @@ endif
 
 if s:has_plugin('MatchTagAlways')
   nnoremap <leader>% :MtaJumpToOtherTag<cr>
+endif
+
+if s:has_plugin('goyo.vim')
+  let g:goyo_width=80
+  let g:goyo_height='100%'
 endif
 
 if s:has_plugin('sideways.vim')
