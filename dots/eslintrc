@@ -2,6 +2,7 @@
   "extends": [
     "eslint:recommended"
   ],
+  "plugins": ["react"],
   "env": {
     "node": true,
     "mocha": true
@@ -21,6 +22,8 @@
     "no-console": 0,
     "comma-dangle": 0,
     "quotes": [1, "single", {"avoidEscape": true, "allowTemplateLiterals": true}],
-    "semi-spacing": 2
+    "semi-spacing": 2,
+    "react/jsx-uses-react": 2,
+    "react/jsx-uses-vars": 2
   }
 }
