@@ -41,6 +41,7 @@ install_global_npm_package nodemon
 install_global_npm_package npm-check
 install_global_npm_package npmlist
 install_global_npm_package postcss-cli
+install_global_npm_package react-native-cli
 install_global_npm_package speed-test
 install_global_npm_package stylelint
 install_global_npm_package tldr
