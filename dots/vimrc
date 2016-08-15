@@ -209,6 +209,7 @@ Plug 'alvan/vim-closetag'
 " JavaScript
 " ------------------------------------------------------------------------------
 
+Plug 'flowtype/vim-flow', {'for': ['javascript', 'javascript.jsx']}
 Plug 'moll/vim-node', {'for': ['javascript', 'javascript.jsx', 'json']}
 Plug 'elzr/vim-json', {'for': ['javascript', 'javascript.jsx', 'json']}
 Plug 'jason0x43/vim-js-indent', {'for': ['javascript', 'javascript.jsx', 'json']}
