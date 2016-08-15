@@ -63,7 +63,6 @@ install_cask paragon-ntfs
 install_cask seil
 install_cask shortcat
 install_cask the-unarchiver
-install_cask totalfinder
 
 # Other stuff
 install_cask appcleaner
