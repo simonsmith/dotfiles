@@ -628,10 +628,10 @@ endif
 
 if s:has_plugin('vim-sneak')
   let g:sneak#use_ic_scs = 0
-  nmap s <Plug>Sneak_s
-  nmap S <Plug>Sneak_S
-  xmap s <Plug>Sneak_s
-  xmap S <Plug>Sneak_S
+  nmap gs <Plug>Sneak_s
+  nmap gS <Plug>Sneak_S
+  xmap gs <Plug>Sneak_s
+  xmap gS <Plug>Sneak_S
   let g:sneak#streak = 1
 endif
 
