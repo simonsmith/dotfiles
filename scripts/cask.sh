@@ -49,6 +49,7 @@ install_cask kaleidoscope
 install_cask transmit
 install_cask vmware-fusion
 install_cask atom
+install_cask java
 
 # Mac OS Enhancements
 install_cask bartender
