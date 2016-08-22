@@ -4,7 +4,6 @@
 
 if has('nvim')
   let g:plugin_path = '~/.config/nvim/plugged'
-  let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
   let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
 else
   let g:plugin_path = '~/.vim/plugged'
