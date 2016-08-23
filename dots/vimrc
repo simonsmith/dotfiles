@@ -705,6 +705,20 @@ if s:has_plugin('nerdtree')
   let NERDTreeAutoDeleteBuffer = 1
 endif
 
+if s:has_plugin('vim-flow')
+  " Config
+  let g:flow#timeout = 4
+
+  "Use locally installed flow
+  let local_flow = finddir('node_modules', '.;') . '/.bin/flow'
+  if matchstr(local_flow, "^\/\\w") == ''
+    let local_flow= getcwd() . "/" . local_flow
+  endif
+  if executable(local_flow)
+    let g:flow#flowpath = local_flow
+  endif
+endif
+
 if s:has_plugin('fzf.vim')
   let g:fzf_height = '30%'
   let g:fzf_commits_log_options = '--color --graph --pretty=format:"%C(yellow)%h%Creset -%C(auto)%d%Creset %s %C(bold blue)(%cr) %Cred<%an>%Creset" --abbrev-commit'
