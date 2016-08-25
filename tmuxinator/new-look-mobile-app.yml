@@ -1,0 +1,20 @@
+# ~/.tmuxinator/new-look-mobile-app.yml
+
+name: new-look-mobile-app
+root: ~/Sites/new-look/newlookapp
+startup_window: nvim
+
+windows:
+  - nvim:
+    - nvim
+  - git:
+    - git fetch
+  - build:
+      layout: even-horizontal
+      panes:
+        - ios:
+          - react-native run-ios
+        - android:
+          - emulator -avd nexus6
+  - watch:
+    - npm run start
