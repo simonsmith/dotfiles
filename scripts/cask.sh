@@ -42,7 +42,6 @@ install_cask spotify
 install_cask vlc
 
 # Development
-install_cask gitify
 install_cask iterm2-beta
 install_cask jq
 install_cask kaleidoscope
