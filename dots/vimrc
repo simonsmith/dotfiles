@@ -208,9 +208,9 @@ Plug 'alvan/vim-closetag'
 " JavaScript
 " ------------------------------------------------------------------------------
 
+Plug 'pangloss/vim-javascript'
 Plug 'flowtype/vim-flow', {'for': ['javascript', 'javascript.jsx']}
 Plug 'moll/vim-node', {'for': ['javascript', 'javascript.jsx', 'json']}
-Plug 'elzr/vim-json', {'for': ['javascript', 'javascript.jsx', 'json']}
 Plug 'jason0x43/vim-js-indent', {'for': ['javascript', 'javascript.jsx', 'json']}
 Plug 'peteyy/mocha.vim', {'for': ['javascript', 'javascript.jsx']}
 
@@ -609,6 +609,10 @@ if s:has_plugin('vim-gutentags')
         \ 'bower_components']
 endif
 
+if s:has_plugin('vim-javascript')
+  let g:javascript_plugin_flow=1
+endif
+
 if s:has_plugin('mocha.vim')
   autocmd FileType javascript,javascript.jsx nnoremap <buffer> <localleader>o :ToggleOnly<cr>
   autocmd FileType javascript,javascript.jsx nnoremap <buffer> <localleader>n :FocusNextTest<cr>
@@ -651,7 +655,7 @@ if s:has_plugin('vim-session')
 endif
 
 if s:has_plugin('vim-polyglot')
-  let g:polyglot_disabled = ['json', 'markdown']
+  let g:polyglot_disabled = ['markdown', 'javascript']
   let g:jsx_ext_required = 0
 endif
 
