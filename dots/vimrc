@@ -548,8 +548,6 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
 if exists(':tnoremap')
-  " Open a new term instance
-  nnoremap <leader>t :term<cr>
   " Allow movement seamlessly with terminals
   tnoremap <C-h> <C-\><C-n><C-w>h
   tnoremap <C-j> <C-\><C-n><C-w>j
@@ -707,6 +705,7 @@ if s:has_plugin('nerdtree')
   let NERDTreeShowHidden = 1
   let NERDTreeHijackNetrw = 1
   let NERDTreeAutoDeleteBuffer = 1
+  nnoremap <leader>t :NERDTreeToggle<cr>
 endif
 
 if s:has_plugin('vim-flow')
