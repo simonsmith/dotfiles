@@ -753,7 +753,7 @@ if s:has_plugin('fzf.vim')
 endif
 
 if s:has_plugin('ListToggle')
-  let g:lt_height = 6
+  let g:lt_height = 8
 endif
 
 if executable('ag')
