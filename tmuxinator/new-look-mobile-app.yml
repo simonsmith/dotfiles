@@ -14,7 +14,5 @@ windows:
       panes:
         - ios:
           - react-native run-ios
-        - android:
-          - emulator -avd nexus6
   - watch:
     - npm run start
