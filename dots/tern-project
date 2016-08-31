@@ -7,8 +7,7 @@
   ],
   "libs": [
     "browser",
-    "ecma5",
-    "ecma6",
+    "ecmascript",
     "jquery",
     "chai"
   ],
@@ -16,7 +15,6 @@
     "node": {},
     "doc_comment": {},
     "modules": {},
-    "lint": {},
     "es_modules": {},
     "node_resolve": {},
     "complete_strings": {},
