@@ -4,6 +4,8 @@ Mac config and setup steps.
 
 ![](https://cl.ly/gpnk/Screen%20Shot%202016-07-30%20at%2007.00.34.png)
 
+[nvim and tmux screenshot](http://i.imgur.com/MVujYou.png)
+
 ## First steps
 
 [Install](http://osxdaily.com/2014/02/12/install-command-line-tools-mac-os-x/) command line developer tools:
