@@ -240,9 +240,6 @@ endfunction
 " ------------------------------------------------------------------------------
 
 " Theme
-if !has('nvim')
-  let g:onedark_termcolors=16
-endif
 set background=dark
 silent! colorscheme onedark
 
