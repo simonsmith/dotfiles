@@ -16,7 +16,6 @@ call plug#begin(g:plugin_path)
 " ------------------------------------------------------------------------------
 
 Plug 'joshdick/onedark.vim'
-Plug 'joshdick/airline-onedark.vim'
 Plug 'flazz/vim-colorschemes'
 
 " tmux
