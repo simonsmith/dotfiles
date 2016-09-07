@@ -1,6 +1,6 @@
 # ~/.tmuxinator/new-look-mobile-app.yml
 
-name: new-look-mobile-app
+name: nl-mobile-app
 root: ~/Sites/new-look/newlookapp
 startup_window: nvim
 
