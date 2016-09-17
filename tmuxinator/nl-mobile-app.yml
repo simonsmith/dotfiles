@@ -9,6 +9,8 @@ windows:
     - nvim
   - git:
     - git fetch
+  - tests:
+    - ./node_modules/.bin/jest --watch
   - build:
       layout: even-horizontal
       panes:
