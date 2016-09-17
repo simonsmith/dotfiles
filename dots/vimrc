@@ -704,7 +704,7 @@ endif
 
 if s:has_plugin('vim-flow')
   " Config
-  let g:flow#enable = 0
+  let g:flow#enable = 1
   let g:flow#timeout = 4
   let g:flow#autoclose = 1
 
