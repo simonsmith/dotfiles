@@ -98,6 +98,11 @@ export FZF_TMUX_HEIGHT=30%
 # Shell integration
 [ -s ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# Enhance ALT-C with better sorting and a tree preview
+# http://theinfiniteset.net/2016/08/08/blsd-and-fzf/
+command -v blsd > /dev/null && export FZF_ALT_C_COMMAND='blsd'
+command -v tree > /dev/null && export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -$LINES'"
+
 # PATH
 # ---------------------------------------------------------------
 
