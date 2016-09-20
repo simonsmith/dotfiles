@@ -50,10 +50,6 @@ When complete, open new terminal window to trigger `zgen` plugin downloads.
 * [YouTube Dark](https://userstyles.org/styles/117673/darktube)
 * [Hacker News](https://github.com/oskarkrawczyk/hackernews-userstyles)
 
-## Menubar
-
-![](https://cl.ly/gpd7/Image%202016-07-30%20at%207.02.42%20am.png)
-
 ## Credit
 
 * [Mathias Bynens](https://github.com/mathiasbynens/dotfiles/)
