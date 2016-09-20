@@ -53,5 +53,4 @@ When complete, open new terminal window to trigger `zgen` plugin downloads.
 ## Credit
 
 * [Mathias Bynens](https://github.com/mathiasbynens/dotfiles/)
-* [ismay](https://github.com/ismay/dotfiles)
 * [thoughtbot](https://github.com/thoughtbot/laptop)
