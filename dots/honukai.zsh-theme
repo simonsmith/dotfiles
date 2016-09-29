@@ -2,7 +2,12 @@
 
 # Machine name.
 function box_name {
-    [ -f ~/.box-name ] && cat ~/.box-name || echo $HOST
+  [ -f ~/.box-name ] && cat ~/.box-name || echo $HOST
+}
+
+function node_version {
+  version=$(node -v)
+  echo ${version:1}
 }
 
 # Directory info.
@@ -29,6 +34,8 @@ ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[blue]%}◒"
 # Prompt format: \n # DIRECTORY on BRANCH STATE [TIME] \n $
 PROMPT="
 %{$fg[cyan]%}%n \
+%{$fg[white]%}using \
+%{$fg[green]%}node $(node_version) \
 %{$fg[white]%}in \
 %{$terminfo[bold]$fg[yellow]%}${current_dir}%{$reset_color%}\
 ${git_info} \
