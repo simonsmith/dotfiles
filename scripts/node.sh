@@ -47,4 +47,5 @@ install_global_npm_package speed-test
 install_global_npm_package stylelint
 install_global_npm_package tldr
 install_global_npm_package tern
+install_global_npm_package trash
 install_global_npm_package webpack
