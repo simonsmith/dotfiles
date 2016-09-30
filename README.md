@@ -2,7 +2,7 @@
 
 Mac config and setup steps.
 
-![](https://d3vv6lp55qjaqc.cloudfront.net/items/1B3H2A3M1L0b2o3Y1e2U/Screen%20Shot%202016-09-29%20at%2022.54.49.png)
+![](https://cl.ly/hdHl/Screen%20Shot%202016-09-30%20at%2016.03.42.png)
 
 [nvim and tmux screenshot](https://cl.ly/hPr2)
 
