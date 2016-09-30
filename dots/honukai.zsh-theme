@@ -5,11 +5,6 @@ function box_name {
   [ -f ~/.box-name ] && cat ~/.box-name || echo $HOST
 }
 
-function node_version {
-  version=$(node -v)
-  echo ${version:1}
-}
-
 # Directory info.
 local current_dir='${PWD/#$HOME/~}'
 
@@ -31,11 +26,12 @@ ZSH_THEME_GIT_PROMPT_CHANGED="%{$fg[red]%}%{●%G%}"
 ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[blue]%}%{✚%G%}"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[blue]%}◒"
 
+local node_version='$(node --version)'
+
 # Prompt format: \n # DIRECTORY on BRANCH STATE [TIME] \n $
 PROMPT="
 %{$fg[cyan]%}%n \
-%{$fg[white]%}using \
-%{$fg[green]%}node $(node_version) \
+%{$fg[green]%}(node ${node_version}) \
 %{$fg[white]%}in \
 %{$terminfo[bold]$fg[yellow]%}${current_dir}%{$reset_color%}\
 ${git_info} \
