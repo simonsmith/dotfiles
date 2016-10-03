@@ -49,13 +49,13 @@ kwmc bindsym hyper-h window -f west
 */
 
 // Set default values for screen padding
-kwmc config padding 40 20 20 20
+kwmc config padding 40 15 15 15
 
 // Set default values for container gaps
 kwmc config gap 10 10
 
 // Default tiling mode for Kwm (bsp | monocle | float)
-kwmc config tiling monocle
+kwmc config tiling bsp
 
 // Let Kwm listen for hotkeys
 kwmc config hotkeys on
@@ -126,15 +126,15 @@ kwmc rule owner="iTerm2" properties={role="AXDialog"}
 
 // Enable border for focused window
 kwmc config border focused on
-kwmc config border focused size 1
-kwmc config border focused color 0xFFBABBBC
-kwmc config border focused radius 5
+kwmc config border focused size 2
+kwmc config border focused color 0xFF666666
+kwmc config border focused radius 4
 
 // Enable border for marked window
 kwmc config border marked on
-kwmc config border marked size 1
+kwmc config border marked size 2
 kwmc config border marked color 0xFFCC5577
-kwmc config border marked radius 5
+kwmc config border marked radius 4
 
 // Enable the prefix mode
 kwmc mode prefix prefix on
@@ -163,8 +163,8 @@ kwmc bindsym cmd+ctrl-r tree rotate 90
 
 // Modify Container
 kwmc bindsym prefix-s window -c split-mode toggle
-kwmc bindsym prefix-h window -c reduce 0.05
-kwmc bindsym prefix-l window -c expand 0.05
+kwmc bindsym prefix-h window -c reduce 0.025
+kwmc bindsym prefix-l window -c expand 0.025
 kwmc bindsym prefix-< window -c type toggle
 
 // Set Temporary Window Container
@@ -201,10 +201,10 @@ kwmc bindsym ctrl+alt-l window -s east
 kwmc bindsym ctrl+alt-m window -s mark
 
 // Pseudo containers
-kwmc bindsym cmd+ctrl+alt-p tree -pseudo create
-kwmc bindsym cmd+ctrl+alt-o tree -pseudo destroy
-kwmc bindsym ctrl+alt-p window -s prev
-kwmc bindsym ctrl+alt-n window -s next
+kwmc bindsym cmd+ctrl-o tree -pseudo create
+kwmc bindsym cmd+ctrl-d tree -pseudo destroy
+kwmc bindsym cmd+ctrl-p window -s prev
+kwmc bindsym cmd+ctrl-n window -s next
 
 // Detach Focused Window And Reinsert In Direction
 kwmc bindsym ctrl+shift-k window -m north

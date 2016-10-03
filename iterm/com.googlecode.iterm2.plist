@@ -362,6 +362,8 @@
 	<false/>
 	<key>FlashTabBarInFullscreen</key>
 	<false/>
+	<key>FocusFollowsMouse</key>
+	<true/>
 	<key>HideMenuBarInFullscreen</key>
 	<true/>
 	<key>HideScrollbar</key>
@@ -408,13 +410,21 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>530 494 620 392 0 0 1680 1050 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>269 95 918 498 0 0 1680 1027 </string>
+	<string>269 225 1018 447 0 0 1680 1027 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>127 466 592 584 0 0 1680 1050 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>847 26 810 979 0 0 1680 1027 </string>
+	<string>15 16 2530 1383 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>10 21 1658 996 0 0 1680 1027 </string>
+	<string>15 17 2530 1381 0 0 2560 1417 </string>
+	<key>NSWindow Frame iTerm Window 2</key>
+	<string>15 22 1650 480 0 0 1680 1027 </string>
+	<key>NSWindow Frame iTerm Window 3</key>
+	<string>15 18 1650 990 0 0 1680 1027 </string>
+	<key>NSWindow Frame iTerm Window 4</key>
+	<string>431 524 402 480 0 0 1680 1027 </string>
+	<key>NSWindow Frame iTerm Window 5</key>
+	<string>423 269 834 514 0 0 1680 1027 </string>
 	<key>NeverWarnAboutMeta</key>
 	<true/>
 	<key>NeverWarnAboutMeta_selection</key>
@@ -1215,13 +1225,15 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-10-02T14:17:17Z</date>
+	<date>2016-10-03T14:20:36Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
 	<false/>
 	<key>ShowPaneTitles</key>
 	<true/>
+	<key>StealKeyFocus</key>
+	<false/>
 	<key>TabStyle</key>
 	<integer>1</integer>
 	<key>UKCrashReporterLastCrashReportDate</key>
