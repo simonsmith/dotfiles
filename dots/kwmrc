@@ -55,7 +55,7 @@ kwmc config padding 40 20 20 20
 kwmc config gap 10 10
 
 // Default tiling mode for Kwm (bsp | monocle | float)
-kwmc config tiling bsp
+kwmc config tiling monocle
 
 // Let Kwm listen for hotkeys
 kwmc config hotkeys on
@@ -127,14 +127,14 @@ kwmc rule owner="iTerm2" properties={role="AXDialog"}
 // Enable border for focused window
 kwmc config border focused on
 kwmc config border focused size 1
-kwmc config border focused color 0xFFBDD322
-kwmc config border focused radius 2
+kwmc config border focused color 0xFFBABBBC
+kwmc config border focused radius 5
 
 // Enable border for marked window
-kwmc config border marked off
-kwmc config border marked size 2
+kwmc config border marked on
+kwmc config border marked size 1
 kwmc config border marked color 0xFFCC5577
-kwmc config border marked radius 6
+kwmc config border marked radius 5
 
 // Enable the prefix mode
 kwmc mode prefix prefix on
@@ -148,9 +148,6 @@ kwmc bindsym ctrl-s mode activate prefix
 
 // Quit Kwm
 kwmc bindsym cmd+alt+ctrl-q quit
-
-// Launch iTerm2
-kwmc bindsym cmd-return exec open -na /Applications/iTerm2.app
 
 // Set Space Tiling Mode To BSP
 kwmc bindsym cmd+ctrl-a space -t bsp
@@ -248,9 +245,3 @@ kwmc bindsym prefix+shift-right space -p decrease right
 kwmc bindsym prefix+shift-up space -p decrease top
 kwmc bindsym prefix+shift-down space -p decrease bottom
 kwmc bindsym prefix+shift-p space -p decrease all
-
-// Autowrite
-kwmc bindsym cmd-7 write \
-kwmc bindsym cmd-8 write {
-kwmc bindsym cmd-9 write }
-
