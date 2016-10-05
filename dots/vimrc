@@ -732,7 +732,6 @@ if s:has_plugin('fzf.vim')
   nnoremap <c-t> :Tags<cr>
   nnoremap <c-@> :Ag<cr>
   nnoremap <silent> <BS> :History:<cr>
-  inoremap <c-x><c-f> <plug>(fzf-complete-file-ag)
 
   " Allow options to be passed to FZF :Ag
   " Probably quite hacky until a better solution appears
