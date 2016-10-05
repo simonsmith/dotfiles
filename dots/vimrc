@@ -80,8 +80,6 @@ Plug 'ludovicchabant/vim-gutentags'
 " Insert or delete brackets, parens, quotes in pair.
 Plug 'jiangmiao/auto-pairs'
 " Display indent levels
-Plug 'nathanaelkane/vim-indent-guides', {'on': 'IndentGuidesToggle'}
-" Allow plugins to be repeated
 Plug 'tpope/vim-repeat'
 " Comment out blocks of code
 Plug 'tpope/vim-commentary'
