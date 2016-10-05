@@ -774,6 +774,10 @@ if s:has_plugin('vim-airline')
   let g:airline#extensions#tabline#fnamecollapse = 0
   let g:airline#extensions#tabline#tab_nr_type = 1 " Show tab number
   let g:airline#extensions#tabline#buffer_nr_show = 0
+  let g:airline_left_sep = ''
+  let g:airline_left_alt_sep = ''
+  let g:airline_right_sep = ''
+  let g:airline_right_alt_sep = ''
 endif
 
 if s:has_plugin('vim-signify')
