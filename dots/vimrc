@@ -571,15 +571,6 @@ if s:has_plugin('vim-easyclip')
   nnoremap gm m
 endif
 
-if s:has_plugin('MatchTagAlways')
-  nnoremap <leader>% :MtaJumpToOtherTag<cr>
-endif
-
-if s:has_plugin('goyo.vim')
-  let g:goyo_width=80
-  let g:goyo_height='100%'
-endif
-
 if s:has_plugin('sideways.vim')
   nnoremap ]j :SidewaysRight<cr>
   nnoremap [j :SidewaysLeft<cr>
@@ -660,12 +651,6 @@ endif
 
 if s:has_plugin('vim-closetag')
   let g:closetag_filenames = "*.html,*.js,*.jsx"
-endif
-
-if s:has_plugin('vim-indent-guides')
-  " Add this here because this plugin is loaded ondemand so this mapping is not
-  " present on initial load
-   nnoremap <leader>ig :IndentGuidesToggle<cr>
 endif
 
 if s:has_plugin('vim-choosewin')
@@ -804,10 +789,6 @@ if s:has_plugin('tmuxline.vim')
         \'y'    : ['#(spotify)', '#(ipconfig getifaddr en0)', 'cpu: #{cpu_percentage}', 'batt: #(battery -a -p -t)'],
         \'z'    : ['%R', '%d-%m-%Y'],
         \'options' : {'status-justify' : 'left'}}
-endif
-
-if s:has_plugin('javascript-libraries-syntax.vim')
-  let g:used_javascript_libs = 'underscore,jquery,react,requirejs,jasmine,chai'
 endif
 
 if s:has_plugin('emmet-vim')
