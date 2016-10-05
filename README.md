@@ -4,7 +4,7 @@ Mac config and setup steps.
 
 ![](https://cl.ly/hdHl/Screen%20Shot%202016-09-30%20at%2016.03.42.png)
 
-[nvim and tmux screenshot](https://cl.ly/hPr2)
+[nvim and tmux screenshot with kwm](https://cl.ly/hgAq)
 
 ## First steps
 
