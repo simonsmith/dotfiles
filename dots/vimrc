@@ -105,14 +105,11 @@ Plug 'matze/vim-move'
 
 " Improve text objects for arguments, brackets etc
 Plug 'wellle/targets.vim'
-
 " Move arguments
 Plug 'AndrewRadev/sideways.vim'
-
 " Add various text objects
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-function'
-
 " ae
 Plug 'kana/vim-textobj-entire'
 " al
@@ -707,7 +704,7 @@ endif
 
 if s:has_plugin('vim-flow')
   " Config
-  let g:flow#enable = 1
+  let g:flow#enable = 0
   let g:flow#timeout = 4
   let g:flow#autoclose = 1
 
