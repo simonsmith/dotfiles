@@ -185,7 +185,7 @@ Plug 'mhinz/vim-signify'
 " ------------------------------------------------------------------------------
 
 Plug 'neomake/neomake'
-Plug 'benjie/neomake-local-eslint.vim'
+Plug 'jaawerth/nrun.vim'
 
 " HTML/CSS
 " ------------------------------------------------------------------------------
@@ -776,7 +776,10 @@ if s:has_plugin('neomake')
   let g:neomake_list_height = 6
 
   if has('autocmd')
-    autocmd! BufWritePost,BufRead * Neomake
+    " Use local copies of linting tools
+    au BufEnter *.js let b:neomake_javascript_eslint_exe = nrun#Which('eslint')
+    au BufEnter *.css,*.scss let b:neomake_css_stylelint_exe = nrun#Which('stylelint')
+    autocmd! BufWinEnter,BufWritePost * Neomake
     autocmd! QuitPre * let g:neomake_verbose = 0
   endif
 endif
