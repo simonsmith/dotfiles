@@ -410,15 +410,15 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>530 494 620 392 0 0 1680 1050 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>269 143 918 495 0 0 1680 1027 </string>
+	<string>269 121 918 495 0 0 1680 1027 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>127 466 592 584 0 0 1680 1050 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>15 18 1650 990 0 0 1680 1027 </string>
+	<string>15 17 2530 1381 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>17 18 650 990 0 0 1680 1027 </string>
+	<string>15 715 2082 684 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>16 17 1826 1381 0 0 2560 1417 </string>
+	<string>17 524 650 480 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
 	<string>17 524 650 480 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 4</key>
@@ -1226,6 +1226,8 @@
 	</dict>
 	<key>PrefsCustomFolder</key>
 	<string>/Users/simonsmith/dotfiles/iterm</string>
+	<key>Print In Black And White</key>
+	<true/>
 	<key>PromptOnQuit</key>
 	<false/>
 	<key>SUAutomaticallyUpdate</key>
@@ -1239,7 +1241,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-10-05T02:06:11Z</date>
+	<date>2016-10-06T15:38:55Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
