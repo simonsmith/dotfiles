@@ -555,6 +555,8 @@ endif
 
 if s:has_plugin('bufexplorer')
   let g:bufExplorerDisableDefaultKeyMapping=1
+  let g:bufExplorerShowNoName=1
+  let g:bufExplorerShowRelativePath=1
   nnoremap <leader>b :ToggleBufExplorer<cr>
 endif
 
