@@ -407,20 +407,22 @@
 	<array/>
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>810 37 870 330 0 0 1680 1027 </string>
+	<key>NSWindow Frame ProfilesPanel</key>
+	<string>15 15 1650 995 0 0 1680 1027 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>530 494 620 392 0 0 1680 1050 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>269 121 918 495 0 0 1680 1027 </string>
+	<string>269 71 918 498 0 0 1680 1027 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>127 466 592 584 0 0 1680 1050 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>15 17 2530 1381 0 0 2560 1417 </string>
+	<string>846 23 818 979 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>15 715 2082 684 0 0 2560 1417 </string>
+	<string>21 26 810 979 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>17 524 650 480 0 0 1680 1027 </string>
+	<string>15 18 778 990 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
-	<string>17 524 650 480 0 0 1680 1027 </string>
+	<string>16 524 818 480 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 4</key>
 	<string>431 524 402 480 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 5</key>
@@ -696,7 +698,7 @@
 			<key>Close Sessions On End</key>
 			<true/>
 			<key>Columns</key>
-			<integer>150</integer>
+			<integer>100</integer>
 			<key>Command</key>
 			<string></string>
 			<key>Cursor Color</key>
@@ -1241,7 +1243,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-10-06T15:38:55Z</date>
+	<date>2016-10-16T20:11:12Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
@@ -1259,6 +1261,10 @@
 	<key>UseLionStyleFullscreen</key>
 	<false/>
 	<key>WindowNumber</key>
+	<false/>
+	<key>findIgnoreCase_iTerm</key>
+	<true/>
+	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
 	<string>3.0.10</string>

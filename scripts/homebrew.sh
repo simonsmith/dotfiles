@@ -116,6 +116,7 @@ brew_install_or_upgrade ctags
 brew_install_or_upgrade direnv
 brew_install_or_upgrade heroku
 brew_install_or_upgrade kwm
+brew_install_or_upgrade khd
 brew_install_or_upgrade htop
 brew_install_or_upgrade httpie
 brew_install_or_upgrade p7zip
