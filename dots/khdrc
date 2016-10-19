@@ -13,6 +13,12 @@ khd mode prefix color 0xFF458588
 # Activate prefix mode
 ctrl - s                 :    khd -e "mode activate prefix"
 
+# Launch iTerm2
+cmd + shift - return     :    osascript ~/applescript/iterm-window.scpt
+
+# Launch Chrome
+cmd + shift - g          :   open -na /Applications/Google\ Chrome.app
+
 # Quit Kwm
 cmd + alt + ctrl - q     :    kwmc quit
 
