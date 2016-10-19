@@ -2,11 +2,11 @@
 khd kwm on
 
 # set color of default mode
-khd mode default color 0xFF444444
+khd mode default color 0xFF888888
 
 # Enable the prefix mode
 khd mode prefix prefix on
-khd mode prefix timeout 0.75
+khd mode prefix timeout 1
 khd mode prefix restore default
 khd mode prefix color 0xFF458588
 
