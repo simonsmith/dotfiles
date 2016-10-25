@@ -778,6 +778,7 @@ endif
 
 if s:has_plugin('neomake')
   let g:neomake_list_height = 6
+  let g:neomake_html_enabled_makers = []
 
   if has('autocmd')
     " Use local copies of linting tools
