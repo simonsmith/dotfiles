@@ -105,6 +105,8 @@ Plug 'matze/vim-move'
 " Text objects
 " ------------------------------------------------------------------------------
 
+" Allow motions like `w`, `b` and `iw` to work on camel case
+Plug 'chaoren/vim-wordmotion'
 " Improve text objects for arguments, brackets etc
 Plug 'wellle/targets.vim'
 " Move arguments
