@@ -70,9 +70,14 @@ cmd + alt - n            :    kwmc window -fm prev
 cmd + alt - m            :    kwmc window -fm next
 
 # Give Focus To Screen
-cmd + alt - 1            :    kwmc display -f 0
-cmd + alt - 2            :    kwmc display -f 1
-cmd + alt - 3            :    kwmc display -f 2
+ctrl + alt - 1            :    kwmc display -f 0
+ctrl + alt - 2            :    kwmc display -f 1
+ctrl + alt - 3            :    kwmc display -f 2
+
+# Move Focused Window To Screen
+cmd + alt - 1           :    kwmc window -m display 0
+cmd + alt - 2           :    kwmc window -m display 1
+cmd + alt - 3           :    kwmc window -m display 2
 
 # Swap Focused Window
 ctrl + alt - h           :    kwmc window -s west
@@ -99,11 +104,6 @@ ctrl + shift - x         :    kwmc window -m mark
 # Move Focused Window To Space
 ctrl + alt - left        :    kwmc window -m space left
 ctrl + alt - right       :    kwmc window -m space right
-
-# Move Focused Window To Screen
-ctrl + alt - 1           :    kwmc window -m display 0
-ctrl + alt - 2           :    kwmc window -m display 1
-ctrl + alt - 3           :    kwmc window -m display 2
 
 # Increase Container Gaps
 prefix - x               :    kwmc space -g increase horizontal
