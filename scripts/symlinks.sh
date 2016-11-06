@@ -36,6 +36,7 @@ symlink_dotfile wgetrc
 symlink_dotfile zshenv
 symlink_dotfile zshrc
 ln -sfv $(grealpath tern-project) "$HOME/.tern-config"
+mkdir "$HOME/.kwm"
 ln -sfv $(grealpath kwmrc) "$HOME/.kwm/kwmrc"
 popd
 
