@@ -56,7 +56,6 @@ install_cask gpgtools
 install_cask istat-menus
 install_cask keepingyouawake
 install_cask alfred
-install_cask paragon-ntfs
 install_cask the-unarchiver
 
 # Other stuff
