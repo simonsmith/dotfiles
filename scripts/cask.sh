@@ -20,8 +20,6 @@ brew tap caskroom/versions
 # Browsers
 install_cask firefox
 install_cask google-chrome-beta
-install_cask google-chrome-canary
-install_cask opera
 install_cask torbrowser
 
 # Cloud
@@ -34,7 +32,6 @@ install_cask google-hangouts
 install_cask skype
 
 # Media
-install_cask beardedspice
 install_cask burn
 install_cask max
 install_cask sonos
@@ -57,12 +54,9 @@ install_cask bettertouchtool
 install_cask exa
 install_cask gpgtools
 install_cask istat-menus
-install_cask karabiner
 install_cask keepingyouawake
 install_cask alfred
 install_cask paragon-ntfs
-install_cask seil
-install_cask shortcat
 install_cask the-unarchiver
 
 # Other stuff
@@ -70,7 +64,6 @@ install_cask appcleaner
 install_cask daisydisk
 install_cask deluge
 install_cask flux
-install_cask imazing
 install_cask steam
 install_cask viscosity
 
