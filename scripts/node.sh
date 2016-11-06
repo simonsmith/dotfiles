@@ -45,5 +45,4 @@ install_global_npm_package react-native-cli
 install_global_npm_package flow-bin
 install_global_npm_package stylelint
 install_global_npm_package tern
-install_global_npm_package trash
 install_global_npm_package webpack

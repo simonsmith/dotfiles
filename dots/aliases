@@ -11,9 +11,6 @@ alias cask="brew cask"
 alias nv="nvim"
 alias mux="tmuxinator"
 
-# Make `rm` safer
-alias rm="trash"
-
 # Add line numbers here as they aren't desirable by default (make git log ugly)
 alias less='less -N'
 
