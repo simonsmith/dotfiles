@@ -39,23 +39,23 @@ install_cask spotify
 install_cask vlc
 
 # Development
+install_cask atom
 install_cask gitify
 install_cask iterm2-beta
+install_cask java
 install_cask jq
 install_cask kaleidoscope
 install_cask transmit
 install_cask vmware-fusion
-install_cask atom
-install_cask java
 
 # Mac OS Enhancements
+install_cask alfred
 install_cask bartender
 install_cask bettertouchtool
 install_cask exa
 install_cask gpgtools
 install_cask istat-menus
 install_cask keepingyouawake
-install_cask alfred
 install_cask the-unarchiver
 
 # Other stuff
