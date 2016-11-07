@@ -120,10 +120,7 @@ brew_install_or_upgrade koekeishiya/khd/khd
 brew_install_or_upgrade htop
 brew_install_or_upgrade httpie
 brew_install_or_upgrade p7zip
-brew_install_or_upgrade phantomjs
 brew_install_or_upgrade python
 brew_install_or_upgrade redis
-brew_install_or_upgrade tidy-html5
-brew_install_or_upgrade weechat
 
 brew cleanup
