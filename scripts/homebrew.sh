@@ -108,20 +108,24 @@ brew_install_or_upgrade grep --with-default-names
 brew_install_or_upgrade rbenv
 brew_install_or_upgrade ruby-build
 
+# Window manager
+brew_install_or_upgrade koekeishiya/khd/khd
+brew_install_or_upgrade koekeishiya/kwm/kwm
+
+# React Native
+brew_install_or_upgrade android-sdk
+brew_install_or_upgrade watchman
+
 # Install other useful binaries.
 brew_install_or_upgrade ack
-brew_install_or_upgrade android-sdk
 brew_install_or_upgrade ctags
 brew_install_or_upgrade direnv
 brew_install_or_upgrade heroku
 brew_install_or_upgrade htop
 brew_install_or_upgrade httpie
 brew_install_or_upgrade hugo
-brew_install_or_upgrade koekeishiya/khd/khd
-brew_install_or_upgrade koekeishiya/kwm/kwm
 brew_install_or_upgrade p7zip
 brew_install_or_upgrade python
 brew_install_or_upgrade redis
-brew_install_or_upgrade watchman
 
 brew cleanup
