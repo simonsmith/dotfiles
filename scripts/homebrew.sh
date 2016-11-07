@@ -79,8 +79,7 @@ brew_install_or_upgrade vim --with-override-system-vi
 
 # neovim
 brew_install_or_upgrade python3
-brew tap neovim/neovim
-brew install --HEAD neovim
+brew install neovim/neovim/neovim
 pip3 install neovim
 
 # fzf
