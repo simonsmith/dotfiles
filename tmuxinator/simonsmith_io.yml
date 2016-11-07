@@ -12,6 +12,6 @@ windows:
       layout: tiled
       panes:
         - server:
-          - bundle exec middleman -p=9000
+          - hugo server
         - watch:
-          - npm run watch
+          - npm run build_css -- -w
