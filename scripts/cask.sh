@@ -43,8 +43,6 @@ install_cask atom
 install_cask gitify
 install_cask iterm2-beta
 install_cask java
-install_cask jq
-install_cask kaleidoscope
 install_cask transmit
 install_cask vmware-fusion
 
@@ -63,7 +61,6 @@ install_cask appcleaner
 install_cask daisydisk
 install_cask deluge
 install_cask flux
-install_cask steam
 install_cask viscosity
 
 brew cask cleanup
