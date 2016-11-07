@@ -3,7 +3,6 @@ source ./scripts/cask.sh
 source ./scripts/zsh.sh
 source ./scripts/symlinks.sh
 source ./scripts/vim.sh
-source ./scripts/fonts.sh
 source ./scripts/node.sh
 source ./scripts/ruby.sh
 source ./scripts/misc.sh

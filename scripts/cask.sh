@@ -63,4 +63,9 @@ install_cask deluge
 install_cask flux
 install_cask viscosity
 
+# Fonts
+# https://github.com/caskroom/homebrew-fonts
+brew tap caskroom/fonts
+install_cask caskroom/fonts/font-hack
+
 brew cask cleanup
