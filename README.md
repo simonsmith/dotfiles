@@ -40,7 +40,7 @@ When complete, open new terminal window to trigger `zgen` plugin downloads.
 
 * Load custom iterm settings
 
-* Install [Knack](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack/Regular/complete) font
+* Install Knack font from iterm directory
 
 * Add private dotfiles to home directory (`.extra` and `.gitconfig.local`).
 
