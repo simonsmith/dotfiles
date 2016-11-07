@@ -4,7 +4,7 @@ Mac config and setup steps.
 
 ![](https://cl.ly/i2K2/Screen%20Shot%202016-11-07%20at%2020.14.06.png)
 
-[iterm with kwm](https://cl.ly/i2Qf)
+[iterm with kwm screenshot](https://cl.ly/i2Qf)
 
 ## First steps
 
