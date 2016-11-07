@@ -4,7 +4,7 @@ Mac config and setup steps.
 
 ![](https://cl.ly/i2K2/Screen%20Shot%202016-11-07%20at%2020.14.06.png)
 
-[nvim and tmux screenshot with kwm](https://cl.ly/hgAq)
+[iterm with kwm](https://cl.ly/i2Qf)
 
 ## First steps
 
