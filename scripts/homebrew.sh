@@ -86,8 +86,8 @@ pip3 install neovim
 brew_install_or_upgrade fzf
 yes | /usr/local/opt/fzf/install
 
-# Ag - fzf is configured to use this
-brew_install_or_upgrade the_silver_searcher
+# rg - fzf is configured to use this
+brew_install_or_upgrade ripgrep
 
 # tmux
 brew_install_or_upgrade reattach-to-user-namespace
