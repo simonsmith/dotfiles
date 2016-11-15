@@ -721,24 +721,21 @@ if s:has_plugin('fzf.vim')
   nnoremap <c-p> :FZF<cr>
   nnoremap <c-i> :Buffers<cr>
   nnoremap <c-t> :Tags<cr>
+  nnoremap <c-@> :Ag<cr>
   nnoremap <silent> <BS> :History:<cr>
 
-  " Allow searching for text inside buffers
-  " https://medium.com/@crashybang/supercharge-vim-with-fzf-and-ripgrep-d4661fc853d2
-  "
-  " --column: Show column number
-  " --line-number: Show line number
-  " --no-heading: Do not show file headings in results
-  " --fixed-strings: Search term as a literal string
-  " --ignore-case: Case insensitive search
-  " --hidden: Search hidden files and folders
-  " --follow: Follow symlinks
-  " --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
-  " --color: Search color options
+  " Allow options to be passed to FZF :Ag
+  " Probably quite hacky until a better solution appears
+  " https://github.com/junegunn/fzf.vim/issues/92#issuecomment-191248596
+  function! s:ag_with_opts(arg, bang)
+    let tokens  = split(a:arg)
+    let ag_opts = join(filter(copy(tokens), 'v:val =~ "^-"'))
+    let query   = join(filter(copy(tokens), 'v:val !~ "^-"'))
+    call fzf#vim#ag(query, '--hidden --ignore .git', a:bang ? {} : {'down': '40%'})
+  endfunction
 
-  if executable("rg")
-    command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
-    nnoremap <c-@> :Find<cr>
+  if has('autocmd')
+    autocmd VimEnter * command! -nargs=* -bang Ag call s:ag_with_opts(<q-args>, <bang>0)
   endif
 endif
 

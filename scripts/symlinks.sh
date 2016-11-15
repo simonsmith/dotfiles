@@ -12,6 +12,7 @@ echo "Creating symlinks ..."
 pushd ./dots
 symlink redis.conf
 symlink_dotfile ackrc
+symlink_dotfile agignore
 symlink_dotfile aliases
 symlink_dotfile caniuse.json
 symlink_dotfile ctags
@@ -24,7 +25,6 @@ symlink_dotfile gitignore
 symlink_dotfile gitmessage
 symlink_dotfile honukai.zsh-theme
 symlink_dotfile hushlogin
-symlink_dotfile ignore
 symlink_dotfile jshintrc
 symlink_dotfile khdrc
 symlink_dotfile stylelintrc
