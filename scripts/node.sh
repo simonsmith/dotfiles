@@ -31,12 +31,13 @@ log "Installing npm global packages ..."
 
 install_global_npm_package diff-so-fancy
 install_global_npm_package eslint
+install_global_npm_package flow-bin
 install_global_npm_package gulp
 install_global_npm_package http-server
+install_global_npm_package imageoptim-cli
 install_global_npm_package nodemon
 install_global_npm_package npm-check
 install_global_npm_package npmlist
 install_global_npm_package react-native-cli
-install_global_npm_package flow-bin
 install_global_npm_package stylelint
 install_global_npm_package tern
