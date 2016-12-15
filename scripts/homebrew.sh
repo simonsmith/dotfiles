@@ -64,6 +64,10 @@ brew_install_or_upgrade findutils
 # Install GNU `sed`, overwriting the built-in `sed`.
 brew_install_or_upgrade gnu-sed --with-default-names
 
+# Replace system curl
+brew_install_or_upgrade curl
+brew link curl --force
+
 # Install zsh
 brew_install_or_upgrade zsh
 brew_install_or_upgrade zsh-syntax-highlighting
