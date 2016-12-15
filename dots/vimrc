@@ -176,6 +176,7 @@ Plug 'troydm/zoomwintab.vim'
 " Snippets
 " ------------------------------------------------------------------------------
 
+Plug 'epilande/vim-react-snippets'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
