@@ -65,7 +65,7 @@ brew_install_or_upgrade findutils
 brew_install_or_upgrade gnu-sed --with-default-names
 
 # Replace system curl
-brew_install_or_upgrade curl
+brew_install_or_upgrade curl --with-openssl
 brew link curl --force
 
 # Install zsh
