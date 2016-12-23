@@ -828,6 +828,11 @@ nnoremap <f10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> 
 " ------------------------------------------------------------------------------
 "
 if has('autocmd')
+  augroup always-open-signcolumn
+    autocmd!
+    autocmd BufEnter * sign define dummy
+    autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
+  augroup END
   " Open help in a vertical split
   augroup vimrc-help
     autocmd!
