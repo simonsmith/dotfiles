@@ -207,7 +207,6 @@ Plug 'alvan/vim-closetag'
 " ------------------------------------------------------------------------------
 
 Plug 'pangloss/vim-javascript', {'for': ['javascript', 'javascript.jsx']}
-Plug 'flowtype/vim-flow', {'for': ['javascript', 'javascript.jsx']}
 Plug 'moll/vim-node', {'for': ['javascript', 'javascript.jsx', 'json']}
 Plug 'peteyy/mocha.vim', {'for': ['javascript', 'javascript.jsx']}
 
@@ -695,22 +694,6 @@ if s:has_plugin('nerdtree')
   nnoremap <leader>t :NERDTreeToggle<cr>
 endif
 
-if s:has_plugin('vim-flow')
-  " Config
-  let g:flow#enable = 1
-  let g:flow#timeout = 4
-  let g:flow#autoclose = 1
-
-  " Use local flow
-  let local_flow = finddir('node_modules', '.;') . '/.bin/flow'
-  if matchstr(local_flow, "^\/\\w") == ''
-    let local_flow= getcwd() . "/" . local_flow
-  endif
-  if executable(local_flow)
-    let g:flow#flowpath = local_flow
-  endif
-endif
-
 if s:has_plugin('gv.vim')
   nnoremap <c-g> :GV!<cr>
 endif
@@ -784,16 +767,42 @@ if s:has_plugin('vim-signify')
 endif
 
 if s:has_plugin('neomake')
-  let g:neomake_list_height = 6
+  let g:neomake_list_height = 8
   let g:neomake_html_enabled_makers = []
+  let g:neomake_error_sign = {'text': 'x', 'texthl': 'NeomakeErrorSign'}
+  let g:neomake_warning_sign = {'text': '•', 'texthl': 'NeomakeWarningSign'}
 
-  if has('autocmd')
-    " Use local copies of linting tools
-    au BufEnter *.js let b:neomake_javascript_eslint_exe = nrun#Which('eslint')
-    au BufEnter *.css,*.scss let b:neomake_css_stylelint_exe = nrun#Which('stylelint')
-    autocmd! BufWinEnter,BufWritePost * Neomake
-    autocmd! QuitPre * let g:neomake_verbose = 0
+  " Use local copies of linting tools
+  au BufEnter *.js let b:neomake_javascript_eslint_exe = nrun#Which('eslint')
+  au BufEnter *.css,*.scss let b:neomake_css_stylelint_exe = nrun#Which('stylelint')
+
+  " Integrate Flow with Neomake
+  " https://github.com/rafaelrinaldi/til/blob/master/vim/linting-with-flow.md
+
+  " Tries to find Flow's binary locally, fallback to globally installed
+  if executable($PWD .'/node_modules/.bin/flow')
+    let s:flow_path = $PWD .'/node_modules/.bin/flow'
+  else
+    let s:flow_path = 'flow'
   endif
+
+  " Custom maker that uses `flow-vim-quickfix` to improve the output
+  let s:flow_maker = {
+        \ 'exe': 'sh',
+        \ 'args': ['-c', s:flow_path.' --json --strip-root | flow-vim-quickfix'],
+        \ 'errorformat': '%E%f:%l:%c\,%n: %m',
+        \ 'cwd': '%:p:h'
+        \ }
+
+  let s:neomake_makers = ['flow', 'eslint']
+  let g:neomake_javascript_enabled_makers = s:neomake_makers
+  let g:neomake_jsx_enabled_makers = s:neomake_makers
+
+  " Same thing as above but this time to pass in the maker configuration
+  let g:neomake_javascript_flow_maker = s:flow_maker
+  let g:neomake_jsx_flow_maker = s:flow_maker
+
+  autocmd! BufWinEnter,BufWritePost * Neomake
 endif
 
 if s:has_plugin('tmuxline.vim')

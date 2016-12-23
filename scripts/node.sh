@@ -32,6 +32,7 @@ log "Installing npm global packages ..."
 install_global_npm_package diff-so-fancy
 install_global_npm_package eslint
 install_global_npm_package flow-bin
+install_global_npm_package flow-vim-quickfix
 install_global_npm_package gulp
 install_global_npm_package http-server
 install_global_npm_package imageoptim-cli
