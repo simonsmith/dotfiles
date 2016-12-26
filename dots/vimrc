@@ -826,81 +826,79 @@ nnoremap <f10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> 
 
 " Automatic commands
 " ------------------------------------------------------------------------------
-"
-if has('autocmd')
-  augroup always-open-signcolumn
-    autocmd!
-    autocmd BufEnter * sign define dummy
-    autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
-  augroup END
-  " Open help in a vertical split
-  augroup vimrc-help
-    autocmd!
-    autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | setlocal relativenumber | endif
-  augroup END
 
-  augroup file-types
-    autocmd!
+augroup always-open-signcolumn
+  autocmd!
+  autocmd BufEnter * sign define dummy
+  autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
+augroup END
+" Open help in a vertical split
+augroup vimrc-help
+  autocmd!
+  autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | setlocal relativenumber | endif
+augroup END
 
-    " Override some syntaxes so things look better
-    autocmd BufNewFile,BufRead *.html setlocal syntax=swig
-    autocmd BufNewFile,BufRead *.css setlocal syntax=scss
-    autocmd BufNewFile,BufRead *.sss setlocal syntax=stylus
-    autocmd BufNewFile,BufRead *.ts,*.snap,*.es6,*.tsx setlocal filetype=javascript.jsx
-    autocmd BufNewFile,BufRead *stylelintrc,*eslintrc,*babelrc,*jshintrc setlocal syntax=json
+augroup file-types
+  autocmd!
 
-    " Wrap text and turn on spell for markdown files
-    autocmd BufNewFile,BufRead *.md setlocal wrap linebreak spell filetype=markdown
+  " Override some syntaxes so things look better
+  autocmd BufNewFile,BufRead *.html setlocal syntax=swig
+  autocmd BufNewFile,BufRead *.css setlocal syntax=scss
+  autocmd BufNewFile,BufRead *.sss setlocal syntax=stylus
+  autocmd BufNewFile,BufRead *.ts,*.snap,*.es6,*.tsx setlocal filetype=javascript.jsx
+  autocmd BufNewFile,BufRead *stylelintrc,*eslintrc,*babelrc,*jshintrc setlocal syntax=json
 
-    " Automatically wrap at 72 characters and spell check git commit messages
-    autocmd FileType gitcommit setlocal textwidth=72
-    autocmd FileType gitcommit setlocal spell
+  " Wrap text and turn on spell for markdown files
+  autocmd BufNewFile,BufRead *.md setlocal wrap linebreak spell filetype=markdown
 
-    " Allow stylesheets to autocomplete hyphenated words
-    autocmd FileType css,scss,sass setlocal iskeyword+=-
-  augroup END
+  " Automatically wrap at 72 characters and spell check git commit messages
+  autocmd FileType gitcommit setlocal textwidth=72
+  autocmd FileType gitcommit setlocal spell
 
-  " Switch between normal and relative line numbers and cursorline
-  " when switching modes
-  augroup highlight-when-switching-modes
-    autocmd!
-    autocmd InsertEnter * setlocal number norelativenumber nocursorline
-    autocmd InsertLeave * setlocal relativenumber cursorline
-    autocmd WinEnter    * setlocal cursorline
-    autocmd WinLeave    * setlocal nocursorline
-  augroup END
+  " Allow stylesheets to autocomplete hyphenated words
+  autocmd FileType css,scss,sass setlocal iskeyword+=-
+augroup END
 
-  " Remove whitespace on save
-  augroup whitespace
-    autocmd!
-    autocmd BufWritePre * :%s/\s\+$//e
-  augroup END
+" Switch between normal and relative line numbers and cursorline
+" when switching modes
+augroup highlight-when-switching-modes
+  autocmd!
+  autocmd InsertEnter * setlocal number norelativenumber nocursorline
+  autocmd InsertLeave * setlocal relativenumber cursorline
+  autocmd WinEnter    * setlocal cursorline
+  autocmd WinLeave    * setlocal nocursorline
+augroup END
 
-  " Periodically check for file changes
-  augroup checktime
-    autocmd!
-    autocmd CursorHold * silent! checktime
-  augroup END
+" Remove whitespace on save
+augroup whitespace
+  autocmd!
+  autocmd BufWritePre * :%s/\s\+$//e
+augroup END
 
-  " Move to the second line of a git commit
-  augroup move-to-top-of-commit
-    autocmd!
-    au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 2, 1, 0])
-  augroup END
+" Periodically check for file changes
+augroup checktime
+  autocmd!
+  autocmd CursorHold * silent! checktime
+augroup END
 
-  " Resize splits when vim changes size (like with tmux opening/closing)
-  augroup auto-resize
-    autocmd!
-    autocmd VimResized * wincmd =
-  augroup END
+" Move to the second line of a git commit
+augroup move-to-top-of-commit
+  autocmd!
+  au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 2, 1, 0])
+augroup END
 
-  " Autocomplete
-  augroup omnifuncs
-    autocmd!
-    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-  augroup endif
-endif
+" Resize splits when vim changes size (like with tmux opening/closing)
+augroup auto-resize
+  autocmd!
+  autocmd VimResized * wincmd =
+augroup END
+
+" Autocomplete
+augroup omnifuncs
+  autocmd!
+  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+augroup endif
