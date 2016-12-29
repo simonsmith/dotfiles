@@ -131,5 +131,6 @@ brew_install_or_upgrade hugo
 brew_install_or_upgrade p7zip
 brew_install_or_upgrade python
 brew_install_or_upgrade redis
+brew_install_or_upgrade youtube-dl
 
 brew cleanup
