@@ -38,6 +38,8 @@ symlink_dotfile zshrc
 ln -sfv $(grealpath tern-project) "$HOME/.tern-config"
 mkdir "$HOME/.kwm"
 ln -sfv $(grealpath kwmrc) "$HOME/.kwm/kwmrc"
+mkdir "$HOME/.ssh"
+ln -sfv $(grealpath ssh-config) "$HOME/.ssh/config"
 popd
 
 # Directories
