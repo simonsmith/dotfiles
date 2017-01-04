@@ -114,7 +114,7 @@ Plug 'AndrewRadev/sideways.vim'
 " Add various text objects
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-function'
-" ae
+" aE
 Plug 'kana/vim-textobj-entire'
 " al
 Plug 'kana/vim-textobj-line'
@@ -548,6 +548,13 @@ endif
 
 "  Plugin config
 " ------------------------------------------------------------------------------
+if s:has_plugin('vim-textobj-entire')
+  let g:textobj_entire_no_default_key_mappings = 1
+  xmap aE <Plug>(textobj-entire-a)
+  omap aE <Plug>(textobj-entire-a)
+  xmap iE <Plug>(textobj-entire-i)
+  omap iE <Plug>(textobj-entire-i)
+endif
 
 if s:has_plugin('undotree')
   let g:undotree_WindowLayout = 2
