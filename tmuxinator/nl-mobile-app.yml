@@ -18,3 +18,5 @@ windows:
           - react-native run-ios
   - watch:
     - npm run start
+  - server:
+    - node index.js

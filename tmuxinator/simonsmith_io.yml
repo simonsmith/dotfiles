@@ -12,6 +12,6 @@ windows:
       layout: tiled
       panes:
         - server:
-          - hugo server
+          - hugo server --buildDrafts
         - watch:
           - npm run build_css -- -w
