@@ -120,8 +120,6 @@ Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-line'
 " af
 Plug 'thinca/vim-textobj-function-javascript', {'for': ['javascript', 'javascript.jsx', 'json']}
-" aE
-Plug 'whatyouhide/vim-textobj-erb', {'for': 'eruby'}
 " ac
 Plug 'jasonlong/vim-textobj-css', {'for': ['css', 'scss']}
 " ax
