@@ -775,7 +775,7 @@ if s:has_plugin('neomake')
   let g:neomake_list_height = 8
   let g:neomake_html_enabled_makers = []
   let g:neomake_error_sign = {'text': 'x', 'texthl': 'NeomakeErrorSign'}
-  let g:neomake_warning_sign = {'text': '•', 'texthl': 'NeomakeWarningSign'}
+  let g:neomake_warning_sign = {'text': '~', 'texthl': 'NeomakeWarningSign'}
 
   " Use local copies of linting tools
   au BufEnter *.js let b:neomake_javascript_eslint_exe = nrun#Which('eslint')
