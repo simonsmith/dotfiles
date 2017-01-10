@@ -46,6 +46,7 @@ install_cask iterm2-beta
 install_cask java
 install_cask transmit
 install_cask vmware-fusion
+install_cask react-native-debugger
 
 # Mac OS Enhancements
 install_cask alfred
