@@ -33,20 +33,20 @@ install_cask skype
 
 # Media
 install_cask burn
+install_cask imageoptim
 install_cask max
 install_cask sonos
 install_cask spotify
 install_cask vlc
-install_cask imageoptim
 
 # Development
 install_cask atom
 install_cask gitify
 install_cask iterm2-beta
 install_cask java
+install_cask react-native-debugger
 install_cask transmit
 install_cask vmware-fusion
-install_cask react-native-debugger
 
 # Mac OS Enhancements
 install_cask alfred
