@@ -36,7 +36,6 @@ cmd + ctrl - r           :    kwmc tree rotate 90
 
 # Modify Container
 prefix - s               :    kwmc window -c split-mode toggle
-prefix - 0x32            :    kwmc window -c type toggle
 
 prefix - h               :    kwmc window -c expand 0.05 west
 prefix - j               :    kwmc window -c expand 0.05 south
@@ -70,9 +69,9 @@ cmd + alt - n            :    kwmc window -fm prev
 cmd + alt - m            :    kwmc window -fm next
 
 # Give Focus To Screen
-ctrl + alt - 1            :    kwmc display -f 0
-ctrl + alt - 2            :    kwmc display -f 1
-ctrl + alt - 3            :    kwmc display -f 2
+ctrl + cmd - 1            :    kwmc display -f 0
+ctrl + cmd - 2            :    kwmc display -f 1
+ctrl + cmd - 3            :    kwmc display -f 2
 
 # Move Focused Window To Screen
 cmd + alt - 1           :    kwmc window -m display 0
@@ -102,8 +101,9 @@ ctrl + shift - h         :    kwmc window -m west
 ctrl + shift - x         :    kwmc window -m mark
 
 # Move Focused Window To Space
-ctrl + alt - left        :    kwmc window -m space left
-ctrl + alt - right       :    kwmc window -m space right
+# ctrl + cmd - ]/[
+ctrl + cmd - 0x21        :   kwmc window -m space left
+ctrl + cmd - 0x1E       :    kwmc window -m space right
 
 # Increase Container Gaps
 prefix - x               :    kwmc space -g increase horizontal
