@@ -39,3 +39,6 @@ install_global_npm_package nodemon
 install_global_npm_package npm-check
 install_global_npm_package npmlist
 install_global_npm_package tern
+
+# install yarn
+curl -o- -L https://yarnpkg.com/install.sh | bash

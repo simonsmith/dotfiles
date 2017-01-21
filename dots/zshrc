@@ -111,6 +111,8 @@ export PATH="$HOME/.rbenv/shims:$PATH"
 export PATH="$HOME/bin:$PATH"
 # Add brew coreutils
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+# yarn
+export PATH="$HOME/.yarn/bin:$PATH"
 
 # GO
 export GOPATH="$HOME/go"
