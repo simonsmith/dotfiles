@@ -32,6 +32,13 @@ alias nk='npm link'
 alias nr='npm run'
 alias nf='npm cache clean && rm -rf node_modules && npm install'
 
+# yarn
+alias y='yarn'
+alias ya='yarn add'
+alias yad='yarn add --dev'
+alias yu='yarn upgrade'
+alias yr='yarn remove'
+
 # https://github.com/ogham/exa
 alias l="exa -lbha --git"
 alias t="exa -Ta"
