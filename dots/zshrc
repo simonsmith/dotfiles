@@ -88,10 +88,13 @@ export ANDROID_HOME="/usr/local/opt/android-sdk"
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 # To apply the command to CTRL-T as well
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+# Preview files when highlighting
+export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
 # Default options
-export FZF_DEFAULT_OPTS="--multi --inline-info"
-# tmux pane height
-export FZF_TMUX_HEIGHT=30%
+export FZF_DEFAULT_OPTS="--multi --inline-info --height 40%"
+# Use a split pane in tmux
+export FZF_TMUX=1
+export FZF_TMUX_HEIGHT=40%
 # Shell integration
 [ -s ~/.fzf.zsh ] && source ~/.fzf.zsh
 
