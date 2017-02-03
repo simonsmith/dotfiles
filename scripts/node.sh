@@ -35,6 +35,7 @@ install_global_npm_package flow-vim-quickfix
 install_global_npm_package gulp
 install_global_npm_package http-server
 install_global_npm_package imageoptim-cli
+install_global_npm_package json-to-js
 install_global_npm_package nodemon
 install_global_npm_package npm-check
 install_global_npm_package npmlist
