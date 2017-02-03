@@ -38,6 +38,8 @@ alias ya='yarn add'
 alias yad='yarn add --dev'
 alias yu='yarn upgrade'
 alias yr='yarn remove'
+alias yp='yarnpkg'
+alias yt='yarn test'
 
 # https://github.com/ogham/exa
 alias l="exa -lbha --git"
