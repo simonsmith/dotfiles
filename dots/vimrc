@@ -298,6 +298,7 @@ set cursorline
 
 " Indent using two spaces.
 set softtabstop=2
+set tabstop=2
 set shiftwidth=2
 
 " Smoother scrolling when moving horizontally
