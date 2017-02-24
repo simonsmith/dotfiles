@@ -1,0 +1,16 @@
+# ~/.tmuxinator/new-look-mobile-app.yml
+
+name: github-api
+root: ~/Sites/github-user-search
+startup_window: nvim
+
+windows:
+  - nvim:
+    - nvim
+  - git:
+      layout: even-horizontal
+      panes:
+        -
+        - ./node_modules/.bin/jest --watch
+  - server:
+    - npm start
