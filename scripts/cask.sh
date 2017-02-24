@@ -44,7 +44,6 @@ install_cask atom
 install_cask gitify
 install_cask iterm2-nightly
 install_cask java
-install_cask react-native-debugger
 install_cask transmit
 install_cask vmware-fusion
 
