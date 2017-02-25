@@ -360,7 +360,7 @@ set esckeys
 set ttimeoutlen=0
 
 " Auto save changes before switching buffer
-set autowrite
+" set autowrite
 
 " Add the g flag to search/replace by default
 set gdefault
@@ -757,6 +757,12 @@ if s:has_plugin('vim-airline')
   let g:airline_left_alt_sep = ''
   let g:airline_right_sep = ''
   let g:airline_right_alt_sep = ''
+  let g:airline#extensions#neomake#error_symbol = 'Err: '
+  let g:airline#extensions#neomake#warning_symbol = 'Warn: '
+  let g:airline#extensions#default#layout = [
+        \ [ 'a', 'b', 'c' ],
+        \ [ 'error', 'warning' ]
+        \ ]
 endif
 
 if s:has_plugin('vim-signify')
