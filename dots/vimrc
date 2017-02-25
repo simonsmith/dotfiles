@@ -219,9 +219,6 @@ else
   Plug 'sjl/vitality.vim'
 endif
 
-" Devicons have to come after other plugins
-Plug 'ryanoasis/vim-devicons'
-
 call plug#end()
 
 " Shortcut for checking if a plugin is loaded
