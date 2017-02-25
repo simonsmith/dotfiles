@@ -357,7 +357,7 @@ set esckeys
 set ttimeoutlen=0
 
 " Auto save changes before switching buffer
-" set autowrite
+set autowrite
 
 " Add the g flag to search/replace by default
 set gdefault
