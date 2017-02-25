@@ -878,10 +878,15 @@ augroup highlight-when-switching-modes
 augroup END
 
 " Remove whitespace on save
-augroup whitespace
-  autocmd!
-  autocmd BufWritePre * :%s/\s\+$//e
-augroup END
+" Using this function restore cursor position
+" http://stackoverflow.com/a/37201230/617615
+function! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 " Periodically check for file changes
 augroup checktime
