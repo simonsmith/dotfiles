@@ -437,11 +437,11 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>779 426 700 404 0 0 3008 1670 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>805 265 937 512 0 0 3440 1418 </string>
+	<string>805 387 1018 447 0 0 3440 1418 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>1730 16 1696 1388 0 0 3440 1418 </string>
+	<string>14 13 3414 1395 0 0 3440 1418 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>1730 16 1696 1388 0 0 3440 1418 </string>
+	<string>648 189 1720 708 0 0 3440 1418 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>14 842 1482 820 0 0 3008 1670 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
@@ -1129,7 +1129,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>KnackNerdFontComplete 14</string>
+			<string>Hack-Regular 14</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -1214,7 +1214,7 @@
 			<key>Vertical Spacing</key>
 			<real>1</real>
 			<key>Visual Bell</key>
-			<true/>
+			<false/>
 			<key>Window Type</key>
 			<integer>0</integer>
 			<key>Working Directory</key>
@@ -2068,9 +2068,9 @@
 	<key>TabStyle</key>
 	<integer>1</integer>
 	<key>TerminalMargin</key>
-	<integer>20</integer>
+	<integer>17</integer>
 	<key>TerminalVMargin</key>
-	<integer>20</integer>
+	<integer>17</integer>
 	<key>UseBorder</key>
 	<false/>
 	<key>UseLionStyleFullscreen</key>
