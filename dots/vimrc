@@ -508,12 +508,12 @@ nnoremap <silent> p p`]
 nmap <leader>cl yiwoconsole.log('<c-r>"', <c-r>");<esc>^
 
 " Split
-noremap <leader>x :<C-u>split<cr>
-noremap <leader>v :<C-u>vsplit<cr>
+noremap <silent><leader>x :split<cr>
+noremap <silent><leader>v :vsplit<cr>
 
 " Switch buffers
-nnoremap <silent> H :bp<CR>
-nnoremap <silent> L :bn<CR>
+nnoremap <silent>H :silent bp<CR>
+nnoremap <silent>L :silent bn<CR>
 
 " Spellcheck
 nnoremap <F6> :setlocal spell!<cr>
@@ -671,7 +671,7 @@ if s:has_plugin('auto-pairs')
 endif
 
 if s:has_plugin('vim-bbye')
-  nnoremap <silent> Q :Bdelete<cr>
+  nnoremap <silent>Q :silent Bdelete<cr>
 endif
 
 if s:has_plugin('taboo.vim')
