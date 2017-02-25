@@ -25,8 +25,6 @@ if executable('tmux')
   Plug 'christoomey/vim-tmux-navigator'
   " Restore `FocusLost` and `FocusGained` events in tmux
   Plug 'tmux-plugins/vim-tmux-focus-events'
-  " tmux statusline generator
-  Plug 'edkolev/tmuxline.vim'
 endif
 
 " Finding and replacing
@@ -812,16 +810,6 @@ if s:has_plugin('neomake')
   hi link NeomakeError FoldColumn
 
   autocmd! BufRead,BufWritePost * Neomake
-endif
-
-if s:has_plugin('tmuxline.vim')
-  let g:tmuxline_preset = {
-        \'a'    : '#S',
-        \'win'  : '#I #W',
-        \'cwin' : '#I #W',
-        \'y'    : ['#(spotify)', '#(ipconfig getifaddr en0)', 'cpu: #{cpu_percentage}', 'batt: #(battery -a -p -t)'],
-        \'z'    : ['%R', '%d-%m-%Y'],
-        \'options' : {'status-justify' : 'left'}}
 endif
 
 if s:has_plugin('emmet-vim')
