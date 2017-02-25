@@ -804,15 +804,14 @@ if s:has_plugin('neomake')
         \ 'cwd': '%:p:h'
         \ }
 
-  let s:neomake_makers = ['flow', 'eslint']
+  let s:neomake_makers = ['flow']
   let g:neomake_javascript_enabled_makers = s:neomake_makers
-  let g:neomake_jsx_enabled_makers = s:neomake_makers
-
-  " Same thing as above but this time to pass in the maker configuration
   let g:neomake_javascript_flow_maker = s:flow_maker
-  let g:neomake_jsx_flow_maker = s:flow_maker
 
-  autocmd! BufWinEnter,BufWritePost * Neomake
+  " Remove underline on errors
+  hi link NeomakeError FoldColumn
+
+  autocmd! BufRead,BufWritePost * Neomake
 endif
 
 if s:has_plugin('tmuxline.vim')
