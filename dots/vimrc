@@ -467,7 +467,7 @@ endif
 " ------------------------------------------------------------------------------
 
 " Save file
-nnoremap <leader>w :w<cr>
+nnoremap <silent><leader>w :silent w<cr>
 
 " Force j and k to work on display lines
 nnoremap k gk
