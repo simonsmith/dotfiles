@@ -437,9 +437,9 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>779 426 700 404 0 0 3008 1670 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>269 326 1018 447 0 0 1680 1050 </string>
+	<string>805 667 1018 447 0 0 3440 1418 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 1680 1050 0 0 1680 1028 </string>
+	<string>1217 16 2208 1388 0 0 3440 1418 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>648 189 1720 708 0 0 3440 1418 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -2046,7 +2046,7 @@
 	<key>PromptOnQuit</key>
 	<false/>
 	<key>SUEnableAutomaticChecks</key>
-	<true/>
+	<false/>
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
@@ -2054,7 +2054,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-02-24T23:19:15Z</date>
+	<date>2017-02-25T20:35:18Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>ShowBookmarkName</key>
@@ -2068,7 +2068,7 @@
 	<key>TabStyle</key>
 	<integer>1</integer>
 	<key>TerminalMargin</key>
-	<integer>15</integer>
+	<integer>17</integer>
 	<key>TerminalVMargin</key>
 	<integer>17</integer>
 	<key>UseBorder</key>
