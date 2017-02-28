@@ -207,10 +207,7 @@ Plug 'peteyy/mocha.vim', {'for': ['javascript', 'javascript.jsx']}
 
 if has('nvim')
   " Autocomplete
-  function! DoRemote(arg)
-    UpdateRemotePlugins
-  endfunction
-  Plug 'Shougo/deoplete.nvim', {'do': function('DoRemote')}
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'carlitux/deoplete-ternjs'
 else
   Plug 'sjl/vitality.vim'
@@ -636,7 +633,7 @@ if s:has_plugin('deoplete.nvim')
 endif
 
 if s:has_plugin('deoplete-ternjs')
-  let g:tern_show_signature_in_pum = 1
+  let g:tern_show_signature_in_pum = 0
 endif
 
 if s:has_plugin('vim-session')
