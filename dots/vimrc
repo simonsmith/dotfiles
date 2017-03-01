@@ -197,6 +197,8 @@ Plug 'ap/vim-css-color', {'for': ['css', 'scss']}
 Plug 'mattn/emmet-vim'
 " Automatically add a closing HTML tag
 Plug 'alvan/vim-closetag'
+" Better Scss highlighting than polyglot
+Plug 'tpope/vim-haml'
 
 " JavaScript
 " ------------------------------------------------------------------------------
@@ -642,7 +644,7 @@ if s:has_plugin('vim-session')
 endif
 
 if s:has_plugin('vim-polyglot')
-  let g:polyglot_disabled = ['markdown']
+  let g:polyglot_disabled = ['markdown', 'scss']
   let g:jsx_ext_required = 0
 endif
 
@@ -840,6 +842,7 @@ augroup file-types
   autocmd BufNewFile,BufRead *.sss setlocal syntax=stylus
   autocmd BufNewFile,BufRead *.ts,*.snap,*.es6,*.tsx setlocal filetype=javascript.jsx
   autocmd BufNewFile,BufRead *stylelintrc,*eslintrc,*babelrc,*jshintrc setlocal syntax=json
+  autocmd BufNewFile,BufRead *.css setlocal syntax=scss
 
   " Wrap text and turn on spell for markdown files
   autocmd BufNewFile,BufRead *.md setlocal wrap linebreak spell filetype=markdown
