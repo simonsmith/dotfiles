@@ -121,6 +121,10 @@ export PATH="$HOME/.yarn/bin:$PATH"
 export GOPATH="$HOME/go"
 export PATH="$PATH:$GOPATH/bin"
 
+# https://github.com/ingydotnet/git-hub
+export PATH="$HOME/git-hub/lib:$PATH"
+export MANPATH="$HOME/git-hub/man:$MANPATH"
+
 # NVM
 # ---------------------------------------------------------------
 
@@ -164,10 +168,6 @@ THEME="$HOME/.honukai.zsh-theme"
 
 # https://github.com/carlitux/deoplete-ternjs#vim-configuration-example
 ulimit -n 2048
-
-# https://github.com/ingydotnet/git-hub
-GIT_HUB_RC="$HOME/git-hub/.rc"
-[ -s $GIT_HUB_RC ] && source $GIT_HUB_RC
 
 # https://github.com/rbenv/rbenv
 eval "$(rbenv init -)"
