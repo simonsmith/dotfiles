@@ -3,11 +3,11 @@ log() {
   printf "\n\e[94m$fmt\n" "$@"
 }
 
-node_install_version=6.9.1
+node_install_version=6.10.0
 
 log "Installing nvm ..."
 if [ ! -s "$NVM_DIR/nvm.sh" ] ; then
-  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | zsh
+  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | zsh
   source "$HOME/.nvm/nvm.sh"
   log "Installing node $node_install_version ..."
   nvm install "$node_install_version"
@@ -41,5 +41,6 @@ install_global_npm_package npm-check
 install_global_npm_package npmlist
 install_global_npm_package tern
 
-# install yarn
+log "Installing yarn ..."
+
 curl -o- -L https://yarnpkg.com/install.sh | bash
