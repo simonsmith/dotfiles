@@ -206,6 +206,7 @@ Plug 'tpope/vim-haml'
 Plug 'pangloss/vim-javascript', {'for': ['javascript', 'javascript.jsx']}
 Plug 'moll/vim-node', {'for': ['javascript', 'javascript.jsx', 'json']}
 Plug 'peteyy/mocha.vim', {'for': ['javascript', 'javascript.jsx']}
+Plug 'ternjs/tern_for_vim'
 
 if has('nvim')
   " Autocomplete
@@ -635,7 +636,13 @@ if s:has_plugin('deoplete.nvim')
 endif
 
 if s:has_plugin('deoplete-ternjs')
-  let g:tern_show_signature_in_pum = 0
+  let g:tern_request_timeout = 1
+  let g:tern_show_signature_in_pum = '0'
+endif
+
+if s:has_plugin('tern_for_vim')
+  let g:tern#command = ['tern']
+  let g:tern#arguments = ['--persistent']
 endif
 
 if s:has_plugin('vim-session')
