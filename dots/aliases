@@ -36,10 +36,11 @@ alias nf='npm cache clean && rm -rf node_modules && npm install'
 alias y='yarn'
 alias ya='yarn add'
 alias yad='yarn add --dev'
-alias yu='yarn upgrade'
-alias yr='yarn remove'
 alias yp='yarnpkg'
+alias yr='yarn remove'
 alias yt='yarn test'
+alias yu='yarn upgrade'
+alias yui='yarn upgrade-interactive'
 
 # https://github.com/ogham/exa
 alias l="exa -lbha --git"
