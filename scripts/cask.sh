@@ -68,5 +68,6 @@ install_cask viscosity
 # https://github.com/caskroom/homebrew-fonts
 brew tap caskroom/fonts
 install_cask caskroom/fonts/font-hack
+install_cask caskroom/fonts/font-hack-nerd-font
 
 brew cask cleanup
