@@ -4,7 +4,7 @@ Mac config and setup steps.
 
 ![](https://cl.ly/i2K2/Screen%20Shot%202016-11-07%20at%2020.14.06.png)
 
-[tmux and vim](https://cl.ly/jKET)
+[tmux and vim screenshot](https://cl.ly/jPSi)
 
 ## First steps
 
