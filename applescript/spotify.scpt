@@ -4,8 +4,17 @@ if application "Spotify" is running then
     set theArtist to artist of the current track
     set theAlbum to album of the current track
     set theUrl to spotify url of the current track
+
+    set playerState to player state
+    if playerState is playing then
+      set playIcon to " "
+    end if
+    if playerState is paused then
+      set playIcon to " "
+    end if
+
     try
-      return "♫  " & theName & " - " & theArtist
+      return playIcon & " " & theName & " - " & theArtist
     on error err
     end try
   end tell
