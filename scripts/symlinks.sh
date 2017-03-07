@@ -56,8 +56,6 @@ rm "$HOME/applescript"
 symlink applescript
 rm "$HOME/bin"
 symlink bin
-rm "$HOME/eslint"
-symlink eslint
 
 mkdir "$HOME/.zdata"
 touch "$HOME/.zdata/.z"
