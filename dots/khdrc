@@ -37,15 +37,15 @@ cmd + ctrl - r           :    kwmc tree rotate 90
 # Modify Container
 prefix - s               :    kwmc window -c split-mode toggle
 
-prefix - h               :    kwmc window -c expand 0.05 west
-prefix - j               :    kwmc window -c expand 0.05 south
-prefix - k               :    kwmc window -c expand 0.05 north
-prefix - l               :    kwmc window -c expand 0.05 east
+prefix - h               :    kwmc window -c expand 0.02 west
+prefix - j               :    kwmc window -c expand 0.02 south
+prefix - k               :    kwmc window -c expand 0.02 north
+prefix - l               :    kwmc window -c expand 0.02 east
 
-prefix + shift - h       :    kwmc window -c reduce 0.05 west
-prefix + shift - j       :    kwmc window -c reduce 0.05 south
-prefix + shift - k       :    kwmc window -c reduce 0.05 north
-prefix + shift - l       :    kwmc window -c reduce 0.05 east
+prefix + shift - h       :    kwmc window -c reduce 0.02 west
+prefix + shift - j       :    kwmc window -c reduce 0.02 south
+prefix + shift - k       :    kwmc window -c reduce 0.02 north
+prefix + shift - l       :    kwmc window -c reduce 0.02 east
 
 # Set Temporary Window Container
 prefix - f               :    kwmc window -z fullscreen
