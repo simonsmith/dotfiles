@@ -191,6 +191,8 @@ Plug 'jaawerth/nrun.vim'
 " HTML/CSS
 " ------------------------------------------------------------------------------
 
+" C# highlighting
+Plug 'OrangeT/vim-csharp', {'for': ['cs', 'cshtml']}
 " Highlight css colors with their color
 Plug 'ap/vim-css-color', {'for': ['css', 'scss']}
 " Easy HTML and CSS generation
