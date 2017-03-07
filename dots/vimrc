@@ -132,6 +132,8 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 " Switch the cwd based on the file location
 Plug 'airblade/vim-rooter'
+" Whitespace removal
+Plug 'ntpeters/vim-better-whitespace'
 
 " Refactoring
 " ------------------------------------------------------------------------------
@@ -333,9 +335,6 @@ set ignorecase
 " If a pattern contains an uppercase letter
 " it is case sensitive, otherwise, it is not
 set smartcase
-
-" Highlight tailing whitespace
-set list listchars=tab:\ \ ,trail:·
 
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
 set clipboard=unnamed
@@ -611,6 +610,11 @@ if s:has_plugin('mocha.vim')
   autocmd FileType javascript,javascript.jsx nnoremap <buffer> <localleader>N :FocusPreviousTest<cr>
 endif
 
+if s:has_plugin('vim-better-whitespace')
+  autocmd BufEnter * EnableStripWhitespaceOnSave
+  highlight ExtraWhitespace ctermbg=red guibg = #e06c75
+endif
+
 if s:has_plugin('vim-qargs')
   " Replace with Qdo
   nnoremap <leader>r :Qdo<space> :%s/
@@ -873,17 +877,6 @@ augroup highlight-when-switching-modes
   autocmd WinEnter    * setlocal cursorline
   autocmd WinLeave    * setlocal nocursorline
 augroup END
-
-" Remove whitespace on save
-" Using this function restore cursor position
-" http://stackoverflow.com/a/37201230/617615
-function! <SID>StripTrailingWhitespaces()
-    let l = line(".")
-    let c = col(".")
-    %s/\s\+$//e
-    call cursor(l, c)
-endfun
-autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 " Periodically check for file changes
 augroup checktime
