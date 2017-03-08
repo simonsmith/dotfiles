@@ -437,13 +437,13 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>779 426 700 404 0 0 3008 1670 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>805 667 1018 447 0 0 3440 1418 </string>
+	<string>805 997 918 416 0 0 3440 1418 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>1216 11 2210 1399 0 0 3440 1418 </string>
+	<string>1258 45 2138 1331 0 0 3440 1418 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>648 189 1720 708 0 0 3440 1418 </string>
+	<string>1553 45 1842 1331 0 0 3440 1418 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>14 842 1482 820 0 0 3008 1670 </string>
+	<string>1728 722 842 685 0 0 3440 1418 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
 	<string>14 12 818 1007 0 0 1680 1028 </string>
 	<key>NSWindow Frame iTerm Window 4</key>
@@ -1129,7 +1129,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>Hack-Regular 14</string>
+			<string>KnackNerdFontC-Regular 14</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
