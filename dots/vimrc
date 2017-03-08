@@ -856,6 +856,7 @@ augroup file-types
   autocmd BufNewFile,BufRead *.ts,*.snap,*.es6,*.tsx setlocal filetype=javascript.jsx
   autocmd BufNewFile,BufRead *stylelintrc,*eslintrc,*babelrc,*jshintrc setlocal syntax=json
   autocmd BufNewFile,BufRead *.css setlocal syntax=scss
+  autocmd BufNewFile,BufRead *.cshtml setlocal filetype=cshtml
 
   " Wrap text and turn on spell for markdown files
   autocmd BufNewFile,BufRead *.md setlocal wrap linebreak spell filetype=markdown
