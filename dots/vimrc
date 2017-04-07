@@ -814,7 +814,7 @@ if s:has_plugin('neomake')
         \ 'cwd': '%:p:h'
         \ }
 
-  let s:neomake_makers = ['flow']
+  let s:neomake_makers = ['flow', 'eslint']
   let g:neomake_javascript_enabled_makers = s:neomake_makers
   let g:neomake_javascript_flow_maker = s:flow_maker
 
