@@ -55,11 +55,9 @@ Plug 'tpope/vim-vinegar'
 " ------------------------------------------------------------------------------
 
 " Close all buffers except current
-Plug 'schickling/vim-bufonly', {'on': 'BufOnly'}
+Plug 'schickling/vim-bufonly'
 " Close buffers without losing window layout
 Plug 'moll/vim-bbye'
-" Manage buffers
-Plug 'jlanzarotta/bufexplorer'
 
 " Language pack
 " ------------------------------------------------------------------------------
@@ -557,13 +555,6 @@ if s:has_plugin('undotree')
   nnoremap <f5> :UndotreeToggle<cr>
 endif
 
-if s:has_plugin('bufexplorer')
-  let g:bufExplorerDisableDefaultKeyMapping=1
-  let g:bufExplorerShowNoName=1
-  let g:bufExplorerShowRelativePath=1
-  nnoremap <leader>b :ToggleBufExplorer<cr>
-endif
-
 if s:has_plugin('ultisnips')
   let g:UltiSnipsExpandTrigger="<tab>"
   let g:UltiSnipsJumpForwardTrigger="<tab>"
@@ -597,6 +588,10 @@ if s:has_plugin('vim-gutentags')
         \ 'dist',
         \ 'vendor',
         \ 'bower_components']
+endif
+
+if s:has_plugin('schickling/vim-bufonly')
+  nnoremap <leader>b :BufOnly<cr>
 endif
 
 if s:has_plugin('vim-javascript')
