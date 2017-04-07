@@ -532,7 +532,7 @@ nnoremap <cr> o<esc>
 
 " Allow quick edits and sourcing of vimrc
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>y :source $MYVIMRC<cr>
 
 if exists(':tnoremap')
   " Allow movement seamlessly with terminals
@@ -627,10 +627,10 @@ endif
 
 if s:has_plugin('vim-sneak')
   let g:sneak#use_ic_scs = 0
-  nmap gs <Plug>Sneak_s
-  nmap gS <Plug>Sneak_S
-  xmap gs <Plug>Sneak_s
-  xmap gS <Plug>Sneak_S
+  nmap <leader>s <Plug>Sneak_s
+  nmap <leader>S <Plug>Sneak_S
+  xmap <leader>s <Plug>Sneak_s
+  xmap <leader>S <Plug>Sneak_S
   let g:sneak#streak = 1
 endif
 
