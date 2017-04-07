@@ -119,7 +119,7 @@ Plug 'kana/vim-textobj-line'
 " af
 Plug 'thinca/vim-textobj-function-javascript', {'for': ['javascript', 'javascript.jsx', 'json']}
 " ac
-Plug 'jasonlong/vim-textobj-css', {'for': ['css', 'scss']}
+Plug 'coderifous/textobj-word-column.vim'
 " ax
 Plug 'whatyouhide/vim-textobj-xmlattr'
 
