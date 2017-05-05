@@ -4,7 +4,6 @@
 
 if has('nvim')
   let g:plugin_path = '~/.config/nvim/plugged'
-  let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
 else
   let g:plugin_path = '~/.vim/plugged'
   set nocompatible
@@ -348,9 +347,6 @@ set wildmode=list:longest,full
 
 " don't add extra space after ., !, etc. when joining
 set nojoinspaces
-
-" Allow cursor keys in insert mode
-set esckeys
 
 " Eliminate delay when switching modes
 set ttimeoutlen=0
