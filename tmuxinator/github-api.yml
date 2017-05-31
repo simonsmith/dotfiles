@@ -1,4 +1,4 @@
-# ~/.tmuxinator/new-look-mobile-app.yml
+# ~/.tmuxinator/github-api.yml
 
 name: github-api
 root: ~/Sites/github-user-search
