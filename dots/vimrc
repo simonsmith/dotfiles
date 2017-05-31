@@ -128,7 +128,7 @@ Plug 'editorconfig/editorconfig-vim'
 " GUI for the undo tree
 Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 " Switch the cwd based on the file location
-Plug 'airblade/vim-rooter'
+" Plug 'airblade/vim-rooter'
 " Whitespace removal
 Plug 'ntpeters/vim-better-whitespace'
 
