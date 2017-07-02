@@ -195,7 +195,7 @@ Plug 'OrangeT/vim-csharp', {'for': ['cs', 'cshtml']}
 " Highlight css colors with their color
 Plug 'ap/vim-css-color', {'for': ['css', 'scss']}
 " Easy HTML and CSS generation
-Plug 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim', {'for': ['css', 'scss', 'html', 'cshtml']}
 " Automatically add a closing HTML tag
 Plug 'alvan/vim-closetag'
 " Better Scss highlighting than polyglot
