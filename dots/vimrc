@@ -779,13 +779,13 @@ endif
 
 if s:has_plugin('neomake')
   let g:neomake_list_height = 8
-  let g:neomake_html_enabled_makers = []
   let g:neomake_error_sign = {'text': 'x', 'texthl': 'NeomakeErrorSign'}
   let g:neomake_warning_sign = {'text': '~', 'texthl': 'NeomakeWarningSign'}
 
   " Use local copies of linting tools
   au BufEnter *.js let b:neomake_javascript_eslint_exe = nrun#Which('eslint')
-  au BufEnter *.css,*.scss let b:neomake_css_stylelint_exe = nrun#Which('stylelint')
+  au BufEnter *.css let b:neomake_css_stylelint_exe = nrun#Which('stylelint')
+  au BufEnter *.scss let b:neomake_scss_stylelint_exe = nrun#Which('stylelint')
 
   " Integrate Flow with Neomake
   " https://github.com/rafaelrinaldi/til/blob/master/vim/linting-with-flow.md
@@ -808,11 +808,13 @@ if s:has_plugin('neomake')
   let s:neomake_makers = ['flow', 'eslint']
   let g:neomake_javascript_enabled_makers = s:neomake_makers
   let g:neomake_javascript_flow_maker = s:flow_maker
+  let g:neomake_scss_enabled_makers = ['stylelint']
+  let g:neomake_html_enabled_makers = []
 
   " Remove underline on errors
   hi link NeomakeError FoldColumn
 
-  autocmd! BufRead,BufWritePost * Neomake
+  autocmd! BufEnter,BufWritePost * Neomake
 endif
 
 if s:has_plugin('emmet-vim')
