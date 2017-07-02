@@ -130,10 +130,10 @@ if the screen exists.
 kwmc config border focused on
 kwmc config border focused size 2
 kwmc config border focused color 0xddd5c4a1
-kwmc config border focused radius 3
+kwmc config border focused radius 4
 
 # Enable border for marked window
 kwmc config border marked on
 kwmc config border marked size 2
 kwmc config border marked color 0xFFCC5577
-kwmc config border marked radius 3
+kwmc config border marked radius 4
