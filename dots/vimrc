@@ -661,6 +661,7 @@ endif
 
 if s:has_plugin('vim-closetag')
   let g:closetag_filenames = "*.html,*.js,*.jsx"
+  let g:closetag_close_shortcut = ''
 endif
 
 if s:has_plugin('vim-choosewin')
