@@ -3,7 +3,7 @@ log() {
   printf "\n\e[94m$fmt\n" "$@"
 }
 
-node_install_version=8.00
+node_install_version=8.3.0
 
 log "Installing nvm ..."
 if [ ! -s "$NVM_DIR/nvm.sh" ] ; then
