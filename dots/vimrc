@@ -2,12 +2,7 @@
 " https://github.com/junegunn/vim-plug
 " ------------------------------------------------------------------------------
 
-if has('nvim')
-  let g:plugin_path = '~/.config/nvim/plugged'
-else
-  let g:plugin_path = '~/.vim/plugged'
-  set nocompatible
-endif
+let g:plugin_path = '~/.config/nvim/plugged'
 
 call plug#begin(g:plugin_path)
 
@@ -209,13 +204,9 @@ Plug 'moll/vim-node', {'for': ['javascript', 'javascript.jsx', 'json']}
 Plug 'peteyy/mocha.vim', {'for': ['javascript', 'javascript.jsx']}
 Plug 'ternjs/tern_for_vim'
 
-if has('nvim')
-  " Autocomplete
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'carlitux/deoplete-ternjs'
-else
-  Plug 'sjl/vitality.vim'
-endif
+" Autocomplete
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'carlitux/deoplete-ternjs'
 
 call plug#end()
 
@@ -422,41 +413,6 @@ cnoreabbrev WQ wq
 cnoreabbrev W w
 cnoreabbrev Qa q
 cnoreabbrev Qall qall
-
-" Vim only
-" These are set by default in neovim
-
-if !has('nvim')
-  " Allow vim to determine the type from the file contents
-  filetype plugin indent on
-  syntax on
-  " Autoindent when starting new line, or using `o` or `O`.
-  set autoindent
-  " Auto reload files on change
-  set autoread
-  " Allow backspace in insert mode
-  set backspace=indent,eol,start
-  " Use UTF-8 without BOM
-  set encoding=utf-8 nobomb
-  " Delete comment character when joining commented lines
-  set formatoptions+=j
-  " Store more history (default is 50)
-  set history=1000
-  " Highlight searches
-  set hlsearch
-  set incsearch
-  " Always show status line
-  set laststatus=2
-  " Enable mouse in all modes
-  set mouse=a
-  " Use 'shiftwidth' when using `<Tab>` in front of a line.
-  " By default it's used only for shift commands (`<`, `>`).
-  set smarttab
-  " Optimize for fast terminal connections
-  set ttyfast
-  " Enhance command-line completion
-  set wildmenu
-endif
 
 " Key mappings
 " ------------------------------------------------------------------------------
