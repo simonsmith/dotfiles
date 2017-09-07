@@ -37,7 +37,7 @@ install_cask imageoptim
 install_cask max
 install_cask sonos
 install_cask spotify
-install_cask vlc
+install_cask iina
 
 # Development
 install_cask atom
