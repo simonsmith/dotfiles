@@ -121,7 +121,6 @@ brew_install_or_upgrade ack
 brew_install_or_upgrade ctags
 brew_install_or_upgrade direnv
 brew_install_or_upgrade go
-brew_install_or_upgrade heroku
 brew_install_or_upgrade htop
 brew_install_or_upgrade httpie
 brew_install_or_upgrade hugo
