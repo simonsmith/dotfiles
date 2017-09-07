@@ -1,92 +1,3 @@
-# NOTE(koekeishiya): A bind is written in the form:
-#                   <keysym> [!] [<app list>] [->] : <command>
-#                   where
-#                       <keysym>   = mode + mod + ... + mod - literal
-#
-#                       <keysym>   = mode + mod + ... + mod - keycode
-#                                    keycode must have 0x prefix
-#
-#                       <keysym>   = mode + mod + ... + mod - button#
-#                                    replace '#' with mouse-button id; id >= 3
-#
-#                       modifier only binding
-#                       <keysym>   = mode + mod + ... + mod
-#
-#                       literal only binding
-#                       <keysym>   = - literal
-#
-#                       keycode only binding
-#                       <keysym>   = - keycode
-#
-#                       [<app,
-#                         app,     = optional list '[app1, ..., appN]' of applications
-#                         app>]      that this bind will be activated for. if the
-#                                    focused application is not contained in this list,
-#                                    the associated command will not be triggered, and
-#                                    the keypress will be passed through as normal.
-#
-#                       [!]        = optional operator '!' negates the behaviour when a
-#                                    list of applications is given. this marks the bind
-#                                    as 'Hotkey_Exclude', causing the bind to not work
-#                                    when the focused application is in the given list.
-#
-#                       [->]       = optional operator '->' that marks this bind as
-#                                    'passthrough'. this causes the key to be passed
-#                                    through to the system, instead of being consumed.
-#
-#                       <command>  = command is executed through '$SHELL -c' and
-#                                    follows valid shell syntax. if the $SHELL environment
-#                                    variable is not set, it will default to '/bin/bash'.
-#                                    when bash is used, the ';' delimeter can be specified
-#                                    to chain commands.
-#
-#                                    to allow a command to extend into multiple lines,
-#                                    prepend '\' at the end of the previous line.
-#
-#                                    an EOL character signifies the end of the bind.
-
-# NOTE(koekeishiya) Example of passthrough
-# cmd - m -> : echo "alert and minimize window" | alerter -title Test passthrough -timeout 2
-
-# NOTE(koekeishiya) Example of app list
-# alt - e [
-#           iTerm2,
-#           Terminal,
-#           HyperTerm
-#         ]
-#         : echo "so this is how deep the rabbit hole goes.." |\
-#           alerter -title Test passthrough -timeout 2
-
-# NOTE(koekeishiya) Example of negated app list
-# alt - e [
-#           iTerm2,
-#           Terminal,
-#           HyperTerm
-#         ] !
-#         : echo "blue pill, i choose you!" |\
-#           alerter -title Test passthrough -timeout 2
-
-# NOTE(koekeishiya) Modifier only binding
-# left shift    -> (    right shift   -> )
-# left cmd      -> {    right cmd     -> }
-
-# khd mod_trigger_timeout 0.1
-# lshift : khd -p "shift - 8"
-# rshift : khd -p "shift - 9"
-# lcmd   : khd -p "shift + alt - 8"
-# rcmd   : khd -p "shift + alt - 9"
-
-# NOTE(koekeishiya) Bind mouse-buttons
-# - button3 : khd -w "mouse-button 3 pressed"
-# - button4 : khd -w "mouse-button 4 pressed"
-
-# TODO(koekeishiya): possibly allow combined syntax such as
-# [switcher,ytd] + ctrl - f : khd -e "mode activate default"
-
-# suppress unregistered keybinds outside default mode
-# enabled by default! must be explicitly set to 'off'
-# khd void_unlisted_bind off
-
 # set border color for different modes
 khd mode default on_enter chunkc border::color 0xff775759
 khd mode switcher on_enter chunkc border::color 0xddbdd322
@@ -172,7 +83,7 @@ space - o : chunkc tiling::desktop --toggle offset
 space - p               :   chunkc tiling::desktop --padding inc
 space + shift - p       :   chunkc tiling::desktop --padding dec
 
-# adjust gap space
+# adjust gap
 space - g               :   chunkc tiling::desktop --gap inc
 space + shift - g       :   chunkc tiling::desktop --gap dec
 
@@ -186,6 +97,7 @@ tree - r                :   chunkc tiling::desktop --rotate 90
 tree - s : chunkc tiling::window --toggle sticky;\
           chunkc tiling::window --warp-floating pip-right
 
+# adjust window size
 tree - h                :   chunkc tiling::window --use-temporary-ratio 0.02 --adjust-window-edge west
 tree - j                :   chunkc tiling::window --use-temporary-ratio 0.02 --adjust-window-edge south
 tree - k                :   chunkc tiling::window --use-temporary-ratio 0.02 --adjust-window-edge north
