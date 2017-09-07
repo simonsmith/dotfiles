@@ -88,13 +88,13 @@
 # khd void_unlisted_bind off
 
 # set border color for different modes
-khd mode default on_enter kwmc config border focused color 0xddd5c4a1
-khd mode switcher on_enter kwmc config border focused color 0xddbdd322
-khd mode ytd on_enter kwmc config border focused color 0xddd75f5f
-khd mode swap on_enter kwmc config border focused color 0xdd458588
-khd mode tree on_enter kwmc config border focused color 0xddfabd2f
-khd mode space on_enter kwmc config border focused color 0xddb16286
-khd mode info on_enter kwmc config border focused color 0xddcd950c
+khd mode default on_enter chunkc border::color 0xff775759
+khd mode switcher on_enter chunkc border::color 0xddbdd322
+khd mode ytd on_enter chunkc border::color 0xddd75f5f
+khd mode swap on_enter chunkc border::color 0xdd458588
+khd mode tree on_enter chunkc border::color 0xddfabd2f
+khd mode space on_enter chunkc border::color 0xddb16286
+khd mode info on_enter chunkc border::color 0xddcd950c
 
 # toggle between modes
 ctrl - f                :   khd -e "mode activate switcher"
@@ -120,117 +120,79 @@ switcher - r            :   khd -e "reload" # reload config
 switcher - return       :   open -na /Applications/iTerm.app;\
                             khd -e "mode activate default"
 
-switcher - h            :   kwmc window -f west
-switcher - l            :   kwmc window -f east
-switcher - j            :   kwmc window -f south
-switcher - k            :   kwmc window -f north
-switcher - n            :   kwmc window -fm prev
-switcher - m            :   kwmc window -fm next
+# select windows
+switcher - h            :   chunkc tiling::window --focus west
+switcher - l            :   chunkc tiling::window --focus east
+switcher - j            :   chunkc tiling::window --focus south
+switcher - k            :   chunkc tiling::window --focus north
+switcher - m            :   chunkc tiling::window --focus prev
+switcher - n            :   chunkc tiling::window --focus next
 
-switcher - 1            :   kwmc space -fExperimental 1
-switcher - 2            :   kwmc space -fExperimental 2
-switcher - 3            :   kwmc space -fExperimental 3
-switcher - 4            :   kwmc space -fExperimental 4
-switcher - 5            :   kwmc space -fExperimental 5
-switcher - 6            :   kwmc space -fExperimental 6
-
-switcher - z            :   kwmc space -fExperimental left
-switcher - c            :   kwmc space -fExperimental right
-switcher - f            :   kwmc space -fExperimental previous
-
-switcher + shift - z    :   kwmc window -m space left;\
-                            kwmc space -fExperimental left
-
-switcher + shift - c    :   kwmc window -m space right;\
-                            kwmc space -fExperimental right
-
-switcher + shift - 1    :   kwmc display -f 0
-switcher + shift - 2    :   kwmc display -f 1
-switcher + shift - 3    :   kwmc display -f 2
+# close window
+switcher - w            :   chunkc tiling::window --close;\
+                            khd -e "mode activate default"
 
 # swap mode
-swap - h                :   kwmc window -s west
-swap - j                :   kwmc window -s south
-swap - k                :   kwmc window -s north
-swap - l                :   kwmc window -s east
-swap - m                :   kwmc window -s mark
+# swap window position
+swap - h                :   chunkc tiling::window --swap west
+swap - j                :   chunkc tiling::window --swap south
+swap - k                :   chunkc tiling::window --swap north
+swap - l                :   chunkc tiling::window --swap east
 
-swap + shift - k        :   kwmc window -m north
-swap + shift - l        :   kwmc window -m east
-swap + shift - j        :   kwmc window -m south
-swap + shift - h        :   kwmc window -m west
-swap + shift - m        :   kwmc window -m mark
+# move window
+swap + shift - k        :   chunkc tiling::window --warp north
+swap + shift - l        :   chunkc tiling::window --warp east
+swap + shift - j        :   chunkc tiling::window --warp south
+swap + shift - h        :   chunkc tiling::window --warp west
 
-swap - 1                :   kwmc window -m space 1
-swap - 2                :   kwmc window -m space 2
-swap - 3                :   kwmc window -m space 3
-swap - 4                :   kwmc window -m space 4
-swap - 5                :   kwmc window -m space 5
+swap - 1                :   chunkc tiling::window --send-to-desktop 1
+swap - 2                :   chunkc tiling::window --send-to-desktop 2
+swap - 3                :   chunkc tiling::window --send-to-desktop 3
+swap - 4                :   chunkc tiling::window --send-to-desktop 4
+swap - 5                :   chunkc tiling::window --send-to-desktop 5
 
-swap - z                :   kwmc window -m space left
-swap - c                :   kwmc window -m space right
+swap - z                :   chunkc tiling::window --send-to-desktop prev
+swap - c                :   chunkc tiling::window --send-to-desktop next
 
-swap + shift - 1        :   kwmc window -m display 0
-swap + shift - 2        :   kwmc window -m display 1
-swap + shift - 3        :   kwmc window -m display 2
+# mirror tree y-axis
+swap - y : chunkc tiling::desktop --mirror vertical
+
+# mirror tree x-axis
+swap - x : chunkc tiling::desktop --mirror horizontal
 
 # space mode
-space - a               :   kwmc space -t bsp
-space - s               :   kwmc space -t monocle
-space - d               :   kwmc space -t float
+space - a : chunkc tiling::desktop --layout bsp
+space - s : chunkc tiling::desktop --layout monocle
+space - d : chunkc tiling::desktop --layout float
 
-space - x               :   kwmc space -g increase horizontal
-space - y               :   kwmc space -g increase vertical
+# toggle desktop offset
+space - o : chunkc tiling::desktop --toggle offset
 
-space + shift - x       :   kwmc space -g decrease horizontal
-space + shift - y       :   kwmc space -g decrease vertical
+# adjust desktop padding
+space - p               :   chunkc tiling::desktop --padding inc
+space + shift - p       :   chunkc tiling::desktop --padding dec
 
-space - left            :   kwmc space -p increase left
-space - right           :   kwmc space -p increase right
-space - up              :   kwmc space -p increase top
-space - down            :   kwmc space -p increase bottom
-space - p               :   kwmc space -p increase all
-
-space + shift - left    :   kwmc space -p decrease left
-space + shift - right   :   kwmc space -p decrease right
-space + shift - up      :   kwmc space -p decrease top
-space + shift - down    :   kwmc space -p decrease bottom
-space + shift - p       :   kwmc space -p decrease all
+# adjust gap space
+space - g               :   chunkc tiling::desktop --gap inc
+space + shift - g       :   chunkc tiling::desktop --gap dec
 
 # tree mode
-tree - f                :   kwmc window -z fullscreen
-tree - d                :   kwmc window -z parent
-tree - w                :   kwmc window -t focused
-tree - r                :   kwmc tree rotate 90
+tree - f                :   chunkc tiling::window --toggle fullscreen
+tree + shift - f        :   chunkc tiling::window --toggle native-fullscreen
+tree - d                :   chunkc tiling::window --toggle parent
+tree - w                :   chunkc tiling::window --toggle float
+tree - r                :   chunkc tiling::desktop --rotate 90
 
-tree - s                :   kwmc window -c split - mode toggle;\
-                            khd -e "mode activate default"
+tree - s : chunkc tiling::window --toggle sticky;\
+          chunkc tiling::window --warp-floating pip-right
 
-tree - c                :   kwmc window -c type toggle;\
-                            khd -e "mode activate default"
+tree - h                :   chunkc tiling::window --use-temporary-ratio 0.02 --adjust-window-edge west
+tree - j                :   chunkc tiling::window --use-temporary-ratio 0.02 --adjust-window-edge south
+tree - k                :   chunkc tiling::window --use-temporary-ratio 0.02 --adjust-window-edge north
+tree - l                :   chunkc tiling::window --use-temporary-ratio 0.02 --adjust-window-edge east
+tree - e                :   chunkc tiling::desktop --equalize
 
-tree - h                :   kwmc window -c expand 0.02 west
-tree - j                :   kwmc window -c expand 0.02 south
-tree - k                :   kwmc window -c expand 0.02 north
-tree - l                :   kwmc window -c expand 0.02 east
-tree + shift - h        :   kwmc window -c reduce 0.02 west
-tree + shift - j        :   kwmc window -c reduce 0.02 south
-tree + shift - k        :   kwmc window -c reduce 0.02 north
-tree + shift - l        :   kwmc window -c reduce 0.02 east
-
-tree - p                :   kwmc tree -pseudo create
-tree + shift - p        :   kwmc tree -pseudo destroy
-
-tree - o                :   kwmc window -s prev
-tree + shift - o        :   kwmc window -s next
-
-# default
-cmd + alt + ctrl - m    :   kwmc window -mk focused
-cmd + alt + ctrl - h    :   kwmc window -mk west wrap
-cmd + alt + ctrl - l    :   kwmc window -mk east wrap
-cmd + alt + ctrl - j    :   kwmc window -mk south wrap
-cmd + alt + ctrl - k    :   kwmc window -mk north wrap
-
-cmd - 7                 :   khd -w "\\"
-cmd - 8                 :   khd -w "{"
-cmd - 9                 :   khd -w "}"
+tree + shift - h        :   chunkc tiling::window --use-temporary-ratio -0.02 --adjust-window-edge west
+tree + shift - j        :   chunkc tiling::window --use-temporary-ratio -0.02 --adjust-window-edge south
+tree + shift - k        :   chunkc tiling::window --use-temporary-ratio -0.02 --adjust-window-edge north
+tree + shift - l        :   chunkc tiling::window --use-temporary-ratio -0.02 --adjust-window-edge east

@@ -109,8 +109,9 @@ brew_install_or_upgrade rbenv
 brew_install_or_upgrade ruby-build
 
 # Window manager
-brew_install_or_upgrade koekeishiya/formulae/khd
-brew_install_or_upgrade koekeishiya/formulae/kwm
+brew_install_or_upgrade khd
+brew tap crisidev/homebrew-chunkwm
+brew install chunkwm
 
 # React Native
 brew_install_or_upgrade android-sdk

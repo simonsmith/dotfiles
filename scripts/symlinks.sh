@@ -15,6 +15,7 @@ symlink_dotfile ackrc
 symlink_dotfile agignore
 symlink_dotfile aliases
 symlink_dotfile caniuse.json
+symlink_dotfile chunkwmc
 symlink_dotfile ctags
 symlink_dotfile curlrc
 symlink_dotfile editorconfig
@@ -36,8 +37,6 @@ symlink_dotfile wgetrc
 symlink_dotfile zshenv
 symlink_dotfile zshrc
 ln -sfv $(grealpath tern-project) "$HOME/.tern-config"
-mkdir "$HOME/.kwm"
-ln -sfv $(grealpath kwmrc) "$HOME/.kwm/kwmrc"
 mkdir "$HOME/.ssh"
 ln -sfv $(grealpath ssh-config) "$HOME/.ssh/config"
 popd
