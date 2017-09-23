@@ -7,6 +7,12 @@ khd mode tree on_enter chunkc border::color 0xddfabd2f
 khd mode space on_enter chunkc border::color 0xddb16286
 khd mode info on_enter chunkc border::color 0xddcd950c
 
+# open iterm
+cmd - return : ~/dotfiles/bin/new-iterm-window
+
+# launch Chrome
+ctrl + cmd - g  : open -na /Applications/Google\ Chrome.app
+
 # toggle between modes
 ctrl - f                :   khd -e "mode activate switcher"
 switcher + ctrl - f     :   khd -e "mode activate default"
