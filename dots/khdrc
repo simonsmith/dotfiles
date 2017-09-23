@@ -93,9 +93,7 @@ tree + shift - f        :   chunkc tiling::window --toggle native-fullscreen
 tree - d                :   chunkc tiling::window --toggle parent
 tree - w                :   chunkc tiling::window --toggle float
 tree - r                :   chunkc tiling::desktop --rotate 90
-
-tree - s : chunkc tiling::window --toggle sticky;\
-          chunkc tiling::window --warp-floating pip-right
+tree - s                :   chunkc tiling::window --toggle split
 
 # adjust window size
 tree - h                :   chunkc tiling::window --use-temporary-ratio 0.02 --adjust-window-edge west
