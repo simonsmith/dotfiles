@@ -67,7 +67,7 @@
 	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
 	trustctime = false
 	editor = nvim
-  pager = zsh -lc 'diff-highlight | diff-so-fancy | less -R'
+  pager = zsh -lc 'diff-so-fancy | less --tabs=2 -R'
 
 [color]
 	# Use colors in Git commands that are capable of colored output when
