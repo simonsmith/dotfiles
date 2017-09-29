@@ -24,10 +24,8 @@ endif
 " Finding and replacing
 " ------------------------------------------------------------------------------
 
-" Run Ack from inside Vim
-Plug 'mileszs/ack.vim'
-" Execute operations on the files in the quickfix list
-Plug 'henrik/vim-qargs'
+" Find and replace in project
+Plug 'eugen0329/vim-esearch'
 " Fuzzy finding anything
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 " fzf integration for Vim
@@ -560,16 +558,6 @@ endif
 if s:has_plugin('vim-better-whitespace')
   autocmd BufEnter * EnableStripWhitespaceOnSave
   highlight ExtraWhitespace ctermbg=red guibg = #e06c75
-endif
-
-if s:has_plugin('vim-qargs')
-  " Replace with Qdo
-  nnoremap <leader>r :Qdo<space> :%s/
-endif
-
-if s:has_plugin('ack.vim')
-  " Search with Ack
-  nnoremap <leader>a :Ack!<space>-Q<space>
 endif
 
 if s:has_plugin('vim-sneak')
