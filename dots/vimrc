@@ -177,8 +177,7 @@ Plug 'junegunn/gv.vim'
 " Linting
 " ------------------------------------------------------------------------------
 
-Plug 'neomake/neomake'
-Plug 'jaawerth/nrun.vim'
+Plug 'w0rp/ale'
 
 " HTML/CSS
 " ------------------------------------------------------------------------------
@@ -701,8 +700,6 @@ if s:has_plugin('vim-airline')
   let g:airline_left_alt_sep = ''
   let g:airline_right_sep = ''
   let g:airline_right_alt_sep = ''
-  let g:airline#extensions#neomake#error_symbol = 'Err: '
-  let g:airline#extensions#neomake#warning_symbol = 'Warn: '
   let g:airline#extensions#default#layout = [
         \ [ 'a', 'b', 'c' ],
         \ [ 'error', 'warning' ]
@@ -720,44 +717,12 @@ if s:has_plugin('vim-signify')
   xmap ah <plug>(signify-motion-outer-visual)
 endif
 
-if s:has_plugin('neomake')
-  let g:neomake_list_height = 8
-  let g:neomake_error_sign = {'text': 'x', 'texthl': 'NeomakeErrorSign'}
-  let g:neomake_warning_sign = {'text': '~', 'texthl': 'NeomakeWarningSign'}
-
-  " Use local copies of linting tools
-  au BufEnter *.js let b:neomake_javascript_eslint_exe = nrun#Which('eslint')
-  au BufEnter *.css let b:neomake_css_stylelint_exe = nrun#Which('stylelint')
-  au BufEnter *.scss let b:neomake_scss_stylelint_exe = nrun#Which('stylelint')
-
-  " Integrate Flow with Neomake
-  " https://github.com/rafaelrinaldi/til/blob/master/vim/linting-with-flow.md
-
-  " Tries to find Flow's binary locally, fallback to globally installed
-  if executable($PWD .'/node_modules/.bin/flow')
-    let s:flow_path = $PWD .'/node_modules/.bin/flow'
-  else
-    let s:flow_path = 'flow'
-  endif
-
-  " Custom maker that uses `flow-vim-quickfix` to improve the output
-  let s:flow_maker = {
-        \ 'exe': 'sh',
-        \ 'args': ['-c', s:flow_path.' --json --strip-root | flow-vim-quickfix'],
-        \ 'errorformat': '%E%f:%l:%c\,%n: %m',
-        \ 'cwd': '%:p:h'
-        \ }
-
-  let s:neomake_makers = ['flow', 'eslint']
-  let g:neomake_javascript_enabled_makers = s:neomake_makers
-  let g:neomake_javascript_flow_maker = s:flow_maker
-  let g:neomake_scss_enabled_makers = ['stylelint']
-  let g:neomake_html_enabled_makers = []
-
-  " Remove underline on errors
-  hi link NeomakeError FoldColumn
-
-  autocmd! BufEnter,BufWritePost * Neomake
+if s:has_plugin('ale')
+  let g:ale_sign_error = 'x'
+  let g:ale_sign_warning = '~'
+  let airline#extensions#ale#error_symbol = 'Err: '
+  let airline#extensions#ale#warning_symbol = 'Warn: '
+  let g:ale_echo_msg_format = '%linter% | %s'
 endif
 
 if s:has_plugin('emmet-vim')
