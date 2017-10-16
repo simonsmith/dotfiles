@@ -1,0 +1,14 @@
+# ~/.tmuxinator/cf-pact-frontend.yml
+
+name: cf-pact-frontend
+root: ~/Sites/bcgdv/cf-pact-frontend/
+startup_window: nvim
+
+windows:
+  - nvim: nvim
+  - git:
+  - node:
+      layout: tiled
+      panes:
+        - server:
+          - npm start
