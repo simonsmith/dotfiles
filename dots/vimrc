@@ -200,7 +200,6 @@ Plug 'tpope/vim-haml'
 
 Plug 'pangloss/vim-javascript', {'for': ['javascript', 'javascript.jsx']}
 Plug 'moll/vim-node', {'for': ['javascript', 'javascript.jsx', 'json']}
-Plug 'peteyy/mocha.vim', {'for': ['javascript', 'javascript.jsx']}
 Plug 'ternjs/tern_for_vim'
 
 " Autocomplete
@@ -553,12 +552,6 @@ endif
 if s:has_plugin('vim-javascript')
   let g:javascript_plugin_flow=1
   let g:javascript_plugin_jsdoc=1
-endif
-
-if s:has_plugin('mocha.vim')
-  autocmd FileType javascript,javascript.jsx nnoremap <buffer> <localleader>o :ToggleOnly<cr>
-  autocmd FileType javascript,javascript.jsx nnoremap <buffer> <localleader>n :FocusNextTest<cr>
-  autocmd FileType javascript,javascript.jsx nnoremap <buffer> <localleader>N :FocusPreviousTest<cr>
 endif
 
 if s:has_plugin('vim-better-whitespace')
