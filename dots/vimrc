@@ -179,6 +179,9 @@ Plug 'junegunn/gv.vim'
 " ------------------------------------------------------------------------------
 
 Plug 'w0rp/ale'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'scss', 'json', 'graphql']}
 
 " HTML/CSS
 " ------------------------------------------------------------------------------
@@ -507,6 +510,11 @@ if s:has_plugin('ultisnips')
   let g:UltiSnipsExpandTrigger="<tab>"
   let g:UltiSnipsJumpForwardTrigger="<tab>"
   let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+endif
+
+if s:has_plugin('vim-prettier')
+  let g:prettier#exec_cmd_async = 1
+  nmap <leader>o <Plug>(Prettier)
 endif
 
 if s:has_plugin('vim-easyclip')
