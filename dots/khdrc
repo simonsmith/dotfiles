@@ -8,7 +8,7 @@ khd mode space on_enter chunkc border::color 0xddb16286
 khd mode info on_enter chunkc border::color 0xddcd950c
 
 # open iterm
-cmd - return : ~/dotfiles/bin/new-iterm-window
+cmd + shift - return : ~/dotfiles/bin/new-iterm-window
 
 # launch Chrome
 ctrl + cmd - g  : open -na /Applications/Google\ Chrome.app
