@@ -171,6 +171,7 @@ Plug 'honza/vim-snippets'
 " ------------------------------------------------------------------------------
 
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 Plug 'mhinz/vim-signify'
 Plug 'junegunn/gv.vim'
 
