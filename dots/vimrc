@@ -639,7 +639,6 @@ if s:has_plugin('nerdtree')
   let NERDTreeShowHidden = 1
   let NERDTreeHijackNetrw = 1
   let NERDTreeAutoDeleteBuffer = 1
-  nnoremap <leader>t :NERDTreeToggle<cr>
 endif
 
 if s:has_plugin('gv.vim')
