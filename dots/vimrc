@@ -172,7 +172,7 @@ Plug 'honza/vim-snippets'
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
-Plug 'mhinz/vim-signify'
+Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/gv.vim'
 
 " Linting
@@ -706,6 +706,14 @@ if s:has_plugin('vim-airline')
         \ [ 'a', 'b', 'c' ],
         \ [ 'error', 'warning' ]
         \ ]
+endif
+
+if s:has_plugin('vim-gitgutter')
+  let g:gitgutter_sign_added = '•'
+  let g:gitgutter_sign_modified = '•'
+  let g:gitgutter_sign_removed = '•'
+  let g:gitgutter_sign_modified_removed = '•'
+
 endif
 
 if s:has_plugin('vim-signify')
