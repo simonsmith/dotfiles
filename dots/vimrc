@@ -201,6 +201,7 @@ Plug 'tpope/vim-haml'
 Plug 'pangloss/vim-javascript', {'for': ['javascript', 'javascript.jsx']}
 Plug 'moll/vim-node', {'for': ['javascript', 'javascript.jsx', 'json']}
 Plug 'ternjs/tern_for_vim'
+Plug 'alampros/vim-styled-jsx'
 
 " Autocomplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
