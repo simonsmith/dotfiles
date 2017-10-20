@@ -32,8 +32,6 @@ Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim'
 " Improved search in Vim
 Plug 'junegunn/vim-slash'
-" Multiple cursors
-Plug 'terryma/vim-multiple-cursors'
 
 " File management
 " ------------------------------------------------------------------------------
