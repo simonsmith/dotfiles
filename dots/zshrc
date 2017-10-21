@@ -1,3 +1,27 @@
+# PATH
+# ---------------------------------------------------------------
+
+# Default path
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
+# rbenv
+export PATH="$HOME/.rbenv/shims:$PATH"
+# Allow any custom binaries
+export PATH="$HOME/bin:$PATH"
+# Add brew coreutils
+export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+# yarn
+export PATH="$HOME/.yarn/bin:$PATH"
+
+# GO
+export GOPATH="$HOME/go"
+export PATH="$PATH:$GOPATH/bin"
+
+# https://github.com/ingydotnet/git-hub
+export PATH="$HOME/git-hub/lib:$PATH"
+export MANPATH="$HOME/git-hub/man:$MANPATH"
+
+export PATH="$HOME/.cargo/bin:$PATH"
+
 # zgen
 # ---------------------------------------------------------------
 
@@ -102,30 +126,6 @@ export FZF_TMUX_HEIGHT=40%
 # http://theinfiniteset.net/content/2016/08/combining-tools-blsd-and-fzf/
 command -v blsd > /dev/null && export FZF_ALT_C_COMMAND='blsd'
 command -v tree > /dev/null && export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -$LINES'"
-
-# PATH
-# ---------------------------------------------------------------
-
-# Default path
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
-# rbenv
-export PATH="$HOME/.rbenv/shims:$PATH"
-# Allow any custom binaries
-export PATH="$HOME/bin:$PATH"
-# Add brew coreutils
-export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
-# yarn
-export PATH="$HOME/.yarn/bin:$PATH"
-
-# GO
-export GOPATH="$HOME/go"
-export PATH="$PATH:$GOPATH/bin"
-
-# https://github.com/ingydotnet/git-hub
-export PATH="$HOME/git-hub/lib:$PATH"
-export MANPATH="$HOME/git-hub/man:$MANPATH"
-
-export PATH="$HOME/.cargo/bin:$PATH"
 
 # NVM
 # ---------------------------------------------------------------
