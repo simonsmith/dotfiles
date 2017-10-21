@@ -358,12 +358,14 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>DarkThemeHasBlackTitlebar</key>
+	<true/>
 	<key>Default Bookmark Guid</key>
 	<string>8ADCBEC2-8331-4465-9051-359D180C1F4C</string>
 	<key>DisableFullscreenTransparency</key>
 	<false/>
 	<key>EnableDivisionView</key>
-	<true/>
+	<false/>
 	<key>EnableProxyIcon</key>
 	<false/>
 	<key>FlashTabBarInFullscreen</key>
@@ -446,17 +448,23 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>779 426 700 404 0 0 3008 1670 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>404 725 918 381 0 0 3440 1418 </string>
+	<string>404 893 1018 447 0 0 3440 1418 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>63 60 3314 1298 0 0 3440 1418 </string>
+	<string>42 729 816 641 0 0 3440 1418 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>62 60 1378 1298 0 0 3440 1418 </string>
+	<string>41 388 992 301 0 0 3440 1418 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>1071 60 1138 1297 0 0 3440 1418 </string>
+	<string>252 291 834 737 0 0 1680 1028 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
-	<string>2284 719 1122 668 0 0 3440 1418 </string>
+	<string>31 35 1618 958 0 0 1680 1028 </string>
 	<key>NSWindow Frame iTerm Window 4</key>
-	<string>14 12 818 1007 0 0 1680 1028 </string>
+	<string>31 35 1618 958 0 0 1680 1028 </string>
+	<key>NSWindow Frame iTerm Window 5</key>
+	<string>31 35 1618 958 0 0 1680 1028 </string>
+	<key>NSWindow Frame iTerm Window 6</key>
+	<string>31 35 1618 958 0 0 1680 1028 </string>
+	<key>NSWindow Frame iTerm Window 7</key>
+	<string>31 35 1618 958 0 0 1680 1028 </string>
 	<key>NeverWarnAboutMeta</key>
 	<true/>
 	<key>NeverWarnAboutMeta_selection</key>
@@ -466,6 +474,8 @@
 		<dict>
 			<key>ASCII Anti Aliased</key>
 			<true/>
+			<key>ASCII Ligatures</key>
+			<false/>
 			<key>Allow Title Setting</key>
 			<false/>
 			<key>Ambiguous Double Width</key>
@@ -1187,19 +1197,6 @@
 			<integer>0</integer>
 			<key>Sync Title</key>
 			<false/>
-			<key>Tab Color</key>
-			<dict>
-				<key>Alpha Component</key>
-				<real>1</real>
-				<key>Blue Component</key>
-				<real>0.20529419183731079</real>
-				<key>Color Space</key>
-				<string>sRGB</string>
-				<key>Green Component</key>
-				<real>0.17246919870376587</real>
-				<key>Red Component</key>
-				<real>0.1580778956413269</real>
-			</dict>
 			<key>Tags</key>
 			<array/>
 			<key>Terminal Type</key>
@@ -1213,7 +1210,7 @@
 			<key>Use Bold Font</key>
 			<false/>
 			<key>Use Bright Bold</key>
-			<true/>
+			<false/>
 			<key>Use Italic Font</key>
 			<true/>
 			<key>Use Non-ASCII Font</key>
@@ -2056,6 +2053,8 @@
 	<true/>
 	<key>PromptOnQuit</key>
 	<false/>
+	<key>RunJobsInServers</key>
+	<false/>
 	<key>SUEnableAutomaticChecks</key>
 	<false/>
 	<key>SUFeedAlternateAppNameKey</key>
@@ -2081,9 +2080,9 @@
 	<key>TabViewType</key>
 	<integer>0</integer>
 	<key>TerminalMargin</key>
-	<integer>17</integer>
+	<integer>12</integer>
 	<key>TerminalVMargin</key>
-	<integer>17</integer>
+	<integer>12</integer>
 	<key>UseBorder</key>
 	<false/>
 	<key>UseLionStyleFullscreen</key>
@@ -2097,7 +2096,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.1.20170928-nightly</string>
+	<string>3.1.20171019-nightly</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
