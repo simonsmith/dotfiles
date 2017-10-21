@@ -68,8 +68,13 @@ swap - 3                :   chunkc tiling::window --send-to-desktop 3
 swap - 4                :   chunkc tiling::window --send-to-desktop 4
 swap - 5                :   chunkc tiling::window --send-to-desktop 5
 
-swap - z                :   chunkc tiling::window --send-to-desktop prev
-swap - c                :   chunkc tiling::window --send-to-desktop next
+# focus monitor
+swap - z  : chunkc tiling::monitor -f prev
+swap - c  : chunkc tiling::monitor -f next
+
+# send window to monitor
+shift + swap - z : chunkc tiling::window --send-to-monitor prev;
+shift + swap - c : chunkc tiling::window --send-to-monitor next;
 
 # mirror tree y-axis
 swap - y : chunkc tiling::desktop --mirror vertical
