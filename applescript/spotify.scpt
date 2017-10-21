@@ -7,14 +7,14 @@ if application "Spotify" is running then
 
     set playerState to player state
     if playerState is playing then
-      set playIcon to " "
+      set playIcon to "Playing:"
     end if
     if playerState is paused then
-      set playIcon to " "
+      set playIcon to "Paused:"
     end if
 
     try
-      return playIcon & " " & theName & " - " & theArtist
+      return playIcon & " " & theName & " by " & theArtist
     on error err
     end try
   end tell
