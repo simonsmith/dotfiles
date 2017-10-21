@@ -14,6 +14,7 @@ symlink redis.conf
 symlink_dotfile ackrc
 symlink_dotfile agignore
 symlink_dotfile aliases
+symlink_dotfile alacritty.yml
 symlink_dotfile caniuse.json
 symlink_dotfile chunkwmc
 symlink_dotfile ctags
