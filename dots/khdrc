@@ -7,10 +7,8 @@ khd mode tree on_enter chunkc border::color 0xddfabd2f
 khd mode space on_enter chunkc border::color 0xddb16286
 khd mode info on_enter chunkc border::color 0xddcd950c
 
-# open iterm
-cmd + shift - return : ~/dotfiles/bin/new-iterm-window
-
-# launch Chrome
+# open apps
+cmd + shift - return : open -na /Applications/Alacritty.app
 ctrl + cmd - g  : open -na /Applications/Google\ Chrome.app
 
 # toggle between modes
