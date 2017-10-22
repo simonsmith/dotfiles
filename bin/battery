@@ -89,7 +89,7 @@ battery_charge() {
 apply_colors() {
 if [[ $BATT_PCT -ge 95 ]]; then
   if ((output_tmux)); then
-    COLOR="#[fg=$good_color]"
+    COLOR="#[fg=$good_color]Batt: "
   else
     COLOR=$good_color
   fi
@@ -97,7 +97,7 @@ if [[ $BATT_PCT -ge 95 ]]; then
 # Green
 elif [[ $BATT_PCT -ge 75 ]]; then
   if ((output_tmux)); then
-    COLOR="#[fg=$good_color]"
+    COLOR="#[fg=$good_color]Batt: "
   else
     COLOR=$good_color
   fi
@@ -105,7 +105,7 @@ elif [[ $BATT_PCT -ge 75 ]]; then
 # Yellow
 elif [[ $BATT_PCT -ge 20 ]] && [[ $BATT_PCT -lt 75 ]]; then
   if ((output_tmux)); then
-    COLOR="#[fg=$middle_color]"
+    COLOR="#[fg=$middle_color]Batt: "
   else
     COLOR=$middle_color
   fi
@@ -113,7 +113,7 @@ elif [[ $BATT_PCT -ge 20 ]] && [[ $BATT_PCT -lt 75 ]]; then
 # Red
 elif [[ $BATT_PCT -lt 20 ]]; then
   if ((output_tmux)); then
-    COLOR="#[fg=$warn_color]"
+    COLOR="#[fg=$warn_color]Batt: "
   else
     COLOR=$warn_color
   fi
