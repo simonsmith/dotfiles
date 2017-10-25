@@ -417,6 +417,9 @@ cnoreabbrev Qall qall
 " Save file
 nnoremap <silent><leader>w :silent w<cr>
 
+" Switch to last buffer
+nnoremap <leader><leader> <C-^>
+
 " Force j and k to work on display lines
 nnoremap k gk
 nnoremap j gj
