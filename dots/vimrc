@@ -734,7 +734,7 @@ if s:has_plugin('ale')
   let airline#extensions#ale#error_symbol = 'Err: '
   let airline#extensions#ale#warning_symbol = 'Warn: '
   let g:ale_echo_msg_format = '%linter% | %s'
-  let g:ale_lint_on_text_changed = 'never'
+  let g:ale_lint_on_text_changed = 'always'
 endif
 
 if s:has_plugin('emmet-vim')
