@@ -113,10 +113,6 @@ brew_install_or_upgrade khd
 brew tap crisidev/homebrew-chunkwm
 brew install chunkwm
 
-# React Native
-brew_install_or_upgrade android-sdk
-brew_install_or_upgrade watchman
-
 # Install other useful binaries.
 brew_install_or_upgrade ack
 brew_install_or_upgrade ctags

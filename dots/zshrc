@@ -102,8 +102,6 @@ export NODE_ENV=development
 # Stop z polluting the home dir
 export _Z_DATA="$HOME/.zdata/.z"
 
-export ANDROID_HOME="/usr/local/opt/android-sdk"
-
 # fzf
 # https://github.com/junegunn/fzf
 # ---------------------------------------------------------------
