@@ -7,10 +7,6 @@ khd mode tree on_enter chunkc border::color 0xddfabd2f
 khd mode space on_enter chunkc border::color 0xddb16286
 khd mode info on_enter chunkc border::color 0xddcd950c
 
-# open apps
-cmd + shift - return : open -na /Applications/Alacritty.app
-ctrl + cmd - g  : open -na /Applications/Google\ Chrome.app
-
 # toggle between modes
 ctrl - f                :   khd -e "mode activate switcher"
 switcher + ctrl - f     :   khd -e "mode activate default"
@@ -27,13 +23,13 @@ tree - escape           :   khd -e "mode activate default"
 switcher - a            :   khd -e "mode activate swap"
 switcher - s            :   khd -e "mode activate space"
 switcher - t            :   khd -e "mode activate tree"
-switcher - q            :   khd -e "mode activate info"
 
 # switcher mode
 switcher - r            :   khd -e "reload" # reload config
 
-switcher - return       :   open -na /Applications/iTerm.app;\
-                            khd -e "mode activate default"
+# open apps
+switcher - return : open -na /Applications/Alacritty.app
+switcher - g  : open -na /Applications/Google\ Chrome.app
 
 # select windows
 switcher - h            :   chunkc tiling::window --focus west
