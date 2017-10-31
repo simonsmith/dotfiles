@@ -51,7 +51,6 @@ install_cask vmware-fusion
 install_cask alfred
 install_cask bartender
 install_cask bettertouchtool
-install_cask exa
 install_cask gpgtools
 install_cask istat-menus
 install_cask keepingyouawake
