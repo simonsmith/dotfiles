@@ -116,7 +116,7 @@ export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat 
 export FZF_DEFAULT_OPTS="--multi --inline-info --height 40%"
 # Use a split pane in tmux
 export FZF_TMUX=1
-export FZF_TMUX_HEIGHT=40%
+export FZF_TMUX_HEIGHT=30%
 # Shell integration
 [ -s ~/.fzf.zsh ] && source ~/.fzf.zsh
 
