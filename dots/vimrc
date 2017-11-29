@@ -736,6 +736,10 @@ if s:has_plugin('ale')
   let g:ale_echo_msg_format = '%linter% | %s (%code%)'
   let g:ale_lint_on_text_changed = 'always'
   let g:ale_linters = {'html': []}
+  " Fix JavaScript code with ESlint
+  let g:ale_fixers = {}
+  let g:ale_fixers.javascript = ['eslint']
+  let g:ale_fix_on_save = 1
 endif
 
 if s:has_plugin('emmet-vim')
