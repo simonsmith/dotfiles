@@ -1,0 +1,20 @@
+# ~/.tmuxinator/github-api.yml
+
+name: atlas-web
+root: ~/Sites/atlas-web-and-tv/packages/atlas-web
+startup_window: nvim
+
+windows:
+  - nvim:
+    - .. && nvim
+  - git:
+      layout: even-horizontal
+      panes:
+        -
+        - mocha --colors --watch --preserve-symlinks --require test/setup.js 'src/**/**.spec.js'
+  - server:
+      layout: main-vertical
+      panes:
+        - nr dev:local
+        - nr server:local
+        - cd ~/Sites/atlas-web-and-tv/packages/atlas-mock-proxy-server && nr dev
