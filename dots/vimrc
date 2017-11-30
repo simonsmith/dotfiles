@@ -165,6 +165,12 @@ Plug 'epilande/vim-react-snippets'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
+
+" Testing
+" ------------------------------------------------------------------------------
+
+Plug 'tpope/vim-cucumber'
+
 " Git
 " ------------------------------------------------------------------------------
 
