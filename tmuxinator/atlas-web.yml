@@ -1,4 +1,4 @@
-# ~/.tmuxinator/sky.yml
+# ~/.tmuxinator/atlas-web.yml
 
 name: atlas-web
 root: ~/Sites/atlas-web-and-tv/packages/atlas-web
