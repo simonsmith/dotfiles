@@ -8,10 +8,8 @@ windows:
   - nvim:
     - .. && nvim
   - git:
-      layout: even-horizontal
       panes:
         -
-        - mocha --colors --watch --preserve-symlinks --require test/setup.js 'src/**/**.spec.js'
   - server:
       layout: main-vertical
       panes:
