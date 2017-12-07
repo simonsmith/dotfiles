@@ -257,6 +257,7 @@ key_bindings:
   - { key: K,        mods: Alt,     chars: "\x1bk"                       }
   - { key: H,        mods: Alt,     chars: "\x1bh"                       }
   - { key: L,        mods: Alt,     chars: "\x1bl"                       }
+  - { key: Space, mods: Control, chars: "\x00" }
   - { key: Insert,   mods: Shift,   action: PasteSelection               }
   - { key: Key0,     mods: Control, action: ResetFontSize                }
   - { key: Equals,   mods: Control, action: IncreaseFontSize             }
