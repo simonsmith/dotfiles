@@ -781,7 +781,7 @@ augroup file-types
   " Override some syntaxes so things look better
   autocmd BufNewFile,BufRead *.html setlocal syntax=swig
   autocmd BufNewFile,BufRead *.sss setlocal syntax=stylus
-  autocmd BufNewFile,BufRead *.ts,*.snap,*.es6,*.tsx setlocal filetype=javascript.jsx
+  autocmd BufNewFile,BufRead *.ts,*.snap*,*.es6,*.tsx setlocal filetype=javascript.jsx
   autocmd BufNewFile,BufRead *stylelintrc,*eslintrc,*babelrc,*jshintrc setlocal syntax=json
   autocmd BufNewFile,BufRead *.css setlocal syntax=scss
   autocmd BufNewFile,BufRead *.cshtml setlocal filetype=cshtml
