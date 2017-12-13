@@ -204,7 +204,6 @@ Plug 'tpope/vim-haml'
 
 Plug 'pangloss/vim-javascript', {'for': ['javascript', 'javascript.jsx']}
 Plug 'moll/vim-node', {'for': ['javascript', 'javascript.jsx', 'json']}
-Plug 'ternjs/tern_for_vim'
 Plug 'alampros/vim-styled-jsx'
 Plug 'Galooshi/vim-import-js'
 
@@ -579,19 +578,21 @@ endif
 
 if s:has_plugin('deoplete.nvim')
   let g:deoplete#enable_at_startup = 1
-  let g:deoplete#auto_completion_start_length = 1
+  let g:deoplete#auto_complete_start_length = 1
   let g:deoplete#sources = {}
   let g:deoplete#sources.python = ['ultisnips']
+  let g:deoplete#sources.javascript = ['buffer', 'tern', 'ultisnips']
 endif
 
 if s:has_plugin('deoplete-ternjs')
-  let g:tern_request_timeout = 1
-  let g:tern_show_signature_in_pum = '0'
-endif
-
-if s:has_plugin('tern_for_vim')
-  let g:tern#command = ['tern']
-  let g:tern#arguments = ['--persistent']
+  let g:deoplete#sources#ternjs#types = 1
+  let g:deoplete#sources#ternjs#depths = 1
+  let g:deoplete#sources#ternjs#docs = 1
+  let g:deoplete#sources#ternjs#filetypes = [
+        \ 'js',
+        \ 'jsx',
+        \ 'javascript.jsx',
+        \ ]
 endif
 
 if s:has_plugin('vim-session')
