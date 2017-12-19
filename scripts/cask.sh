@@ -61,7 +61,6 @@ install_cask appcleaner
 install_cask daisydisk
 install_cask deluge
 install_cask flux
-install_cask viscosity
 
 # Fonts
 # https://github.com/caskroom/homebrew-fonts
