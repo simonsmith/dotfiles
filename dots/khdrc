@@ -63,12 +63,15 @@ swap - 4                :   chunkc tiling::window --send-to-desktop 4
 swap - 5                :   chunkc tiling::window --send-to-desktop 5
 
 # focus monitor
-swap - z  : chunkc tiling::monitor -f prev
-swap - c  : chunkc tiling::monitor -f next
+switcher - 1  : chunkc tiling::monitor -f 1;\
+                khd -e "mode activate default"
+
+switcher - 2  : chunkc tiling::monitor -f 2;\
+                khd -e "mode activate default"
 
 # send window to monitor
-shift + swap - z : chunkc tiling::window --send-to-monitor prev;
-shift + swap - c : chunkc tiling::window --send-to-monitor next;
+shift + swap - 1 : chunkc tiling::window --send-to-monitor 1;
+shift + swap - 2 : chunkc tiling::window --send-to-monitor 2;
 
 # mirror tree y-axis
 swap - y : chunkc tiling::desktop --mirror vertical
