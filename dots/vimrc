@@ -433,9 +433,6 @@ vnoremap j gj
 " Map <C-i> to <f7> with Karabiner so tab can be used at the same time
 nnoremap <f7> <C-i>
 
-" Move back a tab faster
-nnoremap tg gT
-
 " Adjust window size with arrow keys
 noremap <right> <C-w>>
 noremap <left> <C-w><
@@ -459,9 +456,6 @@ vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
 
-" Log out the word under the cursor
-nmap <leader>cl yiwoconsole.log('<c-r>"', <c-r>");<esc>^
-
 " Split
 noremap <silent><leader>x :split<cr>
 noremap <silent><leader>v :vsplit<cr>
@@ -484,8 +478,7 @@ vnoremap > >gv
 " Press enter for newline without insert
 nnoremap <cr> o<esc>
 
-" Allow quick edits and sourcing of vimrc
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+" Allow sourcing of vimrc
 nnoremap <leader>y :source $MYVIMRC<cr>
 
 if exists(':tnoremap')
