@@ -434,10 +434,10 @@ vnoremap j gj
 nnoremap <f7> <C-i>
 
 " Adjust window size with arrow keys
-noremap <right> <C-w>>
-noremap <left> <C-w><
-noremap <up> <C-w>+
-noremap <down> <C-w>-
+noremap <right> <Nop>
+noremap <left> <Nop>
+noremap <up> <Nop>
+noremap <down> <Nop>
 
 " Delete line but preserve the space
 nnoremap dD S<Esc>
