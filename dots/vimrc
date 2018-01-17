@@ -802,11 +802,11 @@ augroup checktime
   autocmd CursorHold * silent! checktime
 augroup END
 
-" Move to the second line of a git commit
-augroup move-to-top-of-commit
-  autocmd!
-  au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 2, 1, 0])
-augroup END
+" " Move to the second line of a git commit
+" augroup move-to-top-of-commit
+"   autocmd!
+"   au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 2, 1, 0])
+" augroup END
 
 " Resize splits when vim changes size (like with tmux opening/closing)
 augroup auto-resize
