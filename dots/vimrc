@@ -580,7 +580,7 @@ if s:has_plugin('deoplete.nvim')
   let g:deoplete#auto_complete_start_length = 1
   let g:deoplete#sources = {}
   let g:deoplete#sources.python = ['ultisnips']
-  let g:deoplete#sources.javascript = ['buffer', 'tern', 'ultisnips']
+  let g:deoplete#sources.javascript = ['buffer', 'tern']
 endif
 
 if s:has_plugin('deoplete-ternjs')
