@@ -48,6 +48,8 @@ Plug 'tpope/vim-vinegar'
 Plug 'schickling/vim-bufonly'
 " Close buffers without losing window layout
 Plug 'moll/vim-bbye'
+" Manage buffers in a list
+Plug 'jlanzarotta/bufexplorer'
 
 " Language pack
 " ------------------------------------------------------------------------------
@@ -513,6 +515,12 @@ endif
 if s:has_plugin('vim-prettier')
   let g:prettier#exec_cmd_async = 1
   nmap <leader>o <Plug>(Prettier)
+endif
+
+if s:has_plugin('bufexplorer')
+  let g:bufExplorerDisableDefaultKeyMapping = 1
+  let g:bufExplorerShowNoName = 1
+  nnoremap <leader>B :BufExplorer<cr>
 endif
 
 if s:has_plugin('vim-easyclip')
