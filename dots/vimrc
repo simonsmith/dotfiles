@@ -668,7 +668,7 @@ if s:has_plugin('fzf.vim')
 
   nnoremap <c-p> :FZF<cr>
   nnoremap <c-i> :Buffers<cr>
-  nnoremap <c-t> :Tags<cr>
+  nnoremap <c-t> :BLines<cr>
   nnoremap <c-space> :Ag<cr>
   nnoremap <silent> <BS> :History:<cr>
 
