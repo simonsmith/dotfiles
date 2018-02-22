@@ -2,7 +2,7 @@
 
 Mac config and setup steps.
 
-![](https://cl.ly/i2K2/Screen%20Shot%202016-11-07%20at%2020.14.06.png)
+![](https://cl.ly/pibU/Image%202018-02-22%20at%2010.12.26%20pm.png)
 
 [tmux and vim screenshot](https://cl.ly/jPSi)
 
