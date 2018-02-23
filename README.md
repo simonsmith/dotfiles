@@ -20,16 +20,16 @@ git clone https://github.com/simonsmith/dotfiles.git
 
 ## Install
 
-Set macOS defaults:
-
-```
-./scripts/macos.sh
-```
-
 Run install script:
 
 ```
 ./install.sh
+```
+
+Set macOS defaults:
+
+```
+./scripts/macos.sh
 ```
 
 When complete, open new terminal window to trigger `zgen` plugin downloads.
