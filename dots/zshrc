@@ -20,6 +20,7 @@ export PATH="$PATH:$GOPATH/bin"
 export PATH="$HOME/git-hub/lib:$PATH"
 export MANPATH="$HOME/git-hub/man:$MANPATH"
 
+# Cargo
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # zgen
