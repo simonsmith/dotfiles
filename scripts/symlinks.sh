@@ -1,4 +1,3 @@
-
 symlink_dotfile() {
   ln -sfv $(grealpath $1) "$HOME/.$1"
 }
@@ -44,18 +43,18 @@ popd
 
 # Directories
 
-# Remove first so folders don't become nested if this runs
-# more than once
+# Remove first so folders don't become nested if this runs more than once
 rm "$HOME/.tmuxinator"
-symlink_dotfile tmuxinator
-rm "$HOME/emmet"
-symlink emmet
-rm "$HOME/iterm"
-symlink iterm
 rm "$HOME/applescript"
-symlink applescript
 rm "$HOME/bin"
+rm "$HOME/emmet"
+rm "$HOME/iterm"
+
+symlink applescript
 symlink bin
+symlink emmet
+symlink iterm
+symlink_dotfile tmuxinator
 
 mkdir "$HOME/.zdata"
 touch "$HOME/.zdata/.z"
