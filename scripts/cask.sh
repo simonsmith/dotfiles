@@ -1,71 +1,56 @@
-log() {
-  local fmt="$1"; shift
-  printf "\n\e[94m$fmt\n" "$@"
-}
-
-casks="$(brew cask list)"
-
-install_cask() {
-  if echo $casks | grep -w $1 > /dev/null 2>&1; then
-    log "Already have %s installed. Skipping ..." "$1"
-  else
-    log "Installing %s ..." "$1"
-    brew cask install "$@" 2> /dev/null
-  fi
-}
-
 brew tap caskroom/cask
 brew tap caskroom/versions
 
 # Browsers
-install_cask firefox
-install_cask google-chrome-beta
-install_cask torbrowser
+brew cask install firefox
+brew cask install google-chrome-beta
+brew cask install google-chrome-canary
+brew cask install torbrowser
 
 # Cloud
-install_cask cloud
-install_cask dropbox
-install_cask google-drive
+brew cask install cloud
+brew cask install dropbox
+brew cask install google-drive
 
 # Comms
-install_cask google-hangouts
-install_cask skype
+brew cask install google-hangouts
+brew cask install skype
 
 # Media
-install_cask burn
-install_cask imageoptim
-install_cask max
-install_cask sonos
-install_cask spotify
-install_cask iina
+brew cask install burn
+brew cask install imageoptim
+brew cask install max
+brew cask install sonos
+brew cask install spotify
+brew cask install iina
 
 # Development
-install_cask atom
-install_cask gitify
-install_cask iterm2-nightly
-install_cask java
-install_cask transmit
-install_cask vmware-fusion
+brew cask install atom
+brew cask install gitify
+brew cask install iterm2-nightly
+brew cask install java
+brew cask install transmit
+brew cask install vmware-fusion
 
 # Mac OS Enhancements
-install_cask alfred
-install_cask bartender
-install_cask bettertouchtool
-install_cask gpgtools
-install_cask istat-menus
-install_cask keepingyouawake
-install_cask the-unarchiver
+brew cask install alfred
+brew cask install bartender
+brew cask install bettertouchtool
+brew cask install gpgtools
+brew cask install istat-menus
+brew cask install keepingyouawake
+brew cask install the-unarchiver
 
 # Other stuff
-install_cask appcleaner
-install_cask daisydisk
-install_cask deluge
-install_cask flux
+brew cask install appcleaner
+brew cask install daisydisk
+brew cask install deluge
+brew cask install flux
 
 # Fonts
 # https://github.com/caskroom/homebrew-fonts
 brew tap caskroom/fonts
-install_cask caskroom/fonts/font-hack
-install_cask caskroom/fonts/font-hack-nerd-font
+brew cask install caskroom/fonts/font-hack
+brew cask install caskroom/fonts/font-hack-nerd-font
 
 brew cask cleanup
