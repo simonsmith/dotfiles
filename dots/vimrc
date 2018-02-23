@@ -735,17 +735,6 @@ if s:has_plugin('vim-gitgutter')
   nmap ]c <Plug>GitGutterNextHunk
 endif
 
-if s:has_plugin('vim-signify')
-  let g:signify_vcs_list = ['git']
-  let g:signify_update_on_focusgained = 1
-  let g:signify_update_on_bufenter = 1
-  " hunk text object
-  omap ih <plug>(signify-motion-inner-pending)
-  xmap ih <plug>(signify-motion-inner-visual)
-  omap ah <plug>(signify-motion-outer-pending)
-  xmap ah <plug>(signify-motion-outer-visual)
-endif
-
 if s:has_plugin('ale')
   let g:ale_sign_error = 'x'
   let g:ale_sign_warning = '~'
