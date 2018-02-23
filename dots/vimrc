@@ -435,7 +435,7 @@ vnoremap j gj
 " Map <C-i> to <f7> with Karabiner so tab can be used at the same time
 nnoremap <f7> <C-i>
 
-" Adjust window size with arrow keys
+" Disable arrow keys
 noremap <right> <Nop>
 noremap <left> <Nop>
 noremap <up> <Nop>
@@ -777,6 +777,7 @@ augroup always-open-signcolumn
   autocmd BufEnter * sign define dummy
   autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
 augroup END
+
 " Open help in a vertical split
 augroup vimrc-help
   autocmd!
@@ -820,12 +821,6 @@ augroup checktime
   autocmd!
   autocmd CursorHold * silent! checktime
 augroup END
-
-" " Move to the second line of a git commit
-" augroup move-to-top-of-commit
-"   autocmd!
-"   au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 2, 1, 0])
-" augroup END
 
 " Resize splits when vim changes size (like with tmux opening/closing)
 augroup auto-resize
