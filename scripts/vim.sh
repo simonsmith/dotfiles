@@ -1,7 +1,5 @@
-
 # Create directories
 mkdir -p "$HOME/.config/nvim/"
-mkdir -p "$HOME/.vim/"
 ln -sfv "$HOME/.vimrc" "$HOME/.config/nvim/init.vim"
 
 # Neovim
@@ -11,13 +9,6 @@ else
   curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   # Open Neovim and install all plugins
   nvim -c PlugInstall -c quitall
-fi
-
-# Vim
-if [ -e "$HOME/.vim/autoload/plug.vim" ]; then
-  echo "vim plug exists for vim, skipping ..."
-else
-  curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
 # Allow CTRL-H mapping to work in neovim
