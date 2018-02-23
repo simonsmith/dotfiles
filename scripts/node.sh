@@ -1,46 +1,31 @@
-log() {
-  local fmt="$1"; shift
-  printf "\n\e[94m$fmt\n" "$@"
-}
-
 node_install_version=8.9.0
 
-log "Installing nvm ..."
+echo "Installing nvm ..."
 if [ ! -s "$NVM_DIR/nvm.sh" ] ; then
   curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | zsh
   source "$HOME/.nvm/nvm.sh"
-  log "Installing node $node_install_version ..."
+  echo "Installing node $node_install_version ..."
   nvm install "$node_install_version"
   nvm use "$node_install_version"
   nvm alias default node
 else
-  log "nvm already installed ..."
+  echo "nvm already installed ..."
 fi
 
-npm_packages="$(npm list -g --depth=0)"
-install_global_npm_package() {
-  if echo $npm_packages | grep $1@ > /dev/null 2>&1; then
-    log "Already have %s installed. Skipping ..." "$1"
-  else
-    log "Installing %s ..." "$1"
-    npm i -g "$@" --quiet
-  fi
-}
+echo "Installing npm global packages ..."
 
-log "Installing npm global packages ..."
+npm i -g --quiet diff-so-fancy
+npm i -g --quiet eslint
+npm i -g --quiet flow-vim-quickfix
+npm i -g --quiet gulp
+npm i -g --quiet http-server
+npm i -g --quiet imageoptim-cli
+npm i -g --quiet json-to-js
+npm i -g --quiet nodemon
+npm i -g --quiet npm-check
+npm i -g --quiet npmlist
+npm i -g --quiet tern
 
-install_global_npm_package diff-so-fancy
-install_global_npm_package eslint
-install_global_npm_package flow-vim-quickfix
-install_global_npm_package gulp
-install_global_npm_package http-server
-install_global_npm_package imageoptim-cli
-install_global_npm_package json-to-js
-install_global_npm_package nodemon
-install_global_npm_package npm-check
-install_global_npm_package npmlist
-install_global_npm_package tern
-
-log "Installing yarn ..."
+echo "Installing yarn ..."
 
 curl -o- -L https://yarnpkg.com/install.sh | bash
