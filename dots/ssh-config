@@ -7,9 +7,3 @@ Host github.com
  HostName github.com
  PreferredAuthentications publickey
  IdentityFile ~/.ssh/github-personal
-
-# Olivejar vs
-Host agilefactory.visualstudio.com
- HostName agilefactory.visualstudio.com
- PreferredAuthentications publickey
- IdentityFile ~/.ssh/olivejar-vs
