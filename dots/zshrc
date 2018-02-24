@@ -212,3 +212,6 @@ eval "$(scmpuff init -s --aliases=false)"
 
 # https://github.com/direnv/direnv
 eval "$(direnv hook zsh)"
+
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+bindkey '^o' autosuggest-accept
