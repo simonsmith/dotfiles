@@ -525,6 +525,7 @@ endif
 
 if s:has_plugin('vim-easyclip')
   let g:EasyClipUseSubstituteDefaults = 0
+  let g:EasyClipUsePasteDefaults = 0
   nmap s <plug>SubstituteOverMotionMap
   xmap s <plug>XEasyClipPaste
   imap <c-v> <plug>EasyClipInsertModePaste
