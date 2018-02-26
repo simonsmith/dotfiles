@@ -22,11 +22,11 @@ chunkc set global_desktop_mode           bsp
 
 chunkc set 1_desktop_tree                ~/.chunkwm_layouts/dev_1
 
-chunkc set global_desktop_offset_top     40
-chunkc set global_desktop_offset_bottom  40
-chunkc set global_desktop_offset_left    40
-chunkc set global_desktop_offset_right   40
-chunkc set global_desktop_offset_gap     25
+chunkc set global_desktop_offset_top     20
+chunkc set global_desktop_offset_bottom  20
+chunkc set global_desktop_offset_left    20
+chunkc set global_desktop_offset_right   20
+chunkc set global_desktop_offset_gap     20
 
 chunkc set desktop_padding_step_size     10.0
 chunkc set desktop_gap_step_size         10.0
@@ -69,9 +69,9 @@ chunkc set window_use_cgs_move           0
 #
 
 chunkc set focused_border_color          0xff775759
-chunkc set focused_border_width          4
+chunkc set focused_border_width          2
 chunkc set focused_border_radius         4
-chunkc set focused_border_skip_floating  1
+chunkc set focused_border_skip_floating  0
 
 #
 # NOTE: specify plugins to load when chunkwm starts.
