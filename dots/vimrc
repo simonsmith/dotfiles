@@ -112,6 +112,8 @@ Plug 'thinca/vim-textobj-function-javascript', {'for': ['javascript', 'javascrip
 Plug 'coderifous/textobj-word-column.vim'
 " ax
 Plug 'whatyouhide/vim-textobj-xmlattr'
+" Swap words
+Plug 'tommcdo/vim-exchange'
 
 " General
 " ------------------------------------------------------------------------------
