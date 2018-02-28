@@ -67,6 +67,8 @@ Plug 'ludovicchabant/vim-gutentags'
 " Editing
 " ------------------------------------------------------------------------------
 
+" Highlight yanked text
+Plug 'machakann/vim-highlightedyank'
 " Insert or delete brackets, parens, quotes in pair.
 Plug 'jiangmiao/auto-pairs'
 " Display indent levels
