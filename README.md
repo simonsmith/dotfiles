@@ -4,6 +4,8 @@ Mac config and setup steps.
 
 ![](https://cl.ly/pibU/Image%202018-02-22%20at%2010.12.26%20pm.png)
 
+[unixporn screenshot](https://www.reddit.com/r/unixporn/comments/7zym3k/macos_minimal_neovim_tmux/?st=jej3vr0y&sh=347badcb)
+
 ## First steps
 
 [Install](http://osxdaily.com/2014/02/12/install-command-line-tools-mac-os-x/) command line developer tools:
