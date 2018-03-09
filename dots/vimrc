@@ -401,8 +401,21 @@ set number
 set relativenumber
 
 " Path and file extensions to look for when using `gf`
-set suffixesadd+=.css,index.css
-set path+=node_modules
+set suffixesadd+=.css,index.css,.js,.jsx,.scss
+set path+=.,src
+
+" https://damien.pobel.fr/post/configure-neovim-vim-gf-javascript-import/
+function! LoadMainNodeModule(fname)
+  let nodeModules = "./node_modules/"
+  let packageJsonPath = nodeModules . a:fname . "/package.json"
+  if filereadable(packageJsonPath)
+    return nodeModules . a:fname . "/" . json_decode(join(readfile(packageJsonPath))).main
+  else
+    return nodeModules . a:fname
+  endif
+endfunction
+
+set includeexpr=LoadMainNodeModule(v:fname)
 
 " Start scrolling before cursor gets to the edge
 set scrolloff=5
