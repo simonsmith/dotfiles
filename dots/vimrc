@@ -438,6 +438,9 @@ cnoreabbrev Qall qall
 " Key mappings
 " ------------------------------------------------------------------------------
 
+" gf but in a vsplit
+nnoremap gv :vertical wincmd f<cr>
+
 " Save file
 nnoremap <silent><leader>w :silent w<cr>
 
