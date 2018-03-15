@@ -188,10 +188,6 @@ SPACESHIP_PROMPT_ORDER=(
   dir           # Current directory section
   host          # Hostname section
   custom_git
-  package       # Package version
-  node          # Node.js section
-  docker        # Docker section
-  aws           # Amazon Web Services section
   line_sep      # Line break
   vi_mode       # Vi-mode indicator
   jobs          # Background jobs indicator
