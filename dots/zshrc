@@ -27,6 +27,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # ---------------------------------------------------------------
 
 export ZPLUG_HOME=/usr/local/opt/zplug
+export NVM_AUTO_USE=true
 source $ZPLUG_HOME/init.zsh
 
 zplug "lib/clipboard", from:oh-my-zsh
@@ -44,6 +45,7 @@ zplug "hlissner/zsh-autopair"
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "denysdovhan/spaceship-prompt", as:theme
+zplug "lukechilds/zsh-nvm"
 
 zplug load
 
@@ -121,34 +123,6 @@ export FZF_TMUX_HEIGHT=30%
 command -v blsd > /dev/null && export FZF_ALT_C_COMMAND='blsd'
 command -v tree > /dev/null && export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -$LINES'"
 
-# NVM
-# ---------------------------------------------------------------
-
-NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-
-# Load node version in .nvmrc if present
-autoload -U add-zsh-hook
-load-nvmrc() {
-  local node_version="$(nvm version)"
-  local nvmrc_path="$(nvm_find_nvmrc)"
-
-  if [ -n "$nvmrc_path" ]; then
-    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
-
-    if [ "$nvmrc_node_version" = "N/A" ]; then
-      nvm install
-    elif [ "$nvmrc_node_version" != "$node_version" ]; then
-      nvm use
-    fi
-  elif [ "$node_version" != "$(nvm version default)" ]; then
-    echo "Reverting to nvm default version"
-    nvm use default
-  fi
-}
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
-
 # Theme
 # https://github.com/denysdovhan/spaceship-prompt
 # ---------------------------------------------------------------
@@ -181,6 +155,7 @@ SPACESHIP_PROMPT_ORDER=(
   dir           # Current directory section
   host          # Hostname section
   custom_git
+  node
   line_sep      # Line break
   vi_mode       # Vi-mode indicator
   jobs          # Background jobs indicator
