@@ -30,6 +30,10 @@ export ZPLUG_HOME=/usr/local/opt/zplug
 export NVM_AUTO_USE=true
 source $ZPLUG_HOME/init.zsh
 
+if ! zplug check; then
+    zplug install
+fi
+
 zplug "lib/theme-and-appearance", from:oh-my-zsh
 zplug "lib/clipboard", from:oh-my-zsh
 zplug "lib/completion", from:oh-my-zsh
