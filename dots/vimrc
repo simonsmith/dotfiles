@@ -764,8 +764,8 @@ endif
 if s:has_plugin('ale')
   let g:ale_sign_error = 'x'
   let g:ale_sign_warning = '~'
-  let airline#extensions#ale#error_symbol = 'Err: '
-  let airline#extensions#ale#warning_symbol = 'Warn: '
+  let airline#extensions#ale#error_symbol = ''
+  let airline#extensions#ale#warning_symbol = ''
   let g:ale_echo_msg_format = '%linter% | %s (%code%)'
   let g:ale_lint_on_text_changed = 'always'
   let g:ale_linters = {'html': []}
