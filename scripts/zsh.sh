@@ -15,17 +15,6 @@ else
   echo "zsh is already the default shell ..."
 fi
 
-# Get zgen if it doesn't exist
-# https://github.com/tarjoilija/zgen
-if [ ! -f $HOME/zgen/zgen.zsh ]; then
-  echo "Installing zgen ..."
-  pushd ~
-  git clone https://github.com/tarjoilija/zgen.git
-  popd
-else
-  echo "zgen is already installed ..."
-fi
-
 # Install zsh-git-prompt
 # https://github.com/olivierverdier/zsh-git-prompt
 if [ ! -d $HOME/zsh-git-prompt ]; then

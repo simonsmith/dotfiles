@@ -23,36 +23,29 @@ export MANPATH="$HOME/git-hub/man:$MANPATH"
 # Cargo
 export PATH="$HOME/.cargo/bin:$PATH"
 
-# zgen
+# zplug
 # ---------------------------------------------------------------
 
-source $HOME/zgen/zgen.zsh
+export ZPLUG_HOME=/usr/local/opt/zplug
+source $ZPLUG_HOME/init.zsh
 
-# check if there's no init script
-if ! zgen saved; then
+zplug "lib/clipboard", from:oh-my-zsh
+zplug "lib/completion", from:oh-my-zsh
+zplug "lib/key-bindings", from:oh-my-zsh
+zplug "lib/directories", from:oh-my-zsh
+zplug "lib/history", from:oh-my-zsh
+zplug "plugins/git", from:oh-my-zsh
+zplug "plugins/history", from:oh-my-zsh
+zplug "plugins/tmux", from:oh-my-zsh
+zplug "plugins/z", from:oh-my-zsh
 
-  # zgen will load oh-my-zsh and download it if required
-  zgen oh-my-zsh
+zplug "lukechilds/zsh-better-npm-completion"
+zplug "hlissner/zsh-autopair"
+zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-syntax-highlighting"
+zplug "denysdovhan/spaceship-prompt", as:theme
 
-  # oh-my-zsh plugins
-  zgen oh-my-zsh plugins/git
-  zgen oh-my-zsh plugins/tmux
-  zgen oh-my-zsh plugins/vi-mode
-  zgen oh-my-zsh plugins/z
-
-  zgen load Tarrasch/zsh-bd
-  zgen load lukechilds/zsh-better-npm-completion
-  zgen load hlissner/zsh-autopair
-
-  # https://github.com/zsh-users/zsh-completions
-  zgen load zsh-users/zsh-completions src
-  zgen load zsh-users/zsh-syntax-highlighting
-
-  # theme
-  zgen load denysdovhan/spaceship-prompt spaceship
-
-  zgen save
-fi
+zplug load
 
 # Load my dotfiles after
 for file in ~/.{extra,aliases,functions}; do
