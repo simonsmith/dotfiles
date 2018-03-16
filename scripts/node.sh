@@ -14,7 +14,6 @@ fi
 
 echo "Installing npm global packages ..."
 
-npm i -g --quiet diff-so-fancy
 npm i -g --quiet eslint
 npm i -g --quiet flow-vim-quickfix
 npm i -g --quiet gulp

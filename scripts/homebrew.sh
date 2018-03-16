@@ -58,6 +58,7 @@ brew install urlview
 brew install cdiff
 brew install git
 brew install scmpuff
+brew install diff-so-fancy
 
 # Install more recent versions of some OS X tools.
 brew tap homebrew/dupes
