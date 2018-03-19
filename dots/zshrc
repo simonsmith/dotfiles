@@ -186,6 +186,7 @@ SPACESHIP_PROMPT_ORDER=(
   user          # Username section
   dir           # Current directory section
   host          # Hostname section
+  node
   custom_git
   line_sep      # Line break
   vi_mode       # Vi-mode indicator
