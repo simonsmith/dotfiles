@@ -65,9 +65,6 @@ unset file
 # Make nvim the default editor
 export EDITOR="nvim"
 
-# vi mode
-bindkey '^r' history-incremental-search-backward
-
 # LESS
 # Syntax highlighting
 export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
