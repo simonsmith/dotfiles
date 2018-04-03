@@ -871,3 +871,8 @@ augroup omnifuncs
   autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 augroup endif
+
+augroup nord-overrides
+  autocmd!
+  autocmd ColorScheme nord highlight VertSplit ctermbg=NONE ctermfg=8 guibg=NONE guifg=#434C5E
+augroup END
