@@ -23,6 +23,10 @@ export MANPATH="$HOME/git-hub/man:$MANPATH"
 # Cargo
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# https://github.com/ingydotnet/git-hub
+export PATH="$HOME/git-hub/lib:$PATH"
+export MANPATH="$HOME/git-hub/man:$MANPATH"
+
 # zplug
 # ---------------------------------------------------------------
 

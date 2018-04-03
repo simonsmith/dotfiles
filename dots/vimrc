@@ -425,7 +425,6 @@ set sidescroll=1
 " Remap annoying mistakes to something useful
 cnoreabbrev W! w!
 cnoreabbrev Q! q!
-cnoreabbrev q: :q
 cnoreabbrev Qall! qall!
 cnoreabbrev Wq wq
 cnoreabbrev Wa wa
@@ -500,6 +499,9 @@ vnoremap > >gv
 
 " Press enter for newline without insert
 nnoremap <cr> o<esc>
+" but don't effect command line mode
+autocmd CmdwinEnter * nnoremap <CR> <CR>
+autocmd CmdwinLeave * nnoremap <cr> o<esc>
 
 " Allow sourcing of vimrc
 nnoremap <leader>y :source $MYVIMRC<cr>
