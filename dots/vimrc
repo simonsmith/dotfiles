@@ -219,6 +219,7 @@ Plug 'styled-components/vim-styled-components'
 " Autocomplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'carlitux/deoplete-ternjs'
+Plug 'fishbullet/deoplete-ruby'
 
 call plug#end()
 
