@@ -9,7 +9,6 @@ call plug#begin(g:plugin_path)
 " Theme
 " ------------------------------------------------------------------------------
 
-Plug 'joshdick/onedark.vim'
 Plug 'arcticicestudio/nord-vim'
 
 " tmux
@@ -72,7 +71,7 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'machakann/vim-highlightedyank'
 " Insert or delete brackets, parens, quotes in pair.
 Plug 'jiangmiao/auto-pairs'
-" Display indent levels
+" Allow plugins to be repeated with dot
 Plug 'tpope/vim-repeat'
 " Comment out blocks of code
 Plug 'tpope/vim-commentary'
