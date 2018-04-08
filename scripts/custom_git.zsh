@@ -17,6 +17,8 @@ SPACESHIP_CUSTOM_GIT_SUFFIX="${SPACESHIP_CUSTOM_GIT_SUFFIX=" "}"
 spaceship_custom_git() {
   [[ $SPACESHIP_CUSTOM_GIT_SHOW == false ]] && return
 
+  spaceship::is_git || return
+
   # Check if command is available for execution
   spaceship::exists git_super_status || return
 
