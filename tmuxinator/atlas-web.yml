@@ -13,5 +13,5 @@ windows:
   - server:
       layout: main-vertical
       panes:
-        - nr start
+        - nr dev:local
         - cd ~/Sites/atlas-web-and-tv/packages/atlas-mock-proxy-server && nr dev
