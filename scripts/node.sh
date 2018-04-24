@@ -1,4 +1,4 @@
-node_install_version=8.9.0
+node_install_version=10.0.0
 
 echo "Installing nvm ..."
 if [ ! -s "$NVM_DIR/nvm.sh" ] ; then
