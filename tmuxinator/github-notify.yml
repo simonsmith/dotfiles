@@ -1,0 +1,19 @@
+# ~/.tmuxinator/github-notify.yml
+
+name: github-notify
+root: ~/Sites/github-notify
+startup_window: nvim
+
+windows:
+  - nvim:
+    - nvim
+  - git:
+      layout: even-horizontal
+      panes:
+        -
+        - yarn run test:watch
+  - server:
+      layout: even-horizontal
+      panes:
+        - redis-server ~/redis.conf
+        - npm start
