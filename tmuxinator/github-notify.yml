@@ -13,7 +13,8 @@ windows:
         -
         - yarn run test:watch
   - server:
-      layout: even-horizontal
+      layout: tiled
       panes:
         - redis-server ~/redis.conf
-        - npm start
+        - yarn start
+        - yarn run js:watch
