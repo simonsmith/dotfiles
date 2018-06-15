@@ -451,7 +451,7 @@ cnoreabbrev Qall qall
 nnoremap gv :vertical wincmd f<cr>
 
 " Save file
-nnoremap <silent><leader>w :silent w<cr>
+nnoremap <silent><leader>w :silent wa<cr>
 
 " Switch to last buffer
 nnoremap <leader><leader> <C-^>
