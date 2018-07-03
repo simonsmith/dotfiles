@@ -41,17 +41,19 @@ fdr() {
   cd "$DIR"
 }
 
-# fshow - git commit browser
-fshow() {
-  git log --color --graph --pretty=format:'%C(yellow)%h%Creset -%C(auto)%d%Creset %s %C(bold blue)(%cr) %Cred<%an>%Creset' --abbrev-commit --no-merges $1 |
-  fzf --height 100% --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
-      --bind "ctrl-m:execute:
-                (grep -o '[a-f0-9]\{7\}' | head -1 |
-                xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
-                {}
-FZF-EOF"
-}
+alias gLogAlias='git log --graph --color=always --format="%C(auto)%h%d %s %C(bold blue)%C(bold)%cr% C(auto)%an" "$@"'
+local _gitLogLineToHash="echo {} | grep -o '[a-f0-9]\{7\}' | head -1"
+local _viewGitLogLine="$_gitLogLineToHash | xargs -I % sh -c 'git show --color=always % | diff-so-fancy'"
 
+# fshow_preview - git commit browser with previews
+fshow() {
+    gLogAlias |
+        fzf --height 100% --no-sort --reverse --tiebreak=index --no-multi \
+            --ansi --preview $_viewGitLogLine \
+                --header "enter to view, alt-y to copy hash" \
+                --bind "enter:execute:$_viewGitLogLine   | less -R" \
+                --bind "alt-y:execute:$_gitLogLineToHash | xclip"
+}
 
 # fcs - get git commit sha
 # example usage: git rebase -i `fcs`
@@ -69,6 +71,15 @@ fco() {
   branch=$(echo "$branches" |
            fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
   git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+}
+
+# fcoc_preview - checkout git commit with previews
+fcoc() {
+  local commit
+  commit=$( gLogAlias |
+    fzf --no-sort --reverse --tiebreak=index --no-multi \
+        --ansi --preview $_viewGitLogLine ) &&
+  git checkout $(echo "$commit" | sed "s/ .*//")
 }
 
 # fkill - kill process
