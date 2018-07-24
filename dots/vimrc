@@ -644,6 +644,7 @@ endif
 
 if s:has_plugin('vim-polyglot')
   let g:polyglot_disabled = ['markdown', 'scss']
+  let g:vue_disable_pre_processors = 1
   let g:jsx_ext_required = 0
 endif
 
