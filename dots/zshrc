@@ -30,6 +30,9 @@ export PATH=/usr/local/opt/python/libexec/bin:$PATH
 export PATH="$HOME/git-hub/lib:$PATH"
 export MANPATH="$HOME/git-hub/man:$MANPATH"
 
+## Simba
+export PATH="$HOME/Sites/simba/tools/tools/bin:$PATH"
+
 # zplug
 # ---------------------------------------------------------------
 
