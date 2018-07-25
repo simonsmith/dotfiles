@@ -118,8 +118,6 @@ Plug 'whatyouhide/vim-textobj-xmlattr'
 
 " Set spaces and other settings on a per project basis
 Plug 'editorconfig/editorconfig-vim'
-" GUI for the undo tree
-Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 " Whitespace removal
 Plug 'ntpeters/vim-better-whitespace'
 
@@ -165,12 +163,6 @@ Plug 'epilande/vim-react-snippets'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
-
-" Testing
-" ------------------------------------------------------------------------------
-
-Plug 'tpope/vim-cucumber'
-
 " Git
 " ------------------------------------------------------------------------------
 
@@ -208,7 +200,6 @@ Plug 'pangloss/vim-javascript', {'for': ['javascript', 'javascript.jsx']}
 Plug 'moll/vim-node', {'for': ['javascript', 'javascript.jsx', 'json']}
 Plug 'gerrard00/vim-mocha-only', { 'for': ['javascript'] }
 Plug 'alampros/vim-styled-jsx'
-Plug 'Galooshi/vim-import-js'
 Plug 'styled-components/vim-styled-components'
 
 " Autocomplete
