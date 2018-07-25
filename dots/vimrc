@@ -74,7 +74,7 @@ Plug 'jiangmiao/auto-pairs'
 " Allow plugins to be repeated with dot
 Plug 'tpope/vim-repeat'
 " Comment out blocks of code
-Plug 'tpope/vim-commentary'
+Plug 'tomtom/tcomment_vim'
 " Toggle location and quickfix lists
 Plug 'Valloric/ListToggle'
 " Advanced movement similar to motions
