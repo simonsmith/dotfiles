@@ -14,6 +14,9 @@ brew update
 brew install coreutils
 ln -sv /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
 
+brew install gettext
+brew link --force gettext
+
 # Install some other useful utilities like `sponge`.
 brew install moreutils
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
