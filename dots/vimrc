@@ -198,14 +198,13 @@ Plug 'valloric/MatchTagAlways'
 
 Plug 'pangloss/vim-javascript', {'for': ['javascript', 'javascript.jsx']}
 Plug 'moll/vim-node', {'for': ['javascript', 'javascript.jsx', 'json']}
-Plug 'gerrard00/vim-mocha-only', { 'for': ['javascript'] }
 Plug 'alampros/vim-styled-jsx'
 Plug 'styled-components/vim-styled-components'
 
 " Autocomplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'carlitux/deoplete-ternjs'
-Plug 'fishbullet/deoplete-ruby'
+Plug 'fishbullet/deoplete-ruby', {'for': ['ruby']}
 
 call plug#end()
 
