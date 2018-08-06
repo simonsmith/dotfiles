@@ -9,6 +9,7 @@ alias h="history"
 alias j="jobs"
 alias cask="brew cask"
 alias nv="nvim"
+alias vim="nvim"
 alias mux="tmuxinator"
 
 # Add line numbers here as they aren't desirable by default (make git log ugly)
