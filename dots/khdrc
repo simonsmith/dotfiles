@@ -24,6 +24,13 @@ switcher - a            :   khd -e "mode activate swap"
 switcher - s            :   khd -e "mode activate space"
 switcher - t            :   khd -e "mode activate tree"
 
+tree + ctrl - a         :   khd -e "mode activate swap"
+tree + ctrl - s         :   khd -e "mode activate space"
+swap + ctrl - t         :   khd -e "mode activate tree"
+swap + ctrl - s         :   khd -e "mode activate space"
+space + ctrl - t        :   khd -e "mode activate tree"
+space + ctrl - a         :   khd -e "mode activate swap"
+
 # switcher mode
 switcher - r            :   khd -e "reload" # reload config
 
