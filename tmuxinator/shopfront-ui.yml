@@ -1,0 +1,13 @@
+name: shopfront-ui
+root: ~/Sites/simba/shopfront-frontend
+startup_window: nvim
+
+windows:
+  - nvim:
+    - nvim
+  - git:
+      panes:
+        -
+  - node:
+      panes:
+        - yr dev

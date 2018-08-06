@@ -1,0 +1,13 @@
+name: shopfront-api
+root: ~/Sites/simba/shopfront-api
+startup_window: nvim
+
+windows:
+  - nvim:
+    - nvim
+  - git:
+      panes:
+        -
+  - node:
+      panes:
+        - yr dev
