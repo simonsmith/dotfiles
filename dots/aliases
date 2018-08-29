@@ -11,6 +11,7 @@ alias cask="brew cask"
 alias nv="nvim"
 alias vim="nvim"
 alias mux="tmuxinator"
+alias k="kubectl"
 
 # Add line numbers here as they aren't desirable by default (make git log ugly)
 alias less='less -N'
