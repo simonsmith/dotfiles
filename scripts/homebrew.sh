@@ -58,7 +58,7 @@ brew install tmux
 brew install urlview
 
 # git
-brew install cdiff
+brew install ydiff
 brew install git
 brew install scmpuff
 brew install diff-so-fancy
