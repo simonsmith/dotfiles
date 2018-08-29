@@ -10,4 +10,4 @@ windows:
         -
   - node:
       panes:
-        - yr dev
+        - nr dev
