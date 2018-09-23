@@ -147,3 +147,14 @@ function tre() {
 function localip() {
   ipconfig getifaddr en0
 }
+
+## Simba
+function simba-dev() {
+  export SIMBA_ENV=dev
+  export KUBECONFIG=~/.kube/config-dev
+}
+
+function simba-stage() {
+  export SIMBA_ENV=stage
+  export KUBECONFIG=~/.kube/config-stage
+}
