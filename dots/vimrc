@@ -10,6 +10,7 @@ call plug#begin(g:plugin_path)
 " ------------------------------------------------------------------------------
 
 Plug 'arcticicestudio/nord-vim'
+Plug 'kaicataldo/material.vim'
 
 " tmux
 " ------------------------------------------------------------------------------
@@ -227,8 +228,12 @@ augroup nord-overrides
   autocmd ColorScheme nord highlight cssBraceError ctermbg=NONE ctermfg=6 guibg=NONE guifg=#ECEFF4
 augroup END
 
+if s:has_plugin('material.vim')
+  let g:material_theme_style = 'palenight'
+end
+
 set background=dark
-silent! colorscheme nord
+silent! colorscheme material
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags='li\|p'
@@ -744,7 +749,7 @@ if executable('jq')
 endif
 
 if s:has_plugin('vim-airline')
-  let g:airline_theme = 'nord'
+  let g:airline_theme = 'material'
   let g:airline#extensions#branch#enabled = 1
   let g:airline_powerline_fonts = 1
   let g:airline#extensions#tmuxline#enabled = 0
