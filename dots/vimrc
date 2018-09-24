@@ -184,7 +184,7 @@ Plug 'prettier/vim-prettier', {
 " ------------------------------------------------------------------------------
 
 " Highlight css colors with their color
-Plug 'ap/vim-css-color', {'for': ['css', 'scss']}
+Plug 'ap/vim-css-color', {'for': ['css', 'scss', 'vue']}
 " Easy HTML and CSS generation
 Plug 'mattn/emmet-vim'
 " Automatically add a closing HTML tag
