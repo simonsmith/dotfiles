@@ -810,9 +810,9 @@
 	<key>NSWindow Frame NSColorPanel</key>
 	<string>1765 763 224 244 0 0 3440 1418 </string>
 	<key>NSWindow Frame NSFontPanel</key>
-	<string>2123 391 1129 550 0 0 3840 2138 </string>
+	<string>2123 391 1129 416 0 0 3840 2138 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>1593 1709 918 394 0 0 3840 2138 </string>
+	<string>1592 1617 814 486 0 0 3840 2138 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>0 0 3840 2138 0 0 3840 2138 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
@@ -2379,46 +2379,86 @@
 	<dict>
 		<key>1</key>
 		<array>
-			<string>session.termid</string>
-			<string>session.autoName</string>
-			<string>session.tmuxClientName</string>
-			<string>session.columns</string>
 			<string>session.jobName</string>
+			<string>session.id</string>
+			<string>session.terminalIconName</string>
+			<string>session.profileName</string>
+			<string>session.tmuxClientName</string>
+			<string>session.name</string>
+			<string>session.termid</string>
+			<string>session.triggerName</string>
+			<string>session.tmuxWindowPane</string>
+			<string>session.hostname</string>
+			<string>session.username</string>
+			<string>session.tmuxStatusRight</string>
+			<string>session.tmuxRole</string>
+			<string>session.path</string>
+			<string>session.autoName</string>
 			<string>session.creationTimeString</string>
 			<string>session.rows</string>
-			<string>session.path</string>
-			<string>session.profileName</string>
-			<string>session.presentationName</string>
 			<string>session.tmuxWindowTitle</string>
-			<string>session.hostname</string>
-			<string>session.id</string>
-			<string>session.tmuxRole</string>
-			<string>session.username</string>
 			<string>session.tty</string>
 			<string>session.autoLogId</string>
-			<string>session.name</string>
+			<string>session.terminalWindowName</string>
+			<string>iterm2</string>
+			<string>session.jobPid</string>
+			<string>session.tmuxStatusLeft</string>
+			<string>session.lastCommand</string>
+			<string>session.pid</string>
+			<string>session.presentationName</string>
+			<string>session.columns</string>
+		</array>
+		<key>16</key>
+		<array>
+			<string>titleOverride</string>
+			<string>currentTab.currentSession.session.columns</string>
+			<string>currentTab</string>
+			<string>currentTab.currentSession</string>
+			<string>currentTab.currentSession.session.pid</string>
+			<string>currentTab.currentSession.session.tty</string>
+			<string>currentTab.currentSession.session.presentationName</string>
+			<string>currentTab.currentSession.session.username</string>
+			<string>currentTab.currentSession.session.name</string>
+			<string>currentTab.currentSession.session.rows</string>
+			<string>currentTab.currentSession.session.jobName</string>
+			<string>iterm2</string>
+			<string>currentTab.currentSession.session.hostname</string>
+			<string>currentTab.currentSession.session.path</string>
+			<string>currentTab.currentSession.session.jobPid</string>
 		</array>
 		<key>2</key>
 		<array>
-			<string>currentSession.session.termid</string>
-			<string>currentSession.session.rows</string>
-			<string>currentSession.session.presentationName</string>
-			<string>tmuxWindow</string>
-			<string>currentSession.session.columns</string>
+			<string>titleOverride</string>
 			<string>currentSession</string>
+			<string>currentSession.session.termid</string>
+			<string>currentSession.session.pid</string>
 			<string>currentSession.session.name</string>
+			<string>currentSession.session.path</string>
+			<string>currentSession.session.rows</string>
+			<string>currentSession.session.hostname</string>
 			<string>currentSession.session.tty</string>
 			<string>currentSession.session.jobName</string>
+			<string>currentSession.session.presentationName</string>
+			<string>tmuxWindow</string>
+			<string>iterm2</string>
+			<string>currentSession.session.username</string>
+			<string>currentSession.session.jobPid</string>
+			<string>currentSession.session.columns</string>
 		</array>
 		<key>4</key>
 		<array>
 			<string>pid</string>
+			<string>localhostName</string>
 		</array>
 	</dict>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
 	<real>551166994.05892503</real>
 	<key>NoSyncTipsDisabled</key>
 	<true/>
+	<key>NoSyncVeryOldNightlyBuildWarning_SilenceUntil</key>
+	<real>561046716.44266605</real>
+	<key>NoSyncVeryOldNightlyBuildWarning_selection</key>
+	<integer>1</integer>
 	<key>OpenArrangementAtStartup</key>
 	<false/>
 	<key>OpenNoWindowsAtStartup</key>
@@ -2472,6 +2512,8 @@
 	<string>https://iterm2.com/appcasts/final.xml?shard=87</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
+	<key>SULastCheckTime</key>
+	<date>2018-09-12T14:18:40Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>ShowBookmarkName</key>
@@ -2507,7 +2549,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.2.20180620-nightly</string>
+	<string>3.2.20180912-nightly</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
@@ -2516,5 +2558,9 @@
 	<true/>
 	<key>kCommandHistoryHasEverBeenUsed</key>
 	<true/>
+	<key>metalMaximizeThroughput</key>
+	<false/>
+	<key>preferIntegratedGPU</key>
+	<false/>
 </dict>
 </plist>
