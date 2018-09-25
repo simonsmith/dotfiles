@@ -137,6 +137,9 @@ command -v tree > /dev/null && export FZF_ALT_C_OPTS="--preview 'tree -C {} | he
 # NVM
 # ---------------------------------------------------------------
 
+NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
 # Load node version in .nvmrc if present
 autoload -U add-zsh-hook
 load-nvmrc() {
@@ -156,24 +159,8 @@ load-nvmrc() {
     nvm use default
   fi
 }
-
-# Install zsh-async if it’s not present
-if [[ ! -a ~/.zsh-async ]]; then
-  git clone git@github.com:mafredri/zsh-async.git ~/.zsh-async
-fi
-source ~/.zsh-async/async.zsh
-
-export NVM_DIR="$HOME/.nvm"
-function load_nvm() {
-    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-    [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
-    add-zsh-hook chpwd load-nvmrc
-}
-
-# Initialize worker
-async_start_worker nvm_worker -n
-async_register_callback nvm_worker load_nvm
-async_job nvm_worker sleep 0.1
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
 
 # Theme
 # https://github.com/denysdovhan/spaceship-prompt
