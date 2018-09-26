@@ -733,7 +733,7 @@ if s:has_plugin('vim-mocha-only')
 endif
 
 if s:has_plugin('ListToggle')
-  let g:lt_height = 8
+  let g:lt_height = 16
 endif
 
 if executable('ag')
