@@ -35,7 +35,10 @@ space + ctrl - a         :   khd -e "mode activate swap"
 switcher - r            :   khd -e "reload" # reload config
 
 # open apps
-switcher - return : open -na /Applications/Alacritty.app
+switcher - return : open -na /Applications/Alacritty.app;\
+                              khd -e "mode activate default"
+
+
 switcher - g  : open -na /Applications/Google\ Chrome.app
 
 # select windows
