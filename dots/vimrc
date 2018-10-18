@@ -689,8 +689,8 @@ if s:has_plugin('fzf.vim')
 
   nnoremap <c-p> :FZF<cr>
   nnoremap <c-i> :Buffers<cr>
-  nnoremap <c-t> :BLines<cr>
-  nnoremap <c-space> :Ag<cr>
+  nnoremap <c-t> :Lines<cr>
+  nnoremap <c-space> :Rg!<cr>
   nnoremap <silent> <BS> :History:<cr>
 
   " Allow options to be passed to FZF :Ag
@@ -702,6 +702,8 @@ if s:has_plugin('fzf.vim')
     let query   = join(filter(copy(tokens), 'v:val !~ "^-"'))
     call fzf#vim#ag(query, '--hidden --ignore .git', a:bang ? {} : {'down': '40%'})
   endfunction
+
+command! -bang -nargs=* Rg call fzf#vim#grep('rg --column --pretty --no-heading '.shellescape(<q-args>), 1, <bang>0)
 
   if has('autocmd')
     autocmd VimEnter * command! -nargs=* -bang Ag call s:ag_with_opts(<q-args>, <bang>0)
