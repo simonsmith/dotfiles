@@ -27,6 +27,8 @@ symlink_dotfile gitmessage
 symlink_dotfile honukai.zsh-theme
 symlink_dotfile hushlogin
 symlink_dotfile khdrc
+symlink_dotfile ripgreprc
+symlink_dotfile rgignore
 symlink_dotfile stylelintrc
 symlink_dotfile tern-project
 symlink_dotfile tmux.conf
