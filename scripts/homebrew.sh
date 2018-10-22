@@ -78,6 +78,7 @@ brew install chunkwm
 
 # Install other useful binaries.
 brew install ack
+brew install fd
 brew install ctags
 brew install direnv
 brew install go
@@ -86,6 +87,7 @@ brew install fpp
 brew install htop
 brew install httpie
 brew install hugo
+brew install imageoptim-cli
 brew install p7zip
 brew install python
 brew install redis
