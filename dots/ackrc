@@ -1,1 +1,2 @@
 --pager=less -RFX
+--ignore-file=is:vim_tags
