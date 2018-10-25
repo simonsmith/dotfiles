@@ -821,8 +821,7 @@ augroup file-types
   autocmd BufNewFile,BufRead *.sss setlocal syntax=stylus
   autocmd BufNewFile,BufRead *.ts,*.snap*,*.es6,*.tsx setlocal filetype=javascript.jsx
   autocmd BufNewFile,BufRead *stylelintrc,*eslintrc,*babelrc,*jshintrc setlocal syntax=json
-  autocmd BufNewFile,BufRead *.css,*.pcss setlocal syntax=scss
-  autocmd BufNewFile,BufRead *.pcss setlocal syntax=scss filetype=css
+  autocmd BufNewFile,BufRead *.css,*.pcss setlocal syntax=scss filetype=scss
   autocmd BufNewFile,BufRead *.cshtml setlocal filetype=cshtml
 
   " Wrap text and turn on spell for markdown files
