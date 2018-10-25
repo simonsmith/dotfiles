@@ -9,7 +9,7 @@ call plug#begin(g:plugin_path)
 " Theme
 " ------------------------------------------------------------------------------
 
-Plug 'kaicataldo/material.vim'
+Plug 'simonsmith/material.vim'
 
 " tmux
 " ------------------------------------------------------------------------------
