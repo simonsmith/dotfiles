@@ -87,6 +87,8 @@ Plug 'dietsche/vim-lastplace'
 Plug 'yssl/QFEnter'
 " Move blocks of code with ALT+j/k
 Plug 'matze/vim-move'
+" Multiple cursors
+Plug 'terryma/vim-multiple-cursors'
 
 " Text objects
 " ------------------------------------------------------------------------------
