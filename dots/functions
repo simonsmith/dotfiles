@@ -59,7 +59,7 @@ fshow() {
 # example usage: git rebase -i `fcs`
 fcs() {
   local commits commit
-  commits=$(git log --color=always --pretty=oneline --abbrev-commit --reverse) &&
+  commits=$(git log --color=always --pretty=oneline --abbrev-commit --reverse master..) &&
   commit=$(echo "$commits" | fzf-tmux --tac +s +m -e --ansi --reverse) &&
   echo -n $(echo "$commit" | sed "s/ .*//")
 }
