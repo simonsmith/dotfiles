@@ -9,9 +9,9 @@ brew cask install google-chrome-canary
 brew cask install torbrowser
 
 # Cloud
-brew cask install cloud
+brew cask install cloudapp
 brew cask install dropbox
-brew cask install google-drive
+brew cask install google-backup-and-sync
 
 # Comms
 brew cask install google-hangouts
@@ -21,13 +21,10 @@ brew cask install skype
 brew cask install burn
 brew cask install imageoptim
 brew cask install max
-brew cask install sonos
 brew cask install spotify
 brew cask install iina
 
 # Development
-brew cask install atom
-brew cask install gitify
 brew cask install iterm2-nightly
 brew cask install java
 brew cask install transmit
@@ -37,12 +34,14 @@ brew cask install vmware-fusion
 brew cask install alfred
 brew cask install bartender
 brew cask install bettertouchtool
+brew cask install karabiner-elements
 brew cask install gpgtools
-brew cask install istat-menus
 brew cask install keepingyouawake
 brew cask install the-unarchiver
 
 # Other stuff
+brew cask install 1password
+brew cask install authy
 brew cask install appcleaner
 brew cask install daisydisk
 brew cask install deluge
