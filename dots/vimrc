@@ -56,13 +56,8 @@ Plug 'jlanzarotta/bufexplorer'
 Plug 'sheerun/vim-polyglot'
 Plug 'blockloop/vim-swigjs'
 
-" Tags
-" ------------------------------------------------------------------------------
-
-" Generates ctags automatically
-Plug 'ludovicchabant/vim-gutentags'
-
 " Editing
+"
 " ------------------------------------------------------------------------------
 
 " Insert or delete brackets, parens, quotes in pair.
@@ -561,15 +556,6 @@ if s:has_plugin('vim-vinegar')
   " Remap as this is too easy to hit by accident with 0 and = nearby
   autocmd VimEnter * nmap - <nop>
   autocmd VimEnter * nmap _ <Plug>VinegarUp
-endif
-
-if s:has_plugin('vim-gutentags')
-  let g:gutentags_ctags_tagfile = 'vim_tags'
-  let g:gutentags_ctags_exclude = [
-        \ 'node_modules',
-        \ 'dist',
-        \ 'vendor',
-        \ 'bower_components']
 endif
 
 if s:has_plugin('vim-bufonly')
