@@ -1,4 +1,4 @@
-node_install_version=10.0.0
+node_install_version=10.9.0
 
 echo "Installing nvm ..."
 if [ ! -s "$NVM_DIR/nvm.sh" ] ; then
@@ -15,7 +15,6 @@ fi
 echo "Installing npm global packages ..."
 
 npm i -g --quiet http-server
-npm i -g --quiet npm-token-switch
 npm i -g --quiet imageoptim-cli
 npm i -g --quiet nodemon
 npm i -g --quiet npm-check
