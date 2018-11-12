@@ -19,6 +19,7 @@ brew cask install skype
 
 # Media
 brew cask install burn
+brew cask install beardedspice
 brew cask install imageoptim
 brew cask install max
 brew cask install spotify
@@ -34,6 +35,7 @@ brew cask install vmware-fusion
 brew cask install alfred
 brew cask install bartender
 brew cask install bettertouchtool
+brew cask install contexts
 brew cask install karabiner-elements
 brew cask install gpgtools
 brew cask install keepingyouawake
