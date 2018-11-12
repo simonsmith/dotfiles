@@ -16,19 +16,11 @@ export PATH="$HOME/.yarn/bin:$PATH"
 export GOPATH="$HOME/go"
 export PATH="$PATH:$GOPATH/bin"
 
-# https://github.com/ingydotnet/git-hub
-export PATH="$HOME/git-hub/lib:$PATH"
-export MANPATH="$HOME/git-hub/man:$MANPATH"
-
 # Cargo
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # Python3
 export PATH=/usr/local/opt/python/libexec/bin:$PATH
-
-# https://github.com/ingydotnet/git-hub
-export PATH="$HOME/git-hub/lib:$PATH"
-export MANPATH="$HOME/git-hub/man:$MANPATH"
 
 # zplug
 # ---------------------------------------------------------------
