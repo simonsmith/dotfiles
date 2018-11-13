@@ -40,6 +40,10 @@ brew install source-highlight
 # Install `wget` with IRI support.
 brew install wget --with-iri
 
+# Fix issue with Jest not running watch
+# https://github.com/expo/expo/issues/854#issuecomment-343243804
+brew install watchman
+
 # neovim
 brew install python3
 brew install neovim/neovim/neovim
