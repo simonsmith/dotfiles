@@ -97,6 +97,10 @@ defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 # Disable auto-correct
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
+# Improve mojave font rendering on external screens
+# https://ahmadawais.com/fix-macos-mojave-font-rendering-issue/
+defaults write -g CGFontRenderingFontSmoothingDisabled -bool FALSE
+
 ###############################################################################
 # SSD-specific tweaks                                                         #
 ###############################################################################
