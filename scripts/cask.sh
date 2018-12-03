@@ -6,7 +6,7 @@ brew cask install firefox-beta
 brew cask install firefox-developer-edition
 brew cask install google-chrome-beta
 brew cask install google-chrome-canary
-brew cask install torbrowser
+brew cask install tor-browser
 
 # Cloud
 brew cask install cloudapp
@@ -37,7 +37,7 @@ brew cask install bartender
 brew cask install bettertouchtool
 brew cask install contexts
 brew cask install karabiner-elements
-brew cask install gpgtools
+brew cask install gpg-suite
 brew cask install keepingyouawake
 brew cask install the-unarchiver
 
