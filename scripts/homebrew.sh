@@ -53,8 +53,10 @@ pip3 install neovim
 brew install fzf
 yes | /usr/local/opt/fzf/install
 
-# Ag - fzf is configured to use this
+# Search
 brew install the_silver_searcher
+brew install rg
+brew install ack
 
 # tmux
 brew install reattach-to-user-namespace
@@ -81,7 +83,6 @@ brew tap crisidev/homebrew-chunkwm
 brew install chunkwm
 
 # Install other useful binaries.
-brew install ack
 brew install fd
 brew install ctags
 brew install direnv
