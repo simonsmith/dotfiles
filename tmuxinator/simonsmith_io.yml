@@ -7,11 +7,9 @@ startup_window: nvim
 windows:
   - nvim: nvim
   - git:
-    - git status
+    -
   - node:
       layout: tiled
       panes:
         - server:
           - hugo server --buildDrafts
-        - watch:
-          - npm run build_css -- -w
