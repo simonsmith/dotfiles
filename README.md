@@ -2,10 +2,6 @@
 
 Mac config and setup steps.
 
-![](https://cl.ly/pibU/Image%202018-02-22%20at%2010.12.26%20pm.png)
-
-[unixporn screenshot](https://www.reddit.com/r/unixporn/comments/7zym3k/macos_minimal_neovim_tmux/?st=jej3vr0y&sh=347badcb)
-
 ## First steps
 
 [Install](http://osxdaily.com/2014/02/12/install-command-line-tools-mac-os-x/) command line developer tools:
@@ -40,11 +36,4 @@ When complete, open new terminal window to trigger `zgen` plugin downloads.
 
 * Install [Alacritty](https://github.com/jwilm/alacritty/)
 
-* Install Knack font
-
 * Add private dotfiles to home directory (`.extra` and `.gitconfig.local`).
-
-## UserStyles
-
-* [Slack Dark](https://userstyles.org/styles/117475/slack-night-mode-black)
-* [Hacker News](https://github.com/oskarkrawczyk/hackernews-userstyles)
