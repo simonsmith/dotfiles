@@ -1,4 +1,4 @@
-ruby_version="$(curl -sSL http://ruby.thoughtbot.com/latest)"
+ruby_version=2.6.0
 
 echo "Installing ruby ..."
 
