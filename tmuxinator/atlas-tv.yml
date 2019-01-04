@@ -1,0 +1,18 @@
+# ~/.tmuxinator/atlas-tv.yml
+
+name: atlas-tv
+root: ~/Sites/atlas-web-and-tv/apps/atlas-tv
+startup_window: nvim
+
+windows:
+  - nvim: nvim
+  - git:
+    -
+  - node:
+      layout: tiled
+      panes:
+        - webpack:
+          - OTT_ENV=production-dev yarn dev
+        - server:
+          - cd ~/Sites/atlas-web-and-tv/libraries/atlas-mock-proxy-server
+          - yarn dev
