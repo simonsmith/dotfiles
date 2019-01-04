@@ -48,6 +48,7 @@ brew install watchman
 brew install python3
 brew install neovim/neovim/neovim
 pip3 install neovim
+pip3 install pynvim
 
 # fzf
 brew install fzf
