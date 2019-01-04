@@ -30,7 +30,7 @@ Set macOS defaults:
 ./scripts/macos.sh
 ```
 
-When complete, open new terminal window to trigger `zgen` plugin downloads.
+When complete, open new terminal window and run `zplug install`
 
 ## Manual steps
 
