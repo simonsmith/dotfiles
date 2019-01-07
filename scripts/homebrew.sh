@@ -85,7 +85,7 @@ brew install chunkwm
 
 # Install other useful binaries.
 brew install fd
-brew install ctags
+brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 brew install direnv
 brew install go
 brew install exa
