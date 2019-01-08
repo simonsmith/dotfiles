@@ -30,6 +30,7 @@ brew cask install iterm2-nightly
 brew cask install java
 brew cask install transmit
 brew cask install vmware-fusion
+brew cask install postman
 
 # Mac OS Enhancements
 brew cask install alfred
