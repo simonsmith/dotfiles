@@ -44,6 +44,7 @@ brew cask install the-unarchiver
 
 # Other stuff
 brew cask install 1password
+brew cask install boostnote
 brew cask install authy
 brew cask install appcleaner
 brew cask install daisydisk
