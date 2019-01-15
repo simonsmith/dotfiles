@@ -18,9 +18,10 @@ git clone https://github.com/simonsmith/dotfiles.git
 
 ## Install
 
-Run install script:
+Run install script from dotfiles directory:
 
 ```
+cd dotfiles
 ./install.sh
 ```
 
