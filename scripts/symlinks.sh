@@ -19,7 +19,6 @@ symlink_dotfile chunkwmrc
 symlink_dotfile ctags
 symlink_dotfile curlrc
 symlink_dotfile editorconfig
-symlink_dotfile eslintrc
 symlink_dotfile functions
 symlink_dotfile gitconfig
 symlink_dotfile gitignore
