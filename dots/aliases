@@ -45,7 +45,7 @@ alias yu='yarn upgrade'
 alias yui='yarn upgrade-interactive'
 
 # https://github.com/ogham/exa
-alias l="exa -lbha --git"
+alias l="exa -lbha --git --group-directories-first"
 alias t="exa -Ta"
 alias t1="exa -Ta -L 1"
 alias t2="exa -Ta -L 2"
