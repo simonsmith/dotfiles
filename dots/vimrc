@@ -793,6 +793,7 @@ if s:has_plugin('ale')
 endif
 
 if s:has_plugin('emmet-vim')
+  let g:user_emmet_leader_key = 0
   imap hh <C-y>,
 endif
 
