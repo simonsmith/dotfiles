@@ -726,10 +726,6 @@ command! -bang -nargs=* Rg call fzf#vim#grep('rg --column --pretty --no-heading 
     \ 'header':  ['fg', 'Comment'] }
 endif
 
-if s:has_plugin('vim-mocha-only')
-  nnoremap <leader>m :MochaOnlyToggle<cr>
-endif
-
 if s:has_plugin('ListToggle')
   let g:lt_height = 8
 endif
@@ -739,11 +735,6 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
   " Use ag with ack.vim - https://github.com/ggreer/the_silver_searcher#vim
   let g:ackprg = 'ag --smart-case --nogroup --nocolor --column'
-endif
-
-if executable('jq')
-  " JSON beautifier
-  nnoremap <leader>z :%!jq '.'<cr>
 endif
 
 if s:has_plugin('vim-airline')
