@@ -790,6 +790,8 @@ if s:has_plugin('ale')
   let g:ale_fixers = {}
   let g:ale_fixers.javascript = ['eslint']
   let g:ale_fix_on_save = 1
+  nmap ]e <Plug>(ale_next)
+  nmap [e <Plug>(ale_previous)
 endif
 
 if s:has_plugin('emmet-vim')
