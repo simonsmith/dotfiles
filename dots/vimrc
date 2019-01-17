@@ -681,7 +681,7 @@ if s:has_plugin('nerdtree')
 endif
 
 if s:has_plugin('gv.vim')
-  nnoremap <c-g> :GV?<cr>
+  nnoremap <c-g> :GV!<cr>
 endif
 
 if s:has_plugin('fzf.vim')
