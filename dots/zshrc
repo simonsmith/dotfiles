@@ -45,6 +45,7 @@ zplug "plugins/tmux", from:oh-my-zsh
 zplug "plugins/z", from:oh-my-zsh
 
 zplug "lukechilds/zsh-better-npm-completion"
+zplug "BuonOmo/yarn-completion"
 zplug "hlissner/zsh-autopair"
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting"
