@@ -13,6 +13,9 @@ alias vim="nvim"
 alias mux="tmuxinator"
 alias k="kubectl"
 
+# https://github.com/MikeDacre/careful_rm
+alias rm="careful_rm"
+
 # Add line numbers here as they aren't desirable by default (make git log ugly)
 alias less='less -N'
 

@@ -47,6 +47,7 @@ zplug "plugins/z", from:oh-my-zsh
 zplug "lukechilds/zsh-better-npm-completion"
 zplug "BuonOmo/yarn-completion"
 zplug "hlissner/zsh-autopair"
+zplug "MikeDacre/careful_rm"
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "denysdovhan/spaceship-prompt", as:theme
