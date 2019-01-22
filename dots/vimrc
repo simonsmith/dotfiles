@@ -49,6 +49,11 @@ Plug 'moll/vim-bbye'
 " Manage buffers in a list
 Plug 'jlanzarotta/bufexplorer'
 
+" Search
+" ------------------------------------------------------------------------------
+
+Plug 'mileszs/ack.vim'
+
 " Language pack
 " ------------------------------------------------------------------------------
 
@@ -654,6 +659,13 @@ endif
 
 if s:has_plugin('auto-pairs')
   let g:AutoPairsCenterLine = 0
+endif
+
+if s:has_plugin('mileszs/ack.vim')
+  if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+    let g:ack_qhandler = "botright copen 40"
+  endif
 endif
 
 if s:has_plugin('vim-bbye')
