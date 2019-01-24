@@ -9,11 +9,12 @@ windows:
   - git:
     -
   - node:
-      layout: tiled
+      layout: even-horizontal
       panes:
         - webpack:
+          - nvs use 8.12.0
           - cd apps/atlas-tv
-          - OTT_ENV=production-dev yarn dev
+          - yarn dev
         - server:
           - cd ~/Sites/atlas-web-and-tv/libraries/atlas-mock-proxy-server
           - yarn dev
