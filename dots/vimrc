@@ -788,7 +788,7 @@ if s:has_plugin('ale')
   let airline#extensions#ale#warning_symbol = ''
   let g:ale_echo_msg_format = '%linter% | %s (%code%)'
   let g:ale_lint_on_text_changed = 'always'
-  let g:ale_linters = {'html': []}
+  let g:ale_linters = {'html': [], 'cucumber': []}
   " Fix JavaScript code with ESlint
   let g:ale_fixers = {}
   let g:ale_fixers.javascript = ['eslint']
