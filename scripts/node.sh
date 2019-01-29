@@ -6,7 +6,8 @@ echo "Installing nvs ..."
 
 git clone https://github.com/jasongin/nvs "$HOME/.nvs"
 source "$HOME/.nvs/nvs.sh"
-nvs install lts
+nvs add lts
+nvs use lts
 nvs link lts
 nvs auto on
 
