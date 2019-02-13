@@ -55,7 +55,7 @@ zplug "denysdovhan/spaceship-prompt", as:theme
 zplug load
 
 # Load my dotfiles after
-for file in ~/.{extra,aliases,functions}; do
+for file in ~/.{extra,aliases,functions,work}; do
   [ -r "$file" ] && [ -f "$file" ] && source "$file"
 done
 unset file
