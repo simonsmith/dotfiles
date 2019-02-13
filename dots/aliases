@@ -83,6 +83,7 @@ alias rbm='gcm && gl && gco - && grbm'
 alias gb="git for-each-ref --sort=-committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
 alias gbr="git for-each-ref --sort=-committerdate refs/remotes/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
 
+# os updates
 alias update_brew='brew update; brew upgrade; brew cleanup'
 alias update_npm='npm update npm -g; npm update -g;'
 alias update_gems='sudo gem update --system; sudo gem update'
@@ -113,10 +114,6 @@ alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && kil
 
 # Launch iOS Simulator
 alias ios="open -a /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app"
-
-# Kill all the tabs in Chrome to free up memory
-# [C] explained: http://www.commandlinefu.com/commands/view/402/exclude-grep-from-your-grepped-output-of-ps-alias-included-in-description
-alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
 
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec $SHELL -l"
