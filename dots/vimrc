@@ -35,9 +35,7 @@ Plug 'junegunn/vim-slash'
 " ------------------------------------------------------------------------------
 
 " File browser
-Plug 'scrooloose/nerdtree'
-" Easy directory browsing with `-`, integrates with NERDTree
-Plug 'tpope/vim-vinegar'
+Plug 'mcchrish/nnn.vim'
 
 " Buffers
 " ------------------------------------------------------------------------------
@@ -562,12 +560,6 @@ if s:has_plugin('sideways.vim')
   nnoremap [j :SidewaysLeft<cr>
 endif
 
-if s:has_plugin('vim-vinegar')
-  " Remap as this is too easy to hit by accident with 0 and = nearby
-  autocmd VimEnter * nmap - <nop>
-  autocmd VimEnter * nmap _ <Plug>VinegarUp
-endif
-
 if s:has_plugin('vim-gutentags')
   let g:gutentags_ctags_tagfile = 'vim_tags'
   let g:gutentags_ctags_exclude = [
@@ -683,13 +675,12 @@ if s:has_plugin('taboo.vim')
   nnoremap tr :TabooRename<space>
 endif
 
-if s:has_plugin('nerdtree')
-  let g:NERDTreeWinSize = 30
-  let NERDTreeIgnore = ['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
-  let NERDTreeShowHidden = 1
-  let NERDTreeHijackNetrw = 1
-  let NERDTreeAutoDeleteBuffer = 1
-  nmap <leader>n :NERDTreeToggle<cr>
+if s:has_plugin('nnn.vim')
+  let g:nnn#layout = { 'left': '~20%' }
+  nmap _ :NnnPicker '%:p:h'<cr>
+  let g:nnn#action = {
+        \ '<c-x>': 'split',
+        \ '<c-v>': 'vsplit' }
 endif
 
 if s:has_plugin('gv.vim')
