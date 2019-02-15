@@ -102,6 +102,12 @@ export NODE_ENV=development
 # Stop z polluting the home dir
 export _Z_DATA="$HOME/.zdata/.z"
 
+# nnn
+# https://github.com/jarun/nnn
+# ---------------------------------------------------------------
+
+export NNN_USE_EDITOR=1
+
 # fzf
 # https://github.com/junegunn/fzf
 # ---------------------------------------------------------------
