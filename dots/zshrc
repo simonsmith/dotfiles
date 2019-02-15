@@ -108,6 +108,7 @@ export _Z_DATA="$HOME/.zdata/.z"
 
 export NNN_USE_EDITOR=1
 export NNN_SHOW_HIDDEN=1
+export LC_COLLATE="C"
 
 # fzf
 # https://github.com/junegunn/fzf
