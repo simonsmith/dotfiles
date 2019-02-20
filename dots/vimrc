@@ -676,7 +676,6 @@ if s:has_plugin('taboo.vim')
 endif
 
 if s:has_plugin('nnn.vim')
-  let g:nnn#layout = { 'left': '~20%' }
   nmap _ :NnnPicker '%:p:h'<cr>
   let g:nnn#action = {
         \ '<c-x>': 'split',
