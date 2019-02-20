@@ -26,7 +26,7 @@ brew cask install spotify
 brew cask install iina
 
 # Development
-brew cask install iterm2-nightly
+brew cask install alacritty
 brew cask install java
 brew cask install transmit
 brew cask install vmware-fusion
