@@ -44,13 +44,9 @@ popd
 rm "$HOME/.tmuxinator"
 rm "$HOME/applescript"
 rm "$HOME/bin"
-rm "$HOME/emmet"
-rm "$HOME/iterm"
 
 symlink applescript
 symlink bin
-symlink emmet
-symlink iterm
 symlink_dotfile tmuxinator
 
 mkdir "$HOME/.zdata"
