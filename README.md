@@ -35,6 +35,4 @@ When complete, open new terminal window and run `zplug install`
 
 ## Manual steps
 
-* Install [Alacritty](https://github.com/jwilm/alacritty/)
-
 * Add private dotfiles to home directory (`.extra` and `.gitconfig.local`).
