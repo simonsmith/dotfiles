@@ -191,8 +191,6 @@ Plug 'mattn/emmet-vim'
 Plug 'alvan/vim-closetag'
 " Better Scss highlighting than polyglot
 Plug 'tpope/vim-haml'
-" Highlight surrounding HTML tags
-Plug 'valloric/MatchTagAlways'
 
 " JavaScript
 " ------------------------------------------------------------------------------
@@ -607,17 +605,6 @@ if s:has_plugin('deoplete-ternjs')
         \ 'jsx',
         \ 'javascript.jsx',
         \ ]
-endif
-
-if s:has_plugin('MatchTagAlways')
-  let g:mta_filetypes = {
-        \ 'html' : 1,
-        \ 'xhtml' : 1,
-        \ 'xml' : 1,
-        \ 'jinja' : 1,
-        \ 'javascript': 1,
-        \}
-nnoremap <leader>% :MtaJumpToOtherTag<cr>
 endif
 
 if s:has_plugin('vim-session')
