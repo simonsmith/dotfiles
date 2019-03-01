@@ -775,8 +775,7 @@ if s:has_plugin('ale')
 endif
 
 if s:has_plugin('emmet-vim')
-  let g:user_emmet_leader_key = 0
-  imap hh  <plug>(emmet-expand-abbr)
+  imap hh <plug>(emmet-expand-abbr)
 endif
 
 " Output the current syntax group
