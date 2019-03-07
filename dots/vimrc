@@ -415,7 +415,7 @@ endfunction
 set includeexpr=LoadMainNodeModule(v:fname)
 
 " Start scrolling before cursor gets to the edge
-set scrolloff=5
+set scrolloff=3
 set sidescrolloff=15
 set sidescroll=1
 
