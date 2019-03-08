@@ -93,7 +93,6 @@ brew install nnn
 brew install fpp
 brew install htop
 brew install httpie
-brew install hugo
 brew install imageoptim-cli
 brew install p7zip
 brew install python
