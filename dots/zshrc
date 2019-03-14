@@ -48,6 +48,7 @@ zplug "lukechilds/zsh-better-npm-completion"
 zplug "BuonOmo/yarn-completion"
 zplug "hlissner/zsh-autopair"
 zplug "MikeDacre/careful_rm"
+zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "denysdovhan/spaceship-prompt", as:theme
@@ -193,5 +194,4 @@ eval "$(scmpuff init -s --aliases=false)"
 # https://github.com/direnv/direnv
 eval "$(direnv hook zsh)"
 
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '^o' autosuggest-accept

@@ -30,8 +30,6 @@ brew link curl --force
 
 # Install zsh
 brew install zsh
-brew install zsh-syntax-highlighting
-brew install zsh-autosuggestions
 brew install zplug
 
 # less highlighting
