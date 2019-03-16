@@ -88,7 +88,6 @@ brew install direnv
 brew install go
 brew install exa
 brew install nnn
-brew install fpp
 brew install htop
 brew install httpie
 brew install imageoptim-cli
