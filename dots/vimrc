@@ -92,6 +92,8 @@ Plug 'yssl/QFEnter'
 Plug 'matze/vim-move'
 " Multiple cursors
 Plug 'terryma/vim-multiple-cursors'
+" Allow use of ctrl+a/x on more than just numbers
+Plug 'zef/vim-cycle'
 
 " Text objects
 " ------------------------------------------------------------------------------
