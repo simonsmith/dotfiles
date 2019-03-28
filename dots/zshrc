@@ -71,7 +71,7 @@ export EDITOR="nvim"
 # Syntax highlighting
 export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
 # Default flags used in all LESS instances
-export LESS='-rJmIug'
+export LESS='--line-numbers --status-column --long-prompt --ignore-case --hilite-search --RAW-CONTROL-CHARS'
 
 # Larger history (allow 32³ entries; default is 500)
 export HISTSIZE=32768
