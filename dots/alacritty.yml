@@ -326,6 +326,10 @@ key_bindings:
   - { key: C,      mods: Command, action: Copy             }
   - { key: H,      mods: Command, action: Hide             }
   - { key: Q,      mods: Command, action: Quit             }
+  - { key: J,        mods: Alt,     chars: "\x1bj"                       }
+  - { key: K,        mods: Alt,     chars: "\x1bk"                       }
+  - { key: H,        mods: Alt,     chars: "\x1bh"                       }
+  - { key: L,        mods: Alt,     chars: "\x1bl"                       }
   - { key: Key3,     mods: Alt,     chars: "#"                           }
   - { key: Key6,     mods: Control, chars: "\x1e"                        }
   - { key: Paste,                   action: Paste                            }
