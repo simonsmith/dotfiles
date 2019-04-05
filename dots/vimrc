@@ -201,9 +201,14 @@ Plug 'pangloss/vim-javascript', {'for': ['javascript', 'javascript.jsx']}
 Plug 'moll/vim-node', {'for': ['javascript', 'javascript.jsx', 'json']}
 
 " Autocomplete
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'carlitux/deoplete-ternjs'
-Plug 'fishbullet/deoplete-ruby', {'for': ['ruby']}
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-emmet', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-solargraph', {'do': 'yarn install --frozen-lockfile'}
 
 call plug#end()
 
@@ -590,23 +595,6 @@ if s:has_plugin('vim-sneak')
   xmap <leader>s <Plug>Sneak_s
   xmap <leader>S <Plug>Sneak_S
   let g:sneak#streak = 1
-endif
-
-if s:has_plugin('deoplete.nvim')
-  let g:deoplete#enable_at_startup = 1
-  let g:deoplete#auto_complete_start_length = 1
-  let g:deoplete#sources = {}
-  let g:deoplete#sources.python = ['ultisnips']
-  let g:deoplete#sources.javascript = ['buffer', 'tern']
-endif
-
-if s:has_plugin('deoplete-ternjs')
-  let g:deoplete#sources#ternjs#types = 1
-  let g:deoplete#sources#ternjs#filetypes = [
-        \ 'js',
-        \ 'jsx',
-        \ 'javascript.jsx',
-        \ ]
 endif
 
 if s:has_plugin('vim-session')
