@@ -474,9 +474,6 @@ nnoremap Y y$
 " Reformat whole file and move back to original position
 nnoremap g= gg=G``
 
-" Use K to join current line with line above, just like J does with line below
-nnoremap K kJ
-
 " Automatically jump to end of pasted text
 vnoremap <silent> y y`]
 vnoremap <silent> p p`]
@@ -572,6 +569,17 @@ if s:has_plugin('vim-gutentags')
         \ 'dist',
         \ 'vendor',
         \ 'bower_components']
+endif
+
+if s:has_plugin('coc.nvim')
+  nnoremap <silent> K :call <SID>show_documentation()<CR>
+  function! s:show_documentation()
+    if &filetype == 'vim'
+      execute 'h '.expand('<cword>')
+    else
+      call CocAction('doHover')
+    endif
+  endfunction
 endif
 
 if s:has_plugin('vim-bufonly')
