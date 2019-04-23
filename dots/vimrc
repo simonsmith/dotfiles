@@ -517,10 +517,6 @@ if s:has_plugin('ultisnips')
   let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 endif
 
-if s:has_plugin('neoclide/coc-prettier')
-  command! -nargs=0 Prettier :CocCommand prettier.formatFile
-endif
-
 if s:has_plugin('coc.nvim')
   nmap <silent> <leader>dr <Plug>(coc-references)
   nmap <silent> <leader>dd <Plug>(coc-implementation)
@@ -528,6 +524,7 @@ if s:has_plugin('coc.nvim')
   let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
   let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
   call coc#add_extension('coc-json', 'coc-tsserver', 'coc-css', 'coc-html', 'coc-yaml', 'coc-eslint', 'coc-prettier', 'coc-snippets')
+  command! -nargs=0 Prettier :CocCommand prettier.formatFile
 endif
 
 if s:has_plugin('bufexplorer')
