@@ -174,14 +174,6 @@ Plug 'tpope/vim-rhubarb'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/gv.vim'
 
-" Linting
-" ------------------------------------------------------------------------------
-
-Plug 'w0rp/ale'
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'css', 'scss', 'json', 'graphql']}
-
 " HTML/CSS
 " ------------------------------------------------------------------------------
 
@@ -200,13 +192,15 @@ Plug 'tpope/vim-haml'
 Plug 'pangloss/vim-javascript', {'for': ['javascript', 'javascript.jsx']}
 Plug 'moll/vim-node', {'for': ['javascript', 'javascript.jsx', 'json']}
 
-" Autocomplete
+" Autocomplete & linting
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-emmet', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-solargraph', {'do': 'yarn install --frozen-lockfile'}
 
@@ -536,9 +530,14 @@ if s:has_plugin('ultisnips')
   let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 endif
 
-if s:has_plugin('vim-prettier')
-  let g:prettier#exec_cmd_async = 1
-  nmap <leader>o <Plug>(Prettier)
+if s:has_plugin('neoclide/coc-prettier')
+  command! -nargs=0 Prettier :CocCommand prettier.formatFile
+endif
+
+if s:has_plugin('coc.nvim')
+  nmap <silent> <leader>dd <Plug>(coc-definition)
+  nmap <silent> <leader>dr <Plug>(coc-references)
+  nmap <silent> <leader>di <Plug>(coc-implementation)
 endif
 
 if s:has_plugin('bufexplorer')
@@ -754,22 +753,6 @@ if s:has_plugin('vim-gitgutter')
   let g:gitgutter_map_keys = 0
   nmap [c <Plug>GitGutterPrevHunk
   nmap ]c <Plug>GitGutterNextHunk
-endif
-
-if s:has_plugin('ale')
-  let g:ale_sign_error = 'x'
-  let g:ale_sign_warning = '~'
-  let airline#extensions#ale#error_symbol = ''
-  let airline#extensions#ale#warning_symbol = ''
-  let g:ale_echo_msg_format = '%linter% | %s (%code%)'
-  let g:ale_lint_on_text_changed = 'always'
-  let g:ale_linters = {'html': [], 'cucumber': []}
-  " Fix JavaScript code with ESlint
-  let g:ale_fixers = {}
-  let g:ale_fixers.javascript = ['eslint']
-  let g:ale_fix_on_save = 1
-  nmap ]e <Plug>(ale_next)
-  nmap [e <Plug>(ale_previous)
 endif
 
 if s:has_plugin('emmet-vim')

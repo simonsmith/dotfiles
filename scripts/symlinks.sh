@@ -40,6 +40,8 @@ done
 
 [ ! -e "$HOME/.tern-config" ] && ln -sfv $(grealpath tern-project) "$HOME/.tern-config"
 
+[ ! -e "$HOME/.config/nvim/coc-settings.json" ] && ln -sfv $(grealpath coc-settings.json) "$HOME/.config/nvim/coc-settings.json"
+
 mkdir "$HOME/.ssh"
 [ ! -e "$HOME/.ssh/config" ] && ln -sfv $(grealpath ssh-config) "$HOME/.ssh/config"
 
