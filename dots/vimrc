@@ -163,8 +163,9 @@ Plug 'troydm/zoomwintab.vim'
 " ------------------------------------------------------------------------------
 
 Plug 'epilande/vim-react-snippets'
+Plug 'epilande/vim-es2015-snippets'
+Plug 'joaohkfaria/vim-jest-snippets'
 Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 
 " Git
 " ------------------------------------------------------------------------------
