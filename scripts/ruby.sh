@@ -16,7 +16,7 @@ gem update --system
 gem install bundler
 gem install tmuxinator
 gem install circle-cli
-gem install solargraph
+gem install coderay
 
 rbenv rehash
 

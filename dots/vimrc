@@ -664,7 +664,7 @@ if s:has_plugin('fzf.vim')
   let g:fzf_height = '40%'
   let g:fzf_commits_log_options = '--color --graph --pretty=format:"%C(yellow)%h%Creset -%C(auto)%d%Creset %s %C(bold blue)(%cr) %Cred<%an>%Creset" --abbrev-commit'
 
-  nnoremap <c-p> :FZF<cr>
+  nnoremap <c-p> :Files<cr>
   nnoremap <c-i> :Buffers<cr>
   nnoremap <c-t> :Lines<cr>
   nnoremap <c-space> :Rg!<cr>
@@ -681,6 +681,7 @@ if s:has_plugin('fzf.vim')
   endfunction
 
 command! -bang -nargs=* Rg call fzf#vim#grep('rg --column --pretty --no-heading '.shellescape(<q-args>), 1, <bang>0)
+command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
   if has('autocmd')
     autocmd VimEnter * command! -nargs=* -bang Ag call s:ag_with_opts(<q-args>, <bang>0)
