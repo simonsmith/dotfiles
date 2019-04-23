@@ -519,11 +519,6 @@ if s:has_plugin('vim-textobj-entire')
   omap iE <Plug>(textobj-entire-i)
 endif
 
-if s:has_plugin('undotree')
-  let g:undotree_WindowLayout = 2
-  nnoremap <f5> :UndotreeToggle<cr>
-endif
-
 if s:has_plugin('ultisnips')
   let g:UltiSnipsExpandTrigger="<tab>"
   let g:UltiSnipsJumpForwardTrigger="<tab>"
