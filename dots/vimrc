@@ -530,9 +530,9 @@ if s:has_plugin('neoclide/coc-prettier')
 endif
 
 if s:has_plugin('coc.nvim')
-  nmap <silent> <leader>dd <Plug>(coc-definition)
   nmap <silent> <leader>dr <Plug>(coc-references)
-  nmap <silent> <leader>di <Plug>(coc-implementation)
+  nmap <silent> <leader>dd <Plug>(coc-implementation)
+  nmap <silent> <leader>dv :vsplit<cr> <Plug>(coc-implementation)
 endif
 
 if s:has_plugin('bufexplorer')
