@@ -533,6 +533,8 @@ if s:has_plugin('coc.nvim')
   nmap <silent> <leader>dr <Plug>(coc-references)
   nmap <silent> <leader>dd <Plug>(coc-implementation)
   nmap <silent> <leader>dv :vsplit<cr> <Plug>(coc-implementation)
+  let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
+  let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
 endif
 
 if s:has_plugin('bufexplorer')
