@@ -59,12 +59,6 @@ Plug 'mileszs/ack.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'blockloop/vim-swigjs'
 
-" Tags
-" ------------------------------------------------------------------------------
-
-" Generates ctags automatically
-Plug 'ludovicchabant/vim-gutentags'
-
 " Editing
 " ------------------------------------------------------------------------------
 
@@ -549,15 +543,6 @@ endif
 if s:has_plugin('sideways.vim')
   nnoremap ]j :SidewaysRight<cr>
   nnoremap [j :SidewaysLeft<cr>
-endif
-
-if s:has_plugin('vim-gutentags')
-  let g:gutentags_ctags_tagfile = 'vim_tags'
-  let g:gutentags_ctags_exclude = [
-        \ 'node_modules',
-        \ 'dist',
-        \ 'vendor',
-        \ 'bower_components']
 endif
 
 if s:has_plugin('coc.nvim')
