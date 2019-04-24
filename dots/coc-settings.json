@@ -2,7 +2,13 @@
   "diagnostic.errorSign": "x",
   "diagnostic.infoSign": "~",
   "eslint.autoFixOnSave": true,
-  "eslint.filetypes": ["javascript", "javascript.jsx", "typescript", "typescriptreact", "javascriptreact"],
+  "eslint.filetypes": [
+    "javascript",
+    "javascript.jsx",
+    "typescript",
+    "typescriptreact",
+    "javascriptreact"
+  ],
   "diagnostic.signOffset": 9999999
 }
 
