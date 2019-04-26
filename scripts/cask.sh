@@ -51,6 +51,7 @@ brew cask install appcleaner
 brew cask install daisydisk
 brew cask install deluge
 brew cask install flux
+brew cask install keyboard-cleaner
 
 # Fonts
 # https://github.com/caskroom/homebrew-fonts
