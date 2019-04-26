@@ -58,6 +58,7 @@ Plug 'mileszs/ack.vim'
 " Syntax and highlighting for every language
 Plug 'sheerun/vim-polyglot'
 Plug 'blockloop/vim-swigjs'
+Plug 'styled-components/vim-styled-components'
 
 " Editing
 " ------------------------------------------------------------------------------
