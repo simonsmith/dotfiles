@@ -59,6 +59,7 @@ Plug 'mileszs/ack.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'blockloop/vim-swigjs'
 Plug 'styled-components/vim-styled-components'
+Plug 'jparise/vim-graphql'
 
 " Editing
 " ------------------------------------------------------------------------------
