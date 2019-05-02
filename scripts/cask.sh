@@ -19,7 +19,6 @@ brew cask install skype
 
 # Media
 brew cask install burn
-brew cask install beardedspice
 brew cask install imageoptim
 brew cask install max
 brew cask install spotify
