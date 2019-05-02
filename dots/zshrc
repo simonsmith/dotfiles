@@ -96,6 +96,11 @@ export MANPAGER="less -X"
 
 # Link Homebrew casks in `/Applications` rather than `~/Applications`
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+# Homebrew will not send analytics
+export HOMEBREW_NO_ANALYTICS=1
+# Homebrew will not auto-update before running `brew install`, `brew upgrade` or `brew tap`.
+export HOMEBREW_NO_AUTO_UPDATE=1
+
 
 # Node dev
 export NODE_ENV=development
