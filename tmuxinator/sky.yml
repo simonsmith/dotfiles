@@ -1,0 +1,33 @@
+# ~/.tmuxinator/atlas-tv.yml
+
+name: sky
+root: ~/Sites/atlas-web-and-tv
+startup_window: nvim
+
+windows:
+  - nvim: nvim
+  - zsh:
+    -
+  - tests:
+      layout: even-horizontal
+      panes:
+        - web:
+          - cd apps/atlas-web
+          - yarn test --watch
+        - tv:
+          - cd apps/atlas-tv
+          - yarn test --watch
+  - webpack:
+      layout: even-horizontal
+      panes:
+        - web:
+          - nvs use 8.12.0
+          - cd apps/atlas-web
+          - PORT=3001 yarn dev
+        - tv:
+          - nvs use 8.12.0
+          - cd apps/atlas-tv
+          - PORT=3000 yarn dev
+  - mock-proxy:
+    - cd ~/Sites/atlas-web-and-tv/libraries/atlas-mock-proxy-server
+    - yarn dev
