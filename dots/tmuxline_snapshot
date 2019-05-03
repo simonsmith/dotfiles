@@ -3,20 +3,15 @@ set -g status-justify "left"
 set -g status-left-length "100"
 set -g status "on"
 set -g status-right-length "160"
-set -g status-right-attr "none"
-set -g message-fg "colour2"
-set -g message-bg "colour0"
-set -g status-attr "none"
-set -g pane-border-bg default
-set -g pane-active-border-bg default
-set -g pane-border-fg "colour240"
-set -g pane-active-border-fg "colour2"
-set -g status-left-attr "none"
-setw -g window-status-bg "default"
-setw -g window-status-fg "colour242"
-setw -g window-status-attr "none"
-setw -g window-status-activity-attr "none"
-setw -g window-status-activity-fg "colour2"
+set -g status-right-style none
+set -g message-style bg=colour0,fg=colour2
+set -g status-style none
+set -g pane-border-style bg=default
+set -g pane-active-border-style bg=default,fg=colour2
+set -g pane-border-style fg=colour240
+set -g status-left-style none
+setw -g window-status-style bg=default,fg=colour242,none
+setw -g window-status-activity-style fg=colour2,none
 setw -g window-status-separator ""
 set -g status-left "#[fg=colour242] #S #[fg=colour2,nobold,nounderscore,noitalics]"
 set -g status-right "#{prefix_highlight} #[fg=colour0,nobold,nounderscore,noitalics] #[fg=colour242] #(spotify) #(ipconfig getifaddr en0) | #(battery -a -p -t) #[fg=colour242]| %R - %d-%m-%Y"
