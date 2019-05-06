@@ -23,6 +23,7 @@ brew cask install imageoptim
 brew cask install max
 brew cask install spotify
 brew cask install iina
+brew cask install airflow
 
 # Development
 brew cask install alacritty
