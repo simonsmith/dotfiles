@@ -187,9 +187,6 @@ SPACESHIP_PROMPT_ORDER=(
 # Misc
 # ---------------------------------------------------------------
 
-# https://github.com/carlitux/deoplete-ternjs#vim-configuration-example
-ulimit -n 2048
-
 # https://github.com/rbenv/rbenv
 eval "$(rbenv init -)"
 
