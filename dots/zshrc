@@ -45,7 +45,7 @@ zplug "plugins/tmux", from:oh-my-zsh
 zplug "plugins/z", from:oh-my-zsh
 
 zplug "lukechilds/zsh-better-npm-completion"
-zplug "BuonOmo/yarn-completion"
+zplug "g-plane/zsh-yarn-autocompletions", hook-build:"./zplug.zsh", defer:2
 zplug "hlissner/zsh-autopair"
 zplug "MikeDacre/careful_rm"
 zplug "zsh-users/zsh-autosuggestions"
