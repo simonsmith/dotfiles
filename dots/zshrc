@@ -42,7 +42,6 @@ zplug "plugins/vi-mode", from:oh-my-zsh
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/history", from:oh-my-zsh
 zplug "plugins/tmux", from:oh-my-zsh
-zplug "plugins/z", from:oh-my-zsh
 
 zplug "lukechilds/zsh-better-npm-completion"
 zplug "g-plane/zsh-yarn-autocompletions", hook-build:"./zplug.zsh", defer:2
@@ -52,6 +51,7 @@ zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "denysdovhan/spaceship-prompt", as:theme
+zplug "agkozak/zsh-z"
 
 zplug load
 
@@ -63,6 +63,9 @@ unset file
 
 # Exports
 # ---------------------------------------------------------------
+
+# Change 'z' alias for use with the fzf function
+export ZSHZ_CMD="_z"
 
 # Make nvim the default editor
 export EDITOR="nvim"
