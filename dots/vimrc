@@ -638,6 +638,7 @@ endif
 
 if s:has_plugin('nnn.vim')
   nmap _ :NnnPicker '%:p:h'<cr>
+  let g:nnn#command = 'nnn -d'
   let g:nnn#action = {
         \ '<c-x>': 'split',
         \ '<c-v>': 'vsplit' }

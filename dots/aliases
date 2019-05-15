@@ -50,6 +50,8 @@ alias t3="exa -Ta -L 3"
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
 
+alias nnn='nnn -d'
+
 # Gzip-enabled `curl`
 alias gurl='curl --compressed'
 
