@@ -79,6 +79,10 @@ switcher - 1  : chunkc tiling::monitor -f 1;\
 switcher - 2  : chunkc tiling::monitor -f 2;\
                 khd -e "mode activate default"
 
+# float / unfloat window and center on screen
+alt - t : chunkc tiling::window --toggle float;\
+          chunkc tiling::window --grid-layout 4:4:1:1:2:2
+
 # send window to monitor
 shift + swap - 1 : chunkc tiling::window --send-to-monitor 1;
 shift + swap - 2 : chunkc tiling::window --send-to-monitor 2;
