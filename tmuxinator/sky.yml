@@ -8,23 +8,23 @@ windows:
   - nvim: nvim
   - zsh:
     -
-  - tests:
+  - web:
       layout: even-horizontal
       panes:
-        - web:
+        - tests:
           - cd apps/atlas-web
           - yarn test --watch
-        - tv:
-          - cd apps/atlas-tv
-          - yarn test --watch
-  - webpack:
-      layout: even-horizontal
-      panes:
-        - web:
+        - webpack:
           - nvs use 8.12.0
           - cd apps/atlas-web
           - PORT=3001 yarn dev
-        - tv:
+  - tv:
+      layout: even-horizontal
+      panes:
+        - tests:
+          - cd apps/atlas-tv
+          - yarn test --watch
+        - webpack:
           - nvs use 8.12.0
           - cd apps/atlas-tv
           - PORT=3000 yarn dev
