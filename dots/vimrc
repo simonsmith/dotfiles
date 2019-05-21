@@ -652,7 +652,7 @@ if s:has_plugin('fzf.vim')
   let g:fzf_height = '40%'
   let g:fzf_commits_log_options = '--color --graph --pretty=format:"%C(yellow)%h%Creset -%C(auto)%d%Creset %s %C(bold blue)(%cr) %Cred<%an>%Creset" --abbrev-commit'
 
-  nnoremap <c-p> :Files<cr>
+  nnoremap <c-p> :FZF<cr>
   nnoremap <c-i> :Buffers<cr>
   nnoremap <c-t> :Lines<cr>
   nnoremap <c-space> :Rg!<cr>
