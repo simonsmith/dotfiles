@@ -21,7 +21,7 @@ dots=(
   gitignore
   gitmessage
   hushlogin
-  khdrc
+  skhdrc
   ripgreprc
   rgignore
   tern-project

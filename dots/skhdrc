@@ -1,0 +1,108 @@
+# https://github.com/koekeishiya/skhd/blob/master/examples/skhdrc
+
+# indicate what mode is active
+:: default : chunkc border::color 0xff775759
+:: prefix @ : chunkc border::color 0xddbdd322
+:: swap : chunkc border::color 0xdd458588
+:: tree @ : chunkc border::color 0xddfabd2f
+:: layout @ : chunkc border::color 0xddb16286
+
+# activate prefix mode
+ctrl - f ; prefix
+
+# disable prefix
+prefix, swap, layout, tree < ctrl - f ; default
+prefix, swap, tree, layout < escape ; default
+
+# activate a mode from  prefix
+prefix < a ; swap
+prefix < s ; layout
+prefix < t ; tree
+
+# activate mode from other modes
+tree < ctrl - a ; swap
+tree < ctrl -s ; layout
+swap < ctrl - t ; tree
+swap < ctrl - s ; layout
+layout < ctrl - t ; tree
+layout < ctrl - a ; swap
+
+# open a terminal
+prefix < return : open -na /Applications/Alacritty.app
+
+# move between windows
+prefix < h : chunkc tiling::window --focus west
+prefix < l : chunkc tiling::window --focus east
+prefix < j : chunkc tiling::window --focus south
+prefix < k : chunkc tiling::window --focus north
+
+# swap mode
+# ------------------------------------------------------------------------------
+
+# swap window position
+swap < h : chunkc tiling::window --swap west
+swap < j : chunkc tiling::window --swap south
+swap < k : chunkc tiling::window --swap north
+swap < l : chunkc tiling::window --swap east
+
+# move window
+swap < shift - k : chunkc tiling::window --warp north
+swap < shift - l : chunkc tiling::window --warp east
+swap < shift - j : chunkc tiling::window --warp south
+swap < shift - h : chunkc tiling::window --warp west
+
+# move to desktop
+swap < 1 : chunkc tiling::window --send-to-desktop 1
+swap < 2 : chunkc tiling::window --send-to-desktop 2
+swap < 3 : chunkc tiling::window --send-to-desktop 3
+swap < 4 : chunkc tiling::window --send-to-desktop 4
+swap < 5 : chunkc tiling::window --send-to-desktop 5
+
+# send window to monitor
+swap < shift - 1 : chunkc tiling::window --send-to-monitor 1;
+swap < shift - 2 : chunkc tiling::window --send-to-monitor 2;
+
+# float / unfloat window and center on screen
+alt - t : chunkc tiling::window --toggle float;\
+          chunkc tiling::window --grid-layout 4:4:1:1:2:2
+
+# layout mode
+# ------------------------------------------------------------------------------
+
+# change layout
+layout < a : chunkc tiling::desktop --layout bsp
+layout < s : chunkc tiling::desktop --layout monocle
+layout < d : chunkc tiling::desktop --layout float
+
+# toggle desktop offset
+layout < o : chunkc tiling::desktop --toggle offset
+
+# adjust desktop padding
+layout < p : chunkc tiling::desktop --padding inc
+layout < shift - p : chunkc tiling::desktop --padding dec
+
+# adjust gap
+layout < g : chunkc tiling::desktop --gap inc
+layout < shift - g : chunkc tiling::desktop --gap dec
+
+# tree mode
+# ------------------------------------------------------------------------------
+
+tree < f          : chunkc tiling::window --toggle fullscreen
+tree < shift - f  : chunkc tiling::window --toggle native-fullscreen
+tree < d          : chunkc tiling::window --toggle parent
+tree < w          : chunkc tiling::window --toggle float
+tree < r          : chunkc tiling::desktop --rotate 90
+tree < s          : chunkc tiling::window --toggle split
+
+# adjust window size
+tree < h          : chunkc tiling::window --use-temporary-ratio 0.02 --adjust-window-edge west
+tree < j          : chunkc tiling::window --use-temporary-ratio 0.02 --adjust-window-edge south
+tree < k          : chunkc tiling::window --use-temporary-ratio 0.02 --adjust-window-edge north
+tree < l          : chunkc tiling::window --use-temporary-ratio 0.02 --adjust-window-edge east
+tree < e          : chunkc tiling::desktop --equalize
+
+tree < shift - h  : chunkc tiling::window --use-temporary-ratio -0.02 --adjust-window-edge west
+tree < shift - j  : chunkc tiling::window --use-temporary-ratio -0.02 --adjust-window-edge south
+tree < shift - k  : chunkc tiling::window --use-temporary-ratio -0.02 --adjust-window-edge north
+tree < shift - l  : chunkc tiling::window --use-temporary-ratio -0.02 --adjust-window-edge east

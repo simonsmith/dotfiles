@@ -77,7 +77,7 @@ brew install rbenv
 brew install ruby-build
 
 # Window manager
-brew install koekeishiya/formulae/khd
+brew install koekeishiya/formulae/skhd
 brew tap crisidev/homebrew-chunkwm
 brew install chunkwm
 
