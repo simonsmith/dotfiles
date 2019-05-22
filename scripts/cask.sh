@@ -2,6 +2,7 @@ brew tap caskroom/cask
 brew tap caskroom/versions
 
 # Browsers
+brew cask install brave-browser
 brew cask install firefox-beta
 brew cask install firefox-developer-edition
 brew cask install google-chrome-beta
