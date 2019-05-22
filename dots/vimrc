@@ -353,6 +353,9 @@ if has("persistent_undo")
   set undoreload=10000
 endif
 
+" Always show sign column for git icons
+set signcolumn=yes
+
 " Don’t create backups when editing files in certain directories
 set backupskip=/tmp/*,/private/tmp/*
 
@@ -739,12 +742,6 @@ nnoremap <f10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> 
 
 " Automatic commands
 " ------------------------------------------------------------------------------
-
-augroup always-open-signcolumn
-  autocmd!
-  autocmd BufEnter * sign define dummy
-  autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
-augroup END
 
 " Open help in a vertical split
 augroup vimrc-help
