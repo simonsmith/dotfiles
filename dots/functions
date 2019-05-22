@@ -1,33 +1,30 @@
-# Create a new directory and enter it
-function mkd() {
-  mkdir -p "$@" && cd "$@"
-}
+# FZF
+# https://github.com/junegunn/fzf/wiki/examples
+# ---------------------------------------------------------------
 
-## fzf - https://github.com/junegunn/fzf/wiki/examples
-#
-# cdf - cd into the directory of the selected file
-cdf() {
+# cd into the directory of the selected file
+fcd() {
    local file
    local dir
    file=$(fzf-tmux +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
 }
 
-# fd - cd to selected directory
-cdd() {
+# cd to selected directory
+fdd() {
   local dir
   dir=$(find ${1:-.} -path '*/\.*' -prune \
                   -o -type d -print 2> /dev/null | fzf-tmux +m) &&
   cd "$dir"
 }
 
-# fda - including hidden directories
+# including hidden directories
 fda() {
   local dir
   dir=$(find ${1:-.} -type d 2> /dev/null | fzf-tmux +m) && cd "$dir"
 }
 
-# fdr - cd to selected parent directory
-fdr() {
+# cd to selected parent directory
+fcp() {
   local declare dirs=()
   get_parent_dirs() {
     if [[ -d "${1}" ]]; then dirs+=("$1"); else return; fi
@@ -126,6 +123,11 @@ tm() {
     tmux $change -t "$1" 2>/dev/null || (tmux new-session -d -s $1 && tmux $change -t "$1"); return
   fi
   session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | fzf --exit-0) &&  tmux $change -t "$session" || echo "No sessions found."
+}
+
+# Create a new directory and enter it
+function mkd() {
+  mkdir -p "$@" && cd "$@"
 }
 
 # Start an HTTP server from a directory, optionally specifying the port
