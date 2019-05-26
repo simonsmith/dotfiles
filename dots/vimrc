@@ -65,7 +65,7 @@ Plug 'jparise/vim-graphql'
 " ------------------------------------------------------------------------------
 
 " Insert or delete brackets, parens, quotes in pair.
-Plug 'jiangmiao/auto-pairs'
+Plug 'tmsvg/pear-tree'
 " Allow plugins to be repeated with dot
 Plug 'tpope/vim-repeat'
 " Comment out blocks of code
@@ -617,8 +617,11 @@ if s:has_plugin('vim-choosewin')
   let g:choosewin_blink_on_land = 0
 endif
 
-if s:has_plugin('auto-pairs')
-  let g:AutoPairsCenterLine = 0
+if s:has_plugin('pear-tree')
+  let g:pear_tree_repeatable_expand = 0
+  let g:pear_tree_smart_openers = 1
+  let g:pear_tree_smart_closers = 1
+  let g:pear_tree_smart_backspace = 1
 endif
 
 if s:has_plugin('mileszs/ack.vim')
