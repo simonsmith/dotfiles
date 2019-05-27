@@ -28,7 +28,7 @@ layout < ctrl - t ; tree
 layout < ctrl - a ; swap
 
 # open a terminal
-prefix < return : open -na /Applications/Alacritty.app
+prefix < return : open -na /Applications/Alacritty.app; skhd -k "escape"
 
 # move between windows
 prefix < h : chunkc tiling::window --focus west
