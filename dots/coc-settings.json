@@ -10,14 +10,6 @@
     "javascriptreact"
   ],
   "diagnostic.signOffset": 9999999,
-  "suggest.timeout": 5000,
-  "git.addedSign.hlGroup": "GitGutterAdd",
-  "git.changedSign.hlGroup": "GitGutterChange",
-  "git.removedSign.hlGroup": "GitGutterDelete",
-  "git.topRemovedSign.hlGroup": "GitGutterDelete",
-  "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
-  "git.removedSign.text": "•",
-  "git.topRemovedSign.text": "•",
-  "git.changedSign.text": "•"
+  "suggest.timeout": 5000
 }
 

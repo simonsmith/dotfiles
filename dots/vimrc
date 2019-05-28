@@ -169,6 +169,7 @@ Plug 'SirVer/ultisnips'
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
+Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/gv.vim'
 
 " HTML/CSS
@@ -521,16 +522,11 @@ if s:has_plugin('coc.nvim')
   nmap <silent> <leader>dr <Plug>(coc-references)
   nmap <silent> <leader>dd <Plug>(coc-implementation)
   nmap <silent> <leader>dv :vsplit<cr> <Plug>(coc-implementation)
-
   let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
   let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
-  call coc#add_extension('coc-json', 'coc-tsserver', 'coc-css', 'coc-html', 'coc-yaml', 'coc-eslint', 'coc-prettier', 'coc-snippets', 'coc-git')
+  call coc#add_extension('coc-json', 'coc-tsserver', 'coc-css', 'coc-html', 'coc-yaml', 'coc-eslint', 'coc-prettier', 'coc-snippets')
   command! -nargs=0 Prettier :CocCommand prettier.formatFile
   nmap <silent> <leader>uf :CocList snippets<cr>
-
-  nmap [c <Plug>(coc-git-prevchunk)
-  nmap ]c <Plug>(coc-git-nextchunk)
-  nmap gs <Plug>(coc-git-chunkinfo)
 endif
 
 if s:has_plugin('bufexplorer')
@@ -732,6 +728,16 @@ if s:has_plugin('vim-airline')
         \ [ 'a', 'b', 'c' ],
         \ [ 'x', 'z', 'error', 'warning' ]
         \ ]
+endif
+
+if s:has_plugin('vim-gitgutter')
+  let g:gitgutter_sign_added = '•'
+  let g:gitgutter_sign_modified = '•'
+  let g:gitgutter_sign_removed = '•'
+  let g:gitgutter_sign_modified_removed = '•'
+  let g:gitgutter_map_keys = 0
+  nmap [c <Plug>GitGutterPrevHunk
+  nmap ]c <Plug>GitGutterNextHunk
 endif
 
 if s:has_plugin('emmet-vim')
