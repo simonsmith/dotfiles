@@ -64,6 +64,8 @@ Plug 'jparise/vim-graphql'
 " Editing
 " ------------------------------------------------------------------------------
 
+" Lint
+Plug 'w0rp/ale'
 " Insert or delete brackets, parens, quotes in pair.
 Plug 'tmsvg/pear-tree'
 " Allow plugins to be repeated with dot
@@ -524,7 +526,7 @@ if s:has_plugin('coc.nvim')
   nmap <silent> <leader>dv :vsplit<cr> <Plug>(coc-implementation)
   let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
   let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
-  call coc#add_extension('coc-json', 'coc-tsserver', 'coc-css', 'coc-html', 'coc-yaml', 'coc-eslint', 'coc-prettier', 'coc-snippets')
+  call coc#add_extension('coc-json', 'coc-tsserver', 'coc-css', 'coc-html', 'coc-yaml', 'coc-prettier', 'coc-snippets')
   command! -nargs=0 Prettier :CocCommand prettier.formatFile
   nmap <silent> <leader>uf :CocList snippets<cr>
 endif
@@ -600,6 +602,22 @@ if s:has_plugin('splitjoin.vim')
   let g:splitjoin_join_mapping = ''
   nmap gj :SplitjoinSplit<cr>
   nmap gk :SplitjoinJoin<cr>
+endif
+
+if s:has_plugin('ale')
+ let g:ale_sign_error = 'x'
+ let g:ale_sign_warning = '~'
+ let airline#extensions#ale#error_symbol = ''
+ let airline#extensions#ale#warning_symbol = ''
+ let g:ale_echo_msg_format = '%linter% | %s (%code%)'
+ let g:ale_lint_on_text_changed = 'always'
+ let g:ale_linters = {'html': [], 'cucumber': []}
+ " Fix JavaScript code with ESlint
+ let g:ale_fixers = {}
+ let g:ale_fixers.javascript = ['eslint']
+ let g:ale_fix_on_save = 1
+ nmap ]e <Plug>(ale_next)
+ nmap [e <Plug>(ale_previous)
 endif
 
 if s:has_plugin('vim-closetag')

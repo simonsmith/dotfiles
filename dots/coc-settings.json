@@ -9,7 +9,6 @@
     "typescriptreact",
     "javascriptreact"
   ],
-  "diagnostic.signOffset": 9999999,
   "suggest.timeout": 5000
 }
 
