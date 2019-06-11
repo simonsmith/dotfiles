@@ -42,10 +42,10 @@ alias yui='yarn upgrade-interactive'
 
 # https://github.com/ogham/exa
 alias l="exa -lbha --git --group-directories-first"
-alias t="exa -Ta"
-alias t1="exa -Ta -L 1"
-alias t2="exa -Ta -L 2"
-alias t3="exa -Ta -L 3"
+alias t="exa -lbhaT"
+alias t1="exa -lbhaT -L 1"
+alias t2="exa -lbhaT -L 2"
+alias t3="exa -lbhaT -L 3"
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
