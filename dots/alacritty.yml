@@ -134,9 +134,6 @@ font:
   # false.
   use_thin_strokes: false
 
-# Should display the render timer
-render_timer: false
-
 # Use custom cursor colors. If true, display the cursor in the cursor.foreground
 # and cursor.background colors, otherwise invert the colors of the cursor.
 
