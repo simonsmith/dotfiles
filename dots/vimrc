@@ -92,6 +92,8 @@ Plug 'matze/vim-move'
 Plug 'terryma/vim-multiple-cursors'
 " Allow use of ctrl+a/x on more than just numbers
 Plug 'zef/vim-cycle'
+" Preview markdown
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
 " Text objects
 " ------------------------------------------------------------------------------
