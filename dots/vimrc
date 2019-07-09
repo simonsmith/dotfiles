@@ -60,6 +60,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'blockloop/vim-swigjs'
 Plug 'styled-components/vim-styled-components'
 Plug 'jparise/vim-graphql'
+Plug 'peitalin/vim-jsx-typescript'
 
 " Editing
 " ------------------------------------------------------------------------------
@@ -784,7 +785,7 @@ augroup file-types
   " Override some syntaxes so things look better
   autocmd BufNewFile,BufRead *.html setlocal syntax=swig
   autocmd BufNewFile,BufRead *.sss setlocal syntax=stylus
-  autocmd BufNewFile,BufRead *.ts,*.snap*,*.es6,*.tsx setlocal filetype=javascript.jsx
+  autocmd BufNewFile,BufRead *.snap,*.es6, setlocal filetype=javascript.jsx
   autocmd BufNewFile,BufRead *stylelintrc,*eslintrc,*babelrc,*jshintrc setlocal syntax=json
   autocmd BufNewFile,BufRead *.css,*.pcss setlocal syntax=scss filetype=scss
   autocmd BufNewFile,BufRead *.cshtml setlocal filetype=cshtml
