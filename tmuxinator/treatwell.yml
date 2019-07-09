@@ -1,0 +1,33 @@
+# /Users/simonsmith/.tmuxinator/treatwell.yml
+
+name: treatwell
+root: ~/wahanda
+startup_window: nvim
+
+windows:
+  - nvim: nvim
+  - zsh:
+    -
+  - new-stack:
+    - cd ~/wahanda/front-end-2.0
+    - yarn watch
+  - twbox:
+    - twbox -s amp.twtest.io -l FRONT_END_20,ASSET,SITE nginx up
+  - site:
+      layout: even-horizontal
+      panes:
+        - spring:
+          - cd ~/wahanda/service/site/webapp
+          - mvn spring-boot:run
+        - watch:
+          - cd ~/wahanda/service/site/webapp
+          - yarn dev:watch
+  - asset:
+      layout: even-horizontal
+      panes:
+        - spring:
+          - cd ~/wahanda/service/asset/webapp
+          - mvn spring-boot:run
+        - watch:
+          - cd ~/wahanda/service/asset/webapp
+          - yarn dev:watch
