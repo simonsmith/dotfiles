@@ -18,16 +18,20 @@ windows:
       panes:
         - spring:
           - cd ~/wahanda/service/site/webapp
+          - cat ../../.nvmrc | read version; nvs use $version
           - mvn spring-boot:run
         - watch:
           - cd ~/wahanda/service/site/webapp
+          - cat ../../.nvmrc | read version; nvs use $version
           - yarn dev:watch
   - asset:
       layout: even-horizontal
       panes:
         - spring:
           - cd ~/wahanda/service/asset/webapp
+          - cat ../../.nvmrc | read version; nvs use $version
           - mvn spring-boot:run
         - watch:
           - cd ~/wahanda/service/asset/webapp
+          - cat ../../.nvmrc | read version; nvs use $version
           - yarn dev:watch
