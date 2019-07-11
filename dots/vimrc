@@ -51,6 +51,7 @@ Plug 'jlanzarotta/bufexplorer'
 " ------------------------------------------------------------------------------
 
 Plug 'mileszs/ack.vim'
+Plug 'mhinz/vim-grepper'
 
 " Language pack
 " ------------------------------------------------------------------------------
@@ -574,6 +575,16 @@ if s:has_plugin('vim-javascript')
   let g:javascript_plugin_flow=1
   let g:javascript_plugin_jsdoc=1
 endif
+
+if s:has_plugin('vim-grepper')
+  nnoremap <leader>g :Grepper -tool ag<cr>
+  nnoremap <leader>G :Grepper -tool ag -buffers<cr>
+  nmap gs <plug>(GrepperOperator)
+  xmap gs <plug>(GrepperOperator)
+  let g:grepper = {}
+  let g:grepper.stop = 2500
+  let g:grepper.highlight = 1
+end
 
 if s:has_plugin('vim-better-whitespace')
   autocmd BufEnter * EnableStripWhitespaceOnSave
