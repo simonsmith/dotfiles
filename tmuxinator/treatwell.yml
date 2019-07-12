@@ -13,25 +13,25 @@ windows:
     - yarn watch
   - twbox:
     - twbox -s amp.twtest.io -l FRONT_END_20,ASSET,SITE nginx up
-  - site:
+  - services:
       layout: even-horizontal
       panes:
-        - spring:
-          - cd ~/wahanda/service/site/webapp
-          - cat ../../.nvmrc | read version; nvs use $version
-          - mvn spring-boot:run
-        - watch:
-          - cd ~/wahanda/service/site/webapp
+        - asset:
+            - cd ~/wahanda/service/asset/webapp
+            - cat ../../.nvmrc | read version; nvs use $version
+            - mvn spring-boot:run
+        - site:
+            - cd ~/wahanda/service/site/webapp
+            - cat ../../.nvmrc | read version; nvs use $version
+            - mvn spring-boot:run
+  - watch:
+      layout: even-horizontal
+      panes:
+        - asset:
+          - cd ~/wahanda/service/asset/webapp
           - cat ../../.nvmrc | read version; nvs use $version
           - yarn dev:watch
-  - asset:
-      layout: even-horizontal
-      panes:
-        - spring:
-          - cd ~/wahanda/service/asset/webapp
-          - cat ../../.nvmrc | read version; nvs use $version
-          - mvn spring-boot:run
-        - watch:
-          - cd ~/wahanda/service/asset/webapp
+        - site:
+          - cd ~/wahanda/service/site/webapp
           - cat ../../.nvmrc | read version; nvs use $version
           - yarn dev:watch
