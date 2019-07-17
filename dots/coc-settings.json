@@ -9,6 +9,6 @@
     "typescriptreact",
     "javascriptreact"
   ],
-  "suggest.timeout": 5000
+  "suggest.timeout": 5000,
+  "typescript.suggestionActions.enabled": false,
 }
-
