@@ -529,7 +529,11 @@ if s:has_plugin('coc.nvim')
   nmap <silent> <leader>dr <Plug>(coc-references)
   nmap <silent> <leader>dd <Plug>(coc-implementation)
   nmap <silent> <leader>dy <Plug>(coc-type-definition)
+  nmap <silent> <leader>dl <Plug>(coc-codelens-action)
+  nmap <silent> <leader>da <Plug>(coc-codeaction)
   nmap <silent> <leader>dv :vsplit<cr> <Plug>(coc-implementation)
+
+  hi CocCodeLens guifg=#474646
 
   " Remap for rename current word
   nmap <leader>rn <Plug>(coc-rename)
@@ -540,6 +544,8 @@ if s:has_plugin('coc.nvim')
   command! -nargs=0 Prettier :CocCommand prettier.formatFile
   nmap <silent> <leader>uf :CocList snippets<cr>
 
+  " Highlight symbol under cursor on CursorHold
+  autocmd CursorHold * silent call CocActionAsync('highlight')
   " documentation popup
   nnoremap <silent> K :call <SID>show_documentation()<CR>
   function! s:show_documentation()
