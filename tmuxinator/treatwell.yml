@@ -12,7 +12,7 @@ windows:
     - cd ~/wahanda/front-end-2.0
     - yarn watch
   - twbox:
-    - twbox -s amp.twtest.io -l FRONT_END_20,ASSET,SITE nginx up
+    - twbox -s amp.twtest.io -l FRONT_END_20,ASSET,SITE,RAINBOW nginx up
   - services:
       layout: even-horizontal
       panes:
@@ -35,3 +35,6 @@ windows:
           - cd ~/wahanda/service/site/webapp
           - cat ../../.nvmrc | read version; nvs use $version
           - yarn dev:watch
+  - rainbow:
+    - cd ~/wahanda/service/rainbow
+    - mvn spring-boot:run
