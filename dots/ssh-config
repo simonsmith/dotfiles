@@ -7,3 +7,8 @@ Host github.com
  HostName github.com
  PreferredAuthentications publickey
  IdentityFile ~/.ssh/github-personal
+
+Host git.treatwell.net
+ HostName git.treatwell.net
+ PreferredAuthentications publickey
+ IdentityFile ~/.ssh/github-personal
