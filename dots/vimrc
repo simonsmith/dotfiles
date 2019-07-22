@@ -67,7 +67,7 @@ Plug 'peitalin/vim-jsx-typescript'
 " ------------------------------------------------------------------------------
 
 " Lint
-" Plug 'w0rp/ale'
+Plug 'w0rp/ale'
 " Insert or delete brackets, parens, quotes in pair.
 Plug 'tmsvg/pear-tree'
 " Allow plugins to be repeated with dot
@@ -540,7 +540,7 @@ if s:has_plugin('coc.nvim')
 
   let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
   let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
-  call coc#add_extension('coc-json', 'coc-tsserver', 'coc-css', 'coc-html', 'coc-eslint', 'coc-yaml', 'coc-prettier', 'coc-snippets')
+  call coc#add_extension('coc-json', 'coc-tsserver', 'coc-css', 'coc-html', 'coc-yaml', 'coc-prettier', 'coc-snippets')
   command! -nargs=0 Prettier :CocCommand prettier.formatFile
   nmap <silent> <leader>uf :CocList snippets<cr>
 

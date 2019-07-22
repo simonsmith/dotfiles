@@ -11,6 +11,5 @@
     "javascriptreact"
   ],
   "suggest.timeout": 5000,
-  "diagnostic.signOffset": 9999999,
   "typescript.suggestionActions.enabled": false
 }
