@@ -533,7 +533,7 @@ if s:has_plugin('coc.nvim')
   nmap <silent> <leader>da <Plug>(coc-codeaction)
   nmap <silent> <leader>dv :vsplit<cr> <Plug>(coc-implementation)
 
-  hi CocCodeLens guifg=#474646
+  hi CocCodeLens guifg=#6a6c6c
 
   " Remap for rename current word
   nmap <leader>rn <Plug>(coc-rename)
