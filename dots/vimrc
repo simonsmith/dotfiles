@@ -343,6 +343,9 @@ set nojoinspaces
 " Eliminate delay when switching modes
 set ttimeoutlen=0
 
+" Enable mouse with tmux
+set mouse=a
+
 " Auto save changes before switching buffer
 set autowrite
 
