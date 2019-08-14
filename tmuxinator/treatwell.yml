@@ -12,29 +12,27 @@ windows:
     - cd ~/wahanda/front-end-2.0
     - yarn watch
   - twbox:
-    - twbox -s amp.twtest.io -l FRONT_END_20,ASSET,SITE,RAINBOW nginx up
+    - twbox -s amp.twtest.io -l FRONT_END_20 nginx up
   - services:
       layout: even-horizontal
       panes:
         - asset:
             - cd ~/wahanda/service/asset/webapp
             - cat ../../.nvmrc | read version; nvs use $version
-            - mvn spring-boot:run
         - site:
             - cd ~/wahanda/service/site/webapp
             - cat ../../.nvmrc | read version; nvs use $version
-            - mvn spring-boot:run
   - watch:
       layout: even-horizontal
       panes:
         - asset:
           - cd ~/wahanda/service/asset/webapp
           - cat ../../.nvmrc | read version; nvs use $version
-          - yarn dev:watch
         - site:
           - cd ~/wahanda/service/site/webapp
           - cat ../../.nvmrc | read version; nvs use $version
-          - yarn dev:watch
   - rainbow:
     - cd ~/wahanda/service/rainbow
-    - mvn spring-boot:run
+  - storybook:
+    - cd ~/wahanda/front-end-2.0
+    - yarn storybook
