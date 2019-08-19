@@ -59,5 +59,6 @@ brew cask install keyboard-cleaner
 brew tap caskroom/fonts
 brew cask install caskroom/fonts/font-hack
 brew cask install caskroom/fonts/font-hack-nerd-font
+brew cask install caskroom/fonts/font-source-code-pro
 
 brew cask cleanup
