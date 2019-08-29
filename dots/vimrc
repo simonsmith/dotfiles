@@ -452,9 +452,6 @@ nnoremap j gj
 vnoremap k gk
 vnoremap j gj
 
-" Map <C-i> to <f7> with Karabiner so tab can be used at the same time
-nnoremap <f7> <C-i>
-
 " Disable arrow keys
 noremap <right> <Nop>
 noremap <left> <Nop>
