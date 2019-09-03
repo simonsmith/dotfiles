@@ -11,6 +11,8 @@ export PATH="$HOME/bin:$PATH"
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 # yarn
 export PATH="$HOME/.yarn/bin:$PATH"
+# Add gnu-sed as `sed`
+export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 
 # GO
 export GOPATH="$HOME/go"
