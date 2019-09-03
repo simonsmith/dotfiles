@@ -70,7 +70,7 @@ brew install diff-so-fancy
 
 # Install more recent versions of some OS X tools.
 brew tap homebrew/dupes
-brew install grep --with-default-names
+brew install grep
 
 # Ruby
 brew install rbenv
