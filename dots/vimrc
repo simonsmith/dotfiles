@@ -562,7 +562,7 @@ endif
 if s:has_plugin('bufexplorer')
   let g:bufExplorerDisableDefaultKeyMapping = 1
   let g:bufExplorerShowNoName = 1
-  nnoremap <leader>B :BufExplorer<cr>
+  nnoremap <leader>b :BufExplorer<cr>
 endif
 
 if s:has_plugin('vim-easyclip')
@@ -581,7 +581,7 @@ if s:has_plugin('sideways.vim')
 endif
 
 if s:has_plugin('vim-bufonly')
-  nnoremap <leader>b :BufOnly<cr>
+  nnoremap <leader>B :BufOnly<cr>
 endif
 
 if s:has_plugin('vim-javascript')
