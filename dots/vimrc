@@ -543,8 +543,6 @@ if s:has_plugin('coc.nvim')
   command! -nargs=0 Prettier :CocCommand prettier.formatFile
   nmap <silent> <leader>uf :CocList snippets<cr>
 
-  " Highlight symbol under cursor on CursorHold
-  autocmd CursorHold * silent call CocActionAsync('highlight')
   " documentation popup
   nnoremap <silent> K :call <SID>show_documentation()<CR>
   function! s:show_documentation()
