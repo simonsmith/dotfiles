@@ -776,8 +776,8 @@ if s:has_plugin('vim-gitgutter')
   let g:gitgutter_sign_removed = '-'
   let g:gitgutter_sign_modified_removed = '•'
   let g:gitgutter_map_keys = 0
-  nmap [c <Plug>GitGutterPrevHunk
-  nmap ]c <Plug>GitGutterNextHunk
+  nmap [c <Plug>(GitGutterPrevHunk)
+  nmap ]c <Plug>(GitGutterNextHunk)
 endif
 
 if s:has_plugin('emmet-vim')
