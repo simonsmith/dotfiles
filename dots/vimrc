@@ -61,8 +61,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'blockloop/vim-swigjs'
 Plug 'styled-components/vim-styled-components'
 Plug 'jparise/vim-graphql'
-Plug 'peitalin/vim-jsx-typescript'
-Plug 'HerringtonDarkholme/yats.vim'
+Plug 'maxmellon/vim-jsx-pretty'
 
 " Editing
 " ------------------------------------------------------------------------------
@@ -616,7 +615,7 @@ if s:has_plugin('vim-session')
 endif
 
 if s:has_plugin('vim-polyglot')
-  let g:polyglot_disabled = ['markdown', 'scss', 'typescript']
+  let g:polyglot_disabled = ['markdown', 'scss']
   let g:vue_disable_pre_processors = 1
   let g:jsx_ext_required = 0
 endif
