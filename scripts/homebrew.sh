@@ -44,7 +44,7 @@ brew install watchman
 
 # neovim
 brew install python3
-brew install neovim/neovim/neovim
+brew install neovim
 pip3 install neovim
 pip3 install pynvim
 
