@@ -92,6 +92,8 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'zef/vim-cycle'
 " Preview markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+" Distraction free
+Plug 'junegunn/goyo.vim'
 
 " Text objects
 " ------------------------------------------------------------------------------
@@ -582,6 +584,38 @@ endif
 if s:has_plugin('vim-javascript')
   let g:javascript_plugin_flow=1
   let g:javascript_plugin_jsdoc=1
+endif
+
+if s:has_plugin('goyo.vim')
+  function! s:goyo_enter()
+    if executable('tmux') && strlen($TMUX)
+      silent !tmux set status off
+      silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+    endif
+    set noshowmode
+    set noshowcmd
+    set norelativenumber
+    set scrolloff=999
+
+    autocmd InsertEnter * setlocal nonumber norelativenumber
+    autocmd InsertLeave * setlocal norelativenumber nonumber
+  endfunction
+
+  function! s:goyo_leave()
+    if executable('tmux') && strlen($TMUX)
+      silent !tmux set status on
+      silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+    endif
+    set showcmd
+    set relativenumber
+    set scrolloff=3
+
+    autocmd InsertEnter * setlocal number norelativenumber nocursorline
+    autocmd InsertLeave * setlocal relativenumber cursorline
+  endfunction
+
+  autocmd! User GoyoEnter nested call <SID>goyo_enter()
+  autocmd! User GoyoLeave nested call <SID>goyo_leave()
 endif
 
 if s:has_plugin('vim-grepper')
