@@ -11,5 +11,6 @@
     "javascriptreact"
   ],
   "suggest.timeout": 5000,
-  "typescript.suggestionActions.enabled": false
+  "typescript.suggestionActions.enabled": false,
+  "coc.preferences.formatOnType": true
 }

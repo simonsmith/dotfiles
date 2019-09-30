@@ -66,10 +66,6 @@ Plug 'maxmellon/vim-jsx-pretty'
 " Editing
 " ------------------------------------------------------------------------------
 
-" Lint
-Plug 'w0rp/ale'
-" Insert or delete brackets, parens, quotes in pair.
-Plug 'tmsvg/pear-tree'
 " Allow plugins to be repeated with dot
 Plug 'tpope/vim-repeat'
 " Comment out blocks of code
@@ -540,9 +536,12 @@ if s:has_plugin('coc.nvim')
 
   let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
   let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
-  call coc#add_extension('coc-json', 'coc-tsserver', 'coc-css', 'coc-html', 'coc-yaml', 'coc-prettier', 'coc-snippets')
+  call coc#add_extension('coc-eslint', 'coc-pairs', 'coc-json', 'coc-tsserver', 'coc-css', 'coc-html', 'coc-yaml', 'coc-prettier', 'coc-snippets')
   command! -nargs=0 Prettier :CocCommand prettier.formatFile
   nmap <silent> <leader>uf :CocList snippets<cr>
+
+  inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+        \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
   " documentation popup
   nnoremap <silent> K :call <SID>show_documentation()<CR>
