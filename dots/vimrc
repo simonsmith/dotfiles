@@ -36,6 +36,8 @@ Plug 'junegunn/vim-slash'
 
 " File browser
 Plug 'mcchrish/nnn.vim'
+" Undo visualise
+Plug 'mbbill/undotree'
 
 " Buffers
 " ------------------------------------------------------------------------------
@@ -538,7 +540,7 @@ if s:has_plugin('coc.nvim')
 
   let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
   let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
-  call coc#add_extension('coc-eslint', 'coc-pairs', 'coc-json', 'coc-tsserver', 'coc-css', 'coc-html', 'coc-yaml', 'coc-prettier', 'coc-snippets')
+  call coc#add_extension('coc-pairs', 'coc-json', 'coc-tsserver', 'coc-css', 'coc-html', 'coc-yaml', 'coc-prettier', 'coc-snippets')
   command! -nargs=0 Prettier :CocCommand prettier.formatFile
   nmap <silent> <leader>uf :CocList snippets<cr>
 
