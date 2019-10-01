@@ -579,6 +579,11 @@ if s:has_plugin('sideways.vim')
   nnoremap [j :SidewaysLeft<cr>
 endif
 
+if s:has_plugin('undotree')
+  nnoremap <F5> :UndotreeToggle<cr>
+  let g:undotree_SplitWidth = 45
+endif
+
 if s:has_plugin('vim-bufonly')
   nnoremap <leader>B :BufOnly<cr>
 endif
