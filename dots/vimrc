@@ -61,7 +61,7 @@ Plug 'mhinz/vim-grepper'
 " Syntax and highlighting for every language
 Plug 'sheerun/vim-polyglot'
 Plug 'blockloop/vim-swigjs'
-Plug 'styled-components/vim-styled-components'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'jparise/vim-graphql'
 Plug 'maxmellon/vim-jsx-pretty'
 
