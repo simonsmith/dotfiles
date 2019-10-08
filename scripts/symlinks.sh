@@ -12,6 +12,7 @@ dots=(
   agignore
   aliases
   alacritty.yml
+  batconfig
   chunkwmrc
   ctags
   curlrc

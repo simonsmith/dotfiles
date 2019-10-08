@@ -109,6 +109,10 @@ export NODE_ENV=development
 # Stop z polluting the home dir
 export _Z_DATA="$HOME/.zdata/.z"
 
+# bat
+# https://github.com/sharkdp/bat
+export BAT_CONFIG_PATH="$HOME/.batconfig"
+
 # nnn
 # https://github.com/jarun/nnn
 

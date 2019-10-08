@@ -82,6 +82,7 @@ brew tap crisidev/homebrew-chunkwm
 brew install chunkwm
 
 # Install other useful binaries.
+brew install bat
 brew install fd
 brew install direnv
 brew install go

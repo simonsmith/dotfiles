@@ -11,6 +11,7 @@ alias nv="nvim"
 alias vim="nvim"
 alias mux="tmuxinator"
 alias k="kubectl"
+alias cat="bat"
 
 # npm
 alias n='npm'
