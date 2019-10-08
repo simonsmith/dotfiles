@@ -1,5 +1,4 @@
 # PATH
-# ---------------------------------------------------------------
 
 # Default path
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
@@ -25,7 +24,6 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH=/usr/local/opt/python/libexec/bin:$PATH
 
 # zplug
-# ---------------------------------------------------------------
 
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
@@ -64,7 +62,6 @@ done
 unset file
 
 # Exports
-# ---------------------------------------------------------------
 
 # Change 'z' alias for use with the fzf function
 export ZSHZ_CMD="_z"
@@ -106,7 +103,6 @@ export HOMEBREW_NO_ANALYTICS=1
 # Homebrew will not auto-update before running `brew install`, `brew upgrade` or `brew tap`.
 export HOMEBREW_NO_AUTO_UPDATE=1
 
-
 # Node dev
 export NODE_ENV=development
 
@@ -115,7 +111,6 @@ export _Z_DATA="$HOME/.zdata/.z"
 
 # nnn
 # https://github.com/jarun/nnn
-# ---------------------------------------------------------------
 
 export NNN_USE_EDITOR=1
 export NNN_SHOW_HIDDEN=1
@@ -123,7 +118,6 @@ export LC_COLLATE="C"
 
 # fzf
 # https://github.com/junegunn/fzf
-# ---------------------------------------------------------------
 
 # Setting ag as the default source for fzf - include hidden files
 export FZF_DEFAULT_COMMAND='ag --follow --hidden --ignore .git -g ""'
@@ -146,14 +140,12 @@ command -v tree > /dev/null && export FZF_ALT_C_OPTS="--preview 'tree -C {} | he
 
 # nvs
 # https://github.com/jasongin/nvs
-# ---------------------------------------------------------------
 
 export NVS_HOME="$HOME/.nvs"
 [ -s "$NVS_HOME/nvs.sh" ] && . "$NVS_HOME/nvs.sh"
 
 # Theme
 # https://github.com/denysdovhan/spaceship-prompt
-# ---------------------------------------------------------------
 
 # Git info
 # https://github.com/olivierverdier/zsh-git-prompt
@@ -190,7 +182,6 @@ SPACESHIP_PROMPT_ORDER=(
 )
 
 # Misc
-# ---------------------------------------------------------------
 
 # https://github.com/rbenv/rbenv
 eval "$(rbenv init -)"
