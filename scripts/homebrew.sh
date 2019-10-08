@@ -91,6 +91,7 @@ brew install nnn
 brew install htop
 brew install httpie
 brew install imageoptim-cli
+brew install m-cli
 brew install p7zip
 brew install python
 brew install redis
