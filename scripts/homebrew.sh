@@ -84,6 +84,7 @@ brew install chunkwm
 # Install other useful binaries.
 brew install bat
 brew install fd
+brew install devd
 brew install direnv
 brew install go
 brew install exa

@@ -13,7 +13,6 @@ nvs auto on
 
 echo "Installing npm global packages ..."
 
-npm i -g --quiet http-server
 npm i -g --quiet imageoptim-cli
 npm i -g --quiet npm-check
 
