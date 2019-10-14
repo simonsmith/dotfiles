@@ -42,6 +42,10 @@ brew install wget --with-iri
 # https://github.com/expo/expo/issues/854#issuecomment-343243804
 brew install watchman
 
+# Diff images on cmd-line - https://github.com/ewanmellor/git-diff-image
+brew install exiftool
+brew install imagemagick
+
 # neovim
 brew install python3
 brew install neovim
