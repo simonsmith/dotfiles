@@ -523,6 +523,7 @@ endif
 if s:has_plugin('coc.nvim')
   " Remap keys for gotos
   nmap <silent> <leader>dr <Plug>(coc-references)
+  nmap <silent> <leader>dR <Plug>(coc-refactor)
   nmap <silent> <leader>dd <Plug>(coc-implementation)
   nmap <silent> <leader>dy <Plug>(coc-type-definition)
   nmap <silent> <leader>dn <Plug>(coc-rename)
