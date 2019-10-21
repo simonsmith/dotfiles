@@ -60,7 +60,6 @@ Plug 'mhinz/vim-grepper'
 
 " Syntax and highlighting for every language
 Plug 'sheerun/vim-polyglot'
-Plug 'blockloop/vim-swigjs'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'jparise/vim-graphql'
 Plug 'maxmellon/vim-jsx-pretty'
@@ -90,10 +89,6 @@ Plug 'yssl/QFEnter'
 Plug 'matze/vim-move'
 " Multiple cursors
 Plug 'terryma/vim-multiple-cursors'
-" Allow use of ctrl+a/x on more than just numbers
-Plug 'zef/vim-cycle'
-" Preview markdown
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 " Distraction free
 Plug 'junegunn/goyo.vim'
 
