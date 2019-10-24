@@ -553,6 +553,10 @@ if s:has_plugin('coc.nvim')
   endfunction
 endif
 
+if s:has_plugin('editorconfig-vim')
+  let g:EditorConfig_max_line_indicator = "none"
+endif
+
 if s:has_plugin('bufexplorer')
   let g:bufExplorerDisableDefaultKeyMapping = 1
   let g:bufExplorerShowNoName = 1
