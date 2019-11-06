@@ -14,7 +14,6 @@ nvs auto on
 echo "Installing npm global packages ..."
 
 npm i -g --quiet imageoptim-cli
-npm i -g --quiet npm-check
 
 echo "Installing yarn ..."
 
