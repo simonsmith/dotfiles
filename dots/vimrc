@@ -553,6 +553,7 @@ endif
 
 if s:has_plugin('editorconfig-vim')
   let g:EditorConfig_max_line_indicator = "none"
+  let g:EditorConfig_preserve_formatoptions = 1
 endif
 
 if s:has_plugin('bufexplorer')
