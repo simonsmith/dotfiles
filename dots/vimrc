@@ -667,6 +667,12 @@ if s:has_plugin('splitjoin.vim')
   nmap gk :SplitjoinJoin<cr>
 endif
 
+
+if s:has_plugin('vim-smoothie')
+  let g:smoothie_base_speed = 25
+  let g:smoothie_update_interval = 5
+endif
+
 if s:has_plugin('ale')
  let g:ale_sign_error = 'x'
  let g:ale_sign_warning = '~'
