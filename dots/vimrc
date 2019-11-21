@@ -866,7 +866,7 @@ augroup file-types
   autocmd FileType css,scss,sass setlocal iskeyword+=-
 
   " Use JS snippets in TS
-  autocmd FileType typescript,typescript.tsx call UltiSnips#AddFiletypes('javascript.typescript')
+  autocmd FileType typescript,typescript.tsx,typescriptreact call UltiSnips#AddFiletypes('javascript.typescript')
 augroup END
 
 " Switch between normal and relative line numbers and cursorline
