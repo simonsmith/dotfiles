@@ -1,0 +1,14 @@
+name: front-end
+root: ~/wahanda/front-end-2.0
+startup_window: nvim
+
+windows:
+  - nvim: nvim
+  - zsh:
+    -
+  - server:
+    - cd ~/wahanda/front-end-2.0
+    - yarn watch
+  - storybook:
+    - cd ~/wahanda/front-end-2.0
+    - yarn storybook

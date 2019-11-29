@@ -1,0 +1,9 @@
+name: shared
+root: ~/wahanda
+startup_window: twbox
+
+windows:
+  - twbox:
+    - twbox -s amp.twtest.io -l FRONT_END_20,AMP_UI,SITE,ASSET nginx up
+  - rainbow:
+    - cd ~/wahanda/service/rainbow

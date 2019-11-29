@@ -1,27 +1,22 @@
-# /Users/simonsmith/.tmuxinator/treatwell.yml
-
-name: treatwell
-root: ~/wahanda
+name: service
+root: ~/wahanda/service
 startup_window: nvim
 
 windows:
   - nvim: nvim
   - zsh:
     -
-  - fe-2.0:
-    - cd ~/wahanda/front-end-2.0
-    - yarn watch
-  - twbox:
-    - twbox -s amp.twtest.io -l FRONT_END_20 nginx up
   - services:
       layout: even-horizontal
       panes:
         - asset:
             - cd ~/wahanda/service/asset/webapp
             - cat ../../.nvmrc | read version; nvs use $version
+            - mvn spring-boot:run
         - site:
             - cd ~/wahanda/service/site/webapp
             - cat ../../.nvmrc | read version; nvs use $version
+            - AWS_DEFAULT_REGION=eu-west-1 AWS_REGION=eu-west-1 mvn spring-boot:run
   - watch:
       layout: even-horizontal
       panes:
@@ -31,8 +26,3 @@ windows:
         - site:
           - cd ~/wahanda/service/site/webapp
           - cat ../../.nvmrc | read version; nvs use $version
-  - rainbow:
-    - cd ~/wahanda/service/rainbow
-  - storybook:
-    - cd ~/wahanda/front-end-2.0
-    - yarn storybook
