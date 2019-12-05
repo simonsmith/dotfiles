@@ -632,6 +632,7 @@ if s:has_plugin('vim-grepper')
   xmap gs <plug>(GrepperOperator)
   let g:grepper = {}
   let g:grepper.stop = 2500
+  let g:grepper.open = 50
   let g:grepper.highlight = 1
 end
 
@@ -785,7 +786,7 @@ command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim
 endif
 
 if s:has_plugin('ListToggle')
-  let g:lt_height = 8
+  let g:lt_height = 18
 endif
 
 if executable('ag')
