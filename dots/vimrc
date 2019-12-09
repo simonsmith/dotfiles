@@ -528,10 +528,10 @@ if s:has_plugin('coc.nvim')
 
   nmap <silent> <leader>p :Prettier<cr>
 
-  hi CocCodeLens guifg=#3a445e
+  " restart coc because it breaks so often
+  nmap <silent> <leader>r :CocRestart<cr>
 
-  " Remap for rename current word
-  nmap <leader>rn <Plug>(coc-rename)
+  hi CocCodeLens guifg=#3a445e
 
   let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
   let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
