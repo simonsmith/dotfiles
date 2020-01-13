@@ -1,0 +1,11 @@
+name: amp-ui
+root: ~/wahanda/amp-next/amp-ui
+startup_window: nvim
+
+windows:
+  - nvim: nvim
+  - zsh:
+      layout: even-horizontal
+      panes:
+        -
+        - yarn dev
