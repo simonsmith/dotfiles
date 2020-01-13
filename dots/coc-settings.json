@@ -3,6 +3,7 @@
   "diagnostic.errorSign": "x",
   "diagnostic.infoSign": "~",
   "eslint.autoFixOnSave": true,
+  "css.validate": false,
   "eslint.filetypes": [
     "javascript",
     "javascript.jsx",
