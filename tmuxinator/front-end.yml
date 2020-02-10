@@ -11,4 +11,3 @@ windows:
     - yarn watch
   - storybook:
     - cd ~/wahanda/front-end-2.0
-    - yarn storybook
