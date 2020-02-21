@@ -75,8 +75,6 @@ Plug 'tomtom/tcomment_vim'
 Plug 'Valloric/ListToggle'
 " Advanced movement similar to motions
 Plug 'justinmk/vim-sneak'
-" Correct common typos
-Plug 'chip/vim-fat-finger'
 " Keep folds performant
 Plug 'Konfekt/FastFold'
 " Move between windows and allow swapping position
