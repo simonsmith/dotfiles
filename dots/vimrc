@@ -86,8 +86,6 @@ Plug 'yssl/QFEnter'
 Plug 'matze/vim-move'
 " Multiple cursors
 Plug 'terryma/vim-multiple-cursors'
-" Distraction free
-Plug 'junegunn/goyo.vim'
 
 " Text objects
 " ------------------------------------------------------------------------------
@@ -590,38 +588,6 @@ if s:has_plugin('vim-javascript')
   let g:javascript_plugin_jsdoc=1
 endif
 
-if s:has_plugin('goyo.vim')
-  function! s:goyo_enter()
-    if executable('tmux') && strlen($TMUX)
-      silent !tmux set status off
-      silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
-    endif
-    set noshowmode
-    set noshowcmd
-    set norelativenumber
-    set scrolloff=999
-
-    autocmd InsertEnter * setlocal nonumber norelativenumber
-    autocmd InsertLeave * setlocal norelativenumber nonumber
-  endfunction
-
-  function! s:goyo_leave()
-    if executable('tmux') && strlen($TMUX)
-      silent !tmux set status on
-      silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
-    endif
-    set showcmd
-    set relativenumber
-    set scrolloff=3
-
-    autocmd InsertEnter * setlocal number norelativenumber nocursorline
-    autocmd InsertLeave * setlocal relativenumber cursorline
-  endfunction
-
-  autocmd! User GoyoEnter nested call <SID>goyo_enter()
-  autocmd! User GoyoLeave nested call <SID>goyo_leave()
-endif
-
 if s:has_plugin('vim-grepper')
   nnoremap <leader>g :Grepper -tool ag<cr>
   nnoremap <leader>G :Grepper -tool ag -buffers<cr>
@@ -669,22 +635,6 @@ endif
 if s:has_plugin('vim-smoothie')
   let g:smoothie_base_speed = 25
   let g:smoothie_update_interval = 5
-endif
-
-if s:has_plugin('ale')
- let g:ale_sign_error = 'x'
- let g:ale_sign_warning = '~'
- let airline#extensions#ale#error_symbol = ''
- let airline#extensions#ale#warning_symbol = ''
- let g:ale_echo_msg_format = '%linter% | %s (%code%)'
- let g:ale_lint_on_text_changed = 'always'
- let g:ale_linters = {'html': [], 'cucumber': [], 'typescript': ['tslint']}
- " Fix JavaScript code with ESlint
- let g:ale_fixers = {}
- let g:ale_fixers.javascript = ['eslint']
- let g:ale_fix_on_save = 1
- nmap ]e <Plug>(ale_next)
- nmap [e <Plug>(ale_previous)
 endif
 
 if s:has_plugin('vim-closetag')
