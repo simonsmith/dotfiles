@@ -212,16 +212,6 @@ endfunction
 "  General config
 " ------------------------------------------------------------------------------
 
-" Theme
-augroup nord-overrides
-  autocmd!
-  autocmd ColorScheme nord highlight VertSplit ctermbg=NONE ctermfg=8 guibg=NONE guifg=#434C5E
-  autocmd ColorScheme nord highlight jsGlobalObjects ctermbg=NONE ctermfg=15 guibg=NONE guifg=#B48EAD
-  autocmd ColorScheme nord highlight jsThis ctermbg=NONE ctermfg=11 guibg=NONE guifg=#BF616A
-  autocmd ColorScheme nord highlight jsParensError ctermbg=NONE ctermfg=6 guibg=NONE guifg=#ECEFF4
-  autocmd ColorScheme nord highlight cssBraceError ctermbg=NONE ctermfg=6 guibg=NONE guifg=#ECEFF4
-augroup END
-
 if s:has_plugin('material.vim')
   let g:material_theme_style = 'palenight'
 end
