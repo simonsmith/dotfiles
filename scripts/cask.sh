@@ -1,23 +1,17 @@
-brew tap caskroom/cask
-brew tap caskroom/versions
+brew tap homebrew/cask-cask
+brew tap homebrew/cask-versions
 
 # Browsers
 brew cask install brave-browser
 brew cask install firefox-developer-edition
-brew cask install google-chrome-beta
+brew cask install google-chrome
 brew cask install google-chrome-canary
 
 # Cloud
 brew cask install google-backup-and-sync
 
-# Comms
-brew cask install google-hangouts
-brew cask install skype
-
 # Media
-brew cask install burn
 brew cask install imageoptim
-brew cask install max
 brew cask install spotify
 brew cask install iina
 brew cask install airflow
@@ -51,9 +45,9 @@ brew cask install keyboard-cleaner
 
 # Fonts
 # https://github.com/caskroom/homebrew-fonts
-brew tap caskroom/fonts
-brew cask install caskroom/fonts/font-hack
-brew cask install caskroom/fonts/font-hack-nerd-font
-brew cask install caskroom/fonts/font-source-code-pro
+brew tap homebrew/cask-fonts
+brew cask install homebrew/cask-fonts/font-hack
+brew cask install homebrew/cask-fonts/font-hack-nerd-font
+brew cask install homebrew/cask-fonts/font-source-code-pro
 
-brew cask cleanup
+brew cleanup

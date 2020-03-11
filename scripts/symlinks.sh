@@ -4,6 +4,7 @@
  }
 
 echo "Creating symlinks ..."
+rm ~/.zshrc
 
 pushd ./dots
 

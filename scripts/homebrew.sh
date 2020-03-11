@@ -73,7 +73,6 @@ brew install scmpuff
 brew install diff-so-fancy
 
 # Install more recent versions of some OS X tools.
-brew tap homebrew/dupes
 brew install grep
 
 # Ruby
@@ -82,7 +81,7 @@ brew install ruby-build
 
 # Window manager
 brew install koekeishiya/formulae/skhd
-brew tap crisidev/homebrew-chunkwm
+brew install koekeishiya/formulae/chunkwm
 brew install chunkwm
 
 # Install other useful binaries.
