@@ -3,15 +3,11 @@ brew tap caskroom/versions
 
 # Browsers
 brew cask install brave-browser
-brew cask install firefox-beta
 brew cask install firefox-developer-edition
 brew cask install google-chrome-beta
 brew cask install google-chrome-canary
-brew cask install tor-browser
 
 # Cloud
-brew cask install cloudapp
-brew cask install dropbox
 brew cask install google-backup-and-sync
 
 # Comms
@@ -28,9 +24,7 @@ brew cask install airflow
 
 # Development
 brew cask install alacritty
-brew cask install java
 brew cask install transmit
-brew cask install vmware-fusion
 brew cask install postman
 brew cask install gitup
 
