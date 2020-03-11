@@ -25,7 +25,7 @@ brew install findutils
 brew install gnu-sed
 
 # Replace system curl
-brew install curl --with-openssl
+brew install curl-openssl
 brew link curl --force
 
 # Install zsh
@@ -35,8 +35,8 @@ brew install zplug
 # less highlighting
 brew install source-highlight
 
-# Install `wget` with IRI support.
-brew install wget --with-iri
+# Install `wget`
+brew install wget
 
 # Fix issue with Jest not running watch
 # https://github.com/expo/expo/issues/854#issuecomment-343243804
