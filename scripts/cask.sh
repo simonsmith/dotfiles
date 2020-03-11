@@ -1,6 +1,3 @@
-brew tap homebrew/cask-cask
-brew tap homebrew/cask-versions
-
 # Browsers
 brew cask install brave-browser
 brew cask install firefox-developer-edition
