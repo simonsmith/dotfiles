@@ -26,7 +26,7 @@ brew install gnu-sed
 
 # Replace system curl
 brew install curl-openssl
-brew link curl --force
+brew link curl-openssl --force
 
 # Install zsh
 brew install zsh
@@ -81,7 +81,7 @@ brew install ruby-build
 
 # Window manager
 brew install koekeishiya/formulae/skhd
-brew install koekeishiya/formulae/chunkwm
+brew tap koekeishiya/formulae
 brew install chunkwm
 
 # Install other useful binaries.
