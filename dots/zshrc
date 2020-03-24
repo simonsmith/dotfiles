@@ -13,6 +13,9 @@ export PATH="$(brew --prefix gnu-sed)/libexec/gnubin:$PATH"
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 export PATH="$(brew --prefix grep)/libexec/gnubin:$PATH"
 
+# Add X11
+export PATH="/opt/X11/bin:$PATH"
+
 # GO
 export GOPATH="$HOME/go"
 export PATH="$PATH:$GOPATH/bin"
