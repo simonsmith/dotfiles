@@ -39,6 +39,7 @@ brew cask install daisydisk
 brew cask install deluge
 brew cask install flux
 brew cask install keyboard-cleaner
+brew cask install soundsource
 
 # Fonts
 # https://github.com/caskroom/homebrew-fonts
