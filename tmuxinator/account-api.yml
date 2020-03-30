@@ -1,0 +1,11 @@
+name: account-api
+root: ~/wahanda/amp-next/account-api
+startup_window: nvim
+
+windows:
+  - nvim: nvim
+  - zsh:
+      layout: even-horizontal
+      panes:
+        -
+        - mvn spring-boot:run
