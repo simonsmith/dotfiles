@@ -70,7 +70,7 @@ brew install urlview
 brew install ydiff
 brew install git
 brew install scmpuff
-brew install diff-so-fancy
+brew install delta
 
 # Install more recent versions of some OS X tools.
 brew install grep
