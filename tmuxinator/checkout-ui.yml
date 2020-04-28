@@ -1,0 +1,11 @@
+name: checkout-ui
+root: ~/wahanda/checkout-ui
+startup_window: nvim
+
+windows:
+  - nvim: nvim
+  - zsh:
+      layout: even-horizontal
+      panes:
+        -
+        - y dev
