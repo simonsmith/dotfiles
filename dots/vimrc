@@ -179,6 +179,8 @@ Plug 'mattn/emmet-vim'
 Plug 'alvan/vim-closetag'
 " Better Scss highlighting than polyglot
 Plug 'tpope/vim-haml'
+" CSS highlight
+Plug 'chrisbra/Colorizer'
 
 " JavaScript
 " ------------------------------------------------------------------------------
@@ -199,7 +201,7 @@ Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile', 'for': 'yaml'
 Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'}
+" Plug 'neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'}
 
 call plug#end()
 
@@ -814,9 +816,12 @@ augroup file-types
   " Allow stylesheets to autocomplete hyphenated words
   autocmd FileType css,scss,sass setlocal iskeyword+=-
 
+  autocmd BufEnter,BufLeave *.css,*.scss,*.sass :ColorHighlight!
+
   " Use JS snippets in TS
   autocmd FileType typescript,typescript.tsx,typescriptreact call UltiSnips#AddFiletypes('javascript.typescript')
 augroup END
+
 
 " Switch between normal and relative line numbers and cursorline
 " when switching modes
