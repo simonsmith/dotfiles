@@ -68,7 +68,7 @@
 	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
 	trustctime = false
 	editor = nvim
-  pager = delta --theme OneHalfDark --24-bit-color always | less --tabs=2 -R
+  pager = delta --theme OneHalfDark | less --tabs=2 -R
 
 [interactive]
     diffFilter = delta --theme OneHalfDark --color-only
