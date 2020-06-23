@@ -138,3 +138,5 @@
     trustExitCode = true
 [diff "image"]
 	command = git_diff_image
+[pull]
+	rebase = false
