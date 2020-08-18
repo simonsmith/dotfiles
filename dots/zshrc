@@ -1,4 +1,5 @@
 # PATH
+zmodload zsh/zprof
 
 # Default path
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
@@ -28,12 +29,9 @@ export PATH=/usr/local/opt/python/libexec/bin:$PATH
 
 # zplug
 
+export ZPLUG_USE_CACHE=true
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
-
-if ! zplug check; then
-    zplug install
-fi
 
 zplug "lib/theme-and-appearance", from:oh-my-zsh
 zplug "lib/clipboard", from:oh-my-zsh
@@ -46,7 +44,6 @@ zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/history", from:oh-my-zsh
 zplug "plugins/tmux", from:oh-my-zsh
 
-zplug "lukechilds/zsh-better-npm-completion"
 zplug "g-plane/zsh-yarn-autocompletions", hook-build:"./zplug.zsh", defer:2
 zplug "hlissner/zsh-autopair"
 zplug "MikeDacre/careful_rm"
@@ -200,3 +197,4 @@ eval "$(scmpuff init -s --aliases=false)"
 eval "$(direnv hook zsh)"
 
 bindkey '^o' autosuggest-accept
+zprof
