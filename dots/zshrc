@@ -1,5 +1,4 @@
 # PATH
-zmodload zsh/zprof
 
 # Default path
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
@@ -197,4 +196,3 @@ eval "$(scmpuff init -s --aliases=false)"
 eval "$(direnv hook zsh)"
 
 bindkey '^o' autosuggest-accept
-zprof
