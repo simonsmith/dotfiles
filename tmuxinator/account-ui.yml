@@ -1,4 +1,4 @@
-name: amp-ui
+name: account-ui
 root: ~/wahanda/amp-next/amp-ui
 startup_window: nvim
 
