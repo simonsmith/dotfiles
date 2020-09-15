@@ -59,6 +59,7 @@ Plug 'mhinz/vim-grepper'
 " ------------------------------------------------------------------------------
 
 " Syntax and highlighting for every language
+let g:polyglot_disabled = ['markdown', 'scss']
 Plug 'sheerun/vim-polyglot'
 Plug 'jparise/vim-graphql'
 Plug 'maxmellon/vim-jsx-pretty'
@@ -621,7 +622,6 @@ if s:has_plugin('vim-session')
 endif
 
 if s:has_plugin('vim-polyglot')
-  let g:polyglot_disabled = ['markdown', 'scss']
   let g:vue_disable_pre_processors = 1
   let g:jsx_ext_required = 0
 endif
