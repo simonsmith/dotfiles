@@ -1,7 +1,10 @@
+# define modes
+:: prefix
+
 # activate prefix mode
 ctrl - f ; prefix
 
-# disable prefix
+# disable modes with escape
 prefix < escape ; default
 
 # open a terminal
