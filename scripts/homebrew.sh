@@ -80,8 +80,9 @@ brew install rbenv
 brew install ruby-build
 
 # Window manager
-brew install koekeishiya/formulae/skhd
 brew tap koekeishiya/formulae
+brew install koekeishiya/formulae/skhd --with-logging
+brew cask install rectangle
 
 # Install other useful binaries.
 brew install bat
