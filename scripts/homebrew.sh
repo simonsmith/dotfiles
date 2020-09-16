@@ -82,7 +82,6 @@ brew install ruby-build
 # Window manager
 brew install koekeishiya/formulae/skhd
 brew tap koekeishiya/formulae
-brew install chunkwm
 
 # Install other useful binaries.
 brew install bat
