@@ -39,7 +39,7 @@ window:
   #   bar buttons
   # - `buttonless`: Window with title bar with transparent background and no
   #   title bar buttons
-  decorations: buttonless
+  decorations: transparent
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.
