@@ -1,10 +1,11 @@
 # define modes
+# `@` means it stays in that mode (and ignores unbound keys) until you disable
 :: prefix @
 
 # activate prefix mode
 ctrl - f ; prefix
 
-# disable modes with escape
+# disable mode with escape
 prefix < escape ; default
 
 # open a terminal
@@ -12,26 +13,28 @@ prefix < return : open -na /Applications/Alacritty.app; skhd -k "escape"
 
 # yabai
 # --------------------------------------------
+# resizing windows can be done with mouse
 
-# Set layout of the space (options: bsp, float)
+# Set layout of the space (options: bsp, float, stack)
 prefix < s : yabai -m space --layout stack
 prefix < b : yabai -m space --layout bsp
 prefix < f : yabai -m window --toggle float;\
              yabai -m window --grid 6:6:1:1:5:4
 
-# toggle spacing
-prefix < o : yabai -m space --toggle padding && yabai -m space --toggle gap
+# toggle padding/gap on all windows
+prefix < o : yabai -m space --toggle padding;\
+             yabai -m space --toggle gap
 
-# zoom window
+# toggle zoom on any window whilst maintaining layout
 prefix < z : yabai -m window --toggle zoom-fullscreen
 
-# change spacing
+# increase/decrease spacing value
 prefix < p : yabai -m space --gap rel:10;\
              yabai -m space --padding rel:10:10:10:10
 prefix < shift - p : yabai -m space --gap rel:-10;\
                      yabai -m space --padding rel:-10:-10:-10:-10
 
-# balance
+# balance all windows sizes back to default
 prefix < shift - b : yabai -m space --balance
 
 # move window to space
