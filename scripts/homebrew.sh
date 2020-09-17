@@ -82,7 +82,9 @@ brew install ruby-build
 # Window manager
 brew tap koekeishiya/formulae
 brew install koekeishiya/formulae/skhd --with-logging
-brew cask install rectangle
+brew install koekeishiya/formulae/yabai
+# install the scripting addition
+sudo yabai --install-sa
 
 # Install other useful binaries.
 brew install bat

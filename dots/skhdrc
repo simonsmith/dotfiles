@@ -1,5 +1,5 @@
 # define modes
-:: prefix
+:: prefix @
 
 # activate prefix mode
 ctrl - f ; prefix
@@ -9,3 +9,45 @@ prefix < escape ; default
 
 # open a terminal
 prefix < return : open -na /Applications/Alacritty.app; skhd -k "escape"
+
+# yabai
+# --------------------------------------------
+
+# Set layout of the space (options: bsp, float)
+prefix < s : yabai -m space --layout stack
+prefix < b : yabai -m space --layout bsp
+prefix < f : yabai -m window --toggle float;\
+             yabai -m window --grid 6:6:1:1:5:4
+
+# toggle spacing
+prefix < o : yabai -m space --toggle padding && yabai -m space --toggle gap
+
+# zoom window
+prefix < z : yabai -m window --toggle zoom-fullscreen
+
+# change spacing
+prefix < p : yabai -m space --gap rel:10;\
+             yabai -m space --padding rel:10:10:10:10
+prefix < shift - p : yabai -m space --gap rel:-10;\
+                     yabai -m space --padding rel:-10:-10:-10:-10
+
+# balance
+prefix < shift - b : yabai -m space --balance
+
+# move window to space
+prefix < 1 : yabai -m window --space 1
+prefix < 2 : yabai -m window --space 2
+prefix < 3 : yabai -m window --space 3
+prefix < 4 : yabai -m window --space 4
+
+# swap window
+prefix < h : yabai -m window --swap west
+prefix < l : yabai -m window --swap east
+prefix < j : yabai -m window --swap south
+prefix < k : yabai -m window --swap north
+
+# warp window
+prefix < shift - h : yabai -m window --warp west
+prefix < shift - l : yabai -m window --warp east
+prefix < shift - j : yabai -m window --warp south
+prefix < shift - k : yabai -m window --warp north

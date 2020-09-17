@@ -14,7 +14,7 @@ dots=(
   aliases
   alacritty.yml
   batconfig
-  chunkwmrc
+  yabairc
   ctags
   curlrc
   editorconfig
