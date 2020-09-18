@@ -28,6 +28,9 @@ prefix < f : yabai -m window --toggle float;\
 prefix < o : yabai -m space --toggle padding;\
              yabai -m space --toggle gap
 
+# toggle border on a window
+prefix < shift - b : yabai -m window --toggle border
+
 # toggle zoom on any window whilst maintaining layout
 prefix < z : yabai -m window --toggle zoom-fullscreen
 
