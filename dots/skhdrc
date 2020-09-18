@@ -15,6 +15,9 @@ prefix < return : open -na /Applications/Alacritty.app; skhd -k "escape"
 # --------------------------------------------
 # resizing windows can be done with mouse
 
+# quick restart
+prefix < shift - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+
 # Set layout of the space (options: bsp, float, stack)
 prefix < s : yabai -m space --layout stack
 prefix < b : yabai -m space --layout bsp
@@ -43,7 +46,15 @@ prefix < 2 : yabai -m window --space 2
 prefix < 3 : yabai -m window --space 3
 prefix < 4 : yabai -m window --space 4
 
+# focus window
+
+ctrl + cmd - h : yabai -m window --focus west
+ctrl + cmd - l : yabai -m window --focus east
+ctrl + cmd - j : yabai -m window --focus south
+ctrl + cmd - k : yabai -m window --focus north
+
 # swap window
+
 prefix < h : yabai -m window --swap west
 prefix < l : yabai -m window --swap east
 prefix < j : yabai -m window --swap south
