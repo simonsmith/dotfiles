@@ -10,8 +10,3 @@ else
   # Open Neovim and install all plugins
   nvim -c PlugInstall -c quitall
 fi
-
-# Allow CTRL-H mapping to work in neovim
-# https://github.com/neovim/neovim/wiki/Troubleshooting#my-ctrl-h-mapping-doesnt-work
-infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > $TERM.ti
-tic $TERM.ti
