@@ -1,4 +1,4 @@
-ruby_version=2.6.0
+ruby_version=2.7.1
 
 echo "Installing ruby ..."
 
@@ -13,10 +13,7 @@ rbenv shell "$ruby_version"
 
 gem update --system
 
-gem install bundler
 gem install tmuxinator
-gem install circle-cli
-gem install coderay
 
 rbenv rehash
 
