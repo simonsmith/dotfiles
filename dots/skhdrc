@@ -1,6 +1,7 @@
 # define modes
 # `@` means it stays in that mode (and ignores unbound keys) until you disable
-:: prefix @
+:: default : yabai -m config active_window_border_color 0xff0d78bf
+:: prefix @ : yabai -m config active_window_border_color 0xff750670
 
 # activate prefix mode
 ctrl - f ; prefix
