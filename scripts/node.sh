@@ -11,10 +11,6 @@ nvs use lts
 nvs link lts
 nvs auto on
 
-echo "Installing npm global packages ..."
-
-npm i -g --quiet imageoptim-cli
-
 echo "Installing yarn ..."
 
 curl -o- -L https://yarnpkg.com/install.sh | bash

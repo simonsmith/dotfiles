@@ -1,5 +1,4 @@
 # Browsers
-brew cask install brave-browser
 brew cask install firefox-developer-edition
 brew cask install google-chrome
 brew cask install google-chrome-canary
@@ -8,16 +7,13 @@ brew cask install google-chrome-canary
 brew cask install google-backup-and-sync
 
 # Media
-brew cask install imageoptim
 brew cask install spotify
 brew cask install iina
 brew cask install airflow
 
 # Development
 brew cask install alacritty
-brew cask install transmit
 brew cask install postman
-brew cask install gitup
 
 # Mac OS Enhancements
 brew cask install alfred
@@ -44,8 +40,6 @@ brew cask install soundsource
 # Fonts
 # https://github.com/caskroom/homebrew-fonts
 brew tap homebrew/cask-fonts
-brew cask install homebrew/cask-fonts/font-hack
-brew cask install homebrew/cask-fonts/font-hack-nerd-font
 brew cask install homebrew/cask-fonts/font-source-code-pro
 
 brew cleanup
