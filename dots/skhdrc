@@ -23,7 +23,19 @@ prefix < shift - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 prefix < s : yabai -m space --layout stack
 prefix < b : yabai -m space --layout bsp
 prefix < f : yabai -m window --toggle float;\
-             yabai -m window --grid 6:6:1:1:5:4
+             yabai -m window --grid 5:5:1:1:3:3
+
+# decrease window size
+prefix < ctrl + shift - h : yabai -m window --resize left:20:0
+prefix < ctrl + shift - j : yabai -m window --resize bottom:0:-20
+prefix < ctrl + shift - k : yabai -m window --resize top:0:20
+prefix < ctrl + shift - l : yabai -m window --resize right:-20:0
+
+# increase window size
+prefix < ctrl - h : yabai -m window --resize left:-20:0
+prefix < ctrl - j : yabai -m window --resize bottom:0:20
+prefix < ctrl - k : yabai -m window --resize top:0:-20
+prefix < ctrl - l : yabai -m window --resize right:20:0
 
 # toggle padding/gap on all windows
 prefix < o : yabai -m space --toggle padding;\
@@ -58,14 +70,12 @@ prefix < 3 : yabai -m window --space 3
 prefix < 4 : yabai -m window --space 4
 
 # focus window
-
 ctrl + cmd - h : yabai -m window --focus west
 ctrl + cmd - l : yabai -m window --focus east
 ctrl + cmd - j : yabai -m window --focus south
 ctrl + cmd - k : yabai -m window --focus north
 
 # swap window
-
 prefix < h : yabai -m window --swap west
 prefix < l : yabai -m window --swap east
 prefix < j : yabai -m window --swap south
