@@ -28,6 +28,7 @@ brew cask install the-unarchiver
 # Other stuff
 brew cask install 1password
 brew cask install boostnote
+brew cask install selfcontrol
 brew cask install authy
 brew cask install gifox
 brew cask install appcleaner
