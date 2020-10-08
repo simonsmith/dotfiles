@@ -32,18 +32,22 @@ export ZPLUG_USE_CACHE=true
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
+zplug "lib/theme-and-appearance", from:oh-my-zsh
 zplug "lib/clipboard", from:oh-my-zsh
 zplug "lib/completion", from:oh-my-zsh
 zplug "lib/key-bindings", from:oh-my-zsh
 zplug "lib/directories", from:oh-my-zsh
+zplug "lib/history", from:oh-my-zsh
 zplug "plugins/vi-mode", from:oh-my-zsh
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/tmux", from:oh-my-zsh
+zplug "plugins/history", from:oh-my-zsh
 
-zplug "hlissner/zsh-autopair", defer:2
+zplug "hlissner/zsh-autopair", defer:3
 zplug "MikeDacre/careful_rm"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-syntax-highlighting"
+zplug "zsh-users/zsh-completions", defer:2
 zplug "denysdovhan/spaceship-prompt", as:theme
 
 zplug load
