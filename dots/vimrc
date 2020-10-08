@@ -680,7 +680,7 @@ if s:has_plugin('taboo.vim')
 endif
 
 if s:has_plugin('nnn.vim')
-  nmap _ :NnnPicker '%:p:h'<cr>
+  nnoremap _ :NnnPicker %:p:h<cr>
   let g:nnn#command = 'nnn -d -H'
   let g:nnn#action = {
         \ '<c-x>': 'split',
