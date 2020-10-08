@@ -86,6 +86,7 @@ brew install koekeishiya/formulae/yabai
 
 # Install other useful binaries.
 brew install bat
+brew install diff-so-fancy
 brew install fd
 brew install devd
 brew install direnv
