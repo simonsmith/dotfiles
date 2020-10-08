@@ -1,5 +1,5 @@
 name: account-ui
-root: ~/wahanda/amp-next/amp-ui
+root: ~/wahanda/account-ui
 startup_window: nvim
 
 windows:
