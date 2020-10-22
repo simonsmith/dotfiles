@@ -113,8 +113,7 @@ export BAT_CONFIG_PATH="$HOME/.batconfig"
 # nnn
 # https://github.com/jarun/nnn
 
-export NNN_USE_EDITOR=1
-export NNN_SHOW_HIDDEN=1
+export NNN_OPTS="dHe"
 export LC_COLLATE="C"
 
 # fzf

@@ -13,24 +13,6 @@ alias mux="tmuxinator"
 alias k="kubectl"
 alias cat="bat"
 
-# npm
-alias n='npm'
-# install
-alias ni='npm install'
-alias nis='npm install --save'
-alias nid='npm install --save-dev'
-alias nig='npm install --global'
-# uninstall
-alias nu='npm uninstall'
-alias nus='npm uninstall --save'
-alias nud='npm uninstall --save-dev'
-alias nug='npm uninstall --global'
-# misc
-alias nt='npm test'
-alias nk='npm link'
-alias nr='npm run'
-alias nf='npm cache clean && rm -rf node_modules && npm install'
-
 # yarn
 alias y='yarn'
 alias ya='yarn add'
@@ -48,11 +30,11 @@ alias t1="exa -lbhaT -L 1"
 alias t2="exa -lbhaT -L 2"
 alias t3="exa -lbhaT -L 3"
 
+# alias nnn
+alias n="nnn"
+
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
-
-# file management
-alias nnn='nnn -d'
 
 # Gzip-enabled `curl`
 alias gurl='curl --compressed'
