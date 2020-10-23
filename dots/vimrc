@@ -212,10 +212,6 @@ endfunction
 "  General config
 " ------------------------------------------------------------------------------
 
-if s:has_plugin('material.vim')
-  let g:material_theme_style = 'palenight'
-end
-
 set background=dark
 silent! colorscheme material
 
