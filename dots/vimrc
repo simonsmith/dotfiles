@@ -73,20 +73,12 @@ Plug 'tpope/vim-repeat'
 Plug 'tomtom/tcomment_vim'
 " Toggle location and quickfix lists
 Plug 'Valloric/ListToggle'
-" Advanced movement similar to motions
-Plug 'justinmk/vim-sneak'
-" Keep folds performant
-Plug 'Konfekt/FastFold'
 " Move between windows and allow swapping position
 Plug 't9md/vim-choosewin'
 " Remember cursor position in closed buffers
 Plug 'dietsche/vim-lastplace'
 " Open files from Quickfix
 Plug 'yssl/QFEnter'
-" Move blocks of code with ALT+j/k
-Plug 'matze/vim-move'
-" Multiple cursors
-Plug 'terryma/vim-multiple-cursors'
 
 " Text objects
 " ------------------------------------------------------------------------------
@@ -104,8 +96,6 @@ Plug 'kana/vim-textobj-function'
 Plug 'kana/vim-textobj-entire'
 " al
 Plug 'kana/vim-textobj-line'
-" af
-Plug 'thinca/vim-textobj-function-javascript', {'for': ['javascript', 'javascript.jsx', 'json']}
 " ax
 Plug 'whatyouhide/vim-textobj-xmlattr'
 
@@ -165,7 +155,6 @@ Plug 'SirVer/ultisnips'
 " ------------------------------------------------------------------------------
 
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/gv.vim'
 
@@ -185,7 +174,6 @@ Plug 'chrisbra/Colorizer'
 " ------------------------------------------------------------------------------
 
 Plug 'pangloss/vim-javascript', {'for': ['javascript', 'javascript.jsx']}
-Plug 'moll/vim-node', {'for': ['javascript', 'javascript.jsx', 'json']}
 
 " Autocomplete & linting
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -599,15 +587,6 @@ end
 if s:has_plugin('vim-better-whitespace')
   autocmd BufEnter * EnableStripWhitespaceOnSave
   highlight ExtraWhitespace ctermbg=red guibg = #e06c75
-endif
-
-if s:has_plugin('vim-sneak')
-  let g:sneak#use_ic_scs = 0
-  nmap <leader>s <Plug>Sneak_s
-  nmap <leader>S <Plug>Sneak_S
-  xmap <leader>s <Plug>Sneak_s
-  xmap <leader>S <Plug>Sneak_S
-  let g:sneak#streak = 1
 endif
 
 if s:has_plugin('vim-session')
