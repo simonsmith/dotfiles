@@ -25,18 +25,6 @@ prefix < b : yabai -m space --layout bsp
 prefix < f : yabai -m window --toggle float;\
              yabai -m window --grid 5:5:1:1:3:3
 
-# decrease window size
-prefix < ctrl + shift - h : yabai -m window --resize left:20:0
-prefix < ctrl + shift - j : yabai -m window --resize bottom:0:-20
-prefix < ctrl + shift - k : yabai -m window --resize top:0:20
-prefix < ctrl + shift - l : yabai -m window --resize right:-20:0
-
-# increase window size
-prefix < ctrl - h : yabai -m window --resize left:-20:0
-prefix < ctrl - j : yabai -m window --resize bottom:0:20
-prefix < ctrl - k : yabai -m window --resize top:0:-20
-prefix < ctrl - l : yabai -m window --resize right:20:0
-
 # toggle padding/gap on all windows
 prefix < o : yabai -m space --toggle padding;\
              yabai -m space --toggle gap
@@ -44,8 +32,11 @@ prefix < o : yabai -m space --toggle padding;\
 # toggle border on a window
 prefix < shift - b : yabai -m window --toggle border
 
-# toggle zoom on any window whilst maintaining layout
-prefix < z : yabai -m window --toggle zoom-fullscreen
+# toggle full zoom on any window whilst maintaining layout
+prefix < shift - z : yabai -m window --toggle zoom-fullscreen
+
+# toggle zoom to parent on window
+prefix < z : yabai -m window --toggle zoom-parent
 
 # increase/decrease spacing value
 prefix < p : yabai -m space --gap rel:10;\
@@ -53,8 +44,8 @@ prefix < p : yabai -m space --gap rel:10;\
 prefix < shift - p : yabai -m space --gap rel:-10;\
                      yabai -m space --padding rel:-10:-10:-10:-10
 
-# balance all windows sizes back to default
-prefix < shift - b : yabai -m space --balance
+# toggle horizontal/vertical split
+prefix < shift - s : yabai -m window --toggle split
 
 # move to a space
 ctrl - 1 : yabai -m space --focus 1
