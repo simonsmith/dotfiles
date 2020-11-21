@@ -32,6 +32,15 @@ prefix < o : yabai -m space --toggle padding;\
 # toggle border on a window
 prefix < shift - b : yabai -m window --toggle border
 
+# equalise windows
+prefix < e : yabai -m space --balance
+
+# flip windows y-axis
+prefix < y : yabai -m space --mirror y-axis
+
+# flip windows x-axis
+prefix < x : yabai -m space --mirror x-axis
+
 # toggle full zoom on any window whilst maintaining layout
 prefix < shift - z : yabai -m window --toggle zoom-fullscreen
 
