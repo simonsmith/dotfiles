@@ -79,6 +79,8 @@ Plug 't9md/vim-choosewin'
 Plug 'dietsche/vim-lastplace'
 " Open files from Quickfix
 Plug 'yssl/QFEnter'
+" Move blocks of code with ALT+j/k
+Plug 'matze/vim-move'
 
 " Text objects
 " ------------------------------------------------------------------------------
