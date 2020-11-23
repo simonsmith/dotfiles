@@ -47,6 +47,9 @@ done
 mkdir "$HOME/.ssh"
 [ ! -e "$HOME/.ssh/config" ] && ln -sfv $(grealpath ssh-config) "$HOME/.ssh/config"
 
+mkdir "$HOME/.vscode"
+[ ! -e "$HOME/.vscode/init.vim" ] && ln -sfv $(grealpath vscode.vim) "$HOME/.vscode/init.vim"
+
 popd
 
 # Directories
@@ -57,3 +60,4 @@ symlink tmuxinator .
 
 mkdir "$HOME/.zdata"
 touch "$HOME/.zdata/.z"
+
