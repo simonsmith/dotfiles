@@ -26,7 +26,6 @@ dots=(
   skhdrc
   ripgreprc
   rgignore
-  tern-project
   tmux.conf
   tmuxline_snapshot
   vimrc
@@ -39,8 +38,6 @@ for dotfile in ${dots[*]}; do
 done
 
 # Files that need slightly different symlink
-
-[ ! -e "$HOME/.tern-config" ] && ln -sfv $(grealpath tern-project) "$HOME/.tern-config"
 
 [ ! -e "$HOME/.config/nvim/coc-settings.json" ] && ln -sfv $(grealpath coc-settings.json) "$HOME/.config/nvim/coc-settings.json"
 
