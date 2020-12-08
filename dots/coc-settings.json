@@ -14,5 +14,7 @@
   "suggest.timeout": 5000,
   "typescript.suggestionActions.enabled": false,
   "typescript.referencesCodeLens.enable": false,
+  "javascript.suggestionActions.enabled": false,
+  "javascript.referencesCodeLens.enable": false,
   "coc.preferences.formatOnType": true
 }
