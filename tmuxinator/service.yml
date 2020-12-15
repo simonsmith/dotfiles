@@ -11,18 +11,17 @@ windows:
       panes:
         - asset:
             - cd ~/wahanda/service/asset/webapp
-            - cat ../../.nvmrc | read version; nvs use $version
             - mvn spring-boot:run
         - site:
             - cd ~/wahanda/service/site/webapp
-            - cat ../../.nvmrc | read version; nvs use $version
-            - AWS_DEFAULT_REGION=eu-west-1 AWS_REGION=eu-west-1 mvn spring-boot:run
+            - mvn spring-boot:run
   - watch:
       layout: even-horizontal
       panes:
         - asset:
           - cd ~/wahanda/service/asset/webapp
-          - cat ../../.nvmrc | read version; nvs use $version
         - site:
           - cd ~/wahanda/service/site/webapp
-          - cat ../../.nvmrc | read version; nvs use $version
+  - rainbow:
+    - cd ~/wahanda/service/rainbow
+    - mvn spring-boot:run
