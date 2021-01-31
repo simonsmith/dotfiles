@@ -13,7 +13,7 @@ brew cask install airflow
 
 # Development
 brew cask install alacritty
-brew cask install postman
+brew cask install insomnia
 
 # Mac OS Enhancements
 brew cask install alfred
