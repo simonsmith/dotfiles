@@ -1,46 +1,46 @@
 # Browsers
-brew cask install firefox-developer-edition
-brew cask install google-chrome
-brew cask install google-chrome-canary
+brew install --cask firefox-developer-edition
+brew install --cask google-chrome
+brew install --cask google-chrome-canary
 
 # Cloud
-brew cask install google-backup-and-sync
+brew install --cask google-backup-and-sync
 
 # Media
-brew cask install spotify
-brew cask install iina
-brew cask install airflow
+brew install --cask spotify
+brew install --cask iina
+brew install --cask airflow
 
 # Development
-brew cask install alacritty
-brew cask install insomnia
+brew install --cask alacritty
+brew install --cask insomnia
 
 # Mac OS Enhancements
-brew cask install alfred
-brew cask install bartender
-brew cask install bettertouchtool
-brew cask install contexts
-brew cask install karabiner-elements
-brew cask install gpg-suite
-brew cask install keepingyouawake
-brew cask install the-unarchiver
+brew install --cask alfred
+brew install --cask bartender
+brew install --cask bettertouchtool
+brew install --cask contexts
+brew install --cask karabiner-elements
+brew install --cask gpg-suite
+brew install --cask keepingyouawake
+brew install --cask the-unarchiver
 
 # Other stuff
-brew cask install 1password
-brew cask install boostnote
-brew cask install selfcontrol
-brew cask install authy
-brew cask install gifox
-brew cask install appcleaner
-brew cask install daisydisk
-brew cask install deluge
-brew cask install flux
-brew cask install keyboard-cleaner
-brew cask install soundsource
+brew install --cask 1password
+brew install --cask boostnote
+brew install --cask selfcontrol
+brew install --cask authy
+brew install --cask gifox
+brew install --cask appcleaner
+brew install --cask daisydisk
+brew install --cask deluge
+brew install --cask flux
+brew install --cask keyboard-cleaner
+brew install --cask soundsource
 
 # Fonts
 # https://github.com/caskroom/homebrew-fonts
 brew tap homebrew/cask-fonts
-brew cask install homebrew/cask-fonts/font-source-code-pro
+brew install --cask homebrew/cask-fonts/font-source-code-pro
 
 brew cleanup
