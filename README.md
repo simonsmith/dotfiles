@@ -4,11 +4,13 @@ Mac config and setup steps.
 
 ## First steps
 
-[Install](http://osxdaily.com/2014/02/12/install-command-line-tools-mac-os-x/) command line developer tools:
+Install Homebrew
 
 ```
-make
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
+
+This will also install command line tools
 
 Clone dotfiles to home directory
 
