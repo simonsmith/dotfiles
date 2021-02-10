@@ -159,6 +159,7 @@ Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/gv.vim'
+Plug 'rhysd/conflict-marker.vim'
 
 " HTML/CSS
 " ------------------------------------------------------------------------------
