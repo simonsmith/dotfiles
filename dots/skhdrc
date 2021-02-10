@@ -71,6 +71,7 @@ prefix < 1 : yabai -m window --space 1
 prefix < 2 : yabai -m window --space 2
 prefix < 3 : yabai -m window --space 3
 prefix < 4 : yabai -m window --space 4
+prefix < 5 : yabai -m window --space 5
 
 # focus window
 ctrl + cmd - h : yabai -m window --focus west
