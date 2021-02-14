@@ -33,7 +33,7 @@ prefix < o : yabai -m space --toggle padding;\
              yabai -m space --toggle gap
 
 # toggle border on a window
-prefix < shift - b : yabai -m window --toggle border
+prefix < shift - b : yabai -m window --toggle border; skhd -k "escape"
 
 # equalise windows
 prefix < e : yabai -m space --balance
