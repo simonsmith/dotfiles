@@ -609,6 +609,9 @@ if s:has_plugin('splitjoin.vim')
   nmap gk :SplitjoinJoin<cr>
 endif
 
+if s:has_plugin('rhysd/conflict-marker.vim')
+  let g:conflict_marker_enable_mappings = 0
+endif
 
 if s:has_plugin('vim-smoothie')
   let g:smoothie_base_speed = 25
