@@ -1,6 +1,6 @@
 # Browsers
 brew install --cask firefox-developer-edition
-brew install --cask google-chrome
+brew install --cask brave-browser-beta
 brew install --cask google-chrome-canary
 
 # Cloud
