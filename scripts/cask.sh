@@ -16,7 +16,7 @@ brew install --cask alacritty
 brew install --cask insomnia
 
 # Mac OS Enhancements
-brew install --cask alfred
+brew install --cask raycast
 brew install --cask bartender
 brew install --cask bettertouchtool
 brew install --cask contexts
