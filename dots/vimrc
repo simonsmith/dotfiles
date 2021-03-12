@@ -650,6 +650,7 @@ endif
 if s:has_plugin('taboo.vim')
   let g:taboo_tabline = 0 " Let airline handle it all
   let g:taboo_renamed_tab_format = '%l%m'
+  let g:taboo_close_tab_label = ''
   nnoremap th :tabprev<cr>
   nnoremap tl :tabnext<cr>
   nnoremap tn :tabnew<cr>
@@ -730,6 +731,8 @@ if s:has_plugin('vim-airline')
   let g:airline_powerline_fonts = 1
   let g:airline#extensions#tmuxline#enabled = 0
   let g:airline#extensions#tabline#enabled = 1 " Enable the list of buffers
+  let g:airline#extensions#tabline#tab_min_count = 2
+  let g:airline#extensions#tabline#show_buffers = 0
   let g:airline#extensions#tabline#buffers_label = ''
   let g:airline#extensions#tabline#fnamemod = ':t' " Show the filename
   let g:airline#extensions#tabline#fnamecollapse = 0
