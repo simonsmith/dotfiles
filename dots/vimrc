@@ -426,12 +426,6 @@ nnoremap j gj
 vnoremap k gk
 vnoremap j gj
 
-" Disable arrow keys
-noremap <right> <Nop>
-noremap <left> <Nop>
-noremap <up> <Nop>
-noremap <down> <Nop>
-
 " Delete line but preserve the space
 nnoremap dD S<Esc>
 
