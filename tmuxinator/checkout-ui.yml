@@ -8,4 +8,4 @@ windows:
       layout: even-horizontal
       panes:
         -
-        - y dev:mocks
+        - y dev
