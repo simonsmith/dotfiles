@@ -759,6 +759,7 @@ endif
 
 if s:has_plugin('emmet-vim')
   imap hh <plug>(emmet-expand-abbr)
+  let g:emmet_install_only_plug = 1
 endif
 
 " Output the current syntax group
