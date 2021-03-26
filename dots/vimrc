@@ -685,8 +685,9 @@ if s:has_plugin('fzf.vim')
     call fzf#vim#ag(query, '--hidden --ignore .git', a:bang ? {} : {'down': '40%'})
   endfunction
 
-command! -bang -nargs=* Rg call fzf#vim#grep('rg --column --pretty --no-heading '.shellescape(<q-args>), 1, <bang>0)
-command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+  command! -bang -nargs=* Rg call fzf#vim#grep('rg --column --pretty --no-heading '.shellescape(<q-args>), 1, <bang>0)
+  command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+  let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
 
   if has('autocmd')
     autocmd VimEnter * command! -nargs=* -bang Ag call s:ag_with_opts(<q-args>, <bang>0)
