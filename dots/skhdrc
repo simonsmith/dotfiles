@@ -51,10 +51,10 @@ prefix < shift - z : yabai -m window --toggle zoom-fullscreen
 prefix < z : yabai -m window --toggle zoom-parent
 
 # increase/decrease spacing value
-prefix < p : yabai -m space --gap rel:10;\
-             yabai -m space --padding rel:10:10:10:10
-prefix < shift - p : yabai -m space --gap rel:-10;\
-                     yabai -m space --padding rel:-10:-10:-10:-10
+prefix < p : yabai -m space --gap rel:06;\
+             yabai -m space --padding rel:06:06:06:06
+prefix < shift - p : yabai -m space --gap rel:-06;\
+                     yabai -m space --padding rel:-06:-06:-06:-06
 
 # toggle horizontal/vertical split
 prefix < shift - s : yabai -m window --toggle split
