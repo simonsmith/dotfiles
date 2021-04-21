@@ -159,7 +159,6 @@ Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/gv.vim'
-Plug 'rhysd/conflict-marker.vim'
 
 " HTML/CSS
 " ------------------------------------------------------------------------------
@@ -602,10 +601,6 @@ if s:has_plugin('splitjoin.vim')
   let g:splitjoin_join_mapping = ''
   nmap gj :SplitjoinSplit<cr>
   nmap gk :SplitjoinJoin<cr>
-endif
-
-if s:has_plugin('rhysd/conflict-marker.vim')
-  let g:conflict_marker_enable_mappings = 0
 endif
 
 if s:has_plugin('vim-smoothie')
