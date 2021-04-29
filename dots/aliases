@@ -42,13 +42,13 @@ alias gurl='curl --compressed'
 # Screensaver
 alias ss='open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app'
 
+unalias gds
+
 # Git shortcuts
 alias gac='git add . && git commit -v'
 alias gcf='git commit --fixup `fcs`'
 alias gdc='git diff --cached'
 alias gdtc='git difftool --cached'
-alias gds='ydiff -s -w 0'
-alias gdcs='gdc | ydiff -s -w 0'
 alias glg='fshow "master.."'
 alias glog='fshow'
 alias glr='git pull --rebase'

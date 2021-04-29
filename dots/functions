@@ -117,6 +117,10 @@ function gdi() {
    eval "$(scmpuff expand -- git diff-image "$@")";
 }
 
+function gds() {
+  eval "$(scmpuff expand -- ydiff -s -w0 "$@")";
+}
+
 function short() {
   curl --silent -d "shorten=$1" https://mew.qc.to | pbcopy;
 }
