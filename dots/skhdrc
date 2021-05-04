@@ -26,7 +26,8 @@ prefix < shift - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 prefix < s : yabai -m space --layout stack
 prefix < b : yabai -m space --layout bsp
 prefix < f : yabai -m window --toggle float;\
-             yabai -m window --grid 5:5:1:1:3:3
+             yabai -m window --grid 5:5:1:1:3:3;\
+             skhd -k "escape"
 
 # toggle padding/gap on all windows
 prefix < o : yabai -m space --toggle padding;\
