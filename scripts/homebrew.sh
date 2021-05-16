@@ -17,8 +17,7 @@ brew install findutils
 brew install gnu-sed
 
 # Replace system curl
-brew install curl-openssl
-brew link curl-openssl --force
+brew install curl
 
 # Install zsh
 brew install zsh
