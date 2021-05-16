@@ -82,6 +82,7 @@ brew install diff-so-fancy
 brew install fd
 brew install devd
 brew install direnv
+brew install svn
 brew install go
 brew install exa
 brew install nnn
