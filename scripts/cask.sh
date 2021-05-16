@@ -35,7 +35,6 @@ brew install --cask appcleaner
 brew install --cask daisydisk
 brew install --cask deluge
 brew install --cask flux
-brew install --cask keyboard-cleaner
 brew install --cask soundsource
 
 # Fonts
