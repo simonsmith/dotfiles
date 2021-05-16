@@ -57,6 +57,7 @@ brew install ack
 brew install reattach-to-user-namespace
 brew install tmux
 brew install urlview
+brew install tmuxinator
 
 # git
 brew install ydiff
