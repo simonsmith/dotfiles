@@ -37,9 +37,4 @@ brew install --cask deluge
 brew install --cask flux
 brew install --cask soundsource
 
-# Fonts
-# https://github.com/caskroom/homebrew-fonts
-brew tap homebrew/cask-fonts
-brew install --cask homebrew/cask-fonts/font-source-code-pro
-
 brew cleanup

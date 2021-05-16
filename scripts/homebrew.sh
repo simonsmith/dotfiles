@@ -94,4 +94,8 @@ brew install python
 brew install redis
 brew install youtube-dl
 
+# Fonts
+brew tap homebrew/cask-fonts
+brew install font-source-code-pro
+
 brew cleanup
