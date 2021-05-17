@@ -113,40 +113,38 @@ font:
   # false.
   use_thin_strokes: false
 
-# Use custom cursor colors. If true, display the cursor in the cursor.foreground
-# and cursor.background colors, otherwise invert the colors of the cursor.
-
-# Adapted from Material theme - https://github.com/kaicataldo/material.vim
-#
+# TokyoNight Alacritty Colors
 colors:
-   # Default colors
-   primary:
-     background: '0x1E1C31'
-     foreground: '0xD8DEE9'
+  # Default colors
+  primary:
+    background: '0x24283b'
+    foreground: '0xc0caf5'
 
-   # Normal colors
-   normal:
-     black:   '0x3B4252'
-     red:     '0xff5370'
-     green:   '0xA3BE8C'
-     yellow:  '0xEBCB8B'
-     blue:    '0x81A1C1'
-     magenta: '0xB48EAD'
-     cyan:    '0x88C0D0'
-     white:   '0xE5E9F0'
-     orange:  '0xf78c6c'
+  # Normal colors
+  normal:
+    black:   '0x1D202F'
+    red:     '0xf7768e'
+    green:   '0x9ece6a'
+    yellow:  '0xe0af68'
+    blue:    '0x7aa2f7'
+    magenta: '0xbb9af7'
+    cyan:    '0x7dcfff'
+    white:   '0xa9b1d6'
 
-   # Bright colors
-   bright:
-     black:   '0x3B4252'
-     red:     '0xff5370'
-     green:   '0xA3BE8C'
-     yellow:  '0xEBCB8B'
-     blue:    '0x81A1C1'
-     magenta: '0xB48EAD'
-     cyan:    '0x88C0D0'
-     white:   '0xE5E9F0'
-     orange:  '0xf78c6c'
+  # Bright colors
+  bright:
+    black:   '0x414868'
+    red:     '0xf7768e'
+    green:   '0x9ece6a'
+    yellow:  '0xe0af68'
+    blue:    '0x7aa2f7'
+    magenta: '0xbb9af7'
+    cyan:    '0x7dcfff'
+    white:   '0xc0caf5'
+
+  indexed_colors:
+    - { index: 16, color: '0xff9e64' }
+    - { index: 17, color: '0xdb4b4b' }
 
 # Visual Bell
 #

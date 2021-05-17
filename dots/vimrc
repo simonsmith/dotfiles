@@ -9,7 +9,7 @@ call plug#begin(g:plugin_path)
 " Theme
 " ------------------------------------------------------------------------------
 
-Plug 'simonsmith/material.vim'
+Plug 'folke/tokyonight.nvim'
 
 " tmux
 " ------------------------------------------------------------------------------
@@ -134,7 +134,7 @@ Plug 'xolox/vim-session'
 " Status bar
 " ------------------------------------------------------------------------------
 
-Plug 'vim-airline/vim-airline'
+Plug 'hoob3rt/lualine.nvim'
 
 " Tabs
 " ------------------------------------------------------------------------------
@@ -202,8 +202,40 @@ endfunction
 "  General config
 " ------------------------------------------------------------------------------
 
-set background=dark
-silent! colorscheme material
+lua << EOF
+require'lualine'.setup {
+  options = {
+    icons_enabled = false,
+    theme = 'auto',
+    component_separators = {},
+    section_separators = {},
+    disabled_filetypes = {}
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch'},
+    lualine_c = {'filename'},
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = {'diff'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {'filename'},
+    lualine_c = {},
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  extensions = {}
+}
+vim.g.tokyonight_italic_functions = false
+vim.g.tokyonight_italic_variables = false
+vim.g.tokyonight_italic_comments = false
+vim.g.tokyonight_colors = { bg_popup = "#485173", bg_float = "#485173"}
+EOF
+colorscheme tokyonight
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags='li\|p'
@@ -511,8 +543,6 @@ if s:has_plugin('coc.nvim')
 
   hi CocCodeLens guifg=#3a445e
 
-  let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
-  let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
   command! -nargs=0 Prettier :CocCommand prettier.formatFile
   nmap <silent> <leader>uf :CocList snippets<cr>
 
@@ -638,7 +668,6 @@ if s:has_plugin('vim-bbye')
 endif
 
 if s:has_plugin('taboo.vim')
-  let g:taboo_tabline = 0 " Let airline handle it all
   let g:taboo_renamed_tab_format = '%l%m'
   let g:taboo_close_tab_label = ''
   nnoremap th :tabprev<cr>
@@ -714,31 +743,6 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
   " Use ag with ack.vim - https://github.com/ggreer/the_silver_searcher#vim
   let g:ackprg = 'ag --smart-case --nogroup --nocolor --column'
-endif
-
-if s:has_plugin('vim-airline')
-  let g:airline_theme = 'material'
-  let g:airline#extensions#branch#enabled = 1
-  let g:airline_powerline_fonts = 1
-  let g:airline#extensions#tmuxline#enabled = 0
-  let g:airline#extensions#tabline#enabled = 1 " Enable the list of buffers
-  let g:airline#extensions#tabline#tab_min_count = 2
-  let g:airline#extensions#tabline#show_buffers = 0
-  let g:airline#extensions#tabline#buffers_label = ''
-  let g:airline#extensions#tabline#fnamemod = ':t' " Show the filename
-  let g:airline#extensions#tabline#fnamecollapse = 0
-  let g:airline#extensions#tabline#show_tab_nr = 0
-  let g:airline#extensions#tabline#buffer_nr_show = 0
-  let g:airline#extensions#tabline#show_close_button = 0
-  let g:airline#extensions#coc#enabled = 0
-  let g:airline_left_sep = ''
-  let g:airline_left_alt_sep = ''
-  let g:airline_right_sep = ''
-  let g:airline_right_alt_sep = ''
-  let g:airline#extensions#default#layout = [
-        \ [ 'a', 'c' ],
-        \ [ 'x', 'error', 'warning' ]
-        \ ]
 endif
 
 if s:has_plugin('vim-gitgutter')
