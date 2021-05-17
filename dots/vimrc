@@ -233,6 +233,7 @@ require'lualine'.setup {
 vim.g.tokyonight_italic_functions = false
 vim.g.tokyonight_italic_variables = false
 vim.g.tokyonight_italic_comments = false
+vim.g.tokyonight_italic_keywords = false
 vim.g.tokyonight_colors = { bg_popup = "#485173", bg_float = "#485173"}
 EOF
 colorscheme tokyonight
