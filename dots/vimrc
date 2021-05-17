@@ -217,7 +217,14 @@ require'lualine'.setup {
     lualine_c = {'filename'},
     lualine_x = {},
     lualine_y = {},
-    lualine_z = {'diff'}
+    lualine_z = {
+      {
+        'diagnostics',
+        sources = {'coc'},
+        sections = {'error', 'warn'},
+        symbols = {error = 'errors: ', warn = 'warnings: ', info = 'info: '}
+      }
+    },
   },
   inactive_sections = {
     lualine_a = {},
