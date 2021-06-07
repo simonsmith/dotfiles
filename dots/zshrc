@@ -176,7 +176,6 @@ SPACESHIP_PROMPT_ORDER=(
   host          # Hostname section
   custom_git
   line_sep      # Line break
-  vi_mode       # Vi-mode indicator
   jobs          # Background jobs indicator
   char          # Prompt character
 )
