@@ -71,6 +71,8 @@ Plug 'tpope/vim-repeat'
 Plug 'tomtom/tcomment_vim'
 " Toggle location and quickfix lists
 Plug 'Valloric/ListToggle'
+" Display quickfix with a fancy window and commands
+Plug 'kevinhwang91/nvim-bqf'
 " Move between windows and allow swapping position
 Plug 't9md/vim-choosewin'
 " Remember cursor position in closed buffers
