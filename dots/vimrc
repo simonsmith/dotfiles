@@ -59,10 +59,8 @@ Plug 'mhinz/vim-grepper'
 " ------------------------------------------------------------------------------
 
 " Syntax and highlighting for every language
-let g:polyglot_disabled = ['markdown', 'scss']
+let g:polyglot_disabled = ['markdown']
 Plug 'sheerun/vim-polyglot'
-Plug 'jparise/vim-graphql'
-Plug 'maxmellon/vim-jsx-pretty'
 
 " Editing
 " ------------------------------------------------------------------------------
@@ -167,8 +165,6 @@ Plug 'junegunn/gv.vim'
 Plug 'mattn/emmet-vim'
 " Automatically add a closing HTML tag
 Plug 'alvan/vim-closetag'
-" Better Scss highlighting than polyglot
-Plug 'tpope/vim-haml'
 " CSS highlight
 Plug 'chrisbra/Colorizer'
 
