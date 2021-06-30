@@ -235,6 +235,9 @@ require'lualine'.setup {
   tabline = {},
   extensions = {}
 }
+EOF
+
+lua << EOF
 vim.g.tokyonight_italic_functions = false
 vim.g.tokyonight_italic_variables = false
 vim.g.tokyonight_italic_comments = false
