@@ -1,0 +1,8 @@
+name: cookie-consent
+root: ~/wahanda/cookie-consent
+startup_window: nvim
+
+windows:
+  - nvim: nvim
+  - zsh:
+
