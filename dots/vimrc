@@ -599,8 +599,8 @@ if s:has_plugin('ListToggle')
 endif
 
 if s:has_plugin('hop.nvim')
-  nnoremap <leader>l :HopLine<cr>
-  nnoremap <leader>s :HopWord<cr>
+  noremap <leader>l :HopLine<cr>
+  noremap <leader>s :HopWord<cr>
 endif
 
 if s:has_plugin('vim-javascript')
