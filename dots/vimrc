@@ -418,6 +418,7 @@ set showcmd
 
 " Line numbers
 set number
+set relativenumber
 
 " Path and file extensions to look for when using `gf`
 set suffixesadd+=.css,index.css,.js,.jsx,.scss
