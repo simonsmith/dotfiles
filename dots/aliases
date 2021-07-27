@@ -73,8 +73,7 @@ alias update_gems='sudo gem update --system; sudo gem update'
 alias update_os='sudo softwareupdate -i -a'
 alias update_all='update_brew && update_npm && update_gems && update_os'
 
-# Load image in quick look
-alias img='qlmanage -p'
+# alias img='qlmanage -p'
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"

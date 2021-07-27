@@ -121,6 +121,11 @@ function gds() {
   eval "$(scmpuff expand -- ydiff -s -w0 "$@")";
 }
 
+# Load image in quick look
+function img() {
+  eval "$(scmpuff expand -- qlmanage -p "$@")"
+}
+
 function short() {
   curl --silent -d "shorten=$1" https://mew.qc.to | pbcopy;
 }
