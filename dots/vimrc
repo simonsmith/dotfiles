@@ -677,6 +677,7 @@ endif
 if s:has_plugin('nnn.vim')
   nnoremap _ :NnnPicker %:p:h<cr>
   let g:nnn#command = 'nnn -d -H'
+  let g:nnn#layout = 'enew'
   let g:nnn#action = {
         \ '<c-x>': 'split',
         \ '<c-v>': 'vsplit' }
