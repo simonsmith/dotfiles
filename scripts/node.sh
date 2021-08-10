@@ -1,16 +1,6 @@
-echo "Installing nvs ..."
+echo "Installing volta ..."
 
-# nvs
-# https://github.com/jasongin/nvs
-# ---------------------------------------------------------------
-
-git clone https://github.com/jasongin/nvs "$HOME/.nvs"
-source "$HOME/.nvs/nvs.sh"
-nvs add lts
-nvs use lts
-nvs link lts
-nvs auto on
-
-echo "Installing yarn ..."
-
-curl -o- -L https://yarnpkg.com/install.sh | bash
+curl https://get.volta.sh | bash
+source "$HOME/.volta/bin"
+volta install node@lts
+volta install yarn@1.22.5

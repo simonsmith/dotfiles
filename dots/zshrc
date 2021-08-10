@@ -138,14 +138,10 @@ export FZF_TMUX_HEIGHT=40%
 command -v blsd > /dev/null && export FZF_ALT_C_COMMAND='blsd'
 command -v tree > /dev/null && export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -$LINES'"
 
-# nvs
-# https://github.com/jasongin/nvs
-
-export NVS_HOME="$HOME/.nvs"
-[ -s "$NVS_HOME/nvs.sh" ] && . "$NVS_HOME/nvs.sh"
-
-# Theme
-# https://github.com/denysdovhan/spaceship-prompt
+# volta
+# https://docs.volta.sh/
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
 
 # Git info
 # https://github.com/olivierverdier/zsh-git-prompt
@@ -163,6 +159,9 @@ ZSH_THEME_GIT_PROMPT_SEPARATOR=" "
 ZSH_THEME_GIT_PROMPT_CHANGED="%{$fg[red]%}%{●%G%}"
 ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[blue]%}%{✚%G%}"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[blue]%}◒"
+
+# Theme
+# https://github.com/denysdovhan/spaceship-prompt
 
 # Theme settings
 SPACESHIP_DIR_COLOR="yellow"
