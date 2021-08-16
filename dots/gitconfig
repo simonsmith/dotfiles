@@ -68,10 +68,22 @@
 	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
 	trustctime = false
 	editor = nvim
-  pager = delta --theme OneHalfDark | less --tabs=2 -R
+  # pager = delta --theme OneHalfDark | less --tabs=2 -R
+
+[pager]
+	diff = delta | less --tabs=2 -R
+	show = delta
+	reflog = delta
+
+[delta]
+	side-by-side = true
+	decorations = true
+	line-numbers = true
+	syntax-theme = Dracula
+	width = 250
 
 [interactive]
-    diffFilter = delta --theme OneHalfDark --color-only
+	diffFilter = delta --color-only
 
 [color]
 	# Use colors in Git commands that are capable of colored output when
