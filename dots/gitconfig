@@ -80,7 +80,7 @@
 	decorations = true
 	line-numbers = true
 	syntax-theme = Dracula
-	width = 250
+	width = 200
 
 [interactive]
 	diffFilter = delta --color-only
