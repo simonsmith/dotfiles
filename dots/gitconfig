@@ -76,11 +76,11 @@
 	reflog = delta
 
 [delta]
-	side-by-side = true
+	side-by-side = false
 	decorations = true
 	line-numbers = true
 	syntax-theme = Dracula
-	width = 200
+	width = 130
 
 [interactive]
 	diffFilter = delta --color-only
