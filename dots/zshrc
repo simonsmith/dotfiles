@@ -44,7 +44,6 @@ zplug "plugins/tmux", from:oh-my-zsh
 zplug "plugins/history", from:oh-my-zsh
 
 zplug "hlissner/zsh-autopair", defer:3
-zplug "MikeDacre/careful_rm"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-completions", defer:2

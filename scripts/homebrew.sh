@@ -88,6 +88,7 @@ brew install exa
 brew install nnn
 brew tap clementtsang/bottom
 brew install bottom
+brew install rm-improved
 brew install httpie
 brew install imageoptim-cli
 brew install p7zip
