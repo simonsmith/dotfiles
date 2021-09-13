@@ -86,7 +86,8 @@ brew install svn
 brew install go
 brew install exa
 brew install nnn
-brew install htop
+brew tap clementtsang/bottom
+brew install bottom
 brew install httpie
 brew install imageoptim-cli
 brew install p7zip
