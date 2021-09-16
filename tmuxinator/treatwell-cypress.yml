@@ -5,3 +5,5 @@ startup_window: nvim
 windows:
   - nvim: nvim
   - zsh:
+  - docker:
+    - cd ~/wahanda/docker-images/treatwell-cypress
