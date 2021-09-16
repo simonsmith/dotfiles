@@ -76,21 +76,21 @@ draw_bold_text_with_bright_colors: false
 font:
   # The normal (roman) font face to use.
   normal:
-    family: "Source Code Pro" # should be "Menlo" or something on macOS.
+    family: "MonoLisa" # should be "Menlo" or something on macOS.
     # Style can be specified to pick a specific face.
-    style: Regular
+    style: Book
 
   # The bold font face
   bold:
-    family: "Source Code Pro" # should be "Menlo" or something on macOS.
+    family: "MonoLisa" # should be "Menlo" or something on macOS.
     # Style can be specified to pick a specific face.
     style: Bold
 
   # The italic font face
   italic:
-    family: "Source Code Pro" # should be "Menlo" or something on macOS.
+    family: "MonoLisa" # should be "Menlo" or something on macOS.
     # Style can be specified to pick a specific face.
-    # style: Italic
+    style: "Book Italic"
 
   # Point size of the font
   size: 16.0
@@ -98,7 +98,7 @@ font:
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
   offset:
-    x: 1
+    x: 0
     y: 2
 
   # Glyph offset determines the locations of the glyphs within their cells with
@@ -200,7 +200,7 @@ mouse:
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
 
-mouse.hide_when_typing: false
+mouse.hide_when_typing: true
 
 window.dynamic_title: true
 
@@ -295,7 +295,6 @@ key_bindings:
   - { key: Equals, mods: Command, action: IncreaseFontSize }
   - { key: Minus,  mods: Command, action: DecreaseFontSize }
   - { key: K,      mods: Command, action: ClearHistory     }
-  - { key: K,      mods: Command, chars: "\x0c"            }
   - { key: V,      mods: Command, action: Paste            }
   - { key: C,      mods: Command, action: Copy             }
   - { key: H,      mods: Command, action: Hide             }
