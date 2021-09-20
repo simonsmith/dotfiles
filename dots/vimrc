@@ -68,7 +68,7 @@ Plug 'sheerun/vim-polyglot'
 " Allow plugins to be repeated with dot
 Plug 'tpope/vim-repeat'
 " Comment out blocks of code
-Plug 'tomtom/tcomment_vim'
+Plug 'b3nj5m1n/kommentary'
 " Toggle location and quickfix lists
 Plug 'Valloric/ListToggle'
 " Display quickfix with a fancy window and commands
