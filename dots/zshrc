@@ -190,3 +190,6 @@ eval "$(scmpuff init -s --aliases=false)"
 eval "$(direnv hook zsh)"
 
 bindkey '^o' autosuggest-accept
+
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
