@@ -8,4 +8,3 @@ windows:
     -
   - server:
     - cd ~/wahanda/front-end-2.0
-    - yarn watch
