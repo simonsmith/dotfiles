@@ -4,6 +4,7 @@
   "diagnostic.infoSign": "~",
   "eslint.autoFixOnSave": true,
   "css.lint.unknownAtRules": "ignore",
+  "coc.preferences.colorSupport": false,
   "eslint.filetypes": [
     "javascript",
     "javascript.jsx",

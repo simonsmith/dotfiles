@@ -170,7 +170,7 @@ Plug 'mattn/emmet-vim'
 " Automatically add a closing HTML tag
 Plug 'alvan/vim-closetag'
 " CSS highlight
-Plug 'chrisbra/Colorizer'
+Plug 'rrethy/vim-hexokinase', {'do': 'make hexokinase'}
 
 " JavaScript
 " ------------------------------------------------------------------------------
@@ -792,8 +792,6 @@ augroup file-types
 
   " Allow stylesheets to autocomplete hyphenated words
   autocmd FileType css,scss,sass setlocal iskeyword+=-
-
-  autocmd BufEnter,BufLeave *.css,*.scss,*.sass :ColorHighlight!
 
   " Use JS snippets in TS
   autocmd FileType typescript,typescript.tsx,typescriptreact call UltiSnips#AddFiletypes('javascript.typescript')
