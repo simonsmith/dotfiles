@@ -11,9 +11,11 @@ windows:
       panes:
         - asset:
             - cd ~/wahanda/service/asset/webapp
+            - sdk use java 11.0.12.7.2-amzn
             - mvn spring-boot:run
         - site:
             - cd ~/wahanda/service/site/webapp
+            - sdk use java 11.0.12.7.2-amzn
             - mvn spring-boot:run
   - watch:
       layout: even-horizontal
@@ -24,4 +26,5 @@ windows:
           - cd ~/wahanda/service/site/webapp
   - rainbow:
     - cd ~/wahanda/service/rainbow
+    - sdk use java 11.0.12.7.2-amzn
     - mvn spring-boot:run
