@@ -1,0 +1,28 @@
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$env_var\
+$custom\
+$cmd_duration\
+$line_break\
+$status\
+$shell\
+$character"""
+
+[git_status]
+ahead = "⇡${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+behind = "⇣${count}"
+stashed = ""
+
+[git_branch]
+format = "[$branch]($style) "
+
+[cmd_duration]
+min_time = 5_000
