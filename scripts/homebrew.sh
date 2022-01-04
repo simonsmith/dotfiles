@@ -95,6 +95,7 @@ brew install p7zip
 brew install python
 brew install redis
 brew install youtube-dl
+brew install meetingbar
 
 # Fonts
 brew tap homebrew/cask-fonts
