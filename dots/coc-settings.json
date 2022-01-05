@@ -2,6 +2,7 @@
   "codeLens.enable": true,
   "diagnostic.errorSign": "x",
   "diagnostic.infoSign": "~",
+  "diagnostic.checkCurrentLine": true,
   "eslint.autoFixOnSave": true,
   "css.lint.unknownAtRules": "ignore",
   "coc.preferences.colorSupport": false,
