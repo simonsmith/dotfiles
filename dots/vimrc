@@ -601,6 +601,9 @@ endif
 if s:has_plugin('hop.nvim')
   noremap <leader>l :HopLine<cr>
   noremap <leader>s :HopWord<cr>
+lua << EOF
+  require'hop'.setup()
+EOF
 endif
 
 if s:has_plugin('vim-javascript')
