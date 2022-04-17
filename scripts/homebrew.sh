@@ -59,7 +59,6 @@ brew install urlview
 brew install tmuxinator
 
 # git
-brew install ydiff
 brew install git
 brew install scmpuff
 brew install git-delta
@@ -78,11 +77,8 @@ brew install koekeishiya/formulae/yabai
 
 # Install other useful binaries.
 brew install bat
-brew install diff-so-fancy
 brew install fd
 brew install devd
-brew install direnv
-brew install svn
 brew install go
 brew install exa
 brew install nnn
@@ -91,14 +87,8 @@ brew install bottom
 brew install rm-improved
 brew install httpie
 brew install imageoptim-cli
-brew install p7zip
 brew install python
-brew install redis
 brew install youtube-dl
 brew install meetingbar
-
-# Fonts
-brew tap homebrew/cask-fonts
-brew install font-source-code-pro
 
 brew cleanup
