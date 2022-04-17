@@ -4,7 +4,7 @@ brew install --cask brave-browser-beta
 brew install --cask google-chrome-canary
 
 # Cloud
-brew install --cask google-backup-and-sync
+brew install --cask google-drive
 
 # Media
 brew install --cask spotify
@@ -24,12 +24,9 @@ brew install --cask karabiner-elements
 brew install --cask gpg-suite
 brew install --cask keepingyouawake
 brew install --cask the-unarchiver
-brew install --cask cursorcerer
 
 # Other stuff
 brew install --cask 1password
-brew install --cask boostnote
-brew install --cask selfcontrol
 brew install --cask authy
 brew install --cask gifox
 brew install --cask appcleaner
