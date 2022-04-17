@@ -60,13 +60,6 @@ prefix < shift - p : yabai -m space --gap rel:-06;\
 # toggle horizontal/vertical split
 prefix < shift - s : yabai -m window --toggle split
 
-# move to a space
-ctrl - 1 : yabai -m space --focus 1
-ctrl - 2 : yabai -m space --focus 2
-ctrl - 3 : yabai -m space --focus 3
-ctrl - 4 : yabai -m space --focus 4
-ctrl - 5 : yabai -m space --focus 5
-
 # move window to space
 prefix < 1 : yabai -m window --space 1
 prefix < 2 : yabai -m window --space 2
