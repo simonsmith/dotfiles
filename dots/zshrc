@@ -147,9 +147,6 @@ eval "$(rbenv init -)"
 # https://github.com/mroth/scmpuff
 eval "$(scmpuff init -s --aliases=false)"
 
-# https://github.com/direnv/direnv
-eval "$(direnv hook zsh)"
-
 bindkey '^o' autosuggest-accept
 
 export SDKMAN_DIR="$HOME/.sdkman"
