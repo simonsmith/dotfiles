@@ -12,14 +12,8 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # General UI/UX                                                               #
 ###############################################################################
 
-# Set standby delay to 8 hours (default is 1 hour)
-sudo pmset -a standbydelay 28800
-
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
-
-# Set sidebar icon size to small
-defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 1
 
 # Always show scrollbars
 defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling"
@@ -67,9 +61,6 @@ sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo Hos
 
 # Restart automatically if the computer freezes
 sudo systemsetup -setrestartfreeze on
-
-# Check for software updates daily, not just once per week
-defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 
 # Disable automatic capitalization as it’s annoying when typing code
 defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
@@ -297,7 +288,7 @@ defaults write com.apple.dock show-process-indicators -bool true
 # Wipe all (default) app icons from the Dock
 # This is only really useful when setting up a new Mac, or if you don’t use
 # the Dock to launch apps.
-# defaults write com.apple.dock persistent-apps -array ""
+defaults write com.apple.dock persistent-apps -array ""
 
 # Don’t animate opening applications from the Dock
 defaults write com.apple.dock launchanim -bool false
