@@ -68,8 +68,9 @@ export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
 export LESS='--line-numbers --status-column --long-prompt --ignore-case --hilite-search --RAW-CONTROL-CHARS'
 
 # Larger history (allow 32³ entries; default is 500)
-export HISTSIZE=32768
+export HISTSIZE=999999999
 export HISTFILESIZE=$HISTSIZE
+export SAVEHIST=$HISTSIZE
 export HISTCONTROL=ignoredups
 
 # Make some commands not show up in history
