@@ -110,6 +110,8 @@ Plug 'whatyouhide/vim-textobj-xmlattr'
 Plug 'editorconfig/editorconfig-vim'
 " Whitespace removal
 Plug 'ntpeters/vim-better-whitespace'
+" markdown
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 " Refactoring
 " ------------------------------------------------------------------------------
