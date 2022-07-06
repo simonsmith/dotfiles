@@ -36,8 +36,6 @@ Plug 'junegunn/vim-slash'
 
 " File browser
 Plug 'mcchrish/nnn.vim'
-" Undo visualise
-Plug 'mbbill/undotree'
 
 " Buffers
 " ------------------------------------------------------------------------------
@@ -46,13 +44,10 @@ Plug 'mbbill/undotree'
 Plug 'schickling/vim-bufonly'
 " Close buffers without losing window layout
 Plug 'moll/vim-bbye'
-" Manage buffers in a list
-Plug 'jlanzarotta/bufexplorer'
 
 " Search
 " ------------------------------------------------------------------------------
 
-Plug 'mileszs/ack.vim'
 Plug 'mhinz/vim-grepper'
 
 " Language pack
@@ -91,8 +86,6 @@ Plug 'phaazon/hop.nvim'
 Plug 'chaoren/vim-wordmotion'
 " Improve text objects for arguments, brackets etc
 Plug 'wellle/targets.vim'
-" Move arguments
-Plug 'AndrewRadev/sideways.vim'
 " Add various text objects
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-function'
@@ -110,8 +103,6 @@ Plug 'whatyouhide/vim-textobj-xmlattr'
 Plug 'editorconfig/editorconfig-vim'
 " Whitespace removal
 Plug 'ntpeters/vim-better-whitespace'
-" markdown
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 " Refactoring
 " ------------------------------------------------------------------------------
@@ -126,8 +117,6 @@ Plug 'tpope/vim-surround'
 
 " Stop everything saving to a register and instead rely on just `m` for cut
 Plug 'svermeulen/vim-easyclip'
-" Improve pasting code from the clipboard
-Plug 'ConradIrwin/vim-bracketed-paste'
 
 " Sessions
 " ------------------------------------------------------------------------------
@@ -145,15 +134,10 @@ Plug 'hoob3rt/lualine.nvim'
 
 " Make managing tabs easier with rename, add, delete etc
 Plug 'gcmt/taboo.vim'
-" Allow a window to be fully viewed. Useful when multiple splits are in use
-Plug 'troydm/zoomwintab.vim'
 
 " Snippets
 " ------------------------------------------------------------------------------
 
-Plug 'epilande/vim-react-snippets'
-Plug 'epilande/vim-es2015-snippets'
-Plug 'joaohkfaria/vim-jest-snippets'
 Plug 'simonsmith/vim-custom-snippets'
 Plug 'SirVer/ultisnips'
 
@@ -191,7 +175,6 @@ Plug 'antonk52/coc-cssmodules', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile', 'for': 'yaml'}
 Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
 
 call plug#end()
 
