@@ -176,6 +176,8 @@ Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile', 'for': 'yaml'
 Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
 
+Plug 'folke/zen-mode.nvim'
+
 call plug#end()
 
 " Shortcut for checking if a plugin is loaded
@@ -230,6 +232,14 @@ vim.g.tokyonight_italic_variables = false
 vim.g.tokyonight_italic_comments = false
 vim.g.tokyonight_italic_keywords = false
 vim.g.tokyonight_colors = { bg_popup = "#485173", bg_float = "#485173"}
+EOF
+
+lua << EOF
+  require("zen-mode").setup {
+    plugins = {
+      tmux = { enabled = false }, -- disables the tmux statusline
+    }
+  }
 EOF
 
 colorscheme tokyonight
