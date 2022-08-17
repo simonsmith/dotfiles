@@ -78,6 +78,8 @@ Plug 'yssl/QFEnter'
 Plug 'matze/vim-move'
 " Easymotion replacement
 Plug 'phaazon/hop.nvim'
+" Pairs
+Plug 'jiangmiao/auto-pairs'
 
 " Text objects
 " ------------------------------------------------------------------------------
@@ -166,7 +168,6 @@ Plug 'pangloss/vim-javascript', {'for': ['javascript', 'javascript.jsx']}
 " Autocomplete & linting
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-pairs', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
