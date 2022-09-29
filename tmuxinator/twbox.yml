@@ -4,4 +4,4 @@ startup_window: twbox
 
 windows:
   - twbox:
-    - twbox -s amp.twtest.io -l CHECKOUT_UI,ACCOUNT_UI nginx up
+    - twbox -s mp-core.twtest.io -l DATETIME_UI nginx up
