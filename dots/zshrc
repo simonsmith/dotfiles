@@ -1,7 +1,7 @@
 # PATH
 
 # Default path
-export PATH="/opt/homebrew:/opt/homebrew/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="/opt/homebrew:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # rbenv
 export PATH="$HOME/.rbenv/shims:$PATH"
 # Allow any custom binaries
@@ -14,7 +14,6 @@ export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 export PATH="$(brew --prefix grep)/libexec/gnubin:$PATH"
 
 # curl
-export PATH="/usr/local/opt/curl/bin:$PATH"
 export PATH="/opt/homebrew/curl/bin:$PATH"
 
 # GO
@@ -30,7 +29,7 @@ export PATH=/usr/local/opt/python/libexec/bin:$PATH
 # zplug
 
 export ZPLUG_USE_CACHE=true
-export ZPLUG_HOME=/opt/homebrew/zplug
+export ZPLUG_HOME=/opt/homebrew/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
 zplug "lib/theme-and-appearance", from:oh-my-zsh
@@ -140,8 +139,6 @@ command -v tree > /dev/null && export FZF_ALT_C_OPTS="--preview 'tree -C {} | he
 
 # volta
 # https://docs.volta.sh/
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
 
 # https://starship.rs/
 eval "$(starship init zsh)"
@@ -156,3 +153,5 @@ bindkey '^o' autosuggest-accept
 
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
