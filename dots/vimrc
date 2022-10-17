@@ -228,11 +228,14 @@ require'lualine'.setup {
 EOF
 
 lua << EOF
-vim.g.tokyonight_italic_functions = false
-vim.g.tokyonight_italic_variables = false
-vim.g.tokyonight_italic_comments = false
-vim.g.tokyonight_italic_keywords = false
-vim.g.tokyonight_colors = { bg_popup = "#485173", bg_float = "#485173"}
+require("tokyonight").setup {
+  styles = {
+    comments = { italic = true },
+    keywords = { italic = false },
+    functions = {},
+    variables = {},
+  },
+}
 EOF
 
 lua << EOF
