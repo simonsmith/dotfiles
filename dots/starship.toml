@@ -7,6 +7,7 @@ $git_commit\
 $git_state\
 $git_metrics\
 $git_status\
+$nodejs\
 $env_var\
 $custom\
 $cmd_duration\
@@ -26,3 +27,6 @@ format = "[$branch]($style) "
 
 [cmd_duration]
 min_time = 5_000
+
+[nodejs]
+format = "[node $version](bold green) "
