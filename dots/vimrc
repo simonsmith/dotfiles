@@ -177,8 +177,6 @@ Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile', 'for': 'yaml'
 Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
 
-Plug 'folke/zen-mode.nvim'
-
 call plug#end()
 
 " Shortcut for checking if a plugin is loaded
@@ -228,7 +226,7 @@ require'lualine'.setup {
 EOF
 
 lua << EOF
-require("tokyonight").setup {
+require'tokyonight'.setup {
   styles = {
     comments = { italic = true },
     keywords = { italic = false },
@@ -236,14 +234,6 @@ require("tokyonight").setup {
     variables = {},
   },
 }
-EOF
-
-lua << EOF
-  require("zen-mode").setup {
-    plugins = {
-      tmux = { enabled = false }, -- disables the tmux statusline
-    }
-  }
 EOF
 
 colorscheme tokyonight-moon
