@@ -1,11 +1,14 @@
 name: treatwell-ui
 root: ~/wahanda/treatwell-ui
-startup_window: nvim
+startup_window: edit
 
 windows:
-  - nvim: nvim
-  - zsh:
+  - edit:
       layout: even-horizontal
       panes:
-        -
-        - yarn storybook
+        - editor:
+          - nvim
+        - git:
+          -
+        - server:
+          - yarn storybook

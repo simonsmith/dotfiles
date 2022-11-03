@@ -3,9 +3,12 @@ root: ~/wahanda/account-ui
 startup_window: nvim
 
 windows:
-  - nvim: nvim
-  - zsh:
+  - edit:
       layout: even-horizontal
       panes:
-        -
-        - yarn dev
+        - editor:
+          - nvim
+        - git:
+          -
+        - server:
+          - yarn dev

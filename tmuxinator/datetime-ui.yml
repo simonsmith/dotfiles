@@ -1,11 +1,14 @@
 name: datetime-ui
 root: ~/wahanda/datetime-ui
-startup_window: nvim
+startup_window: edit
 
 windows:
-  - nvim: nvim
-  - zsh:
+  - edit:
       layout: even-horizontal
       panes:
-        -
-        - y dev
+        - editor:
+          - nvim
+        - git:
+          -
+        - server:
+          - yarn dev

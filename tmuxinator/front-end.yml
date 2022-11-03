@@ -1,10 +1,14 @@
 name: front-end
 root: ~/wahanda/front-end-2.0
-startup_window: nvim
+startup_window: edit
 
 windows:
-  - nvim: nvim
-  - zsh:
-    -
-  - server:
-    - cd ~/wahanda/front-end-2.0
+  - edit:
+      layout: even-horizontal
+      panes:
+        - editor:
+          - nvim
+        - git:
+          -
+        - server:
+          - yarn watch

@@ -5,5 +5,8 @@ root: ~/dotfiles
 startup_window: nvim
 
 windows:
-  - nvim: nvim
-  - git:
+  - edit:
+      layout: even-horizontal
+      panes:
+        - nvim
+        -

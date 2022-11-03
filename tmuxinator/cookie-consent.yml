@@ -1,8 +1,12 @@
 name: cookie-consent
 root: ~/wahanda/cookie-consent
-startup_window: nvim
+startup_window: edit
 
 windows:
-  - nvim: nvim
-  - zsh:
-
+  - edit:
+      layout: even-horizontal
+      panes:
+        - editor:
+          - nvim
+        - git:
+          -
