@@ -403,3 +403,13 @@ key_bindings:
   - { key: F11,      mods: Super,   chars: "\x1b[23;3~"                      }
   - { key: F12,      mods: Super,   chars: "\x1b[24;3~"                      }
   - { key: NumpadEnter,             chars: "\n"                              }
+  - { key: Key1, mods: Alt, chars: "\x1B1" }
+  - { key: Key2, mods: Alt, chars: "\x1B2" }
+  - { key: Key3, mods: Alt, chars: "\x1B3" }
+  - { key: Key4, mods: Alt, chars: "\x1B4" }
+  - { key: Key5, mods: Alt, chars: "\x1B5" }
+  - { key: Key6, mods: Alt, chars: "\x1B6" }
+  - { key: Key7, mods: Alt, chars: "\x1B7" }
+  - { key: Key8, mods: Alt, chars: "\x1B8" }
+  - { key: Key9, mods: Alt, chars: "\x1B9" }
+  - { key: Key0, mods: Alt, chars: "\x1B0" }
