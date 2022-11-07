@@ -2,11 +2,10 @@
 
 name: dotfiles
 root: ~/dotfiles
-startup_window: nvim
+startup_window: edit
 
 windows:
   - edit:
-      layout: even-horizontal
-      panes:
-        - nvim
-        -
+      - nvim
+  - cli:
+    -
