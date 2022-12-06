@@ -1,7 +1,7 @@
 # PATH
 
 # Default path
-export PATH="/opt/homebrew:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
 # rbenv
 export PATH="$HOME/.rbenv/shims:$PATH"
 # Allow any custom binaries
@@ -14,7 +14,7 @@ export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 export PATH="$(brew --prefix grep)/libexec/gnubin:$PATH"
 
 # curl
-export PATH="/opt/homebrew/curl/bin:$PATH"
+export PATH="/usr/local/opt/curl/bin:$PATH"
 
 # GO
 export GOPATH="$HOME/go"
@@ -29,7 +29,7 @@ export PATH=/usr/local/opt/python/libexec/bin:$PATH
 # zplug
 
 export ZPLUG_USE_CACHE=true
-export ZPLUG_HOME=/opt/homebrew/opt/zplug
+export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
 zplug "lib/theme-and-appearance", from:oh-my-zsh
