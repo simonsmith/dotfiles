@@ -112,7 +112,7 @@ Plug 'ntpeters/vim-better-whitespace'
 " Split and join HTML tags, JS objects etc
 Plug 'AndrewRadev/splitjoin.vim'
 " Make it easy to add/remove/change brackets, quotes etc
-Plug 'kylechui/nvim-surround'
+Plug 'tpope/vim-surround'
 
 " Copy/Paste behaviour
 " ------------------------------------------------------------------------------
@@ -188,6 +188,43 @@ endfunction
 
 "  General config
 " ------------------------------------------------------------------------------
+
+lua << EOF
+require'lualine'.setup {
+  options = {
+    icons_enabled = false,
+    theme = 'auto',
+    component_separators = {},
+    section_separators = {},
+    disabled_filetypes = {}
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch'},
+    lualine_c = {{'filename', path = 1}},
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = {
+      {
+        'diagnostics',
+        sources = {'coc'},
+        sections = {'error', 'warn'},
+        symbols = {error = 'errors: ', warn = 'warnings: ', info = 'info: '}
+      }
+    },
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {{'filename', path = 1}},
+    lualine_c = {},
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  extensions = {}
+}
+EOF
 
 lua << EOF
 require'tokyonight'.setup {
@@ -782,44 +819,3 @@ augroup omnifuncs
   autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 augroup endif
-
-lua << EOF
-require("nvim-surround").setup()
-EOF
-
-lua << EOF
-require'lualine'.setup {
-  options = {
-    icons_enabled = false,
-    theme = 'auto',
-    component_separators = {},
-    section_separators = {},
-    disabled_filetypes = {}
-  },
-  sections = {
-    lualine_a = {'mode'},
-    lualine_b = {'branch'},
-    lualine_c = {{'filename', path = 1}},
-    lualine_x = {},
-    lualine_y = {},
-    lualine_z = {
-      {
-        'diagnostics',
-        sources = {'coc'},
-        sections = {'error', 'warn'},
-        symbols = {error = 'errors: ', warn = 'warnings: ', info = 'info: '}
-      }
-    },
-  },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {{'filename', path = 1}},
-    lualine_c = {},
-    lualine_x = {},
-    lualine_y = {},
-    lualine_z = {}
-  },
-  tabline = {},
-  extensions = {}
-}
-EOF
