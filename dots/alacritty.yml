@@ -405,7 +405,6 @@ key_bindings:
   - { key: NumpadEnter,             chars: "\n"                              }
   - { key: Key1, mods: Alt, chars: "\x1B1" }
   - { key: Key2, mods: Alt, chars: "\x1B2" }
-  - { key: Key3, mods: Alt, chars: "\x1B3" }
   - { key: Key4, mods: Alt, chars: "\x1B4" }
   - { key: Key5, mods: Alt, chars: "\x1B5" }
   - { key: Key6, mods: Alt, chars: "\x1B6" }
