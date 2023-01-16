@@ -30,10 +30,6 @@ brew install source-highlight
 # Install `wget`
 brew install wget
 
-# Fix issue with Jest not running watch
-# https://github.com/expo/expo/issues/854#issuecomment-343243804
-brew install watchman
-
 # Diff images on cmd-line - https://github.com/ewanmellor/git-diff-image
 brew install exiftool
 brew install imagemagick
