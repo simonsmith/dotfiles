@@ -76,8 +76,6 @@ Plug 'dietsche/vim-lastplace'
 Plug 'yssl/QFEnter'
 " Move blocks of code with ALT+j/k
 Plug 'matze/vim-move'
-" Easymotion replacement
-Plug 'phaazon/hop.nvim'
 " Pairs
 Plug 'jiangmiao/auto-pairs'
 
@@ -101,8 +99,6 @@ Plug 'whatyouhide/vim-textobj-xmlattr'
 " General
 " ------------------------------------------------------------------------------
 
-" Set spaces and other settings on a per project basis
-Plug 'editorconfig/editorconfig-vim'
 " Whitespace removal
 Plug 'ntpeters/vim-better-whitespace'
 
@@ -511,17 +507,6 @@ if s:has_plugin('coc.nvim')
   endfunction
 endif
 
-if s:has_plugin('editorconfig-vim')
-  let g:EditorConfig_max_line_indicator = "none"
-  let g:EditorConfig_preserve_formatoptions = 1
-endif
-
-if s:has_plugin('bufexplorer')
-  let g:bufExplorerDisableDefaultKeyMapping = 1
-  let g:bufExplorerShowNoName = 1
-  nnoremap <leader>b :BufExplorer<cr>
-endif
-
 if s:has_plugin('vim-easyclip')
   let g:EasyClipUseSubstituteDefaults = 0
   let g:EasyClipUsePasteDefaults = 0
@@ -530,11 +515,6 @@ if s:has_plugin('vim-easyclip')
   imap <c-v> <plug>EasyClipInsertModePaste
   " Place a mark (m taken by easyclip)
   nnoremap gm m
-endif
-
-if s:has_plugin('sideways.vim')
-  nnoremap ]j :SidewaysRight<cr>
-  nnoremap [j :SidewaysLeft<cr>
 endif
 
 if s:has_plugin('undotree')
@@ -550,11 +530,6 @@ if s:has_plugin('ListToggle')
   let g:lt_location_list_toggle_map = '<leader>L'
 endif
 
-if s:has_plugin('vim-javascript')
-  let g:javascript_plugin_flow=1
-  let g:javascript_plugin_jsdoc=1
-endif
-
 if s:has_plugin('vim-grepper')
   nnoremap <leader>g :Grepper -tool ag<cr>
   nnoremap <leader>G :Grepper -tool ag -buffers<cr>
@@ -567,18 +542,12 @@ if s:has_plugin('vim-grepper')
 end
 
 if s:has_plugin('vim-better-whitespace')
-  autocmd BufEnter * EnableStripWhitespaceOnSave
   highlight ExtraWhitespace ctermbg=red guibg = #e06c75
 endif
 
 if s:has_plugin('vim-session')
   let g:session_autosave = 'yes'
   let g:session_autoload = 'no'
-endif
-
-if s:has_plugin('vim-polyglot')
-  let g:vue_disable_pre_processors = 1
-  let g:jsx_ext_required = 0
 endif
 
 if s:has_plugin('splitjoin.vim')
@@ -707,11 +676,6 @@ if s:has_plugin('emmet-vim')
   let g:emmet_install_only_plug = 1
 endif
 
-" Output the current syntax group
-nnoremap <f10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<cr>
-
 " Automatic commands
 " ------------------------------------------------------------------------------
 
@@ -764,24 +728,6 @@ augroup auto-resize
   autocmd!
   autocmd VimResized * wincmd =
 augroup END
-
-" Autocomplete
-augroup omnifuncs
-  autocmd!
-  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-augroup endif
-
-if s:has_plugin('hop.nvim')
-  noremap <leader>l :HopLine<cr>
-  noremap <leader>s :HopWord<cr>
-lua << EOF
-  require'hop'.setup()
-EOF
-endif
 
 lua << EOF
 require'lualine'.setup {
