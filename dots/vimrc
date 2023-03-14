@@ -114,7 +114,8 @@ Plug 'tpope/vim-surround'
 " ------------------------------------------------------------------------------
 
 " Stop everything saving to a register and instead rely on just `m` for cut
-Plug 'svermeulen/vim-easyclip'
+Plug 'svermeulen/vim-cutlass'
+Plug 'svermeulen/vim-subversive'
 
 " Sessions
 " ------------------------------------------------------------------------------
@@ -508,19 +509,17 @@ if s:has_plugin('coc.nvim')
   endfunction
 endif
 
-if s:has_plugin('vim-easyclip')
-  let g:EasyClipUseSubstituteDefaults = 0
-  let g:EasyClipUsePasteDefaults = 0
-  nmap s <plug>SubstituteOverMotionMap
-  xmap s <plug>XEasyClipPaste
-  imap <c-v> <plug>EasyClipInsertModePaste
-  " Place a mark (m taken by easyclip)
-  nnoremap gm m
+if s:has_plugin('vim-subversive')
+  nmap gs <plug>(SubversiveSubstitute)
+endif
+
+if s:has_plugin('vim-cutlass')
+  nnoremap m d
+  nnoremap mm dd
 endif
 
 if s:has_plugin('undotree')
   nnoremap <F5> :UndotreeToggle<cr>
-  let g:undotree_SplitWidth = 45
 endif
 
 if s:has_plugin('vim-bufonly')
@@ -537,9 +536,6 @@ endif
 
 if s:has_plugin('vim-grepper')
   nnoremap <leader>g :Grepper -tool ag<cr>
-  nnoremap <leader>G :Grepper -tool ag -buffers<cr>
-  nmap gs <plug>(GrepperOperator)
-  xmap gs <plug>(GrepperOperator)
   let g:grepper = {}
   let g:grepper.stop = 2500
   let g:grepper.open = 50
@@ -709,17 +705,6 @@ augroup file-types
 
   " Use JS snippets in TS
   autocmd FileType typescript,typescript.tsx,typescriptreact call UltiSnips#AddFiletypes('javascript.typescript')
-augroup END
-
-
-" Switch between normal and relative line numbers and cursorline
-" when switching modes
-augroup highlight-when-switching-modes
-  autocmd!
-  autocmd InsertEnter * setlocal number norelativenumber nocursorline
-  autocmd InsertLeave * setlocal relativenumber cursorline
-  autocmd WinEnter    * setlocal cursorline
-  autocmd WinLeave    * setlocal nocursorline
 augroup END
 
 " Periodically check for file changes
