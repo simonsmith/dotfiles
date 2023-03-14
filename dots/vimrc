@@ -90,13 +90,10 @@ Plug 'chaoren/vim-wordmotion'
 Plug 'wellle/targets.vim'
 " Add various text objects
 Plug 'kana/vim-textobj-user'
-Plug 'kana/vim-textobj-function'
 " aE
 Plug 'kana/vim-textobj-entire'
 " al
 Plug 'kana/vim-textobj-line'
-" ax
-Plug 'whatyouhide/vim-textobj-xmlattr'
 
 " General
 " ------------------------------------------------------------------------------
