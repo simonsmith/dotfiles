@@ -513,8 +513,9 @@ if s:has_plugin('vim-subversive')
 endif
 
 if s:has_plugin('vim-cutlass')
-  nnoremap m d
-  nnoremap mm dd
+  nmap m d
+  nmap mm dd
+  vmap m d
 endif
 
 if s:has_plugin('undotree')
