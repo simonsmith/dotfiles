@@ -79,7 +79,7 @@ Plug 'matze/vim-move'
 " Pairs
 Plug 'jiangmiao/auto-pairs'
 " Jump to letters
-Plug 'phaazon/hop.nvim'
+Plug 'ggandor/leap.nvim'
 
 " Text objects
 " ------------------------------------------------------------------------------
@@ -515,6 +515,7 @@ endif
 if s:has_plugin('vim-cutlass')
   nnoremap m d
   xnoremap m d
+  nnoremap mm dd
 endif
 
 if s:has_plugin('undotree')
@@ -525,11 +526,8 @@ if s:has_plugin('vim-bufonly')
   nnoremap <leader>B :BufOnly<cr>
 endif
 
-if s:has_plugin('hop.nvim')
-  noremap s :HopWord<cr>
-lua << EOF
-  require'hop'.setup()
-EOF
+if s:has_plugin('leap.nvim')
+  lua require('leap').add_default_mappings()
 endif
 
 if s:has_plugin('ListToggle')
