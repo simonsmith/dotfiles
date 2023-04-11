@@ -78,8 +78,6 @@ Plug 'yssl/QFEnter'
 Plug 'matze/vim-move'
 " Pairs
 Plug 'jiangmiao/auto-pairs'
-" Jump to letters
-Plug 'ggandor/leap.nvim'
 
 " Text objects
 " ------------------------------------------------------------------------------
@@ -509,7 +507,7 @@ if s:has_plugin('coc.nvim')
 endif
 
 if s:has_plugin('vim-subversive')
-  nmap gs <plug>(SubversiveSubstitute)
+  nmap s <plug>(SubversiveSubstitute)
 endif
 
 if s:has_plugin('vim-cutlass')
@@ -524,10 +522,6 @@ endif
 
 if s:has_plugin('vim-bufonly')
   nnoremap <leader>B :BufOnly<cr>
-endif
-
-if s:has_plugin('leap.nvim')
-  lua require('leap').add_default_mappings()
 endif
 
 if s:has_plugin('ListToggle')
