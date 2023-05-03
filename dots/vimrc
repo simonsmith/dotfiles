@@ -422,10 +422,6 @@ nnoremap <silent> p p`]
 noremap <silent><leader>x :split<cr>
 noremap <silent><leader>v :vsplit<cr>
 
-" Switch buffers
-nnoremap <silent>H :silent bp<CR>
-nnoremap <silent>L :silent bn<CR>
-
 " Spellcheck
 nnoremap <F6> :setlocal spell!<cr>
 
