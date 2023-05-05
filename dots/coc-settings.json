@@ -6,6 +6,7 @@
   "eslint.autoFixOnSave": true,
   "css.lint.unknownAtRules": "ignore",
   "coc.preferences.colorSupport": false,
+  "eslint.packageManager": "yarn",
   "eslint.filetypes": [
     "javascript",
     "javascript.jsx",
