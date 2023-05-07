@@ -12,6 +12,7 @@ alias vim="nvim"
 alias mux="tmuxinator"
 alias k="kubectl"
 alias cat="bat"
+alias rmF="rm -rf"
 
 # yarn
 alias y='yarn'
