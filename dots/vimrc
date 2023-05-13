@@ -50,7 +50,8 @@ Plug 'moll/vim-bbye'
 " Search
 " ------------------------------------------------------------------------------
 
-Plug 'mhinz/vim-grepper'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-pack/nvim-spectre'
 
 " Language pack
 " ------------------------------------------------------------------------------
@@ -477,9 +478,7 @@ if s:has_plugin('coc.nvim')
   nmap <silent> <leader>dd <Plug>(coc-implementation)
   nmap <silent> <leader>dy <Plug>(coc-type-definition)
   nmap <silent> <leader>dn <Plug>(coc-rename)
-  nmap <silent> <leader>dl <Plug>(coc-codelens-action)
   nmap <silent> <leader>da <Plug>(coc-codeaction)
-  nmap <silent> <leader>dv :vsplit<cr> <Plug>(coc-implementation)
 
   nmap <silent> <leader>p :Prettier<cr>
 
@@ -529,14 +528,6 @@ endif
 if s:has_plugin('vim-deno')
   nnoremap gp :DenoFmt<cr>
 endif
-
-if s:has_plugin('vim-grepper')
-  nnoremap <leader>g :Grepper -tool ag<cr>
-  let g:grepper = {}
-  let g:grepper.stop = 2500
-  let g:grepper.open = 50
-  let g:grepper.highlight = 1
-end
 
 if s:has_plugin('vim-better-whitespace')
   highlight ExtraWhitespace ctermbg=red guibg = #e06c75
@@ -779,5 +770,43 @@ vim.api.nvim_create_autocmd("User", {
   pattern = "GoyoLeave",
   command = "lua Goyo_leave()",
   group = GoyoGroup,
+})
+EOF
+
+hi DiffChange guibg=#511e1e guifg=#eee
+hi DiffDelete guibg=#3d432f guifg=#eee
+
+lua << EOF
+vim.keymap.set('n', '<leader>s', '<cmd>lua require("spectre").open()<CR>', {
+  desc = "Open Spectre"
+})
+require('spectre').setup({
+  mappings={
+    ['toggle_line'] = {
+        map = "dd",
+        cmd = "<cmd>lua require('spectre').toggle_line()<CR>",
+        desc = "toggle current item"
+    },
+    ['enter_file'] = {
+        map = "<cr>",
+        cmd = "<cmd>lua require('spectre.actions').select_entry()<CR>",
+        desc = "goto current file"
+    },
+    ['send_to_qf'] = {
+        map = "<leader>q",
+        cmd = "<cmd>lua require('spectre.actions').send_to_qf()<CR>",
+        desc = "send all item to quickfix"
+    },
+    ['run_current_replace'] = {
+      map = "<leader>rc",
+      cmd = "<cmd>lua require('spectre.actions').run_current_replace()<CR>",
+      desc = "replace current line"
+    },
+    ['run_replace'] = {
+        map = "<leader>R",
+        cmd = "<cmd>lua require('spectre.actions').run_replace()<CR>",
+        desc = "replace all"
+    },
+  }
 })
 EOF
