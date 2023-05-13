@@ -588,6 +588,7 @@ if s:has_plugin('taboo.vim')
 endif
 
 if s:has_plugin('nnn.vim')
+  let g:nnn#set_default_mappings = 0
   nnoremap _ :NnnPicker %:p:h<cr>
   let g:nnn#command = 'nnn -d -H'
   let g:nnn#layout = 'enew'
