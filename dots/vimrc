@@ -780,6 +780,9 @@ lua << EOF
 vim.keymap.set('n', '<leader>s', '<cmd>lua require("spectre").open()<CR>', {
   desc = "Open Spectre"
 })
+vim.keymap.set('n', '<leader>c', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
+    desc = "Search current word"
+})
 require('spectre').setup({
   mappings={
     ['toggle_line'] = {
