@@ -81,6 +81,8 @@ Plug 'yssl/QFEnter'
 Plug 'matze/vim-move'
 " Pairs
 Plug 'jiangmiao/auto-pairs'
+" copilot
+Plug 'github/copilot.vim'
 
 " Text objects
 " ------------------------------------------------------------------------------
@@ -469,6 +471,12 @@ if s:has_plugin('ultisnips')
   let g:UltiSnipsJumpForwardTrigger="<tab>"
   let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
   let g:UltiSnipsSnippetDirectories=["UltiSnips"]
+endif
+
+if s:has_plugin('copilot.vim')
+  imap <silent> <C-j> <Plug>(copilot-next)
+  imap <silent> <C-k> <Plug>(copilot-previous)
+  imap <silent> <C-\> <Plug>(copilot-dismiss)
 endif
 
 if s:has_plugin('coc.nvim')
