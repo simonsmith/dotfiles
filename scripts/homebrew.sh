@@ -79,6 +79,7 @@ brew install devd
 brew install go
 brew install exa
 brew install trash
+brew install direnv
 brew install nnn
 brew tap clementtsang/bottom
 brew install bottom
