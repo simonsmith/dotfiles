@@ -78,6 +78,7 @@ brew install fd
 brew install devd
 brew install go
 brew install exa
+brew install trash
 brew install nnn
 brew tap clementtsang/bottom
 brew install bottom
