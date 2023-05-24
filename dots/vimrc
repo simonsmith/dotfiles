@@ -146,8 +146,8 @@ Plug 'SirVer/ultisnips'
 " ------------------------------------------------------------------------------
 
 Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/gv.vim'
+Plug 'lewis6991/gitsigns.nvim'
 
 " HTML/CSS
 " ------------------------------------------------------------------------------
@@ -559,7 +559,6 @@ if s:has_plugin('vim-closetag')
 endif
 
 if s:has_plugin('vim-choosewin')
-  nmap  <leader>h <plug>(choosewin)
   let g:choosewin_label_fill = 0
   let g:choosewin_blink_on_land = 0
 endif
@@ -648,24 +647,14 @@ if s:has_plugin('ListToggle')
   let g:lt_height = 18
 endif
 
+
+
+
 if executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
   " Use ag with ack.vim - https://github.com/ggreer/the_silver_searcher#vim
   let g:ackprg = 'ag --smart-case --nogroup --nocolor --column'
-endif
-
-if s:has_plugin('vim-gitgutter')
-  let g:gitgutter_sign_added = '█'
-  let g:gitgutter_sign_modified = '█'
-  let g:gitgutter_sign_removed = '█▎'
-  let g:gitgutter_sign_removed_first_line = '█▎'
-  let g:gitgutter_sign_modified_removed = '█▎'
-  let g:gitgutter_map_keys = 0
-  nmap [c <Plug>(GitGutterPrevHunk)
-  nmap ]c <Plug>(GitGutterNextHunk)
-  " :Revert command
-  command! -nargs=0 Revert :GitGutterUndoHunk
 endif
 
 if s:has_plugin('emmet-vim')
@@ -819,5 +808,33 @@ require('spectre').setup({
         desc = "replace all"
     },
   }
+})
+EOF
+
+lua << EOF
+require('gitsigns').setup({
+  on_attach = function(bufnr)
+    local gs = package.loaded.gitsigns
+
+    local function map(mode, l, r, opts)
+      opts = opts or {}
+      opts.buffer = bufnr
+      vim.keymap.set(mode, l, r, opts)
+    end
+
+    -- Navigation
+    map('n', ']c', function()
+      if vim.wo.diff then return ']c' end
+      vim.schedule(function() gs.next_hunk() end)
+      return '<Ignore>'
+    end, {expr=true})
+
+    map('n', '[c', function()
+      if vim.wo.diff then return '[c' end
+      vim.schedule(function() gs.prev_hunk() end)
+      return '<Ignore>'
+    end, {expr=true})
+    map('n', '<leader>b', '<cmd>lua require"gitsigns".blame_line{full=true}<CR>')
+  end
 })
 EOF
