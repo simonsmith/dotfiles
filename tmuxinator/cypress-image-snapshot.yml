@@ -1,18 +1,9 @@
 name: cypress-image-snapshot
-root: ~/Sites/new-cypress-image-snapshot
+root: ~/Sites/cypress-image-snapshot
 startup_window: edit
 
 windows:
   - edit:
       - nvim
   - cli:
-      layout: even-horizontal
-      panes:
-        - git:
-          -
-        - cypress:
-          - yarn build
-  - old-plugin:
-    - cd ~/Sites/cypress-image-snapshot
-    - nvim
-
+      -

@@ -4,12 +4,9 @@ startup_window: edit
 
 windows:
   - edit:
-      layout: even-horizontal
-      panes:
-        - editor:
-          - nvim
-        - git:
-          -
+    - nvim
+  - cli:
+    -
   - docker-images/treatwell-cypress:
       layout: even-horizontal
       panes:
