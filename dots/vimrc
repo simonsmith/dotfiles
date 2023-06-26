@@ -9,7 +9,7 @@ call plug#begin(g:plugin_path)
 " Theme
 " ------------------------------------------------------------------------------
 
-Plug 'folke/tokyonight.nvim'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
 " tmux
 " ------------------------------------------------------------------------------
@@ -190,17 +190,52 @@ endfunction
 " ------------------------------------------------------------------------------
 
 lua << EOF
-require'tokyonight'.setup {
-  styles = {
-    comments = { italic = true },
-    keywords = { italic = false },
-    functions = {},
-    variables = {},
+require("catppuccin").setup({
+  flavour = "frappe", -- latte, frappe, macchiato, mocha
+  background = { -- :h background
+      light = "latte",
+      dark = "frappe",
   },
-}
+  transparent_background = false, -- disables setting the background color.
+  show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
+  term_colors = false, -- sets terminal colors (e.g. `g:terminal_color_0`)
+  dim_inactive = {
+      enabled = false, -- dims the background color of inactive window
+      shade = "dark",
+      percentage = 0.15, -- percentage of the shade to apply to the inactive window
+  },
+  no_italic = true, -- Force no italic
+  no_bold = false, -- Force no bold
+  no_underline = false, -- Force no underline
+  styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
+      comments = { "italic" }, -- Change the style of comments
+      loops = {},
+      functions = {},
+      keywords = {},
+      strings = {},
+      variables = {},
+      numbers = {},
+      booleans = {},
+      properties = {},
+      types = {},
+      operators = {},
+  },
+  color_overrides = {},
+  custom_highlights = {},
+  integrations = {
+      cmp = true,
+      gitsigns = false,
+      nvimtree = false,
+      telescope = false,
+      notify = false,
+      mini = false,
+      coc_nvim = true,
+      -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
+  },
+})
 EOF
 
-colorscheme tokyonight-moon
+colorscheme catppuccin
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags='li\|p'
@@ -708,7 +743,7 @@ lua << EOF
 require'lualine'.setup {
   options = {
     icons_enabled = false,
-    theme = 'auto',
+    theme = 'catppuccin',
     component_separators = {},
     section_separators = {},
     disabled_filetypes = {}

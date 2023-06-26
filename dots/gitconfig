@@ -79,7 +79,8 @@
 	side-by-side = false
 	decorations = true
 	line-numbers = true
-	syntax-theme = Dracula
+	syntax-theme = OneHalfDark
+	#syntax-theme = GitHub Light
 	width = 130
 
 [interactive]
