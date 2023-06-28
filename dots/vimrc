@@ -191,7 +191,7 @@ endfunction
 
 lua << EOF
 require("catppuccin").setup({
-  flavour = "macchiato", -- latte, frappe, macchiato, mocha
+  flavour = "latte", -- latte, frappe, macchiato, mocha
   background = { -- :h background
       light = "latte",
       dark = "frappe",
@@ -522,6 +522,9 @@ if s:has_plugin('coc.nvim')
   nmap <silent> <leader>dy <Plug>(coc-type-definition)
   nmap <silent> <leader>dn <Plug>(coc-rename)
   nmap <silent> <leader>da <Plug>(coc-codeaction)
+  nmap <silent> ]e :call CocAction('diagnosticNext')<cr>
+  nmap <silent> [e :call CocAction('diagnosticPrevious')<cr>
+  nmap <silent> <leader>e :CocDiagnostics<cr>
 
   nmap <silent> <leader>p :Prettier<cr>
 
