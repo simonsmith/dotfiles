@@ -6,8 +6,8 @@ set -g status-right-style none
 set -g message-style bg=colour2,fg=colour0
 set -g status-style none
 set -g pane-border-style bg=default,fg=colour240
-set -g pane-active-border-style bg=default,fg=colour240
-set -g pane-border-style fg=colour240
+set -g pane-active-border-style bg=default,fg=#24273A
+set -g pane-border-style fg=#24273A
 set -g status-left-style none
 setw -g window-status-style bg=default,fg=colour242,none
 setw -g window-status-current-style bg=default,fg=colour242
