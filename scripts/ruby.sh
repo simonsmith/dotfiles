@@ -1,4 +1,4 @@
-ruby_version=2.7.1
+ruby_version=3.1.4
 
 echo "Installing ruby ..."
 
@@ -12,5 +12,6 @@ rbenv global "$ruby_version"
 rbenv shell "$ruby_version"
 
 gem update --system
+gem install bundler
 
 rbenv rehash
