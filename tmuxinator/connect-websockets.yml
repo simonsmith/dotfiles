@@ -1,0 +1,16 @@
+name: connect-websockets
+root: ~/wahanda/connect-websockets
+startup_window: edit
+
+windows:
+  - edit:
+      - unset NODE_OPTIONS
+      - nvim
+  - cli:
+      layout: even-horizontal
+      panes:
+        - git:
+          - unset NODE_OPTIONS
+        - server:
+          - unset NODE_OPTIONS
+          - yarn start-local

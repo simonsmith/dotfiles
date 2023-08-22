@@ -4,4 +4,4 @@ startup_window: twbox
 
 windows:
   - twbox:
-    - twbox -s mp-core.twtest.io -l DATETIME_UI nginx up
+    - twbox -s dev01.twtest.io nginx up
