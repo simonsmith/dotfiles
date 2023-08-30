@@ -31,6 +31,7 @@ yabai -m config mouse_drop_action            swap
 # ignore
 yabai -m rule --add app="System Settings" manage=off
 yabai -m rule --add app="Cisco AnyConnect Secure Mobility Client" manage=off
+yabai -m rule --add app="Logi Options+" manage=off
 yabai -m rule --add app="Pixea" manage=off
 
 # general space settings
