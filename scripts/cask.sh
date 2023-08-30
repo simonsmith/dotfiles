@@ -28,6 +28,7 @@ brew install --cask the-unarchiver
 
 # Other stuff
 brew install --cask 1password
+brew install --cask mos
 brew install --cask authy
 brew install --cask gifox
 brew install --cask appcleaner
