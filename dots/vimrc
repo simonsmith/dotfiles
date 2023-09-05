@@ -710,6 +710,15 @@ augroup vimrc-help
   autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | setlocal relativenumber | endif
 augroup END
 
+" hide cursorline when buffer is inactive
+augroup CrossHair
+  au!
+  au VimEnter * setlocal cursorline
+  au WinEnter * setlocal cursorline
+  au BufWinEnter * setlocal cursorline
+  au WinLeave * setlocal nocursorline
+augroup end
+
 augroup file-types
   autocmd!
 
