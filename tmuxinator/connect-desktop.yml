@@ -4,17 +4,13 @@ startup_window: edit
 
 windows:
   - edit:
-      - unset NODE_OPTIONS
       - nvim
   - cli:
       layout: b65f,378x59,0,0{189x59,0,0,3,188x59,190,0[188x30,190,0,4,188x28,190,31,7]}
       panes:
         - git:
-          - unset NODE_OPTIONS
         - server:
-          - unset NODE_OPTIONS
-          - yarn dev-server
+          - PORT=3001 yarn dev-server
         - webpack:
-          - unset NODE_OPTIONS
           - yarn watch
 
