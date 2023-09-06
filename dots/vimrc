@@ -580,6 +580,12 @@ if s:has_plugin('vim-better-whitespace')
   highlight ExtraWhitespace ctermbg=red guibg = #e06c75
 endif
 
+lua << EOF
+require('kommentary.config').configure_language("default", {
+    prefer_single_line_comments = true,
+})
+EOF
+
 if s:has_plugin('vim-session')
   let g:session_autosave = 'yes'
   let g:session_autoload = 'no'
