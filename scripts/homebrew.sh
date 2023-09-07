@@ -77,7 +77,7 @@ brew install bat
 brew install fd
 brew install devd
 brew install go
-brew install exa
+brew install eza
 brew install trash
 brew install direnv
 brew install nnn
