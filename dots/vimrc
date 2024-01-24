@@ -44,8 +44,6 @@ Plug 'mcchrish/nnn.vim'
 
 " Close all buffers except current
 Plug 'schickling/vim-bufonly'
-" Close buffers without losing window layout
-Plug 'moll/vim-bbye'
 
 " Search
 " ------------------------------------------------------------------------------
@@ -71,8 +69,6 @@ Plug 'b3nj5m1n/kommentary'
 Plug 'Valloric/ListToggle'
 " Display quickfix with a fancy window and commands
 Plug 'kevinhwang91/nvim-bqf'
-" Move between windows and allow swapping position
-Plug 't9md/vim-choosewin'
 " Remember cursor position in closed buffers
 Plug 'dietsche/vim-lastplace'
 " Open files from Quickfix
@@ -107,8 +103,6 @@ Plug 'ntpeters/vim-better-whitespace'
 " Refactoring
 " ------------------------------------------------------------------------------
 
-" Split and join HTML tags, JS objects etc
-Plug 'AndrewRadev/splitjoin.vim'
 " Make it easy to add/remove/change brackets, quotes etc
 Plug 'tpope/vim-surround'
 
@@ -135,12 +129,6 @@ Plug 'hoob3rt/lualine.nvim'
 
 " Make managing tabs easier with rename, add, delete etc
 Plug 'gcmt/taboo.vim'
-
-" Snippets
-" ------------------------------------------------------------------------------
-
-Plug 'simonsmith/vim-custom-snippets'
-Plug 'SirVer/ultisnips'
 
 " Git
 " ------------------------------------------------------------------------------
@@ -502,19 +490,6 @@ if s:has_plugin('vim-textobj-entire')
   omap iE <Plug>(textobj-entire-i)
 endif
 
-if s:has_plugin('ultisnips')
-  let g:UltiSnipsExpandTrigger="<tab>"
-  let g:UltiSnipsJumpForwardTrigger="<tab>"
-  let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-  let g:UltiSnipsSnippetDirectories=["UltiSnips"]
-endif
-
-if s:has_plugin('copilot.vim')
-  imap <silent> <C-j> <Plug>(copilot-next)
-  imap <silent> <C-k> <Plug>(copilot-previous)
-  imap <silent> <C-\> <Plug>(copilot-dismiss)
-endif
-
 if s:has_plugin('coc.nvim')
   " Remap keys for gotos
   nmap <silent> <leader>dr <Plug>(coc-references)
@@ -560,10 +535,6 @@ if s:has_plugin('vim-cutlass')
   nnoremap mm dd
 endif
 
-if s:has_plugin('undotree')
-  nnoremap <F5> :UndotreeToggle<cr>
-endif
-
 if s:has_plugin('vim-bufonly')
   nnoremap <leader>B :BufOnly<cr>
 endif
@@ -591,13 +562,6 @@ if s:has_plugin('vim-session')
   let g:session_autoload = 'no'
 endif
 
-if s:has_plugin('splitjoin.vim')
-  let g:splitjoin_split_mapping = ''
-  let g:splitjoin_join_mapping = ''
-  nmap gj :SplitjoinSplit<cr>
-  nmap gk :SplitjoinJoin<cr>
-endif
-
 if s:has_plugin('vim-closetag')
   let g:closetag_filenames = "*.html,*.js,*.jsx"
   let g:closetag_close_shortcut = ''
@@ -606,13 +570,6 @@ endif
 if s:has_plugin('vim-choosewin')
   let g:choosewin_label_fill = 0
   let g:choosewin_blink_on_land = 0
-endif
-
-if s:has_plugin('mileszs/ack.vim')
-  if executable('ag')
-    let g:ackprg = 'ag --vimgrep'
-    let g:ack_qhandler = "botright copen 40"
-  endif
 endif
 
 if s:has_plugin('vim-bbye')
@@ -647,11 +604,8 @@ endif
 if s:has_plugin('fzf.vim')
   let g:fzf_height = '30%'
   let g:fzf_commits_log_options = '--color --graph --pretty=format:"%C(yellow)%h%Creset -%C(auto)%d%Creset %s %C(bold blue)(%cr) %Cred<%an>%Creset" --abbrev-commit'
-
   nnoremap <c-p> :FZF<cr>
   nnoremap <Tab> :Buffers<cr>
-  nnoremap <c-t> :Lines<cr>
-  nnoremap <c-space> :Rg!<cr>
   nnoremap <silent> <BS> :History:<cr>
 
   " Allow options to be passed to FZF :Ag
@@ -846,11 +800,6 @@ require('spectre').setup({
         cmd = "<cmd>lua require('spectre.actions').select_entry()<CR>",
         desc = "goto current file"
     },
-    ['send_to_qf'] = {
-        map = "<leader>q",
-        cmd = "<cmd>lua require('spectre.actions').send_to_qf()<CR>",
-        desc = "send all item to quickfix"
-    },
     ['run_current_replace'] = {
       map = "<leader>rc",
       cmd = "<cmd>lua require('spectre.actions').run_current_replace()<CR>",
@@ -896,7 +845,6 @@ require('gitsigns').setup({
       vim.schedule(function() gs.prev_hunk() end)
       return '<Ignore>'
     end, {expr=true})
-    map('n', '<leader>b', '<cmd>lua require"gitsigns".blame_line{full=true}<CR>')
   end
 })
 EOF
