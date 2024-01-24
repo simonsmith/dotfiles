@@ -490,6 +490,11 @@ if s:has_plugin('vim-textobj-entire')
   omap iE <Plug>(textobj-entire-i)
 endif
 
+
+if s:has_plugin('vim-slash')
+  noremap <plug>(slash-after) zz
+endif
+
 if s:has_plugin('coc.nvim')
   " Remap keys for gotos
   nmap <silent> <leader>dr <Plug>(coc-references)
