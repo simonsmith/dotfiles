@@ -12,8 +12,8 @@ prefix < escape ; default
 # open a terminal
 prefix < return : open -na /Applications/Alacritty.app; skhd -k "escape"
 
-# open a canary window
-prefix < shift - return : open -na "Google Chrome Canary" --args --new-window; skhd -k "escape"
+ctrl - l : skhd -k "ctrl - tab"
+ctrl - h : skhd -k "shift + ctrl - tab"
 
 # yabai
 # --------------------------------------------
