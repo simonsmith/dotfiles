@@ -25,6 +25,7 @@ brew install --cask karabiner-elements
 brew install --cask gpg-suite
 brew install --cask keepingyouawake
 brew install --cask the-unarchiver
+brew install --cask shifty
 
 # Other stuff
 brew install --cask 1password
