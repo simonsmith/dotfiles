@@ -1,6 +1,7 @@
 # Browsers
 brew tap homebrew/cask-versions
 brew install --cask firefox-developer-edition
+brew install --cask firefox
 brew install --cask brave-browser-beta
 brew install --cask google-chrome-canary
 
