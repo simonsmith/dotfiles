@@ -62,6 +62,8 @@ Plug 'sheerun/vim-polyglot'
 " Editing
 " ------------------------------------------------------------------------------
 
+" leaping
+Plug 'ggandor/leap.nvim'
 " Allow plugins to be repeated with dot
 Plug 'tpope/vim-repeat'
 " Comment out blocks of code
@@ -652,8 +654,11 @@ if s:has_plugin('ListToggle')
   let g:lt_height = 18
 endif
 
-
-
+lua << EOF
+  vim.keymap.set('n', '<leader><space>', function ()
+    require('leap').leap { target_windows = { vim.api.nvim_get_current_win() } }
+  end)
+EOF
 
 if executable('ag')
   " Use ag over grep
