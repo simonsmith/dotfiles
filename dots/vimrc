@@ -44,6 +44,7 @@ Plug 'mcchrish/nnn.vim'
 
 " Close all buffers except current
 Plug 'schickling/vim-bufonly'
+Plug 'moll/vim-bbye'
 
 " Search
 " ------------------------------------------------------------------------------
