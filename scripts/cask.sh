@@ -33,6 +33,7 @@ brew install --cask authy
 brew install --cask appcleaner
 brew install --cask daisydisk
 brew install --cask deluge
+brew install --cask obsidian
 brew install --cask monitorcontrol
 
 brew cleanup
