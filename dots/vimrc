@@ -154,7 +154,6 @@ Plug 'rrethy/vim-hexokinase', {'do': 'make hexokinase'}
 " ------------------------------------------------------------------------------
 
 Plug 'pangloss/vim-javascript', {'for': ['javascript', 'javascript.jsx']}
-Plug 'uki00a/vim-deno'
 
 " Autocomplete & linting
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -549,10 +548,6 @@ endif
 
 if s:has_plugin('ListToggle')
   let g:lt_location_list_toggle_map = '<leader>L'
-endif
-
-if s:has_plugin('vim-deno')
-  nnoremap gp :DenoFmt<cr>
 endif
 
 if s:has_plugin('vim-better-whitespace')
