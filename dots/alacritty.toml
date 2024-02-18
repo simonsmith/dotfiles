@@ -12,10 +12,10 @@ draw_bold_text_with_bright_colors = false
 TERM = "xterm-256color"
 
 [font]
-size = 14.0
+size = 16.0
 
 [font.bold]
-family = "MonoLisa"
+family = "SauceCodePro Nerd Font Mono"
 style = "Bold"
 
 [font.glyph_offset]
@@ -23,16 +23,16 @@ x = 0
 y = 0
 
 [font.italic]
-family = "MonoLisa"
+family = "SauceCodePro Nerd Font Mono"
 style = "Book Italic"
 
 [font.normal]
-family = "MonoLisa"
-style = "Book"
+family = "SauceCodePro Nerd Font Mono"
+style = "Regular"
 
 [font.offset]
-x = 1
-y = 6
+x = 0
+y = 3
 
 [[keyboard.bindings]]
 action = "ResetFontSize"

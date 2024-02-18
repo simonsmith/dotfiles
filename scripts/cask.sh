@@ -1,5 +1,6 @@
 # Browsers
 brew tap homebrew/cask-versions
+brew tap homebrew/cask-fonts
 brew install --cask firefox-developer-edition
 brew install --cask firefox
 brew install --cask google-chrome-canary
@@ -35,5 +36,8 @@ brew install --cask daisydisk
 brew install --cask deluge
 brew install --cask obsidian
 brew install --cask monitorcontrol
+
+# Fonts
+brew install font-sauce-code-pro-nerd-font
 
 brew cleanup
