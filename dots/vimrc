@@ -27,7 +27,6 @@ endif
 " Fuzzy finding anything
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 " fzf integration for Vim
-Plug 'junegunn/fzf.vim'
 Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
 Plug 'nvim-tree/nvim-web-devicons'
 " Improved search in Vim
@@ -190,13 +189,17 @@ lua << EOF
 local actions = require "fzf-lua.actions"
 require'fzf-lua'.setup({
   winopts = {
+    height = 0.9,
+    width = 0.85,
     preview = {
       default = 'bat'
     }
   },
   actions = {
     files = {
-      ["default"] = actions.file_edit
+      ["default"] = actions.file_edit,
+      ["ctrl-v"] = actions.file_vsplit
+
     }
   }
 })
@@ -626,11 +629,10 @@ if s:has_plugin('gv.vim')
   nnoremap <c-g> :GV!<cr>
 endif
 
-if s:has_plugin('fzf.vim')
+if s:has_plugin('fzf-lua')
   nnoremap <c-p> :FzfLua files<cr>
   nnoremap <Tab> :FzfLua buffers<cr>
   nnoremap <silent> <BS> :FzfLua command_history<cr>
-  let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
 endif
 
 if s:has_plugin('ListToggle')
