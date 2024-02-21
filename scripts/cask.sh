@@ -36,6 +36,7 @@ brew install --cask daisydisk
 brew install --cask deluge
 brew install --cask obsidian
 brew install --cask monitorcontrol
+brew install --cask cursorcerer
 
 # Fonts
 brew install font-sauce-code-pro-nerd-font
