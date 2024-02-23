@@ -89,5 +89,6 @@ brew install imageoptim-cli
 brew install python
 brew install youtube-dl
 brew install meetingbar
+brew install deskpad
 
 brew cleanup
