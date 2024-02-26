@@ -80,7 +80,6 @@ brew install go
 brew install eza
 brew install trash
 brew install direnv
-brew install nnn
 brew tap clementtsang/bottom
 brew install bottom
 brew install rm-improved
