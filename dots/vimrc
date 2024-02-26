@@ -189,11 +189,14 @@ lua << EOF
 local actions = require "fzf-lua.actions"
 require'fzf-lua'.setup({
   winopts = {
-    height = 0.9,
-    width = 0.85,
+    height = 0.7,
+    width = 0.5,
     preview = {
-      default = 'bat'
+      --default = 'bat'
     }
+  },
+  files = {
+    previewer = false,
   },
   actions = {
     files = {
