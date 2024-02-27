@@ -196,20 +196,16 @@ lua << EOF
 local actions = require "fzf-lua.actions"
 require'fzf-lua'.setup({
   winopts = {
-    height = 0.7,
-    width = 0.5,
+    height = 0.9,
+    width = 0.8,
     preview = {
-      --default = 'bat'
+      default = 'bat'
     }
-  },
-  files = {
-    previewer = false,
   },
   actions = {
     files = {
       ["default"] = actions.file_edit,
       ["ctrl-v"] = actions.file_vsplit
-
     }
   }
 })
@@ -642,6 +638,7 @@ endif
 
 if s:has_plugin('fzf-lua')
   nnoremap <c-p> :FzfLua files<cr>
+  nnoremap <leader>j :FzfLua jumps<cr>
   nnoremap <Tab> :FzfLua buffers<cr>
   nnoremap <silent> <BS> :FzfLua command_history<cr>
 endif
