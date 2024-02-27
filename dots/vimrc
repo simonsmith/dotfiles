@@ -32,12 +32,17 @@ Plug 'nvim-tree/nvim-web-devicons'
 " Improved search in Vim
 Plug 'junegunn/vim-slash'
 
+
+" Editor improvements
+" ------------------------------------------------------------------------------
+"
+Plug 'ggandor/leap.nvim'
 Plug 'junegunn/goyo.vim'
+Plug 'gcmt/taboo.vim'
+Plug 'hoob3rt/lualine.nvim'
 
 " File management
 " ------------------------------------------------------------------------------
-
-" File browser
 Plug 'mcchrish/nnn.vim'
 
 " Buffers
@@ -63,8 +68,6 @@ Plug 'sheerun/vim-polyglot'
 " Editing
 " ------------------------------------------------------------------------------
 
-" leaping
-Plug 'ggandor/leap.nvim'
 " Allow plugins to be repeated with dot
 Plug 'tpope/vim-repeat'
 " Comment out blocks of code
@@ -122,17 +125,6 @@ Plug 'svermeulen/vim-subversive'
 
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
-
-" Status bar
-" ------------------------------------------------------------------------------
-
-Plug 'hoob3rt/lualine.nvim'
-
-" Tabs
-" ------------------------------------------------------------------------------
-
-" Make managing tabs easier with rename, add, delete etc
-Plug 'gcmt/taboo.vim'
 
 " Git
 " ------------------------------------------------------------------------------
