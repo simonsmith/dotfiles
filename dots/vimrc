@@ -41,6 +41,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'gcmt/taboo.vim'
 Plug 'hoob3rt/lualine.nvim'
 
+Plug 'rcarriga/nvim-notify'
 Plug 'MunifTanjim/nui.nvim'
 Plug 'folke/noice.nvim'
 
@@ -181,14 +182,20 @@ require'nvim-web-devicons'.setup()
 EOF
 
 lua << EOF
-require("noice").setup({
-  notify = {
-    enabled = false,
-  },
-  presets = {
-    command_palette = true, -- position the cmdline and popupmenu together
-    long_message_to_split = true, -- long messages will be sent to a split
-  },
+  require("noice").setup({
+    notify = {
+      enabled = false,
+    },
+    routes = {
+      { filter = { event = "msg_show", kind = "", find = "written", },  skip = true },
+      { filter = { event = "msg_show", kind = "", },  skip = true },
+      { filter = { find = "Hunk" }, skip = true },
+      { filter = { find = "E486" }, view = "mini" }
+    },
+    presets = {
+      command_palette = true, -- position the cmdline and popupmenu together
+      long_message_to_split = true, -- long messages will be sent to a split
+    },
 })
 EOF
 
@@ -721,16 +728,22 @@ require'lualine'.setup {
     lualine_a = {'mode'},
     lualine_b = {'branch'},
     lualine_c = {{'filename', path = 1}},
-    lualine_x = {},
-    lualine_y = {},
-    lualine_z = {
+    lualine_x = {
+      {
+        require("noice").api.statusline.mode.get,
+        cond = require("noice").api.statusline.mode.has,
+        color = { fg = "#ff9e64" },
+      }
+    },
+    lualine_y = {
       {
         'diagnostics',
         sources = {'coc'},
         sections = {'error', 'warn'},
-        symbols = {error = 'errors: ', warn = 'warnings: ', info = 'info: '}
+        symbols = {error = 'coc errors: ', warn = 'warnings: ', info = 'info: '}
       }
     },
+    lualine_z = {},
   },
   inactive_sections = {
     lualine_a = {},
