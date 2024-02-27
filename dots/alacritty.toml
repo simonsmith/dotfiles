@@ -659,6 +659,7 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
 [window]
 decorations = "buttonless"
+option_as_alt = "Both"
 
 [window.dimensions]
 columns = 160
