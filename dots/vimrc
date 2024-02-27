@@ -297,11 +297,6 @@ set sessionoptions+=tabpages,globals
 " Briefly move the cursor to the matching brace
 set showmatch
 
-" Lazyredraw attempts to solve Vim lag by reducing the amount of
-" processing required. When enabled, any action that is not typed
-" will not cause the screen to redraw
-set lazyredraw
-
 " Don't display the current mode (Insert, Visual, Replace)
 " in the status line. This info is already shown in the
 " Airline status bar.
