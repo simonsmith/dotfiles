@@ -543,6 +543,7 @@ if s:has_plugin('coc.nvim')
   nmap <silent> <leader>r :CocRestart<cr>
 
   hi CocCodeLens guifg=#3a445e
+  hi DiagnosticUnderlineError cterm=undercurl gui=undercurl guisp=#f38ba8
 
   command! -nargs=0 Prettier :CocCommand prettier.formatFile
   nmap <silent> <leader>uf :CocList snippets<cr>
