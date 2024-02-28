@@ -193,6 +193,8 @@ require("noice").setup({
     { filter = { event = "msg_show", kind = "", find = "written", },  skip = true },
     { filter = { event = "msg_show", kind = "", },  skip = true },
     { filter = { find = "Hunk" }, skip = true },
+
+    -- no write since save
     { filter = { find = "E37" }, skip = true },
     { filter = { find = "E162" }, view = "mini" },
   },
@@ -648,7 +650,7 @@ endif
 
 if s:has_plugin('fzf-lua')
   nnoremap <c-p> :FzfLua files<cr>
-  nnoremap <c-j> :FzfLua jumps<cr>
+  nnoremap <leader>j :FzfLua jumps<cr>
   nnoremap <Tab> :FzfLua buffers<cr>
   nnoremap <silent> <BS> :FzfLua command_history<cr>
 endif
