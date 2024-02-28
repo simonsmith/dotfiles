@@ -168,6 +168,9 @@ Plug 'yaegassy/coc-volar', {'do': 'yarn install --frozen-lockfile'}
 
 call plug#end()
 
+" Enable term 24 bit colour
+set termguicolors
+
 " Shortcut for checking if a plugin is loaded
 function! s:has_plugin(plugin)
   let lookup = 'g:plugs["' . a:plugin . '"]'
@@ -182,22 +185,24 @@ require'nvim-web-devicons'.setup()
 EOF
 
 lua << EOF
-  require("noice").setup({
-    notify = {
-      enabled = false,
-    },
-    routes = {
-      { filter = { event = "msg_show", kind = "", find = "written", },  skip = true },
-      { filter = { event = "msg_show", kind = "", },  skip = true },
-      { filter = { find = "Hunk" }, skip = true },
-      { filter = { find = "E486" }, view = "mini" }
-    },
-    presets = {
-      command_palette = true, -- position the cmdline and popupmenu together
-      long_message_to_split = true, -- long messages will be sent to a split
-    },
+require("noice").setup({
+  notify = {
+    enabled = false,
+  },
+  routes = {
+    { filter = { event = "msg_show", kind = "", find = "written", },  skip = true },
+    { filter = { event = "msg_show", kind = "", },  skip = true },
+    { filter = { find = "Hunk" }, skip = true },
+    { filter = { find = "E37" }, skip = true },
+    { filter = { find = "E162" }, view = "mini" },
+  },
+  presets = {
+    command_palette = true, -- position the cmdline and popupmenu together
+    long_message_to_split = true, -- long messages will be sent to a split
+  },
 })
 EOF
+
 
 lua << EOF
 local actions = require "fzf-lua.actions"
@@ -264,6 +269,13 @@ require("catppuccin").setup({
 })
 EOF
 
+lua << EOF
+require("notify").setup({
+  timeout = 3500,
+  stages = 'static'
+})
+EOF
+
 colorscheme catppuccin
 
 " Treat <li> and <p> tags like the block tags they are
@@ -283,10 +295,6 @@ set nowb
 " http://stackoverflow.com/a/26901774
 set binary
 
-" Enable term 24 bit colour
-set termguicolors
-
-" Make it obvious where 80 characters is
 set textwidth=80
 
 " Use ``indent`` based folding
@@ -640,7 +648,7 @@ endif
 
 if s:has_plugin('fzf-lua')
   nnoremap <c-p> :FzfLua files<cr>
-  nnoremap <leader>j :FzfLua jumps<cr>
+  nnoremap <c-j> :FzfLua jumps<cr>
   nnoremap <Tab> :FzfLua buffers<cr>
   nnoremap <silent> <BS> :FzfLua command_history<cr>
 endif
