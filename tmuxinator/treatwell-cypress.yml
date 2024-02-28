@@ -1,33 +1,16 @@
 name: treatwell-cypress
 root: ~/wahanda/treatwell-cypress
-startup_window: edit
+startup_window: treatwell-cypress
 
 windows:
-  - edit:
+  - treatwell-cypress:
     - nvim
-  - cli:
-    -
-  - docker-images/treatwell-cypress:
-      layout: even-horizontal
-      panes:
-        - editor:
-          - cd ~/wahanda/docker-images/treatwell-cypress
-          - nvim
-        - git:
-          - cd ~/wahanda/docker-images/treatwell-cypress
-  - docker-images/treatwell-nodejs:
-      layout: even-horizontal
-      panes:
-        - editor:
-          - cd ~/wahanda/docker-images/treatwell-nodejs
-          - nvim
-        - git:
-          - cd ~/wahanda/docker-images/treatwell-nodejs
-  - docker-images/treatwell-ubuntu:
-      layout: even-horizontal
-      panes:
-        - editor:
-          - cd ~/wahanda/docker-images/treatwell-ubuntu
-          - nvim
-        - git:
-          - cd ~/wahanda/docker-images/treatwell-ubuntu
+  - docker/treatwell-cypress:
+    - cd ~/wahanda/docker-images/treatwell-cypress
+    - nvim
+  - docker/treatwell-nodejs:
+    - cd ~/wahanda/docker-images/treatwell-nodejs
+    - nvim
+  - docker/treatwell-ubuntu:
+    - cd ~/wahanda/docker-images/treatwell-ubuntu
+    - nvim
