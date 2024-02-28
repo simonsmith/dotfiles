@@ -650,7 +650,7 @@ endif
 
 if s:has_plugin('fzf-lua')
   nnoremap <c-p> :FzfLua files<cr>
-  nnoremap <leader>j :FzfLua jumps<cr>
+  nnoremap <c-o> :FzfLua jumps<cr>
   nnoremap <Tab> :FzfLua buffers<cr>
   nnoremap <silent> <BS> :FzfLua command_history<cr>
 endif
