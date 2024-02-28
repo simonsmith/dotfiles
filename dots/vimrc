@@ -273,7 +273,7 @@ EOF
 
 lua << EOF
 require("notify").setup({
-  timeout = 3500,
+  timeout = 4000,
   stages = 'static'
 })
 EOF
