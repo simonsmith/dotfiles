@@ -192,6 +192,7 @@ require("noice").setup({
   routes = {
     { filter = { event = "msg_show", kind = "", find = "written", },  skip = true },
     { filter = { event = "msg_show", kind = "", },  skip = true },
+    { filter = { event = "msg_show", kind = "lua_error", },  view = "mini" },
     { filter = { find = "Hunk" }, skip = true },
 
     -- no write since save
