@@ -91,6 +91,8 @@ Plug 'jiangmiao/auto-pairs'
 " copilot
 Plug 'github/copilot.vim'
 
+Plug 'wuelnerdotexe/vim-astro'
+
 " Text objects
 " ------------------------------------------------------------------------------
 
@@ -155,6 +157,7 @@ Plug 'pangloss/vim-javascript', {'for': ['javascript', 'javascript.jsx']}
 " Autocomplete & linting
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+Plug 'yaegassy/coc-astro', {'do': 'yarn install --frozen-lockfile'}
 Plug 'fannheyward/coc-deno', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
@@ -561,7 +564,7 @@ if s:has_plugin('coc.nvim')
   hi CocCodeLens guifg=#3a445e
   hi DiagnosticUnderlineError cterm=undercurl gui=undercurl guisp=#f38ba8
 
-  command! -nargs=0 Prettier :CocCommand prettier.formatFile
+  command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
   nmap <silent> <leader>uf :CocList snippets<cr>
 
   inoremap <expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<CR>"
@@ -604,6 +607,10 @@ require('kommentary.config').configure_language("default", {
     prefer_single_line_comments = true,
 })
 EOF
+
+if s:has_plugin('vim-astro')
+  let g:astro_typescript = 'enable'
+endif
 
 if s:has_plugin('vim-session')
   let g:session_autosave = 'yes'
