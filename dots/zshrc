@@ -20,6 +20,9 @@ export PATH="/opt/homebrew/curl/bin:$PATH"
 export GOPATH="$HOME/go"
 export PATH="$PATH:$GOPATH/bin"
 
+# postgres
+export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
+
 # Cargo
 export PATH="$HOME/.cargo/bin:$PATH"
 
@@ -27,7 +30,6 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH=/usr/local/opt/python/libexec/bin:$PATH
 
 # zplug
-
 export ZPLUG_USE_CACHE=true
 export ZPLUG_HOME=/opt/homebrew/opt/zplug
 source $ZPLUG_HOME/init.zsh
