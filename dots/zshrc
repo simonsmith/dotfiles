@@ -13,6 +13,8 @@ export PATH="$(brew --prefix gnu-sed)/libexec/gnubin:$PATH"
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 export PATH="$(brew --prefix grep)/libexec/gnubin:$PATH"
 
+export VOLTA_FEATURE_PNPM=1
+
 # curl
 export PATH="/opt/homebrew/curl/bin:$PATH"
 
