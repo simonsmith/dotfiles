@@ -24,6 +24,9 @@ alias yt='yarn test'
 alias yu='yarn upgrade'
 alias yui='yarn upgrade-interactive'
 
+# pnpm
+alias p='pnpm'
+
 # https://github.com/ogham/exa
 alias l="eza -lbha --git --group-directories-first"
 alias t="eza -lbhaT"
