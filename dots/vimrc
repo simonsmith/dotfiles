@@ -424,10 +424,6 @@ set modelines=4
 set exrc
 set secure
 
-" Show “invisible” characters
-set lcs=tab:▸\ ,trail:·,nbsp:_
-set list
-
 " Disable error bells
 set noerrorbells
 
