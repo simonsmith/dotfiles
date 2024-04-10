@@ -17,7 +17,9 @@
   "suggest.timeout": 5000,
   "typescript.suggestionActions.enabled": false,
   "typescript.referencesCodeLens.enable": false,
+  "codeLens.position": "eol",
   "javascript.suggestionActions.enabled": false,
   "javascript.referencesCodeLens.enable": false,
-  "coc.preferences.formatOnType": true
+  "coc.preferences.formatOnType": true,
+  "vue.codeLens.enabled": false,
 }
