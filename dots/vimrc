@@ -29,15 +29,12 @@ Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 " fzf integration for Vim
 Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
 Plug 'nvim-tree/nvim-web-devicons'
-" Improved search in Vim
-Plug 'junegunn/vim-slash'
 
 
 " Editor improvements
 " ------------------------------------------------------------------------------
 "
 Plug 'ggandor/leap.nvim'
-Plug 'junegunn/goyo.vim'
 Plug 'gcmt/taboo.vim'
 Plug 'hoob3rt/lualine.nvim'
 
@@ -78,8 +75,6 @@ Plug 'b3nj5m1n/kommentary'
 Plug 'Valloric/ListToggle'
 " Display quickfix with a fancy window and commands
 Plug 'kevinhwang91/nvim-bqf'
-" Remember cursor position in closed buffers
-Plug 'dietsche/vim-lastplace'
 " Open files from Quickfix
 Plug 'yssl/QFEnter'
 " Move blocks of code with ALT+j/k
