@@ -59,9 +59,7 @@ Plug 'moll/vim-bbye'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-pack/nvim-spectre'
 
-" Highlighting
-" ------------------------------------------------------------------------------
-
+Plug 'linrongbin16/gitlinker.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " Editing
@@ -272,6 +270,16 @@ lua << EOF
 require("notify").setup({
   timeout = 4000,
   stages = 'static'
+})
+EOF
+
+lua << EOF
+require("gitlinker").setup({
+  router = {
+    browse = {
+      ["^git%.treatwell%.net"] = require('gitlinker.routers').gitlab_browse,
+    },
+  }
 })
 EOF
 
