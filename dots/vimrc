@@ -921,5 +921,7 @@ require('gitsigns').setup({
 EOF
 
 lua << EOF
-require("barbecue").setup()
+require("barbecue").setup({
+  show_modified = true,
+})
 EOF
