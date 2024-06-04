@@ -123,6 +123,13 @@ Plug 'svermeulen/vim-subversive'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 
+" Tab bar
+" ------------------------------------------------------------------------------
+
+Plug 'neovim/nvim-lspconfig'
+Plug 'SmiteshP/nvim-navic'
+Plug 'utilyre/barbecue.nvim'
+
 " Git
 " ------------------------------------------------------------------------------
 
@@ -731,10 +738,16 @@ augroup auto-resize
 augroup END
 
 lua << EOF
+local catppuccin_theme = require'lualine.themes.catppuccin'
+local palatte = require("catppuccin.palettes").get_palette('mocha')
+
+catppuccin_theme.normal.c.bg = palatte.surface0
+catppuccin_theme.inactive.c.bg = palatte.base
+
 require'lualine'.setup {
   options = {
     icons_enabled = false,
-    theme = 'catppuccin',
+    theme = catppuccin_theme,
     component_separators = {},
     section_separators = {},
     disabled_filetypes = {}
@@ -742,7 +755,7 @@ require'lualine'.setup {
   sections = {
     lualine_a = {'mode'},
     lualine_b = {'branch'},
-    lualine_c = {{'filename', path = 1}},
+    lualine_c = {},
     lualine_x = {
       {
         require("noice").api.statusline.mode.get,
@@ -762,7 +775,7 @@ require'lualine'.setup {
   },
   inactive_sections = {
     lualine_a = {},
-    lualine_b = {{'filename', path = 1}},
+    lualine_b = {},
     lualine_c = {},
     lualine_x = {},
     lualine_y = {},
@@ -905,4 +918,8 @@ require('gitsigns').setup({
     end, {expr=true})
   end
 })
+EOF
+
+lua << EOF
+require("barbecue").setup()
 EOF
