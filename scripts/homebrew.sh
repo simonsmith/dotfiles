@@ -77,6 +77,7 @@ brew install bat
 brew install fd
 brew install devd
 brew install go
+brew install jordanbaird-ice
 brew install eza
 brew install trash
 brew install direnv
