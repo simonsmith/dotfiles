@@ -80,8 +80,8 @@ Plug 'matze/vim-move'
 " Pairs
 Plug 'jiangmiao/auto-pairs'
 " copilot
-Plug 'github/copilot.vim'
-
+Plug 'zbirenbaum/copilot.lua'
+Plug 'jinh0/eyeliner.nvim'
 Plug 'wuelnerdotexe/vim-astro'
 
 " Text objects
@@ -144,13 +144,11 @@ Plug 'lewis6991/gitsigns.nvim'
 Plug 'mattn/emmet-vim'
 " Automatically add a closing HTML tag
 Plug 'alvan/vim-closetag'
-" CSS highlight
-Plug 'rrethy/vim-hexokinase', {'do': 'make hexokinase'}
+" Color highlight
+Plug 'norcalli/nvim-colorizer.lua'
 
 " JavaScript
 " ------------------------------------------------------------------------------
-
-Plug 'pangloss/vim-javascript', {'for': ['javascript', 'javascript.jsx']}
 
 " Autocomplete & linting
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -207,6 +205,28 @@ require("noice").setup({
 })
 EOF
 
+lua << EOF
+require('copilot').setup({
+  suggestion = {
+    enabled = true,
+    auto_trigger = true,
+    keymap = {
+      accept = '<Tab>',
+    }
+  },
+})
+EOF
+
+lua << EOF
+require('colorizer').setup()
+EOF
+
+lua << EOF
+require'eyeliner'.setup {
+  highlight_on_key = true,
+  dim = true,
+}
+EOF
 
 lua << EOF
 local actions = require "fzf-lua.actions"
