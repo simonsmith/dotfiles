@@ -260,13 +260,28 @@ require("catppuccin").setup({
       comments = { "italic" }, -- Change the style of comments
   },
   integrations = {
-      cmp = true,
-      gitsigns = false,
-      nvimtree = false,
-      telescope = false,
-      notify = false,
-      mini = false,
-      coc_nvim = true,
+    cmp = true,
+    gitsigns = false,
+    nvimtree = false,
+    telescope = false,
+    notify = false,
+    mini = false,
+    coc_nvim = true,
+    native_lsp = {
+      enabled = true,
+      virtual_text = {
+        errors = { "italic" },
+        hints = { "italic" },
+        warnings = { "italic" },
+        information = { "italic" },
+      },
+      underlines = {
+        errors = { "undercurl" },
+        hints = { "undercurl" },
+        warnings = { "undercurl" },
+        information = { "undercurl" },
+      },
+    },
   },
 })
 
