@@ -847,7 +847,8 @@ require'nvim-treesitter.configs'.setup {
     "query",
     "gitcommit",
     "diff",
-    "git_rebase"
+    "git_rebase",
+    "git_config"
 },
 
   -- Automatically install missing parsers when entering buffer
