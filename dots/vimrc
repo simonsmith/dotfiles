@@ -82,7 +82,6 @@ Plug 'matze/vim-move'
 Plug 'jiangmiao/auto-pairs'
 " copilot
 Plug 'zbirenbaum/copilot.lua'
-Plug 'jinh0/eyeliner.nvim'
 Plug 'wuelnerdotexe/vim-astro'
 
 " Text objects
@@ -215,11 +214,6 @@ require('copilot').setup({
 })
 
 require('colorizer').setup()
-
-require'eyeliner'.setup {
-  highlight_on_key = true,
-  dim = true,
-}
 
 local actions = require "fzf-lua.actions"
 require'fzf-lua'.setup({
