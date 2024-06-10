@@ -1,4 +1,6 @@
-import = ["/Users/simonsmith/.config/alacritty/catppuccin/catppuccin-mocha.toml"]
+import = [
+    "~/.config/alacritty/themes/themes/catppuccin_mocha.toml"
+]
 live_config_reload = true
 
 [bell]
