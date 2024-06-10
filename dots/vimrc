@@ -10,6 +10,7 @@ call plug#begin(g:plugin_path)
 " ------------------------------------------------------------------------------
 
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+Plug 'f-person/auto-dark-mode.nvim'
 
 " tmux
 " ------------------------------------------------------------------------------
@@ -180,10 +181,9 @@ endfunction
 " ------------------------------------------------------------------------------
 
 lua << EOF
-require'nvim-web-devicons'.setup()
-EOF
 
-lua << EOF
+require'nvim-web-devicons'.setup()
+
 require("noice").setup({
   notify = {
     enabled = false,
@@ -203,9 +203,7 @@ require("noice").setup({
     long_message_to_split = true, -- long messages will be sent to a split
   },
 })
-EOF
 
-lua << EOF
 require('copilot').setup({
   suggestion = {
     enabled = true,
@@ -215,20 +213,14 @@ require('copilot').setup({
     }
   },
 })
-EOF
 
-lua << EOF
 require('colorizer').setup()
-EOF
 
-lua << EOF
 require'eyeliner'.setup {
   highlight_on_key = true,
   dim = true,
 }
-EOF
 
-lua << EOF
 local actions = require "fzf-lua.actions"
 require'fzf-lua'.setup({
   winopts = {
@@ -245,14 +237,24 @@ require'fzf-lua'.setup({
     }
   }
 })
-EOF
 
-lua << EOF
+local auto_dark_mode = require('auto-dark-mode')
+auto_dark_mode.setup({
+	set_dark_mode = function()
+		vim.api.nvim_set_option('background', 'dark')
+    vim.cmd('colorscheme catppuccin-mocha')
+	end,
+	set_light_mode = function()
+		vim.api.nvim_set_option('background', 'light')
+    vim.cmd('colorscheme catppuccin-latte')
+	end,
+})
+
 require("catppuccin").setup({
   flavour = "mocha", -- latte, frappe, macchiato, mocha
   background = { -- :h background
       light = "latte",
-      dark = "frappe",
+      dark = "mocha",
   },
   transparent_background = false, -- disables setting the background color.
   show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
@@ -291,16 +293,53 @@ require("catppuccin").setup({
       -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
   },
 })
-EOF
 
-lua << EOF
+
+require'lualine'.setup {
+  options = {
+    icons_enabled = false,
+    component_separators = {},
+    section_separators = {},
+    disabled_filetypes = {}
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch'},
+    lualine_c = {},
+    lualine_x = {
+      {
+        require("noice").api.statusline.mode.get,
+        cond = require("noice").api.statusline.mode.has,
+        color = { fg = "#ff9e64" },
+      }
+    },
+    lualine_y = {
+      {
+        'diagnostics',
+        sources = {'coc'},
+        sections = {'error', 'warn'},
+        symbols = {error = 'coc errors: ', warn = 'warnings: ', info = 'info: '}
+      }
+    },
+    lualine_z = {},
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {},
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  extensions = {}
+}
+
 require("notify").setup({
   timeout = 4000,
   stages = 'static'
 })
-EOF
 
-lua << EOF
 require("gitlinker").setup({
   router = {
     browse = {
@@ -309,8 +348,6 @@ require("gitlinker").setup({
   }
 })
 EOF
-
-colorscheme catppuccin
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags='li\|p'
@@ -756,55 +793,6 @@ augroup auto-resize
   autocmd!
   autocmd VimResized * wincmd =
 augroup END
-
-lua << EOF
-local catppuccin_theme = require'lualine.themes.catppuccin'
-local palatte = require("catppuccin.palettes").get_palette('mocha')
-
-catppuccin_theme.normal.c.bg = palatte.surface0
-catppuccin_theme.inactive.c.bg = palatte.base
-
-require'lualine'.setup {
-  options = {
-    icons_enabled = false,
-    theme = catppuccin_theme,
-    component_separators = {},
-    section_separators = {},
-    disabled_filetypes = {}
-  },
-  sections = {
-    lualine_a = {'mode'},
-    lualine_b = {'branch'},
-    lualine_c = {},
-    lualine_x = {
-      {
-        require("noice").api.statusline.mode.get,
-        cond = require("noice").api.statusline.mode.has,
-        color = { fg = "#ff9e64" },
-      }
-    },
-    lualine_y = {
-      {
-        'diagnostics',
-        sources = {'coc'},
-        sections = {'error', 'warn'},
-        symbols = {error = 'coc errors: ', warn = 'warnings: ', info = 'info: '}
-      }
-    },
-    lualine_z = {},
-  },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {},
-    lualine_x = {},
-    lualine_y = {},
-    lualine_z = {}
-  },
-  tabline = {},
-  extensions = {}
-}
-EOF
 
 lua << EOF
 vim.g.goyo_width = 120

@@ -60,6 +60,20 @@ for file in ~/.{extra,aliases,functions,work}; do
 done
 unset file
 
+if [ "$ALACRITTY" = "true" ]
+then
+  theme() {
+    ln -sf $HOME/.config/alacritty/themes/themes/$1.toml $HOME/.config/alacritty/active.toml
+  }
+  local ALACRITTY_THEME=$(defaults read -g AppleInterfaceStyle 2>/dev/null || echo "Light")
+  if [ "$ALACRITTY_THEME" = "Dark" ]
+  then
+    theme "catppuccin_mocha"
+  else
+    theme "catppuccin_latte"
+  fi
+fi
+
 # Exports
 
 # Change 'z' alias for use with the fzf function
