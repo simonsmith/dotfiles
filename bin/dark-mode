@@ -1,3 +1,4 @@
 tmux source-file ~/dotfiles/tmux/dark.conf
 osascript -l JavaScript -e "Application('System Events').appearancePreferences.darkMode = true"
+export BAT_THEME="OneHalfDark"
 exec zsh

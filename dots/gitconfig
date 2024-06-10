@@ -79,8 +79,6 @@
 	side-by-side = false
 	decorations = true
 	line-numbers = true
-	syntax-theme = TwoDark
-	; syntax-theme = GitHubLight
 	width = 130
 
 [interactive]

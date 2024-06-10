@@ -69,12 +69,15 @@ then
   if [ "$ALACRITTY_THEME" = "Dark" ]
   then
     theme "catppuccin_mocha"
+    export BAT_THEME="OneHalfDark"
   else
     theme "catppuccin_latte"
+    export BAT_THEME="GitHub"
   fi
 fi
 
 # Exports
+
 
 # Change 'z' alias for use with the fzf function
 export ZSHZ_CMD="_z"
