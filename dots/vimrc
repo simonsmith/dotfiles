@@ -236,7 +236,7 @@ local auto_dark_mode = require('auto-dark-mode')
 auto_dark_mode.setup({
 	set_dark_mode = function()
 		vim.api.nvim_set_option('background', 'dark')
-    vim.cmd('colorscheme catppuccin-mocha')
+    vim.cmd('colorscheme catppuccin-macchiato')
 	end,
 	set_light_mode = function()
 		vim.api.nvim_set_option('background', 'light')
@@ -245,10 +245,10 @@ auto_dark_mode.setup({
 })
 
 require("catppuccin").setup({
-  flavour = "mocha", -- latte, frappe, macchiato, mocha
+  flavour = "macchiato", -- latte, frappe, macchiato, mocha
   background = {
     light = "latte",
-    dark = "mocha",
+    dark = "macchiato",
   },
   transparent_background = false, -- disables setting the background color.
   show_end_of_buffer = false, -- shows the '~' characters after the end of buffers

@@ -68,7 +68,7 @@ then
   local ALACRITTY_THEME=$(defaults read -g AppleInterfaceStyle 2>/dev/null || echo "Light")
   if [ "$ALACRITTY_THEME" = "Dark" ]
   then
-    theme "catppuccin_mocha"
+    theme "catppuccin_macchiato"
     export BAT_THEME="OneHalfDark"
   else
     theme "catppuccin_latte"
