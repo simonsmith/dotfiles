@@ -147,7 +147,7 @@ Plug 'mattn/emmet-vim'
 " Automatically add a closing HTML tag
 Plug 'alvan/vim-closetag'
 " Color highlight
-Plug 'norcalli/nvim-colorizer.lua'
+Plug 'rrethy/vim-hexokinase', {'do': 'make hexokinase'}
 
 " JavaScript
 " ------------------------------------------------------------------------------
@@ -213,8 +213,6 @@ require('copilot').setup({
     }
   },
 })
-
-require('colorizer').setup()
 
 local actions = require "fzf-lua.actions"
 require'fzf-lua'.setup({
