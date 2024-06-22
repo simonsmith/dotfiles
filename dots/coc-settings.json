@@ -15,6 +15,7 @@
     "javascriptreact"
   ],
   "suggest.timeout": 5000,
+  "tsserver.useLocalTsdk": true,
   "typescript.suggestionActions.enabled": false,
   "typescript.referencesCodeLens.enable": false,
   "codeLens.position": "eol",
