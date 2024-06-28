@@ -12,7 +12,7 @@ duration = 0
 draw_bold_text_with_bright_colors = false
 
 [font]
-size = 16.0
+size = 14.0
 
 [font.bold]
 family = "SauceCodePro Nerd Font Mono"
