@@ -34,7 +34,6 @@ Plug 'nvim-tree/nvim-web-devicons'
 " Editor improvements
 " ------------------------------------------------------------------------------
 "
-Plug 'ggandor/leap.nvim'
 Plug 'gcmt/taboo.vim'
 Plug 'hoob3rt/lualine.nvim'
 
@@ -702,12 +701,6 @@ endif
 if s:has_plugin('ListToggle')
   let g:lt_height = 18
 endif
-
-lua << EOF
-  vim.keymap.set('n', '<leader><space>', function ()
-    require('leap').leap { target_windows = { vim.api.nvim_get_current_win() } }
-  end)
-EOF
 
 if executable('ag')
   " Use ag over grep
