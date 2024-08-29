@@ -138,9 +138,6 @@ Plug 'lewis6991/gitsigns.nvim'
 " HTML/CSS
 " ------------------------------------------------------------------------------
 
-Plug 'neovim/nvim-lspconfig'
-Plug 'jose-elias-alvarez/null-ls.nvim'
-Plug 'MunifTanjim/prettier.nvim'
 " Easy HTML and CSS generation
 Plug 'mattn/emmet-vim'
 " Automatically add a closing HTML tag
@@ -163,6 +160,7 @@ Plug 'bmatcuk/coc-stylelintplus', {'do': 'yarn install --frozen-lockfile'}
 Plug 'antonk52/coc-cssmodules', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile', 'for': 'yaml'}
 Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
 Plug 'yaegassy/coc-volar', {'do': 'yarn install --frozen-lockfile'}
 
 call plug#end()
@@ -592,6 +590,7 @@ if s:has_plugin('coc.nvim')
   nmap <silent> [e :call CocAction('diagnosticPrevious')<cr>
   nmap <silent> <leader>e :CocDiagnostics<cr>
 
+  command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
   nmap <silent> <leader>p :Prettier<cr>
 
   " restart coc because it breaks so often
