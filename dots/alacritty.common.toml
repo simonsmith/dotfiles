@@ -1,4 +1,6 @@
-import = ["~/.config/alacritty/active.toml"]
+import = [
+  "~/.config/alacritty/active.toml",
+]
 live_config_reload = true
 
 [env]
@@ -668,3 +670,4 @@ lines = 36
 [window.padding]
 x = 10
 y = 10
+

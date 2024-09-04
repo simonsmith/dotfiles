@@ -12,7 +12,7 @@ dots=(
   ackrc
   agignore
   aliases
-  alacritty.toml
+  alacritty.common.toml
   batconfig
   yabairc
   ctags
