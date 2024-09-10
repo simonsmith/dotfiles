@@ -165,6 +165,8 @@ Plug 'yaegassy/coc-volar', {'do': 'yarn install --frozen-lockfile'}
 
 call plug#end()
 
+colorscheme tokyonight-storm
+
 " Enable term 24 bit colour
 set termguicolors
 
