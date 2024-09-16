@@ -21,7 +21,6 @@ brew install curl
 
 # Install zsh
 brew install zsh
-brew install zplug
 brew install starship
 
 # less highlighting
