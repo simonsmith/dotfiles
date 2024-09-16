@@ -14,47 +14,53 @@ export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 export PATH="$(brew --prefix grep)/libexec/gnubin:$PATH"
 
 export VOLTA_FEATURE_PNPM=1
-
 # curl
 export PATH="/opt/homebrew/curl/bin:$PATH"
-
 # GO
 export GOPATH="$HOME/go"
 export PATH="$PATH:$GOPATH/bin"
-
 # postgres
 export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
-
 # Cargo
 export PATH="$HOME/.cargo/bin:$PATH"
-
 # Python3
 export PATH=/usr/local/opt/python/libexec/bin:$PATH
 
-# zplug
-export ZPLUG_USE_CACHE=true
-export ZPLUG_HOME=/opt/homebrew/opt/zplug
-source $ZPLUG_HOME/init.zsh
+# znap
+# https://github.com/marlonrichert/zsh-snap
+# -------------------------------------------------
+source ~/.znap/znap.zsh
 
-zplug "lib/theme-and-appearance", from:oh-my-zsh
-zplug "lib/clipboard", from:oh-my-zsh
-zplug "lib/completion", from:oh-my-zsh
-zplug "lib/key-bindings", from:oh-my-zsh
-zplug "lib/directories", from:oh-my-zsh
-zplug "lib/history", from:oh-my-zsh
-zplug "plugins/vi-mode", from:oh-my-zsh
-zplug "plugins/git", from:oh-my-zsh
-zplug "plugins/tmux", from:oh-my-zsh
-zplug "plugins/history", from:oh-my-zsh
+# oh-my-zsh plugins
+znap source ohmyzsh/ohmyzsh lib/theme-and-appearance
+znap source ohmyzsh/ohmyzsh lib/clipboard
+znap source ohmyzsh/ohmyzsh lib/completion
+znap source ohmyzsh/ohmyzsh lib/key-bindings
+znap source ohmyzsh/ohmyzsh plugins/git
+znap source ohmyzsh/ohmyzsh plugins/history
+znap source ohmyzsh/ohmyzsh plugins/vi-mode
+znap source ohmyzsh/ohmyzsh plugins/tmux
 
-zplug "hlissner/zsh-autopair", defer:3
-zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-syntax-highlighting"
-zplug "zsh-users/zsh-completions", defer:2
+# zsh plugins
+znap source hlissner/zsh-autopair
+znap source zsh-users/zsh-autosuggestions
+znap source zsh-users/zsh-syntax-highlighting
+znap source zsh-users/zsh-completions
 
-zplug load
+# https://github.com/rbenv/rbenv
+znap eval rbenv 'rbenv init -'
+
+# https://github.com/mroth/scmpuff
+znap eval scmpuff 'scmpuff init -s --aliases=false'
+znap eval direnv 'direnv hook zsh'
+znap eval starship 'starship init zsh'
+znap prompt
+
+export VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+export VI_MODE_SET_CURSOR=true
 
 # Load my dotfiles after
+# -------------------------------------------------
 for file in ~/.{extra,aliases,functions,work}; do
   [ -r "$file" ] && [ -f "$file" ] && source "$file"
 done
@@ -77,7 +83,7 @@ then
 fi
 
 # Exports
-
+# -------------------------------------------------
 
 # Change 'z' alias for use with the fzf function
 export ZSHZ_CMD="_z"
@@ -132,12 +138,12 @@ export BAT_CONFIG_PATH="$HOME/.batconfig"
 
 # nnn
 # https://github.com/jarun/nnn
-
 export NNN_OPTS="dHe"
 export LC_COLLATE="C"
 
 # fzf
 # https://github.com/junegunn/fzf
+# -------------------------------------------------
 
 # Setting ag as the default source for fzf - include hidden files
 export FZF_DEFAULT_COMMAND='ag --follow --hidden --ignore .git -g ""'
@@ -158,18 +164,6 @@ export FZF_TMUX_HEIGHT=40%
 command -v blsd > /dev/null && export FZF_ALT_C_COMMAND='blsd'
 command -v tree > /dev/null && export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -$LINES'"
 
-# volta
-# https://docs.volta.sh/
-
-# https://starship.rs/
-eval "$(starship init zsh)"
-
-# https://github.com/rbenv/rbenv
-eval "$(rbenv init -)"
-
-# https://github.com/mroth/scmpuff
-eval "$(scmpuff init -s --aliases=false)"
-
 bindkey '^o' autosuggest-accept
 
 export SDKMAN_DIR="$HOME/.sdkman"
@@ -179,5 +173,3 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 
 export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
-
-eval "$(direnv hook zsh)"
