@@ -38,13 +38,12 @@ fcp() {
   cd "$DIR"
 }
 
-alias gLogAlias='git log --graph --color=always --format="%C(auto)%h%d %s %C(bold blue)%C(bold)%cr% C(auto)%an" "$@"'
 local _gitLogLineToHash="echo {} | grep -o '[a-f0-9]\{7\}' | head -1"
 local _viewGitLogLine="$_gitLogLineToHash | xargs -I % sh -c 'git show --color=always % | diff-so-fancy'"
 
 # fshow_preview - git commit browser with previews
 fshow() {
-    gLogAlias |
+    git log --graph --color=always --format="%C(auto)%h%d %s %C(bold blue)%C(bold)%cr% C(auto)%an" "$@" |
         fzf --height 100% --no-sort --reverse --tiebreak=index --no-multi \
             --ansi --preview $_viewGitLogLine \
                 --header "enter to view, alt-y to copy hash" \
@@ -73,7 +72,7 @@ fco() {
 # fcoc_preview - checkout git commit with previews
 fcoc() {
   local commit
-  commit=$( gLogAlias |
+  commit=$( git log --graph --color=always --format="%C(auto)%h%d %s %C(bold blue)%C(bold)%cr% C(auto)%an" "$@" |
     fzf --no-sort --reverse --tiebreak=index --no-multi \
         --ansi --preview $_viewGitLogLine ) &&
   git checkout $(echo "$commit" | sed "s/ .*//")
