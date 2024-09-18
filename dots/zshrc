@@ -36,6 +36,7 @@ znap source ohmyzsh/ohmyzsh lib/theme-and-appearance
 znap source ohmyzsh/ohmyzsh lib/clipboard
 znap source ohmyzsh/ohmyzsh lib/completion
 znap source ohmyzsh/ohmyzsh lib/key-bindings
+znap source ohmyzsh/ohmyzsh lib/git
 znap source ohmyzsh/ohmyzsh plugins/git
 znap source ohmyzsh/ohmyzsh plugins/history
 znap source ohmyzsh/ohmyzsh plugins/vi-mode
