@@ -144,6 +144,7 @@ Plug 'mattn/emmet-vim'
 Plug 'alvan/vim-closetag'
 " Color highlight
 Plug 'rrethy/vim-hexokinase', {'do': 'make hexokinase'}
+Plug 'jwalton512/vim-blade'
 
 " JavaScript
 " ------------------------------------------------------------------------------
@@ -152,7 +153,6 @@ Plug 'rrethy/vim-hexokinase', {'do': 'make hexokinase'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 Plug 'yaegassy/coc-astro', {'do': 'yarn install --frozen-lockfile'}
-Plug 'fannheyward/coc-deno', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
@@ -162,6 +162,9 @@ Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile', 'for': 'yaml'
 Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
 Plug 'yaegassy/coc-volar', {'do': 'yarn install --frozen-lockfile'}
+Plug 'yaegassy/coc-laravel', {'do': 'yarn install --frozen-lockfile'}
+Plug 'yaegassy/coc-blade', {'do': 'yarn install --frozen-lockfile'}
+Plug 'yaegassy/coc-intelephense', {'do': 'yarn install --frozen-lockfile'}
 
 call plug#end()
 
@@ -900,6 +903,6 @@ EOF
 
 lua << EOF
 require("barbecue").setup({
-  show_modified = true,
+ show_modified = true,
 })
 EOF

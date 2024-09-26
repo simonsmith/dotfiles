@@ -26,6 +26,10 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # Python3
 export PATH=/usr/local/opt/python/libexec/bin:$PATH
 
+# php
+export PATH="/opt/homebrew/opt/php@8.3/bin:$PATH"
+export PATH="/opt/homebrew/opt/php@8.3/sbin:$PATH"
+
 # znap
 # https://github.com/marlonrichert/zsh-snap
 # -------------------------------------------------
