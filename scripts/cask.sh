@@ -40,5 +40,6 @@ brew install --cask cursorcerer
 
 # Fonts
 brew install font-sauce-code-pro-nerd-font
+brew install font-jetbrains-mono-nerd-font
 
 brew cleanup
