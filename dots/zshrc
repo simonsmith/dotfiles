@@ -73,7 +73,7 @@ unset file
 
 if [ "$ALACRITTY" = "true" ]
 then
-  ln -sf $HOME/.config/nvim/plugged/tokyonight.nvim/extras/alacritty/tokyonight_storm.toml $HOME/.config/alacritty/active.toml
+  ln -sf $HOME/.config/nvim/plugged/tokyonight.nvim/extras/alacritty/tokyonight_moon.toml $HOME/.config/alacritty/active.toml
   export BAT_THEME="OneHalfDark"
 fi
 
