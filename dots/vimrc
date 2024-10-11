@@ -9,9 +9,8 @@ call plug#begin(g:plugin_path)
 " Theme
 " ------------------------------------------------------------------------------
 
-Plug 'f-person/auto-dark-mode.nvim'
 Plug 'folke/tokyonight.nvim'
-Plug 'olivercederborg/poimandres.nvim'
+
 " tmux
 " ------------------------------------------------------------------------------
 
@@ -235,17 +234,6 @@ require'fzf-lua'.setup({
   }
 })
 
-local auto_dark_mode = require('auto-dark-mode')
-auto_dark_mode.setup({
-	set_dark_mode = function()
-		vim.api.nvim_set_option('background', 'dark')
-    vim.cmd('colorscheme tokyonight-storm')
-	end,
-	set_light_mode = function()
-		vim.api.nvim_set_option('background', 'light')
-    vim.cmd('colorscheme tokyonight-day')
-	end,
-})
 
 require("tokyonight").setup({
   style = "storm", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`

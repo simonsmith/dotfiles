@@ -1,4 +1,0 @@
-tmux source-file ~/dotfiles/tmux/light.conf
-osascript -l JavaScript -e "Application('System Events').appearancePreferences.darkMode = false"
-export BAT_THEME="GitHub"
-exec zsh

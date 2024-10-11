@@ -73,18 +73,8 @@ unset file
 
 if [ "$ALACRITTY" = "true" ]
 then
-  theme() {
-    ln -sf $HOME/.config/nvim/plugged/tokyonight.nvim/extras/alacritty/$1.toml $HOME/.config/alacritty/active.toml
-  }
-  local ALACRITTY_THEME=$(defaults read -g AppleInterfaceStyle 2>/dev/null || echo "Light")
-  if [ "$ALACRITTY_THEME" = "Dark" ]
-  then
-    theme "tokyonight_storm"
-    export BAT_THEME="OneHalfDark"
-  else
-    theme "tokyonight_day"
-    export BAT_THEME="GitHub"
-  fi
+  ln -sf $HOME/.config/nvim/plugged/tokyonight.nvim/extras/alacritty/tokyonight_storm.toml $HOME/.config/alacritty/active.toml
+  export BAT_THEME="OneHalfDark"
 fi
 
 # Exports
