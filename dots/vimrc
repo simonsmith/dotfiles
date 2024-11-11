@@ -41,6 +41,7 @@ Plug 'hoob3rt/lualine.nvim'
 Plug 'rcarriga/nvim-notify'
 Plug 'MunifTanjim/nui.nvim'
 Plug 'folke/noice.nvim'
+Plug 'folke/which-key.nvim'
 Plug 'MeanderingProgrammer/render-markdown.nvim'
 
 " File management
@@ -186,7 +187,6 @@ endfunction
 " ------------------------------------------------------------------------------
 
 lua << EOF
-
 require'nvim-web-devicons'.setup()
 
 require("noice").setup({
@@ -235,7 +235,6 @@ require'fzf-lua'.setup({
     }
   }
 })
-
 
 require("tokyonight").setup({
   style = "moon", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
@@ -317,9 +316,17 @@ require("gitlinker").setup({
     },
   }
 })
+
 require('render-markdown').setup({
   debounce = 20,
 })
+
+local wk = require("which-key")
+wk.setup({
+  show_help = false,
+  plugins = { spelling = true },
+})
+
 EOF
 
 " Treat <li> and <p> tags like the block tags they are
