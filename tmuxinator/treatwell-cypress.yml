@@ -5,12 +5,15 @@ startup_window: treatwell-cypress
 windows:
   - treatwell-cypress:
     - nvim
-  - docker/treatwell-cypress:
+  - docker/cypress:
     - cd ~/wahanda/docker-images/treatwell-cypress
     - nvim
-  - docker/treatwell-nodejs:
+  - docker/nodejs:
     - cd ~/wahanda/docker-images/treatwell-nodejs
     - nvim
-  - docker/treatwell-ubuntu:
+  - docker/ubuntu:
     - cd ~/wahanda/docker-images/treatwell-ubuntu
+    - nvim
+  - docker/build-tools:
+    - cd ~/wahanda/platform/docker-build-tools
     - nvim
