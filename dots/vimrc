@@ -29,6 +29,7 @@ Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 " fzf integration for Vim
 Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
 Plug 'nvim-tree/nvim-web-devicons'
+Plug 'echasnovski/mini.nvim'
 
 
 " Editor improvements
@@ -40,6 +41,7 @@ Plug 'hoob3rt/lualine.nvim'
 Plug 'rcarriga/nvim-notify'
 Plug 'MunifTanjim/nui.nvim'
 Plug 'folke/noice.nvim'
+Plug 'MeanderingProgrammer/render-markdown.nvim'
 
 " File management
 " ------------------------------------------------------------------------------
@@ -314,6 +316,9 @@ require("gitlinker").setup({
       ["^git%.treatwell%.net"] = require('gitlinker.routers').gitlab_browse,
     },
   }
+})
+require('render-markdown').setup({
+  debounce = 20,
 })
 EOF
 
