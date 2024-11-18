@@ -33,7 +33,7 @@ export PATH="/opt/homebrew/opt/php@8.3/sbin:$PATH"
 # znap
 # https://github.com/marlonrichert/zsh-snap
 # -------------------------------------------------
-source ~/.znap/znap.zsh
+source ~/.zsh-plugins/.znap/znap.zsh
 
 # oh-my-zsh plugins
 znap source ohmyzsh/ohmyzsh lib/theme-and-appearance

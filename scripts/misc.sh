@@ -19,3 +19,7 @@ sdk default java 17.0.0.35.2-amzn
 # alacritty themes
 mkdir -p ~/.config/alacritty/themes
 git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
+
+# znap plugin manager
+mkdir -p ~/.zsh-plugins/.znap
+git clone https://github.com/marlonrichert/zsh-snap ~/.zsh-plugins/.znap
