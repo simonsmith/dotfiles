@@ -1,192 +1,122 @@
-"  Vim plug
-" https://github.com/junegunn/vim-plug
-" ------------------------------------------------------------------------------
-
-let g:plugin_path = '~/.config/nvim/plugged'
-
-call plug#begin(g:plugin_path)
-
-" Theme
-" ------------------------------------------------------------------------------
-
-Plug 'folke/tokyonight.nvim'
-
-" tmux
-" ------------------------------------------------------------------------------
-
-if executable('tmux')
-  " Navigate between vim and tmux splits
-  Plug 'christoomey/vim-tmux-navigator'
-  " Restore `FocusLost` and `FocusGained` events in tmux
-  Plug 'tmux-plugins/vim-tmux-focus-events'
-endif
-
-" Finding and replacing
-" ------------------------------------------------------------------------------
-
-" Fuzzy finding anything
-Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
-" fzf integration for Vim
-Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
-Plug 'nvim-tree/nvim-web-devicons'
-Plug 'echasnovski/mini.nvim'
-
-
-" Editor improvements
-" ------------------------------------------------------------------------------
-"
-Plug 'gcmt/taboo.vim'
-Plug 'hoob3rt/lualine.nvim'
-
-Plug 'rcarriga/nvim-notify'
-Plug 'MunifTanjim/nui.nvim'
-Plug 'folke/noice.nvim'
-Plug 'folke/which-key.nvim'
-Plug 'MeanderingProgrammer/render-markdown.nvim'
-
-" File management
-" ------------------------------------------------------------------------------
-Plug 'mcchrish/nnn.vim'
-
-" Buffers
-" ------------------------------------------------------------------------------
-
-" Close all buffers except current
-Plug 'schickling/vim-bufonly'
-Plug 'moll/vim-bbye'
-
-" Search
-" ------------------------------------------------------------------------------
-
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-pack/nvim-spectre'
-
-Plug 'linrongbin16/gitlinker.nvim'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
-" Editing
-" ------------------------------------------------------------------------------
-
-" Allow plugins to be repeated with dot
-Plug 'tpope/vim-repeat'
-" Comment out blocks of code
-Plug 'b3nj5m1n/kommentary'
-" Toggle location and quickfix lists
-Plug 'Valloric/ListToggle'
-" Display quickfix with a fancy window and commands
-Plug 'kevinhwang91/nvim-bqf'
-" Open files from Quickfix
-Plug 'yssl/QFEnter'
-" Move blocks of code with ALT+j/k
-Plug 'matze/vim-move'
-" Pairs
-Plug 'jiangmiao/auto-pairs'
-" copilot
-Plug 'zbirenbaum/copilot.lua'
-Plug 'wuelnerdotexe/vim-astro'
-
-" Text objects
-" ------------------------------------------------------------------------------
-
-" Allow motions like `w`, `b` and `iw` to work on camel case
-Plug 'chaoren/vim-wordmotion'
-" Improve text objects for arguments, brackets etc
-Plug 'wellle/targets.vim'
-" Add various text objects
-Plug 'kana/vim-textobj-user'
-" aE
-Plug 'kana/vim-textobj-entire'
-" al
-Plug 'kana/vim-textobj-line'
-
-" General
-" ------------------------------------------------------------------------------
-
-" Whitespace removal
-Plug 'ntpeters/vim-better-whitespace'
-
-" Refactoring
-" ------------------------------------------------------------------------------
-
-" Make it easy to add/remove/change brackets, quotes etc
-Plug 'tpope/vim-surround'
-
-" Copy/Paste behaviour
-" ------------------------------------------------------------------------------
-
-" Stop everything saving to a register and instead rely on just `m` for cut
-Plug 'svermeulen/vim-cutlass'
-Plug 'svermeulen/vim-subversive'
-
-" Sessions
-" ------------------------------------------------------------------------------
-
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-session'
-
-" Tab bar
-" ------------------------------------------------------------------------------
-
-Plug 'neovim/nvim-lspconfig'
-Plug 'SmiteshP/nvim-navic'
-Plug 'utilyre/barbecue.nvim'
-
-" Git
-" ------------------------------------------------------------------------------
-
-Plug 'tpope/vim-fugitive'
-Plug 'junegunn/gv.vim'
-Plug 'lewis6991/gitsigns.nvim'
-
-" HTML/CSS
-" ------------------------------------------------------------------------------
-
-" Easy HTML and CSS generation
-Plug 'mattn/emmet-vim'
-" Automatically add a closing HTML tag
-Plug 'alvan/vim-closetag'
-" Color highlight
-Plug 'rrethy/vim-hexokinase', {'do': 'make hexokinase'}
-Plug 'jwalton512/vim-blade'
-
-" JavaScript
-" ------------------------------------------------------------------------------
-
-" Autocomplete & linting
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
-Plug 'yaegassy/coc-astro', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
-Plug 'bmatcuk/coc-stylelintplus', {'do': 'yarn install --frozen-lockfile'}
-Plug 'antonk52/coc-cssmodules', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile', 'for': 'yaml'}
-Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
-Plug 'yaegassy/coc-volar', {'do': 'yarn install --frozen-lockfile'}
-Plug 'yaegassy/coc-laravel', {'do': 'yarn install --frozen-lockfile'}
-Plug 'yaegassy/coc-blade', {'do': 'yarn install --frozen-lockfile'}
-Plug 'yaegassy/coc-intelephense', {'do': 'yarn install --frozen-lockfile'}
-Plug 'yaegassy/coc-tailwindcss3', {'do': 'yarn install --frozen-lockfile'}
-
-call plug#end()
-
-colorscheme tokyonight-moon
-
-" Enable term 24 bit colour
-set termguicolors
-
-" Shortcut for checking if a plugin is loaded
-function! s:has_plugin(plugin)
-  let lookup = 'g:plugs["' . a:plugin . '"]'
-  return exists(lookup)
-endfunction
-
-"  General config
-" ------------------------------------------------------------------------------
-
 lua << EOF
+
+local vim = vim
+local Plug = vim.fn["plug#"]
+
+vim.call("plug#begin", "~/.config/nvim/plugged")
+
+-- Theme
+Plug("folke/tokyonight.nvim")
+
+-- Tmux
+if vim.fn.executable("tmux") == 1 then
+  Plug("christoomey/vim-tmux-navigator")
+  Plug("tmux-plugins/vim-tmux-focus-events")
+end
+
+-- Finding and replacing
+Plug("junegunn/fzf", { ["dir"] = "~/.fzf", ["do"] = "./install --all" })
+Plug("ibhagwan/fzf-lua", { ["branch"] = "main" })
+Plug("nvim-tree/nvim-web-devicons")
+Plug("echasnovski/mini.nvim")
+
+-- Editor improvements
+Plug("gcmt/taboo.vim")
+Plug("hoob3rt/lualine.nvim")
+Plug("rcarriga/nvim-notify")
+Plug("MunifTanjim/nui.nvim")
+Plug("folke/noice.nvim")
+Plug("folke/which-key.nvim")
+Plug("MeanderingProgrammer/render-markdown.nvim")
+
+-- File management
+Plug("mcchrish/nnn.vim")
+
+-- Buffers
+Plug("schickling/vim-bufonly")
+Plug("moll/vim-bbye")
+
+-- Search
+Plug("nvim-lua/plenary.nvim")
+Plug("nvim-pack/nvim-spectre")
+Plug("linrongbin16/gitlinker.nvim")
+Plug("nvim-treesitter/nvim-treesitter", { ["do"] = ":TSUpdate" })
+
+-- Editing
+Plug("tpope/vim-repeat")
+Plug("b3nj5m1n/kommentary")
+Plug("Valloric/ListToggle")
+Plug("kevinhwang91/nvim-bqf")
+Plug("yssl/QFEnter")
+Plug("matze/vim-move")
+Plug("jiangmiao/auto-pairs")
+Plug("zbirenbaum/copilot.lua")
+Plug("wuelnerdotexe/vim-astro")
+
+-- Text objects
+Plug("chaoren/vim-wordmotion")
+Plug("wellle/targets.vim")
+Plug("kana/vim-textobj-user")
+Plug("kana/vim-textobj-entire")
+Plug("kana/vim-textobj-line")
+
+-- General
+Plug("ntpeters/vim-better-whitespace")
+
+-- Refactoring
+Plug("tpope/vim-surround")
+
+-- Copy/Paste behavior
+Plug("svermeulen/vim-cutlass")
+Plug("svermeulen/vim-subversive")
+
+-- Sessions
+Plug("xolox/vim-misc")
+Plug("xolox/vim-session")
+
+-- Tab bar
+Plug("neovim/nvim-lspconfig")
+Plug("SmiteshP/nvim-navic")
+Plug("utilyre/barbecue.nvim")
+
+-- Git
+Plug("tpope/vim-fugitive")
+Plug("junegunn/gv.vim")
+Plug("lewis6991/gitsigns.nvim")
+
+-- HTML/CSS
+Plug("mattn/emmet-vim")
+Plug("alvan/vim-closetag")
+Plug("rrethy/vim-hexokinase", { ["do"] = "make hexokinase" })
+Plug("jwalton512/vim-blade")
+
+-- JavaScript
+Plug("neoclide/coc.nvim", { ["branch"] = "release" })
+Plug("neoclide/coc-tsserver", { ["do"] = "yarn install --frozen-lockfile" })
+Plug("yaegassy/coc-astro", { ["do"] = "yarn install --frozen-lockfile" })
+Plug("neoclide/coc-eslint", { ["do"] = "yarn install --frozen-lockfile" })
+Plug("neoclide/coc-json", { ["do"] = "yarn install --frozen-lockfile" })
+Plug("neoclide/coc-css", { ["do"] = "yarn install --frozen-lockfile" })
+Plug("bmatcuk/coc-stylelintplus", { ["do"] = "yarn install --frozen-lockfile" })
+Plug("antonk52/coc-cssmodules", { ["do"] = "yarn install --frozen-lockfile" })
+Plug("neoclide/coc-yaml", { ["do"] = "yarn install --frozen-lockfile", ["for"] = "yaml" })
+Plug("neoclide/coc-html", { ["do"] = "yarn install --frozen-lockfile" })
+Plug("neoclide/coc-prettier", { ["do"] = "yarn install --frozen-lockfile" })
+Plug("yaegassy/coc-volar", { ["do"] = "yarn install --frozen-lockfile" })
+Plug("yaegassy/coc-laravel", { ["do"] = "yarn install --frozen-lockfile" })
+Plug("yaegassy/coc-blade", { ["do"] = "yarn install --frozen-lockfile" })
+Plug("yaegassy/coc-intelephense", { ["do"] = "yarn install --frozen-lockfile" })
+Plug("yaegassy/coc-tailwindcss3", { ["do"] = "yarn install --frozen-lockfile" })
+
+-- End vim-plug setup
+vim.call("plug#end")
+
+-- Colorscheme
+vim.cmd("silent! colorscheme tokyonight-moon")
+
+-- Enable term 24-bit color
+vim.opt.termguicolors = true
+
 require'nvim-web-devicons'.setup()
 
 require("noice").setup({
@@ -327,176 +257,130 @@ wk.setup({
   plugins = { spelling = true },
 })
 
-EOF
+-- Treat <li> and <p> tags like block tags
+vim.g.html_indent_tags = "li|p"
 
-" Treat <li> and <p> tags like the block tags they are
-let g:html_indent_tags='li\|p'
+-- Set <space> as the leader key
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 
-" Set <space> to leader
-let mapleader=' '
-let maplocalleader='\'
+-- Turn off swapfiles and backups
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.writebackup = false
 
-" Turn off swapfiles
-set noswapfile
-set nobackup
-set nowb
+-- Allow editing of binary files
+vim.opt.binary = true
 
-" Allow editing of binary files
-" Must be set before expandtab
-" http://stackoverflow.com/a/26901774
-set binary
+-- Text width
+vim.opt.textwidth = 80
 
-set textwidth=80
+-- Indent-based folding
+vim.opt.foldmethod = "indent"
+vim.opt.foldenable = false
 
-" Use ``indent`` based folding
-set foldmethod=indent
-" Disable all folds on file open until `zc` or `zM` etc is used
-set nofoldenable
+-- Keep hidden buffers
+vim.opt.hidden = true
 
-" With :set hidden, opening a new file when the current buffer has unsaved
-" changes causes files to be hidden instead of closed
-set hidden
+-- Remember tab names in sessions
+vim.opt.sessionoptions:append("tabpages,globals")
 
-" Allow tab names to be remembered in sessions
-set sessionoptions+=tabpages,globals
+-- Match braces
+vim.opt.showmatch = true
 
-" Briefly move the cursor to the matching brace
-set showmatch
+-- Hide the current mode
+vim.opt.showmode = false
 
-" Don't display the current mode (Insert, Visual, Replace)
-" in the status line. This info is already shown in the
-" Airline status bar.
-set noshowmode
+-- Limit syntax highlighting to avoid lag
+vim.opt.synmaxcol = 500
 
-" Stop vim trying to syntax highlight long lines, typically found in minified
-" files. This greatly reduces lag yet is still wide enough for large displays
-set synmaxcol=500
+-- Highlight the current line
+vim.opt.cursorline = true
 
-" Highlight current line
-set cursorline
+-- Indentation settings
+vim.opt.softtabstop = 2
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
 
-" Indent using two spaces.
-set softtabstop=2
-set tabstop=2
-set shiftwidth=2
+-- Scrolling
+vim.opt.sidescroll = 1
+vim.opt.scrolloff = 3
+vim.opt.sidescrolloff = 15
 
-" Smoother scrolling when moving horizontally
-set sidescroll=1
+-- Disable line wrapping
+vim.opt.wrap = false
 
-" Use spaces, not tabs
-set expandtab
+-- Persistent cursor position in buffers
+vim.opt.startofline = false
 
-" Don't scan included files. The .tags file is more performant.
-set complete-=i
-set complete+=kspell
+-- Show line and column numbers
+vim.opt.ruler = true
 
-" Prevent autocomplete options opening in scratchpad
-set completeopt-=preview
+-- Open new panes to the right and bottom
+vim.opt.splitbelow = true
+vim.opt.splitright = true
 
-" This is set low so that gitgutter updates reasonably quickly
-" https://github.com/airblade/vim-gitgutter#when-are-the-signs-updated
-set updatetime=300
+-- Search settings
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
-" Don't wrap lines
-set nowrap
+-- Use the OS clipboard
+vim.opt.clipboard = "unnamedplus"
 
-" Keep the cursor in the same place when switching buffers
-set nostartofline
+-- Spell checking
+vim.opt.spelllang = "en"
 
-" Show col and line position in the statusbar
-set ruler
+-- Completion settings
+vim.opt.complete:remove("i")
+vim.opt.complete:append("kspell")
+vim.opt.completeopt:remove("preview")
 
-" Open new split panes to right and bottom, which feels more natural
-set splitbelow
-set splitright
+-- Update time for plugins like GitGutter
+vim.opt.updatetime = 300
 
-" Ignore case of searches
-set ignorecase
+-- Always show the sign column
+vim.opt.signcolumn = "yes"
 
-" If a pattern contains an uppercase letter
-" it is case sensitive, otherwise, it is not
-set smartcase
+-- Backup and undo history
+vim.opt.backupdir = "~/.config/nvim/backups"
+vim.opt.directory = ".,$TEMP"
+vim.opt.undodir = "~/.config/nvim/undo"
+vim.opt.undofile = true
+vim.opt.undolevels = 1000
+vim.opt.undoreload = 10000
 
-" Use the OS clipboard by default (on versions compiled with `+clipboard`)
-set clipboard=unnamed
+-- Skip backups in certain directories
+vim.opt.backupskip = "/tmp/*,/private/tmp/*"
 
-" Spell check
-set spelllang=en
+-- Modeline and security settings
+vim.opt.modeline = true
+vim.opt.modelines = 4
+vim.opt.exrc = true
+vim.opt.secure = true
 
-" Where it should get the dictionary files
-let g:spellfile_URL = 'http://ftp.vim.org/vim/runtime/spell'
+-- Disable error bells
+vim.opt.errorbells = false
 
-" For autocompletion, complete as much as you can.
-set wildmode=list:longest,full
+-- Shorten startup messages
+vim.opt.shortmess = "aoOtIWcFs"
 
-" don't add extra space after ., !, etc. when joining
-set nojoinspaces
+-- Enable titles
+vim.opt.title = true
 
-" Eliminate delay when switching modes
-set ttimeoutlen=0
+-- Show command as it’s being typed
+vim.opt.showcmd = true
 
-" Enable mouse with tmux
-set mouse=a
+-- Line numbers
+vim.opt.number = true
+vim.opt.relativenumber = true
 
-" Auto save changes before switching buffer
-set autowrite
+-- Path and extensions for `gf`
+vim.opt.suffixesadd:append(".css,index.css,.js,.jsx,.scss")
+vim.opt.path:append(".,src")
 
-" Add the g flag to search/replace by default
-set gdefault
-
-" Centralize backups, swapfiles and undo history
-set backupdir=~/.config/nvim/backups
-set directory=.,$TEMP " Stop the swp file warning
-
-if has("persistent_undo")
-  set undodir=~/.config/nvim/undo
-  set undofile
-  set undolevels=1000
-  set undoreload=10000
-endif
-
-" Always show sign column for git icons
-set signcolumn=yes
-
-" Don’t create backups when editing files in certain directories
-set backupskip=/tmp/*,/private/tmp/*
-
-" Respect modeline in files
-set modeline
-set modelines=4
-
-" Enable per-directory .vimrc files and disable unsafe commands in them
-set exrc
-set secure
-
-" Disable error bells
-set noerrorbells
-
-" Don't show the intro message when starting Vim
-" Also suppress several 'Press Enter to continue messages' especially
-" with FZF
-set shortmess=aoOtIWcFs
-
-" Show the current mode
-set title
-
-" Show the (partial) command as it’s being typed
-set showcmd
-
-" Line numbers
-set number
-set relativenumber
-
-" Path and file extensions to look for when using `gf`
-set suffixesadd+=.css,index.css,.js,.jsx,.scss
-set path+=.,src
-
-" Start scrolling before cursor gets to the edge
-set scrolloff=3
-set sidescrolloff=15
-set sidescroll=1
-
-" Remap annoying mistakes to something useful
+-- Abbreviations for common typos
+vim.cmd([[
 cnoreabbrev W! w!
 cnoreabbrev Q! q!
 cnoreabbrev Qall! qall!
@@ -507,59 +391,255 @@ cnoreabbrev WQ wq
 cnoreabbrev W w
 cnoreabbrev Qa q
 cnoreabbrev Qall qall
+]])
 
-" Key mappings
+-- Key mappings
+vim.keymap.set("n", "gv", ":vertical wincmd f<CR>")
+vim.keymap.set("n", "<leader>w", ":silent wa<CR>")
+vim.keymap.set("n", "k", "gk")
+vim.keymap.set("n", "j", "gj")
+vim.keymap.set("v", "k", "gk")
+vim.keymap.set("v", "j", "gj")
+vim.keymap.set("n", "dD", "S<Esc>")
+vim.keymap.set("n", "Y", "y$")
+vim.keymap.set("n", "g=", "gg=G``")
+vim.keymap.set("v", "y", "y`]")
+vim.keymap.set("v", "p", "p`]")
+vim.keymap.set("n", "p", "p`]")
+
+-- Split navigation
+vim.keymap.set("n", "<leader>x", ":split<CR>")
+vim.keymap.set("n", "<leader>v", ":vsplit<CR>")
+
+-- Spellcheck toggle
+vim.keymap.set("n", "<F6>", ":setlocal spell!<CR>")
+
+-- Clear search highlighting
+vim.keymap.set("n", "<leader>k", ":noh<CR>")
+
+-- Visual mode indentation
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
+
+-- Insert new line without entering insert mode
+vim.keymap.set("n", "<CR>", "o<Esc>")
+
+-- Autocommands
+vim.api.nvim_create_autocmd("CmdwinEnter", {
+  pattern = "*",
+  callback = function() vim.api.nvim_set_keymap("n", "<CR>", "<CR>", { noremap = true }) end,
+})
+vim.api.nvim_create_autocmd("CmdwinLeave", {
+  pattern = "*",
+  callback = function() vim.api.nvim_set_keymap("n", "<CR>", "o<Esc>", { noremap = true }) end,
+})
+
+-- Open help in a vertical split
+vim.api.nvim_create_augroup("vimrc_help", { clear = true })
+vim.api.nvim_create_autocmd("BufEnter", {
+  group = "vimrc_help",
+  pattern = "*.txt",
+  callback = function()
+    if vim.bo.buftype == "help" then
+      vim.cmd("wincmd L")
+      vim.opt_local.relativenumber = true
+    end
+  end,
+})
+
+-- Hide cursorline when buffer is inactive
+vim.api.nvim_create_augroup("CrossHair", { clear = true })
+vim.api.nvim_create_autocmd({ "VimEnter", "WinEnter", "BufWinEnter" }, {
+  group = "CrossHair",
+  pattern = "*",
+  callback = function()
+    vim.opt_local.cursorline = true
+  end,
+})
+vim.api.nvim_create_autocmd("WinLeave", {
+  group = "CrossHair",
+  pattern = "*",
+  callback = function()
+    vim.opt_local.cursorline = false
+  end,
+})
+
+-- File type specific settings
+vim.api.nvim_create_augroup("file_types", { clear = true })
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  group = "file_types",
+  pattern = { "*.snap", "*.es6" },
+  callback = function()
+    vim.bo.filetype = "javascript.jsx"
+  end,
+})
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  group = "file_types",
+  pattern = { "*stylelintrc", "*eslintrc", "*babelrc", "*parcelrc", "tsconfig.json" },
+  callback = function()
+    vim.bo.filetype = "json5"
+  end,
+})
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  group = "file_types",
+  pattern = "*.md",
+  callback = function()
+    vim.opt_local.wrap = true
+    vim.opt_local.linebreak = true
+    vim.opt_local.spell = true
+    vim.bo.filetype = "markdown"
+  end,
+})
+vim.api.nvim_create_autocmd("FileType", {
+  group = "file_types",
+  pattern = "gitcommit",
+  callback = function()
+    vim.opt_local.textwidth = 72
+    vim.opt_local.spell = true
+  end,
+})
+vim.api.nvim_create_autocmd("FileType", {
+  group = "file_types",
+  pattern = { "css", "scss", "sass" },
+  callback = function()
+    vim.opt_local.iskeyword:append("-")
+  end,
+})
+
+-- Periodically check for file changes
+vim.api.nvim_create_augroup("checktime", { clear = true })
+vim.api.nvim_create_autocmd("CursorHold", {
+  group = "checktime",
+  pattern = "*",
+  command = "silent! checktime",
+})
+
+-- Automatically resize splits when Vim window changes size
+vim.api.nvim_create_augroup("auto_resize", { clear = true })
+vim.api.nvim_create_autocmd("VimResized", {
+  group = "auto_resize",
+  pattern = "*",
+  command = "wincmd =",
+})
+
+-- Highlight settings
+vim.api.nvim_set_hl(0, "DiffChange", { bg = "#511e1e", fg = "#eeeeee" })
+vim.api.nvim_set_hl(0, "DiffDelete", { bg = "#3d432f", fg = "#eeeeee" })
+
+require'nvim-treesitter.configs'.setup {
+  -- A list of parser names, or "all" (the five listed parsers should always be installed)
+  ensure_installed = {
+    "css",
+    "html",
+    "javascript",
+    "json",
+    "typescript",
+    "scss",
+    "vue",
+    "astro",
+    "dockerfile",
+    "tsx",
+    "c",
+    "lua",
+    "vim",
+    "vimdoc",
+    "query",
+    "gitcommit",
+    "diff",
+    "git_rebase",
+    "git_config"
+},
+
+  -- Automatically install missing parsers when entering buffer
+  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+  auto_install = true,
+
+  highlight = {
+    enable = true,
+  },
+}
+
+vim.keymap.set('n', '<leader>s', '<cmd>lua require("spectre").open()<CR>', {
+  desc = "Open Spectre"
+})
+vim.keymap.set('n', '<leader>c', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
+    desc = "Search current word"
+})
+require('spectre').setup({
+  mappings={
+    ['toggle_line'] = {
+        map = "dd",
+        cmd = "<cmd>lua require('spectre').toggle_line()<CR>",
+        desc = "toggle current item"
+    },
+    ['enter_file'] = {
+        map = "<cr>",
+        cmd = "<cmd>lua require('spectre.actions').select_entry()<CR>",
+        desc = "goto current file"
+    },
+    ['run_current_replace'] = {
+      map = "<leader>rc",
+      cmd = "<cmd>lua require('spectre.actions').run_current_replace()<CR>",
+      desc = "replace current line"
+    },
+    ['run_replace'] = {
+        map = "<leader>R",
+        cmd = "<cmd>lua require('spectre.actions').run_replace()<CR>",
+        desc = "replace all"
+    },
+  }
+})
+
+require('gitsigns').setup({
+  signs = {
+    add          = { text = '█' },
+    change       = { text = '█' },
+    delete       = { text = '█' },
+    topdelete    = { text = '█' },
+    changedelete = { text = '█' },
+    untracked    = { text = '┆' },
+  },
+  on_attach = function(bufnr)
+    local gs = package.loaded.gitsigns
+
+    local function map(mode, l, r, opts)
+      opts = opts or {}
+      opts.buffer = bufnr
+      vim.keymap.set(mode, l, r, opts)
+    end
+
+    -- Navigation
+    map('n', ']c', function()
+      if vim.wo.diff then return ']c' end
+      vim.schedule(function() gs.next_hunk() end)
+      return '<Ignore>'
+    end, {expr=true})
+
+    map('n', '[c', function()
+      if vim.wo.diff then return '[c' end
+      vim.schedule(function() gs.prev_hunk() end)
+      return '<Ignore>'
+    end, {expr=true})
+  end
+})
+
+require("barbecue").setup({
+ show_modified = true,
+})
+
+require('kommentary.config').configure_language("default", {
+    prefer_single_line_comments = true,
+})
+EOF
+
+" Plugin settings in Vim script
 " ------------------------------------------------------------------------------
 
-" gf but in a vsplit
-nnoremap gv :vertical wincmd f<cr>
-
-" Save file
-nnoremap <silent><leader>w :silent wa<cr>
-
-" Force j and k to work on display lines
-nnoremap k gk
-nnoremap j gj
-vnoremap k gk
-vnoremap j gj
-
-" Delete line but preserve the space
-nnoremap dD S<Esc>
-
-" Make `Y` work from the cursor to the end of line
-nnoremap Y y$
-
-" Reformat whole file and move back to original position
-nnoremap g= gg=G``
-
-" Automatically jump to end of pasted text
-vnoremap <silent> y y`]
-vnoremap <silent> p p`]
-nnoremap <silent> p p`]
-
-" Split
-noremap <silent><leader>x :split<cr>
-noremap <silent><leader>v :vsplit<cr>
-
-" Spellcheck
-nnoremap <F6> :setlocal spell!<cr>
-
-" Clear search (highlight)
-nnoremap <silent> <leader>k :noh<cr>
-
-" Automatically 'gv' (go to previously selected visual block)
-" after indenting or unindenting.
-vnoremap < <gv
-vnoremap > >gv
-
-" Press enter for newline without insert
-nnoremap <cr> o<esc>
-" but don't effect command line mode
-autocmd CmdwinEnter * nnoremap <CR> <CR>
-autocmd CmdwinLeave * nnoremap <cr> o<esc>
-
-" Allow sourcing of vimrc
-nnoremap <leader>y :source $MYVIMRC<cr>
+" Shortcut for checking if a plugin is loaded
+function! s:has_plugin(plugin)
+  let lookup = 'g:plugs["' . a:plugin . '"]'
+  return exists(lookup)
+endfunction
 
 if exists(':tnoremap')
   " Allow movement seamlessly with terminals
@@ -643,12 +723,6 @@ if s:has_plugin('vim-better-whitespace')
   highlight ExtraWhitespace ctermbg=red guibg = #e06c75
 endif
 
-lua << EOF
-require('kommentary.config').configure_language("default", {
-    prefer_single_line_comments = true,
-})
-EOF
-
 if s:has_plugin('vim-astro')
   let g:astro_typescript = 'enable'
 endif
@@ -719,192 +793,3 @@ if s:has_plugin('emmet-vim')
   imap hh <plug>(emmet-expand-abbr)
   let g:emmet_install_only_plug = 1
 endif
-
-" Automatic commands
-" ------------------------------------------------------------------------------
-
-" Open help in a vertical split
-augroup vimrc-help
-  autocmd!
-  autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | setlocal relativenumber | endif
-augroup END
-
-" hide cursorline when buffer is inactive
-augroup CrossHair
-  au!
-  au VimEnter * setlocal cursorline
-  au WinEnter * setlocal cursorline
-  au BufWinEnter * setlocal cursorline
-  au WinLeave * setlocal nocursorline
-augroup end
-
-augroup file-types
-  autocmd!
-
-  " Override some syntaxes so things look better
-  autocmd BufNewFile,BufRead *.snap,*.es6, setlocal filetype=javascript.jsx
-  autocmd BufNewFile,BufRead *stylelintrc,*eslintrc,*babelrc,*parcelrc,tsconfig.json setlocal filetype=json5
-
-  " Wrap text and turn on spell for markdown files
-  autocmd BufNewFile,BufRead *.md setlocal wrap linebreak spell filetype=markdown
-
-  " Automatically wrap at 72 characters and spell check git commit messages
-  autocmd FileType gitcommit setlocal textwidth=72
-  autocmd FileType gitcommit setlocal spell
-
-  " Allow stylesheets to autocomplete hyphenated words
-  autocmd FileType css,scss,sass setlocal iskeyword+=-
-augroup END
-
-" Periodically check for file changes
-augroup checktime
-  autocmd!
-  autocmd CursorHold * silent! checktime
-augroup END
-
-" Resize splits when vim changes size (like with tmux opening/closing)
-augroup auto-resize
-  autocmd!
-  autocmd VimResized * wincmd =
-augroup END
-
-lua << EOF
-vim.g.goyo_width = 120
-
-function Goyo_enter()
-  vim.api.nvim_set_option("showmode", false)
-  vim.api.nvim_set_option("showcmd", false)
-  require("lualine").hide()
-end
-
-function Goyo_leave()
-  vim.api.nvim_set_option("showmode", true)
-  vim.api.nvim_set_option("showcmd", true)
-  require('lualine').hide({unhide=true})
-  vim.cmd('source $MYVIMRC')
-end
-
-local GoyoGroup = vim.api.nvim_create_augroup("Goyo", { clear = true })
-vim.api.nvim_create_autocmd("User", {
-  pattern = "GoyoEnter",
-  command = "lua Goyo_enter()",
-  group = GoyoGroup,
-})
-vim.api.nvim_create_autocmd("User", {
-  pattern = "GoyoLeave",
-  command = "lua Goyo_leave()",
-  group = GoyoGroup,
-})
-EOF
-
-hi DiffChange guibg=#511e1e guifg=#eee
-hi DiffDelete guibg=#3d432f guifg=#eee
-
-lua << EOF
-require'nvim-treesitter.configs'.setup {
-  -- A list of parser names, or "all" (the five listed parsers should always be installed)
-  ensure_installed = {
-    "css",
-    "html",
-    "javascript",
-    "json",
-    "typescript",
-    "scss",
-    "vue",
-    "astro",
-    "dockerfile",
-    "tsx",
-    "c",
-    "lua",
-    "vim",
-    "vimdoc",
-    "query",
-    "gitcommit",
-    "diff",
-    "git_rebase",
-    "git_config"
-},
-
-  -- Automatically install missing parsers when entering buffer
-  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-  auto_install = true,
-
-  highlight = {
-    enable = true,
-  },
-}
-EOF
-
-lua << EOF
-vim.keymap.set('n', '<leader>s', '<cmd>lua require("spectre").open()<CR>', {
-  desc = "Open Spectre"
-})
-vim.keymap.set('n', '<leader>c', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
-    desc = "Search current word"
-})
-require('spectre').setup({
-  mappings={
-    ['toggle_line'] = {
-        map = "dd",
-        cmd = "<cmd>lua require('spectre').toggle_line()<CR>",
-        desc = "toggle current item"
-    },
-    ['enter_file'] = {
-        map = "<cr>",
-        cmd = "<cmd>lua require('spectre.actions').select_entry()<CR>",
-        desc = "goto current file"
-    },
-    ['run_current_replace'] = {
-      map = "<leader>rc",
-      cmd = "<cmd>lua require('spectre.actions').run_current_replace()<CR>",
-      desc = "replace current line"
-    },
-    ['run_replace'] = {
-        map = "<leader>R",
-        cmd = "<cmd>lua require('spectre.actions').run_replace()<CR>",
-        desc = "replace all"
-    },
-  }
-})
-EOF
-
-lua << EOF
-require('gitsigns').setup({
-  signs = {
-    add          = { text = '█' },
-    change       = { text = '█' },
-    delete       = { text = '█' },
-    topdelete    = { text = '█' },
-    changedelete = { text = '█' },
-    untracked    = { text = '┆' },
-  },
-  on_attach = function(bufnr)
-    local gs = package.loaded.gitsigns
-
-    local function map(mode, l, r, opts)
-      opts = opts or {}
-      opts.buffer = bufnr
-      vim.keymap.set(mode, l, r, opts)
-    end
-
-    -- Navigation
-    map('n', ']c', function()
-      if vim.wo.diff then return ']c' end
-      vim.schedule(function() gs.next_hunk() end)
-      return '<Ignore>'
-    end, {expr=true})
-
-    map('n', '[c', function()
-      if vim.wo.diff then return '[c' end
-      vim.schedule(function() gs.prev_hunk() end)
-      return '<Ignore>'
-    end, {expr=true})
-  end
-})
-EOF
-
-lua << EOF
-require("barbecue").setup({
- show_modified = true,
-})
-EOF
