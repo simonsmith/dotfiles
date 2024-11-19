@@ -1,5 +1,6 @@
 lua << EOF
 
+
 local vim = vim
 local Plug = vim.fn["plug#"]
 
@@ -343,15 +344,11 @@ vim.opt.updatetime = 300
 vim.opt.signcolumn = "yes"
 
 -- Backup and undo history
-vim.opt.backupdir = "~/.config/nvim/backups"
+vim.opt.backupdir = "$HOME/.config/nvim/backups"
 vim.opt.directory = ".,$TEMP"
-vim.opt.undodir = "~/.config/nvim/undo"
 vim.opt.undofile = true
 vim.opt.undolevels = 1000
 vim.opt.undoreload = 10000
-
--- Skip backups in certain directories
-vim.opt.backupskip = "/tmp/*,/private/tmp/*"
 
 -- Modeline and security settings
 vim.opt.modeline = true
