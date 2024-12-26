@@ -85,7 +85,7 @@ brew install bottom
 brew install httpie
 brew install imageoptim-cli
 brew install python
-brew install youtube-dl
+brew install yt-dlp
 brew install meetingbar
 brew install deskpad
 
