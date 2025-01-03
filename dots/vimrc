@@ -52,7 +52,6 @@ Plug("yssl/QFEnter")
 Plug("matze/vim-move")
 Plug("jiangmiao/auto-pairs")
 Plug("zbirenbaum/copilot.lua")
-Plug("wuelnerdotexe/vim-astro")
 
 -- Text objects
 Plug("chaoren/vim-wordmotion")
@@ -94,7 +93,6 @@ Plug("jwalton512/vim-blade")
 -- JavaScript
 Plug("neoclide/coc.nvim", { ["branch"] = "release" })
 Plug("neoclide/coc-tsserver", { ["do"] = "yarn install --frozen-lockfile" })
-Plug("yaegassy/coc-astro", { ["do"] = "yarn install --frozen-lockfile" })
 Plug("neoclide/coc-eslint", { ["do"] = "yarn install --frozen-lockfile" })
 Plug("neoclide/coc-json", { ["do"] = "yarn install --frozen-lockfile" })
 Plug("neoclide/coc-css", { ["do"] = "yarn install --frozen-lockfile" })
