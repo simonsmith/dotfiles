@@ -25,6 +25,7 @@ export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 # Python3
 export PATH=/usr/local/opt/python/libexec/bin:$PATH
+export PATH="$HOME/.local/bin:$PATH"
 
 # php
 export PATH="/opt/homebrew/opt/php@8.3/bin:$PATH"
