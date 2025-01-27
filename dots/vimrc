@@ -158,6 +158,11 @@ require'fzf-lua'.setup({
       default = 'bat'
     }
   },
+  files = {
+    rg_opts = [[--color=never --files --hidden --follow -g "!.git"]],
+    fd_opts = [[--color=never --type f --hidden --follow --exclude .git]],
+    git_icons = true
+  },
   actions = {
     files = {
       ["default"] = actions.file_edit,
