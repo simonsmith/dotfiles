@@ -24,6 +24,14 @@ alias yt='yarn test'
 alias yu='yarn upgrade'
 alias yui='yarn upgrade-interactive'
 
+# bun
+alias b='bun'
+alias bi='bun install'
+alias bid='bun install -d'
+alias br='bun run'
+alias ba='bun add'
+alias bR='bun remove'
+
 # pnpm
 alias p='pnpm'
 
