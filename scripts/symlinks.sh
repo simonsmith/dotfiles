@@ -10,11 +10,11 @@ pushd ./dots
 
 dots=(
   ackrc
+  aerospace.toml
   agignore
   aliases
   alacritty.common.toml
   batconfig
-  yabairc
   ctags
   curlrc
   editorconfig

@@ -69,7 +69,7 @@ brew install ruby-build
 # Window manager
 brew tap koekeishiya/formulae
 brew install koekeishiya/formulae/skhd --with-logging
-brew install koekeishiya/formulae/yabai
+brew install --cask nikitabobko/tap/aerospace
 
 # Install other useful binaries.
 brew install bat
