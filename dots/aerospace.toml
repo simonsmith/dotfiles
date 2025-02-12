@@ -56,8 +56,8 @@ preset = 'qwerty'
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-inner.horizontal = 12
-inner.vertical =   12
+inner.horizontal = 16
+inner.vertical =   16
 outer.left =       0
 outer.bottom =     0
 outer.top =        0
@@ -84,11 +84,9 @@ outer.right =      0
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
 cmd-h = 'focus left --boundaries-action wrap-around-the-workspace'
+cmd-semicolon = 'focus right --boundaries-action wrap-around-the-workspace'
 cmd-k = 'focus up'
 cmd-j = 'focus down'
-
-# See: https://nikitabobko.github.io/AeroSpace/commands#move
-
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
 ctrl-1 = 'workspace 1'
@@ -114,6 +112,7 @@ k = 'move up'
 l = 'move right'
 shift-r = ['flatten-workspace-tree', 'mode main'] # reset layout
 f = ['layout floating tiling', 'mode main']
+shift-f = ['fullscreen --no-outer-gaps', 'mode main']
 1 = 'move-node-to-workspace 1'
 2 = 'move-node-to-workspace 2'
 3 = 'move-node-to-workspace 3'
@@ -122,7 +121,6 @@ f = ['layout floating tiling', 'mode main']
 minus = 'resize smart -50'
 equal = 'resize smart +50'
 enter='''exec-and-forget osascript -e "do shell script \"/Applications/Alacritty.app/Contents/MacOS/alacritty &\"" '''
-
 shift-h = ['join-with left']
 shift-j = ['join-with down']
 shift-k = ['join-with up']
