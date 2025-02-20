@@ -4,7 +4,6 @@ ctrl - l [
   "brave browser beta": skhd -k "ctrl - tab"
   "google chrome beta": skhd -k "ctrl - tab"
   "google chrome": skhd -k "ctrl - tab"
-  "orion": skhd -k "ctrl - tab"
 ]
 ctrl - h [
   "firefox developer edition": skhd -k "shift + ctrl - tab"
@@ -12,5 +11,12 @@ ctrl - h [
   "brave browser beta": skhd -k "shift + ctrl - tab"
   "google chrome beta": skhd -k "shift + ctrl - tab"
   "google chrome": skhd -k "shift + ctrl - tab"
-  "orion": skhd -k "shift + ctrl - tab"
+]
+
+ctrl - j [
+  "zen browser": skhd -k "ctrl - tab"
+]
+
+ctrl - k [
+  "zen browser": skhd -k "shift + ctrl - tab"
 ]
