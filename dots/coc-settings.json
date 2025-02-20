@@ -3,9 +3,10 @@
   "diagnostic.errorSign": "x",
   "diagnostic.infoSign": "~",
   "diagnostic.checkCurrentLine": true,
-  "eslint.autoFixOnSave": true,
   "css.lint.unknownAtRules": "ignore",
   "coc.preferences.colorSupport": false,
+  "eslint.autoFixOnSave": true,
+  "eslint.enable": true,
   "eslint.packageManager": "yarn",
   "eslint.filetypes": [
     "javascript",
