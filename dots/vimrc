@@ -213,8 +213,10 @@ require("conform").setup({
     ["css"] = {"biome", "prettier", stop_after_first = true},
     ["vue"] = {"prettier", stop_after_first = true},
     ["yaml"] = {"prettier", stop_after_first = true},
-    ["markdown"] = {"prettier", stop_after_first = true},
-    ["markdown.mdx"] = {"prettier", stop_after_first = true},
+    ["markdown"] = {"prettier", "mdformat", stop_after_first = true},
+    ["markdown.mdx"] = {"prettier", "mdformat", stop_after_first = true},
+    ["lua"] = {"lua-format", stop_after_first = true},
+    ["vim"] = {"lua-format", stop_after_first = true},
   },
 })
 
