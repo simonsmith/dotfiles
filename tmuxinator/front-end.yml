@@ -3,12 +3,8 @@ root: ~/wahanda/front-end-2.0
 startup_window: edit
 
 windows:
-  - edit:
-      - nvim
-  - cli:
-      layout: even-horizontal
-      panes:
-        - git:
-          -
-        - server:
-          - yarn watch
+  - neovim:
+    - nvim
+  - git:
+  - node:
+    - yarn watch

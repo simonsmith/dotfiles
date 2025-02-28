@@ -3,12 +3,8 @@ root: ~/wahanda/checkout-ui
 startup_window: edit
 
 windows:
-  - edit:
-      - nvim
-  - cli:
-      layout: even-horizontal
-      panes:
-        - git:
-          -
-        - server:
-          - yarn dev
+  - neovim:
+    - nvim
+  - git:
+  - node:
+    - yarn dev
