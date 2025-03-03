@@ -1,0 +1,12 @@
+name: ai-buddy
+root: ~/Sites/ai-buddy
+startup_window: neovim
+
+windows:
+  - neovim:
+    - nvim
+  - git:
+  - node:
+    - bun run dev
+  - chromadb:
+    - chroma run --port 8181
