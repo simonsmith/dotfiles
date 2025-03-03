@@ -24,7 +24,7 @@ brew install zsh
 brew install starship
 
 # for https://github.com/janoamaral/tokyo-night-tmux
-brew install bc gawk gh glab gsed jq
+brew install bc gawk gh glab gsed jq nowplaying-cli
 
 # less highlighting
 brew install source-highlight
