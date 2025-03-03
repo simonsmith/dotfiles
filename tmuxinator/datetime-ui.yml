@@ -1,6 +1,6 @@
 name: datetime-ui
 root: ~/wahanda/datetime-ui
-startup_window: edit
+startup_window: neovim
 
 windows:
   - neovim:

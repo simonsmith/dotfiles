@@ -1,6 +1,6 @@
 name: account-ui
 root: ~/wahanda/account-ui
-startup_window: nvim
+startup_window: neovim
 
 windows:
   - neovim:
