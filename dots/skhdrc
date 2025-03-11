@@ -15,8 +15,12 @@ ctrl - h [
 
 ctrl - j [
   "zen browser": skhd -k "ctrl - tab"
+  "firefox developer edition": skhd -k "ctrl - tab"
+  "firefox": skhd -k "ctrl - tab"
 ]
 
 ctrl - k [
   "zen browser": skhd -k "shift + ctrl - tab"
+  "firefox developer edition": skhd -k "shift + ctrl - tab"
+  "firefox": skhd -k "shift + ctrl - tab"
 ]
