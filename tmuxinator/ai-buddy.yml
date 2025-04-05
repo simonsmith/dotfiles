@@ -7,6 +7,6 @@ windows:
     - nvim
   - git:
   - node:
-    - bun run dev
+    - bun run dev:mock
   - chromadb:
     - chroma run --port 8181
