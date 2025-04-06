@@ -85,8 +85,6 @@ outer.right =      0
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
 cmd-h = 'focus left --boundaries-action wrap-around-the-workspace'
 cmd-semicolon = 'focus right --boundaries-action wrap-around-the-workspace'
-cmd-k = 'focus up'
-cmd-j = 'focus down'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
 ctrl-1 = 'workspace 1'
