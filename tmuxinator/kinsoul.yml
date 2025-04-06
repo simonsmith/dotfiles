@@ -1,5 +1,5 @@
-name: ai-buddy
-root: ~/Sites/ai-buddy
+name: kinsoul
+root: ~/Sites/kinsoul.ai
 startup_window: neovim
 
 windows:
