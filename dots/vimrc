@@ -76,11 +76,6 @@ Plug("svermeulen/vim-subversive")
 Plug("xolox/vim-misc")
 Plug("xolox/vim-session")
 
--- Tab bar
-Plug("neovim/nvim-lspconfig")
-Plug("SmiteshP/nvim-navic")
-Plug("utilyre/barbecue.nvim")
-
 -- Git
 Plug("tpope/vim-fugitive")
 Plug("junegunn/gv.vim")
@@ -244,7 +239,12 @@ require'lualine'.setup {
   sections = {
     lualine_a = {'mode'},
     lualine_b = {'branch'},
-    lualine_c = {},
+    lualine_c = {
+      {
+        'filename',
+        path = 1  -- 0 = just filename, 1 = relative path, 2 = absolute path
+      }
+    },
     lualine_x = {
       {
         require("noice").api.statusline.mode.get,
@@ -657,10 +657,6 @@ require('gitsigns').setup({
       return '<Ignore>'
     end, {expr=true})
   end
-})
-
-require("barbecue").setup({
- show_modified = true,
 })
 
 require('kommentary.config').configure_language("default", {
