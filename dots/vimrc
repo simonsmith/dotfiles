@@ -29,6 +29,7 @@ Plug("MunifTanjim/nui.nvim")
 Plug("folke/noice.nvim")
 Plug("folke/which-key.nvim")
 Plug("MeanderingProgrammer/render-markdown.nvim")
+Plug("y3owk1n/time-machine.nvim")
 
 -- File management
 Plug("mcchrish/nnn.vim")
@@ -75,6 +76,8 @@ Plug("svermeulen/vim-subversive")
 -- Sessions
 Plug("xolox/vim-misc")
 Plug("xolox/vim-session")
+
+Plug("mistricky/codesnap.nvim", { ['do'] = 'make' })
 
 -- Git
 Plug("tpope/vim-fugitive")
@@ -133,6 +136,16 @@ require("noice").setup({
     long_message_to_split = true, -- long messages will be sent to a split
   },
 })
+
+require('codesnap').setup({
+  bg_x_padding = 8,
+  mac_window_bar = false,
+  bg_y_padding = 8,
+  bg_color = "#535c68",
+  watermark = "",
+})
+
+require("time-machine").setup({})
 
 require('copilot').setup({
   suggestion = {
@@ -442,6 +455,8 @@ vim.keymap.set("n", "g=", "gg=G``")
 vim.keymap.set("v", "y", "y`]")
 vim.keymap.set("v", "p", "p`]")
 vim.keymap.set("n", "p", "p`]")
+
+vim.keymap.set("n", "<leader>t", ":TimeMachineToggle<CR>")
 
 -- Split navigation
 vim.keymap.set("n", "<leader>x", ":split<CR>")
