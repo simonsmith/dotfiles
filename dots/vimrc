@@ -162,10 +162,10 @@ require('copilot').setup({
 local actions = require "fzf-lua.actions"
 require'fzf-lua'.setup({
   winopts = {
-    height = 0.9,
-    width = 0.8,
+    height = 0.7,
+    width = 0.5,
     preview = {
-      default = 'bat'
+      default = false
     }
   },
   files = {
