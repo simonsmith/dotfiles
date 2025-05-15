@@ -52,7 +52,6 @@ Plug("kevinhwang91/nvim-bqf")
 Plug("yssl/QFEnter")
 Plug("matze/vim-move")
 Plug("jiangmiao/auto-pairs")
-Plug("zbirenbaum/copilot.lua")
 Plug("wuelnerdotexe/vim-astro")
 Plug('stevearc/conform.nvim')
 
@@ -146,18 +145,6 @@ require('codesnap').setup({
 })
 
 require("time-machine").setup({})
-
-require('copilot').setup({
-  suggestion = {
-    enabled = true,
-    auto_trigger = false,
-    keymap = {
-      accept = '<Tab>',
-      next = '<C-j>',
-      prev = '<C-k>',
-    }
-  },
-})
 
 local actions = require "fzf-lua.actions"
 require'fzf-lua'.setup({
