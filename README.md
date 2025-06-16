@@ -33,8 +33,6 @@ Set macOS defaults:
 ./scripts/macos.sh
 ```
 
-When complete, open new terminal window and run `zplug install`
-
 ## Manual steps
 
 * Add private dotfiles to home directory (`.extra` and `.gitconfig.local`).

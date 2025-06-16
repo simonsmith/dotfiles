@@ -1,25 +1,69 @@
-# Install fzf
-echo "Setting up fzf ..."
-yes | /usr/local/opt/fzf/install
+#!/bin/bash
+set -euo pipefail
 
-# tpm
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+source ./scripts/utils.sh
 
-# Install blsd
-# http://theinfiniteset.net/content/2016/08/combining-tools-blsd-and-fzf/
-bash <(curl -fL https://raw.githubusercontent.com/junegunn/blsd/master/install)
+# Apple Silicon Homebrew prefix
+HOMEBREW_PREFIX="/opt/homebrew"
 
-# java version manager
-curl -s "https://get.sdkman.io" | bash
-source "$HOME/.zshrc"
-sdk install java 17.0.0.35.2-amzn
-sdk install java 11.0.12.7.2-amzn
-sdk default java 17.0.0.35.2-amzn
+main() {
+    log_info "Setting up additional tools and configurations..."
 
-# alacritty themes
-mkdir -p ~/.config/alacritty/themes
-git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
+    # Install tmux plugin manager
+    log_info "Installing tmux plugin manager (tpm)..."
+    if [[ ! -d "$HOME/.tmux/plugins/tpm" ]]; then
+        git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm || {
+            log_error "Failed to clone tpm repository"
+        }
+        log_success "tpm installed"
+    else
+        log_warning "tpm already installed"
+    fi
 
-# znap plugin manager
-mkdir -p ~/.zsh-plugins/.znap
-git clone https://github.com/marlonrichert/zsh-snap ~/.zsh-plugins/.znap
+    # Install blsd (better ls for fzf)
+    log_info "Installing blsd..."
+    if ! command -v blsd &> /dev/null; then
+        curl -fL https://raw.githubusercontent.com/junegunn/blsd/master/install | bash || {
+            log_warning "Failed to install blsd"
+        }
+        log_success "blsd installed"
+    else
+        log_warning "blsd already installed"
+    fi
+
+    # Set up Alacritty config directory and themes
+    log_info "Setting up Alacritty themes..."
+    mkdir -p ~/.config/alacritty/themes
+
+    if [[ ! -d "$HOME/.config/alacritty/themes/.git" ]]; then
+        git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes || {
+            log_warning "Failed to clone Alacritty themes"
+        }
+        log_success "Alacritty themes installed"
+    else
+        log_warning "Alacritty themes already installed"
+    fi
+
+    # Install znap plugin manager for zsh
+    log_info "Installing znap plugin manager..."
+    mkdir -p ~/.zsh-plugins/.znap
+
+    if [[ ! -d "$HOME/.zsh-plugins/.znap/.git" ]]; then
+        git clone https://github.com/marlonrichert/zsh-snap ~/.zsh-plugins/.znap || {
+            log_error "Failed to clone znap repository"
+        }
+        log_success "znap plugin manager installed"
+    else
+        log_warning "znap already installed"
+    fi
+
+    log_success "Additional tools setup completed!"
+
+    log_info "Manual steps remaining:"
+    echo "  • Restart your terminal to load new shell settings"
+    echo "  • Run 'source ~/.zshrc' to activate zsh plugins"
+    echo "  • In tmux, press 'prefix + I' to install tmux plugins"
+}
+
+# Run main function
+main "$@"

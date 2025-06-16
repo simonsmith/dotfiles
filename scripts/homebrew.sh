@@ -1,95 +1,109 @@
-echo "Installing homebrew ..."
+#!/bin/bash
+set -euo pipefail
 
-brew update
+source ./scripts/utils.sh
 
-# Install GNU core utilities (those that come with OS X are outdated).
-brew install coreutils
-ln -sv /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
+# Apple Silicon Homebrew prefix
+HOMEBREW_PREFIX="/opt/homebrew"
 
-brew install gettext
-brew link --force gettext
+# Check if Homebrew is installed
+check_homebrew() {
+    if ! command -v brew &> /dev/null; then
+        log_error "Homebrew is not installed!"
+        log_info "Install it from: https://brew.sh/"
+        exit 1
+    fi
+    log_success "Homebrew found at $(which brew)"
+}
 
-# Install some other useful utilities like `sponge`.
-brew install moreutils
-# Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
-brew install findutils
-# Install GNU `sed`, overwriting the built-in `sed`.
-brew install gnu-sed
+# Check if Brewfile exists
+check_brewfile() {
+    if [[ ! -f "Brewfile" ]]; then
+        log_error "Brewfile not found in current directory!"
+        log_info "Make sure you're running this from your dotfiles root directory"
+        exit 1
+    fi
+    log_success "Brewfile found"
+}
 
-# Replace system curl
-brew install curl
+main() {
+    log_info "Starting Homebrew package installation using Brewfile..."
 
-# Install zsh
-brew install zsh
-brew install starship
+    # Set up environment for Apple Silicon
+    export PATH="$HOMEBREW_PREFIX/bin:$PATH"
 
-# for https://github.com/janoamaral/tokyo-night-tmux
-brew install bc gawk gh glab gsed jq
+    # Check prerequisites
+    check_homebrew
+    check_brewfile
 
-# less highlighting
-brew install source-highlight
+    # Update Homebrew
+    log_info "Updating Homebrew..."
+    brew update || {
+        log_error "Failed to update Homebrew"
+        exit 1
+    }
 
-# Install `wget`
-brew install wget
+    # Install bundle command if not available
+    if ! brew bundle --help &> /dev/null; then
+        log_info "Installing brew-bundle..."
+        brew tap homebrew/bundle
+    fi
 
-# Diff images on cmd-line - https://github.com/ewanmellor/git-diff-image
-brew install exiftool
-brew install imagemagick
+    # Install packages from Brewfile
+    log_info "Installing packages from Brewfile..."
+    brew bundle install --verbose || {
+        log_error "Some packages failed to install"
+        log_info "You can run 'brew bundle install' manually to retry failed installations"
+    }
 
-# neovim
-brew install python3
-brew install neovim
-pip3 install neovim
-pip3 install pynvim
+    # Post-installation setup
+    log_info "Running post-installation setup..."
 
-# fzf
-brew install fzf
-yes | /usr/local/opt/fzf/install
+    # Link gettext if needed
+    if [[ ! -L "$HOMEBREW_PREFIX/bin/msgfmt" ]]; then
+        log_info "Linking gettext..."
+        brew link --force gettext || log_warning "Failed to link gettext"
+    fi
 
-# Search
-brew install the_silver_searcher
-brew install rg
-brew install ack
+    # Create sha256sum symlink for compatibility
+    if [[ ! -L "$HOMEBREW_PREFIX/bin/sha256sum" ]] && [[ -f "$HOMEBREW_PREFIX/bin/gsha256sum" ]]; then
+        log_info "Creating sha256sum symlink..."
+        ln -sf "$HOMEBREW_PREFIX/bin/gsha256sum" "$HOMEBREW_PREFIX/bin/sha256sum"
+    fi
 
-# tmux
-brew install reattach-to-user-namespace
-brew install tmux
-brew install urlview
-brew install tmuxinator
+    # Install fzf shell integration
+    log_info "Setting up fzf shell integration..."
+    yes | "$HOMEBREW_PREFIX/opt/fzf/install" || log_warning "fzf install script failed"
 
-# git
-brew install git
-brew install scmpuff
-brew install git-delta
+    # Install Python packages for Neovim
+    log_info "Installing Python packages for Neovim..."
+    if command -v pip3 &> /dev/null; then
+        pip3 install --user --break-system-packages neovim pynvim || log_warning "Failed to install Python packages"
+    else
+        log_warning "pip3 not found, skipping Python packages"
+    fi
 
-# Install more recent versions of some OS X tools.
-brew install grep
+    # Cleanup
+    log_info "Cleaning up..."
+    brew cleanup || log_warning "Cleanup failed"
 
-# Ruby
-brew install rbenv
-brew install ruby-build
+    # Show installation summary
+    log_success "Installation completed!"
 
-# Window manager
-brew tap koekeishiya/formulae
-brew install koekeishiya/formulae/skhd --with-logging
-brew install --cask nikitabobko/tap/aerospace
+    log_info "Installation summary:"
+    log_info "  📦 Formulae: $(brew list | wc -l | tr -d ' ')"
+    log_info "  🍺 Casks: $(brew list --cask | wc -l | tr -d ' ')"
+    log_info "  🏷️  Taps: $(brew tap | wc -l | tr -d ' ')"
 
-# Install other useful binaries.
-brew install bat
-brew install fd
-brew install devd
-brew install go
-brew install jordanbaird-ice
-brew install eza
-brew install trash
-brew install direnv
-brew tap clementtsang/bottom
-brew install bottom
-brew install httpie
-brew install imageoptim-cli
-brew install python
-brew install yt-dlp
-brew install meetingbar
-brew install deskpad
+    log_success "Homebrew setup completed successfully!"
 
-brew cleanup
+    # Helpful next steps
+    echo
+    log_info "Next steps:"
+    echo "  • Restart your terminal or run: source ~/.zshrc"
+    echo "  • Check for any failed installations: brew bundle check"
+    echo "  • Update packages anytime with: brew bundle install"
+}
+
+# Run main function
+main "$@""Installing homebrew ..."

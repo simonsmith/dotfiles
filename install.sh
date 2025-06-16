@@ -1,11 +1,10 @@
 source ./scripts/homebrew.sh
-source ./scripts/cask.sh
 source ./scripts/zsh.sh
 source ./scripts/symlinks.sh
-source ./scripts/vim.sh
-source ./scripts/node.sh
-source ./scripts/ruby.sh
 source ./scripts/misc.sh
+source ./scripts/node.sh
+source ./scripts/vim.sh
 
-echo "Installation complete!"
-echo "Now open a new Terminal tab to install zplug plugins..."
+source ./scripts/utils.sh
+log_success "Installation complete!"
+log_info "Open a new shell to automatically install zsh plugins"

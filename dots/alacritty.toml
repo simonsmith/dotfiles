@@ -1,0 +1,9 @@
+[font]
+size = 16.0
+
+[general]
+import = [
+  "~/.alacritty.common.toml",
+]
+
+

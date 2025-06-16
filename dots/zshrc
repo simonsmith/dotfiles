@@ -1,7 +1,7 @@
 # PATH
 
 # Default path
-export PATH="/opt/homebrew:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # rbenv
 export PATH="$HOME/.rbenv/shims:$PATH"
 # Allow any custom binaries
@@ -34,6 +34,8 @@ export PATH="/opt/homebrew/opt/php@8.3/sbin:$PATH"
 # znap
 # https://github.com/marlonrichert/zsh-snap
 # -------------------------------------------------
+[[ -r ~/.zsh-plugins/.znap/znap.zsh ]] ||
+    git clone --depth 1 -- https://github.com/marlonrichert/zsh-snap.git ~/.zsh-plugins/.znap/znap.zsh
 source ~/.zsh-plugins/.znap/znap.zsh
 
 # oh-my-zsh plugins
@@ -81,9 +83,6 @@ fi
 # Exports
 # -------------------------------------------------
 
-# Change 'z' alias for use with the fzf function
-export ZSHZ_CMD="_z"
-
 # Make nvim the default editor
 export EDITOR="nvim"
 
@@ -93,11 +92,21 @@ export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
 # Default flags used in all LESS instances
 export LESS='--line-numbers --status-column --long-prompt --ignore-case --hilite-search --RAW-CONTROL-CHARS'
 
-# Larger history (allow 32³ entries; default is 500)
+# History settings for zsh
+export HISTFILE="$HOME/.zsh_history"
 export HISTSIZE=999999999
-export HISTFILESIZE=$HISTSIZE
 export SAVEHIST=$HISTSIZE
-export HISTCONTROL=ignoredups
+
+# Zsh history options
+setopt HIST_IGNORE_DUPS        # Don't save duplicate commands
+setopt HIST_IGNORE_ALL_DUPS    # Delete old duplicate entries
+setopt HIST_FIND_NO_DUPS       # Don't display duplicates when searching
+setopt HIST_SAVE_NO_DUPS       # Don't save duplicates to history file
+setopt HIST_REDUCE_BLANKS      # Remove unnecessary blanks
+setopt INC_APPEND_HISTORY      # Save commands immediately
+setopt SHARE_HISTORY           # Share history between sessions
+setopt HIST_EXPIRE_DUPS_FIRST  # Expire duplicates first when trimming
+setopt HIST_VERIFY             # Show command with history expansion before running
 
 # Make some commands not show up in history
 export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help"
@@ -124,9 +133,6 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 
 # Node dev
 export NODE_ENV=development
-
-# Stop z polluting the home dir
-export _Z_DATA="$HOME/.zdata/.z"
 
 # bat
 # https://github.com/sharkdp/bat
@@ -162,7 +168,6 @@ command -v tree > /dev/null && export FZF_ALT_C_OPTS="--preview 'tree -C {} | he
 
 bindkey '^o' autosuggest-accept
 
-export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"

@@ -1,5 +1,8 @@
+source ./scripts/utils.sh
+
+log_info "Installing Neovim plugins"
+
 # Create directories
-mkdir -p "$HOME/.config/nvim/"
 ln -sfv "$HOME/.vimrc" "$HOME/.config/nvim/init.vim"
 
 # Neovim
