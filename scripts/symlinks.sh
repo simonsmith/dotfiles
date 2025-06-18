@@ -15,7 +15,6 @@ pushd ./dots
 dots=(
   ackrc
   aerospace.toml
-  agignore
   aliases
   alacritty.common.toml
   batconfig
@@ -31,7 +30,6 @@ dots=(
   ripgreprc
   rgignore
   tmux.conf
-  tmuxline_snapshot
   vimrc
   wgetrc
   zshrc
