@@ -1,3 +1,6 @@
+# this file is not tracked in source control to allow
+# overrides on different systems. For example a laptop might
+# prefer a bigger font to a desktop
 [font]
 size = 16.0
 
