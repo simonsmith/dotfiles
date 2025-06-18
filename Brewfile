@@ -3,6 +3,7 @@
 # Taps
 tap "koekeishiya/formulae"
 tap "nikitabobko/tap"
+tap "junegunn/tap"
 
 # Core system utilities
 brew "coreutils"
@@ -37,7 +38,7 @@ brew "bat"
 brew "fd"
 brew "eza"
 brew "trash"
-brew "direnv"
+brew "junegunn/tap/blsd", args: ["HEAD"]
 
 # Terminal and tmux
 brew "tmux"

@@ -20,17 +20,6 @@ main() {
         log_warning "tpm already installed"
     fi
 
-    # Install blsd (better ls for fzf)
-    log_info "Installing blsd..."
-    if ! command -v blsd &> /dev/null; then
-        curl -fL https://raw.githubusercontent.com/junegunn/blsd/master/install | bash || {
-            log_warning "Failed to install blsd"
-        }
-        log_success "blsd installed"
-    else
-        log_warning "blsd already installed"
-    fi
-
     # Set up Alacritty config directory and themes
     log_info "Setting up Alacritty themes..."
     mkdir -p ~/.config/alacritty/themes
