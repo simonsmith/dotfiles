@@ -5,5 +5,3 @@ size = 16.0
 import = [
   "~/.alacritty.common.toml",
 ]
-
-
