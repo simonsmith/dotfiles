@@ -108,9 +108,6 @@ setopt SHARE_HISTORY           # Share history between sessions
 setopt HIST_EXPIRE_DUPS_FIRST  # Expire duplicates first when trimming
 setopt HIST_VERIFY             # Show command with history expansion before running
 
-# Make some commands not show up in history
-export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help"
-
 # Prefer US English and use UTF-8
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
