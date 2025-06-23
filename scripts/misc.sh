@@ -49,8 +49,7 @@ main() {
     log_success "Additional tools setup completed!"
 
     log_info "Manual steps remaining:"
-    echo "  • Restart your terminal to load new shell settings"
-    echo "  • Run 'source ~/.zshrc' to activate zsh plugins"
+    echo "  • Open a new shell to trigger znap install"
     echo "  • In tmux, press 'prefix + I' to install tmux plugins"
 }
 
