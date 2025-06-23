@@ -44,7 +44,7 @@ brew "tmuxinator"
 brew "urlview"
 
 # System monitoring
-brew "bottom"
+brew "btop"
 brew "httpie"
 brew "imageoptim-cli"
 brew "yt-dlp"
