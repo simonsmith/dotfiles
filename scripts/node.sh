@@ -1,8 +1,18 @@
-echo "Installing volta ..."
+#!/bin/bash
+set -euo pipefail
 
-export PATH="$HOME/.volta/bin:$PATH"
-curl https://get.volta.sh | bash
-volta install node@lts
-# need 1.x to install packages inside Neovim, so use this as
-# the default
-volta install yarn@1.22.22
+source ./scripts/utils.sh
+
+log_info "Setting up mise for Node.js development..."
+
+# Check if mise is available
+if ! command -v mise &> /dev/null; then
+    log_error "mise not found. Install mise first via homebrew."
+    exit 1
+fi
+
+# Install tools from global config
+log_info "Installing tools from global mise configuration..."
+mise install
+
+log_success "mise setup completed!"

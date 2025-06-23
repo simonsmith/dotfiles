@@ -4,6 +4,7 @@
 tap "koekeishiya/formulae"
 tap "nikitabobko/tap"
 tap "junegunn/tap"
+tap "oven-sh/bun"
 
 # Core system utilities
 brew "coreutils"
@@ -26,8 +27,8 @@ brew "scmpuff"
 brew "neovim"
 brew "python3"
 brew "go"
-brew "rbenv"
-brew "ruby-build"
+brew "mise"
+brew "oven-sh/bun/bun"
 
 # Search and file tools
 brew "fzf"

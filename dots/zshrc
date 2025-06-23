@@ -13,7 +13,6 @@ export PATH="$(brew --prefix gnu-sed)/libexec/gnubin:$PATH"
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 export PATH="$(brew --prefix grep)/libexec/gnubin:$PATH"
 
-export VOLTA_FEATURE_PNPM=1
 # curl
 export PATH="/opt/homebrew/curl/bin:$PATH"
 # GO
@@ -54,9 +53,6 @@ znap source hlissner/zsh-autopair
 znap source zsh-users/zsh-autosuggestions
 znap source zsh-users/zsh-syntax-highlighting
 znap source zsh-users/zsh-completions
-
-# https://github.com/rbenv/rbenv
-znap eval rbenv 'rbenv init -'
 
 # https://github.com/mroth/scmpuff
 znap eval scmpuff 'scmpuff init -s --aliases=false'
@@ -165,10 +161,6 @@ command -v tree > /dev/null && export FZF_ALT_C_OPTS="--preview 'tree -C {} | he
 
 bindkey '^o' autosuggest-accept
 
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
-
 export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
@@ -178,3 +170,6 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# mise
+eval "$(mise activate zsh)"

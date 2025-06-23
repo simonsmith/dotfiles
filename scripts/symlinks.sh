@@ -43,6 +43,7 @@ done
 mkdir -p "$HOME/.config/nvim/"
 [ ! -e "$HOME/.config/nvim/coc-settings.json" ] && ln -sfv $(grealpath coc-settings.json) "$HOME/.config/nvim/coc-settings.json"
 [ ! -e "$HOME/.config/starship.toml" ] && ln -sfv $(grealpath starship.toml) "$HOME/.config/starship.toml"
+[ ! -e "$HOME/.config/mise.toml" ] && ln -sfv $(grealpath mise.toml) "$HOME/.config/mise.toml"
 
 mkdir "$HOME/.ssh"
 [ ! -e "$HOME/.ssh/config" ] && ln -sfv $(grealpath ssh-config) "$HOME/.ssh/config"
