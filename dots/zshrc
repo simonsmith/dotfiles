@@ -51,7 +51,6 @@ znap source zsh-users/zsh-completions
 
 # https://github.com/mroth/scmpuff
 znap eval scmpuff 'scmpuff init -s --aliases=false'
-znap eval direnv 'direnv hook zsh'
 znap eval starship 'starship init zsh'
 znap prompt
 
