@@ -45,7 +45,7 @@ mkdir -p "$HOME/.config/nvim/"
 [ ! -e "$HOME/.config/starship.toml" ] && ln -sfv $(grealpath starship.toml) "$HOME/.config/starship.toml"
 [ ! -e "$HOME/.config/mise.toml" ] && ln -sfv $(grealpath mise.toml) "$HOME/.config/mise.toml"
 
-mksdir -p "$HOME/.config/btop"
+mkdir -p "$HOME/.config/btop"
 [ ! -e "$HOME/.config/btop/btop.conf" ] && ln -sfv $(grealpath btop.conf) "$HOME/.config/btop/btop.conf"
 
 
