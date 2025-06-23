@@ -20,13 +20,6 @@ main() {
         log_warning "tpm already installed"
     fi
 
-    # Install tmux plugins automatically
-    if [[ -d "$HOME/.tmux/plugins/tpm" ]]; then
-        log_info "Installing tmux plugins..."
-        ~/.tmux/plugins/tpm/bin/install_plugins
-        log_success "tmux plugins installed"
-    fi
-
     # Set up Alacritty config directory and themes
     log_info "Setting up Alacritty themes..."
     mkdir -p ~/.config/alacritty/themes
@@ -58,6 +51,7 @@ main() {
     log_info "Manual steps remaining:"
     echo "  • Restart your terminal to load new shell settings"
     echo "  • Run 'source ~/.zshrc' to activate zsh plugins"
+    echo "  • In tmux, press 'prefix + I' to install tmux plugins"
 }
 
 # Run main function
