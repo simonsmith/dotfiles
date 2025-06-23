@@ -1,8 +1,11 @@
 [tools]
 node = "22.16.0"
 yarn = "4.9.2"
-ruby = "3.4.4"
+ruby = "latest"
+go = "latest"
+bun = "latest"
+python = "latest"
+deno = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node"]
-

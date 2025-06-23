@@ -2,12 +2,8 @@
 
 # Default path
 export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-# rbenv
-export PATH="$HOME/.rbenv/shims:$PATH"
 # Allow any custom binaries
 export PATH="$HOME/bin:$PATH"
-# yarn
-export PATH="$HOME/.yarn/bin:$PATH"
 # Add gnu packages
 export PATH="$(brew --prefix gnu-sed)/libexec/gnubin:$PATH"
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
@@ -15,20 +11,19 @@ export PATH="$(brew --prefix grep)/libexec/gnubin:$PATH"
 
 # curl
 export PATH="/opt/homebrew/curl/bin:$PATH"
-# GO
-export GOPATH="$HOME/go"
-export PATH="$PATH:$GOPATH/bin"
 # postgres
 export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 # Cargo
 export PATH="$HOME/.cargo/bin:$PATH"
-# Python3
-export PATH=/usr/local/opt/python/libexec/bin:$PATH
+# Python local packages (pip install --user)
 export PATH="$HOME/.local/bin:$PATH"
 
 # php
 export PATH="/opt/homebrew/opt/php@8.3/bin:$PATH"
 export PATH="/opt/homebrew/opt/php@8.3/sbin:$PATH"
+
+# mise - activate early so it can manage tool paths
+eval "$(mise activate zsh)"
 
 # znap
 # https://github.com/marlonrichert/zsh-snap
@@ -114,7 +109,7 @@ export KEYTIMEOUT=1
 # Highlight section titles in manual pages
 export LESS_TERMCAP_md="$ORANGE"
 
-# Don’t clear the screen after quitting a manual page
+# Don't clear the screen after quitting a manual page
 export MANPAGER="less -X"
 
 # Link Homebrew casks in `/Applications` rather than `~/Applications`
@@ -160,16 +155,3 @@ command -v blsd > /dev/null && export FZF_ALT_C_COMMAND='blsd'
 command -v tree > /dev/null && export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -$LINES'"
 
 bindkey '^o' autosuggest-accept
-
-export DENO_INSTALL="$HOME/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
-
-# bun completions
-[ -s "/Users/simonsmith/.bun/_bun" ] && source "/Users/simonsmith/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-# mise
-eval "$(mise activate zsh)"

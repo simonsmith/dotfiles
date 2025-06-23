@@ -13,6 +13,7 @@ fi
 
 # Install tools from global config
 log_info "Installing tools from global mise configuration..."
+mise trust ~/.config/mise.toml
 mise install
 
 log_success "mise setup completed!"
