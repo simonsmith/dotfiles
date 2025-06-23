@@ -1,5 +1,5 @@
 [tools]
-node = "22.16.0"
+node = "lts"
 yarn = "4.9.2"
 ruby = "latest"
 go = "latest"
