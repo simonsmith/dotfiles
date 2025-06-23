@@ -55,8 +55,8 @@ ehthumbs.db
 # Vim tags
 vim_tags*
 
-# direnv config
-.envrc
+# mise
+mise.local.toml
 
 # sftp configuration file
 sftp-config.json
