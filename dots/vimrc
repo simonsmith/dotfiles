@@ -158,7 +158,8 @@ require'fzf-lua'.setup({
   files = {
     rg_opts = [[--color=never --files --hidden --follow -g "!.git"]],
     fd_opts = [[--color=never --type f --hidden --follow --exclude .git]],
-    git_icons = true
+    git_icons = false,
+    file_icons = false
   },
   actions = {
     files = {
