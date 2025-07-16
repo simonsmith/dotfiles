@@ -290,6 +290,10 @@ require("gitlinker").setup({
 
 require('render-markdown').setup({
   debounce = 20,
+  render_modes = false,
+  anti_conceal = {
+    enabled = false
+  }
 })
 
 local wk = require("which-key")
