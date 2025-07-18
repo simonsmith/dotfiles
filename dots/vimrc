@@ -266,7 +266,13 @@ require'lualine'.setup {
   inactive_sections = {
     lualine_a = {},
     lualine_b = {},
-    lualine_c = {},
+    lualine_c = {
+      {
+        'filename',
+        path = 1,
+        color = { fg = '#545c7e' }  -- Dimmed color for inactive
+      }
+    },
     lualine_x = {},
     lualine_y = {},
     lualine_z = {}
