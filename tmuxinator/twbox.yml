@@ -1,7 +1,0 @@
-name: twbox
-root: ~/wahanda
-startup_window: twbox
-
-windows:
-  - twbox:
-    - twbox -s dev01.twtest.io nginx up

@@ -8,8 +8,3 @@ Host github.com
  IdentityFile ~/.ssh/github-personal
  Hostname ssh.github.com
  Port 443
-
-Host git.treatwell.net
- HostName git.treatwell.net
- PreferredAuthentications publickey
- IdentityFile ~/.ssh/github-personal

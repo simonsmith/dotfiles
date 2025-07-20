@@ -1,9 +1,0 @@
-name: cypress-image-snapshot
-root: ~/Sites/cypress-image-snapshot
-startup_window: edit
-
-windows:
-  - edit:
-      - nvim
-  - cli:
-      -
