@@ -4,6 +4,7 @@ yarn = "4.9.2"
 ruby = "latest"
 go = "latest"
 bun = "latest"
+pnpm = "latest"
 python = "latest"
 deno = "latest"
 
