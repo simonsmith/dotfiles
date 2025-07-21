@@ -24,4 +24,7 @@
   "javascript.referencesCodeLens.enable": false,
   "coc.preferences.formatOnType": true,
   "vue.codeLens.enabled": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
 }
