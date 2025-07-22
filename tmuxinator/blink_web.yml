@@ -1,0 +1,14 @@
+name: blink_web
+root: ~/blink/web
+startup_window: neovim
+
+windows:
+  - neovim:
+    - nvim
+  - git:
+  - webapp:
+    - p webapp
+  - backend:
+    - p proxy --backend staging
+  - dashboard:
+    - p dashboard
