@@ -5,7 +5,6 @@
   "diagnostic.checkCurrentLine": true,
   "css.lint.unknownAtRules": "ignore",
   "coc.preferences.colorSupport": false,
-  "eslint.autoFixOnSave": true,
   "eslint.enable": true,
   "eslint.packageManager": "yarn",
   "eslint.filetypes": [
@@ -25,6 +24,6 @@
   "coc.preferences.formatOnType": true,
   "vue.codeLens.enabled": false,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": false
   },
 }
