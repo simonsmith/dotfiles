@@ -54,6 +54,7 @@ ehthumbs.db
 
 # Vim tags
 vim_tags*
+.vim
 
 # mise
 mise.local.toml

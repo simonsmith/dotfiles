@@ -6,7 +6,11 @@
   "css.lint.unknownAtRules": "ignore",
   "coc.preferences.colorSupport": false,
   "eslint.enable": true,
-  "eslint.packageManager": "yarn",
+  "eslint.workingDirectories": ["."],
+  "eslint.onIgnoredFiles": "off",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": false
+  },
   "eslint.filetypes": [
     "javascript",
     "javascript.jsx",
@@ -22,8 +26,5 @@
   "javascript.suggestionActions.enabled": false,
   "javascript.referencesCodeLens.enable": false,
   "coc.preferences.formatOnType": true,
-  "vue.codeLens.enabled": false,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": false
-  },
+  "vue.codeLens.enabled": false
 }
