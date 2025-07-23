@@ -717,6 +717,7 @@ if s:has_plugin('coc.nvim')
   nmap <silent> <leader>dr <Plug>(coc-references)
   nmap <silent> <leader>dR <Plug>(coc-refactor)
   nmap <silent> <leader>dd <Plug>(coc-definition)
+  nmap <silent> <leader>dv :call CocAction('jumpDefinition', 'vsplit')<cr>
   nmap <silent> <leader>di <Plug>(coc-implementation)
   nmap <silent> <leader>dn <Plug>(coc-rename)
   nmap <silent> ]e :call CocAction('diagnosticNext')<cr>
