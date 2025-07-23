@@ -63,6 +63,7 @@ brew "gawk"
 brew "gh"
 brew "glab"
 brew "jq"
+brew "diff-so-fancy"
 brew "nnn"
 brew "source-highlight"
 
