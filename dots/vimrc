@@ -716,10 +716,9 @@ if s:has_plugin('coc.nvim')
   " Remap keys for gotos
   nmap <silent> <leader>dr <Plug>(coc-references)
   nmap <silent> <leader>dR <Plug>(coc-refactor)
-  nmap <silent> <leader>dd <Plug>(coc-implementation)
-  nmap <silent> <leader>dy <Plug>(coc-type-definition)
+  nmap <silent> <leader>dd <Plug>(coc-definition)
+  nmap <silent> <leader>di <Plug>(coc-implementation)
   nmap <silent> <leader>dn <Plug>(coc-rename)
-  nmap <silent> <leader>da <Plug>(coc-codeaction)
   nmap <silent> ]e :call CocAction('diagnosticNext')<cr>
   nmap <silent> [e :call CocAction('diagnosticPrevious')<cr>
   nmap <silent> <leader>e :CocDiagnostics<cr>
