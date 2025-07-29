@@ -24,6 +24,17 @@ alias yt='yarn test'
 alias yu='yarn upgrade'
 alias yui='yarn upgrade-interactive'
 
+# pnpm
+alias p='pnpm'
+alias pa='pnpm add'
+alias pad='pnpm add --save-dev'
+alias pr='pnpm run'
+alias pR='pnpm remove'
+alias pt='pnpm test'
+alias pu='pnpm update'
+alias pui='pnpm update --interactive'
+alias pi='pnpm install'
+
 # bun
 alias b='bun'
 alias bi='bun install'
@@ -31,9 +42,6 @@ alias bid='bun install -d'
 alias br='bun run'
 alias ba='bun add'
 alias bR='bun remove'
-
-# pnpm
-alias p='pnpm'
 
 # https://github.com/ogham/exa
 alias l="eza -lbha --git --group-directories-first"
