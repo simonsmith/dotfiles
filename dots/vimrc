@@ -22,7 +22,7 @@ Plug("nvim-tree/nvim-web-devicons")
 Plug("echasnovski/mini.nvim")
 
 -- Editor improvements
-Plug("gcmt/taboo.vim")
+Plug("nanozuki/tabby.nvim")
 Plug("hoob3rt/lualine.nvim")
 Plug("rcarriga/nvim-notify")
 Plug("MunifTanjim/nui.nvim")
@@ -164,6 +164,70 @@ require'fzf-lua'.setup({
     }
   }
 })
+
+require('tabby.tabline').set(function(line)
+  local theme = {
+    fill = 'TabLineFill',       -- tabline background
+    head = 'TabLine',           -- head element highlight
+    current_tab = 'TabLineSel', -- current tab label highlight
+    tab = 'TabLine',            -- other tab label highlight
+    win = 'TabLine',            -- window highlight
+    tail = 'TabLine',           -- tail element highlight
+  }
+
+  return {
+    line.tabs().foreach(function(tab)
+      local hl = tab.is_current() and theme.current_tab or theme.tab
+      return {
+        line.sep('', hl, theme.fill),
+        tab.is_current() and '' or '󰆣',
+        tab.name(),
+        tab.close_btn(''),
+        line.sep(' ', hl, theme.fill),
+        hl = hl,
+        margin = ' ',
+      }
+    end),
+    line.spacer(),
+    line.wins_in_tab(line.api.get_current_tab()).foreach(function(win)
+      return {
+        line.sep(' ', theme.win, theme.fill),
+        '',
+        win.buf_name(),
+        line.sep(' ', theme.win, theme.fill),
+        hl = theme.win,
+        margin = ' ',
+      }
+    end),
+    hl = theme.fill,
+  }
+end, {
+  nerdfont = true,              -- whether use nerdfont
+  lualine_theme = 'tokyonight', -- lualine theme name
+  tab_name = {
+    name_fallback = function(tabid)
+      return 'tab-' .. tabid
+    end,
+  },
+  buf_name = {
+    mode = 'unique',
+  },
+})
+
+-- Key mappings to replicate taboo functionality
+local keymap = vim.keymap.set
+local opts = { noremap = true, silent = true }
+
+-- Navigation mappings
+keymap('n', 'th', ':tabprev<CR>', opts)
+keymap('n', 'tl', ':tabnext<CR>', opts)
+keymap('n', 'tn', ':tabnew<CR>', opts)
+keymap('n', 'td', ':tabclose<CR>', opts)
+
+-- Tab operations using tabby commands
+keymap('n', 'to', ':tabnew | ', { noremap = true })  -- Open new tab (equivalent to TabooOpen)
+keymap('n', 'tr', ':Tabby rename_tab ', { noremap = true })  -- Rename tab (equivalent to TabooRename)
+vim.o.showtabline = 1
 
 require("tokyonight").setup({
   style = "moon", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
@@ -786,17 +850,6 @@ endif
 
 if s:has_plugin('vim-bbye')
   nnoremap <silent>Q :silent Bdelete<cr>
-endif
-
-if s:has_plugin('taboo.vim')
-  let g:taboo_renamed_tab_format = '%l%m'
-  let g:taboo_close_tab_label = ''
-  nnoremap th :tabprev<cr>
-  nnoremap tl :tabnext<cr>
-  nnoremap tn :tabnew<cr>
-  nnoremap td :tabclose<cr>
-  nnoremap to :TabooOpen<space>
-  nnoremap tr :TabooRename<space>
 endif
 
 if s:has_plugin('nnn.vim')
