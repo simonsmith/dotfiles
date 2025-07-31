@@ -6,13 +6,7 @@ startup_window: nvim
 
 windows:
   - nvim: nvim
-  - zsh:
-      layout: 66fd,233x86,0,0{116x86,0,0,4,116x86,117,0[116x43,117,0,5,116x42,117,44,6]}
-      panes:
-        - git:
-          -
-        - artisan:
-          - cd laravel
-          - php artisan serve
-        - vite:
-          - npm run dev
+  - git:
+    -
+  - vite:
+    - npm run dev
