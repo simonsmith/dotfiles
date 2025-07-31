@@ -527,6 +527,9 @@ vim.keymap.set("n", "p", "p`]")
 
 vim.keymap.set("n", "<leader>t", ":TimeMachineToggle<CR>")
 
+vim.keymap.set("n", "H", ":silent bprevious<cr>")
+vim.keymap.set("n", "L", ":silent bnext<cr>")
+
 -- Split navigation
 vim.keymap.set("n", "<leader>x", ":split<CR>")
 vim.keymap.set("n", "<leader>v", ":vsplit<CR>")
