@@ -172,7 +172,7 @@ require'fzf-lua'.setup({
 
 require('tabby.tabline').set(function(line)
   local theme = {
-    fill = 'TabLineFill',       -- tabline background
+    fill = 'Normal',       -- tabline background
     head = 'TabLine',           -- head element highlight
     current_tab = 'TabLineSel', -- current tab label highlight
     tab = 'TabLine',            -- other tab label highlight
