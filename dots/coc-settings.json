@@ -1,13 +1,44 @@
 {
+  "coc.preferences.colorSupport": false,
+  "coc.preferences.formatOnType": true,
   "codeLens.enable": true,
+  "codeLens.position": "eol",
+  "css.lint.unknownAtRules": "ignore",
+  "diagnostic.checkCurrentLine": true,
   "diagnostic.errorSign": "x",
   "diagnostic.infoSign": "~",
-  "diagnostic.checkCurrentLine": true,
-  "css.lint.unknownAtRules": "ignore",
-  "coc.preferences.colorSupport": false,
   "eslint.enable": true,
-  "eslint.workingDirectories": ["."],
   "eslint.onIgnoredFiles": "off",
+  "eslint.workingDirectories": ["."],
+  "javascript.referencesCodeLens.enable": false,
+  "javascript.suggestionActions.enabled": false,
+  "suggest.timeout": 3000,
+  "suggest.noselect": false,
+  "suggest.triggerAfterInsertEnter": true,
+  "suggest.minTriggerInputLength": 1,
+  "suggest.pumheight": 15,
+  "typescript.preferences.lazyConfiguredProjectsFromExternalProject": true,
+  "typescript.surveys.enabled": false,
+  "tsserver.maxTsServerMemory": 8192,
+  "tsserver.useSeparateSyntaxServer": false,
+  "tsserver.useLocalTsdk": true,
+  "tsserver.watchOptions": {
+   "excludeDirectories": [
+     "**/node_modules",
+     "**/.git",
+     "**/dist",
+     "**/build",
+     "**/cypress",
+     "**/.next",
+     "**/coverage",
+     "**/.nyc_output",
+     "**/tmp",
+     "**/temp"
+   ]
+  },
+  "typescript.referencesCodeLens.enable": false,
+  "typescript.suggestionActions.enabled": false,
+  "vue.codeLens.enabled": false,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": false
   },
@@ -18,13 +49,4 @@
     "typescriptreact",
     "javascriptreact"
   ],
-  "suggest.timeout": 5000,
-  "tsserver.useLocalTsdk": true,
-  "typescript.suggestionActions.enabled": false,
-  "typescript.referencesCodeLens.enable": false,
-  "codeLens.position": "eol",
-  "javascript.suggestionActions.enabled": false,
-  "javascript.referencesCodeLens.enable": false,
-  "coc.preferences.formatOnType": true,
-  "vue.codeLens.enabled": false
 }
