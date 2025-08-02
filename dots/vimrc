@@ -875,7 +875,7 @@ if s:has_plugin('gv.vim')
 endif
 
 if s:has_plugin('fzf-lua')
-  nnoremap <c-p> :FzfLua git_files<cr>
+  nnoremap <c-p> :FzfLua files<cr>
   nnoremap <c-o> :FzfLua jumps<cr>
   nnoremap <leader>l :FzfLua blines<cr>
   nnoremap <Tab> :FzfLua buffers<cr>
