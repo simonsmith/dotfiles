@@ -262,22 +262,36 @@ require("tokyonight").setup({
   on_highlights = function(highlights, colors) end,
 })
 
+local biome_prettier = {"biome", "prettier", stop_after_first = true}
+local prettier_only = {"prettier", stop_after_first = true}
+local prettier_mdformat = {"prettier", "mdformat", stop_after_first = true}
+local lua_format = {"lua-format", stop_after_first = true}
+
 require("conform").setup({
   formatters_by_ft = {
-    ["javascript"] = {"biome", "prettier", stop_after_first = true},
-    ["javascriptreact"] = {"biome", "prettier", stop_after_first = true},
-    ["typescript"] = {"biome", "prettier", stop_after_first = true},
-    ["typescriptreact"] = {"biome", "prettier", stop_after_first = true},
-    ["json"] = {"biome", "prettier", stop_after_first = true},
-    ["jsonc"] = {"biome", "prettier", stop_after_first = true},
-    ["html"] = {"biome", "prettier", stop_after_first = true},
-    ["css"] = {"biome", "prettier", stop_after_first = true},
-    ["vue"] = {"prettier", stop_after_first = true},
-    ["yaml"] = {"prettier", stop_after_first = true},
-    ["markdown"] = {"prettier", "mdformat", stop_after_first = true},
-    ["markdown.mdx"] = {"prettier", "mdformat", stop_after_first = true},
-    ["lua"] = {"lua-format", stop_after_first = true},
-    ["vim"] = {"lua-format", stop_after_first = true},
+    -- JS/TS ecosystem (Biome + Prettier fallback)
+    javascript = biome_prettier,
+    javascriptreact = biome_prettier,
+    typescript = biome_prettier,
+    typescriptreact = biome_prettier,
+    json = biome_prettier,
+    jsonc = biome_prettier,
+    html = biome_prettier,
+    css = biome_prettier,
+
+    -- Prettier only
+    php = prettier_only,
+    blade = prettier_only,
+    vue = prettier_only,
+    yaml = prettier_only,
+
+    -- Markdown
+    markdown = prettier_mdformat,
+    ["markdown.mdx"] = prettier_mdformat,
+
+    -- Lua
+    lua = lua_format,
+    vim = lua_format,
   },
 })
 
