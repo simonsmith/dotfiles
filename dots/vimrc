@@ -1,6 +1,5 @@
 lua << EOF
 
-
 local vim = vim
 local Plug = vim.fn["plug#"]
 
@@ -72,8 +71,6 @@ Plug("svermeulen/vim-cutlass")
 Plug("svermeulen/vim-subversive")
 
 -- Sessions
-Plug("xolox/vim-misc")
-Plug("xolox/vim-session")
 
 Plug("mistricky/codesnap.nvim", { ['do'] = 'make' })
 
@@ -858,11 +855,6 @@ endif
 
 if s:has_plugin('vim-astro')
   let g:astro_typescript = 'enable'
-endif
-
-if s:has_plugin('vim-session')
-  let g:session_autosave = 'yes'
-  let g:session_autoload = 'no'
 endif
 
 if s:has_plugin('vim-closetag')
