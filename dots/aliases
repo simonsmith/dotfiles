@@ -85,6 +85,7 @@ alias gunwip='git log -1 | grep -q -c "\--wip--" && git reset HEAD~1'
 alias rbm='gcm && gl && gco - && grbm'
 alias gb="git for-each-ref --sort=-committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
 alias gbr="git for-each-ref --sort=-committerdate refs/remotes/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
+alias glom='git log --graph --oneline master..HEAD'
 
 # os updates
 alias update_brew='brew update; brew upgrade; brew cleanup'
