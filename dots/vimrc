@@ -429,7 +429,7 @@ vim.opt.showmatch = true
 vim.opt.showmode = false
 
 -- Limit syntax highlighting to avoid lag
-vim.opt.synmaxcol = 500
+vim.opt.synmaxcol = 250
 
 -- Highlight the current line
 vim.opt.cursorline = true
@@ -474,7 +474,10 @@ vim.opt.complete:append("kspell")
 vim.opt.completeopt:remove("preview")
 
 -- Update time for plugins like GitGutter
-vim.opt.updatetime = 1000
+vim.opt.updatetime = 300
+
+vim.opt.ttyfast = true
+vim.opt.lazyredraw = true
 
 -- Always show the sign column
 vim.opt.signcolumn = "yes"
