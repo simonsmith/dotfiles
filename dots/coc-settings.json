@@ -1,47 +1,17 @@
 {
-  "coc.preferences.colorSupport": false,
-  "coc.preferences.formatOnType": true,
   "codeLens.enable": true,
   "codeLens.position": "eol",
+  "coc.preferences.colorSupport": false,
+  "coc.preferences.formatOnType": true,
   "css.lint.unknownAtRules": "ignore",
   "diagnostic.checkCurrentLine": true,
   "diagnostic.errorSign": "x",
   "diagnostic.infoSign": "~",
-  "eslint.enable": true,
-  "eslint.onIgnoredFiles": "off",
-  "eslint.workingDirectories": ["."],
-  "javascript.referencesCodeLens.enable": false,
-  "javascript.suggestionActions.enabled": false,
-  "suggest.timeout": 3000,
-  "suggest.noselect": false,
-  "suggest.minTriggerInputLength": 1,
-  "suggest.maxCompleteItemCount": 30,
-  "suggest.pumheight": 30,
-  "typescript.preferences.lazyConfiguredProjectsFromExternalProject": true,
-  "typescript.surveys.enabled": false,
-  "tsserver.maxTsServerMemory": 4096,
-  "tsserver.useSeparateSyntaxServer": false,
-  "tsserver.useLocalTsdk": true,
-  "tsserver.watchOptions": {
-   "excludeDirectories": [
-     "**/node_modules",
-     "**/.git",
-     "**/dist",
-     "**/build",
-     "**/cypress",
-     "**/.next",
-     "**/coverage",
-     "**/.nyc_output",
-     "**/tmp",
-     "**/temp"
-   ]
-  },
-  "typescript.referencesCodeLens.enable": false,
-  "typescript.suggestionActions.enabled": false,
-  "vue.codeLens.enabled": false,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": false
+    "source.fixAll.eslint": false,
+    "source.fixAll.stylelint": false
   },
+  "eslint.enable": true,
   "eslint.filetypes": [
     "javascript",
     "javascript.jsx",
@@ -49,4 +19,47 @@
     "typescriptreact",
     "javascriptreact"
   ],
+  "eslint.onIgnoredFiles": "off",
+  "eslint.options": {
+    "cache": true,
+    "cacheLocation": ".eslintcache"
+  },
+  "eslint.run": "onSave",
+  "eslint.workingDirectories": ["."],
+  "javascript.preferences.noSemanticsValidation": false,
+  "javascript.preferences.noSuggestionDiagnostics": true,
+  "javascript.referencesCodeLens.enable": false,
+  "javascript.suggestionActions.enabled": false,
+  "stylelintplus.autoFixOnSave": false,
+  "stylelintplus.enable": true,
+  "stylelintplus.filetypes": ["css", "scss", "sass", "less", "postcss"],
+  "suggest.maxCompleteItemCount": 30,
+  "suggest.minTriggerInputLength": 1,
+  "suggest.noselect": false,
+  "suggest.pumheight": 30,
+  "suggest.timeout": 3000,
+  "tsserver.maxTsServerMemory": 4096,
+  "tsserver.useLocalTsdk": true,
+  "tsserver.useSeparateSyntaxServer": false,
+  "tsserver.watchOptions": {
+    "excludeDirectories": [
+      "**/node_modules",
+      "**/.git",
+      "**/dist",
+      "**/build",
+      "**/cypress",
+      "**/.next",
+      "**/coverage",
+      "**/.nyc_output",
+      "**/tmp",
+      "**/temp"
+    ]
+  },
+  "typescript.preferences.lazyConfiguredProjectsFromExternalProject": true,
+  "typescript.preferences.noSemanticsValidation": false,
+  "typescript.preferences.noSuggestionDiagnostics": true,
+  "typescript.referencesCodeLens.enable": false,
+  "typescript.suggestionActions.enabled": false,
+  "typescript.surveys.enabled": false,
+  "vue.codeLens.enabled": false
 }
