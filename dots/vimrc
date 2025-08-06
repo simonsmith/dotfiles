@@ -46,7 +46,6 @@ Plug("nvim-treesitter/nvim-treesitter", { ["do"] = ":TSUpdate" })
 -- Editing
 Plug("tpope/vim-repeat")
 Plug("b3nj5m1n/kommentary")
-Plug("Valloric/ListToggle")
 Plug("kevinhwang91/nvim-bqf")
 Plug("yssl/QFEnter")
 Plug("matze/vim-move")
@@ -78,7 +77,6 @@ Plug("lewis6991/gitsigns.nvim")
 -- HTML/CSS
 Plug("mattn/emmet-vim")
 Plug("alvan/vim-closetag")
-Plug("rrethy/vim-hexokinase", { ["do"] = "make hexokinase" })
 Plug("jwalton512/vim-blade")
 
 -- JavaScript
@@ -847,10 +845,6 @@ endif
 
 if s:has_plugin('vim-bufonly')
   nnoremap <leader>B :BufOnly<cr>
-endif
-
-if s:has_plugin('ListToggle')
-  let g:lt_location_list_toggle_map = '<leader>L'
 endif
 
 if s:has_plugin('vim-better-whitespace')
