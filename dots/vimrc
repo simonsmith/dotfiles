@@ -119,6 +119,8 @@ require("noice").setup({
     { filter = { event = "msg_show", kind = "", find = "written", },  skip = true },
     { filter = { event = "msg_show", kind = "", },  skip = true },
     { filter = { event = "msg_show", kind = "lua_error", },  view = "mini" },
+    { filter = { find = "oxc" }, skip = true },
+    { filter = { find = "Oxlint" }, skip = true },
     { filter = { find = "Hunk" }, skip = true },
 
     -- no write since save
@@ -474,7 +476,7 @@ vim.opt.complete:append("kspell")
 vim.opt.completeopt:remove("preview")
 
 -- Update time for plugins like GitGutter
-vim.opt.updatetime = 300
+vim.opt.updatetime = 1000
 
 -- Always show the sign column
 vim.opt.signcolumn = "yes"

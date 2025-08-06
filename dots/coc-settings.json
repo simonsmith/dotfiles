@@ -38,7 +38,7 @@
   "suggest.noselect": false,
   "suggest.pumheight": 30,
   "suggest.timeout": 3000,
-  "tsserver.maxTsServerMemory": 4096,
+  "tsserver.maxTsServerMemory": 8192,
   "tsserver.useLocalTsdk": true,
   "tsserver.useSeparateSyntaxServer": false,
   "tsserver.watchOptions": {
