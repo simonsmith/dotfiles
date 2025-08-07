@@ -136,7 +136,7 @@ require("time-machine").setup({})
 local actions = require "fzf-lua.actions"
 require'fzf-lua'.setup({
   winopts = {
-    height = 0.9,
+    height = 0.5,
     width = 0.5,
     backdrop = 100,
     preview = {
