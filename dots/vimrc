@@ -47,7 +47,6 @@ Plug("nvim-treesitter/nvim-treesitter", { ["do"] = ":TSUpdate" })
 Plug("tpope/vim-repeat")
 Plug("b3nj5m1n/kommentary")
 Plug("kevinhwang91/nvim-bqf")
-Plug("yssl/QFEnter")
 Plug("matze/vim-move")
 Plug("jiangmiao/auto-pairs")
 Plug('stevearc/conform.nvim')
@@ -63,11 +62,11 @@ Plug("kana/vim-textobj-line")
 Plug("ntpeters/vim-better-whitespace")
 
 -- Refactoring
-Plug("tpope/vim-surround")
+Plug("kylechui/nvim-surround")
 
 -- Copy/Paste behavior
 Plug("svermeulen/vim-cutlass")
-Plug("svermeulen/vim-subversive")
+Plug("gbprod/substitute.nvim")
 
 -- Git
 Plug("tpope/vim-fugitive")
@@ -81,6 +80,7 @@ Plug("jwalton512/vim-blade")
 
 -- JavaScript
 Plug("neoclide/coc.nvim", { ["branch"] = "release" })
+Plug("dmmulroy/ts-error-translator.nvim")
 
 -- End vim-plug setup
 vim.call("plug#end")
@@ -156,6 +156,20 @@ require'fzf-lua'.setup({
     }
   }
 })
+
+require("nvim-surround").setup()
+require("substitute").setup()
+
+vim.keymap.set("n", "s", require('substitute').operator, { noremap = true })
+vim.keymap.set("n", "ss", require('substitute').line, { noremap = true })
+vim.keymap.set("n", "S", require('substitute').eol, { noremap = true })
+vim.keymap.set("x", "s", require('substitute').visual, { noremap = true })
+vim.keymap.set("n", "sx", require('substitute.exchange').operator, { noremap = true })
+vim.keymap.set("n", "sxx", require('substitute.exchange').line, { noremap = true })
+vim.keymap.set("x", "X", require('substitute.exchange').visual, { noremap = true })
+vim.keymap.set("n", "sxc", require('substitute.exchange').cancel, { noremap = true })
+
+require("ts-error-translator").setup()
 
 require('tabby.tabline').set(function(line)
   local theme = {
@@ -512,7 +526,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 -- Path and extensions for `gf`
-vim.opt.suffixesadd:append(".css,index.css,.js,.jsx,.scss")
+vim.opt.suffixesadd:append(".css,index.css,.js,.jsx,.scss,.ts,.tsx")
 vim.opt.path:append(".,src")
 
 -- Abbreviations for common typos
@@ -797,11 +811,6 @@ if s:has_plugin('vim-textobj-entire')
   omap iE <Plug>(textobj-entire-i)
 endif
 
-
-if s:has_plugin('vim-slash')
-  noremap <plug>(slash-after) zz
-endif
-
 if s:has_plugin('coc.nvim')
   " Remap keys for gotos
   nmap <silent> <leader>dr <Plug>(coc-references)
@@ -836,10 +845,6 @@ endif
 
 nmap <silent> <leader>p :RunFormat<cr>
 
-if s:has_plugin('vim-subversive')
-  nmap s <plug>(SubversiveSubstitute)
-endif
-
 if s:has_plugin('vim-cutlass')
   nnoremap m d
   xnoremap m d
@@ -852,10 +857,6 @@ endif
 
 if s:has_plugin('vim-better-whitespace')
   highlight ExtraWhitespace ctermbg=red guibg = #e06c75
-endif
-
-if s:has_plugin('vim-astro')
-  let g:astro_typescript = 'enable'
 endif
 
 if s:has_plugin('vim-closetag')
@@ -888,10 +889,6 @@ if s:has_plugin('fzf-lua')
   nnoremap <leader>l :FzfLua blines<cr>
   nnoremap <Tab> :FzfLua buffers<cr>
   nnoremap <silent> <BS> :FzfLua command_history<cr>
-endif
-
-if s:has_plugin('ListToggle')
-  let g:lt_height = 18
 endif
 
 if executable('ag')
