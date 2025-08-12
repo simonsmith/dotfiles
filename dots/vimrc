@@ -25,6 +25,7 @@ Plug("nanozuki/tabby.nvim")
 Plug("hoob3rt/lualine.nvim")
 Plug("rcarriga/nvim-notify")
 Plug("MunifTanjim/nui.nvim")
+Plug("folke/persistence.nvim")
 Plug("folke/noice.nvim")
 Plug("folke/which-key.nvim")
 Plug("MeanderingProgrammer/render-markdown.nvim")
@@ -80,7 +81,6 @@ Plug("jwalton512/vim-blade")
 
 -- JavaScript
 Plug("neoclide/coc.nvim", { ["branch"] = "release" })
-Plug("dmmulroy/ts-error-translator.nvim")
 
 -- End vim-plug setup
 vim.call("plug#end")
@@ -108,6 +108,12 @@ vim.cmd("silent! colorscheme tokyonight-moon")
 vim.opt.termguicolors = true
 
 require'nvim-web-devicons'.setup()
+
+local wk = require("which-key")
+wk.setup({
+  show_help = false,
+  plugins = { spelling = true },
+})
 
 require("noice").setup({
   notify = {
@@ -175,7 +181,16 @@ vim.keymap.set("n", "sxx", require('substitute.exchange').line, { noremap = true
 vim.keymap.set("x", "X", require('substitute.exchange').visual, { noremap = true })
 vim.keymap.set("n", "sxc", require('substitute.exchange').cancel, { noremap = true })
 
-require("ts-error-translator").setup()
+-- Persistence
+require("persistence").setup({
+  need = 1,
+  branch = true, -- use git branch to save session
+})
+-- load the session for the current directory
+vim.keymap.set('n', '<leader>qs', function() require("persistence").load() end, { noremap = true })
+
+-- select a session to load
+vim.keymap.set("n", "<leader>qS", function() require("persistence").select() end)
 
 require('tabby.tabline').set(function(line)
   local theme = {
@@ -391,12 +406,6 @@ require('render-markdown').setup({
   }
 })
 
-local wk = require("which-key")
-wk.setup({
-  show_help = false,
-  plugins = { spelling = true },
-})
-
 
 -- Combined fix command - runs appropriate linter based on file type
 local function fix_lint_errors()
@@ -411,7 +420,10 @@ local function fix_lint_errors()
 end
 
 wk.add({
-  { "<leader>f", fix_lint_errors, desc = "Fix lint errors" }
+  { "<leader>f", fix_lint_errors, desc = "Fix lint errors" },
+  -- Session management
+  { "<leader>qs", function() require("persistence").load() end, desc = "Load session for current dir" },
+  { "<leader>ql", function() require("persistence").select() end, desc = "Select a session to load" },
 })
 
 -- Treat <li> and <p> tags like block tags
