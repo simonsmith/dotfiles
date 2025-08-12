@@ -157,6 +157,13 @@ require'fzf-lua'.setup({
   }
 })
 
+vim.keymap.set('n', '<C-p>', '<cmd>FzfLua git_files<cr>', { noremap = true })
+vim.keymap.set('n', '<C-[>', '<cmd>FzfLua files<cr>', { noremap = true })
+vim.keymap.set('n', '<C-o>', '<cmd>FzfLua jumps<cr>', { noremap = true })
+vim.keymap.set('n', '<leader>l', '<cmd>FzfLua blines<cr>', { noremap = true })
+vim.keymap.set('n', '<Tab>', '<cmd>FzfLua buffers<cr>', { noremap = true })
+vim.keymap.set('n', '<BS>', '<cmd>FzfLua command_history<cr>', { noremap = true, silent = true })
+
 require("nvim-surround").setup()
 require("substitute").setup()
 
@@ -879,15 +886,6 @@ endif
 
 if s:has_plugin('gv.vim')
   nnoremap <c-g> :GV!<cr>
-endif
-
-if s:has_plugin('fzf-lua')
-  nnoremap <c-p> :FzfLua git_files<cr>
-  nnoremap <c-j> :FzfLua files<cr>
-  nnoremap <c-o> :FzfLua jumps<cr>
-  nnoremap <leader>l :FzfLua blines<cr>
-  nnoremap <Tab> :FzfLua buffers<cr>
-  nnoremap <silent> <BS> :FzfLua command_history<cr>
 endif
 
 if executable('ag')
