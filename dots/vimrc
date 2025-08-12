@@ -164,7 +164,7 @@ require'fzf-lua'.setup({
 })
 
 vim.keymap.set('n', '<C-p>', '<cmd>FzfLua git_files<cr>', { noremap = true })
-vim.keymap.set('n', '<C-[>', '<cmd>FzfLua files<cr>', { noremap = true })
+vim.keymap.set('n', '<C-]>', '<cmd>FzfLua files<cr>', { noremap = true })
 vim.keymap.set('n', '<C-o>', '<cmd>FzfLua jumps<cr>', { noremap = true })
 vim.keymap.set('n', '<leader>l', '<cmd>FzfLua blines<cr>', { noremap = true })
 vim.keymap.set('n', '<Tab>', '<cmd>FzfLua buffers<cr>', { noremap = true })
