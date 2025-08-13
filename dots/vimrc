@@ -406,14 +406,13 @@ require('render-markdown').setup({
   }
 })
 
-
 -- Combined fix command - runs appropriate linter based on file type
 local function fix_lint_errors()
   local filetype = vim.bo.filetype
   if filetype == 'javascript' or filetype == 'javascriptreact' or filetype == 'typescript' or filetype == 'typescriptreact' then
     vim.cmd('CocCommand eslint.executeAutofix')
   elseif filetype == 'css' or filetype == 'scss' or filetype == 'sass' or filetype == 'less' then
-    vim.cmd('CocCommand stylelintplus.executeAutofix')
+    vim.cmd('CocCommand stylelintplus.applyAutoFixes')
   else
     print('No autofix available for filetype: ' .. filetype .. '. Use <leader>p for formatting.')
   end
@@ -422,8 +421,8 @@ end
 wk.add({
   { "<leader>f", fix_lint_errors, desc = "Fix lint errors" },
   -- Session management
-  { "<leader>qs", function() require("persistence").load() end, desc = "Load session for current dir" },
-  { "<leader>ql", function() require("persistence").select() end, desc = "Select a session to load" },
+  { "<leader>ls", function() require("persistence").load() end, desc = "Load session for current dir" },
+  { "<leader>ll", function() require("persistence").select() end, desc = "Select a session to load" },
 })
 
 -- Treat <li> and <p> tags like block tags
