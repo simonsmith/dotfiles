@@ -12,7 +12,7 @@ draw_bold_text_with_bright_colors = false
 size = 16.0
 
 [font.bold]
-family = "SauceCodePro Nerd Font"
+family = "JetBrainsMono Nerd Font"
 style = "Bold"
 
 [font.glyph_offset]
@@ -20,16 +20,16 @@ x = 0
 y = 0
 
 [font.italic]
-family = "SauceCodePro Nerd Font"
+family = "JetBrainsMono Nerd Font"
 style = "Book Italic"
 
 [font.normal]
-family = "SauceCodePro Nerd Font"
+family = "JetBrainsMono Nerd Font"
 style = "Regular"
 
 [font.offset]
 x = 0
-y = 1
+y = 0
 
 [[keyboard.bindings]]
 action = "ResetFontSize"
