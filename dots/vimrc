@@ -257,6 +257,7 @@ require("noice").setup({
     { filter = { find = "E162" }, view = "mini" }, -- Pattern matching issues
     { filter = { find = "Invalid 'end_col': out of range" }, skip = true }, -- Treesitter highlighting errors
     { filter = { find = "decoration provider.*treesitter" }, skip = true }, -- Treesitter decoration errors
+    { filter = { find = "E486.*treesitter" }, skip = true },
   },
   presets = {
     command_palette = true,               -- Position cmdline and popupmenu together
