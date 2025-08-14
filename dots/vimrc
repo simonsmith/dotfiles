@@ -55,7 +55,6 @@ Plug("moll/vim-bbye")                            -- Better buffer deletion
 Plug("nvim-treesitter/nvim-treesitter", { ["do"] = ":TSUpdate" })
 Plug("linrongbin16/gitlinker.nvim")              -- Generate links to Git hosting
 Plug("nvim-treesitter/nvim-treesitter-textobjects")
-Plug("nvim-treesitter/nvim-treesitter-context")  -- Shows context at top of screen
 
 -- Text editing and manipulation
 Plug("tpope/vim-repeat")                         -- Repeat plugin commands with .
@@ -548,69 +547,57 @@ require('gitsigns').setup({
 
 -- Treesitter configuration
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = {
-    "css", "html", "javascript", "json", "typescript", "scss", "vue", "astro",
-    "dockerfile", "tsx", "c", "lua", "vim", "vimdoc", "query", "gitcommit",
-    "diff", "git_rebase", "git_config", "php", "regex", "bash", "markdown",
-    "markdown_inline", "yaml", "toml"
-  },
-  auto_install = true,
+ ensure_installed = {
+   "css", "html", "javascript", "json", "typescript", "scss", "vue", "astro",
+   "dockerfile", "tsx", "c", "lua", "vim", "vimdoc", "query", "gitcommit",
+   "diff", "git_rebase", "git_config", "php", "regex", "bash", "markdown",
+   "markdown_inline", "yaml", "toml"
+ },
+ auto_install = true,
 
-  highlight = {
-    enable = true,
-    -- Disable for large files
-    disable = function(lang, buf)
-      local max_filesize = 100 * 1024 -- 100 KB
-      local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-      if ok and stats and stats.size > max_filesize then
-        return true
-      end
-    end,
-  },
+ highlight = {
+   enable = true,
+   disable = function(lang, buf)
+     local max_filesize = 100 * 1024
+     local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+     if ok and stats and stats.size > max_filesize then
+       return true
+     end
+   end,
+ },
 
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = "gnn",
-      node_incremental = "grn",
-      scope_incremental = "grc",
-      node_decremental = "grm",
-    },
-  },
+ incremental_selection = {
+   enable = true,
+   keymaps = {
+     init_selection = "gnn",
+     node_incremental = "grn",
+     scope_incremental = "grc",
+     node_decremental = "grm",
+   },
+ },
 
-  textobjects = {
-    select = {
-      enable = true,
-      lookahead = true,
-      keymaps = {
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-        ["ac"] = "@class.outer",
-        ["ic"] = { query = "@class.inner" },
-        ["aa"] = "@parameter.outer",
-        ["ia"] = "@parameter.inner",
-      },
-    },
-    move = {
-      enable = true,
-      set_jumps = true,
-      goto_next_start = {
-        ["]f"] = "@function.outer",
-        ["]c"] = "@class.outer",
-      },
-      goto_previous_start = {
-        ["[f"] = "@function.outer",
-        ["[c"] = "@class.outer",
-      },
-    },
-  },
-
-  autotag = {
-    enable = true,
-    filetypes = { "html", "javascript", "typescript", "javascriptreact",
-                  "typescriptreact", "vue", "tsx", "jsx", "xml", "php",
-                  "markdown", "astro", "glimmer", "handlebars", "hbs" },
-  },
+ textobjects = {
+   select = {
+     enable = true,
+     lookahead = true,
+     keymaps = {
+       ["af"] = "@function.outer",
+       ["if"] = "@function.inner",
+       ["ab"] = "@block.outer",
+       ["ib"] = "@block.inner",
+     },
+   },
+   move = {
+     enable = true,
+     set_jumps = true,
+     goto_next_start = {
+       ["]f"] = "@function.outer",
+     },
+     goto_previous_start = {
+       ["[f"] = "@function.outer",
+     },
+   },
+ },
 }
 
 -- Kommentary - Smart commenting
