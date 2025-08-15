@@ -30,7 +30,6 @@ dots=(
   ripgreprc
   rgignore
   tmux.conf
-  vimrc
   wgetrc
   zshrc
 )
@@ -42,6 +41,7 @@ done
 # Files that need slightly different symlink
 mkdir -p "$HOME/.config/nvim/"
 [ ! -e "$HOME/.config/nvim/coc-settings.json" ] && ln -sfv $(grealpath coc-settings.json) "$HOME/.config/nvim/coc-settings.json"
+[ ! -e "$HOME/.config/nvim/init.lua" ] && ln -sfv $(grealpath init.lua) "$HOME/.config/nvim/init.lua"
 [ ! -e "$HOME/.config/starship.toml" ] && ln -sfv $(grealpath starship.toml) "$HOME/.config/starship.toml"
 [ ! -e "$HOME/.config/mise.toml" ] && ln -sfv $(grealpath mise.toml) "$HOME/.config/mise.toml"
 
