@@ -254,6 +254,7 @@ require("noice").setup({
     { filter = { find = "E37" }, skip = true },    -- No write since last change
     { filter = { find = "E162" }, view = "mini" }, -- Pattern matching issues
     { filter = { find = "Invalid 'end_col': out of range" }, skip = true }, -- Treesitter highlighting errors
+    { filter = { find = "Error: Range#create" }, skip = true }, -- Treesitter highlighting errors
     { filter = { find = "decoration provider.*treesitter" }, skip = true }, -- Treesitter decoration errors
     { filter = { find = "E486.*treesitter" }, skip = true },
   },
