@@ -609,6 +609,7 @@ require('nnn').setup({
     style = {
       width = 0.5,
       height = 0.6,
+      border = "rounded"
     },
   }
 })

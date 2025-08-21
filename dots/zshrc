@@ -128,7 +128,7 @@ export BAT_CONFIG_PATH="$HOME/.batconfig"
 
 # nnn
 # https://github.com/jarun/nnn
-export NNN_OPTS="dHe"
+export NNN_OPTS="dHexu"
 export LC_COLLATE="C"
 
 # fzf
