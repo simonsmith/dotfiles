@@ -43,7 +43,7 @@ Plug("y3owk1n/time-machine.nvim")                -- Time travel for buffers
 Plug("MeanderingProgrammer/render-markdown.nvim") -- Enhanced markdown rendering
 
 -- File management
-Plug("mcchrish/nnn.vim")                         -- NNN file manager integration
+Plug("luukvbaal/nnn.nvim")                         -- NNN file manager integration
 
 -- Buffer management
 Plug("schickling/vim-bufonly")                   -- Close all buffers except current
@@ -603,6 +603,16 @@ require('kommentary.config').configure_language("default", {
     prefer_single_line_comments = true,
 })
 
+require('nnn').setup({
+  picker = {
+    cmd = "nnn -d -H",
+    style = {
+      width = 0.5,
+      height = 0.6,
+    },
+  }
+})
+
 -- legacy plugin configurations
 -- ============================================================================
 
@@ -612,15 +622,6 @@ vim.g.textobj_entire_no_default_key_mappings = 1
 -- vim-closetag configuration
 vim.g.closetag_filenames = "*.html,*.js,*.jsx"
 vim.g.closetag_close_shortcut = ''
-
--- nnn.vim configuration
-vim.g['nnn#set_default_mappings'] = 0
-vim.g['nnn#command'] = 'nnn -d -H'
-vim.g['nnn#layout'] = 'enew'
-vim.g['nnn#action'] = {
-  ['<c-x>'] = 'split',
-  ['<c-v>'] = 'vsplit'
-}
 
 -- ag/grep configuration
 if vim.fn.executable('ag') == 1 then
@@ -751,7 +752,7 @@ vim.keymap.set('n', 'mm', 'dd')
 vim.keymap.set('n', '<leader>B', ':BufOnly<CR>')             -- Close all buffers except current
 
 -- File manager
-vim.keymap.set('n', '_', ':NnnPicker %:p:h<CR>')             -- Open file manager in current directory
+vim.keymap.set('n', '_', ':NnnPicker<CR>')             -- Open file manager in current directory
 
 -- Git operations
 vim.keymap.set('n', '<C-g>', ':GV!<CR>')                     -- Git commit browser
