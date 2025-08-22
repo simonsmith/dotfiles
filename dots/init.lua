@@ -753,7 +753,7 @@ vim.keymap.set('n', 'mm', 'dd')
 vim.keymap.set('n', '<leader>B', ':BufOnly<CR>')             -- Close all buffers except current
 
 -- File manager
-vim.keymap.set('n', '_', ':NnnPicker<CR>')             -- Open file manager in current directory
+vim.keymap.set('n', '_', ':NnnPicker %:p:h<CR>')             -- Open file manager in current directory
 
 -- Git operations
 vim.keymap.set('n', '<C-g>', ':GV!<CR>')                     -- Git commit browser
