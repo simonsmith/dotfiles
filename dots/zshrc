@@ -151,7 +151,6 @@ export FZF_TMUX_HEIGHT=40%
 
 # Enhance ALT-C with better sorting and a tree preview
 # http://theinfiniteset.net/content/2016/08/combining-tools-blsd-and-fzf/
-command -v blsd > /dev/null && export FZF_ALT_C_COMMAND='blsd'
 command -v tree > /dev/null && export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -$LINES'"
 
 bindkey '^o' autosuggest-accept
