@@ -10,5 +10,3 @@ windows:
     - p webapp
   - backend:
     - p proxy --backend staging
-  - dashboard:
-    - p dashboard
