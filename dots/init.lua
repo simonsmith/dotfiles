@@ -96,19 +96,20 @@ vim.call("plug#end")
 -- ============================================================================
 
 vim.g.coc_global_extensions = {
-  'coc-tsserver',                    -- TypeScript/JavaScript
-  'coc-eslint',                      -- ESLint integration
-  'coc-oxc',                         -- Oxlint integration
-  'coc-json',                        -- JSON support
-  'coc-css',                         -- CSS support
-  'coc-stylelintplus',               -- Stylelint integration
-  'coc-cssmodules',                  -- CSS Modules support
-  'coc-blade',                       -- Laravel Blade support
-  'coc-yaml',                        -- YAML support
-  'coc-html',                        -- HTML support
-  '@yaegassy/coc-intelephense',      -- PHP language server
-  '@yaegassy/coc-tailwindcss3',      -- Tailwind CSS support
-  '@yaegassy/coc-laravel',           -- Laravel support
+  'coc-tsserver',                        -- TypeScript/JavaScript
+  'coc-eslint',                          -- ESLint integration
+  'coc-oxc',                             -- Oxlint integration
+  'coc-json',                            -- JSON support
+  'coc-css',                             -- CSS support
+  'coc-stylelintplus',                   -- Stylelint integration
+  'coc-cssmodules',                      -- CSS Modules support
+  'coc-blade',                           -- Laravel Blade support
+  'coc-yaml',                            -- YAML support
+  'coc-html',                            -- HTML support
+  '@yaegassy/coc-intelephense',          -- PHP language server
+  '@yaegassy/coc-tailwindcss3',          -- Tailwind CSS support
+  '@yaegassy/coc-laravel',               -- Laravel support
+  '@yaegassy/coc-volar',                 -- Modern Vue.js language server
 }
 
 -- editor settings
