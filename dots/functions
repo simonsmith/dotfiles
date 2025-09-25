@@ -60,13 +60,22 @@ fcs() {
   echo -n $(echo "$commit" | sed "s/ .*//")
 }
 
-# fco - checkout git branch (including remote branches)
-fco() {
+# fca - checkout git branch (including remote branches)
+fca() {
   local branches branch
   branches=$(git branch --all | grep -v HEAD) &&
   branch=$(echo "$branches" |
            fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
   git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+}
+
+# fco - checkout git branch (just local)
+fco() {
+  local branches branch
+  branches=$(git branch | grep -v HEAD) &&
+  branch=$(echo "$branches" |
+           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+  git checkout $(echo "$branch" | sed "s/.* //")
 }
 
 # fcoc_preview - checkout git commit with previews
