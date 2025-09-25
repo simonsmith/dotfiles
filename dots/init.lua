@@ -685,8 +685,6 @@ vim.keymap.set("v", "p", "p`]")                              -- Keep cursor at e
 vim.keymap.set("n", "p", "p`]")
 
 -- Buffer navigation
-vim.keymap.set("n", "H", ":silent bprevious<cr>")           -- Previous buffer
-vim.keymap.set("n", "L", ":silent bnext<cr>")               -- Next buffer
 vim.keymap.set('n', 'Q', ':silent Bdelete<CR>', { silent = true }) -- Close buffer without closing window
 
 -- Tab operations
