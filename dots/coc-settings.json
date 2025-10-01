@@ -29,6 +29,7 @@
   "javascript.preferences.noSemanticsValidation": false,
   "javascript.preferences.noSuggestionDiagnostics": true,
   "javascript.referencesCodeLens.enable": false,
+  "javascript.validate.enable": false,
   "javascript.suggestionActions.enabled": false,
   "stylelintplus.autoFixOnSave": false,
   "stylelintplus.enable": true,
