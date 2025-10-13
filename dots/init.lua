@@ -41,6 +41,7 @@ Plug("folke/which-key.nvim")                     -- Key binding help
 Plug("folke/persistence.nvim")                   -- Session management
 Plug("y3owk1n/time-machine.nvim")                -- Time travel for buffers
 Plug("MeanderingProgrammer/render-markdown.nvim") -- Enhanced markdown rendering
+Plug("fasterius/simple-zoom.nvim")                -- tmux style zoom
 
 -- File management
 Plug("luukvbaal/nnn.nvim")                         -- NNN file manager integration
@@ -683,6 +684,9 @@ vim.keymap.set("n", "g=", "gg=G``")                          -- Format entire fi
 vim.keymap.set("v", "y", "y`]")                              -- Keep cursor at end after yank
 vim.keymap.set("v", "p", "p`]")                              -- Keep cursor at end after paste
 vim.keymap.set("n", "p", "p`]")
+
+-- Zoom buffer
+vim.keymap.set('n', '<leader>z', require('simple-zoom').toggle_zoom)
 
 -- Buffer navigation
 vim.keymap.set('n', 'Q', ':silent Bdelete<CR>', { silent = true }) -- Close buffer without closing window
