@@ -686,7 +686,9 @@ vim.keymap.set("v", "p", "p`]")                              -- Keep cursor at e
 vim.keymap.set("n", "p", "p`]")
 
 -- Zoom buffer
-vim.keymap.set('n', '<leader>z', require('simple-zoom').toggle_zoom)
+wk.add({
+  { "<leader>z", require('simple-zoom').toggle_zoom, desc = "Zoom current buffer" },
+})
 
 -- Buffer navigation
 vim.keymap.set('n', 'Q', ':silent Bdelete<CR>', { silent = true }) -- Close buffer without closing window
