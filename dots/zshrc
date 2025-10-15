@@ -22,6 +22,7 @@ export PATH="$HOME/.local/bin:$PATH"
 # php
 export PATH="/opt/homebrew/opt/php@8.4/bin:$PATH"
 export PATH="/opt/homebrew/opt/php@8.4/sbin:$PATH"
+export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 
 # mise - activate early so it can manage tool paths
 eval "$(mise activate zsh)"
