@@ -901,6 +901,15 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   end,
 })
 
+-- PHP
+vim.api.nvim_create_autocmd("FileType", {
+  group = "file_types",
+  pattern = "php",
+  callback = function()
+    vim.opt_local.indentexpr = "nvim_treesitter#indent()"
+  end,
+})
+
 -- Git commit message settings
 vim.api.nvim_create_autocmd("FileType", {
   group = "file_types",
