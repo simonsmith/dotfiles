@@ -1,0 +1,16 @@
+# ~/.tmuxinator/readstack_web.yml
+
+name: readstack_web
+root: ~/Sites/readstack/web
+startup_window: nvim
+
+windows:
+  - nvim: nvim
+  - git:
+    -
+  - server:
+      layout: even-vertical
+      panes:
+        - php artisan serve
+        - php artisan queue:work
+        - npm run dev

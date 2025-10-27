@@ -1,0 +1,14 @@
+# ~/.tmuxinator/readstack_parser.yml
+#
+name: readstack_parser  # (fix: was readstack_web)
+root: ~/Sites/readstack/parser
+startup_window: nvim
+windows:
+  - nvim: nvim
+  - git:
+      layout: even-horizontal
+      panes:
+        -
+        - bun test
+  - server:
+    - bun dev
