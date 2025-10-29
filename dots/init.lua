@@ -44,7 +44,7 @@ Plug("MeanderingProgrammer/render-markdown.nvim") -- Enhanced markdown rendering
 Plug("fasterius/simple-zoom.nvim")                -- tmux style zoom
 
 -- File management
-Plug("luukvbaal/nnn.nvim")                         -- NNN file manager integration
+Plug("mcchrish/nnn.vim")                         -- NNN file manager integration
 
 -- Buffer management
 Plug("schickling/vim-bufonly")                   -- Close all buffers except current
@@ -605,16 +605,19 @@ require('kommentary.config').configure_language("default", {
     prefer_single_line_comments = true,
 })
 
-require('nnn').setup({
-  picker = {
-    cmd = "nnn -d -H",
-    style = {
-      width = 0.5,
-      height = 0.6,
-      border = "rounded"
-    },
-  }
+
+--- nnn.vim configuration
+require("nnn").setup({
+	command = "nnn -d -H",
+	set_default_mappings = 0,
+	layout = "enew",
+	action = {
+		["<c-x>"] = "split",
+		["<c-v>"] = "vsplit",
+	},
 })
+
+vim.keymap.set('n', '_', ':silent NnnPicker %:p:h<CR>')             -- Open file manager in current directory
 
 -- legacy plugin configurations
 -- ============================================================================
@@ -756,9 +759,6 @@ vim.keymap.set('n', 'mm', 'dd')
 
 -- Buffer management
 vim.keymap.set('n', '<leader>B', ':BufOnly<CR>')             -- Close all buffers except current
-
--- File manager
-vim.keymap.set('n', '_', ':NnnPicker %:p:h<CR>')             -- Open file manager in current directory
 
 -- Git operations
 vim.keymap.set('n', '<C-g>', ':GV!<CR>')                     -- Git commit browser
