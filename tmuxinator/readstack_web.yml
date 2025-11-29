@@ -9,7 +9,7 @@ windows:
   - git:
     -
   - server:
-      layout: even-vertical
+      layout: even-horizontal
       panes:
         - php artisan serve
         - php artisan queue:work
