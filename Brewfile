@@ -56,6 +56,7 @@ cask "jordanbaird-ice"
 # Image processing
 brew "exiftool"
 brew "imagemagick"
+brew "webp"
 
 # Additional utilities
 brew "bc"
