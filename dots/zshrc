@@ -27,6 +27,9 @@ export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 # mise - activate early so it can manage tool paths
 eval "$(mise activate zsh)"
 
+# bun globals
+export PATH="/Users/simonsmith/.cache/.bun/bin:$PATH"
+
 # znap
 # https://github.com/marlonrichert/zsh-snap
 # -------------------------------------------------
