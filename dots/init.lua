@@ -83,6 +83,7 @@ Plug("gbprod/substitute.nvim")                   -- Enhanced substitute operatio
 Plug("tpope/vim-fugitive")                       -- Git commands in Vim
 Plug("junegunn/gv.vim")                          -- Git commit browser
 Plug("lewis6991/gitsigns.nvim")                  -- Git signs in gutter
+Plug("sindrets/diffview.nvim")                   -- Git diff and merge tool
 
 -- Web development
 Plug("mattn/emmet-vim")                          -- HTML/CSS abbreviation expansion
@@ -139,6 +140,7 @@ vim.opt.ruler = true                      -- Show line and column numbers
 vim.opt.signcolumn = "yes"                -- Always show sign column
 vim.opt.title = true                      -- Enable window title
 vim.opt.synmaxcol = 250                   -- Limit syntax highlighting to avoid lag
+vim.opt.fillchars:append { diff = "-" }
 
 -- Text formatting and layout
 vim.opt.textwidth = 80                    -- Maximum line width
@@ -306,6 +308,49 @@ require("persistence").setup({
   need = 1,                               -- Minimum number of file buffers required
   branch = true,                          -- Use git branch in session name
 })
+
+-- Diffview setup
+require("diffview").setup({
+  enhanced_diff_hl = true,
+  view = {
+    merge_tool = {
+      layout = "diff3_horizontal",
+      winbar_info = true,
+      disable_diagnostics = true,
+    },
+  },
+  hooks = {},
+})
+
+local function setup_diffview_highlights()
+  -- Subtle, balanced diff colors using Tokyo Night colors
+  vim.api.nvim_set_hl(0, 'DiffAdd', { bg = '#26343d' })
+  vim.api.nvim_set_hl(0, 'DiffDelete', { bg = '#3d2433' })
+  vim.api.nvim_set_hl(0, 'DiffChange', { bg = '#3d2433' })
+  vim.api.nvim_set_hl(0, 'DiffText', { bg = '#3d2433' })
+
+  vim.api.nvim_set_hl(0, 'DiffAdded', { fg = '#c3e88d', bold = true })
+  vim.api.nvim_set_hl(0, 'DiffRemoved', { fg = '#ff757f', bold = true })
+  vim.api.nvim_set_hl(0, 'DiffChanged', { fg = '#82aaff', bold = true })
+
+  vim.api.nvim_set_hl(0, 'DiffviewWinSeparator', { fg = '#3b4261' })
+  vim.api.nvim_set_hl(0, 'DiffviewDiffDelete', { fg = '#3b4261' })
+  vim.api.nvim_set_hl(0, 'DiffviewFilePanelSelected', { fg = '#ffc777' })
+
+  vim.api.nvim_set_hl(0, 'DiffviewStatusAdded', { fg = '#c3e88d', bold = true })
+  vim.api.nvim_set_hl(0, 'DiffviewStatusUntracked', { fg = '#86e1fc', bold = true })
+  vim.api.nvim_set_hl(0, 'DiffviewStatusModified', { fg = '#82aaff', bold = true })
+  vim.api.nvim_set_hl(0, 'DiffviewStatusRenamed', { fg = '#c3e88d', bold = true })
+  vim.api.nvim_set_hl(0, 'DiffviewStatusDeleted', { fg = '#ff757f', bold = true })
+  vim.api.nvim_set_hl(0, 'DiffviewStatusIgnored', { fg = '#3b4261', bold = true })
+end
+
+vim.api.nvim_create_autocmd("ColorScheme", {
+  pattern = "*",
+  callback = setup_diffview_highlights,
+})
+
+setup_diffview_highlights()
 
 -- Tabby - Custom tabline
 require('tabby.tabline').set(function(line)
@@ -951,10 +996,6 @@ vim.api.nvim_create_autocmd("VimResized", {
   pattern = "*",
   command = "wincmd =",                   -- Equalize window sizes
 })
-
--- Base highlight settings that don't depend on colorscheme
-vim.api.nvim_set_hl(0, "DiffChange", { bg = "#511e1e", fg = "#eeeeee" })
-vim.api.nvim_set_hl(0, "DiffDelete", { bg = "#3d432f", fg = "#eeeeee" })
 
 -- Plugin-specific highlights that should persist across colorscheme changes
 vim.api.nvim_create_autocmd("ColorScheme", {
