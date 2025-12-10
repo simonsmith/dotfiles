@@ -40,6 +40,7 @@ alias b='bun'
 alias bi='bun install'
 alias bid='bun install -d'
 alias br='bun run'
+alias bt='bun test'
 alias ba='bun add'
 alias bR='bun remove'
 
