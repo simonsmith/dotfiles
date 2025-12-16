@@ -277,10 +277,16 @@ local actions = require "fzf-lua.actions"
 require'fzf-lua'.setup({
   winopts = {
     height = 0.6,
-    width = 0.5,
-    backdrop = 50,
+    width = 0.6,
+    backdrop = false,
     preview = {
       default = false                     -- Disable preview by default for performance
+    }
+  },
+  git = {
+    files = {
+      git_icons = false,                    -- Disable for performance
+      file_icons = false                    -- Disable for performance
     }
   },
   files = {
