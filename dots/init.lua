@@ -52,9 +52,8 @@ Plug("schickling/vim-bufonly")                   -- Close all buffers except cur
 Plug("moll/vim-bbye")                            -- Better buffer deletion
 
 -- Syntax highlighting and parsing
-Plug("nvim-treesitter/nvim-treesitter", { ["do"] = ":TSUpdate" })
+Plug("nvim-treesitter/nvim-treesitter", { ["branch"] = "master", ["do"] = ":TSUpdate" })
 Plug("linrongbin16/gitlinker.nvim")              -- Generate links to Git hosting
-Plug("nvim-treesitter/nvim-treesitter-textobjects")
 
 -- Text editing and manipulation
 Plug("tpope/vim-repeat")                         -- Repeat plugin commands with .
