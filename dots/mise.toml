@@ -1,13 +1,13 @@
 [tools]
-node = "lts"
-yarn = "4.9.2"
-ruby = "latest"
-go = "latest"
 bun = "latest"
+deno = "latest"
+go = "latest"
+node = "lts"
+php = "8.4.6"
 pnpm = "latest"
 python = "latest"
-php = "8.4.6"
-deno = "latest"
+ruby = "latest"
+yarn = "4.9.2"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node"]

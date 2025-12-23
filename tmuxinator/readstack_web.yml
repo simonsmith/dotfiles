@@ -9,8 +9,8 @@ windows:
   - git:
     -
   - server:
-      layout: even-horizontal
+      layout: main-horizontal
       panes:
-        - php artisan serve
         - php artisan queue:work
-        - npm run dev
+        - php artisan serve
+        - bun dev
