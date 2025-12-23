@@ -24,6 +24,10 @@ alias yt='yarn test'
 alias yu='yarn upgrade'
 alias yui='yarn upgrade-interactive'
 
+# laravel
+alias pa='php artisan'
+alias pat='php artisan test'
+
 # pnpm
 alias p='pnpm'
 alias pa='pnpm add'
