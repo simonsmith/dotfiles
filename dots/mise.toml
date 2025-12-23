@@ -6,7 +6,11 @@ go = "latest"
 bun = "latest"
 pnpm = "latest"
 python = "latest"
+php = "8.4.6"
 deno = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node"]
+
+[plugins]
+php = "https://github.com/tobiashochguertel/mise-php-plugin"
