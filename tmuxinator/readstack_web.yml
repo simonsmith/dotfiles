@@ -11,6 +11,6 @@ windows:
   - server:
       layout: main-horizontal
       panes:
-        - php artisan queue:work
+        - php artisan queue:watch
         - php artisan serve
         - bun dev
