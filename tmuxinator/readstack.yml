@@ -1,0 +1,22 @@
+  name: readstack
+  root: ~/Sites/readstack
+  startup_window: nvim
+
+  windows:
+    - nvim: nvim
+    - git:
+      -
+    - laravel:
+        root: ~/Sites/readstack/web
+        layout: main-horizontal
+        panes:
+          - php artisan queue:watch
+          - php artisan serve
+          - bun dev
+    - parser-api:
+        root: ~/Sites/readstack/parser-api
+        panes:
+          - bun dev
+    - claude:
+        panes:
+          - claude
