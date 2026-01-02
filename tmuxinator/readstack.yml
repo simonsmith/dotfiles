@@ -10,7 +10,7 @@
         root: ~/Sites/readstack/web
         layout: main-horizontal
         panes:
-          - php artisan queue:watch
+          - php artisan queue:work
           - php artisan serve
           - bun dev
     - parser-api:
