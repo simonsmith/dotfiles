@@ -6,7 +6,9 @@ windows:
   - neovim:
     - nvim
   - git:
-  - webapp:
-    - p webapp
+  - dev:
+      panes:
+        - p webapp
+        -
   - backend:
     - p proxy --backend staging
