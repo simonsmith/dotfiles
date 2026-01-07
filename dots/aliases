@@ -67,6 +67,8 @@ alias gurl='curl --compressed'
 # Screensaver
 alias ss='open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app'
 
+alias sl='tmux-snaglord'
+
 # Git shortcuts
 alias gac='git add . && git commit -v'
 alias gcf='git commit --fixup `fcs`'
