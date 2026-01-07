@@ -17,6 +17,3 @@
         root: ~/Sites/readstack/parser-api
         panes:
           - bun dev
-    - claude:
-        panes:
-          - claude
