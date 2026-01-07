@@ -1,0 +1,11 @@
+window_prefix: "wm-"
+merge_strategy: rebase
+main_branch: master
+agent: claude
+
+panes:
+  - command: nvim
+    focus: true
+  - split: horizontal
+  - command: <agent>
+    split: vertical

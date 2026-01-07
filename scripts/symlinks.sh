@@ -48,6 +48,9 @@ mkdir -p "$HOME/.config/nvim/"
 mkdir -p "$HOME/.config/btop"
 [ ! -e "$HOME/.config/btop/btop.conf" ] && ln -sfv $(grealpath btop.conf) "$HOME/.config/btop/btop.conf"
 
+mkdir -p "$HOME/.config/workmux"
+[ ! -e "$HOME/.config/workmux/config.yaml" ] && ln -sfv $(grealpath workmux.yaml) "$HOME/.config/workmux/config.yaml"
+
 
 mkdir "$HOME/.ssh"
 [ ! -e "$HOME/.ssh/config" ] && ln -sfv $(grealpath ssh-config) "$HOME/.ssh/config"

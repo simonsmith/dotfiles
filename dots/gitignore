@@ -45,12 +45,6 @@ ehthumbs.db
 
 # Misc
 .idea
-.vagrant
-
-# Atom
-.atom/compile-cache
-.atom/storage
-.atom/.node-gyp
 
 # Vim tags
 vim_tags*
@@ -59,7 +53,5 @@ vim_tags*
 # mise
 mise.local.toml
 
-# sftp configuration file
-sftp-config.json
-
 .nvimrc
+.claude
