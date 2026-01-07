@@ -159,3 +159,6 @@ export FZF_TMUX_HEIGHT=40%
 command -v tree > /dev/null && export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -$LINES'"
 
 bindkey '^o' autosuggest-accept
+
+# bun completions
+[ -s "/Users/simonsmith/.bun/_bun" ] && source "/Users/simonsmith/.bun/_bun"
