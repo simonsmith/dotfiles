@@ -51,6 +51,9 @@ mkdir -p "$HOME/.config/btop"
 mkdir -p "$HOME/.config/workmux"
 [ ! -e "$HOME/.config/workmux/config.yaml" ] && ln -sfv $(grealpath workmux.yaml) "$HOME/.config/workmux/config.yaml"
 
+mkdir -p "$HOME/.config/tmux-snaglord"
+[ ! -e "$HOME/.config/tmux-snaglord/config.toml" ] && ln -sfv $(grealpath tmux-snaglord.toml) "$HOME/.config/tmux-snaglord/config.toml"
+
 
 mkdir "$HOME/.ssh"
 [ ! -e "$HOME/.ssh/config" ] && ln -sfv $(grealpath ssh-config) "$HOME/.ssh/config"

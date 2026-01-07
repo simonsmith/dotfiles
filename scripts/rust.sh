@@ -15,6 +15,13 @@ main() {
     # Install rustup
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
+    # Source cargo env for this session
+    source "$HOME/.cargo/env"
+
+    # Install cargo packages
+    log_info "Installing cargo packages..."
+    cargo install tmux-snaglord
+
     log_success "Rust installed!"
 }
 
