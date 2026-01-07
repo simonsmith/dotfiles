@@ -1,7 +1,7 @@
 window_prefix: "wm-"
 merge_strategy: rebase
 main_branch: master
-agent: claude
+agent: claude --dangerously-skip-permissions
 
 panes:
   - command: nvim
