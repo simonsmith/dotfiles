@@ -4,8 +4,11 @@
 
   windows:
     - nvim: nvim
-    - git:
-      -
+    - dev:
+        layout: even-horizontal
+        panes:
+          - gs
+          - claude
     - laravel:
         root: ~/Sites/readstack/web
         layout: main-horizontal
