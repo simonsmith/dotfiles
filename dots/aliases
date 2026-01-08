@@ -10,11 +10,21 @@ alias cask="brew cask"
 alias nv="nvim"
 alias vim="nvim"
 alias mux="tmuxinator"
-alias wm="workmux"
-alias wt="wtp"
 alias k="kubectl"
 alias cat="bat"
 alias rm="trash"
+
+# workmux
+# https://workmux.raine.dev
+alias wm="workmux"
+alias wma="workmux add"
+alias wmr="workmux remove"
+
+# wtp
+# https://github.com/satococoa/wtp
+alias wt='wtp'
+alias wta='wtp add -b'
+alias wtr='wtp remove --with-branch'
 
 # yarn
 alias y='yarn'
