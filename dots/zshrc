@@ -58,6 +58,7 @@ znap source zsh-users/zsh-completions
 znap eval scmpuff 'scmpuff init -s --aliases=false'
 znap eval starship 'starship init zsh'
 znap eval workmux 'workmux completions zsh'
+znap eval wtp 'wtp shell-init zsh'
 znap prompt
 
 export VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
