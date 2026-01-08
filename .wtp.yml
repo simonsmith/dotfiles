@@ -1,7 +1,7 @@
 version: "1.0"
 defaults:
   # Base directory for worktrees (relative to project root)
-  base_dir: "../worktrees"
+  base_dir: "../git_worktrees"
 
 hooks:
   post_create:
