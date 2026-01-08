@@ -5,10 +5,11 @@ startup_window: neovim
 windows:
   - neovim:
     - nvim
-  - git:
   - dev:
+      layout: tiled
       panes:
         - p webapp
         -
-  - backend:
+        - gs
+  - proxy:
     - p proxy --backend staging
