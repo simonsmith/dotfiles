@@ -276,29 +276,76 @@ require("time-machine").setup({})
 local actions = require "fzf-lua.actions"
 require'fzf-lua'.setup({
   winopts = {
-    height = 0.6,
-    width = 0.6,
-    backdrop = false,
+    height = 0.85,                        -- Taller window for better visibility
+    width = 0.80,                         -- Wider for modern feel
+    row = 0.40,                           -- Slightly lower than center
+    border = "rounded",                   -- Smooth rounded corners
+    backdrop = 80,                        -- Very subtle backdrop
     preview = {
-      default = false                     -- Disable preview by default for performance
-    }
+      default = "builtin",                -- Builtin previewer available
+      hidden = "hidden",                  -- Start hidden, toggle with F4
+      border = "rounded",
+      scrollbar = "border",               -- Scrollbar in border (no overlay)
+      delay = 50,                         -- Snappy preview
+      winopts = {
+        number = false,                   -- Cleaner preview without line numbers
+        relativenumber = false,
+      },
+    },
+  },
+  -- Use fzf's native theming for performance (no icons needed)
+  fzf_colors = {
+    ["fg"]      = { "fg", "Normal" },
+    ["bg"]      = { "bg", "Normal" },
+    ["hl"]      = { "fg", "Statement" },
+    ["fg+"]     = { "fg", "CursorLine" },
+    ["bg+"]     = { "bg", "CursorLine" },
+    ["hl+"]     = { "fg", "Statement" },
+    ["info"]    = { "fg", "PreProc" },
+    ["prompt"]  = { "fg", "Conditional" },
+    ["pointer"] = { "fg", "Exception" },
+    ["marker"]  = { "fg", "Keyword" },
+    ["spinner"] = { "fg", "Label" },
+    ["header"]  = { "fg", "Comment" },
+    ["gutter"]  = { "bg", "Normal" },
+  },
+  fzf_opts = {
+    ["--ansi"]           = true,
+    ["--info"]           = "inline-right",
+    ["--height"]         = "100%",
+    ["--layout"]         = "reverse",
+    ["--border"]         = "none",          -- We handle border via winopts
+    ["--pointer"]        = "▶",
+    ["--marker"]         = "✓",
+    ["--prompt"]         = "❯ ",
   },
   git = {
     files = {
-      git_icons = false,                    -- Disable for performance
-      file_icons = false                    -- Disable for performance
+      git_icons = false,                  -- Keep disabled for performance
+      file_icons = false,
     }
   },
   files = {
     rg_opts = [[--color=never --files --hidden --follow -g "!.git"]],
     fd_opts = [[--color=never --type f --hidden --follow --exclude .git]],
-    git_icons = false,                    -- Disable for performance
-    file_icons = false                    -- Disable for performance
+    git_icons = false,                    -- Keep disabled for performance
+    file_icons = false,
+    prompt = "Files❯ ",
+  },
+  grep = {
+    prompt = "Rg❯ ",
+    git_icons = false,
+    file_icons = false,
+  },
+  buffers = {
+    prompt = "Buffers❯ ",
+    file_icons = false,
   },
   actions = {
     files = {
       ["default"] = actions.file_edit,
-      ["ctrl-v"] = actions.file_vsplit
+      ["ctrl-v"] = actions.file_vsplit,
+      ["ctrl-x"] = actions.file_split,
     }
   }
 })
