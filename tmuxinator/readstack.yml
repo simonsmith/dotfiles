@@ -9,14 +9,11 @@
         panes:
           - gs
           - claude
-    - laravel:
+    - server:
         root: ~/Sites/readstack/web
-        layout: main-horizontal
+        layout: tiled
         panes:
           - php artisan queue:work
           - php artisan serve
           - bun dev
-    - parser-api:
-        root: ~/Sites/readstack/parser-api
-        panes:
-          - bun dev
+          - cd ../parser-api && bun dev
