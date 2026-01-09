@@ -52,7 +52,8 @@ Plug("schickling/vim-bufonly")                   -- Close all buffers except cur
 Plug("moll/vim-bbye")                            -- Better buffer deletion
 
 -- Syntax highlighting and parsing
-Plug("nvim-treesitter/nvim-treesitter", { ["branch"] = "master", ["do"] = ":TSUpdate" })
+Plug("nvim-treesitter/nvim-treesitter", { ["branch"] = "main", ["do"] = ":TSUpdate" })
+Plug("nvim-treesitter/nvim-treesitter-textobjects", { ["branch"] = "main" }) -- Textobjects (main branch)
 Plug("linrongbin16/gitlinker.nvim")              -- Generate links to Git hosting
 
 -- Text editing and manipulation
@@ -599,57 +600,92 @@ require('gitsigns').setup({
 })
 
 -- Treesitter configuration
-require'nvim-treesitter.configs'.setup {
- ensure_installed = {
-   "css", "html", "javascript", "json", "typescript", "scss", "vue", "astro",
-   "dockerfile", "tsx", "c", "lua", "vim", "vimdoc", "query", "gitcommit",
-   "diff", "git_rebase", "git_config", "php", "regex", "bash", "markdown",
-   "markdown_inline", "yaml", "toml"
- },
- auto_install = true,
+-- Install parsers for languages we use
+local ok, nvim_treesitter = pcall(require, 'nvim-treesitter')
+if ok and nvim_treesitter.install then
+  nvim_treesitter.install({
+    "css", "html", "javascript", "json", "typescript", "scss", "vue", "astro",
+    "dockerfile", "tsx", "c", "lua", "vim", "vimdoc", "query", "gitcommit",
+    "diff", "git_rebase", "git_config", "php", "regex", "bash", "markdown",
+    "markdown_inline", "yaml", "toml"
+  })
+end
 
- highlight = {
-   enable = true,
-   disable = function(lang, buf)
-     local max_filesize = 100 * 1024
-     local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-     if ok and stats and stats.size > max_filesize then
-       return true
-     end
-   end,
- },
+-- Treesitter-textobjects configuration
+local textobjects_ok, textobjects = pcall(require, 'nvim-treesitter-textobjects')
+if textobjects_ok and textobjects.setup then
+  textobjects.setup({
+    select = {
+      enable = true,
+      lookahead = true,
+      keymaps = {
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+      },
+    },
+    move = {
+      enable = true,
+      set_jumps = true,
+      goto_next_start = {
+        ["]f"] = "@function.outer",
+      },
+      goto_previous_start = {
+        ["[f"] = "@function.outer",
+      },
+    },
+  })
+end
 
- incremental_selection = {
-   enable = true,
-   keymaps = {
-     init_selection = "gnn",
-     node_incremental = "grn",
-     scope_incremental = "grc",
-     node_decremental = "grm",
-   },
- },
+-- Auto-install parsers and enable highlighting on FileType
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "*" },
+  callback = function(args)
+    local ok, nvim_treesitter = pcall(require, 'nvim-treesitter')
+    if not ok then return end
 
- textobjects = {
-   select = {
-     enable = true,
-     lookahead = true,
-     keymaps = {
-       ["af"] = "@function.outer",
-       ["if"] = "@function.inner",
-     },
-   },
-   move = {
-     enable = true,
-     set_jumps = true,
-     goto_next_start = {
-       ["]f"] = "@function.outer",
-     },
-     goto_previous_start = {
-       ["[f"] = "@function.outer",
-     },
-   },
- },
-}
+    local ft = vim.bo[args.buf].filetype
+    local lang = vim.treesitter.language.get_lang(ft)
+
+    -- Skip if no language mapping exists
+    if not lang then return end
+
+    -- Try to install parser if not already installed
+    if not vim.treesitter.language.add(lang) then
+      -- Only try to auto-install if the function exists
+      if nvim_treesitter.install and nvim_treesitter.get_available then
+        local available = vim.g.ts_available or nvim_treesitter.get_available()
+        if not vim.g.ts_available then
+          vim.g.ts_available = available
+        end
+        if vim.tbl_contains(available, lang) then
+          nvim_treesitter.install({ lang })
+        end
+      end
+    end
+
+    -- Enable highlighting and features if parser is available
+    if vim.treesitter.language.add(lang) then
+      -- Don't enable for very large files
+      local max_filesize = 100 * 1024
+      local ok_stat, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(args.buf))
+      if ok_stat and stats and stats.size > max_filesize then
+        return
+      end
+
+      -- Start treesitter highlighting
+      pcall(vim.treesitter.start, args.buf)
+
+      -- Enable indentation (only if indentexpr function exists)
+      if nvim_treesitter.indentexpr then
+        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+      end
+
+      -- Enable folding
+      vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+      vim.wo.foldmethod = 'expr'
+    end
+  end,
+})
 
 -- Kommentary - Smart commenting
 require('kommentary.config').configure_language("default", {
@@ -963,7 +999,7 @@ vim.api.nvim_create_autocmd("FileType", {
   group = "file_types",
   pattern = "php",
   callback = function()
-    vim.opt_local.indentexpr = "nvim_treesitter#indent()"
+    vim.opt_local.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
   end,
 })
 
