@@ -683,34 +683,17 @@ if textobjects_ok and textobjects.setup then
   })
 end
 
--- Auto-install parsers and enable highlighting on FileType
+-- Enable treesitter highlighting on FileType (optimized)
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "*" },
   callback = function(args)
-    local ok, nvim_treesitter = pcall(require, 'nvim-treesitter')
-    if not ok then return end
-
     local ft = vim.bo[args.buf].filetype
     local lang = vim.treesitter.language.get_lang(ft)
 
     -- Skip if no language mapping exists
     if not lang then return end
 
-    -- Try to install parser if not already installed
-    if not vim.treesitter.language.add(lang) then
-      -- Only try to auto-install if the function exists
-      if nvim_treesitter.install and nvim_treesitter.get_available then
-        local available = vim.g.ts_available or nvim_treesitter.get_available()
-        if not vim.g.ts_available then
-          vim.g.ts_available = available
-        end
-        if vim.tbl_contains(available, lang) then
-          nvim_treesitter.install({ lang })
-        end
-      end
-    end
-
-    -- Enable highlighting and features if parser is available
+    -- Only enable if parser is already available (no auto-install)
     if vim.treesitter.language.add(lang) then
       -- Don't enable for very large files
       local max_filesize = 100 * 1024
@@ -721,11 +704,6 @@ vim.api.nvim_create_autocmd("FileType", {
 
       -- Start treesitter highlighting
       pcall(vim.treesitter.start, args.buf)
-
-      -- Enable indentation (only if indentexpr function exists)
-      if nvim_treesitter.indentexpr then
-        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-      end
 
       -- Enable folding
       vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
