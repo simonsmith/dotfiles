@@ -5,10 +5,10 @@ export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # Allow any custom binaries
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/dotfiles/bin:$PATH"
-# Add gnu packages
-export PATH="$(brew --prefix gnu-sed)/libexec/gnubin:$PATH"
-export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
-export PATH="$(brew --prefix grep)/libexec/gnubin:$PATH"
+# Add gnu packages (hardcoded paths for faster startup)
+export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
 
 # curl
 export PATH="/opt/homebrew/curl/bin:$PATH"
@@ -73,7 +73,12 @@ unset file
 
 if [ "$ALACRITTY" = "true" ]
 then
-  ln -sf $HOME/.config/nvim/plugged/tokyonight.nvim/extras/alacritty/tokyonight_moon.toml $HOME/.config/alacritty/active.toml
+  # Only create symlink if it doesn't exist or points to wrong target
+  local target="$HOME/.config/nvim/plugged/tokyonight.nvim/extras/alacritty/tokyonight_moon.toml"
+  local link="$HOME/.config/alacritty/active.toml"
+  if [ ! -L "$link" ] || [ "$(readlink "$link")" != "$target" ]; then
+    ln -sf "$target" "$link"
+  fi
   export BAT_THEME="OneHalfDark"
 fi
 
