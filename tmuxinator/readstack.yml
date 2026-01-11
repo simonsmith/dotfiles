@@ -8,7 +8,7 @@
         layout: even-horizontal
         panes:
           - gs
-          - claude
+          - opencode
     - server:
         root: ~/Sites/readstack/web
         layout: tiled
