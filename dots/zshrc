@@ -28,7 +28,12 @@ export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 eval "$(mise activate zsh)"
 
 # bun globals
-export PATH="/Users/simonsmith/.cache/.bun/bin:$PATH"
+export PATH="$HOME/.cache/.bun/bin:$PATH"
+# bun completions
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+# opencode
+export PATH=$HOME/.opencode/bin:$PATH
 
 # znap
 # https://github.com/marlonrichert/zsh-snap
@@ -165,6 +170,3 @@ export FZF_TMUX_HEIGHT=40%
 command -v tree > /dev/null && export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -$LINES'"
 
 bindkey '^o' autosuggest-accept
-
-# bun completions
-[ -s "/Users/simonsmith/.bun/_bun" ] && source "/Users/simonsmith/.bun/_bun"
