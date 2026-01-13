@@ -26,6 +26,8 @@ brew "git"
 brew "git-delta"
 brew "mise"
 brew "neovim"
+brew "tree-sitter"
+brew "tree-sitter-cli"
 brew "scmpuff"
 
 # Search and file tools

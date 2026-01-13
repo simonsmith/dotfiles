@@ -647,16 +647,10 @@ require('gitsigns').setup({
 })
 
 -- Treesitter configuration
--- Install parsers for languages we use
-local ok, nvim_treesitter = pcall(require, 'nvim-treesitter')
-if ok and nvim_treesitter.install then
-  nvim_treesitter.install({
-    "css", "html", "javascript", "json", "typescript", "scss", "vue", "astro",
-    "dockerfile", "tsx", "c", "lua", "vim", "vimdoc", "query", "gitcommit",
-    "diff", "git_rebase", "git_config", "php", "regex", "bash", "markdown",
-    "markdown_inline", "yaml", "toml"
-  })
-end
+-- NOTE: Parsers should be installed manually with :TSInstall, not on every startup.
+-- The new main branch uses async installation which conflicts with the FileType
+-- autocommand below. Install parsers once with:
+--   :TSInstall css html javascript json typescript scss vue astro dockerfile tsx c lua vim vimdoc query gitcommit diff git_rebase git_config php regex bash markdown markdown_inline yaml toml
 
 -- Treesitter-textobjects configuration
 local textobjects_ok, textobjects = pcall(require, 'nvim-treesitter-textobjects')
