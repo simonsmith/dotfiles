@@ -280,7 +280,7 @@ require'fzf-lua'.setup({
     width = 0.80,                         -- Wider for modern feel
     row = 0.40,                           -- Slightly lower than center
     border = "rounded",                   -- Smooth rounded corners
-    backdrop = 80,                        -- Very subtle backdrop
+    backdrop = 70,                        -- Very subtle backdrop
     preview = {
       default = "builtin",                -- Builtin previewer available
       hidden = "hidden",                  -- Start hidden, toggle with F4
