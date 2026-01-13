@@ -7,6 +7,10 @@ startup_window: nvim
 windows:
   - nvim: nvim
   - git:
-    -
-  - vite:
-    - npm run dev
+    - gs
+  - dev:
+      layout: main-horizontal
+      panes:
+        - tail -n 50 -f /opt/homebrew/var/log/httpd/access_log
+        - tail -n 50 -f ./laravel/storage/logs/laravel.log
+        - bun dev
