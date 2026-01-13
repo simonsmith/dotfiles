@@ -11,5 +11,6 @@ windows:
         - p webapp
         -
         - gs
+        - claude
   - proxy:
     - p proxy --backend staging
