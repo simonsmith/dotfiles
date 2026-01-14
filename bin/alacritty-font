@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+set -e
+
+CONFIG="$HOME/.alacritty.toml"
+
+case "$1" in
+  home)
+    sed -i "/^\[font\.offset\]/,/^$\|^\[/ {
+      s/^x = .*/x = 0/
+      s/^y = .*/y = 0/
+    }" "$CONFIG"
+    echo "Set font.offset to x=0, y=0"
+    ;;
+  work)
+    sed -i "/^\[font\.offset\]/,/^$\|^\[/ {
+      s/^x = .*/x = -1/
+      s/^y = .*/y = -2/
+    }" "$CONFIG"
+    echo "Set font.offset to x=-1, y=-2"
+    ;;
+  size)
+    if [[ -z "$2" ]]; then
+      echo "Usage: alacritty-font size <number>"
+      exit 1
+    fi
+    sed -i "s/^size = .*/size = $2/" "$CONFIG"
+    echo "Set font size to $2"
+    ;;
+  *)
+    echo "Usage: alacritty-font [home|work|size <n>]"
+    exit 1
+    ;;
+esac
