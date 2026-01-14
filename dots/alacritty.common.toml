@@ -11,25 +11,25 @@ draw_bold_text_with_bright_colors = false
 [font]
 size = 16.0
 
-[font.bold]
-family = "CommitMono Nerd Font Mono"
-style = "Bold"
-
 [font.glyph_offset]
 x = 0
 y = 0
 
-[font.italic]
-family = "CommitMono Nerd Font Mono"
-style = "Italic"
-
-[font.normal]
-family = "CommitMono Nerd Font Mono"
-style = "Regular"
-
 [font.offset]
 x = 0
 y = 0
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "SemiBold"
+
+[font.italic]
+family = "JetBrainsMono Nerd Font"
+style = "Italic"
+
+[font.bold]
+family = "JetBrainsMono Nerd Font"
+style = "Bold"
 
 [[keyboard.bindings]]
 action = "ResetFontSize"
