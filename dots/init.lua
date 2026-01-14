@@ -458,7 +458,6 @@ end, {
 vim.o.showtabline = 1 -- Show tabline only when multiple tabs
 
 -- Conform - Code formatting
-local biome_prettier = { "biome", "prettier", stop_after_first = true }
 local prettier_only = { "prettier", stop_after_first = true }
 local prettier_mdformat = { "prettier", "mdformat", stop_after_first = true }
 local lua_format = { "stylua", stop_after_first = true }
@@ -466,14 +465,14 @@ local lua_format = { "stylua", stop_after_first = true }
 require("conform").setup({
   formatters_by_ft = {
     -- JavaScript/TypeScript ecosystem (Biome first, Prettier fallback)
-    javascript = biome_prettier,
-    javascriptreact = biome_prettier,
-    typescript = biome_prettier,
-    typescriptreact = biome_prettier,
-    json = biome_prettier,
-    jsonc = biome_prettier,
-    html = biome_prettier,
-    css = biome_prettier,
+    javascript = prettier_only,
+    javascriptreact = prettier_only,
+    typescript = prettier_only,
+    typescriptreact = prettier_only,
+    json = prettier_only,
+    jsonc = prettier_only,
+    html = prettier_only,
+    css = prettier_only,
 
     -- Prettier only formats
     php = prettier_only,
