@@ -29,6 +29,7 @@ brew "neovim"
 brew "tree-sitter"
 brew "tree-sitter-cli"
 brew "scmpuff"
+brew "stylua"
 
 # Search and file tools
 brew "ack"
