@@ -657,7 +657,7 @@ require("gitsigns").setup({
 -- NOTE: Parsers should be installed manually with :TSInstall, not on every startup.
 -- The new main branch uses async installation which conflicts with the FileType
 -- autocommand below. Install parsers once with:
---   :TSInstall css html javascript json typescript scss vue astro dockerfile tsx c lua vim vimdoc query gitcommit diff git_rebase git_config php regex bash markdown markdown_inline yaml toml
+--   :TSInstall css html javascript json json5 typescript scss vue astro dockerfile tsx c lua vim vimdoc query gitcommit diff git_rebase git_config php regex bash markdown markdown_inline yaml toml
 
 -- Treesitter-textobjects configuration
 local textobjects_ok, textobjects = pcall(require, "nvim-treesitter-textobjects")
