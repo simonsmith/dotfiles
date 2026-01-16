@@ -8,7 +8,7 @@ case "$1" in
   home)
     sed -i "/^\[font\.offset\]/,/^$\|^\[/ {
       s/^x = .*/x = 0/
-      s/^y = .*/y = 0/
+      s/^y = .*/y = -1/
     }" "$CONFIG"
     echo "Set font.offset to x=0, y=0"
     ;;
