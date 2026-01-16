@@ -78,6 +78,7 @@ brew "source-highlight"
 # Applications
 cask "1password"
 cask "alacritty"
+cask "wezterm"
 cask "contexts"
 cask "cursorcerer"
 cask "daisydisk"

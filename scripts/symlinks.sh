@@ -31,6 +31,7 @@ dots=(
   rgignore
   tmux.conf
   wgetrc
+  wezterm.lua
   zshrc
 )
 
