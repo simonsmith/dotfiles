@@ -24,7 +24,6 @@ Plug("nvim-tree/nvim-web-devicons") -- File type icons
 -- Terminal integration
 if vim.fn.executable("tmux") == 1 then
   Plug("christoomey/vim-tmux-navigator") -- Seamless tmux/vim navigation
-  Plug("tmux-plugins/vim-tmux-focus-events") -- Better tmux focus events
 end
 
 -- File finding and search
@@ -693,6 +692,11 @@ vim.api.nvim_create_autocmd("FileType", {
 
     -- Skip if no language mapping exists
     if not lang then
+      return
+    end
+
+    -- Temporary: skip Lua to avoid query errors
+    if ft == "lua" then
       return
     end
 
