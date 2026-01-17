@@ -126,7 +126,6 @@ vim.opt.undolevels = 1000 -- Maximum number of undos
 vim.opt.undoreload = 10000 -- Maximum lines to save for undo on buffer reload
 vim.opt.backupdir = "$HOME/.config/nvim/backups"
 vim.opt.directory = ".,$TEMP"
-vim.opt.binary = true -- Allow editing binary files
 
 -- Display and appearance
 vim.opt.number = true -- Show line numbers
