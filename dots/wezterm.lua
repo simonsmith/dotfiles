@@ -9,8 +9,10 @@ end
 config.font = wezterm.font_with_fallback({
   { family = "JetBrainsMono Nerd Font", weight = "DemiBold" },
 })
-config.font_size = 18.0
+config.font_size = 16.0
 config.cell_width = 0.9 -- x
+config.line_height = 0.9 -- y
+config.harfbuzz_features = { 'calt = 0', 'clig = 0', 'liga = 0' }
 
 config.freetype_load_flags = "NO_HINTING"
 config.freetype_load_target = "Normal"
@@ -87,7 +89,7 @@ config.keys = {
 
 -- Performance
 config.front_end = "WebGpu"
-config.max_fps = 120
+config.max_fps = 165
 
 -- Misc
 config.audible_bell = "Disabled"
