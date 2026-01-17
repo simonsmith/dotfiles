@@ -9,7 +9,7 @@ end
 config.font = wezterm.font_with_fallback({
   { family = "JetBrainsMono Nerd Font", weight = "DemiBold" },
 })
-config.font_size = 16.0
+config.font_size = 18.0
 config.cell_width = 0.9 -- x
 
 config.freetype_load_flags = "NO_HINTING"

@@ -120,7 +120,8 @@ vim.g.coc_global_extensions = {
 -- File handling
 vim.opt.swapfile = false -- Disable swap files
 vim.opt.backup = false -- Disable backup files
-vim.opt.writebackup = false -- Disable backup before overwriting
+vim.opt.writebackup = true
+vim.opt.backupcopy = "yes" -- Preserve symlinks when writing
 vim.opt.undofile = true -- Enable persistent undo
 vim.opt.undolevels = 1000 -- Maximum number of undos
 vim.opt.undoreload = 10000 -- Maximum lines to save for undo on buffer reload
@@ -320,14 +321,14 @@ require("fzf-lua").setup({
   git = {
     files = {
       git_icons = false, -- Keep disabled for performance
-      file_icons = false,
+      file_icons = "devicons",
     },
   },
   files = {
     rg_opts = [[--color=never --files --hidden --follow -g "!.git"]],
     fd_opts = [[--color=never --type f --hidden --follow --exclude .git]],
     git_icons = false, -- Keep disabled for performance
-    file_icons = false,
+    file_icons = "devicons",
     prompt = "Files❯ ",
   },
   grep = {
