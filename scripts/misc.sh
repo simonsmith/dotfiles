@@ -33,6 +33,13 @@ main() {
         log_warning "Alacritty themes already installed"
     fi
 
+    # Set up active.toml symlink to Tokyo Night Moon theme
+    log_info "Setting up Alacritty active theme symlink..."
+    local target="$HOME/.config/nvim/plugged/tokyonight.nvim/extras/alacritty/tokyonight_moon.toml"
+    local link="$HOME/.config/alacritty/active.toml"
+    ln -sf "$target" "$link"
+    log_success "Alacritty active theme symlink created"
+
     # Install znap plugin manager for zsh
     log_info "Installing znap plugin manager..."
     mkdir -p ~/.zsh-plugins/.znap

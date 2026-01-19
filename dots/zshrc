@@ -76,14 +76,7 @@ for file in ~/.{extra,aliases,functions,work}; do
 done
 unset file
 
-if [ "$ALACRITTY" = "true" ]
-then
-  # Only create symlink if it doesn't exist or points to wrong target
-  local target="$HOME/.config/nvim/plugged/tokyonight.nvim/extras/alacritty/tokyonight_moon.toml"
-  local link="$HOME/.config/alacritty/active.toml"
-  if [ ! -L "$link" ] || [ "$(readlink "$link")" != "$target" ]; then
-    ln -sf "$target" "$link"
-  fi
+if [ "$ALACRITTY" = "true" ]; then
   export BAT_THEME="OneHalfDark"
 fi
 

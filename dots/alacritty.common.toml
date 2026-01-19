@@ -1,3 +1,13 @@
+# General settings
+[general]
+live_config_reload = true
+
+# Color scheme: active.toml is a symlink to the current theme
+# (e.g., ~/.config/nvim/plugged/tokyonight.nvim/extras/alacritty/tokyonight_moon.toml)
+import = [
+  "~/.config/alacritty/active.toml",
+]
+
 # Environment variables
 [env]
 ALACRITTY = "true"
@@ -88,10 +98,3 @@ lines = 36
 [window.padding]
 x = 10
 y = 10
-
-# General settings
-[general]
-live_config_reload = true
-import = [
-  "~/.config/alacritty/active.toml",
-]
