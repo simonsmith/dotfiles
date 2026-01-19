@@ -15,7 +15,7 @@ case "$1" in
   work)
     sed -i "/^\[font\.offset\]/,/^$\|^\[/ {
       s/^x = .*/x = -1/
-      s/^y = .*/y = -2/
+      s/^y = .*/y = -4/
     }" "$CONFIG"
     echo "Set font.offset to x=-1, y=-2"
     ;;
