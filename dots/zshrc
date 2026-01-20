@@ -62,7 +62,6 @@ znap source zsh-users/zsh-completions
 # https://github.com/mroth/scmpuff
 znap eval scmpuff 'scmpuff init -s --aliases=false'
 znap eval starship 'starship init zsh'
-znap eval workmux 'workmux completions zsh'
 znap eval wtp 'wtp shell-init zsh'
 znap prompt
 

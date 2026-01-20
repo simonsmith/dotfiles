@@ -4,7 +4,6 @@
 tap "koekeishiya/formulae"
 tap "nikitabobko/tap"
 tap "junegunn/tap"
-tap "raine/workmux"
 tap "satococoa/tap"
 
 # Core system utilities
@@ -47,7 +46,6 @@ brew "tmux"
 brew "reattach-to-user-namespace"
 brew "tmuxinator"
 brew "urlview"
-brew "raine/workmux/workmux"
 brew "satococoa/wtp/wtp"
 
 # System monitoring

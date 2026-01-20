@@ -14,12 +14,6 @@ alias k="kubectl"
 alias cat="bat"
 alias rm="trash"
 
-# workmux
-# https://workmux.raine.dev
-alias wm="workmux"
-alias wma="workmux add"
-alias wmr="workmux remove"
-
 # wtp
 # https://github.com/satococoa/wtp
 alias wt='wtp'
