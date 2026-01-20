@@ -190,3 +190,7 @@ function tre() {
 function localip() {
   ipconfig getifaddr en0
 }
+
+# Load worktree management functions
+# See: dots/worktree-functions
+[[ -f "$HOME/dotfiles/dots/worktree-functions" ]] && source "$HOME/dotfiles/dots/worktree-functions"

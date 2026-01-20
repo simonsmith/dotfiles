@@ -1,0 +1,195 @@
+# Worktree + tmux management functions
+# Requires: wtp (https://github.com/satococoa/wtp)
+
+# wtmux - Create worktree and open in tmux with neovim, terminal, and claude
+# Usage:
+#   wtmux feature/branch        # Create worktree from existing branch
+#   wtmux -b feature/new        # Create worktree with new branch
+#   wtmux -b feature/new main   # Create new branch from main
+function wtmux() {
+  # Parse arguments
+  local new_branch=false
+  local branch_name=""
+  local from_branch=""
+
+  while [[ $# -gt 0 ]]; do
+    case $1 in
+      -b)
+        new_branch=true
+        shift
+        ;;
+      *)
+        if [[ -z "$branch_name" ]]; then
+          branch_name="$1"
+        else
+          from_branch="$1"
+        fi
+        shift
+        ;;
+    esac
+  done
+
+  if [[ -z "$branch_name" ]]; then
+    echo "Usage: wtmux [-b] <branch-name> [from-branch]"
+    echo "  -b: Create new branch"
+    echo ""
+    echo "Examples:"
+    echo "  wtmux feature/auth          # Add existing branch or use existing worktree"
+    echo "  wtmux -b feature/new        # Create new branch"
+    echo "  wtmux -b feature/test main  # Create new branch from main"
+    return 1
+  fi
+
+  # Check if worktree already exists
+  local existing_worktree=$(wtp list 2>/dev/null | tail -n +3 | awk -v branch="$branch_name" '$2 == branch {print $1}' | sed 's/[\*@]$//')
+
+  if [[ -n "$existing_worktree" ]]; then
+    echo "Worktree already exists for branch: $branch_name"
+
+    # Parse git worktree list to get the absolute path
+    worktree_path=$(git worktree list | grep "\[$branch_name\]" | awk '{print $1}')
+  else
+    # Create worktree
+    echo "Creating worktree for $branch_name..."
+    if [[ "$new_branch" == true ]]; then
+      if [[ -n "$from_branch" ]]; then
+        wtp add -b "$branch_name" "$from_branch" || return 1
+      else
+        wtp add -b "$branch_name" || return 1
+      fi
+    else
+      wtp add "$branch_name" || return 1
+    fi
+
+    # Get worktree path - wait a moment for worktree to be fully created
+    sleep 0.5
+
+    # Parse git worktree list to get the absolute path
+    worktree_path=$(git worktree list | grep "\[$branch_name\]" | awk '{print $1}')
+  fi
+
+  if [[ -z "$worktree_path" ]]; then
+    echo "Error: Could not determine worktree path for branch: $branch_name"
+    return 1
+  fi
+
+  echo "Opening tmux environment at: $worktree_path"
+
+  # Verify the path exists
+  if [[ ! -d "$worktree_path" ]]; then
+    echo "Warning: Worktree path does not exist: $worktree_path"
+    return 1
+  fi
+
+  # Check if we're in a tmux session
+  if [[ -z "$TMUX" ]]; then
+    echo "Not in tmux session. Starting new session..."
+    tmux new-session -s "$(basename $branch_name)" -c "$worktree_path" \; \
+      send-keys "nvim" Enter \; \
+      split-window -h -c "$worktree_path" \; \
+      split-window -v -c "$worktree_path" \; \
+      send-keys "claude --dangerously-skip-permissions" Enter \; \
+      select-pane -t 1
+    return
+  fi
+
+  # We're in tmux, create new window with layout
+  # Using send-keys with cd to ensure we're in the right directory
+  local window_name="$(basename $branch_name)"
+
+  tmux new-window -n "$window_name" \; \
+    send-keys "cd \"$worktree_path\" && nvim" Enter \; \
+    split-window -h -p 40 \; \
+    send-keys "cd \"$worktree_path\"" Enter \; \
+    split-window -v \; \
+    send-keys "cd \"$worktree_path\" && claude --dangerously-skip-permissions" Enter \; \
+    select-pane -t 0
+}
+
+# wtclose - Close tmux window and remove worktree
+# Usage:
+#   wtclose                    # Remove worktree for current branch (keeps branch)
+#   wtclose -b                 # Remove worktree and branch
+#   wtclose feature/auth       # Remove specific worktree
+#   wtclose -b feature/auth    # Remove specific worktree and branch
+function wtclose() {
+  local remove_branch=false
+  local branch_name=""
+
+  # Parse arguments
+  while [[ $# -gt 0 ]]; do
+    case $1 in
+      -b|--with-branch)
+        remove_branch=true
+        shift
+        ;;
+      *)
+        branch_name="$1"
+        shift
+        ;;
+    esac
+  done
+
+  # If no branch specified, try to get current branch
+  if [[ -z "$branch_name" ]]; then
+    branch_name=$(git branch --show-current 2>/dev/null)
+    if [[ -z "$branch_name" ]]; then
+      echo "Error: Not in a git repository or could not determine branch"
+      echo "Usage: wtclose [-b] [branch-name]"
+      return 1
+    fi
+    echo "Using current branch: $branch_name"
+  fi
+
+  # Get the worktree path
+  local worktree_path=$(git worktree list | grep "\[$branch_name\]" | awk '{print $1}')
+
+  if [[ -z "$worktree_path" ]]; then
+    echo "Error: No worktree found for branch: $branch_name"
+    return 1
+  fi
+
+  # Close tmux window if we're in tmux and in this worktree
+  if [[ -n "$TMUX" ]]; then
+    local current_path=$(pwd)
+    # Check if current directory is inside the worktree
+    if [[ "$current_path" == "$worktree_path"* ]]; then
+      echo "Closing tmux window..."
+      tmux kill-window
+    else
+      # Try to find and close the window by name
+      local window_name="$(basename $branch_name)"
+      tmux kill-window -t "$window_name" 2>/dev/null && echo "Closed tmux window: $window_name"
+    fi
+  fi
+
+  # Remove the worktree
+  if [[ "$remove_branch" == true ]]; then
+    echo "Removing worktree and branch: $branch_name"
+    wtp remove --with-branch "$branch_name"
+  else
+    echo "Removing worktree: $branch_name (keeping branch)"
+    wtp remove "$branch_name"
+  fi
+}
+
+# wtlist - Pretty list all worktrees
+function wtlist() {
+  wtp list
+}
+
+# wtcd - Navigate to worktree (wrapper for wtp cd)
+function wtcd() {
+  if [[ -z "$1" ]]; then
+    # Go to main worktree
+    cd "$(git rev-parse --show-toplevel 2>/dev/null || echo .)"
+  else
+    local worktree_path=$(git worktree list | grep "\[$1\]" | awk '{print $1}')
+    if [[ -n "$worktree_path" ]]; then
+      cd "$worktree_path"
+    else
+      echo "Error: No worktree found for branch: $1"
+      return 1
+    fi
+  fi
+}
