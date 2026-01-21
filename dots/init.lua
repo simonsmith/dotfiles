@@ -53,7 +53,7 @@ Plug("moll/vim-bbye") -- Better buffer deletion
 -- Syntax highlighting and parsing
 Plug("nvim-treesitter/nvim-treesitter", { ["branch"] = "main", ["do"] = ":TSUpdate" })
 Plug("nvim-treesitter/nvim-treesitter-textobjects", { ["branch"] = "main" }) -- Textobjects (main branch)
-Plug("linrongbin16/gitlinker.nvim") -- Generate links to Git hosting
+Plug("linrongbin16/gitlinker.nvim", { ["commit"] = "63cfbb7" }) -- Generate links to Git hosting
 
 -- Text editing and manipulation
 Plug("tpope/vim-repeat") -- Repeat plugin commands with .
