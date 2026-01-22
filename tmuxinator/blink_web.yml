@@ -6,11 +6,10 @@ windows:
   - neovim:
     - nvim
   - dev:
-      layout: tiled
+      layout: main-horizontal
       panes:
         - p webapp
-        -
         - gs
-        - claude
+        -
   - proxy:
     - p proxy --backend staging
