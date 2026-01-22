@@ -1,42 +1,178 @@
-# Worktree + tmux management functions
+# Unified worktree + tmux management
 # Requires: wtp (https://github.com/satococoa/wtp)
 
-# wtmux - Create worktree and open in tmux with neovim, terminal, and claude
-# Usage:
-#   wtmux feature/branch        # Create worktree from existing branch
-#   wtmux -b feature/new        # Create worktree with new branch
-#   wtmux -b feature/new main   # Create new branch from main
-function wtmux() {
-  # Parse arguments
-  local new_branch=false
-  local branch_name=""
-  local from_branch=""
+# Main wt dispatcher function
+function wt() {
+  if [[ $# -eq 0 ]]; then
+    _wt_help
+    return 0
+  fi
 
-  while [[ $# -gt 0 ]]; do
-    case $1 in
-      -b)
-        new_branch=true
-        shift
-        ;;
-      *)
-        if [[ -z "$branch_name" ]]; then
-          branch_name="$1"
-        else
-          from_branch="$1"
-        fi
-        shift
-        ;;
-    esac
-  done
+  local subcommand="$1"
+  shift
+
+  case "$subcommand" in
+    new)
+      _wt_new "$@"
+      ;;
+    open)
+      _wt_open "$@"
+      ;;
+    close)
+      _wt_close "$@"
+      ;;
+    list)
+      _wt_list "$@"
+      ;;
+    cd)
+      _wt_cd "$@"
+      ;;
+    add)
+      _wt_add "$@"
+      ;;
+    remove)
+      _wt_remove "$@"
+      ;;
+    status)
+      _wt_status "$@"
+      ;;
+    help|--help|-h)
+      _wt_help
+      ;;
+    *)
+      echo "Error: Unknown subcommand '$subcommand'"
+      echo ""
+      echo "Run 'wt help' for usage information"
+      return 1
+      ;;
+  esac
+}
+
+# Show help and usage information
+function _wt_help() {
+  cat <<'EOF'
+wt - Unified worktree management with tmux integration
+
+USAGE:
+  wt <subcommand> [options]
+
+HIGH-LEVEL COMMANDS (with tmux):
+  wt new <branch> [base]         Create new branch and open in tmux
+  wt open <branch>               Open existing branch in tmux
+  wt close [options] [branch]    Close tmux window and remove worktree
+
+NAVIGATION & INFO:
+  wt list                        List all worktrees
+  wt cd [branch]                 Navigate to worktree directory
+  wt status                      Show current worktree info
+
+LOW-LEVEL COMMANDS (no tmux):
+  wt add <branch>                Add existing branch as worktree
+  wt add -b <branch> [base]      Create new branch as worktree
+  wt remove <branch>             Remove worktree only
+
+OPTIONS:
+  wt close -d [branch]           Remove worktree and DELETE branch
+  wt close --delete [branch]     Long form of -d
+
+ENVIRONMENT VARIABLES:
+  Customize tmux layout and commands:
+
+  WT_EDITOR                      Editor to open (default: nvim)
+  WT_ASSISTANT                   Assistant/AI tool (default: claude --dangerously-skip-permissions)
+  WT_TERMINAL_CMD                Command to run in terminal pane (default: none)
+  WT_PANE_WIDTH                  Right pane width percentage (default: 40)
+
+  Example usage:
+    export WT_ASSISTANT="opencode"
+    export WT_EDITOR="code"
+    export WT_PANE_WIDTH="50"
+
+EXAMPLES:
+  # Create new branch and open in tmux
+  wt new feature/auth
+  wt new feature/auth main       # Branch from main
+
+  # Open existing branch in tmux
+  wt open feature/auth
+
+  # Close current worktree (keeps branch)
+  wt close
+
+  # Close and delete branch
+  wt close -d
+  wt close --delete feature/auth
+
+  # Navigate to worktree
+  wt cd feature/auth
+  wt cd                          # Go to main worktree
+
+  # List all worktrees
+  wt list
+
+  # Low-level operations
+  wt add feature/existing        # Just add, no tmux
+  wt remove feature/old          # Just remove, no tmux
+EOF
+}
+
+# Create new branch and open in tmux
+function _wt_new() {
+  local branch_name="$1"
+  local from_branch="$2"
 
   if [[ -z "$branch_name" ]]; then
-    echo "Usage: wtmux [-b] <branch-name> [from-branch]"
-    echo "  -b: Create new branch"
+    echo "Error: Branch name required"
+    echo "Usage: wt new <branch-name> [base-branch]"
     echo ""
     echo "Examples:"
-    echo "  wtmux feature/auth          # Add existing branch or use existing worktree"
-    echo "  wtmux -b feature/new        # Create new branch"
-    echo "  wtmux -b feature/test main  # Create new branch from main"
+    echo "  wt new feature/auth          # Create from current HEAD"
+    echo "  wt new feature/auth main     # Create from main"
+    return 1
+  fi
+
+  # Check if worktree already exists
+  local existing_worktree=$(wtp list 2>/dev/null | tail -n +3 | awk -v branch="$branch_name" '$2 == branch {print $1}' | sed 's/[\*@]$//')
+
+  if [[ -n "$existing_worktree" ]]; then
+    echo "Error: Worktree already exists for branch: $branch_name"
+    echo "Use 'wt open $branch_name' to open the existing worktree"
+    return 1
+  fi
+
+  # Create worktree with new branch
+  echo "Creating new branch and worktree: $branch_name"
+  if [[ -n "$from_branch" ]]; then
+    wtp add -b "$branch_name" "$from_branch" || return 1
+  else
+    wtp add -b "$branch_name" || return 1
+  fi
+
+  # Get worktree path - wait a moment for worktree to be fully created
+  sleep 0.5
+
+  # Parse git worktree list to get the absolute path
+  local worktree_path=$(git worktree list | grep "\[$branch_name\]" | awk '{print $1}')
+
+  if [[ -z "$worktree_path" ]]; then
+    echo "Error: Could not determine worktree path for branch: $branch_name"
+    return 1
+  fi
+
+  # Open in tmux
+  _wt_open_tmux "$branch_name" "$worktree_path"
+}
+
+# Open existing branch in tmux
+function _wt_open() {
+  local branch_name="$1"
+
+  if [[ -z "$branch_name" ]]; then
+    echo "Error: Branch name required"
+    echo "Usage: wt open <branch-name>"
+    echo ""
+    echo "Examples:"
+    echo "  wt open feature/auth"
     return 1
   fi
 
@@ -45,21 +181,12 @@ function wtmux() {
 
   if [[ -n "$existing_worktree" ]]; then
     echo "Worktree already exists for branch: $branch_name"
-
     # Parse git worktree list to get the absolute path
     worktree_path=$(git worktree list | grep "\[$branch_name\]" | awk '{print $1}')
   else
-    # Create worktree
-    echo "Creating worktree for $branch_name..."
-    if [[ "$new_branch" == true ]]; then
-      if [[ -n "$from_branch" ]]; then
-        wtp add -b "$branch_name" "$from_branch" || return 1
-      else
-        wtp add -b "$branch_name" || return 1
-      fi
-    else
-      wtp add "$branch_name" || return 1
-    fi
+    # Create worktree from existing branch
+    echo "Creating worktree from existing branch: $branch_name"
+    wtp add "$branch_name" || return 1
 
     # Get worktree path - wait a moment for worktree to be fully created
     sleep 0.5
@@ -73,6 +200,21 @@ function wtmux() {
     return 1
   fi
 
+  # Open in tmux
+  _wt_open_tmux "$branch_name" "$worktree_path"
+}
+
+# Helper function to open worktree in tmux
+function _wt_open_tmux() {
+  local branch_name="$1"
+  local worktree_path="$2"
+
+  # Configurable via environment variables
+  local editor="${WT_EDITOR:-nvim}"
+  local assistant="${WT_ASSISTANT:-claude --dangerously-skip-permissions}"
+  local terminal="${WT_TERMINAL_CMD:-}"
+  local pane_width="${WT_PANE_WIDTH:-40}"
+
   echo "Opening tmux environment at: $worktree_path"
 
   # Verify the path exists
@@ -85,42 +227,46 @@ function wtmux() {
   if [[ -z "$TMUX" ]]; then
     echo "Not in tmux session. Starting new session..."
     tmux new-session -s "$(basename $branch_name)" -c "$worktree_path" \; \
-      send-keys "nvim" Enter \; \
+      send-keys "$editor" Enter \; \
       split-window -h -c "$worktree_path" \; \
       split-window -v -c "$worktree_path" \; \
-      send-keys "claude --dangerously-skip-permissions" Enter \; \
+      send-keys "$assistant" Enter \; \
       select-pane -t 1
+
+    # Run terminal command if specified
+    if [[ -n "$terminal" ]]; then
+      tmux select-pane -t 1 \; send-keys "$terminal" Enter
+    fi
     return
   fi
 
   # We're in tmux, create new window with layout
-  # Using send-keys with cd to ensure we're in the right directory
   local window_name="$(basename $branch_name)"
 
   tmux new-window -n "$window_name" \; \
-    send-keys "cd \"$worktree_path\" && nvim" Enter \; \
-    split-window -h -p 40 \; \
+    send-keys "cd \"$worktree_path\" && $editor" Enter \; \
+    split-window -h -p "$pane_width" \; \
     send-keys "cd \"$worktree_path\"" Enter \; \
     split-window -v \; \
-    send-keys "cd \"$worktree_path\" && claude --dangerously-skip-permissions" Enter \; \
+    send-keys "cd \"$worktree_path\" && $assistant" Enter \; \
     select-pane -t 0
+
+  # Run terminal command if specified
+  if [[ -n "$terminal" ]]; then
+    tmux select-pane -t 1 \; send-keys "$terminal" Enter
+  fi
 }
 
-# wtclose - Close tmux window and remove worktree
-# Usage:
-#   wtclose                    # Remove worktree for current branch (keeps branch)
-#   wtclose -b                 # Remove worktree and branch
-#   wtclose feature/auth       # Remove specific worktree
-#   wtclose -b feature/auth    # Remove specific worktree and branch
-function wtclose() {
-  local remove_branch=false
+# Close tmux window and remove worktree
+function _wt_close() {
+  local delete_branch=false
   local branch_name=""
 
   # Parse arguments
   while [[ $# -gt 0 ]]; do
     case $1 in
-      -b|--with-branch)
-        remove_branch=true
+      -d|--delete)
+        delete_branch=true
         shift
         ;;
       *)
@@ -135,7 +281,7 @@ function wtclose() {
     branch_name=$(git branch --show-current 2>/dev/null)
     if [[ -z "$branch_name" ]]; then
       echo "Error: Not in a git repository or could not determine branch"
-      echo "Usage: wtclose [-b] [branch-name]"
+      echo "Usage: wt close [-d|--delete] [branch-name]"
       return 1
     fi
     echo "Using current branch: $branch_name"
@@ -164,8 +310,8 @@ function wtclose() {
   fi
 
   # Remove the worktree
-  if [[ "$remove_branch" == true ]]; then
-    echo "Removing worktree and branch: $branch_name"
+  if [[ "$delete_branch" == true ]]; then
+    echo "Removing worktree and deleting branch: $branch_name"
     wtp remove --with-branch "$branch_name"
   else
     echo "Removing worktree: $branch_name (keeping branch)"
@@ -173,13 +319,13 @@ function wtclose() {
   fi
 }
 
-# wtlist - Pretty list all worktrees
-function wtlist() {
+# List all worktrees
+function _wt_list() {
   wtp list
 }
 
-# wtcd - Navigate to worktree (wrapper for wtp cd)
-function wtcd() {
+# Navigate to worktree
+function _wt_cd() {
   if [[ -z "$1" ]]; then
     # Go to main worktree
     cd "$(git rev-parse --show-toplevel 2>/dev/null || echo .)"
@@ -193,3 +339,115 @@ function wtcd() {
     fi
   fi
 }
+
+# Low-level: Add worktree without tmux
+function _wt_add() {
+  wtp add "$@"
+}
+
+# Low-level: Remove worktree without tmux
+function _wt_remove() {
+  wtp remove "$@"
+}
+
+# Show current worktree status
+function _wt_status() {
+  local branch_name=$(git branch --show-current 2>/dev/null)
+
+  if [[ -z "$branch_name" ]]; then
+    echo "Error: Not in a git repository or could not determine branch"
+    return 1
+  fi
+
+  local worktree_path=$(git worktree list | grep "\[$branch_name\]" | awk '{print $1}')
+  local is_main=$(git worktree list | head -1 | grep -q "\[$branch_name\]" && echo "yes" || echo "no")
+
+  echo "Current worktree status:"
+  echo "  Branch: $branch_name"
+  echo "  Path: ${worktree_path:-$(git rev-parse --show-toplevel)}"
+  echo "  Main worktree: $is_main"
+
+  if [[ -n "$TMUX" ]]; then
+    local window_name=$(tmux display-message -p '#W')
+    echo "  Tmux window: $window_name"
+  fi
+}
+
+# Zsh completion function for wt
+function _wt_completion() {
+  local -a subcommands
+  subcommands=(
+    'new:Create new branch and open in tmux'
+    'open:Open existing branch in tmux'
+    'close:Close tmux window and remove worktree'
+    'list:List all worktrees'
+    'cd:Navigate to worktree directory'
+    'add:Add existing branch as worktree (no tmux)'
+    'remove:Remove worktree only (no tmux)'
+    'status:Show current worktree info'
+    'help:Show help information'
+  )
+
+  local curcontext="$curcontext" state line
+  typeset -A opt_args
+
+  _arguments -C \
+    '1: :->subcommand' \
+    '*: :->args'
+
+  case $state in
+    subcommand)
+      _describe 'wt subcommand' subcommands
+      ;;
+    args)
+      case $line[1] in
+        new)
+          # For 'new', show all branches as reference for base branch (second arg)
+          if [[ $CURRENT -eq 3 ]]; then
+            _wt_complete_all_branches
+          fi
+          ;;
+        open|add)
+          # Show all branches
+          _wt_complete_all_branches
+          ;;
+        close|remove|cd)
+          # First check for flags
+          if [[ $words[$CURRENT] == -* ]]; then
+            local -a close_opts
+            close_opts=(
+              '-d:Delete branch along with worktree'
+              '--delete:Delete branch along with worktree'
+            )
+            _describe 'options' close_opts
+          else
+            # Show only branches with worktrees
+            _wt_complete_worktree_branches
+          fi
+          ;;
+      esac
+      ;;
+  esac
+}
+
+# Helper: Complete all git branches
+function _wt_complete_all_branches() {
+  local -a branches
+  branches=(${(f)"$(git branch --format='%(refname:short)' 2>/dev/null)"})
+  _describe 'branch' branches
+}
+
+# Helper: Complete only branches that have worktrees
+function _wt_complete_worktree_branches() {
+  local -a worktree_branches
+  # Extract branch names from git worktree list (they appear in brackets)
+  worktree_branches=(${(f)"$(git worktree list 2>/dev/null | grep -o '\[.*\]' | tr -d '[]')"})
+  if [[ ${#worktree_branches[@]} -gt 0 ]]; then
+    _describe 'worktree branch' worktree_branches
+  fi
+}
+
+# Register completion function (only if compdef is available)
+if command -v compdef &>/dev/null; then
+  compdef _wt_completion wt
+fi

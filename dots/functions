@@ -193,4 +193,8 @@ function localip() {
 
 # Load worktree management functions
 # See: dots/worktree-functions
-[[ -f "$HOME/dotfiles/dots/worktree-functions" ]] && source "$HOME/dotfiles/dots/worktree-functions"
+if [[ -f "$HOME/dotfiles/dots/worktree-functions" ]]; then
+  source "$HOME/dotfiles/dots/worktree-functions"
+  # Remove wtp's alias so our function takes precedence
+  unalias wt 2>/dev/null
+fi

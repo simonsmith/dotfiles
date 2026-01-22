@@ -14,16 +14,6 @@ alias k="kubectl"
 alias cat="bat"
 alias rm="trash"
 
-# wtp
-# https://github.com/satococoa/wtp
-alias wt='wtp'
-alias wta='wtp add'           # Add existing branch
-alias wtb='wtp add -b'        # Create new branch
-alias wtl='wtp list'          # List all worktrees
-alias wtc='wtp cd'            # Navigate to worktree (with shell integration)
-alias wtr='wtp remove'        # Remove worktree only
-alias wtrb='wtp remove --with-branch'  # Remove worktree and branch
-
 # yarn
 alias y='yarn'
 alias ya='yarn add'
