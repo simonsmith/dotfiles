@@ -226,7 +226,7 @@ function _wt_open_tmux() {
   # Check if we're in a tmux session
   if [[ -z "$TMUX" ]]; then
     echo "Not in tmux session. Starting new session..."
-    tmux new-session -s "$(basename $branch_name)" -c "$worktree_path" \; \
+    tmux new-session -s "wt-$(basename $branch_name)" -c "$worktree_path" \; \
       send-keys "$editor" Enter \; \
       split-window -h -c "$worktree_path" \; \
       split-window -v -c "$worktree_path" \; \
@@ -241,7 +241,7 @@ function _wt_open_tmux() {
   fi
 
   # We're in tmux, create new window with layout
-  local window_name="$(basename $branch_name)"
+  local window_name="wt-$(basename $branch_name)"
 
   tmux new-window -n "$window_name" \; \
     send-keys "cd \"$worktree_path\" && $editor" Enter \; \
@@ -304,7 +304,7 @@ function _wt_close() {
       tmux kill-window
     else
       # Try to find and close the window by name
-      local window_name="$(basename $branch_name)"
+      local window_name="wt-$(basename $branch_name)"
       tmux kill-window -t "$window_name" 2>/dev/null && echo "Closed tmux window: $window_name"
     fi
   fi
