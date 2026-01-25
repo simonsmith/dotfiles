@@ -41,7 +41,6 @@ Plug("folke/persistence.nvim") -- Session management
 Plug("y3owk1n/time-machine.nvim") -- Time travel for buffers
 Plug("MeanderingProgrammer/render-markdown.nvim") -- Enhanced markdown rendering
 Plug("fasterius/simple-zoom.nvim") -- tmux style zoom
-Plug("ggandor/leap.nvim") -- jump to char
 
 -- File management
 Plug("mcchrish/nnn.vim") -- NNN file manager integration
@@ -864,11 +863,6 @@ end)
 
 -- Formatting
 vim.keymap.set("n", "<leader>p", ":RunFormat<CR>", { silent = true })
-
--- Leap --
-vim.keymap.set("n", "<leader><space>", function()
-  require("leap").leap({ target_windows = { vim.api.nvim_get_current_win() } })
-end)
 
 -- Time machine
 vim.keymap.set("n", "<leader>t", ":TimeMachineToggle<CR>")
