@@ -22,9 +22,7 @@ Plug("nanozuki/tabby.nvim") -- Tab line customization
 Plug("nvim-tree/nvim-web-devicons") -- File type icons
 
 -- Terminal integration
-if vim.fn.executable("tmux") == 1 then
-  Plug("christoomey/vim-tmux-navigator") -- Seamless tmux/vim navigation
-end
+Plug("akinsho/toggleterm.nvim", { ["tag"] = "v2.13.1" })
 
 -- File finding and search
 Plug("junegunn/fzf", { ["dir"] = "~/.fzf", ["do"] = "./install --all" })
@@ -265,6 +263,47 @@ require("noice").setup({
     command_palette = true, -- Position cmdline and popupmenu together
     long_message_to_split = true, -- Send long messages to split
   },
+})
+
+-- Toggle terminal
+require("toggleterm").setup({
+  direction = "horizontal",
+  shade_terminals = true,
+  persist_size = false,
+  size = function(term)
+    if term.direction == "horizontal" then
+      return math.floor(vim.o.lines * 0.40)
+    end
+    return math.floor(vim.o.columns * 0.40)
+  end,
+})
+
+vim.keymap.set("n", "<leader>o", ":ToggleTerm<cr>")
+
+-- Window navigation should work the same in normal and terminal buffers.
+vim.keymap.set("n", "<C-h>", "<Cmd>wincmd h<CR>", { silent = true })
+vim.keymap.set("n", "<C-j>", "<Cmd>wincmd j<CR>", { silent = true })
+vim.keymap.set("n", "<C-k>", "<Cmd>wincmd k<CR>", { silent = true })
+vim.keymap.set("n", "<C-l>", "<Cmd>wincmd l<CR>", { silent = true })
+
+local function set_toggleterm_keymaps()
+  local opts = { buffer = true, silent = true }
+
+  vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], opts)
+  vim.keymap.set("t", "jk", [[<C-\><C-n>]], opts)
+
+  -- Use wincmd mappings for persist_mode compatibility (per toggleterm docs).
+  vim.keymap.set("t", "<C-h>", "<Cmd>wincmd h<CR>", opts)
+  vim.keymap.set("t", "<C-j>", "<Cmd>wincmd j<CR>", opts)
+  vim.keymap.set("t", "<C-k>", "<Cmd>wincmd k<CR>", opts)
+  vim.keymap.set("t", "<C-l>", "<Cmd>wincmd l<CR>", opts)
+
+  vim.keymap.set("t", "<C-w>", [[<C-\><C-n><C-w>]], opts)
+end
+
+vim.api.nvim_create_autocmd("TermOpen", {
+  pattern = "term://*toggleterm#*",
+  callback = set_toggleterm_keymaps,
 })
 
 -- Time Machine - Buffer history navigation
@@ -771,21 +810,6 @@ cnoreabbrev W w
 cnoreabbrev Qa q
 cnoreabbrev Qall qall
 ]])
-
--- Terminal mappings for seamless tmux/vim navigation
-if vim.fn.exists(":tnoremap") == 2 then
-  vim.keymap.set("t", "<C-h>", "<C-\\><C-n><C-w>h")
-  vim.keymap.set("t", "<C-j>", "<C-\\><C-n><C-w>j")
-  vim.keymap.set("t", "<C-k>", "<C-\\><C-n><C-w>k")
-  vim.keymap.set("t", "<C-l>", "<C-\\><C-n><C-w>l")
-  vim.keymap.set("t", "<Esc>", function()
-    if vim.bo.filetype == "fzf" then
-      return "<Esc>"
-    else
-      return "<C-\\><C-n>"
-    end
-  end, { expr = true })
-end
 
 -- File operations
 vim.keymap.set("n", "<leader>w", ":silent wa<CR>") -- Save all files
