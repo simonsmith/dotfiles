@@ -23,6 +23,7 @@ Plug("nvim-tree/nvim-web-devicons") -- File type icons
 
 -- Terminal integration
 Plug("akinsho/toggleterm.nvim", { ["tag"] = "v2.13.1" })
+Plug("christoomey/vim-tmux-navigator") -- Seamless tmux/vim navigation
 
 -- File finding and search
 Plug("junegunn/fzf", { ["dir"] = "~/.fzf", ["do"] = "./install --all" })
@@ -280,11 +281,12 @@ require("toggleterm").setup({
 
 vim.keymap.set("n", "<leader>o", ":ToggleTerm<cr>")
 
--- Window navigation should work the same in normal and terminal buffers.
-vim.keymap.set("n", "<C-h>", "<Cmd>wincmd h<CR>", { silent = true })
-vim.keymap.set("n", "<C-j>", "<Cmd>wincmd j<CR>", { silent = true })
-vim.keymap.set("n", "<C-k>", "<Cmd>wincmd k<CR>", { silent = true })
-vim.keymap.set("n", "<C-l>", "<Cmd>wincmd l<CR>", { silent = true })
+-- Window navigation using vim-tmux-navigator (seamlessly moves between vim and tmux)
+vim.g.tmux_navigator_no_mappings = 1
+vim.keymap.set("n", "<C-h>", "<cmd>TmuxNavigateLeft<cr>", { silent = true })
+vim.keymap.set("n", "<C-j>", "<cmd>TmuxNavigateDown<cr>", { silent = true })
+vim.keymap.set("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>", { silent = true })
+vim.keymap.set("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>", { silent = true })
 
 local function set_toggleterm_keymaps()
   local opts = { buffer = true, silent = true }
@@ -292,11 +294,11 @@ local function set_toggleterm_keymaps()
   vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], opts)
   vim.keymap.set("t", "jk", [[<C-\><C-n>]], opts)
 
-  -- Use wincmd mappings for persist_mode compatibility (per toggleterm docs).
-  vim.keymap.set("t", "<C-h>", "<Cmd>wincmd h<CR>", opts)
-  vim.keymap.set("t", "<C-j>", "<Cmd>wincmd j<CR>", opts)
-  vim.keymap.set("t", "<C-k>", "<Cmd>wincmd k<CR>", opts)
-  vim.keymap.set("t", "<C-l>", "<Cmd>wincmd l<CR>", opts)
+  -- Use TmuxNavigate for seamless vim/tmux navigation from terminal buffers
+  vim.keymap.set("t", "<C-h>", "<Cmd>TmuxNavigateLeft<CR>", opts)
+  vim.keymap.set("t", "<C-j>", "<Cmd>TmuxNavigateDown<CR>", opts)
+  vim.keymap.set("t", "<C-k>", "<Cmd>TmuxNavigateUp<CR>", opts)
+  vim.keymap.set("t", "<C-l>", "<Cmd>TmuxNavigateRight<CR>", opts)
 
   vim.keymap.set("t", "<C-w>", [[<C-\><C-n><C-w>]], opts)
 end
