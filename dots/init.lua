@@ -279,28 +279,60 @@ require("toggleterm").setup({
   end,
 })
 
-vim.keymap.set("n", "<leader>o", ":ToggleTerm<cr>")
+wk.add({
+  { "<leader>o", ":ToggleTerm<cr>", desc = "Toggle terminal", mode = "n" },
+})
 
 -- Window navigation using vim-tmux-navigator (seamlessly moves between vim and tmux)
 vim.g.tmux_navigator_no_mappings = 1
-vim.keymap.set("n", "<C-h>", "<cmd>TmuxNavigateLeft<cr>", { silent = true })
-vim.keymap.set("n", "<C-j>", "<cmd>TmuxNavigateDown<cr>", { silent = true })
-vim.keymap.set("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>", { silent = true })
-vim.keymap.set("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>", { silent = true })
+wk.add({
+  { "<C-h>", "<cmd>TmuxNavigateLeft<cr>", desc = "Tmux navigate left", mode = "n", silent = true },
+  { "<C-j>", "<cmd>TmuxNavigateDown<cr>", desc = "Tmux navigate down", mode = "n", silent = true },
+  { "<C-k>", "<cmd>TmuxNavigateUp<cr>", desc = "Tmux navigate up", mode = "n", silent = true },
+  { "<C-l>", "<cmd>TmuxNavigateRight<cr>", desc = "Tmux navigate right", mode = "n", silent = true },
+})
 
 local function set_toggleterm_keymaps()
   local opts = { buffer = true, silent = true }
 
-  vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], opts)
-  vim.keymap.set("t", "jk", [[<C-\><C-n>]], opts)
-
-  -- Use TmuxNavigate for seamless vim/tmux navigation from terminal buffers
-  vim.keymap.set("t", "<C-h>", "<Cmd>TmuxNavigateLeft<CR>", opts)
-  vim.keymap.set("t", "<C-j>", "<Cmd>TmuxNavigateDown<CR>", opts)
-  vim.keymap.set("t", "<C-k>", "<Cmd>TmuxNavigateUp<CR>", opts)
-  vim.keymap.set("t", "<C-l>", "<Cmd>TmuxNavigateRight<CR>", opts)
-
-  vim.keymap.set("t", "<C-w>", [[<C-\><C-n><C-w>]], opts)
+  wk.add({
+    { "<Esc>", [[<C-\><C-n>]], desc = "Exit terminal mode", mode = "t", buffer = opts.buffer, silent = opts.silent },
+    { "jk", [[<C-\><C-n>]], desc = "Exit terminal mode", mode = "t", buffer = opts.buffer, silent = opts.silent },
+    -- Use TmuxNavigate for seamless vim/tmux navigation from terminal buffers
+    {
+      "<C-h>",
+      "<Cmd>TmuxNavigateLeft<CR>",
+      desc = "Tmux navigate left",
+      mode = "t",
+      buffer = opts.buffer,
+      silent = opts.silent,
+    },
+    {
+      "<C-j>",
+      "<Cmd>TmuxNavigateDown<CR>",
+      desc = "Tmux navigate down",
+      mode = "t",
+      buffer = opts.buffer,
+      silent = opts.silent,
+    },
+    {
+      "<C-k>",
+      "<Cmd>TmuxNavigateUp<CR>",
+      desc = "Tmux navigate up",
+      mode = "t",
+      buffer = opts.buffer,
+      silent = opts.silent,
+    },
+    {
+      "<C-l>",
+      "<Cmd>TmuxNavigateRight<CR>",
+      desc = "Tmux navigate right",
+      mode = "t",
+      buffer = opts.buffer,
+      silent = opts.silent,
+    },
+    { "<C-w>", [[<C-\><C-n><C-w>]], desc = "Window commands", mode = "t", buffer = opts.buffer, silent = opts.silent },
+  })
 end
 
 vim.api.nvim_create_autocmd("TermOpen", {
@@ -620,7 +652,9 @@ require("markview").setup({
   preview = { enable = false },
 })
 
-vim.api.nvim_set_keymap("n", "<leader>m", "<CMD>Markview<CR>", { desc = "Toggles `markview` previews globally." })
+wk.add({
+  { "<leader>m", "<CMD>Markview<CR>", desc = "Toggle markview preview", mode = "n" },
+})
 
 -- Spectre - Search and replace across files
 require("spectre").setup({
@@ -664,7 +698,10 @@ require("gitsigns").setup({
     local function map(mode, l, r, opts)
       opts = opts or {}
       opts.buffer = bufnr
-      vim.keymap.set(mode, l, r, opts)
+      opts.mode = mode
+      wk.add({
+        vim.tbl_extend("force", { l, r }, opts),
+      })
     end
 
     -- Git hunk navigation
@@ -676,7 +713,7 @@ require("gitsigns").setup({
         gs.next_hunk()
       end)
       return "<Ignore>"
-    end, { expr = true })
+    end, { expr = true, desc = "Next git hunk" })
 
     map("n", "[c", function()
       if vim.wo.diff then
@@ -686,7 +723,7 @@ require("gitsigns").setup({
         gs.prev_hunk()
       end)
       return "<Ignore>"
-    end, { expr = true })
+    end, { expr = true, desc = "Previous git hunk" })
   end,
 })
 
@@ -773,7 +810,9 @@ require("nnn").setup({
   },
 })
 
-vim.keymap.set("n", "_", ":silent NnnPicker %:p:h<CR>") -- Open file manager in current directory
+wk.add({
+  { "_", ":silent NnnPicker %:p:h<CR>", desc = "Open file manager here", mode = "n" },
+})
 
 -- legacy plugin configurations
 -- ============================================================================
@@ -812,22 +851,25 @@ cnoreabbrev Qall qall
 ]])
 
 -- File operations
-vim.keymap.set("n", "<leader>w", ":silent wa<CR>") -- Save all files
-vim.keymap.set("n", "gv", ":vertical wincmd f<CR>") -- Open file under cursor in vertical split
+wk.add({
+  { "<leader>w", ":silent wa<CR>", desc = "Save all files", mode = "n" },
+  { "gv", ":vertical wincmd f<CR>", desc = "Open file under cursor in vsplit", mode = "n" },
+})
 
 -- Movement improvements
-vim.keymap.set("n", "k", "gk") -- Move by display lines
-vim.keymap.set("n", "j", "gj")
-vim.keymap.set("v", "k", "gk")
-vim.keymap.set("v", "j", "gj")
+wk.add({
+  { "k", "gk", desc = "Move up by display line", mode = { "n", "v" } },
+  { "j", "gj", desc = "Move down by display line", mode = { "n", "v" } },
+})
 
 -- Editing enhancements
-vim.keymap.set("n", "dD", "S<Esc>") -- Delete line content but keep line
-vim.keymap.set("n", "Y", "y$") -- Yank to end of line
-vim.keymap.set("n", "g=", "gg=G``") -- Format entire file
-vim.keymap.set("v", "y", "y`]") -- Keep cursor at end after yank
-vim.keymap.set("v", "p", "p`]") -- Keep cursor at end after paste
-vim.keymap.set("n", "p", "p`]")
+wk.add({
+  { "dD", "S<Esc>", desc = "Delete line content", mode = "n" },
+  { "Y", "y$", desc = "Yank to end of line", mode = "n" },
+  { "g=", "gg=G``", desc = "Format entire file", mode = "n" },
+  { "y", "y`]", desc = "Yank and keep cursor at end", mode = "v" },
+  { "p", "p`]", desc = "Paste and keep cursor at end", mode = { "n", "v" } },
+})
 
 -- Zoom buffer
 wk.add({
@@ -835,107 +877,173 @@ wk.add({
 })
 
 -- Buffer navigation
-vim.keymap.set("n", "Q", ":silent Bdelete<CR>", { silent = true }) -- Close buffer without closing window
+wk.add({
+  { "Q", ":silent Bdelete<CR>", desc = "Close buffer (keep window)", mode = "n", silent = true },
+})
 
 -- Tab operations
-vim.keymap.set("n", "th", ":tabprev<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "tl", ":tabnext<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "tn", ":tabnew<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "td", ":tabclose<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "to", ":tabnew | ", { noremap = true })
-vim.keymap.set("n", "tr", ":Tabby rename_tab ", { noremap = true })
+wk.add({
+  { "th", ":tabprev<CR>", desc = "Previous tab", mode = "n", noremap = true, silent = true },
+  { "tl", ":tabnext<CR>", desc = "Next tab", mode = "n", noremap = true, silent = true },
+  { "tn", ":tabnew<CR>", desc = "New tab", mode = "n", noremap = true, silent = true },
+  { "td", ":tabclose<CR>", desc = "Close tab", mode = "n", noremap = true, silent = true },
+  { "to", ":tabnew | ", desc = "New tab (prompt command)", mode = "n", noremap = true },
+  { "tr", ":Tabby rename_tab ", desc = "Rename tab", mode = "n", noremap = true },
+})
 
 -- Window operations
-vim.keymap.set("n", "<leader>x", ":split<CR>") -- Horizontal split
-vim.keymap.set("n", "<leader>v", ":vsplit<CR>") -- Vertical split
+wk.add({
+  { "<leader>x", ":split<CR>", desc = "Horizontal split", mode = "n" },
+  { "<leader>v", ":vsplit<CR>", desc = "Vertical split", mode = "n" },
+})
 
 -- Search and replace
-vim.keymap.set("n", "<leader>k", ":noh<CR>") -- Clear search highlighting
+wk.add({
+  { "<leader>k", ":noh<CR>", desc = "Clear search highlight", mode = "n" },
+})
 
 -- Utility functions
-vim.keymap.set("n", "<F6>", ":setlocal spell!<CR>") -- Toggle spell checking
-vim.keymap.set("n", "<CR>", "o<Esc>") -- Insert new line without entering insert mode
+wk.add({
+  { "<F6>", ":setlocal spell!<CR>", desc = "Toggle spell checking", mode = "n" },
+  { "<CR>", "o<Esc>", desc = "Insert line below", mode = "n" },
+})
 
 -- Visual mode improvements
-vim.keymap.set("v", "<", "<gv") -- Keep selection when indenting
-vim.keymap.set("v", ">", ">gv")
+wk.add({
+  { "<", "<gv", desc = "Indent left and keep selection", mode = "v" },
+  { ">", ">gv", desc = "Indent right and keep selection", mode = "v" },
+})
 
 -- FZF mappings
-vim.keymap.set("n", "<C-p>", "<cmd>FzfLua git_files<cr>", { noremap = true })
-vim.keymap.set("n", "<C-]>", "<cmd>FzfLua files<cr>", { noremap = true })
-vim.keymap.set("n", "<C-o>", "<cmd>FzfLua jumps<cr>", { noremap = true })
-vim.keymap.set("n", "<leader>l", "<cmd>FzfLua blines<cr>", { noremap = true })
-vim.keymap.set("n", "<Tab>", "<cmd>FzfLua buffers<cr>", { noremap = true })
-vim.keymap.set("n", "<BS>", "<cmd>FzfLua command_history<cr>", { noremap = true, silent = true })
+wk.add({
+  { "<C-p>", "<cmd>FzfLua git_files<cr>", desc = "FZF git files", mode = "n", noremap = true },
+  { "<C-]>", "<cmd>FzfLua files<cr>", desc = "FZF files", mode = "n", noremap = true },
+  { "<C-o>", "<cmd>FzfLua jumps<cr>", desc = "FZF jumps", mode = "n", noremap = true },
+  { "<leader>l", "<cmd>FzfLua blines<cr>", desc = "FZF buffer lines", mode = "n", noremap = true },
+  { "<Tab>", "<cmd>FzfLua buffers<cr>", desc = "FZF buffers", mode = "n", noremap = true },
+  {
+    "<BS>",
+    "<cmd>FzfLua command_history<cr>",
+    desc = "FZF command history",
+    mode = "n",
+    noremap = true,
+    silent = true,
+  },
+})
 
 -- Substitute plugin mappings
-vim.keymap.set("n", "s", require("substitute").operator, { noremap = true })
-vim.keymap.set("n", "ss", require("substitute").line, { noremap = true })
-vim.keymap.set("x", "s", require("substitute").visual, { noremap = true })
-vim.keymap.set("n", "sx", require("substitute.exchange").operator, { noremap = true })
-vim.keymap.set("n", "sxx", require("substitute.exchange").line, { noremap = true })
-vim.keymap.set("x", "X", require("substitute.exchange").visual, { noremap = true })
-vim.keymap.set("n", "sxc", require("substitute.exchange").cancel, { noremap = true })
+wk.add({
+  { "s", require("substitute").operator, desc = "Substitute operator", mode = "n", noremap = true },
+  { "ss", require("substitute").line, desc = "Substitute line", mode = "n", noremap = true },
+  { "s", require("substitute").visual, desc = "Substitute selection", mode = "x", noremap = true },
+  { "sx", require("substitute.exchange").operator, desc = "Exchange operator", mode = "n", noremap = true },
+  { "sxx", require("substitute.exchange").line, desc = "Exchange line", mode = "n", noremap = true },
+  { "X", require("substitute.exchange").visual, desc = "Exchange selection", mode = "x", noremap = true },
+  { "sxc", require("substitute.exchange").cancel, desc = "Cancel exchange", mode = "n", noremap = true },
+})
 
 -- Session management
-vim.keymap.set("n", "<leader>qs", function()
-  require("persistence").load()
-end, { noremap = true })
-vim.keymap.set("n", "<leader>qS", function()
-  require("persistence").select()
-end)
+wk.add({
+  {
+    "<leader>qs",
+    function()
+      require("persistence").load()
+    end,
+    desc = "Restore session",
+    mode = "n",
+    noremap = true,
+  },
+  {
+    "<leader>qS",
+    function()
+      require("persistence").select()
+    end,
+    desc = "Select session",
+    mode = "n",
+  },
+})
 
 -- Formatting
-vim.keymap.set("n", "<leader>p", ":RunFormat<CR>", { silent = true })
+wk.add({
+  { "<leader>p", ":RunFormat<CR>", desc = "Format buffer", mode = "n", silent = true },
+})
 
 -- Time machine
-vim.keymap.set("n", "<leader>t", ":TimeMachineToggle<CR>")
+wk.add({
+  { "<leader>t", ":TimeMachineToggle<CR>", desc = "Toggle time machine", mode = "n" },
+})
 
 -- Text objects (vim-textobj-entire)
-vim.keymap.set("x", "aE", "<Plug>(textobj-entire-a)")
-vim.keymap.set("o", "aE", "<Plug>(textobj-entire-a)")
-vim.keymap.set("x", "iE", "<Plug>(textobj-entire-i)")
-vim.keymap.set("o", "iE", "<Plug>(textobj-entire-i)")
+wk.add({
+  { "aE", "<Plug>(textobj-entire-a)", desc = "Around entire buffer", mode = { "x", "o" } },
+  { "iE", "<Plug>(textobj-entire-i)", desc = "Inside entire buffer", mode = { "x", "o" } },
+})
 
 -- vim-cutlass configuration (separate cut and delete)
-vim.keymap.set("n", "m", "d") -- Use 'm' for cut (delete to register)
-vim.keymap.set("x", "m", "d")
-vim.keymap.set("n", "mm", "dd")
+wk.add({
+  { "m", "d", desc = "Cut (delete to register)", mode = { "n", "x" } },
+  { "mm", "dd", desc = "Cut line", mode = "n" },
+})
 
 -- Buffer management
-vim.keymap.set("n", "<leader>B", ":BufOnly<CR>") -- Close all buffers except current
+wk.add({
+  { "<leader>B", ":BufOnly<CR>", desc = "Close other buffers", mode = "n" },
+})
 
 -- Git operations
-vim.keymap.set("n", "<C-g>", ":GV!<CR>") -- Git commit browser
+wk.add({
+  { "<C-g>", ":GV!<CR>", desc = "Git commit browser", mode = "n" },
+})
 
 -- Web development
-vim.keymap.set("i", "hh", "<Plug>(emmet-expand-abbr)") -- Emmet expansion
+wk.add({
+  { "hh", "<Plug>(emmet-expand-abbr)", desc = "Emmet expand abbreviation", mode = "i" },
+})
 
 -- Search and replace across files
-vim.keymap.set("n", "<leader>s", '<cmd>lua require("spectre").open()<CR>', {
-  desc = "Open Spectre",
-})
-vim.keymap.set("n", "<leader>c", '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
-  desc = "Search current word",
+wk.add({
+  { "<leader>s", '<cmd>lua require("spectre").open()<CR>', desc = "Open Spectre", mode = "n" },
+  {
+    "<leader>c",
+    '<cmd>lua require("spectre").open_visual({select_word=true})<CR>',
+    desc = "Search current word",
+    mode = "n",
+  },
 })
 
 -- coc configuration
 -- ============================================================================
 
 -- CoC key mappings for LSP functionality
-vim.keymap.set("n", "<leader>dr", "<Plug>(coc-references)", { silent = true })
-vim.keymap.set("n", "<leader>dR", "<Plug>(coc-refactor)", { silent = true })
-vim.keymap.set("n", "<leader>dd", "<Plug>(coc-definition)", { silent = true })
-vim.keymap.set("n", "<leader>dv", ':call CocAction("jumpDefinition", "vsplit")<CR>', { silent = true })
-vim.keymap.set("n", "<leader>di", "<Plug>(coc-implementation)", { silent = true })
-vim.keymap.set("n", "<leader>dn", "<Plug>(coc-rename)", { silent = true })
-vim.keymap.set("n", "]e", ':call CocAction("diagnosticNext")<CR>', { silent = true })
-vim.keymap.set("n", "[e", ':call CocAction("diagnosticPrevious")<CR>', { silent = true })
-vim.keymap.set("n", "<leader>e", ":CocDiagnostics<CR>", { silent = true })
-vim.keymap.set("n", "<leader>r", ":CocRestart<CR>", { silent = true })
+wk.add({
+  { "<leader>dr", "<Plug>(coc-references)", desc = "LSP references", mode = "n", silent = true },
+  { "<leader>dR", "<Plug>(coc-refactor)", desc = "LSP refactor", mode = "n", silent = true },
+  { "<leader>dd", "<Plug>(coc-definition)", desc = "LSP definition", mode = "n", silent = true },
+  {
+    "<leader>dv",
+    ':call CocAction("jumpDefinition", "vsplit")<CR>',
+    desc = "LSP definition (vsplit)",
+    mode = "n",
+    silent = true,
+  },
+  { "<leader>di", "<Plug>(coc-implementation)", desc = "LSP implementation", mode = "n", silent = true },
+  { "<leader>dn", "<Plug>(coc-rename)", desc = "LSP rename", mode = "n", silent = true },
+  { "]e", ':call CocAction("diagnosticNext")<CR>', desc = "Next diagnostic", mode = "n", silent = true },
+  { "[e", ':call CocAction("diagnosticPrevious")<CR>', desc = "Previous diagnostic", mode = "n", silent = true },
+  { "<leader>e", ":CocDiagnostics<CR>", desc = "Diagnostics list", mode = "n", silent = true },
+  { "<leader>r", ":CocRestart<CR>", desc = "Restart CoC", mode = "n", silent = true },
+})
 
 -- CoC completion mapping
-vim.keymap.set("i", "<CR>", 'coc#pum#visible() ? coc#_select_confirm() : "\\<CR>"', { expr = true })
+wk.add({
+  {
+    "<CR>",
+    'coc#pum#visible() ? coc#_select_confirm() : "\\<CR>"',
+    desc = "Confirm completion",
+    mode = "i",
+    expr = true,
+  },
+})
 
 -- Documentation popup
 local function show_documentation()
@@ -945,7 +1053,9 @@ local function show_documentation()
     vim.fn.CocAction("doHover")
   end
 end
-vim.keymap.set("n", "K", show_documentation, { silent = true })
+wk.add({
+  { "K", show_documentation, desc = "Show documentation", mode = "n", silent = true },
+})
 
 -- Combined lint fix function - runs appropriate linter based on file type
 local function fix_lint_errors()
@@ -990,13 +1100,17 @@ wk.add({
 vim.api.nvim_create_autocmd("CmdwinEnter", {
   pattern = "*",
   callback = function()
-    vim.api.nvim_set_keymap("n", "<CR>", "<CR>", { noremap = true })
+    wk.add({
+      { "<CR>", "<CR>", desc = "Command window enter", mode = "n", noremap = true, buffer = true },
+    })
   end,
 })
 vim.api.nvim_create_autocmd("CmdwinLeave", {
   pattern = "*",
   callback = function()
-    vim.api.nvim_set_keymap("n", "<CR>", "o<Esc>", { noremap = true })
+    wk.add({
+      { "<CR>", "o<Esc>", desc = "Insert line below", mode = "n", noremap = true, buffer = true },
+    })
   end,
 })
 
