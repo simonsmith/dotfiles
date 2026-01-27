@@ -75,6 +75,23 @@ for file in ~/.{extra,aliases,functions,work}; do
 done
 unset file
 
+# Work around tools that run `compinit` before znap (e.g., bun).
+# In that case, znap can leave `compdef` as a stub and captured compdefs
+# (including our `wt` completion) never get applied.
+if [[ ${functions[compdef]} == *"_znap_compdef"* ]]; then
+  unfunction compinit compdef 2>/dev/null
+  autoload -Uz compinit compdef
+  compinit -i -d "${_comp_dumpfile:-${XDG_CACHE_HOME:-$HOME/.cache}/zsh/compdump}"
+
+  if (( ${#_znap_compdef[@]} )); then
+    typeset __znap_def
+    for __znap_def in "${_znap_compdef[@]}"; do
+      eval "compdef ${__znap_def}"
+    done
+    unset __znap_def
+  fi
+fi
+
 if [ "$ALACRITTY" = "true" ]; then
   export BAT_THEME="OneHalfDark"
 fi
