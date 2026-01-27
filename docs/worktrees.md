@@ -1,113 +1,88 @@
-# Git Worktrees Quick Reference
+# Git Worktrees + Tmux
 
-Work on multiple branches simultaneously with isolated worktrees + tmux environments.
+Work on multiple branches simultaneously with isolated worktrees in tmux windows.
 
 ## Commands
 
-### wtmux - Create worktree + tmux environment
+### Tmux Integration
 
-Opens neovim, terminal, and claude in a 3-pane layout.
+Create and manage worktrees with automatic tmux environments (editor + terminal + claude).
 
 ```bash
-wtmux feature/auth              # Add existing branch
-wtmux -b feature/new            # Create new branch
-wtmux -b feature/test main      # Create new branch from main
+wt new <branch> [base]         # Create new branch, open in tmux window
+                               # Example: wt new feature/auth
+                               # Example: wt new feature/auth main
+
+wt open <branch>               # Open existing branch in tmux window
+                               # Creates worktree if doesn't exist
+                               # Example: wt open feature/existing
+
+wt close [branch]              # Close tmux window, remove worktree (keep branch)
+                               # Example: wt close
+                               # Example: wt close feature/old
+
+wt close -d [branch]           # Close tmux window, remove worktree + DELETE branch
+wt close --delete [branch]     # Example: wt close -d
+                               # Example: wt close --delete feature/old
 ```
 
-### wtclose - Remove worktree
+### Standard Worktree Commands
 
-Closes tmux window and removes worktree.
+Manage worktrees without tmux integration.
 
 ```bash
-wtclose                         # Remove current worktree (keep branch)
-wtclose -b                      # Remove current worktree + delete branch
-wtclose feature/auth            # Remove specific worktree
-wtclose -b feature/auth         # Remove specific worktree + delete branch
+wt add <branch>                # Add existing branch as worktree
+                               # Example: wt add feature/existing
+
+wt add -b <branch> [base]      # Create new branch as worktree
+                               # Example: wt add -b feature/new
+                               # Example: wt add -b feature/new main
+
+wt remove <branch>             # Remove worktree only (keep branch)
+                               # Example: wt remove feature/old
 ```
 
-### wtlist - List all worktrees
+### Navigation & Info
 
 ```bash
-wtlist
-```
+wt list                        # List all worktrees and their branches
 
-### wtcd - Navigate to worktree
+wt cd [branch]                 # Navigate to worktree directory
+                               # No args: go to main worktree
+                               # Example: wt cd feature/auth
 
-```bash
-wtcd                           # Go to main worktree
-wtcd feature/auth              # Go to specific worktree
-```
+wt status                      # Show current worktree info
+                               # Branch, path, tmux window
 
-## Aliases
-
-| Alias | Command | Description |
-|-------|---------|-------------|
-| `wt` | `wtp` | Main wtp command |
-| `wta` | `wtp add` | Add existing branch as worktree |
-| `wtb` | `wtp add -b` | Create new branch and worktree |
-| `wtl` | `wtp list` | List all worktrees |
-| `wtc` | `wtp cd` | Navigate to worktree |
-| `wtr` | `wtp remove` | Remove worktree only |
-| `wtrb` | `wtp remove --with-branch` | Remove worktree and branch |
-
-## Common Workflows
-
-### New feature
-
-```bash
-wtmux -b feature/user-profile    # Create + open
-# ... work on feature ...
-wtclose -b                        # Close + clean up
-```
-
-### Existing branch
-
-```bash
-wtmux feature/existing           # Open existing branch
-# ... work on it ...
-wtclose                          # Close (keep branch)
-```
-
-### Multiple features
-
-```bash
-wtmux -b feature/auth            # Open first feature
-wtmux -b feature/payments        # Open second (new tmux window)
-
-# Switch between: Ctrl-b n/p or Ctrl-b <number>
-```
-
-### Quick fix
-
-```bash
-wtmux hotfix/urgent-bug          # Quick switch
-# ... make fix ...
-git add . && git commit -m "fix"
-wtclose                          # Back to previous work
-```
-
-### Clean up
-
-```bash
-wtlist                           # See all worktrees
-wtclose -b feature/old           # Remove worktree + branch
+wt update [branch]             # Fetch origin/master and rebase
+                               # No args: update current branch
+                               # Example: wt update feature/auth
 ```
 
 ## Tmux Layout
 
 ```
 ┌─────────────────┬──────────────┐
-│                 │              │
 │                 │   Terminal   │
-│    Neovim       │              │
-│                 ├──────────────┤
-│                 │              │
+│    Neovim       ├──────────────┤
 │                 │    Claude    │
 └─────────────────┴──────────────┘
 ```
 
+Navigate between panes: `Ctrl+h/j/k/l` (seamlessly works with vim splits)
+
+## Customization
+
+Environment variables to customize tmux layout:
+
+```bash
+export WT_EDITOR="nvim"                                    # Default editor
+export WT_ASSISTANT="claude --dangerously-skip-permissions" # AI assistant
+export WT_TERMINAL_CMD=""                                  # Terminal command
+export WT_PANE_WIDTH="40"                                  # Right pane width %
+```
+
 ## Files
 
-- **Config:** `~/dotfiles/.wtp.yml`
 - **Functions:** `~/dotfiles/dots/worktree-functions`
-- **Aliases:** `~/dotfiles/dots/aliases`
+- **Requires:** [wtp](https://github.com/satococoa/wtp)

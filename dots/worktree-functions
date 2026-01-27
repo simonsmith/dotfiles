@@ -36,6 +36,9 @@ function wt() {
     status)
       _wt_status "$@"
       ;;
+    update)
+      _wt_update "$@"
+      ;;
     help|--help|-h)
       _wt_help
       ;;
@@ -65,6 +68,7 @@ NAVIGATION & INFO:
   wt list                        List all worktrees
   wt cd [branch]                 Navigate to worktree directory
   wt status                      Show current worktree info
+  wt update [branch]             Fetch master and rebase current/specified branch
 
 LOW-LEVEL COMMANDS (no tmux):
   wt add <branch>                Add existing branch as worktree
@@ -109,6 +113,10 @@ EXAMPLES:
 
   # List all worktrees
   wt list
+
+  # Update worktree with latest master
+  wt update                      # Rebase current branch
+  wt update feature/auth         # Rebase specific branch
 
   # Low-level operations
   wt add feature/existing        # Just add, no tmux
@@ -373,6 +381,58 @@ function _wt_status() {
   fi
 }
 
+# Update worktree by fetching master and rebasing
+function _wt_update() {
+  local target_branch="$1"
+  local original_dir=$(pwd)
+  local worktree_path=""
+
+  # If no branch specified, use current branch
+  if [[ -z "$target_branch" ]]; then
+    target_branch=$(git branch --show-current 2>/dev/null)
+    if [[ -z "$target_branch" ]]; then
+      echo "Error: Not in a git repository or could not determine branch"
+      return 1
+    fi
+    echo "Updating current branch: $target_branch"
+    worktree_path=$(pwd)
+  else
+    # Get worktree path for specified branch
+    worktree_path=$(git worktree list | grep "\[$target_branch\]" | awk '{print $1}')
+    if [[ -z "$worktree_path" ]]; then
+      echo "Error: No worktree found for branch: $target_branch"
+      return 1
+    fi
+    echo "Updating branch: $target_branch"
+    cd "$worktree_path" || return 1
+  fi
+
+  # Fetch and update local master branch
+  echo "Fetching origin/master and updating local master..."
+  git fetch origin master:master || {
+    echo "Error: Failed to fetch and update master"
+    cd "$original_dir"
+    return 1
+  }
+
+  # Rebase against origin/master
+  echo "Rebasing $target_branch against origin/master..."
+  git rebase origin/master || {
+    echo ""
+    echo "Error: Rebase failed. You may need to resolve conflicts."
+    echo "Run 'git rebase --abort' to cancel or resolve conflicts and 'git rebase --continue'"
+    cd "$original_dir"
+    return 1
+  }
+
+  echo "✓ Successfully updated $target_branch with latest master"
+
+  # Return to original directory if we changed it
+  if [[ "$original_dir" != "$worktree_path" ]]; then
+    cd "$original_dir"
+  fi
+}
+
 # Zsh completion function for wt
 function _wt_completion() {
   local -a subcommands
@@ -385,6 +445,7 @@ function _wt_completion() {
     'add:Add existing branch as worktree (no tmux)'
     'remove:Remove worktree only (no tmux)'
     'status:Show current worktree info'
+    'update:Fetch master and rebase branch'
     'help:Show help information'
   )
 
@@ -411,9 +472,9 @@ function _wt_completion() {
           # Show all branches
           _wt_complete_all_branches
           ;;
-        close|remove|cd)
-          # First check for flags
-          if [[ $words[$CURRENT] == -* ]]; then
+        close|remove|cd|update)
+          # First check for flags (only for close)
+          if [[ $line[1] == "close" && $words[$CURRENT] == -* ]]; then
             local -a close_opts
             close_opts=(
               '-d:Delete branch along with worktree'
