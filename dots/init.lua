@@ -38,7 +38,7 @@ Plug("folke/noice.nvim") -- Better command line, messages, and popupmenu
 Plug("folke/which-key.nvim") -- Key binding help
 Plug("folke/persistence.nvim") -- Session management
 Plug("y3owk1n/time-machine.nvim") -- Time travel for buffers
-Plug("MeanderingProgrammer/render-markdown.nvim") -- Enhanced markdown rendering
+Plug("OXY2DEV/markview.nvim")
 Plug("fasterius/simple-zoom.nvim") -- tmux style zoom
 
 -- File management
@@ -616,13 +616,11 @@ require("gitlinker").setup({
 })
 
 -- Render Markdown - Enhanced markdown rendering
-require("render-markdown").setup({
-  debounce = 20,
-  render_modes = false, -- Don't render in all modes
-  anti_conceal = {
-    enabled = false,
-  },
+require("markview").setup({
+  preview = { enable = false },
 })
+
+vim.api.nvim_set_keymap("n", "<leader>m", "<CMD>Markview<CR>", { desc = "Toggles `markview` previews globally." })
 
 -- Spectre - Search and replace across files
 require("spectre").setup({
