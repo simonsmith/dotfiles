@@ -39,6 +39,9 @@ function wt() {
     update)
       _wt_update "$@"
       ;;
+    merge)
+      _wt_merge "$@"
+      ;;
     help|--help|-h)
       _wt_help
       ;;
@@ -59,10 +62,14 @@ wt - Unified worktree management with tmux integration
 USAGE:
   wt <subcommand> [options]
 
-HIGH-LEVEL COMMANDS (with tmux):
+PRIMARY TMUX WORKFLOW COMMANDS:
+  These commands create/manage worktrees AND handle tmux windows for you.
+  Use these for your normal workflow.
+
   wt new <branch> [base]         Create new branch and open in tmux
   wt open <branch>               Open existing branch in tmux
   wt close [options] [branch]    Close tmux window and remove worktree
+  wt merge [options] [branch]    Rebase, merge to master, close worktree, delete branch
 
 NAVIGATION & INFO:
   wt list                        List all worktrees
@@ -70,7 +77,10 @@ NAVIGATION & INFO:
   wt status                      Show current worktree info
   wt update [branch]             Fetch master and rebase current/specified branch
 
-LOW-LEVEL COMMANDS (no tmux):
+LOW-LEVEL WORKTREE COMMANDS (no tmux):
+  These commands only manage worktrees without any tmux integration.
+  Use these when you want manual control over tmux or no tmux at all.
+
   wt add <branch>                Add existing branch as worktree
   wt add -b <branch> [base]      Create new branch as worktree
   wt remove <branch>             Remove worktree only
@@ -78,6 +88,8 @@ LOW-LEVEL COMMANDS (no tmux):
 OPTIONS:
   wt close -d [branch]           Remove worktree and DELETE branch
   wt close --delete [branch]     Long form of -d
+  wt merge -k [branch]           Keep branch after merge (default: delete)
+  wt merge --keep [branch]       Long form of -k
 
 ENVIRONMENT VARIABLES:
   Customize tmux layout and commands:
@@ -86,41 +98,6 @@ ENVIRONMENT VARIABLES:
   WT_ASSISTANT                   Assistant/AI tool (default: claude --dangerously-skip-permissions)
   WT_TERMINAL_CMD                Command to run in terminal pane (default: none)
   WT_PANE_WIDTH                  Right pane width percentage (default: 40)
-
-  Example usage:
-    export WT_ASSISTANT="opencode"
-    export WT_EDITOR="code"
-    export WT_PANE_WIDTH="50"
-
-EXAMPLES:
-  # Create new branch and open in tmux
-  wt new feature/auth
-  wt new feature/auth main       # Branch from main
-
-  # Open existing branch in tmux
-  wt open feature/auth
-
-  # Close current worktree (keeps branch)
-  wt close
-
-  # Close and delete branch
-  wt close -d
-  wt close --delete feature/auth
-
-  # Navigate to worktree
-  wt cd feature/auth
-  wt cd                          # Go to main worktree
-
-  # List all worktrees
-  wt list
-
-  # Update worktree with latest master
-  wt update                      # Rebase current branch
-  wt update feature/auth         # Rebase specific branch
-
-  # Low-level operations
-  wt add feature/existing        # Just add, no tmux
-  wt remove feature/old          # Just remove, no tmux
 EOF
 }
 
@@ -433,20 +410,131 @@ function _wt_update() {
   fi
 }
 
+# Merge worktree back to master
+function _wt_merge() {
+  local keep_branch=false
+  local branch_name=""
+
+  # Parse arguments
+  while [[ $# -gt 0 ]]; do
+    case $1 in
+      -k|--keep)
+        keep_branch=true
+        shift
+        ;;
+      *)
+        branch_name="$1"
+        shift
+        ;;
+    esac
+  done
+
+  # If no branch specified, try to get current branch
+  if [[ -z "$branch_name" ]]; then
+    branch_name=$(git branch --show-current 2>/dev/null)
+    if [[ -z "$branch_name" ]]; then
+      echo "Error: Not in a git repository or could not determine branch"
+      echo "Usage: wt merge [-k|--keep] [branch-name]"
+      return 1
+    fi
+
+    # Check if we're on master/main
+    if [[ "$branch_name" == "master" || "$branch_name" == "main" ]]; then
+      echo "Error: Cannot merge master into itself"
+      echo "Usage: wt merge [-k|--keep] <branch-name>"
+      return 1
+    fi
+
+    echo "Merging current branch: $branch_name"
+  fi
+
+  # Get the worktree path for the feature branch
+  local feature_worktree_path=$(git worktree list | grep "\[$branch_name\]" | awk '{print $1}')
+
+  if [[ -z "$feature_worktree_path" ]]; then
+    echo "Error: No worktree found for branch: $branch_name"
+    return 1
+  fi
+
+  # Get the main worktree path (first line of git worktree list)
+  local main_worktree_path=$(git worktree list | head -1 | awk '{print $1}')
+  local main_branch=$(git worktree list | head -1 | grep -o '\[.*\]' | tr -d '[]')
+
+  echo "Step 1: Rebasing $branch_name onto origin/master..."
+  _wt_update "$branch_name" || {
+    echo "Error: Rebase failed. Aborting merge."
+    return 1
+  }
+
+  echo ""
+  echo "Step 2: Switching to main worktree at: $main_worktree_path"
+  cd "$main_worktree_path" || {
+    echo "Error: Could not switch to main worktree"
+    return 1
+  }
+
+  # Make sure we're on the main branch
+  if [[ "$(git branch --show-current)" != "$main_branch" ]]; then
+    echo "Checking out $main_branch..."
+    git checkout "$main_branch" || {
+      echo "Error: Could not checkout $main_branch"
+      return 1
+    }
+  fi
+
+  echo ""
+  echo "Step 3: Merging $branch_name into $main_branch..."
+  git merge "$branch_name" || {
+    echo ""
+    echo "Error: Merge failed. Resolve conflicts manually."
+    echo "After resolving, run:"
+    echo "  git merge --continue"
+    echo "  wt close $branch_name"
+    return 1
+  }
+
+  echo ""
+  echo "Step 4: Closing worktree..."
+  if [[ "$keep_branch" == true ]]; then
+    echo "Removing worktree: $branch_name (keeping branch)"
+    wtp remove "$branch_name"
+  else
+    echo "Removing worktree and deleting branch: $branch_name"
+    wtp remove --with-branch "$branch_name"
+  fi
+
+  # Close tmux window if we're in tmux
+  if [[ -n "$TMUX" ]]; then
+    local window_name="wt-$(basename $branch_name)"
+    tmux kill-window -t "$window_name" 2>/dev/null && echo "Closed tmux window: $window_name"
+  fi
+
+  echo ""
+  echo "✓ Successfully merged $branch_name into $main_branch"
+  echo ""
+  echo "Next steps:"
+  echo "  git push origin $main_branch"
+}
+
 # Zsh completion function for wt
 function _wt_completion() {
   local -a subcommands
   subcommands=(
-    'new:Create new branch and open in tmux'
-    'open:Open existing branch in tmux'
-    'close:Close tmux window and remove worktree'
+    # Primary tmux workflow commands
+    'new:[tmux] Create new branch and open in tmux window'
+    'open:[tmux] Open existing branch in tmux window'
+    'close:[tmux] Close tmux window and remove worktree'
+    'merge:[tmux] Rebase onto master, merge, close worktree, delete branch'
+    # Navigation & info commands
     'list:List all worktrees'
     'cd:Navigate to worktree directory'
-    'add:Add existing branch as worktree (no tmux)'
-    'remove:Remove worktree only (no tmux)'
-    'status:Show current worktree info'
-    'update:Fetch master and rebase branch'
-    'help:Show help information'
+    'status:Show current worktree status'
+    'update:Fetch master and rebase current or specified branch'
+    # Low-level worktree commands (no tmux)
+    'add:[low-level] Add worktree without opening tmux'
+    'remove:[low-level] Remove worktree without closing tmux'
+    # Help
+    'help:Show detailed help information'
   )
 
   local curcontext="$curcontext" state line
@@ -472,15 +560,24 @@ function _wt_completion() {
           # Show all branches
           _wt_complete_all_branches
           ;;
-        close|remove|cd|update)
-          # First check for flags (only for close)
-          if [[ $line[1] == "close" && $words[$CURRENT] == -* ]]; then
-            local -a close_opts
-            close_opts=(
-              '-d:Delete branch along with worktree'
-              '--delete:Delete branch along with worktree'
-            )
-            _describe 'options' close_opts
+        close|remove|cd|update|merge)
+          # First check for flags
+          if [[ $words[$CURRENT] == -* ]]; then
+            if [[ $line[1] == "close" ]]; then
+              local -a close_opts
+              close_opts=(
+                '-d:Delete branch along with worktree'
+                '--delete:Delete branch along with worktree'
+              )
+              _describe 'options' close_opts
+            elif [[ $line[1] == "merge" ]]; then
+              local -a merge_opts
+              merge_opts=(
+                '-k:Keep branch after merge'
+                '--keep:Keep branch after merge'
+              )
+              _describe 'options' merge_opts
+            fi
           else
             # Show only branches with worktrees
             _wt_complete_worktree_branches
