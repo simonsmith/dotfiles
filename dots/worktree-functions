@@ -94,9 +94,9 @@ OPTIONS:
 ENVIRONMENT VARIABLES:
   Customize tmux layout and commands:
 
-  WT_EDITOR                      Editor to open (default: nvim)
-  WT_ASSISTANT                   Assistant/AI tool (default: claude --dangerously-skip-permissions)
-  WT_TERMINAL_CMD                Command to run in terminal pane (default: none)
+  WT_EDITOR                      Editor to open
+  WT_ASSISTANT                   Assistant/AI tool
+  WT_TERMINAL_CMD                Command to run in terminal pane
   WT_PANE_WIDTH                  Right pane width percentage (default: 40)
 EOF
 }
@@ -196,7 +196,7 @@ function _wt_open_tmux() {
 
   # Configurable via environment variables
   local editor="${WT_EDITOR:-nvim}"
-  local assistant="${WT_ASSISTANT:-claude --dangerously-skip-permissions}"
+  local assistant="${WT_ASSISTANT:-codex}"
   local terminal="${WT_TERMINAL_CMD:-}"
   local pane_width="${WT_PANE_WIDTH:-40}"
 

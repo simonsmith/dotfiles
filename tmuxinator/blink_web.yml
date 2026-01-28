@@ -8,8 +8,8 @@ windows:
   - dev:
       layout: main-horizontal
       panes:
-        - p webapp
         - gs
         -
+        - p webapp
   - proxy:
     - p proxy --backend staging
