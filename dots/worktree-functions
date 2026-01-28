@@ -384,10 +384,10 @@ function _wt_update() {
     cd "$worktree_path" || return 1
   fi
 
-  # Fetch and update local master branch
-  echo "Fetching origin/master and updating local master..."
-  git fetch origin master:master || {
-    echo "Error: Failed to fetch and update master"
+  # Fetch remote master branch
+  echo "Fetching origin/master..."
+  git fetch origin master || {
+    echo "Error: Failed to fetch master"
     cd "$original_dir"
     return 1
   }
@@ -481,6 +481,16 @@ function _wt_merge() {
       return 1
     }
   fi
+
+  # Update main branch to match origin/master
+  echo "Updating $main_branch to latest from origin..."
+  git merge --ff-only origin/master || {
+    echo ""
+    echo "Error: Could not fast-forward $main_branch to origin/master"
+    echo "Your local $main_branch has diverged from origin/master"
+    echo "Please resolve this manually before merging"
+    return 1
+  }
 
   echo ""
   echo "Step 3: Merging $branch_name into $main_branch..."
