@@ -12,16 +12,12 @@ export PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
 
 # curl
 export PATH="/opt/homebrew/curl/bin:$PATH"
-# postgres
-export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 # Cargo
 export PATH="$HOME/.cargo/bin:$PATH"
 # Python local packages (pip install --user)
 export PATH="$HOME/.local/bin:$PATH"
 
 # php
-export PATH="/opt/homebrew/opt/php@8.4/bin:$PATH"
-export PATH="/opt/homebrew/opt/php@8.4/sbin:$PATH"
 export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 
 # mise - activate early so it can manage tool paths
