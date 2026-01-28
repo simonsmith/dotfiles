@@ -19,6 +19,8 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # php
 export PATH="$HOME/.config/composer/vendor/bin:$PATH"
+export PATH="/opt/homebrew/opt/php@8.4/bin:$PATH"
+export PATH="/opt/homebrew/opt/php@8.4/sbin:$PATH"
 
 # bun globals
 export PATH="$HOME/.cache/.bun/bin:$PATH"
