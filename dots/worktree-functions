@@ -559,7 +559,7 @@ function _wt_completion() {
 
   case $state in
     subcommand)
-      _describe 'wt subcommand' subcommands
+      _describe -V 'wt subcommand' subcommands
       ;;
     args)
       case $line[1] in
