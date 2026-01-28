@@ -3,7 +3,6 @@ bun = "latest"
 deno = "latest"
 go = "latest"
 node = "lts"
-php = "8.4.6"
 pnpm = "latest"
 python = "latest"
 ruby = "latest"
@@ -11,6 +10,3 @@ yarn = "4.9.2"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node"]
-
-[plugins]
-php = "https://github.com/tobiashochguertel/mise-php-plugin"

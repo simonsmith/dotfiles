@@ -20,9 +20,6 @@ export PATH="$HOME/.local/bin:$PATH"
 # php
 export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 
-# mise - activate early so it can manage tool paths
-eval "$(mise activate zsh)"
-
 # bun globals
 export PATH="$HOME/.cache/.bun/bin:$PATH"
 # bun completions
@@ -59,6 +56,8 @@ znap source zsh-users/zsh-completions
 znap eval scmpuff 'scmpuff init -s --aliases=false'
 znap eval starship 'starship init zsh'
 znap eval wtp 'wtp shell-init zsh'
+# mise - cached activation for faster startup
+znap eval mise 'mise activate zsh'
 znap prompt
 
 export VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
