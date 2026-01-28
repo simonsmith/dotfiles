@@ -280,7 +280,7 @@ require("toggleterm").setup({
 })
 
 wk.add({
-  { "<leader>o", ":ToggleTerm<cr>", desc = "Toggle terminal", mode = "n" },
+  { "<leader>t", ":ToggleTerm<cr>", desc = "Toggle terminal", mode = "n" },
 })
 
 -- Window navigation using vim-tmux-navigator (seamlessly moves between vim and tmux)
@@ -970,7 +970,7 @@ wk.add({
 
 -- Time machine
 wk.add({
-  { "<leader>t", ":TimeMachineToggle<CR>", desc = "Toggle time machine", mode = "n" },
+  { "<leader>u", ":TimeMachineToggle<CR>", desc = "Toggle time machine", mode = "n" },
 })
 
 -- Text objects (vim-textobj-entire)
