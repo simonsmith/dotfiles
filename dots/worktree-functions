@@ -520,20 +520,23 @@ function _wt_merge() {
 function _wt_completion() {
   local -a subcommands
   subcommands=(
-    # Primary tmux workflow commands
+    # PRIMARY TMUX WORKFLOW COMMANDS
     'new:[tmux] Create new branch and open in tmux window'
     'open:[tmux] Open existing branch in tmux window'
     'close:[tmux] Close tmux window and remove worktree'
     'merge:[tmux] Rebase onto master, merge, close worktree, delete branch'
-    # Navigation & info commands
+
+    # NAVIGATION & INFO
     'list:List all worktrees'
     'cd:Navigate to worktree directory'
     'status:Show current worktree status'
     'update:Fetch master and rebase current or specified branch'
-    # Low-level worktree commands (no tmux)
+
+    # LOW-LEVEL WORKTREE COMMANDS (no tmux)
     'add:[low-level] Add worktree without opening tmux'
     'remove:[low-level] Remove worktree without closing tmux'
-    # Help
+
+    # HELP
     'help:Show detailed help information'
   )
 
