@@ -313,14 +313,18 @@ function _wt_list() {
 function _wt_cd() {
   if [[ -z "$1" ]]; then
     # Go to main worktree
-    cd "$(git rev-parse --show-toplevel 2>/dev/null || echo .)"
-  else
-    local worktree_path=$(git worktree list | grep "\[$1\]" | awk '{print $1}')
-    if [[ -n "$worktree_path" ]]; then
-      cd "$worktree_path"
+    local target_dir=$(command wtp cd 2>/dev/null)
+    if [[ $? -eq 0 && -n "$target_dir" ]]; then
+      cd "$target_dir"
     else
-      echo "Error: No worktree found for branch: $1"
-      return 1
+      command wtp cd
+    fi
+  else
+    local target_dir=$(command wtp cd "$1" 2>/dev/null)
+    if [[ $? -eq 0 && -n "$target_dir" ]]; then
+      cd "$target_dir"
+    else
+      command wtp cd "$1"
     fi
   fi
 }
@@ -542,9 +546,9 @@ function _wt_completion() {
     'status:Show current worktree status'
     'update:Fetch master and rebase current or specified branch'
 
-    # LOW-LEVEL WORKTREE COMMANDS (no tmux)
-    'add:[low-level] Add worktree without opening tmux'
-    'remove:[low-level] Remove worktree without closing tmux'
+    # WTP PASS-THROUGH COMMANDS
+    'add:Add worktree'
+    'remove:Remove worktree'
 
     # HELP
     'help:Show detailed help information'
