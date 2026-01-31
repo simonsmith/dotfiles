@@ -487,36 +487,6 @@ require("diffview").setup({
   hooks = {},
 })
 
-local function setup_diffview_highlights()
-  -- Subtle, balanced diff colors using Tokyo Night colors
-  vim.api.nvim_set_hl(0, "DiffAdd", { bg = "#26343d" })
-  vim.api.nvim_set_hl(0, "DiffDelete", { bg = "#3d2433" })
-  vim.api.nvim_set_hl(0, "DiffChange", { bg = "#3d2433" })
-  vim.api.nvim_set_hl(0, "DiffText", { bg = "#3d2433" })
-
-  vim.api.nvim_set_hl(0, "DiffAdded", { fg = "#c3e88d", bold = true })
-  vim.api.nvim_set_hl(0, "DiffRemoved", { fg = "#ff757f", bold = true })
-  vim.api.nvim_set_hl(0, "DiffChanged", { fg = "#82aaff", bold = true })
-
-  vim.api.nvim_set_hl(0, "DiffviewWinSeparator", { fg = "#3b4261" })
-  vim.api.nvim_set_hl(0, "DiffviewDiffDelete", { fg = "#3b4261" })
-  vim.api.nvim_set_hl(0, "DiffviewFilePanelSelected", { fg = "#ffc777" })
-
-  vim.api.nvim_set_hl(0, "DiffviewStatusAdded", { fg = "#c3e88d", bold = true })
-  vim.api.nvim_set_hl(0, "DiffviewStatusUntracked", { fg = "#86e1fc", bold = true })
-  vim.api.nvim_set_hl(0, "DiffviewStatusModified", { fg = "#82aaff", bold = true })
-  vim.api.nvim_set_hl(0, "DiffviewStatusRenamed", { fg = "#c3e88d", bold = true })
-  vim.api.nvim_set_hl(0, "DiffviewStatusDeleted", { fg = "#ff757f", bold = true })
-  vim.api.nvim_set_hl(0, "DiffviewStatusIgnored", { fg = "#3b4261", bold = true })
-end
-
-vim.api.nvim_create_autocmd("ColorScheme", {
-  pattern = "*",
-  callback = setup_diffview_highlights,
-})
-
-setup_diffview_highlights()
-
 -- Tabby - Custom tabline
 require("tabby.tabline").set(function(line)
   local theme = {
