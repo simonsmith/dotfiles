@@ -207,25 +207,66 @@ vim.g.html_indent_tags = "li|p" -- Treat <li> and <p> as block tags
 -- theme configuration
 -- ============================================================================
 
-require("tokyonight").setup({
-  style = "moon", -- moon, storm, night, or day
-  light_style = "day", -- Light variant style
-  transparent = false, -- Disable to avoid transparent background
-  terminal_colors = true, -- Configure terminal colors
-  styles = {
-    comments = { italic = false }, -- Disable italic comments
-    keywords = { italic = false }, -- Disable italic keywords
-  },
-  day_brightness = 0.2, -- Brightness for day style
-  hide_inactive_statusline = false, -- Keep statusline visible
-  dim_inactive = false, -- Don't dim inactive windows
-  lualine_bold = false, -- Don't bold lualine headers
-  on_colors = function(colors) end, -- Color customization hook
-  on_highlights = function(highlights, colors) end, -- Highlight customization hook
-})
+local function trim(s)
+  return (s:gsub("^%s+", ""):gsub("%s+$", ""))
+end
 
--- Apply colorscheme
-vim.cmd("silent! colorscheme tokyonight-moon")
+local function read_theme_mode()
+  local path = vim.fn.expand("~/.config/theme")
+  local ok, lines = pcall(vim.fn.readfile, path)
+  if not ok or #lines == 0 then
+    return "dark"
+  end
+  local mode = trim(lines[1])
+  if mode == "light" then
+    return "light"
+  end
+  return "dark"
+end
+
+local function write_theme_mode(mode)
+  local path = vim.fn.expand("~/.config/theme")
+  pcall(vim.fn.writefile, { mode }, path)
+end
+
+local function apply_tokyonight(style)
+  require("tokyonight").setup({
+    style = style, -- moon, storm, night, or day
+    light_style = "day", -- Light variant style
+    transparent = false, -- Disable to avoid transparent background
+    terminal_colors = true, -- Configure terminal colors
+    styles = {
+      comments = { italic = false }, -- Disable italic comments
+      keywords = { italic = false }, -- Disable italic keywords
+    },
+    day_brightness = 0.3, -- Brightness for day style
+    hide_inactive_statusline = true, -- Keep statusline visible
+    dim_inactive = false, -- Don't dim inactive windows
+    lualine_bold = false, -- Don't bold lualine headers
+    on_colors = function(colors) end, -- Color customization hook
+    on_highlights = function(highlights, colors) end, -- Highlight customization hook
+  })
+
+  vim.cmd("silent! colorscheme tokyonight-" .. style)
+end
+
+local theme_mode = read_theme_mode()
+local theme_style = theme_mode == "light" and "day" or "moon"
+apply_tokyonight(theme_style)
+
+vim.keymap.set("n", "<leader>T", function()
+  if vim.fn.executable("theme") == 1 then
+    vim.fn.system({ "theme", "toggle" })
+  else
+    local current = read_theme_mode()
+    local next_mode = current == "light" and "dark" or "light"
+    write_theme_mode(next_mode)
+  end
+
+  local new_mode = read_theme_mode()
+  local new_style = new_mode == "light" and "day" or "moon"
+  apply_tokyonight(new_style)
+end, { desc = "Toggle theme day/night" })
 
 -- plugin configurations
 -- ============================================================================

@@ -191,6 +191,14 @@ function localip() {
   ipconfig getifaddr en0
 }
 
+# Theme toggle with in-shell refresh for BAT_THEME.
+theme() {
+  "$HOME/dotfiles/bin/theme" "$@"
+  if typeset -f __refresh_theme_env >/dev/null 2>&1; then
+    __refresh_theme_env
+  fi
+}
+
 # Load worktree management functions
 # See: dots/worktree-functions
 if [[ -f "$HOME/dotfiles/dots/worktree-functions" ]]; then

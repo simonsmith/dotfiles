@@ -20,25 +20,14 @@ main() {
         log_warning "tpm already installed"
     fi
 
-    # Set up Alacritty config directory and themes
-    log_info "Setting up Alacritty themes..."
-    mkdir -p ~/.config/alacritty/themes
-
-    if [[ ! -d "$HOME/.config/alacritty/themes/.git" ]]; then
-        git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes || {
-            log_warning "Failed to clone Alacritty themes"
-        }
-        log_success "Alacritty themes installed"
+    # Initialize theme (default dark)
+    log_info "Initializing theme..."
+    if [[ -x "$HOME/dotfiles/bin/theme" ]]; then
+        "$HOME/dotfiles/bin/theme" dark
+        log_success "Theme initialized"
     else
-        log_warning "Alacritty themes already installed"
+        log_warning "Theme script not found; skipping theme initialization"
     fi
-
-    # Set up active.toml symlink to Tokyo Night Moon theme
-    log_info "Setting up Alacritty active theme symlink..."
-    local target="$HOME/.config/nvim/plugged/tokyonight.nvim/extras/alacritty/tokyonight_moon.toml"
-    local link="$HOME/.config/alacritty/active.toml"
-    ln -sf "$target" "$link"
-    log_success "Alacritty active theme symlink created"
 
     # Install znap plugin manager for zsh
     log_info "Installing znap plugin manager..."

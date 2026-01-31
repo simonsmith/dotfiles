@@ -3,7 +3,7 @@
 live_config_reload = true
 
 # Color scheme: active.toml is a symlink to the current theme
-# (e.g., ~/.config/nvim/plugged/tokyonight.nvim/extras/alacritty/tokyonight_moon.toml)
+# (e.g., ~/dotfiles/alacritty/dark.toml)
 import = [
   "~/.config/alacritty/active.toml",
 ]
@@ -27,7 +27,7 @@ size = 16.0
 
 [font.normal]
 family = "JetBrainsMono Nerd Font"
-style = "SemiBold"
+style = "Regular"
 
 [font.italic]
 family = "JetBrainsMono Nerd Font"
