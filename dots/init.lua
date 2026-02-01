@@ -310,7 +310,7 @@ require("noice").setup({
 -- Toggle terminal
 require("toggleterm").setup({
   direction = "horizontal",
-  shade_terminals = true,
+  shade_terminals = false,
   persist_size = false,
   size = function(term)
     if term.direction == "horizontal" then
