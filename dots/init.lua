@@ -3,6 +3,9 @@ local Plug = vim.fn["plug#"]
 
 -- Set these early to ensure they're available for plugins
 
+-- Let us define <CR> behavior (CoC + AutoPairs integration)
+vim.g.AutoPairsMapCR = 0
+
 -- Leader keys - set before any mappings
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
@@ -1062,10 +1065,11 @@ wk.add({
 wk.add({
   {
     "<CR>",
-    'coc#pum#visible() ? coc#_select_confirm() : "\\<CR>"',
+    'coc#pum#visible() ? coc#pum#select_confirm() : "\\<Plug>AutoPairsReturn"',
     desc = "Confirm completion",
     mode = "i",
     expr = true,
+    replace_keycodes = true,
   },
 })
 
