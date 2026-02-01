@@ -229,6 +229,8 @@ local function write_theme_mode(mode)
   pcall(vim.fn.writefile, { mode }, path)
 end
 
+local setup_fzf_lua
+
 local function apply_tokyonight(style)
   require("tokyonight").setup({
     style = style, -- moon, storm, night, or day
@@ -266,6 +268,9 @@ vim.keymap.set("n", "<leader>T", function()
   local new_mode = read_theme_mode()
   local new_style = new_mode == "light" and "day" or "moon"
   apply_tokyonight(new_style)
+  if setup_fzf_lua then
+    setup_fzf_lua()
+  end
 end, { desc = "Toggle theme day/night" })
 
 -- plugin configurations
@@ -386,7 +391,8 @@ require("time-machine").setup({})
 
 -- FZF Lua - Fuzzy finder
 local actions = require("fzf-lua.actions")
-require("fzf-lua").setup({
+setup_fzf_lua = function()
+  require("fzf-lua").setup({
   winopts = {
     height = 0.85, -- Taller window for better visibility
     width = 0.80, -- Wider for modern feel
@@ -410,8 +416,8 @@ require("fzf-lua").setup({
     ["fg"] = { "fg", "Normal" },
     ["bg"] = { "bg", "Normal" },
     ["hl"] = { "fg", "Statement" },
-    ["fg+"] = { "fg", "CursorLine" },
-    ["bg+"] = { "bg", "CursorLine" },
+    ["fg+"] = { "fg", "Normal" },
+    ["bg+"] = { "bg", "Visual" },
     ["hl+"] = { "fg", "Statement" },
     ["info"] = { "fg", "PreProc" },
     ["prompt"] = { "fg", "Conditional" },
@@ -460,7 +466,10 @@ require("fzf-lua").setup({
       ["ctrl-x"] = actions.file_split,
     },
   },
-})
+  })
+end
+
+setup_fzf_lua()
 
 -- Surround - Manipulate surrounding characters
 require("nvim-surround").setup()

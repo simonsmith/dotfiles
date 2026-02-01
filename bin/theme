@@ -44,7 +44,7 @@ write_tmux_theme() {
     powerkit_theme="catppuccin"
     powerkit_variant="latte"
     window_active="#e1e2e7"   # matches alacritty day background
-    window_inactive="#e0e0e0" # slightly lighter for inactive panes
+    window_inactive="#daddea" # slightly lighter for inactive panes
     popup_bg="$window_active"
   else
     powerkit_theme="moonlight"
