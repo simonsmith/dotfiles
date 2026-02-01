@@ -8,6 +8,7 @@ $git_state\
 $git_metrics\
 $git_status\
 $nodejs\
+$php\
 $env_var\
 $custom\
 $cmd_duration\
@@ -23,10 +24,20 @@ behind = "⇣${count}"
 stashed = ""
 
 [git_branch]
-format = "[$branch]($style) "
+format = "[git:\\($branch\\)]($style)"
 
 [cmd_duration]
 min_time = 5_000
 
 [nodejs]
-format = "[node $version](bold green) "
+format = "[node:\\($version\\)](bold green)"
+version_format = "${raw}"
+
+[php]
+format = "[php:\\($version\\)]($style)"
+version_format = "${raw}"
+
+[bun]
+format = "[bun:\\($version\\)]($style)"
+version_format = "${raw}"
+detect_extensions = ['ts']
