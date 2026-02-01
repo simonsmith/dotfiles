@@ -245,7 +245,11 @@ local function apply_tokyonight(style)
     hide_inactive_statusline = true, -- Keep statusline visible
     dim_inactive = false, -- Don't dim inactive windows
     lualine_bold = false, -- Don't bold lualine headers
-    on_colors = function(colors) end, -- Color customization hook
+    on_colors = function(colors)
+      if style == "day" then
+        colors.bg_highlight = "#daddea"
+      end
+    end, -- Color customization hook
     on_highlights = function(highlights, colors) end, -- Highlight customization hook
   })
 
@@ -393,79 +397,79 @@ require("time-machine").setup({})
 local actions = require("fzf-lua.actions")
 setup_fzf_lua = function()
   require("fzf-lua").setup({
-  winopts = {
-    height = 0.85, -- Taller window for better visibility
-    width = 0.80, -- Wider for modern feel
-    row = 0.40, -- Slightly lower than center
-    border = "rounded", -- Smooth rounded corners
-    backdrop = 70, -- Very subtle backdrop
-    preview = {
-      default = "builtin", -- Builtin previewer available
-      hidden = "hidden", -- Start hidden, toggle with F4
-      border = "rounded",
-      scrollbar = "border", -- Scrollbar in border (no overlay)
-      delay = 50, -- Snappy preview
-      winopts = {
-        number = false, -- Cleaner preview without line numbers
-        relativenumber = false,
+    winopts = {
+      height = 0.85, -- Taller window for better visibility
+      width = 0.80, -- Wider for modern feel
+      row = 0.40, -- Slightly lower than center
+      border = "rounded", -- Smooth rounded corners
+      backdrop = 70, -- Very subtle backdrop
+      preview = {
+        default = "builtin", -- Builtin previewer available
+        hidden = "hidden", -- Start hidden, toggle with F4
+        border = "rounded",
+        scrollbar = "border", -- Scrollbar in border (no overlay)
+        delay = 50, -- Snappy preview
+        winopts = {
+          number = false, -- Cleaner preview without line numbers
+          relativenumber = false,
+        },
       },
     },
-  },
-  -- Use fzf's native theming for performance (no icons needed)
-  fzf_colors = {
-    ["fg"] = { "fg", "Normal" },
-    ["bg"] = { "bg", "Normal" },
-    ["hl"] = { "fg", "Statement" },
-    ["fg+"] = { "fg", "Normal" },
-    ["bg+"] = { "bg", "Visual" },
-    ["hl+"] = { "fg", "Statement" },
-    ["info"] = { "fg", "PreProc" },
-    ["prompt"] = { "fg", "Conditional" },
-    ["pointer"] = { "fg", "Exception" },
-    ["marker"] = { "fg", "Keyword" },
-    ["spinner"] = { "fg", "Label" },
-    ["header"] = { "fg", "Comment" },
-    ["gutter"] = { "bg", "Normal" },
-  },
-  fzf_opts = {
-    ["--ansi"] = true,
-    ["--info"] = "inline-right",
-    ["--height"] = "100%",
-    ["--layout"] = "reverse",
-    ["--border"] = "none", -- We handle border via winopts
-    ["--pointer"] = "▶",
-    ["--marker"] = "✓",
-    ["--prompt"] = "❯ ",
-  },
-  git = {
+    -- Use fzf's native theming for performance (no icons needed)
+    fzf_colors = {
+      ["fg"] = { "fg", "Normal" },
+      ["bg"] = { "bg", "Normal" },
+      ["hl"] = { "fg", "Statement" },
+      ["fg+"] = { "fg", "Normal" },
+      ["bg+"] = { "bg", "Visual" },
+      ["hl+"] = { "fg", "Statement" },
+      ["info"] = { "fg", "PreProc" },
+      ["prompt"] = { "fg", "Conditional" },
+      ["pointer"] = { "fg", "Exception" },
+      ["marker"] = { "fg", "Keyword" },
+      ["spinner"] = { "fg", "Label" },
+      ["header"] = { "fg", "Comment" },
+      ["gutter"] = { "bg", "Normal" },
+    },
+    fzf_opts = {
+      ["--ansi"] = true,
+      ["--info"] = "inline-right",
+      ["--height"] = "100%",
+      ["--layout"] = "reverse",
+      ["--border"] = "none", -- We handle border via winopts
+      ["--pointer"] = "▶",
+      ["--marker"] = "✓",
+      ["--prompt"] = "❯ ",
+    },
+    git = {
+      files = {
+        git_icons = false, -- Keep disabled for performance
+        file_icons = "devicons",
+      },
+    },
     files = {
+      rg_opts = [[--color=never --files --hidden --follow -g "!.git"]],
+      fd_opts = [[--color=never --type f --hidden --follow --exclude .git]],
       git_icons = false, -- Keep disabled for performance
       file_icons = "devicons",
+      prompt = "Files❯ ",
     },
-  },
-  files = {
-    rg_opts = [[--color=never --files --hidden --follow -g "!.git"]],
-    fd_opts = [[--color=never --type f --hidden --follow --exclude .git]],
-    git_icons = false, -- Keep disabled for performance
-    file_icons = "devicons",
-    prompt = "Files❯ ",
-  },
-  grep = {
-    prompt = "Rg❯ ",
-    git_icons = false,
-    file_icons = false,
-  },
-  buffers = {
-    prompt = "Buffers❯ ",
-    file_icons = false,
-  },
-  actions = {
-    files = {
-      ["default"] = actions.file_edit,
-      ["ctrl-v"] = actions.file_vsplit,
-      ["ctrl-x"] = actions.file_split,
+    grep = {
+      prompt = "Rg❯ ",
+      git_icons = false,
+      file_icons = false,
     },
-  },
+    buffers = {
+      prompt = "Buffers❯ ",
+      file_icons = false,
+    },
+    actions = {
+      files = {
+        ["default"] = actions.file_edit,
+        ["ctrl-v"] = actions.file_vsplit,
+        ["ctrl-x"] = actions.file_split,
+      },
+    },
   })
 end
 
