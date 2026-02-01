@@ -1065,7 +1065,19 @@ wk.add({
 wk.add({
   {
     "<CR>",
-    'coc#pum#visible() ? coc#pum#select_confirm() : "\\<Plug>AutoPairsReturn"',
+    function()
+      local function t(keys)
+        return vim.api.nvim_replace_termcodes(keys, true, false, true)
+      end
+      if vim.fn["coc#pum#visible"]() == 1 then
+        return vim.fn["coc#pum#select_confirm"]()
+      end
+      local ok, result = pcall(vim.fn.AutoPairsReturn)
+      if ok and type(result) == "string" and result ~= "" then
+        return result
+      end
+      return t("<CR>")
+    end,
     desc = "Confirm completion",
     mode = "i",
     expr = true,
