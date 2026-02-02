@@ -1,10 +1,6 @@
 local vim = vim
 local Plug = vim.fn["plug#"]
-
 -- Set these early to ensure they're available for plugins
-
--- Let us define <CR> behavior (CoC + AutoPairs integration)
-vim.g.AutoPairsMapCR = 0
 
 -- Leader keys - set before any mappings
 vim.g.mapleader = " "
@@ -61,7 +57,7 @@ Plug("tpope/vim-repeat") -- Repeat plugin commands with .
 Plug("b3nj5m1n/kommentary") -- Smart commenting
 Plug("kevinhwang91/nvim-bqf") -- Better quickfix window
 Plug("matze/vim-move") -- Move lines and selections
-Plug("jiangmiao/auto-pairs") -- Auto-close brackets, quotes, etc.
+Plug("nvim-mini/mini.pairs") -- Auto-close brackets, quotes, etc.
 Plug("stevearc/conform.nvim") -- Code formatting
 
 -- Text objects and motions
@@ -477,6 +473,9 @@ setup_fzf_lua = function()
 end
 
 setup_fzf_lua()
+
+-- Mini.pairs - Auto-close brackets, quotes, etc.
+require("mini.pairs").setup()
 
 -- Surround - Manipulate surrounding characters
 require("nvim-surround").setup()
@@ -1061,24 +1060,25 @@ wk.add({
   { "<leader>r", ":CocRestart<CR>", desc = "Restart CoC", mode = "n", silent = true },
 })
 
--- CoC completion mapping
+-- CoC completion with Enter key (integrates with mini.pairs)
 wk.add({
   {
     "<CR>",
     function()
-      local function t(keys)
-        return vim.api.nvim_replace_termcodes(keys, true, false, true)
-      end
+      -- Check if CoC menu is visible and has a selected item
       if vim.fn["coc#pum#visible"]() == 1 then
-        return vim.fn["coc#pum#select_confirm"]()
+        local info = vim.fn["coc#pum#info"]()
+        if info.index >= 0 then
+          -- Item is selected, confirm it
+          return vim.fn["coc#pum#confirm"]()
+        end
+        -- Menu visible but nothing selected, close it
+        vim.fn["coc#pum#cancel"]()
       end
-      local ok, result = pcall(vim.fn.AutoPairsReturn)
-      if ok and type(result) == "string" and result ~= "" then
-        return result
-      end
-      return t("<CR>")
+      -- Use mini.pairs CR handler (handles indentation inside pairs)
+      return require("mini.pairs").cr()
     end,
-    desc = "Confirm completion",
+    desc = "Confirm completion or newline",
     mode = "i",
     expr = true,
     replace_keycodes = true,
