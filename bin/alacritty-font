@@ -10,14 +10,20 @@ case "$1" in
       s/^x = .*/x = 0/
       s/^y = .*/y = -1/
     }" "$CONFIG"
-    echo "Set font.offset to x=0, y=-1"
+    sed -i "/^\[font\.normal\]/,/^$\|^\[/ {
+      s/^style = .*/style = \"Regular\"/
+    }" "$CONFIG"
+    echo "Set font.offset to x=0, y=-1 and font.normal.style to Regular"
     ;;
   work)
     sed -i "/^\[font\.offset\]/,/^$\|^\[/ {
       s/^x = .*/x = -1/
       s/^y = .*/y = -4/
     }" "$CONFIG"
-    echo "Set font.offset to x=-1, y=-4"
+    sed -i "/^\[font\.normal\]/,/^$\|^\[/ {
+      s/^style = .*/style = \"SemiBold\"/
+    }" "$CONFIG"
+    echo "Set font.offset to x=-1, y=-4 and font.normal.style to SemiBold"
     ;;
   size)
     if [[ -z "$2" ]]; then
