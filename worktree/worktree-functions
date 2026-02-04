@@ -12,6 +12,22 @@ function wt() {
   shift
 
   case "$subcommand" in
+    help|--help|-h)
+      _wt_help
+      return 0
+      ;;
+    new|open|close|list|cd|add|remove|sync|merge)
+      _wt_require_repo || return 1
+      ;;
+    *)
+      echo "Error: Unknown subcommand '$subcommand'"
+      echo ""
+      echo "Run 'wt help' for usage information"
+      return 1
+      ;;
+  esac
+
+  case "$subcommand" in
     new)
       _wt_new "$@"
       ;;
@@ -33,23 +49,11 @@ function wt() {
     remove)
       _wt_remove "$@"
       ;;
-    status)
-      _wt_status "$@"
-      ;;
     sync)
       _wt_sync "$@"
       ;;
     merge)
       _wt_merge "$@"
-      ;;
-    help|--help|-h)
-      _wt_help
-      ;;
-    *)
-      echo "Error: Unknown subcommand '$subcommand'"
-      echo ""
-      echo "Run 'wt help' for usage information"
-      return 1
       ;;
   esac
 }
@@ -70,13 +74,12 @@ PRIMARY TMUX WORKFLOW COMMANDS:
   wt new <branch> [base]         Create new branch and open in tmux session
   wt open <branch>               Open existing branch in tmux session
   wt close [options] [branch]    Close tmux session and remove worktree
-  wt merge [options] [branch]    Rebase, merge to master, close session, delete branch
+  wt merge [options] [branch]    Rebase, merge to default branch, close session, delete branch
 
 NAVIGATION & INFO:
   wt list                        List all worktrees
   wt cd [branch]                 Navigate to worktree directory
-  wt status                      Show current worktree info
-  wt sync [branch]               Fetch master and rebase current/specified branch
+  wt sync [branch]               Fetch default branch and rebase current/specified branch
 
 LOW-LEVEL WORKTREE COMMANDS (no tmux):
   These commands only manage worktrees without any tmux integration.
@@ -101,6 +104,125 @@ ENVIRONMENT VARIABLES:
 EOF
 }
 
+# Require a git repository
+function _wt_require_repo() {
+  git rev-parse --show-toplevel >/dev/null 2>&1 || {
+    echo "Error: Not in a git repository"
+    return 1
+  }
+}
+
+# Determine the default branch (falls back to main worktree branch)
+function _wt_default_branch() {
+  local ref=""
+  ref=$(git symbolic-ref --quiet --short refs/remotes/origin/HEAD 2>/dev/null) || true
+  if [[ -n "$ref" ]]; then
+    echo "${ref#origin/}"
+    return 0
+  fi
+
+  local main_branch=$(_wt_main_worktree_branch)
+  if [[ -n "$main_branch" ]]; then
+    echo "$main_branch"
+    return 0
+  fi
+
+  return 1
+}
+
+# Main worktree path (first worktree entry)
+function _wt_main_worktree_path() {
+  local line=""
+  while IFS= read -r line; do
+    case "$line" in
+      worktree\ *)
+        echo "${line#worktree }"
+        return 0
+        ;;
+    esac
+  done < <(git worktree list --porcelain 2>/dev/null)
+  return 1
+}
+
+# Main worktree branch (first worktree entry)
+function _wt_main_worktree_branch() {
+  local line=""
+  local in_first=0
+  while IFS= read -r line; do
+    case "$line" in
+      worktree\ *)
+        if [[ $in_first -eq 0 ]]; then
+          in_first=1
+        else
+          return 1
+        fi
+        ;;
+      branch\ *)
+        if [[ $in_first -eq 1 ]]; then
+          local ref="${line#branch }"
+          if [[ "$ref" == refs/heads/* ]]; then
+            echo "${ref#refs/heads/}"
+            return 0
+          fi
+          return 1
+        fi
+        ;;
+      detached)
+        if [[ $in_first -eq 1 ]]; then
+          return 1
+        fi
+        ;;
+    esac
+  done < <(git worktree list --porcelain 2>/dev/null)
+  return 1
+}
+
+# Find worktree path for a branch
+function _wt_find_worktree_path() {
+  local target_branch="$1"
+  local line=""
+  local path=""
+  while IFS= read -r line; do
+    case "$line" in
+      worktree\ *)
+        path="${line#worktree }"
+        ;;
+      branch\ *)
+        if [[ "${line#branch }" == "refs/heads/$target_branch" ]]; then
+          echo "$path"
+          return 0
+        fi
+        ;;
+    esac
+  done < <(git worktree list --porcelain 2>/dev/null)
+  return 1
+}
+
+# Wait for worktree to appear
+function _wt_wait_for_worktree() {
+  local target_branch="$1"
+  local attempts=10
+  local delay=0.1
+  local path=""
+  local i=1
+
+  while (( i <= attempts )); do
+    path=$(_wt_find_worktree_path "$target_branch")
+    if [[ -n "$path" ]]; then
+      echo "$path"
+      return 0
+    fi
+    sleep "$delay"
+    (( i++ ))
+  done
+  return 1
+}
+
+# List branches that have worktrees
+function _wt_worktree_branches() {
+  git worktree list --porcelain 2>/dev/null | awk '/^branch refs\/heads\// {sub("^branch refs/heads/",""); print}'
+}
+
 # Create new branch and open in tmux
 function _wt_new() {
   local branch_name="$1"
@@ -117,7 +239,7 @@ function _wt_new() {
   fi
 
   # Check if worktree already exists
-  local existing_worktree=$(wtp list 2>/dev/null | tail -n +3 | awk -v branch="$branch_name" '$2 == branch {print $1}' | sed 's/[\*@]$//')
+  local existing_worktree=$(_wt_find_worktree_path "$branch_name")
 
   if [[ -n "$existing_worktree" ]]; then
     echo "Error: Worktree already exists for branch: $branch_name"
@@ -133,11 +255,8 @@ function _wt_new() {
     wtp add -b "$branch_name" || return 1
   fi
 
-  # Get worktree path - wait a moment for worktree to be fully created
-  sleep 0.5
-
-  # Parse git worktree list to get the absolute path
-  local worktree_path=$(git worktree list | grep "\[$branch_name\]" | awk '{print $1}')
+  # Get worktree path - wait for worktree to be fully created
+  local worktree_path=$(_wt_wait_for_worktree "$branch_name")
 
   if [[ -z "$worktree_path" ]]; then
     echo "Error: Could not determine worktree path for branch: $branch_name"
@@ -162,22 +281,19 @@ function _wt_open() {
   fi
 
   # Check if worktree already exists
-  local existing_worktree=$(wtp list 2>/dev/null | tail -n +3 | awk -v branch="$branch_name" '$2 == branch {print $1}' | sed 's/[\*@]$//')
+  local existing_worktree=$(_wt_find_worktree_path "$branch_name")
+  local worktree_path=""
 
   if [[ -n "$existing_worktree" ]]; then
     echo "Worktree already exists for branch: $branch_name"
-    # Parse git worktree list to get the absolute path
-    worktree_path=$(git worktree list | grep "\[$branch_name\]" | awk '{print $1}')
+    worktree_path="$existing_worktree"
   else
     # Create worktree from existing branch
     echo "Creating worktree from existing branch: $branch_name"
     wtp add "$branch_name" || return 1
 
-    # Get worktree path - wait a moment for worktree to be fully created
-    sleep 0.5
-
-    # Parse git worktree list to get the absolute path
-    worktree_path=$(git worktree list | grep "\[$branch_name\]" | awk '{print $1}')
+    # Get worktree path - wait for worktree to be fully created
+    worktree_path=$(_wt_wait_for_worktree "$branch_name")
   fi
 
   if [[ -z "$worktree_path" ]]; then
@@ -193,7 +309,8 @@ function _wt_open() {
 function _wt_session_name() {
   local branch_name="$1"
   local repo_name=$(basename $(git rev-parse --show-toplevel 2>/dev/null))
-  echo "wt-${repo_name}_$(basename $branch_name)"
+  local safe_branch="${branch_name//\//_}"
+  echo "wt-${repo_name}_${safe_branch}"
 }
 
 # Helper function to open worktree in tmux
@@ -285,10 +402,17 @@ function _wt_close() {
   fi
 
   # Get the worktree path
-  local worktree_path=$(git worktree list | grep "\[$branch_name\]" | awk '{print $1}')
+  local worktree_path=$(_wt_find_worktree_path "$branch_name")
 
   if [[ -z "$worktree_path" ]]; then
     echo "Error: No worktree found for branch: $branch_name"
+    return 1
+  fi
+
+  # Prevent closing the main worktree
+  local main_worktree_path=$(_wt_main_worktree_path)
+  if [[ -n "$main_worktree_path" && "$worktree_path" == "$main_worktree_path" ]]; then
+    echo "Error: Refusing to close the main worktree"
     return 1
   fi
 
@@ -346,34 +470,18 @@ function _wt_remove() {
   wtp remove "$@"
 }
 
-# Show current worktree status
-function _wt_status() {
-  local branch_name=$(git branch --show-current 2>/dev/null)
 
-  if [[ -z "$branch_name" ]]; then
-    echo "Error: Not in a git repository or could not determine branch"
-    return 1
-  fi
-
-  local worktree_path=$(git worktree list | grep "\[$branch_name\]" | awk '{print $1}')
-  local is_main=$(git worktree list | head -1 | grep -q "\[$branch_name\]" && echo "yes" || echo "no")
-
-  echo "Current worktree status:"
-  echo "  Branch: $branch_name"
-  echo "  Path: ${worktree_path:-$(git rev-parse --show-toplevel)}"
-  echo "  Main worktree: $is_main"
-
-  if [[ -n "$TMUX" ]]; then
-    local window_name=$(tmux display-message -p '#W')
-    echo "  Tmux window: $window_name"
-  fi
-}
-
-# Sync worktree by fetching master and rebasing
+# Sync worktree by fetching default branch and rebasing
 function _wt_sync() {
   local target_branch="$1"
   local original_dir=$(pwd)
   local worktree_path=""
+  local default_branch=$(_wt_default_branch)
+
+  if [[ -z "$default_branch" ]]; then
+    echo "Error: Could not determine default branch (origin/HEAD not set)"
+    return 1
+  fi
 
   # If no branch specified, use current branch
   if [[ -z "$target_branch" ]]; then
@@ -386,7 +494,7 @@ function _wt_sync() {
     worktree_path=$(pwd)
   else
     # Get worktree path for specified branch
-    worktree_path=$(git worktree list | grep "\[$target_branch\]" | awk '{print $1}')
+    worktree_path=$(_wt_find_worktree_path "$target_branch")
     if [[ -z "$worktree_path" ]]; then
       echo "Error: No worktree found for branch: $target_branch"
       return 1
@@ -395,17 +503,17 @@ function _wt_sync() {
     cd "$worktree_path" || return 1
   fi
 
-  # Fetch remote master branch
-  echo "Fetching origin/master..."
-  git fetch origin master || {
-    echo "Error: Failed to fetch master"
+  # Fetch remote default branch
+  echo "Fetching origin/$default_branch..."
+  git fetch origin "$default_branch" || {
+    echo "Error: Failed to fetch $default_branch"
     cd "$original_dir"
     return 1
   }
 
-  # Rebase against origin/master
-  echo "Rebasing $target_branch against origin/master..."
-  git rebase origin/master || {
+  # Rebase against origin/default
+  echo "Rebasing $target_branch against origin/$default_branch..."
+  git rebase "origin/$default_branch" || {
     echo ""
     echo "Error: Rebase failed. You may need to resolve conflicts."
     echo "Run 'git rebase --abort' to cancel or resolve conflicts and 'git rebase --continue'"
@@ -413,7 +521,7 @@ function _wt_sync() {
     return 1
   }
 
-  echo "✓ Successfully updated $target_branch with latest master"
+  echo "✓ Successfully updated $target_branch with latest $default_branch"
 
   # Return to original directory if we changed it
   if [[ "$original_dir" != "$worktree_path" ]]; then
@@ -421,7 +529,7 @@ function _wt_sync() {
   fi
 }
 
-# Merge worktree back to master
+# Merge worktree back to default branch
 function _wt_merge() {
   local keep_branch=false
   local branch_name=""
@@ -449,29 +557,42 @@ function _wt_merge() {
       return 1
     fi
 
-    # Check if we're on master/main
-    if [[ "$branch_name" == "master" || "$branch_name" == "main" ]]; then
-      echo "Error: Cannot merge master into itself"
-      echo "Usage: wt merge [-k|--keep] <branch-name>"
-      return 1
-    fi
-
     echo "Merging current branch: $branch_name"
   fi
 
+  local default_branch=$(_wt_default_branch)
+  if [[ -z "$default_branch" ]]; then
+    echo "Error: Could not determine default branch (origin/HEAD not set)"
+    return 1
+  fi
+
+  if [[ "$branch_name" == "$default_branch" ]]; then
+    echo "Error: Cannot merge $default_branch into itself"
+    echo "Usage: wt merge [-k|--keep] <branch-name>"
+    return 1
+  fi
+
   # Get the worktree path for the feature branch
-  local feature_worktree_path=$(git worktree list | grep "\[$branch_name\]" | awk '{print $1}')
+  local feature_worktree_path=$(_wt_find_worktree_path "$branch_name")
 
   if [[ -z "$feature_worktree_path" ]]; then
     echo "Error: No worktree found for branch: $branch_name"
     return 1
   fi
 
-  # Get the main worktree path (first line of git worktree list)
-  local main_worktree_path=$(git worktree list | head -1 | awk '{print $1}')
-  local main_branch=$(git worktree list | head -1 | grep -o '\[.*\]' | tr -d '[]')
+  # Get the main worktree path (first worktree entry)
+  local main_worktree_path=$(_wt_main_worktree_path)
+  if [[ -z "$main_worktree_path" ]]; then
+    echo "Error: Could not determine main worktree path"
+    return 1
+  fi
 
-  echo "Step 1: Rebasing $branch_name onto origin/master..."
+  if [[ "$feature_worktree_path" == "$main_worktree_path" ]]; then
+    echo "Error: Refusing to merge from the main worktree"
+    return 1
+  fi
+
+  echo "Step 1: Rebasing $branch_name onto origin/$default_branch..."
   _wt_sync "$branch_name" || {
     echo "Error: Rebase failed. Aborting merge."
     return 1
@@ -484,27 +605,27 @@ function _wt_merge() {
     return 1
   }
 
-  # Make sure we're on the main branch
-  if [[ "$(git branch --show-current)" != "$main_branch" ]]; then
-    echo "Checking out $main_branch..."
-    git checkout "$main_branch" || {
-      echo "Error: Could not checkout $main_branch"
+  # Make sure we're on the default branch
+  if [[ "$(git branch --show-current)" != "$default_branch" ]]; then
+    echo "Checking out $default_branch..."
+    git checkout "$default_branch" || {
+      echo "Error: Could not checkout $default_branch"
       return 1
     }
   fi
 
-  # Update main branch to match origin/master
-  echo "Updating $main_branch to latest from origin..."
-  git merge --ff-only origin/master || {
+  # Update default branch to match origin
+  echo "Updating $default_branch to latest from origin..."
+  git merge --ff-only "origin/$default_branch" || {
     echo ""
-    echo "Error: Could not fast-forward $main_branch to origin/master"
-    echo "Your local $main_branch has diverged from origin/master"
+    echo "Error: Could not fast-forward $default_branch to origin/$default_branch"
+    echo "Your local $default_branch has diverged from origin/$default_branch"
     echo "Please resolve this manually before merging"
     return 1
   }
 
   echo ""
-  echo "Step 3: Merging $branch_name into $main_branch..."
+  echo "Step 3: Merging $branch_name into $default_branch..."
   git merge "$branch_name" || {
     echo ""
     echo "Error: Merge failed. Resolve conflicts manually."
@@ -548,13 +669,12 @@ function _wt_completion() {
     'new:[tmux] Create new branch and open in dedicated tmux session'
     'open:[tmux] Open existing branch in dedicated tmux session'
     'close:[tmux] Close tmux session and remove worktree'
-    'merge:[tmux] Rebase onto master, merge, close session, delete branch'
+    'merge:[tmux] Rebase onto default branch, merge, close session, delete branch'
 
     # NAVIGATION & INFO
     'list:List all worktrees'
     'cd:Navigate to worktree directory'
-    'status:Show current worktree status'
-    'sync:Fetch master and rebase current or specified branch'
+    'sync:Fetch default branch and rebase current or specified branch'
 
     # WTP PASS-THROUGH COMMANDS
     'add:Add worktree'
@@ -625,8 +745,8 @@ function _wt_complete_all_branches() {
 # Helper: Complete only branches that have worktrees
 function _wt_complete_worktree_branches() {
   local -a worktree_branches
-  # Extract branch names from git worktree list (they appear in brackets)
-  worktree_branches=(${(f)"$(git worktree list 2>/dev/null | grep -o '\[.*\]' | tr -d '[]')"})
+  # Extract branch names from porcelain output
+  worktree_branches=(${(f)"$(_wt_worktree_branches)"})
   if [[ ${#worktree_branches[@]} -gt 0 ]]; then
     _describe 'worktree branch' worktree_branches
   fi

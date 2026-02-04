@@ -1,12 +1,26 @@
-# Git Worktrees + Tmux
+# git worktrees ❤️tmux
 
 Work on multiple branches simultaneously with isolated worktrees in tmux windows.
+Uses [wtp](https://github.com/satococoa/wtp)
+
+Press `wt <tab>` for autocomplete
+
+## Install
+
+Source the functions file and unalias `wt` so this function overrides the `wtp` alias:
+
+```bash
+if [[ -f "$HOME/dotfiles/worktree/worktree-functions" ]]; then
+  source "$HOME/dotfiles/worktree/worktree-functions"
+  unalias wt 2>/dev/null
+fi
+```
 
 ## Commands
 
 ### Tmux Integration
 
-Create and manage worktrees with automatic tmux sessions (editor + terminal + claude).
+Create and manage worktrees with automatic tmux sessions (editor + terminal + assistant).
 Each worktree gets its own dedicated session with 3 windows.
 
 ```bash
@@ -52,10 +66,7 @@ wt cd [branch]                 # Navigate to worktree directory
                                # No args: go to main worktree
                                # Example: wt cd feature/auth
 
-wt status                      # Show current worktree info
-                               # Branch, path, tmux window
-
-wt sync [branch]               # Fetch origin/master and rebase
+wt sync [branch]               # Fetch origin default branch and rebase
                                # No args: sync current branch
                                # Example: wt sync feature/auth
 ```
@@ -67,13 +78,7 @@ Each worktree gets its own dedicated tmux session named `wt-<repo>_<branch>` wit
 **Windows:**
 - Window 0: `edit` - Your editor (neovim)
 - Window 1: `term` - Terminal for commands, tests, etc.
-- Window 2: `ai` - AI assistant (claude)
-
-**Navigation:**
-- Between windows: `Ctrl+b 0/1/2` or `Ctrl+b n/p` (next/previous)
-- Between sessions: `Ctrl+b s` (session list) or `Ctrl+b (` / `Ctrl+b )` (previous/next session)
-
-Each window gets full screen real estate - no more zooming panes!
+- Window 2: `ai` - AI assistant
 
 ## Customization
 
@@ -84,8 +89,3 @@ export WT_EDITOR="nvim"                                     # Default editor
 export WT_ASSISTANT="claude --dangerously-skip-permissions" # AI assistant
 export WT_TERMINAL_CMD=""                                   # Command to run in term window
 ```
-
-## Files
-
-- **Functions:** `~/dotfiles/dots/worktree-functions`
-- **Requires:** [wtp](https://github.com/satococoa/wtp)
