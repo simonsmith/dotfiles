@@ -1,4 +1,4 @@
-name: blink_web
+name: blinkweb
 root: ~/blink/web
 startup_window: neovim
 
@@ -10,6 +10,6 @@ windows:
       panes:
         - gs
         -
-        - p webapp
+        -
   - proxy:
     - p proxy --backend staging
