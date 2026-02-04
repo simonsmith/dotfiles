@@ -6,22 +6,23 @@ Work on multiple branches simultaneously with isolated worktrees in tmux windows
 
 ### Tmux Integration
 
-Create and manage worktrees with automatic tmux environments (editor + terminal + claude).
+Create and manage worktrees with automatic tmux sessions (editor + terminal + claude).
+Each worktree gets its own dedicated session with 3 windows.
 
 ```bash
-wt new <branch> [base]         # Create new branch, open in tmux window
+wt new <branch> [base]         # Create new branch, open in dedicated tmux session
                                # Example: wt new feature/auth
                                # Example: wt new feature/auth main
 
-wt open <branch>               # Open existing branch in tmux window
+wt open <branch>               # Open existing branch in dedicated tmux session
                                # Creates worktree if doesn't exist
                                # Example: wt open feature/existing
 
-wt close [branch]              # Close tmux window, remove worktree (keep branch)
+wt close [branch]              # Close tmux session, remove worktree (keep branch)
                                # Example: wt close
                                # Example: wt close feature/old
 
-wt close -d [branch]           # Close tmux window, remove worktree + DELETE branch
+wt close -d [branch]           # Close tmux session, remove worktree + DELETE branch
 wt close --delete [branch]     # Example: wt close -d
                                # Example: wt close --delete feature/old
 ```
@@ -54,32 +55,34 @@ wt cd [branch]                 # Navigate to worktree directory
 wt status                      # Show current worktree info
                                # Branch, path, tmux window
 
-wt update [branch]             # Fetch origin/master and rebase
-                               # No args: update current branch
-                               # Example: wt update feature/auth
+wt sync [branch]               # Fetch origin/master and rebase
+                               # No args: sync current branch
+                               # Example: wt sync feature/auth
 ```
 
 ## Tmux Layout
 
-```
-┌─────────────────┬──────────────┐
-│                 │   Terminal   │
-│    Neovim       ├──────────────┤
-│                 │    Claude    │
-└─────────────────┴──────────────┘
-```
+Each worktree gets its own dedicated tmux session named `wt-<repo>_<branch>` with 3 windows:
 
-Navigate between panes: `Ctrl+h/j/k/l` (seamlessly works with vim splits)
+**Windows:**
+- Window 0: `edit` - Your editor (neovim)
+- Window 1: `term` - Terminal for commands, tests, etc.
+- Window 2: `ai` - AI assistant (claude)
+
+**Navigation:**
+- Between windows: `Ctrl+b 0/1/2` or `Ctrl+b n/p` (next/previous)
+- Between sessions: `Ctrl+b s` (session list) or `Ctrl+b (` / `Ctrl+b )` (previous/next session)
+
+Each window gets full screen real estate - no more zooming panes!
 
 ## Customization
 
-Environment variables to customize tmux layout:
+Environment variables to customize tmux windows:
 
 ```bash
-export WT_EDITOR="nvim"                                    # Default editor
+export WT_EDITOR="nvim"                                     # Default editor
 export WT_ASSISTANT="claude --dangerously-skip-permissions" # AI assistant
-export WT_TERMINAL_CMD=""                                  # Terminal command
-export WT_PANE_WIDTH="40"                                  # Right pane width %
+export WT_TERMINAL_CMD=""                                   # Command to run in term window
 ```
 
 ## Files

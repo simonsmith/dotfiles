@@ -36,8 +36,8 @@ function wt() {
     status)
       _wt_status "$@"
       ;;
-    update)
-      _wt_update "$@"
+    sync)
+      _wt_sync "$@"
       ;;
     merge)
       _wt_merge "$@"
@@ -63,19 +63,20 @@ USAGE:
   wt <subcommand> [options]
 
 PRIMARY TMUX WORKFLOW COMMANDS:
-  These commands create/manage worktrees AND handle tmux windows for you.
+  These commands create/manage worktrees AND handle tmux sessions for you.
+  Each worktree gets its own dedicated session with 3 windows (edit, term, ai).
   Use these for your normal workflow.
 
-  wt new <branch> [base]         Create new branch and open in tmux
-  wt open <branch>               Open existing branch in tmux
-  wt close [options] [branch]    Close tmux window and remove worktree
-  wt merge [options] [branch]    Rebase, merge to master, close worktree, delete branch
+  wt new <branch> [base]         Create new branch and open in tmux session
+  wt open <branch>               Open existing branch in tmux session
+  wt close [options] [branch]    Close tmux session and remove worktree
+  wt merge [options] [branch]    Rebase, merge to master, close session, delete branch
 
 NAVIGATION & INFO:
   wt list                        List all worktrees
   wt cd [branch]                 Navigate to worktree directory
   wt status                      Show current worktree info
-  wt update [branch]             Fetch master and rebase current/specified branch
+  wt sync [branch]               Fetch master and rebase current/specified branch
 
 LOW-LEVEL WORKTREE COMMANDS (no tmux):
   These commands only manage worktrees without any tmux integration.
@@ -92,12 +93,11 @@ OPTIONS:
   wt merge --keep [branch]       Long form of -k
 
 ENVIRONMENT VARIABLES:
-  Customize tmux layout and commands:
+  Customize tmux windows and commands:
 
-  WT_EDITOR                      Editor to open
-  WT_ASSISTANT                   Assistant/AI tool
-  WT_TERMINAL_CMD                Command to run in terminal pane
-  WT_PANE_WIDTH                  Right pane width percentage (default: 40)
+  WT_EDITOR                      Editor to open (default: nvim)
+  WT_ASSISTANT                   Assistant/AI tool (default: codex)
+  WT_TERMINAL_CMD                Command to run in terminal window
 EOF
 }
 
@@ -189,6 +189,13 @@ function _wt_open() {
   _wt_open_tmux "$branch_name" "$worktree_path"
 }
 
+# Helper function to generate session name
+function _wt_session_name() {
+  local branch_name="$1"
+  local repo_name=$(basename $(git rev-parse --show-toplevel 2>/dev/null))
+  echo "wt-${repo_name}_$(basename $branch_name)"
+}
+
 # Helper function to open worktree in tmux
 function _wt_open_tmux() {
   local branch_name="$1"
@@ -198,7 +205,6 @@ function _wt_open_tmux() {
   local editor="${WT_EDITOR:-nvim}"
   local assistant="${WT_ASSISTANT:-codex}"
   local terminal="${WT_TERMINAL_CMD:-}"
-  local pane_width="${WT_PANE_WIDTH:-40}"
 
   echo "Opening tmux environment at: $worktree_path"
 
@@ -208,37 +214,43 @@ function _wt_open_tmux() {
     return 1
   fi
 
-  # Check if we're in a tmux session
-  if [[ -z "$TMUX" ]]; then
-    echo "Not in tmux session. Starting new session..."
-    tmux new-session -s "wt-$(basename $branch_name)" -c "$worktree_path" \; \
-      send-keys "$editor" Enter \; \
-      split-window -h -c "$worktree_path" \; \
-      split-window -v -c "$worktree_path" \; \
-      send-keys "$assistant" Enter \; \
-      select-pane -t 1
+  local session_name=$(_wt_session_name "$branch_name")
 
-    # Run terminal command if specified
-    if [[ -n "$terminal" ]]; then
-      tmux select-pane -t 1 \; send-keys "$terminal" Enter
+  # Check if session already exists
+  if tmux has-session -t "$session_name" 2>/dev/null; then
+    echo "Session $session_name already exists, switching to it..."
+    if [[ -n "$TMUX" ]]; then
+      tmux switch-client -t "$session_name"
+    else
+      tmux attach-session -t "$session_name"
     fi
     return
   fi
 
-  # We're in tmux, create new window with layout
-  local window_name="wt-$(basename $branch_name)"
+  echo "Creating new tmux session: $session_name"
 
-  tmux new-window -n "$window_name" \; \
-    send-keys "cd \"$worktree_path\" && $editor" Enter \; \
-    split-window -h -p "$pane_width" \; \
-    send-keys "cd \"$worktree_path\"" Enter \; \
-    split-window -v \; \
-    send-keys "cd \"$worktree_path\" && $assistant" Enter \; \
-    select-pane -t 0
+  # Create new session with multiple windows (always detached initially)
+  tmux new-session -s "$session_name" -n "edit" -c "$worktree_path" -d \; \
+    send-keys -t "$session_name":edit "$editor" Enter \; \
+    new-window -t "$session_name" -n "term" -c "$worktree_path" \; \
+    new-window -t "$session_name" -n "ai" -c "$worktree_path" \; \
+    send-keys -t "$session_name":ai "$assistant" Enter \; \
+    select-window -t "$session_name":edit
 
-  # Run terminal command if specified
+  # Run terminal command if specified in the term window
   if [[ -n "$terminal" ]]; then
-    tmux select-pane -t 1 \; send-keys "$terminal" Enter
+    tmux select-window -t "$session_name":term \; \
+      send-keys -t "$session_name":term "$terminal" Enter \; \
+      select-window -t "$session_name":edit
+  fi
+
+  # Switch to or attach to the session
+  if [[ -n "$TMUX" ]]; then
+    # We're in tmux, switch to the new session
+    tmux switch-client -t "$session_name"
+  else
+    # Not in tmux, attach to the session
+    tmux attach-session -t "$session_name"
   fi
 }
 
@@ -280,18 +292,13 @@ function _wt_close() {
     return 1
   fi
 
-  # Close tmux window if we're in tmux and in this worktree
-  if [[ -n "$TMUX" ]]; then
-    local current_path=$(pwd)
-    # Check if current directory is inside the worktree
-    if [[ "$current_path" == "$worktree_path"* ]]; then
-      echo "Closing tmux window..."
-      tmux kill-window
-    else
-      # Try to find and close the window by name
-      local window_name="wt-$(basename $branch_name)"
-      tmux kill-window -t "$window_name" 2>/dev/null && echo "Closed tmux window: $window_name"
-    fi
+  # Close tmux session
+  local session_name=$(_wt_session_name "$branch_name")
+
+  # Check if a session exists for this worktree
+  if tmux has-session -t "$session_name" 2>/dev/null; then
+    echo "Killing tmux session: $session_name"
+    tmux kill-session -t "$session_name"
   fi
 
   # Remove the worktree
@@ -362,8 +369,8 @@ function _wt_status() {
   fi
 }
 
-# Update worktree by fetching master and rebasing
-function _wt_update() {
+# Sync worktree by fetching master and rebasing
+function _wt_sync() {
   local target_branch="$1"
   local original_dir=$(pwd)
   local worktree_path=""
@@ -465,7 +472,7 @@ function _wt_merge() {
   local main_branch=$(git worktree list | head -1 | grep -o '\[.*\]' | tr -d '[]')
 
   echo "Step 1: Rebasing $branch_name onto origin/master..."
-  _wt_update "$branch_name" || {
+  _wt_sync "$branch_name" || {
     echo "Error: Rebase failed. Aborting merge."
     return 1
   }
@@ -517,10 +524,13 @@ function _wt_merge() {
     wtp remove --with-branch "$branch_name"
   fi
 
-  # Close tmux window if we're in tmux
-  if [[ -n "$TMUX" ]]; then
-    local window_name="wt-$(basename $branch_name)"
-    tmux kill-window -t "$window_name" 2>/dev/null && echo "Closed tmux window: $window_name"
+  # Close tmux session
+  local session_name=$(_wt_session_name "$branch_name")
+
+  # Check if a session exists for this worktree
+  if tmux has-session -t "$session_name" 2>/dev/null; then
+    echo "Killing tmux session: $session_name"
+    tmux kill-session -t "$session_name"
   fi
 
   echo ""
@@ -535,16 +545,16 @@ function _wt_completion() {
   local -a subcommands
   subcommands=(
     # PRIMARY TMUX WORKFLOW COMMANDS
-    'new:[tmux] Create new branch and open in tmux window'
-    'open:[tmux] Open existing branch in tmux window'
-    'close:[tmux] Close tmux window and remove worktree'
-    'merge:[tmux] Rebase onto master, merge, close worktree, delete branch'
+    'new:[tmux] Create new branch and open in dedicated tmux session'
+    'open:[tmux] Open existing branch in dedicated tmux session'
+    'close:[tmux] Close tmux session and remove worktree'
+    'merge:[tmux] Rebase onto master, merge, close session, delete branch'
 
     # NAVIGATION & INFO
     'list:List all worktrees'
     'cd:Navigate to worktree directory'
     'status:Show current worktree status'
-    'update:Fetch master and rebase current or specified branch'
+    'sync:Fetch master and rebase current or specified branch'
 
     # WTP PASS-THROUGH COMMANDS
     'add:Add worktree'
@@ -577,7 +587,7 @@ function _wt_completion() {
           # Show all branches
           _wt_complete_all_branches
           ;;
-        close|remove|cd|update|merge)
+        close|remove|cd|sync|merge)
           # First check for flags
           if [[ $words[$CURRENT] == -* ]]; then
             if [[ $line[1] == "close" ]]; then
