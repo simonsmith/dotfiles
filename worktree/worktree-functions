@@ -76,8 +76,8 @@ PRIMARY TMUX WORKFLOW COMMANDS:
 
   wt new <branch> [base]         Create new branch and open in tmux session
   wt open <branch>               Open existing branch in tmux session
-  wt close [branch]              Exit/detach from tmux session
-  wt destroy [options] [branch]  Kill tmux session and remove worktree
+  wt close [branch]              Kill tmux session (keeps worktree)
+  wt destroy [options] [branch]  Kill session and force-remove worktree (discards uncommitted changes)
   wt merge [options] [branch]    Rebase, merge to default branch, destroy session, delete branch
 
 NAVIGATION & INFO:
@@ -375,7 +375,7 @@ function _wt_open_tmux() {
   fi
 }
 
-# Exit/detach from tmux session
+# Kill tmux session (but keep worktree)
 function _wt_close() {
   local branch_name="$1"
 
@@ -389,27 +389,57 @@ function _wt_close() {
     fi
   fi
 
+  # Try to find session by exact name first (current repo)
   local session_name=$(_wt_session_name "$branch_name")
 
-  # Check if session exists
-  if ! tmux has-session -t "$session_name" 2>/dev/null; then
-    echo "Error: No tmux session found for branch: $branch_name"
-    echo "Session name: $session_name"
-    return 1
+  # If exact match doesn't exist, search for any session matching the branch pattern
+  if ! command tmux has-session -t "$session_name" 2>/dev/null; then
+    local safe_branch="${branch_name//\//_}"
+    # Search for any session ending with the branch pattern
+    local found_session=$(command tmux list-sessions -F '#{session_name}' 2>/dev/null | grep "wt-.*_${safe_branch}$" | head -1)
+
+    if [[ -n "$found_session" ]]; then
+      echo "Found session: $found_session"
+      session_name="$found_session"
+    else
+      echo "Error: No tmux session found for branch: $branch_name"
+      echo "Expected pattern: wt-*_${safe_branch}"
+      echo ""
+      echo "Available wt sessions:"
+      command tmux list-sessions -F '#{session_name}' 2>/dev/null | grep "^wt-" || echo "  (none)"
+      return 1
+    fi
   fi
 
-  # Detach from or switch away from the session
+  # Switch away from session if we're in it, then kill it
   if [[ -n "$TMUX" ]]; then
-    local current_session=$(tmux display-message -p '#S')
+    local current_session=$(command tmux display-message -p '#S')
     if [[ "$current_session" == "$session_name" ]]; then
-      echo "Detaching from session: $session_name"
-      tmux detach-client
-    else
-      echo "Not currently in session: $session_name"
+      # Find another session to switch to before killing
+      # Prefer non-wt sessions first, then wt sessions
+      local other_session=$(command tmux list-sessions -F '#{session_name}' 2>/dev/null | \
+        grep -v "^${session_name}$" | \
+        grep -v "^wt-" | head -1)
+
+      if [[ -z "$other_session" ]]; then
+        # No non-wt sessions, try any other session
+        other_session=$(command tmux list-sessions -F '#{session_name}' 2>/dev/null | \
+          grep -v "^${session_name}$" | head -1)
+      fi
+
+      if [[ -n "$other_session" ]]; then
+        echo "Switching to session: $other_session"
+        command tmux switch-client -t "$other_session"
+      else
+        echo "No other sessions available, detaching from tmux"
+        command tmux detach-client
+      fi
     fi
-  else
-    echo "Not currently in tmux"
   fi
+
+  # Kill the session
+  echo "Killing tmux session: $session_name"
+  command tmux kill-session -t "$session_name" 2>/dev/null
 }
 
 # Destroy tmux session and remove worktree
@@ -457,22 +487,55 @@ function _wt_destroy() {
     return 1
   fi
 
-  # Kill tmux session
+  # Kill tmux session (with smart switching if we're in it)
   local session_name=$(_wt_session_name "$branch_name")
 
   # Check if a session exists for this worktree
-  if tmux has-session -t "$session_name" 2>/dev/null; then
-    echo "Killing tmux session: $session_name"
-    tmux kill-session -t "$session_name"
+  if ! command tmux has-session -t "$session_name" 2>/dev/null; then
+    # Try to find session by branch pattern (handles cross-repo sessions)
+    local safe_branch="${branch_name//\//_}"
+    local found_session=$(command tmux list-sessions -F '#{session_name}' 2>/dev/null | grep "wt-.*_${safe_branch}$" | head -1)
+    if [[ -n "$found_session" ]]; then
+      session_name="$found_session"
+    fi
   fi
 
-  # Remove the worktree
+  # If we found a session, switch away from it if we're in it, then kill it
+  if command tmux has-session -t "$session_name" 2>/dev/null; then
+    if [[ -n "$TMUX" ]]; then
+      local current_session=$(command tmux display-message -p '#S')
+      if [[ "$current_session" == "$session_name" ]]; then
+        # Find another session to switch to before killing
+        local other_session=$(command tmux list-sessions -F '#{session_name}' 2>/dev/null | \
+          grep -v "^${session_name}$" | \
+          grep -v "^wt-" | head -1)
+
+        if [[ -z "$other_session" ]]; then
+          other_session=$(command tmux list-sessions -F '#{session_name}' 2>/dev/null | \
+            grep -v "^${session_name}$" | head -1)
+        fi
+
+        if [[ -n "$other_session" ]]; then
+          echo "Switching to session: $other_session"
+          command tmux switch-client -t "$other_session"
+        else
+          echo "No other sessions available, detaching from tmux"
+          command tmux detach-client
+        fi
+      fi
+    fi
+
+    echo "Killing tmux session: $session_name"
+    command tmux kill-session -t "$session_name"
+  fi
+
+  # Remove the worktree (force to ignore uncommitted changes)
   if [[ "$delete_branch" == true ]]; then
     echo "Removing worktree and deleting branch: $branch_name"
-    wtp remove --with-branch "$branch_name"
+    wtp remove --force --with-branch "$branch_name"
   else
     echo "Removing worktree: $branch_name (keeping branch)"
-    wtp remove "$branch_name"
+    wtp remove --force "$branch_name"
   fi
 }
 
@@ -698,8 +761,8 @@ function _wt_completion() {
     # PRIMARY TMUX WORKFLOW COMMANDS
     'new:[tmux] Create new branch and open in dedicated tmux session'
     'open:[tmux] Open existing branch in dedicated tmux session'
-    'close:[tmux] Exit/detach from tmux session'
-    'destroy:[tmux] Kill tmux session and remove worktree'
+    'close:[tmux] Kill tmux session (keeps worktree)'
+    'destroy:[tmux] Kill session and force-remove worktree (discards uncommitted changes)'
     'merge:[tmux] Rebase onto default branch, merge, destroy session, delete branch'
 
     # NAVIGATION & INFO
