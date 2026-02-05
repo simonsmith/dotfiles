@@ -32,13 +32,17 @@ wt open <branch>               # Open existing branch in dedicated tmux session
                                # Creates worktree if doesn't exist
                                # Example: wt open feature/existing
 
-wt close [branch]              # Close tmux session, remove worktree (keep branch)
+wt close [branch]              # Exit/detach from tmux session
                                # Example: wt close
-                               # Example: wt close feature/old
+                               # Example: wt close feature/auth
 
-wt close -d [branch]           # Close tmux session, remove worktree + DELETE branch
-wt close --delete [branch]     # Example: wt close -d
-                               # Example: wt close --delete feature/old
+wt destroy [branch]            # Kill tmux session, remove worktree (keep branch)
+                               # Example: wt destroy
+                               # Example: wt destroy feature/old
+
+wt destroy -d [branch]         # Kill tmux session, remove worktree + DELETE branch
+wt destroy --delete [branch]   # Example: wt destroy -d
+                               # Example: wt destroy --delete feature/old
 ```
 
 ### Standard Worktree Commands
