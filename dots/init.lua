@@ -285,6 +285,7 @@ require("nvim-web-devicons").setup()
 -- Which Key - Show key binding help
 local wk = require("which-key")
 wk.setup({
+  delay = 200, -- Delay in ms before which-key popup appears (reduces lag for single key mappings)
   show_help = false,
   plugins = { spelling = true },
 })
@@ -989,10 +990,8 @@ wk.add({
   },
 })
 
--- Formatting
-wk.add({
-  { "<leader>p", ":RunFormat<CR>", desc = "Format buffer", mode = "n", silent = true },
-})
+-- Formatting (bypassing which-key for instant execution)
+vim.keymap.set("n", "<leader>p", ":RunFormat<CR>", { desc = "Format buffer", silent = true })
 
 -- Time machine
 wk.add({
@@ -1026,9 +1025,9 @@ wk.add({
   { "hh", "<Plug>(emmet-expand-abbr)", desc = "Emmet expand abbreviation", mode = "i" },
 })
 
--- Search and replace across files
+-- Search and replace across files (bypassing which-key for instant execution)
+vim.keymap.set("n", "<leader>s", '<cmd>lua require("spectre").open()<CR>', { desc = "Open Spectre" })
 wk.add({
-  { "<leader>s", '<cmd>lua require("spectre").open()<CR>', desc = "Open Spectre", mode = "n" },
   {
     "<leader>c",
     '<cmd>lua require("spectre").open_visual({select_word=true})<CR>',
