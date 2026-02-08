@@ -4,6 +4,7 @@ ctrl - l [
   "brave browser beta": skhd -k "ctrl - tab"
   "google chrome beta": skhd -k "ctrl - tab"
   "google chrome": skhd -k "ctrl - tab"
+  "helium": skhd -k "ctrl - tab"
 ]
 ctrl - h [
   "firefox developer edition": skhd -k "shift + ctrl - tab"
@@ -11,6 +12,7 @@ ctrl - h [
   "brave browser beta": skhd -k "shift + ctrl - tab"
   "google chrome beta": skhd -k "shift + ctrl - tab"
   "google chrome": skhd -k "shift + ctrl - tab"
+  "helium": skhd -k "shift + ctrl - tab"
 ]
 
 ctrl - j [
