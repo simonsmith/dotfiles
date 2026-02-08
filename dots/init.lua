@@ -556,8 +556,8 @@ end, {
 vim.o.showtabline = 1 -- Show tabline only when multiple tabs
 
 -- Conform - Code formatting
-local prettier_only = { "prettier", stop_after_first = true }
-local prettier_mdformat = { "prettier", "mdformat", stop_after_first = true }
+local prettier_only = { "prettierd", "prettier", stop_after_first = true }
+local prettier_mdformat = { "prettierd", "prettier", "mdformat", stop_after_first = true }
 local lua_format = { "stylua", stop_after_first = true }
 
 require("conform").setup({
