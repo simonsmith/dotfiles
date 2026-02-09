@@ -76,7 +76,7 @@ PRIMARY TMUX WORKFLOW COMMANDS:
 
   wt new <branch> [base]         Create new branch and open in tmux session
   wt open <branch>               Open existing branch in tmux session
-  wt close [branch]              Kill tmux session (keeps worktree)
+  wt close [branch|session]      Kill tmux session (keeps worktree)
   wt destroy [options] [branch]  Kill session and force-remove worktree (discards uncommitted changes)
   wt merge [options] [branch]    Rebase, merge to default branch, destroy session, delete branch
 
@@ -377,38 +377,47 @@ function _wt_open_tmux() {
 
 # Kill tmux session (but keep worktree)
 function _wt_close() {
-  local branch_name="$1"
+  local input="$1"
+  local session_name=""
 
-  # If no branch specified, try to get current branch
-  if [[ -z "$branch_name" ]]; then
-    branch_name=$(git branch --show-current 2>/dev/null)
+  # If no input specified, try to get current branch
+  if [[ -z "$input" ]]; then
+    local branch_name=$(git branch --show-current 2>/dev/null)
     if [[ -z "$branch_name" ]]; then
       echo "Error: Not in a git repository or could not determine branch"
-      echo "Usage: wt close [branch-name]"
+      echo "Usage: wt close [branch-name|session-name]"
       return 1
+    fi
+    session_name=$(_wt_session_name "$branch_name")
+  # If input looks like a session name (starts with wt-), use it directly
+  elif [[ "$input" == wt-* ]]; then
+    session_name="$input"
+  # Otherwise treat it as a branch name
+  else
+    local branch_name="$input"
+    # Try to find session by exact name first (current repo)
+    session_name=$(_wt_session_name "$branch_name")
+
+    # If exact match doesn't exist, search for any session matching the branch pattern
+    if ! command tmux has-session -t "$session_name" 2>/dev/null; then
+      local safe_branch="${branch_name//\//_}"
+      # Search for any session ending with the branch pattern
+      local found_session=$(command tmux list-sessions -F '#{session_name}' 2>/dev/null | grep "wt-.*_${safe_branch}$" | head -1)
+
+      if [[ -n "$found_session" ]]; then
+        echo "Found session: $found_session"
+        session_name="$found_session"
+      fi
     fi
   fi
 
-  # Try to find session by exact name first (current repo)
-  local session_name=$(_wt_session_name "$branch_name")
-
-  # If exact match doesn't exist, search for any session matching the branch pattern
+  # Verify session exists
   if ! command tmux has-session -t "$session_name" 2>/dev/null; then
-    local safe_branch="${branch_name//\//_}"
-    # Search for any session ending with the branch pattern
-    local found_session=$(command tmux list-sessions -F '#{session_name}' 2>/dev/null | grep "wt-.*_${safe_branch}$" | head -1)
-
-    if [[ -n "$found_session" ]]; then
-      echo "Found session: $found_session"
-      session_name="$found_session"
-    else
-      echo "Error: No tmux session found for branch: $branch_name"
-      echo "Expected pattern: wt-*_${safe_branch}"
-      echo ""
-      echo "Available wt sessions:"
-      command tmux list-sessions -F '#{session_name}' 2>/dev/null | grep "^wt-" || echo "  (none)"
-      return 1
-    fi
+    echo "Error: No tmux session found: $session_name"
+    echo ""
+    echo "Available wt sessions:"
+    command tmux list-sessions -F '#{session_name}' 2>/dev/null | grep "^wt-" || echo "  (none)"
+    return 1
   fi
 
   # Switch away from session if we're in it, then kill it
@@ -761,7 +770,7 @@ function _wt_completion() {
     # PRIMARY TMUX WORKFLOW COMMANDS
     'new:[tmux] Create new branch and open in dedicated tmux session'
     'open:[tmux] Open existing branch in dedicated tmux session'
-    'close:[tmux] Kill tmux session (keeps worktree)'
+    'close:[tmux] Kill tmux session by branch or session name (keeps worktree)'
     'destroy:[tmux] Kill session and force-remove worktree (discards uncommitted changes)'
     'merge:[tmux] Rebase onto default branch, merge, destroy session, delete branch'
 
@@ -801,7 +810,11 @@ function _wt_completion() {
           # Show all branches
           _wt_complete_all_branches
           ;;
-        close|remove|cd|sync)
+        close)
+          # Show tmux sessions (can also accept branch names)
+          _wt_complete_tmux_sessions
+          ;;
+        remove|cd|sync)
           # Show only branches with worktrees
           _wt_complete_worktree_branches
           ;;
@@ -847,6 +860,15 @@ function _wt_complete_worktree_branches() {
   worktree_branches=(${(f)"$(_wt_worktree_branches)"})
   if [[ ${#worktree_branches[@]} -gt 0 ]]; then
     _describe 'worktree branch' worktree_branches
+  fi
+}
+
+# Helper: Complete tmux session names (for close command)
+function _wt_complete_tmux_sessions() {
+  local -a sessions
+  sessions=(${(f)"$(command tmux list-sessions -F '#{session_name}' 2>/dev/null | grep '^wt-')"})
+  if [[ ${#sessions[@]} -gt 0 ]]; then
+    _describe 'tmux session' sessions
   fi
 }
 
