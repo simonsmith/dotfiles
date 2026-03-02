@@ -77,7 +77,7 @@ PRIMARY TMUX WORKFLOW COMMANDS:
   wt new <branch> [base]         Create new branch and open in tmux session
   wt open <branch>               Open existing branch in tmux session
   wt close [branch|session]      Kill tmux session (keeps worktree)
-  wt destroy [options] [branch]  Kill session and force-remove worktree (discards uncommitted changes)
+  wt destroy [branch]            Kill session, force-remove worktree, and DELETE branch (no trace remains)
   wt merge [options] [branch]    Rebase, merge to default branch, destroy session, delete branch
 
 NAVIGATION & INFO:
@@ -94,8 +94,6 @@ LOW-LEVEL WORKTREE COMMANDS (no tmux):
   wt remove <branch>             Remove worktree only
 
 OPTIONS:
-  wt destroy -d [branch]         Remove worktree and DELETE branch
-  wt destroy --delete [branch]   Long form of -d
   wt merge -k [branch]           Keep branch after merge (default: delete)
   wt merge --keep [branch]       Long form of -k
 
@@ -451,31 +449,16 @@ function _wt_close() {
   command tmux kill-session -t "$session_name" 2>/dev/null
 }
 
-# Destroy tmux session and remove worktree
+# Destroy tmux session, remove worktree, and delete branch
 function _wt_destroy() {
-  local delete_branch=false
-  local branch_name=""
-
-  # Parse arguments
-  while [[ $# -gt 0 ]]; do
-    case $1 in
-      -d|--delete)
-        delete_branch=true
-        shift
-        ;;
-      *)
-        branch_name="$1"
-        shift
-        ;;
-    esac
-  done
+  local branch_name="$1"
 
   # If no branch specified, try to get current branch
   if [[ -z "$branch_name" ]]; then
     branch_name=$(git branch --show-current 2>/dev/null)
     if [[ -z "$branch_name" ]]; then
       echo "Error: Not in a git repository or could not determine branch"
-      echo "Usage: wt destroy [-d|--delete] [branch-name]"
+      echo "Usage: wt destroy [branch-name]"
       return 1
     fi
     echo "Using current branch: $branch_name"
@@ -538,14 +521,9 @@ function _wt_destroy() {
     command tmux kill-session -t "$session_name"
   fi
 
-  # Remove the worktree (force to ignore uncommitted changes)
-  if [[ "$delete_branch" == true ]]; then
-    echo "Removing worktree and deleting branch: $branch_name"
-    wtp remove --force --with-branch "$branch_name"
-  else
-    echo "Removing worktree: $branch_name (keeping branch)"
-    wtp remove --force "$branch_name"
-  fi
+  # Remove the worktree and delete the branch (force to ignore uncommitted changes)
+  echo "Removing worktree and deleting branch: $branch_name"
+  wtp remove --force --with-branch "$branch_name"
 }
 
 # List all worktrees
@@ -750,10 +728,17 @@ function _wt_merge() {
 
   echo ""
   echo "Step 4: Destroying worktree and session..."
+  # Note: _wt_destroy always deletes the branch now
+  # If we want to keep the branch, we need to just close the session and remove worktree
   if [[ "$keep_branch" == true ]]; then
-    _wt_destroy "$branch_name"
+    _wt_close "$branch_name"
+    local worktree_path=$(_wt_find_worktree_path "$branch_name")
+    if [[ -n "$worktree_path" ]]; then
+      echo "Removing worktree: $branch_name (keeping branch)"
+      wtp remove --force "$branch_name"
+    fi
   else
-    _wt_destroy -d "$branch_name"
+    _wt_destroy "$branch_name"
   fi
 
   echo ""
@@ -771,7 +756,7 @@ function _wt_completion() {
     'new:[tmux] Create new branch and open in dedicated tmux session'
     'open:[tmux] Open existing branch in dedicated tmux session'
     'close:[tmux] Kill tmux session by branch or session name (keeps worktree)'
-    'destroy:[tmux] Kill session and force-remove worktree (discards uncommitted changes)'
+    'destroy:[tmux] Kill session, force-remove worktree, and DELETE branch (no trace remains)'
     'merge:[tmux] Rebase onto default branch, merge, destroy session, delete branch'
 
     # NAVIGATION & INFO
@@ -818,24 +803,19 @@ function _wt_completion() {
           # Show only branches with worktrees
           _wt_complete_worktree_branches
           ;;
-        destroy|merge)
+        destroy)
+          # Show only branches with worktrees
+          _wt_complete_worktree_branches
+          ;;
+        merge)
           # First check for flags
           if [[ $words[$CURRENT] == -* ]]; then
-            if [[ $line[1] == "destroy" ]]; then
-              local -a destroy_opts
-              destroy_opts=(
-                '-d:Delete branch along with worktree'
-                '--delete:Delete branch along with worktree'
-              )
-              _describe 'options' destroy_opts
-            elif [[ $line[1] == "merge" ]]; then
-              local -a merge_opts
-              merge_opts=(
-                '-k:Keep branch after merge'
-                '--keep:Keep branch after merge'
-              )
-              _describe 'options' merge_opts
-            fi
+            local -a merge_opts
+            merge_opts=(
+              '-k:Keep branch after merge'
+              '--keep:Keep branch after merge'
+            )
+            _describe 'options' merge_opts
           else
             # Show only branches with worktrees
             _wt_complete_worktree_branches
