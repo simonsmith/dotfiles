@@ -18,12 +18,12 @@ case "$1" in
   work)
     sed -i "/^\[font\.offset\]/,/^$\|^\[/ {
       s/^x = .*/x = -1/
-      s/^y = .*/y = -4/
+      s/^y = .*/y = -1/
     }" "$CONFIG"
     sed -i "/^\[font\.normal\]/,/^$\|^\[/ {
       s/^style = .*/style = \"SemiBold\"/
     }" "$CONFIG"
-    echo "Set font.offset to x=-1, y=-4 and font.normal.style to SemiBold"
+    echo "Set font.offset to x=-1, y=-1 and font.normal.style to SemiBold"
     ;;
   size)
     if [[ -z "$2" ]]; then
