@@ -77,7 +77,6 @@ alias glg='fshow "master.."'
 alias glog='fshow'
 alias glogg='gLogAlias'
 alias glr='git pull --rebase'
-alias gli='git pull && yarn install'
 alias gpf='git push -f'
 alias grn='git branch -m $(git_current_branch)'
 alias gro='git reset origin/$(git_current_branch)'
@@ -92,6 +91,7 @@ alias rbm='gcm && gl && gco - && grbm'
 alias gb="git for-each-ref --sort=-committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
 alias gbr="git for-each-ref --sort=-committerdate refs/remotes/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
 alias glom='git log --graph --oneline master..HEAD'
+alias gstat='git --no-pager diff $(git merge-base HEAD origin/HEAD)..HEAD --shortstat'
 
 # os updates
 alias update_brew='brew update; brew upgrade; brew cleanup'
