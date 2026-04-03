@@ -1104,6 +1104,7 @@ local function fix_lint_errors()
     or filetype == "javascriptreact"
     or filetype == "typescript"
     or filetype == "typescriptreact"
+    or filetype == "vue"
   then
     vim.cmd("CocCommand eslint.executeAutofix")
   elseif filetype == "css" or filetype == "scss" or filetype == "sass" or filetype == "less" then
