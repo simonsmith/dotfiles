@@ -1,12 +1,10 @@
 [tools]
 bun = "latest"
-deno = "latest"
 go = "latest"
 node = "lts"
 pnpm = "latest"
 python = "latest"
 ruby = "latest"
-yarn = "4.9.2"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node"]
