@@ -11,21 +11,21 @@ case "$1" in
       s/^y = .*/y = 0/
     }" "$CONFIG"
     sed -i "/^\[font\.normal\]/,/^$\|^\[/ {
-      s/^style = .*/style = \"Light\"/
+      s/^style = .*/style = \"Regular\"/
     }" "$CONFIG"
-    sed -i "s/^size = .*/size = 16/" "$CONFIG"
+    sed -i "s/^size = .*/size = 18/" "$CONFIG"
     echo "Set font.offset to x=0, y=0, font.normal.style to Light and size to 16"
     ;;
   home-desktop)
     sed -i "/^\[font\.offset\]/,/^$\|^\[/ {
-      s/^x = .*/x = -1/
-      s/^y = .*/y = 0/
+      s/^x = .*/x = 0/
+      s/^y = .*/y = 1/
     }" "$CONFIG"
     sed -i "/^\[font\.normal\]/,/^$\|^\[/ {
       s/^style = .*/style = \"Regular\"/
     }" "$CONFIG"
-    sed -i "s/^size = .*/size = 20/" "$CONFIG"
-    echo "Set font.offset to x=-1, y=0, font.normal.style to Regular and size to 20"
+    sed -i "s/^size = .*/size = 18/" "$CONFIG"
+    echo "Set font.offset to x=0, y=1, font.normal.style to Regular and size to 18"
     ;;
   work)
     sed -i "/^\[font\.offset\]/,/^$\|^\[/ {
