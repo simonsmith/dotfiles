@@ -39,6 +39,7 @@ Plug("folke/persistence.nvim") -- Session management
 Plug("y3owk1n/time-machine.nvim") -- Time travel for buffers
 Plug("OXY2DEV/markview.nvim")
 Plug("fasterius/simple-zoom.nvim") -- tmux style zoom
+Plug("Wansmer/treesj")
 
 -- File management
 Plug("mcchrish/nnn.vim") -- NNN file manager integration
@@ -389,6 +390,10 @@ vim.api.nvim_create_autocmd("TermOpen", {
   pattern = "term://*toggleterm#*",
   callback = set_toggleterm_keymaps,
 })
+
+-- TreeSJ - Split/join blocks of code
+require("treesj").setup({ use_default_keymaps = false })
+vim.keymap.set("n", "gj", require("treesj").toggle, { desc = "Toggle split/join block" })
 
 -- Time Machine - Buffer history navigation
 require("time-machine").setup({})
