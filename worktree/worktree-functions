@@ -310,8 +310,8 @@ function _wt_open() {
 # Helper function to generate session name
 function _wt_session_name() {
   local branch_name="$1"
-  local repo_name=$(basename $(git rev-parse --show-toplevel 2>/dev/null))
-  local safe_branch="${branch_name//\//_}"
+  local repo_name=$(basename "$(_wt_main_worktree_path)")
+  local safe_branch="${branch_name##*/}"
   echo "wt-${repo_name}_${safe_branch}"
 }
 
@@ -398,7 +398,7 @@ function _wt_close() {
 
     # If exact match doesn't exist, search for any session matching the branch pattern
     if ! command tmux has-session -t "$session_name" 2>/dev/null; then
-      local safe_branch="${branch_name//\//_}"
+      local safe_branch="${branch_name##*/}"
       # Search for any session ending with the branch pattern
       local found_session=$(command tmux list-sessions -F '#{session_name}' 2>/dev/null | grep "wt-.*_${safe_branch}$" | head -1)
 
@@ -422,15 +422,17 @@ function _wt_close() {
   if [[ -n "$TMUX" ]]; then
     local current_session=$(command tmux display-message -p '#S')
     if [[ "$current_session" == "$session_name" ]]; then
-      # Find another session to switch to before killing
+      # Find another session to switch to before killing, preferring most recently used
       # Prefer non-wt sessions first, then wt sessions
-      local other_session=$(command tmux list-sessions -F '#{session_name}' 2>/dev/null | \
+      local other_session=$(command tmux list-sessions -F '#{session_last_attached} #{session_name}' 2>/dev/null | \
+        sort -rn | awk '{print $2}' | \
         grep -v "^${session_name}$" | \
         grep -v "^wt-" | head -1)
 
       if [[ -z "$other_session" ]]; then
-        # No non-wt sessions, try any other session
-        other_session=$(command tmux list-sessions -F '#{session_name}' 2>/dev/null | \
+        # No non-wt sessions, try any other session by most recently used
+        other_session=$(command tmux list-sessions -F '#{session_last_attached} #{session_name}' 2>/dev/null | \
+          sort -rn | awk '{print $2}' | \
           grep -v "^${session_name}$" | head -1)
       fi
 
@@ -485,7 +487,7 @@ function _wt_destroy() {
   # Check if a session exists for this worktree
   if ! command tmux has-session -t "$session_name" 2>/dev/null; then
     # Try to find session by branch pattern (handles cross-repo sessions)
-    local safe_branch="${branch_name//\//_}"
+    local safe_branch="${branch_name##*/}"
     local found_session=$(command tmux list-sessions -F '#{session_name}' 2>/dev/null | grep "wt-.*_${safe_branch}$" | head -1)
     if [[ -n "$found_session" ]]; then
       session_name="$found_session"
@@ -497,13 +499,15 @@ function _wt_destroy() {
     if [[ -n "$TMUX" ]]; then
       local current_session=$(command tmux display-message -p '#S')
       if [[ "$current_session" == "$session_name" ]]; then
-        # Find another session to switch to before killing
-        local other_session=$(command tmux list-sessions -F '#{session_name}' 2>/dev/null | \
+        # Find another session to switch to before killing, preferring most recently used
+        local other_session=$(command tmux list-sessions -F '#{session_last_attached} #{session_name}' 2>/dev/null | \
+          sort -rn | awk '{print $2}' | \
           grep -v "^${session_name}$" | \
           grep -v "^wt-" | head -1)
 
         if [[ -z "$other_session" ]]; then
-          other_session=$(command tmux list-sessions -F '#{session_name}' 2>/dev/null | \
+          other_session=$(command tmux list-sessions -F '#{session_last_attached} #{session_name}' 2>/dev/null | \
+            sort -rn | awk '{print $2}' | \
             grep -v "^${session_name}$" | head -1)
         fi
 
