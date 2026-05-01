@@ -14,7 +14,7 @@ windows:
       layout: tiled
       panes:
         - XDEBUG_MODE=debug XDEBUG_TRIGGER=1 php artisan queue:work
-        - php artisan serve
+        - XDEBUG_MODE=debug XDEBUG_TRIGGER=1 php artisan serve
         - bun run dev
         - bun run stripe-webhook
   - parser:
