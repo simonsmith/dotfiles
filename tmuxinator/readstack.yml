@@ -15,9 +15,9 @@ windows:
       panes:
         - XDEBUG_MODE=debug XDEBUG_TRIGGER=1 php artisan queue:work
         - php artisan serve
-        - bun dev
+        - bun run dev
         - bun run stripe-webhook
   - parser:
-      root: ~/Sites/readstack/parser-api
+      root: ~/Sites/readstack/parser-service
       panes:
-        - bun dev:debug
+        - bun run dev:debug
