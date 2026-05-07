@@ -59,7 +59,7 @@ znap eval scmpuff 'scmpuff init -s --aliases=false'
 znap eval starship 'starship init zsh'
 znap eval wtp 'wtp shell-init zsh'
 # mise - cached activation for faster startup
-znap eval mise 'mise activate zsh'
+znap eval mise '~/.local/bin/mise activate zsh'
 znap prompt
 
 export VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
