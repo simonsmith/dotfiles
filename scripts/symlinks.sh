@@ -52,6 +52,10 @@ mkdir -p "$HOME/.config/btop"
 mkdir -p "$HOME/.config/tmux-snaglord"
 [ ! -e "$HOME/.config/tmux-snaglord/config.toml" ] && ln -sfv $(grealpath tmux-snaglord.toml) "$HOME/.config/tmux-snaglord/config.toml"
 
+mkdir -p "$HOME/.config/yazi"
+[ ! -e "$HOME/.config/yazi/yazi.toml" ] && ln -sfv $(grealpath yazi.toml) "$HOME/.config/yazi/yazi.toml"
+[ ! -e "$HOME/.config/yazi/keymap.toml" ] && ln -sfv $(grealpath keymap.toml) "$HOME/.config/yazi/keymap.toml"
+
 
 mkdir "$HOME/.ssh"
 [ ! -e "$HOME/.ssh/config" ] && ln -sfv $(grealpath ssh-config) "$HOME/.ssh/config"

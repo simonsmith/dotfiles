@@ -54,8 +54,8 @@ alias t1="eza -lbhaT -L 1"
 alias t2="eza -lbhaT -L 2"
 alias t3="eza -lbhaT -L 3"
 
-# alias nnn
-alias n="nnn"
+# alias yazi (used to use nnn so keep the same alias)
+alias n="yazi"
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '

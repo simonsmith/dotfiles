@@ -1,0 +1,15 @@
+#:schema https://yazi-rs.github.io/schemas/yazi.json
+
+[mgr]
+show_hidden = true
+ratio       = [ 1, 4, 0 ]
+sort_by     = "mtime"
+sort_dir_first = true
+scrolloff   = 3
+
+[plugin]
+fetchers = [
+	{ id = "mime-dir",    url = "*/",         run = "mime.dir",    prio = "high", group = "mime" },
+	{ id = "mime-local",  url = "local://*",  run = "mime.local",  prio = "high", group = "mime" },
+	{ id = "mime-remote", url = "remote://*", run = "mime.remote", prio = "high", group = "mime" },
+]

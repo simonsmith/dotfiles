@@ -42,7 +42,7 @@ Plug("fasterius/simple-zoom.nvim") -- tmux style zoom
 Plug("Wansmer/treesj")
 
 -- File management
-Plug("mcchrish/nnn.vim") -- NNN file manager integration
+Plug("mikavilpas/yazi.nvim") -- Yazi file manager integration
 
 -- Buffer management
 Plug("schickling/vim-bufonly") -- Close all buffers except current
@@ -111,6 +111,9 @@ vim.g.coc_global_extensions = {
   "@yaegassy/coc-laravel", -- Laravel support
   "@yaegassy/coc-volar", -- Modern Vue.js language server
 }
+
+-- Suppress coc.nvim node warnings
+vim.g.coc_disable_startup_warning = 1
 
 -- editor settings
 -- ============================================================================
@@ -831,19 +834,14 @@ require("kommentary.config").configure_language("default", {
   prefer_single_line_comments = true,
 })
 
---- nnn.vim configuration
-require("nnn").setup({
-  command = "nnn -d -H",
-  set_default_mappings = 0,
-  layout = "enew",
-  action = {
-    ["<c-x>"] = "split",
-    ["<c-v>"] = "vsplit",
-  },
+-- Yazi file manager configuration
+require("yazi").setup({
+  floating_window_scaling_factor = 0.8,
+  yazi_floating_window_winblend = 0,
 })
 
 wk.add({
-  { "_", ":silent NnnPicker %:p:h<CR>", desc = "Open file manager here", mode = "n" },
+  { "_", "<cmd>Yazi<CR>", desc = "Open file manager", mode = "n" },
 })
 
 -- legacy plugin configurations

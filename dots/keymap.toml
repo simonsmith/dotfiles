@@ -1,0 +1,28 @@
+#:schema https://yazi-rs.github.io/schemas/keymap.json
+
+[mgr]
+keymap = [
+	{ on = "<Esc>", run = "quit", desc = "Quit yazi" },
+	{ on = "q",     run = "quit", desc = "Quit yazi" },
+
+	# Navigation
+	{ on = "h", run = "leave", desc = "Back to parent directory" },
+	{ on = "l", run = "enter", desc = "Enter directory" },
+	{ on = "k", run = "arrow prev", desc = "Previous file" },
+	{ on = "j", run = "arrow next", desc = "Next file" },
+
+	# Selection and operations
+	{ on = "<Space>", run = [ "toggle", "arrow 1" ], desc = "Toggle selection" },
+	{ on = "y", run = "yank", desc = "Copy" },
+	{ on = "x", run = "yank --cut", desc = "Cut" },
+	{ on = "p", run = "paste", desc = "Paste" },
+	{ on = "d", run = "remove", desc = "Trash" },
+	{ on = "a", run = "create", desc = "Create file" },
+	{ on = "r", run = "rename --cursor=before_ext", desc = "Rename" },
+	{ on = "o", run = "open", desc = "Open" },
+	{ on = "<Enter>", run = "open", desc = "Open" },
+
+	# Other essentials
+	{ on = "/", run = "find --smart", desc = "Find" },
+	{ on = ".", run = "hidden toggle", desc = "Toggle hidden files" },
+]
