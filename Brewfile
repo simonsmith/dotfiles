@@ -70,7 +70,7 @@ brew "gh"
 brew "glab"
 brew "jq"
 brew "diff-so-fancy"
-brew "nnn"
+brew "yazi"
 brew "source-highlight"
 
 # Applications
