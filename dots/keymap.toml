@@ -17,7 +17,7 @@ keymap = [
 	{ on = "x", run = "yank --cut", desc = "Cut" },
 	{ on = "p", run = "paste", desc = "Paste" },
 	{ on = "d", run = "remove", desc = "Trash" },
-	{ on = "a", run = "create", desc = "Create file" },
+	{ on = "n", run = "create", desc = "Create file" },
 	{ on = "r", run = "rename --cursor=before_ext", desc = "Rename" },
 	{ on = "o", run = "open", desc = "Open" },
 	{ on = "<Enter>", run = "open", desc = "Open" },
