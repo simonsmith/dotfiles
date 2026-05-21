@@ -24,8 +24,8 @@ case "$1" in
     sed -i "/^\[font\.normal\]/,/^$\|^\[/ {
       s/^style = .*/style = \"Medium\"/
     }" "$CONFIG"
-    sed -i "s/^size = .*/size = 18/" "$CONFIG"
-    echo "Set font.offset to x=0, y=2, font.normal.style to Medium and size to 18"
+    sed -i "s/^size = .*/size = 16/" "$CONFIG"
+    echo "Set font.offset to x=0, y=2, font.normal.style to Medium and size to 16"
     ;;
   work-laptop)
     sed -i "/^\[font\.offset\]/,/^$\|^\[/ {
@@ -41,13 +41,13 @@ case "$1" in
   work-desktop)
     sed -i "/^\[font\.offset\]/,/^$\|^\[/ {
       s/^x = .*/x = -1/
-      s/^y = .*/y = -1/
+      s/^y = .*/y = 0/
     }" "$CONFIG"
     sed -i "/^\[font\.normal\]/,/^$\|^\[/ {
-      s/^style = .*/style = \"Medium\"/
+      s/^style = .*/style = \"SemiBold\"/
     }" "$CONFIG"
-    sed -i "s/^size = .*/size = 18/" "$CONFIG"
-    echo "Set font.offset to x=-1, y=-1, font.normal.style to Medium and size to 18"
+    sed -i "s/^size = .*/size = 16/" "$CONFIG"
+    echo "Set font.offset to x=-1, y=0, font.normal.style to SemiBold and size to 16"
     ;;
   size)
     if [[ -z "$2" ]]; then
