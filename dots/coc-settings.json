@@ -7,6 +7,8 @@
   "diagnostic.checkCurrentLine": true,
   "diagnostic.errorSign": "x",
   "diagnostic.infoSign": "~",
+  "phpstan.memoryLimit": "2G",
+  "phpstan.download.checkOnStartup": false,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": false,
     "source.fixAll.stylelint": false
