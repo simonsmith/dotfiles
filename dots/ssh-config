@@ -2,10 +2,13 @@
 # This only works if it's at the top of ssh_config (before any Host blocks).
 # This won't be added again if you remove it.
 Include ~/.orbstack/ssh/config
+Include ~/.ssh/hetnzer-config
 
 Host *
   UseKeychain yes
   AddKeysToAgent yes
+  ServerAliveInterval 60
+  ServerAliveCountMax 5
 
 # Personal GitHub
 Host github.com
