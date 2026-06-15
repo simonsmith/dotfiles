@@ -5,10 +5,8 @@ startup_window: nvim
 windows:
   - nvim: nvim
   - dev:
-      layout: even-horizontal
       panes:
         - gs
-        -
   - laravel:
       root: ~/Sites/readstack/web
       layout: tiled
@@ -21,3 +19,7 @@ windows:
       root: ~/Sites/readstack/parser-service
       panes:
         - pnpm run dev:debug
+  - ssh:
+      root: ~/Sites/readstack/web
+      panes:
+        - ssh readstack-staging
