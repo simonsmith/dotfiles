@@ -110,6 +110,7 @@ vim.g.coc_global_extensions = {
   "@yaegassy/coc-tailwindcss3", -- Tailwind CSS support
   "@yaegassy/coc-laravel", -- Laravel support
   "@yaegassy/coc-volar", -- Modern Vue.js language server
+  "coc-java", -- Java language server (JDT LS, activates on .java files)
 }
 
 -- Suppress coc.nvim node warnings
