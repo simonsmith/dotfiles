@@ -104,6 +104,7 @@ cask "shifty"
 cask "spotify"
 cask "vscodium"
 cask "yaak"
+cask "rayhatfield/mac-media-keys/mac-media-keys"
 
 # Fonts
 cask "font-sauce-code-pro-nerd-font"
