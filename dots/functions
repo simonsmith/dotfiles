@@ -54,8 +54,16 @@ fshow() {
 # fcs - get git commit sha
 # example usage: git rebase -i `fcs`
 fcs() {
-  local commits commit
-  commits=$(git log --color=always --pretty=oneline --abbrev-commit --reverse master..) &&
+  local commits commit default_branch
+  default_branch=$(git symbolic-ref --short refs/remotes/origin/HEAD 2>/dev/null | sed 's#^origin/##')
+  if [[ -z "$default_branch" ]]; then
+    if git show-ref --verify --quiet refs/heads/main; then
+      default_branch=main
+    else
+      default_branch=master
+    fi
+  fi
+  commits=$(git log --color=always --pretty=oneline --abbrev-commit --reverse "$default_branch..") &&
   commit=$(echo "$commits" | fzf-tmux --tac +s +m -e --ansi --reverse) &&
   echo -n $(echo "$commit" | sed "s/ .*//")
 }
