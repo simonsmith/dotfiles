@@ -568,6 +568,7 @@ vim.o.showtabline = 1 -- Show tabline only when multiple tabs
 local prettier_only = { "prettierd", "prettier", stop_after_first = true }
 local prettier_mdformat = { "prettierd", "prettier", "mdformat", stop_after_first = true }
 local lua_format = { "stylua", stop_after_first = true }
+local spotless_only = { "spotless_maven" }
 
 require("conform").setup({
   formatters_by_ft = {
@@ -594,6 +595,9 @@ require("conform").setup({
     -- Lua formats
     lua = lua_format,
     vim = lua_format,
+
+    -- Java formats
+    java = spotless_only,
   },
 })
 
