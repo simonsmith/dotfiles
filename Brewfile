@@ -29,6 +29,7 @@ brew "tree-sitter"
 brew "tree-sitter-cli"
 brew "scmpuff"
 brew "stylua"
+cask "temurin"
 
 # Search and file tools
 brew "ack"
