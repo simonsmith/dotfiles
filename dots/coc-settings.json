@@ -28,7 +28,7 @@
   },
   "eslint.run": "onSave",
   "eslint.workingDirectories": ["."],
-  "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx8G -Xms100m -Xlog:disable",
+  "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx12G -Xms100m -Xlog:disable",
   "java.import.exclusions": [
     "**/node_modules/**",
     "**/.metadata/**",
