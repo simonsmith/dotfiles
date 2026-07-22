@@ -245,7 +245,7 @@ local function apply_tokyonight(style)
       comments = { italic = false }, -- Disable italic comments
       keywords = { italic = false }, -- Disable italic keywords
     },
-    day_brightness = 0.1, -- Brightness for day style
+    day_brightness = 0.2, -- Brightness for day style
     hide_inactive_statusline = true, -- Keep statusline visible
     dim_inactive = false, -- Don't dim inactive windows
     lualine_bold = false, -- Don't bold lualine headers
