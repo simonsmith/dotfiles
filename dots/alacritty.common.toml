@@ -26,15 +26,15 @@ draw_bold_text_with_bright_colors = false
 size = 16.0
 
 [font.normal]
-family = "JetBrainsMono Nerd Font"
+family = "GeistMono Nerd Font"
 style = "Regular"
 
 [font.italic]
-family = "JetBrainsMono Nerd Font"
+family = "GeistMono Nerd Font"
 style = "Italic"
 
 [font.bold]
-family = "JetBrainsMono Nerd Font"
+family = "GeistMono Nerd Font"
 style = "Bold"
 
 # Custom keybindings (only non-defaults)
