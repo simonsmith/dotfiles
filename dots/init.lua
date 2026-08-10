@@ -1133,20 +1133,6 @@ end
 -- Which-key registrations for organized help
 wk.add({
   { "<leader>f", fix_lint_errors, desc = "Fix lint errors" },
-  {
-    "<leader>ls",
-    function()
-      require("persistence").load()
-    end,
-    desc = "Load session for current dir",
-  },
-  {
-    "<leader>ll",
-    function()
-      require("persistence").select()
-    end,
-    desc = "Select a session to load",
-  },
 })
 
 -- autocommands
