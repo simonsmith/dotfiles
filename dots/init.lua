@@ -254,7 +254,9 @@ local function apply_tokyonight(style)
         colors.bg_highlight = "#daddea"
       end
     end, -- Color customization hook
-    on_highlights = function(highlights, colors) end,
+    on_highlights = function(highlights, colors)
+      highlights.YankFlash = { bg = colors.bg_visual }
+    end,
   })
 
   vim.cmd("silent! colorscheme tokyonight-" .. style)
@@ -393,6 +395,12 @@ end
 vim.api.nvim_create_autocmd("TermOpen", {
   pattern = "term://*toggleterm#*",
   callback = set_toggleterm_keymaps,
+})
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+  callback = function()
+    vim.highlight.on_yank({ higroup = "YankFlash", timeout = 300 })
+  end,
 })
 
 -- TreeSJ - Split/join blocks of code
