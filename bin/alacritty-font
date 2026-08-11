@@ -56,13 +56,13 @@ case "$1" in
     set_size 18
     ;;
   home-desktop)
-    set_font "GeistMono Nerd Font" "Medium" "Italic" "SemiBold"
+    set_font "JetBrainsMono Nerd Font" "Medium" "Italic" "SemiBold"
     set_offset 0 0
     set_size 18
     ;;
   home-desktop-large)
-    set_font "GeistMono Nerd Font" "Medium" "Italic" "SemiBold"
-    set_offset -1 0
+    set_font "JetBrainsMono Nerd Font" "Medium" "Italic" "SemiBold"
+    set_offset 0 0
     set_size 20
     ;;
   work-laptop)
