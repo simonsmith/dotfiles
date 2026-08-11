@@ -51,7 +51,7 @@ set_size() {
 
 case "$1" in
   home-laptop)
-    set_font "GeistMono Nerd Font" "Medium" "Italic" "SemiBold"
+    set_font "GeistMono Nerd Font" "SemiBold" "Italic" "Bold"
     set_offset 0 0
     set_size 18
     ;;
