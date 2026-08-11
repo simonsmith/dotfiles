@@ -4,80 +4,88 @@ set -e
 
 CONFIG="$HOME/.alacritty.toml"
 
+# Set family and style for font.normal/italic/bold in the local override
+# config. Each style is given explicitly: normal, italic, bold. Rewrites
+# each section to "family" then "style", creating any missing section.
+# Idempotent.
+set_font() {
+  local family="$1" normal="$2" italic="$3" bold="$4"
+  awk -v fam="$family" -v ns="$normal" -v is="$italic" -v bs="$bold" '
+    BEGIN {
+      split("font.normal font.italic font.bold", t, " "); for (i in t) want[t[i]]=1
+      sty["font.normal"]=ns; sty["font.italic"]=is; sty["font.bold"]=bs
+    }
+    /^\[/ {
+      s=$0; gsub(/[][]/,"",s); cur=s; have[cur]=1
+      print
+      if (cur in want) { print "family = \"" fam "\""; print "style = \"" sty[cur] "\"" }
+      next
+    }
+    { if (cur in want && ($0 ~ /^family = / || $0 ~ /^style = /)) next; print }
+    END {
+      for (k in want) if (!(k in have)) {
+        print ""; print "[" k "]"
+        print "family = \"" fam "\""; print "style = \"" sty[k] "\""
+      }
+    }
+  ' "$CONFIG" > "$CONFIG.tmp" && mv "$CONFIG.tmp" "$CONFIG"
+  echo "font: $family (normal=$normal, italic=$italic, bold=$bold)"
+}
+
+# Set font.offset x and y in the local override config.
+set_offset() {
+  local x="$1" y="$2"
+  sed -i "/^\[font\.offset\]/,/^$\|^\[/ {
+    s/^x = .*/x = $x/
+    s/^y = .*/y = $y/
+  }" "$CONFIG"
+  echo "offset: x=$x, y=$y"
+}
+
+# Set font size in the local override config.
+set_size() {
+  local size="$1"
+  sed -i "s/^size = .*/size = $size/" "$CONFIG"
+  echo "size: $size"
+}
+
 case "$1" in
   home-laptop)
-    sed -i "/^\[font\.offset\]/,/^$\|^\[/ {
-      s/^x = .*/x = 0/
-      s/^y = .*/y = 0/
-    }" "$CONFIG"
-    sed -i "/^\[font\.normal\]/,/^$\|^\[/ {
-      s/^style = .*/style = \"Medium\"/
-    }" "$CONFIG"
-    sed -i "s/^size = .*/size = 18/" "$CONFIG"
-    echo "Set font.offset to x=0, y=0, font.normal.style to Medium and size to 18"
+    set_font "GeistMono Nerd Font" "Medium" "Italic" "SemiBold"
+    set_offset 0 0
+    set_size 18
     ;;
   home-desktop)
-    sed -i "/^\[font\.offset\]/,/^$\|^\[/ {
-      s/^x = .*/x = 0/
-      s/^y = .*/y = 0/
-    }" "$CONFIG"
-    sed -i "/^\[font\.normal\]/,/^$\|^\[/ {
-      s/^style = .*/style = \"Regular\"/
-    }" "$CONFIG"
-    sed -i "s/^size = .*/size = 18/" "$CONFIG"
-    echo "Set font.offset to x=0, y=0, font.normal.style to Medium and size to 18"
+    set_font "GeistMono Nerd Font" "Medium" "Italic" "SemiBold"
+    set_offset 0 0
+    set_size 18
     ;;
   home-desktop-large)
-    sed -i "/^\[font\.offset\]/,/^$\|^\[/ {
-      s/^x = .*/x = -1/
-      s/^y = .*/y = 0/
-    }" "$CONFIG"
-    sed -i "/^\[font\.normal\]/,/^$\|^\[/ {
-      s/^style = .*/style = \"Regular\"/
-    }" "$CONFIG"
-    sed -i "s/^size = .*/size = 20/" "$CONFIG"
-    echo "Set font.offset to x=1, y=0, font.normal.style to Medium and size to 20"
+    set_font "GeistMono Nerd Font" "Medium" "Italic" "SemiBold"
+    set_offset -1 0
+    set_size 20
     ;;
   work-laptop)
-    sed -i "/^\[font\.offset\]/,/^$\|^\[/ {
-      s/^x = .*/x = 0/
-      s/^y = .*/y = 0/
-    }" "$CONFIG"
-    sed -i "/^\[font\.normal\]/,/^$\|^\[/ {
-      s/^style = .*/style = \"Medium\"/
-    }" "$CONFIG"
-    sed -i "s/^size = .*/size = 18/" "$CONFIG"
-    echo "Set font.offset to x=0, y=0, font.normal.style to Medium and size to 18"
+    set_font "GeistMono Nerd Font" "Medium" "Italic" "Bold"
+    set_offset 0 0
+    set_size 18
     ;;
   work-desktop)
-    sed -i "/^\[font\.offset\]/,/^$\|^\[/ {
-      s/^x = .*/x = -1/
-      s/^y = .*/y = 0/
-    }" "$CONFIG"
-    sed -i "/^\[font\.normal\]/,/^$\|^\[/ {
-      s/^style = .*/style = \"SemiBold\"/
-    }" "$CONFIG"
-    sed -i "s/^size = .*/size = 16/" "$CONFIG"
-    echo "Set font.offset to x=-1, y=0, font.normal.style to SemiBold and size to 16"
+    set_font "GeistMono Nerd Font" "SemiBold" "Italic" "Bold"
+    set_offset -1 0
+    set_size 16
     ;;
   work-desktop-large)
-    sed -i "/^\[font\.offset\]/,/^$\|^\[/ {
-      s/^x = .*/x = 0/
-      s/^y = .*/y = 0/
-    }" "$CONFIG"
-    sed -i "/^\[font\.normal\]/,/^$\|^\[/ {
-      s/^style = .*/style = \"SemiBold\"/
-    }" "$CONFIG"
-    sed -i "s/^size = .*/size = 20/" "$CONFIG"
-    echo "Set font.offset to x=0, y=0, font.normal.style to SemiBold and size to 20"
+    set_font "GeistMono Nerd Font" "SemiBold" "Italic" "Bold"
+    set_offset 0 0
+    set_size 20
     ;;
   size)
     if [[ -z "$2" ]]; then
       echo "Usage: alacritty-font size <number>"
       exit 1
     fi
-    sed -i "s/^size = .*/size = $2/" "$CONFIG"
-    echo "Set font size to $2"
+    set_size "$2"
     ;;
   *)
     echo "Usage: alacritty-font [home-laptop|home-desktop|work|size <n>]"
