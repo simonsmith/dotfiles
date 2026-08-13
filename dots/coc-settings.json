@@ -29,13 +29,18 @@
   "eslint.run": "onSave",
   "eslint.workingDirectories": ["."],
   "java.inlayHints.parameterNames.enabled": "none",
-  "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx8G -Xms100m -Xlog:disable",
+  "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx4G -Xms100m -Xlog:disable",
+  "java.autobuild.enabled": false,
+  "java.maxConcurrentBuilds": 1,
   "java.import.exclusions": [
     "**/node_modules/**",
+    "**/.git/**",
     "**/.metadata/**",
     "**/archetype-resources/**",
     "**/META-INF/maven/**",
-    "**/target/**"
+    "**/target/**",
+    "**/build/**",
+    "**/dist/**"
   ],
   "javascript.preferences.noSemanticsValidation": false,
   "javascript.preferences.noSuggestionDiagnostics": true,
