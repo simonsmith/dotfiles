@@ -5,8 +5,16 @@
   "coc.preferences.formatOnType": true,
   "css.lint.unknownAtRules": "ignore",
   "diagnostic.checkCurrentLine": true,
-  "diagnostic.errorSign": "x",
-  "diagnostic.infoSign": "~",
+  "diagnostic.errorSign": "●",
+  "diagnostic.warningSign": "▲",
+  "diagnostic.infoSign": "●",
+  "diagnostic.hintSign": "◆",
+  "floatFactory.floatConfig": {
+    "border": true,
+    "rounded": true,
+    "maxWidth": 90,
+    "maxHeight": 20
+  },
   "phpstan.memoryLimit": "2G",
   "phpstan.download.checkOnStartup": false,
   "editor.codeActionsOnSave": {
@@ -51,9 +59,14 @@
   "stylelintplus.enable": true,
   "stylelintplus.filetypes": ["css", "scss", "sass", "less", "postcss"],
   "suggest.maxCompleteItemCount": 30,
+  "suggest.formatItems": ["abbr", "kind", "menu"],
   "suggest.minTriggerInputLength": 1,
   "suggest.noselect": false,
-  "suggest.pumheight": 30,
+  "suggest.pumheight": 12,
+  "suggest.pumFloatConfig": {
+    "border": true,
+    "rounded": true
+  },
   "suggest.timeout": 3000,
   "tsserver.maxTsServerMemory": 8192,
   "tsserver.useLocalTsdk": true,

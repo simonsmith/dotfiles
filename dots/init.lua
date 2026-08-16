@@ -625,7 +625,7 @@ end, { range = true })
 -- Lualine - Status line
 require("lualine").setup({
   options = {
-    icons_enabled = false,
+    icons_enabled = true,
     component_separators = {},
     section_separators = {},
     disabled_filetypes = {},
@@ -650,8 +650,8 @@ require("lualine").setup({
       {
         "diagnostics",
         sources = { "coc" },
-        sections = { "error", "warn" },
-        symbols = { error = "coc errors: ", warn = "warnings: ", info = "info: " },
+        sections = { "error", "warn", "info", "hint" },
+        symbols = { error = "● ", warn = "▲ ", info = "● ", hint = "◆ " },
       },
     },
     lualine_z = {},
@@ -1263,12 +1263,18 @@ vim.api.nvim_create_autocmd("VimResized", {
   command = "wincmd =", -- Equalize window sizes
 })
 
--- Plugin-specific highlights that should persist across colorscheme changes
+-- Plugin-specific highlights should apply at startup as well as after a theme toggle.
+local function apply_plugin_highlights()
+  vim.api.nvim_set_hl(0, "CocCodeLens", { link = "Comment" })
+  vim.api.nvim_set_hl(0, "CocMenuSel", { link = "PmenuSel" })
+  vim.api.nvim_set_hl(0, "CocPumDetail", { link = "Comment" })
+  vim.api.nvim_set_hl(0, "CocPumMenu", { link = "Special" })
+  vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { undercurl = true, sp = "#f38ba8" })
+  vim.api.nvim_set_hl(0, "ExtraWhitespace", { bg = "#e06c75" })
+end
+
+apply_plugin_highlights()
 vim.api.nvim_create_autocmd("ColorScheme", {
   pattern = "*",
-  callback = function()
-    vim.api.nvim_set_hl(0, "CocCodeLens", { fg = "#3a445e" })
-    vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { undercurl = true, sp = "#f38ba8" })
-    vim.api.nvim_set_hl(0, "ExtraWhitespace", { bg = "#e06c75" })
-  end,
+  callback = apply_plugin_highlights,
 })
