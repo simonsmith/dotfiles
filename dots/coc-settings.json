@@ -59,7 +59,13 @@
   "stylelintplus.enable": true,
   "stylelintplus.filetypes": ["css", "scss", "sass", "less", "postcss"],
   "suggest.maxCompleteItemCount": 30,
-  "suggest.formatItems": ["abbr", "kind", "menu"],
+  "suggest.formatItems": ["abbr", "menu"],
+  "suggest.floatConfig": {
+    "border": true,
+    "rounded": true,
+    "maxWidth": 80,
+    "maxHeight": 16
+  },
   "suggest.minTriggerInputLength": 1,
   "suggest.noselect": false,
   "suggest.pumheight": 12,

@@ -733,11 +733,11 @@ require("spectre").setup({
 -- Git Signs - Git integration in sign column
 require("gitsigns").setup({
   signs = {
-    add = { text = "█" },
-    change = { text = "█" },
-    delete = { text = "█" },
-    topdelete = { text = "█" },
-    changedelete = { text = "█" },
+    add = { text = "▎" },
+    change = { text = "▎" },
+    delete = { text = "▁" },
+    topdelete = { text = "▔" },
+    changedelete = { text = "▎" },
     untracked = { text = "┆" },
   },
   on_attach = function(bufnr)
@@ -1255,6 +1255,18 @@ vim.api.nvim_create_autocmd("CursorHold", {
   command = "silent! checktime", -- Check for file changes periodically
 })
 
+-- Highlight the symbol under the cursor and its references when supported by CoC.
+vim.api.nvim_create_augroup("CocDocumentHighlight", { clear = true })
+vim.api.nvim_create_autocmd("CursorHold", {
+  group = "CocDocumentHighlight",
+  pattern = "*",
+  callback = function()
+    if vim.fn.exists("*CocActionAsync") == 1 then
+      vim.fn.CocActionAsync("highlight")
+    end
+  end,
+})
+
 -- Auto-resize splits when terminal is resized
 vim.api.nvim_create_augroup("auto_resize", { clear = true })
 vim.api.nvim_create_autocmd("VimResized", {
@@ -1266,6 +1278,7 @@ vim.api.nvim_create_autocmd("VimResized", {
 -- Plugin-specific highlights should apply at startup as well as after a theme toggle.
 local function apply_plugin_highlights()
   vim.api.nvim_set_hl(0, "CocCodeLens", { link = "Comment" })
+  vim.api.nvim_set_hl(0, "CocFloatBorder", { link = "Comment" })
   vim.api.nvim_set_hl(0, "CocMenuSel", { link = "PmenuSel" })
   vim.api.nvim_set_hl(0, "CocPumDetail", { link = "Comment" })
   vim.api.nvim_set_hl(0, "CocPumMenu", { link = "Special" })
