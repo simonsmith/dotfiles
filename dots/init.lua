@@ -246,7 +246,6 @@ local function apply_tokyonight(style)
       keywords = { italic = false }, -- Disable italic keywords
     },
     day_brightness = 0.2, -- Brightness for day style
-    hide_inactive_statusline = true, -- Keep statusline visible
     dim_inactive = false, -- Don't dim inactive windows
     lualine_bold = false, -- Don't bold lualine headers
     on_colors = function(colors)
@@ -638,8 +637,8 @@ require("lualine").setup({
     disabled_filetypes = {},
   },
   sections = {
-    lualine_a = { "mode" },
-    lualine_b = { "branch" },
+    lualine_a = { "branch" },
+    lualine_b = {},
     lualine_c = {
       {
         "filename",
