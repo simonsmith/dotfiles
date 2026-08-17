@@ -286,10 +286,15 @@ end, { desc = "Toggle theme day/night" })
 -- plugin configurations
 -- ============================================================================
 
+-- ----------------------------------------------------------------------------
+-- UI & appearance (icons, which-key, cmdline/messages, notifications,
+-- statusline, tabline, markdown)
+-- ----------------------------------------------------------------------------
+
 -- Web Dev Icons
 require("nvim-web-devicons").setup()
 
--- Which Key - Show key binding help
+-- Which Key - Show key binding help (defines `wk`, used throughout this file)
 local wk = require("which-key")
 wk.setup({
   delay = 200, -- Delay in ms before which-key popup appears (reduces lag for single key mappings)
@@ -322,6 +327,129 @@ require("noice").setup({
     long_message_to_split = true, -- Send long messages to split
   },
 })
+
+-- Notify - Better notifications
+require("notify").setup({
+  timeout = 4000,
+  stages = "static", -- Don't animate notifications
+})
+
+-- Lualine - Status line
+require("lualine").setup({
+  options = {
+    icons_enabled = true,
+    component_separators = {},
+    section_separators = {},
+    disabled_filetypes = {},
+  },
+  sections = {
+    lualine_a = { "mode" },
+    lualine_b = { "branch" },
+    lualine_c = {
+      {
+        "filename",
+        path = 1, -- Show relative path
+      },
+    },
+    lualine_x = {
+      {
+        require("noice").api.statusline.mode.get,
+        cond = require("noice").api.statusline.mode.has,
+        color = { fg = "#ff9e64" },
+      },
+    },
+    lualine_y = {
+      {
+        "diagnostics",
+        sources = { "coc" },
+        sections = { "error", "warn", "info", "hint" },
+        symbols = { error = "● ", warn = "▲ ", info = "● ", hint = "◆ " },
+      },
+    },
+    lualine_z = {},
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {
+      {
+        "filename",
+        path = 1,
+        color = { fg = "#545c7e" }, -- Dimmed color for inactive windows
+      },
+    },
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = {},
+  },
+  tabline = {},
+  extensions = {},
+})
+
+-- Tabby - Custom tabline
+require("tabby.tabline").set(function(line)
+  local theme = {
+    fill = "Normal",
+    head = "TabLine",
+    current_tab = "TabLineSel",
+    tab = "TabLine",
+    win = "TabLine",
+    tail = "TabLine",
+  }
+
+  return {
+    line.tabs().foreach(function(tab)
+      local hl = tab.is_current() and theme.current_tab or theme.tab
+      return {
+        line.sep("", hl, theme.fill),
+        tab.is_current() and "" or "",
+        tab.name(),
+        tab.close_btn(""),
+        line.sep(" ", hl, theme.fill),
+        hl = hl,
+        margin = " ",
+      }
+    end),
+    line.spacer(),
+    line.wins_in_tab(line.api.get_current_tab()).foreach(function(win)
+      return {
+        line.sep(" ", theme.win, theme.fill),
+        "",
+        win.buf_name(),
+        line.sep(" ", theme.win, theme.fill),
+        hl = theme.win,
+        margin = " ",
+      }
+    end),
+    hl = theme.fill,
+  }
+end, {
+  nerdfont = true,
+  lualine_theme = "tokyonight",
+  tab_name = {
+    name_fallback = function(tabid)
+      return "tab-" .. tabid
+    end,
+  },
+  buf_name = {
+    mode = "unique",
+  },
+})
+
+vim.o.showtabline = 1 -- Show tabline only when multiple tabs
+
+-- Render Markdown - Enhanced markdown rendering
+require("markview").setup({
+  preview = { enable = false },
+})
+
+wk.add({
+  { "<leader>m", "<CMD>Markview<CR>", desc = "Toggle markview preview", mode = "n" },
+})
+
+-- ----------------------------------------------------------------------------
+-- Terminal & window navigation
+-- ----------------------------------------------------------------------------
 
 -- Toggle terminal
 require("toggleterm").setup({
@@ -397,6 +525,11 @@ vim.api.nvim_create_autocmd("TermOpen", {
   callback = set_toggleterm_keymaps,
 })
 
+-- ----------------------------------------------------------------------------
+-- Editing (yank highlight, split/join, pairs, surround, substitute, comments)
+-- ----------------------------------------------------------------------------
+
+-- Highlight yanked text briefly
 vim.api.nvim_create_autocmd("TextYankPost", {
   callback = function()
     vim.highlight.on_yank({ higroup = "YankFlash", timeout = 300 })
@@ -406,6 +539,24 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- TreeSJ - Split/join blocks of code
 require("treesj").setup({ use_default_keymaps = false })
 vim.keymap.set("n", "gj", require("treesj").toggle, { desc = "Toggle split/join block" })
+
+-- Mini.pairs - Auto-close brackets, quotes, etc.
+require("mini.pairs").setup()
+
+-- Surround - Manipulate surrounding characters
+require("nvim-surround").setup()
+
+-- Substitute - Enhanced substitute operations
+require("substitute").setup()
+
+-- Kommentary - Smart commenting
+require("kommentary.config").configure_language("default", {
+  prefer_single_line_comments = true,
+})
+
+-- ----------------------------------------------------------------------------
+-- Finding & search (buffer history, fuzzy finder, project search/replace)
+-- ----------------------------------------------------------------------------
 
 -- Time Machine - Buffer history navigation
 require("time-machine").setup({})
@@ -499,20 +650,45 @@ end
 
 setup_fzf_lua()
 
--- Mini.pairs - Auto-close brackets, quotes, etc.
-require("mini.pairs").setup()
+-- Spectre - Search and replace across files
+require("spectre").setup({
+  mappings = {
+    ["toggle_line"] = {
+      map = "dd",
+      cmd = "<cmd>lua require('spectre').toggle_line()<CR>",
+      desc = "toggle current item",
+    },
+    ["enter_file"] = {
+      map = "<cr>",
+      cmd = "<cmd>lua require('spectre.actions').select_entry()<CR>",
+      desc = "goto current file",
+    },
+    ["run_current_replace"] = {
+      map = "<leader>rc",
+      cmd = "<cmd>lua require('spectre.actions').run_current_replace()<CR>",
+      desc = "replace current line",
+    },
+    ["run_replace"] = {
+      map = "<leader>R",
+      cmd = "<cmd>lua require('spectre.actions').run_replace()<CR>",
+      desc = "replace all",
+    },
+  },
+})
 
--- Surround - Manipulate surrounding characters
-require("nvim-surround").setup()
-
--- Substitute - Enhanced substitute operations
-require("substitute").setup()
+-- ----------------------------------------------------------------------------
+-- Session
+-- ----------------------------------------------------------------------------
 
 -- Persistence - Session management
 require("persistence").setup({
   need = 1, -- Minimum number of file buffers required
   branch = true, -- Use git branch in session name
 })
+
+-- ----------------------------------------------------------------------------
+-- Git (diff/merge tool, hosting links, sign-column hunks)
+-- ----------------------------------------------------------------------------
 
 -- Diffview setup
 require("diffview").setup({
@@ -527,57 +703,69 @@ require("diffview").setup({
   hooks = {},
 })
 
--- Tabby - Custom tabline
-require("tabby.tabline").set(function(line)
-  local theme = {
-    fill = "Normal",
-    head = "TabLine",
-    current_tab = "TabLineSel",
-    tab = "TabLine",
-    win = "TabLine",
-    tail = "TabLine",
-  }
-
-  return {
-    line.tabs().foreach(function(tab)
-      local hl = tab.is_current() and theme.current_tab or theme.tab
-      return {
-        line.sep("", hl, theme.fill),
-        tab.is_current() and "" or "",
-        tab.name(),
-        tab.close_btn(""),
-        line.sep(" ", hl, theme.fill),
-        hl = hl,
-        margin = " ",
-      }
-    end),
-    line.spacer(),
-    line.wins_in_tab(line.api.get_current_tab()).foreach(function(win)
-      return {
-        line.sep(" ", theme.win, theme.fill),
-        "",
-        win.buf_name(),
-        line.sep(" ", theme.win, theme.fill),
-        hl = theme.win,
-        margin = " ",
-      }
-    end),
-    hl = theme.fill,
-  }
-end, {
-  nerdfont = true,
-  lualine_theme = "tokyonight",
-  tab_name = {
-    name_fallback = function(tabid)
-      return "tab-" .. tabid
-    end,
-  },
-  buf_name = {
-    mode = "unique",
+-- Git Linker - Generate links to Git hosting
+require("gitlinker").setup({
+  router = {
+    browse = {
+      ["^ssh%.github%.com"] = "https://github.com/"
+        .. "{_A.ORG}/"
+        .. "{_A.REPO}/blob/"
+        .. "{_A.REV}/"
+        .. "{_A.FILE}"
+        .. "#L{_A.LSTART}"
+        .. "{_A.LEND > _A.LSTART and ('-L' .. _A.LEND) or ''}",
+    },
   },
 })
 
-vim.o.showtabline = 1 -- Show tabline only when multiple tabs
+-- Git Signs - Git integration in sign column
+require("gitsigns").setup({
+  signs = {
+    add = { text = "▎" },
+    change = { text = "▎" },
+    delete = { text = "▁" },
+    topdelete = { text = "▔" },
+    changedelete = { text = "▎" },
+    untracked = { text = "┆" },
+  },
+  on_attach = function(bufnr)
+    local gs = package.loaded.gitsigns
+
+    local function map(mode, l, r, opts)
+      opts = opts or {}
+      opts.buffer = bufnr
+      opts.mode = mode
+      wk.add({
+        vim.tbl_extend("force", { l, r }, opts),
+      })
+    end
+
+    -- Git hunk navigation
+    map("n", "]c", function()
+      if vim.wo.diff then
+        return "]c"
+      end
+      vim.schedule(function()
+        gs.next_hunk()
+      end)
+      return "<Ignore>"
+    end, { expr = true, desc = "Next git hunk" })
+
+    map("n", "[c", function()
+      if vim.wo.diff then
+        return "[c"
+      end
+      vim.schedule(function()
+        gs.prev_hunk()
+      end)
+      return "<Ignore>"
+    end, { expr = true, desc = "Previous git hunk" })
+  end,
+})
+
+-- ----------------------------------------------------------------------------
+-- Formatting (conform + range-aware format command)
+-- ----------------------------------------------------------------------------
 
 -- Conform - Code formatting
 local prettier_only = { "prettierd", "prettier", stop_after_first = true }
@@ -629,158 +817,9 @@ vim.api.nvim_create_user_command("RunFormat", function(args)
   require("conform").format({ async = true, lsp_format = "fallback", range = range })
 end, { range = true })
 
--- Lualine - Status line
-require("lualine").setup({
-  options = {
-    icons_enabled = true,
-    component_separators = {},
-    section_separators = {},
-    disabled_filetypes = {},
-  },
-  sections = {
-    lualine_a = { "mode" },
-    lualine_b = { "branch" },
-    lualine_c = {
-      {
-        "filename",
-        path = 1, -- Show relative path
-      },
-    },
-    lualine_x = {
-      {
-        require("noice").api.statusline.mode.get,
-        cond = require("noice").api.statusline.mode.has,
-        color = { fg = "#ff9e64" },
-      },
-    },
-    lualine_y = {
-      {
-        "diagnostics",
-        sources = { "coc" },
-        sections = { "error", "warn", "info", "hint" },
-        symbols = { error = "● ", warn = "▲ ", info = "● ", hint = "◆ " },
-      },
-    },
-    lualine_z = {},
-  },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {
-      {
-        "filename",
-        path = 1,
-        color = { fg = "#545c7e" }, -- Dimmed color for inactive windows
-      },
-    },
-    lualine_x = {},
-    lualine_y = {},
-    lualine_z = {},
-  },
-  tabline = {},
-  extensions = {},
-})
-
--- Notify - Better notifications
-require("notify").setup({
-  timeout = 4000,
-  stages = "static", -- Don't animate notifications
-})
-
--- Git Linker - Generate links to Git hosting
-require("gitlinker").setup({
-  router = {
-    browse = {
-      ["^ssh%.github%.com"] = "https://github.com/"
-        .. "{_A.ORG}/"
-        .. "{_A.REPO}/blob/"
-        .. "{_A.REV}/"
-        .. "{_A.FILE}"
-        .. "#L{_A.LSTART}"
-        .. "{_A.LEND > _A.LSTART and ('-L' .. _A.LEND) or ''}",
-    },
-  },
-})
-
--- Render Markdown - Enhanced markdown rendering
-require("markview").setup({
-  preview = { enable = false },
-})
-
-wk.add({
-  { "<leader>m", "<CMD>Markview<CR>", desc = "Toggle markview preview", mode = "n" },
-})
-
--- Spectre - Search and replace across files
-require("spectre").setup({
-  mappings = {
-    ["toggle_line"] = {
-      map = "dd",
-      cmd = "<cmd>lua require('spectre').toggle_line()<CR>",
-      desc = "toggle current item",
-    },
-    ["enter_file"] = {
-      map = "<cr>",
-      cmd = "<cmd>lua require('spectre.actions').select_entry()<CR>",
-      desc = "goto current file",
-    },
-    ["run_current_replace"] = {
-      map = "<leader>rc",
-      cmd = "<cmd>lua require('spectre.actions').run_current_replace()<CR>",
-      desc = "replace current line",
-    },
-    ["run_replace"] = {
-      map = "<leader>R",
-      cmd = "<cmd>lua require('spectre.actions').run_replace()<CR>",
-      desc = "replace all",
-    },
-  },
-})
-
--- Git Signs - Git integration in sign column
-require("gitsigns").setup({
-  signs = {
-    add = { text = "▎" },
-    change = { text = "▎" },
-    delete = { text = "▁" },
-    topdelete = { text = "▔" },
-    changedelete = { text = "▎" },
-    untracked = { text = "┆" },
-  },
-  on_attach = function(bufnr)
-    local gs = package.loaded.gitsigns
-
-    local function map(mode, l, r, opts)
-      opts = opts or {}
-      opts.buffer = bufnr
-      opts.mode = mode
-      wk.add({
-        vim.tbl_extend("force", { l, r }, opts),
-      })
-    end
-
-    -- Git hunk navigation
-    map("n", "]c", function()
-      if vim.wo.diff then
-        return "]c"
-      end
-      vim.schedule(function()
-        gs.next_hunk()
-      end)
-      return "<Ignore>"
-    end, { expr = true, desc = "Next git hunk" })
-
-    map("n", "[c", function()
-      if vim.wo.diff then
-        return "[c"
-      end
-      vim.schedule(function()
-        gs.prev_hunk()
-      end)
-      return "<Ignore>"
-    end, { expr = true, desc = "Previous git hunk" })
-  end,
-})
+-- ----------------------------------------------------------------------------
+-- Treesitter (textobjects + on-demand highlighting)
+-- ----------------------------------------------------------------------------
 
 -- Treesitter configuration
 -- NOTE: Parsers should be installed manually with :TSInstall, not on every startup.
@@ -849,10 +888,9 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- Kommentary - Smart commenting
-require("kommentary.config").configure_language("default", {
-  prefer_single_line_comments = true,
-})
+-- ----------------------------------------------------------------------------
+-- File manager
+-- ----------------------------------------------------------------------------
 
 -- Yazi file manager configuration
 require("yazi").setup({
