@@ -414,15 +414,22 @@ require("time-machine").setup({})
 local actions = require("fzf-lua.actions")
 setup_fzf_lua = function()
   require("fzf-lua").setup({
+    -- Basename first, directory dimmed after it (better for fuzzy matching)
+    formatter = "path.filename_first",
+    -- Dim the directory part rendered by path.filename_first
+    hls = {
+      dir_part = "Comment",
+    },
     winopts = {
+      treesitter = true, -- Syntax-highlight file entries in the results list
       height = 0.85, -- Taller window for better visibility
       width = 0.80, -- Wider for modern feel
       row = 0.40, -- Slightly lower than center
       border = "rounded", -- Smooth rounded corners
-      backdrop = 70, -- Very subtle backdrop
+      backdrop = 50, -- Very subtle backdrop
       preview = {
-        default = "builtin", -- Builtin previewer available
-        hidden = "hidden", -- Start hidden, toggle with F4
+        default = "bat", -- Use bat for fast, syntax-highlighted file previews
+        hidden = false, -- Show preview by default (toggle with F4)
         border = "rounded",
         scrollbar = "border", -- Scrollbar in border (no overlay)
         delay = 50, -- Snappy preview
@@ -460,7 +467,7 @@ setup_fzf_lua = function()
     },
     git = {
       files = {
-        git_icons = false, -- Keep disabled for performance
+        git_icons = true, -- Colored M/A/? status markers next to files
         file_icons = "devicons",
       },
     },
