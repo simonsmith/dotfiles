@@ -51,9 +51,9 @@ set_size() {
 
 case "$1" in
   home-laptop)
-    set_font "GeistMono Nerd Font" "SemiBold" "Italic" "Bold"
-    set_offset 0 0
-    set_size 18
+    set_font "JetBrainsMono Nerd Font" "SemiBold" "Italic" "Bold"
+    set_offset 0 1
+    set_size 16
     ;;
   home-desktop)
     set_font "JetBrainsMono Nerd Font" "Medium" "Italic" "SemiBold"
@@ -66,7 +66,7 @@ case "$1" in
     set_size 20
     ;;
   work-laptop)
-    set_font "GeistMono Nerd Font" "Medium" "Italic" "Bold"
+    set_font "JetBrainsMono Nerd Font" "Medium" "Italic" "Bold"
     set_offset 0 0
     set_size 18
     ;;
