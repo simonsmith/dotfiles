@@ -57,7 +57,7 @@ case "$1" in
     ;;
   home-desktop)
     set_font "JetBrainsMono Nerd Font" "Medium" "Italic" "SemiBold"
-    set_offset 0 0
+    set_offset 0 1
     set_size 18
     ;;
   home-desktop-large)
