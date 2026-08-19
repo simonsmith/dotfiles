@@ -1285,6 +1285,7 @@ vim.api.nvim_create_autocmd("VimResized", {
 local function apply_plugin_highlights()
   vim.api.nvim_set_hl(0, "CocCodeLens", { link = "Comment" })
   vim.api.nvim_set_hl(0, "CocFloatBorder", { link = "Comment" })
+  vim.api.nvim_set_hl(0, "CocInlayHintType", { link = "Comment" })
   vim.api.nvim_set_hl(0, "CocMenuSel", { link = "PmenuSel" })
   vim.api.nvim_set_hl(0, "CocPumDetail", { link = "Comment" })
   vim.api.nvim_set_hl(0, "CocPumMenu", { link = "Special" })
