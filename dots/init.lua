@@ -245,8 +245,7 @@ local function apply_tokyonight(style)
       comments = { italic = false }, -- Disable italic comments
       keywords = { italic = false }, -- Disable italic keywords
     },
-    day_brightness = 0.2, -- Brightness for day style
-    hide_inactive_statusline = true, -- Keep statusline visible
+    day_brightness = 0.1, -- Brightness for day style
     dim_inactive = false, -- Don't dim inactive windows
     lualine_bold = false, -- Don't bold lualine headers
     on_colors = function(colors)
@@ -343,8 +342,8 @@ require("lualine").setup({
     disabled_filetypes = {},
   },
   sections = {
-    lualine_a = { "mode" },
-    lualine_b = { "branch" },
+    lualine_a = { "branch" },
+    lualine_b = {},
     lualine_c = {
       {
         "filename",
@@ -1324,6 +1323,7 @@ vim.api.nvim_create_autocmd("VimResized", {
 local function apply_plugin_highlights()
   vim.api.nvim_set_hl(0, "CocCodeLens", { link = "Comment" })
   vim.api.nvim_set_hl(0, "CocFloatBorder", { link = "Comment" })
+  vim.api.nvim_set_hl(0, "CocInlayHintType", { link = "Comment" })
   vim.api.nvim_set_hl(0, "CocMenuSel", { link = "PmenuSel" })
   vim.api.nvim_set_hl(0, "CocPumDetail", { link = "Comment" })
   vim.api.nvim_set_hl(0, "CocPumMenu", { link = "Special" })
