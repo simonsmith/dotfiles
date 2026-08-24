@@ -255,8 +255,8 @@ require("koda").setup({
   },
   on_highlights = function(highlights, colors)
     local subtle_surface = require("koda").blend(colors.line, colors.bg, 0.4)
-    local base_text = vim.o.background == "light" and "#555555" or "#a8a8a8"
-    local structural_text = vim.o.background == "light" and "#4a4a4a" or "#929292"
+    local base_text = vim.o.background == "light" and "#ffffff" or "#a8a8a8"
+    local structural_text = vim.o.background == "light" and "#666666" or "#929292"
     local string_text = vim.o.background == "light" and colors.string or "#bb9af7"
     local git_add = colors.green
     local git_change = colors.highlight
@@ -282,6 +282,8 @@ require("koda").setup({
     end
     highlights.Keyword = { fg = structural_text }
     highlights.Delimiter = { fg = structural_text }
+    highlights.Include = { fg = structural_text }
+    highlights.Operator = { fg = structural_text }
     highlights.String = { fg = string_text }
     highlights.DiffAdd = { fg = git_add, bg = git_add_bg }
     highlights.DiffChange = { fg = git_change, bg = git_change_bg }
