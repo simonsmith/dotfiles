@@ -90,6 +90,13 @@ Plug("jwalton512/vim-blade") -- Laravel Blade template support
 -- Language Server Protocol and completion
 Plug("neoclide/coc.nvim", { ["branch"] = "release" }) -- Intellisense engine
 
+-- Debugging
+Plug("mfussenegger/nvim-dap") -- Debug Adapter Protocol client
+Plug("nvim-neotest/nvim-nio") -- Async dependency for nvim-dap-ui
+Plug("rcarriga/nvim-dap-ui") -- Debugger panes: variables, frames, watches, REPL
+Plug("theHamsta/nvim-dap-virtual-text") -- Inline variable values while stopped
+Plug("xdebug/vscode-php-debug", { ["do"] = "npm ci && npm run build && npm prune --omit=dev" }) -- Standalone Xdebug adapter
+
 vim.call("plug#end")
 
 -- coc extensions
@@ -463,8 +470,133 @@ require("toggleterm").setup({
   end,
 })
 
+-- Debug Adapter Protocol / PHP Xdebug
+-- Start the listener with <leader>Dc, then trigger Xdebug from a browser or CLI.
+local dap = require("dap")
+local dapui = require("dapui")
+
+local function dap_statusline()
+  local session = dap.session()
+  if not session then
+    return ""
+  end
+  if session.stopped_thread_id then
+    return "● DAP paused"
+  end
+  if next(session.threads) then
+    return "▶ DAP running"
+  end
+  return "◌ DAP listening"
+end
+
+local function open_scopes_float()
+  dapui.float_element("scopes", { enter = true, width = 100, height = 30 })
+end
+
+local function close_scopes_float()
+  require("dapui.windows").close_float("scopes")
+end
+
+dapui.setup({
+  layouts = {},
+  render = {
+    max_value_lines = 3,
+  },
+})
+
+require("nvim-dap-virtual-text").setup({
+  enabled = false,
+})
+
+vim.fn.sign_define("DapBreakpoint", {
+  text = "●",
+  texthl = "DiagnosticSignError",
+  linehl = "DiagnosticVirtualTextError",
+  numhl = "DiagnosticSignError",
+})
+vim.fn.sign_define("DapBreakpointCondition", {
+  text = "◆",
+  texthl = "DiagnosticSignWarn",
+  linehl = "DiagnosticVirtualTextWarn",
+  numhl = "DiagnosticSignWarn",
+})
+vim.fn.sign_define("DapBreakpointRejected", {
+  text = "●",
+  texthl = "DiagnosticSignError",
+  numhl = "DiagnosticSignError",
+})
+vim.fn.sign_define("DapStopped", {
+  text = "▶",
+  texthl = "DiagnosticSignWarn",
+  linehl = "DiagnosticVirtualTextWarn",
+  numhl = "DiagnosticSignWarn",
+})
+
+dap.adapters.php = {
+  type = "executable",
+  command = "node",
+  args = { vim.fn.stdpath("config") .. "/plugged/vscode-php-debug/out/phpDebug.js" },
+}
+
+dap.configurations.php = {
+  {
+    type = "php",
+    request = "launch",
+    name = "Listen for Xdebug",
+    port = 9003,
+  },
+}
+
+dap.listeners.before.event_stopped.dapui_scopes = open_scopes_float
+dap.listeners.before.event_continued.dapui_scopes = close_scopes_float
+dap.listeners.before.event_terminated.dapui_scopes = close_scopes_float
+dap.listeners.before.event_exited.dapui_scopes = close_scopes_float
+dap.listeners.after.event_thread.dapui_config = function(session, event)
+  -- The PHP adapter keeps listening after a request ends, but emits a thread
+  -- exit when Xdebug disconnects (including when its server is killed).
+  if event.reason == "exited" and not session.closed and next(session.threads) == nil then
+    close_scopes_float()
+  end
+end
+
 wk.add({
   { "<leader>t", ":ToggleTerm<cr>", desc = "Toggle terminal", mode = "n" },
+})
+
+wk.add({
+  { "<leader>D", group = "Debug", mode = "n" },
+  { "<leader>Db", dap.toggle_breakpoint, desc = "Toggle breakpoint", mode = "n" },
+  { "<leader>Dc", dap.continue, desc = "Listen for Xdebug / continue", mode = "n" },
+  { "<leader>Di", dap.step_into, desc = "Step into", mode = "n" },
+  { "<leader>Do", dap.step_over, desc = "Step over", mode = "n" },
+  { "<leader>DO", dap.step_out, desc = "Step out", mode = "n" },
+  { "<leader>Dt", open_scopes_float, desc = "Show variables", mode = "n" },
+  {
+    "<leader>DB",
+    function()
+      dapui.float_element("breakpoints", { enter = true, width = 80, height = 20 })
+    end,
+    desc = "Show breakpoints",
+    mode = "n",
+  },
+  {
+    "<leader>Dr",
+    function()
+      dapui.float_element("repl", { enter = true, width = 100, height = 20 })
+    end,
+    desc = "Open debug REPL",
+    mode = "n",
+  },
+  { "<leader>Dx", dap.terminate, desc = "Terminate session", mode = "n" },
+  { "<leader>DX", dap.clear_breakpoints, desc = "Clear all breakpoints", mode = "n" },
+  {
+    "<leader>De",
+    function()
+      dapui.eval()
+    end,
+    desc = "Evaluate expression",
+    mode = { "n", "v" },
+  },
 })
 
 -- Window navigation using vim-tmux-navigator (seamlessly moves between vim and tmux)
@@ -816,9 +948,168 @@ vim.api.nvim_create_user_command("RunFormat", function(args)
   require("conform").format({ async = true, lsp_format = "fallback", range = range })
 end, { range = true })
 
--- ----------------------------------------------------------------------------
--- Treesitter (textobjects + on-demand highlighting)
--- ----------------------------------------------------------------------------
+-- Lualine - Status line
+require("lualine").setup({
+  options = {
+    icons_enabled = true,
+    component_separators = {},
+    section_separators = {},
+    disabled_filetypes = {},
+  },
+  sections = {
+    lualine_a = { "branch" },
+    lualine_b = {},
+    lualine_c = {
+      {
+        "filename",
+        path = 1, -- Show relative path
+      },
+    },
+    lualine_x = {
+      {
+        dap_statusline,
+        cond = function()
+          return dap.session() ~= nil
+        end,
+        color = function()
+          local session = dap.session()
+          return session and session.stopped_thread_id and { fg = "#e0af68" } or { fg = "#7aa2f7" }
+        end,
+      },
+      {
+        require("noice").api.statusline.mode.get,
+        cond = require("noice").api.statusline.mode.has,
+        color = { fg = "#ff9e64" },
+      },
+    },
+    lualine_y = {
+      {
+        "diagnostics",
+        sources = { "coc" },
+        sections = { "error", "warn", "info", "hint" },
+        symbols = { error = "● ", warn = "▲ ", info = "● ", hint = "◆ " },
+      },
+    },
+    lualine_z = {},
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {
+      {
+        "filename",
+        path = 1,
+        color = { fg = "#545c7e" }, -- Dimmed color for inactive windows
+      },
+    },
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = {},
+  },
+  tabline = {},
+  extensions = {},
+})
+
+-- Notify - Better notifications
+require("notify").setup({
+  timeout = 4000,
+  stages = "static", -- Don't animate notifications
+})
+
+-- Git Linker - Generate links to Git hosting
+require("gitlinker").setup({
+  router = {
+    browse = {
+      ["^ssh%.github%.com"] = "https://github.com/"
+        .. "{_A.ORG}/"
+        .. "{_A.REPO}/blob/"
+        .. "{_A.REV}/"
+        .. "{_A.FILE}"
+        .. "#L{_A.LSTART}"
+        .. "{_A.LEND > _A.LSTART and ('-L' .. _A.LEND) or ''}",
+    },
+  },
+})
+
+-- Render Markdown - Enhanced markdown rendering
+require("markview").setup({
+  preview = { enable = false },
+})
+
+wk.add({
+  { "<leader>m", "<CMD>Markview<CR>", desc = "Toggle markview preview", mode = "n" },
+})
+
+-- Spectre - Search and replace across files
+require("spectre").setup({
+  mappings = {
+    ["toggle_line"] = {
+      map = "dd",
+      cmd = "<cmd>lua require('spectre').toggle_line()<CR>",
+      desc = "toggle current item",
+    },
+    ["enter_file"] = {
+      map = "<cr>",
+      cmd = "<cmd>lua require('spectre.actions').select_entry()<CR>",
+      desc = "goto current file",
+    },
+    ["run_current_replace"] = {
+      map = "<leader>rc",
+      cmd = "<cmd>lua require('spectre.actions').run_current_replace()<CR>",
+      desc = "replace current line",
+    },
+    ["run_replace"] = {
+      map = "<leader>R",
+      cmd = "<cmd>lua require('spectre.actions').run_replace()<CR>",
+      desc = "replace all",
+    },
+  },
+})
+
+-- Git Signs - Git integration in sign column
+require("gitsigns").setup({
+  signs = {
+    add = { text = "▎" },
+    change = { text = "▎" },
+    delete = { text = "▁" },
+    topdelete = { text = "▔" },
+    changedelete = { text = "▎" },
+    untracked = { text = "┆" },
+  },
+  on_attach = function(bufnr)
+    local gs = package.loaded.gitsigns
+
+    local function map(mode, l, r, opts)
+      opts = opts or {}
+      opts.buffer = bufnr
+      opts.mode = mode
+      wk.add({
+        vim.tbl_extend("force", { l, r }, opts),
+      })
+    end
+
+    -- Git hunk navigation
+    map("n", "]c", function()
+      if vim.wo.diff then
+        return "]c"
+      end
+      vim.schedule(function()
+        gs.next_hunk()
+      end)
+      return "<Ignore>"
+    end, { expr = true, desc = "Next git hunk" })
+
+    map("n", "[c", function()
+      if vim.wo.diff then
+        return "[c"
+      end
+      vim.schedule(function()
+        gs.prev_hunk()
+      end)
+      return "<Ignore>"
+    end, { expr = true, desc = "Previous git hunk" })
+  end,
+})
 
 -- Treesitter configuration
 -- NOTE: Parsers should be installed manually with :TSInstall, not on every startup.
