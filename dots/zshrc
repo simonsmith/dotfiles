@@ -173,7 +173,7 @@ __refresh_theme_env() {
       export BAT_THEME="GitHub"
     fi
   else
-    FZF_COLOR_OPTS="--color=fg:#b0b0b0,bg:#101010,hl:#d9ba73,fg+:#ffffff,bg+:#272727,hl+:#d9ba73,info:#50585d,prompt:#ffffff,pointer:#ffffff,marker:#ff7676,spinner:#50585d,header:#ffffff"
+    FZF_COLOR_OPTS="--color=fg:#a8a8a8,bg:#101010,hl:#dfdf8e,fg+:#cecece,bg+:#272727,hl+:#dfdf8e,info:#8ebeec,prompt:#71ade7,pointer:#71ade7,marker:#95cb82,spinner:#8ebeec,header:#707070"
     if [ "$ALACRITTY" = "true" ]; then
       export BAT_THEME="OneHalfDark"
     fi

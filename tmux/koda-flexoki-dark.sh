@@ -1,10 +1,32 @@
 #!/usr/bin/env bash
 
-# Flexoki Dark with Koda's softened base text and session colours.
+# Koda Dark surfaces with Moss semantic accents.
 source "$HOME/.tmux/plugins/tmux-powerkit/src/themes/flexoki/dark.sh"
 
+THEME_COLORS[background]="#101010"
+THEME_COLORS[statusbar-bg]="#101010"
 THEME_COLORS[statusbar-fg]="#a8a8a8"
+THEME_COLORS[session-fg]="#101010"
 THEME_COLORS[message-fg]="#a8a8a8"
+THEME_COLORS[message-bg]="#101010"
+THEME_COLORS[popup-bg]="#101010"
 THEME_COLORS[popup-fg]="#a8a8a8"
+THEME_COLORS[popup-border]="#708b8d"
+THEME_COLORS[menu-bg]="#101010"
 THEME_COLORS[menu-fg]="#a8a8a8"
+THEME_COLORS[menu-selected-bg]="#182325"
+THEME_COLORS[menu-selected-fg]="#cecece"
+THEME_COLORS[menu-border]="#708b8d"
 THEME_COLORS[session-bg]="#9d7cd8"
+THEME_COLORS[session-prefix-bg]="#71ade7"
+THEME_COLORS[session-copy-bg]="#95cb82"
+THEME_COLORS[session-search-bg]="#dfdf8e"
+THEME_COLORS[session-command-bg]="#71ade7"
+THEME_COLORS[window-active-base]="#71ade7"
+THEME_COLORS[window-inactive-base]="#272727"
+THEME_COLORS[pane-border-active]="#708b8d"
+THEME_COLORS[pane-border-inactive]="#272727"
+THEME_COLORS[good-base]="#95cb82"
+THEME_COLORS[info-base]="#71ade7"
+THEME_COLORS[warning-base]="#dfdf8e"
+THEME_COLORS[error-base]="#d2322d"

@@ -249,21 +249,30 @@ require("koda").setup({
   transparent = false,
   auto = false, -- vim-plug is not supported by Koda's automatic plugin detection
   cache = false,
+  theme = {
+    dark = "dark",
+    light = "glade",
+  },
   styles = {
     comments = {},
     keywords = {},
   },
   on_highlights = function(highlights, colors)
     local subtle_surface = require("koda").blend(colors.line, colors.bg, 0.4)
-    local base_text = vim.o.background == "light" and "#ffffff" or "#a8a8a8"
-    local structural_text = vim.o.background == "light" and "#666666" or "#929292"
+    local is_glade = colors.bg == "#f7f7f7"
+    local base_text = vim.o.background == "light" and "#333333" or "#a8a8a8"
+    local structural_text = vim.o.background == "light" and "#333333" or "#929292"
     local string_text = vim.o.background == "light" and colors.string or "#bb9af7"
+    local moss = vim.o.background == "dark" and require("koda").get_palette("moss") or nil
+    local glade = is_glade and require("koda").get_palette("glade") or nil
     local git_add = colors.green
     local git_change = colors.highlight
     local git_delete = colors.danger
     local git_add_bg = require("koda").blend(git_add, colors.bg, 0.25)
     local git_change_bg = require("koda").blend(git_change, colors.bg, 0.25)
     local git_delete_bg = require("koda").blend(git_delete, colors.bg, 0.25)
+    local dap_breakpoint_bg = require("koda").blend(colors.danger, colors.bg, 0.15)
+    local dap_stopped_bg = require("koda").blend(colors.warning, colors.bg, 0.25)
     highlights.Normal = { fg = base_text, bg = colors.bg }
     for _, group in ipairs({
       "@variable",
@@ -285,6 +294,22 @@ require("koda").setup({
     highlights.Include = { fg = structural_text }
     highlights.Operator = { fg = structural_text }
     highlights.String = { fg = string_text }
+    local syntax_palette = moss or glade
+    if syntax_palette then
+      highlights.Function = { fg = syntax_palette.func }
+      highlights.String = { fg = syntax_palette.string }
+      highlights.Character = { fg = syntax_palette.char }
+      highlights.Constant = { fg = syntax_palette.const }
+      highlights.Number = { fg = syntax_palette.const }
+      highlights.Boolean = { fg = syntax_palette.const }
+      highlights.Float = { fg = syntax_palette.const }
+      highlights.Type = { fg = syntax_palette.type }
+      highlights.Keyword = { fg = syntax_palette.keyword }
+      highlights.Delimiter = { fg = syntax_palette.type }
+      highlights.Include = { fg = syntax_palette.keyword }
+      highlights.Operator = { fg = syntax_palette.operator }
+      highlights["@type.definition"] = { fg = syntax_palette.type }
+    end
     highlights.DiffAdd = { fg = git_add, bg = git_add_bg }
     highlights.DiffChange = { fg = git_change, bg = git_change_bg }
     highlights.DiffDelete = { fg = git_delete, bg = git_delete_bg }
@@ -298,6 +323,12 @@ require("koda").setup({
     highlights.GitSignsAddInline = { link = "DiffAdd" }
     highlights.GitSignsChangeInLine = { link = "DiffChange" }
     highlights.GitSignsDeleteInline = { link = "DiffDelete" }
+    highlights.DapBreakpointLine = { bg = dap_breakpoint_bg }
+    highlights.DapBreakpointSign = { fg = colors.danger, bg = dap_breakpoint_bg }
+    highlights.DapBreakpointNumber = { fg = colors.danger, bg = dap_breakpoint_bg }
+    highlights.DapStoppedLine = { bg = dap_stopped_bg }
+    highlights.DapStoppedSign = { fg = colors.warning, bg = dap_stopped_bg }
+    highlights.DapStoppedNumber = { fg = colors.warning, bg = dap_stopped_bg }
     highlights.YankFlash = { bg = require("koda").blend(colors.highlight, colors.bg, 0.4) }
     highlights.CursorLine = { bg = subtle_surface }
     highlights.EndOfBuffer = { fg = colors.bg }
@@ -308,7 +339,8 @@ require("koda").setup({
 
 local function apply_koda(mode)
   vim.o.background = mode
-  vim.cmd("silent! colorscheme koda-" .. mode)
+  local variant = mode == "light" and "glade" or "dark"
+  vim.cmd("silent! colorscheme koda-" .. variant)
 end
 
 local theme_mode = read_theme_mode()
@@ -386,6 +418,15 @@ setup_lualine = function()
   local colors = require("koda").get_palette()
   local subtle_surface = require("koda").blend(colors.line, colors.bg, 0.3)
   local lualine_theme = dofile(vim.api.nvim_get_runtime_file("lua/lualine/themes/auto.lua", false)[1])
+  local mode_theme = {
+    i = "insert",
+    v = "visual",
+    V = "visual",
+    ["\22"] = "visual",
+    R = "replace",
+    c = "command",
+    t = "terminal",
+  }
   lualine_theme.insert.a.bg = "#9d7cd8"
   for _, sections in pairs(lualine_theme) do
     sections.b.bg = subtle_surface
@@ -407,7 +448,15 @@ setup_lualine = function()
     },
     sections = {
       lualine_a = { "mode" },
-      lualine_b = { "branch" },
+      lualine_b = {
+        {
+          "branch",
+          color = function()
+            local theme = lualine_theme[mode_theme[vim.fn.mode():sub(1, 1)] or "normal"]
+            return { fg = theme.a.bg or colors.fg }
+          end,
+        },
+      },
       lualine_c = {
         {
           "filename",
@@ -589,9 +638,9 @@ require("nvim-dap-virtual-text").setup({
 
 vim.fn.sign_define("DapBreakpoint", {
   text = "●",
-  texthl = "DiagnosticSignError",
-  linehl = "DiagnosticVirtualTextError",
-  numhl = "DiagnosticSignError",
+  texthl = "DapBreakpointSign",
+  linehl = "DapBreakpointLine",
+  numhl = "DapBreakpointNumber",
 })
 vim.fn.sign_define("DapBreakpointCondition", {
   text = "◆",
@@ -606,9 +655,9 @@ vim.fn.sign_define("DapBreakpointRejected", {
 })
 vim.fn.sign_define("DapStopped", {
   text = "▶",
-  texthl = "DiagnosticSignWarn",
-  linehl = "DiagnosticVirtualTextWarn",
-  numhl = "DiagnosticSignWarn",
+  texthl = "DapStoppedSign",
+  linehl = "DapStoppedLine",
+  numhl = "DapStoppedNumber",
 })
 
 dap.adapters.php = {
