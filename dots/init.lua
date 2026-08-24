@@ -1016,21 +1016,6 @@ require("notify").setup({
   stages = "static", -- Don't animate notifications
 })
 
--- Git Linker - Generate links to Git hosting
-require("gitlinker").setup({
-  router = {
-    browse = {
-      ["^ssh%.github%.com"] = "https://github.com/"
-        .. "{_A.ORG}/"
-        .. "{_A.REPO}/blob/"
-        .. "{_A.REV}/"
-        .. "{_A.FILE}"
-        .. "#L{_A.LSTART}"
-        .. "{_A.LEND > _A.LSTART and ('-L' .. _A.LEND) or ''}",
-    },
-  },
-})
-
 -- Render Markdown - Enhanced markdown rendering
 require("markview").setup({
   preview = { enable = false },
