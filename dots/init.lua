@@ -268,9 +268,9 @@ require("koda").setup({
     local git_add = colors.green
     local git_change = colors.highlight
     local git_delete = colors.danger
-    local git_add_bg = require("koda").blend(git_add, colors.bg, 0.25)
-    local git_change_bg = require("koda").blend(git_change, colors.bg, 0.25)
-    local git_delete_bg = require("koda").blend(git_delete, colors.bg, 0.25)
+    local git_add_bg = require("koda").blend(git_add, colors.bg, 0.12)
+    local git_change_bg = require("koda").blend(git_change, colors.bg, 0.12)
+    local git_delete_bg = require("koda").blend(git_delete, colors.bg, 0.12)
     local dap_breakpoint_bg = require("koda").blend(colors.danger, colors.bg, 0.15)
     local dap_stopped_bg = require("koda").blend(colors.warning, colors.bg, 0.25)
     highlights.Normal = { fg = base_text, bg = colors.bg }
@@ -296,7 +296,8 @@ require("koda").setup({
     highlights.String = { fg = string_text }
     local syntax_palette = moss or glade
     if syntax_palette then
-      highlights.Function = { fg = syntax_palette.func }
+      -- Keep functions distinct without making frequent method calls the focal point.
+      highlights.Function = { fg = vim.o.background == "light" and "#696c6e" or "#eff0f2" }
       highlights.String = { fg = syntax_palette.string }
       highlights.Character = { fg = syntax_palette.char }
       highlights.Constant = { fg = syntax_palette.const }
