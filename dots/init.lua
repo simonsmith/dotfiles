@@ -261,6 +261,7 @@ require("koda").setup({
     local subtle_surface = require("koda").blend(colors.line, colors.bg, 0.4)
     local is_glade = colors.bg == "#f7f7f7"
     local base_text = vim.o.background == "light" and "#333333" or "#a8a8a8"
+    local variable_text = vim.o.background == "light" and base_text or "#eff0f2"
     local structural_text = vim.o.background == "light" and "#333333" or "#929292"
     local string_text = vim.o.background == "light" and colors.string or "#bb9af7"
     local moss = vim.o.background == "dark" and require("koda").get_palette("moss") or nil
@@ -287,7 +288,7 @@ require("koda").setup({
       "@punctuation.special",
       "@tag.builtin",
     }) do
-      highlights[group] = { fg = base_text }
+      highlights[group] = { fg = variable_text }
     end
     highlights.Keyword = { fg = structural_text }
     highlights.Delimiter = { fg = structural_text }
@@ -297,7 +298,7 @@ require("koda").setup({
     local syntax_palette = moss or glade
     if syntax_palette then
       -- Keep functions distinct without making frequent method calls the focal point.
-      highlights.Function = { fg = vim.o.background == "light" and "#696c6e" or "#eff0f2" }
+      highlights.Function = { fg = vim.o.background == "light" and "#696c6e" or "#a8a8a8" }
       highlights.String = { fg = syntax_palette.string }
       highlights.Character = { fg = syntax_palette.char }
       highlights.Constant = { fg = syntax_palette.const }
