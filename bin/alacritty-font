@@ -72,7 +72,7 @@ case "$1" in
     ;;
   work-desktop)
     set_font "JetBrainsMono Nerd Font" "SemiBold" "Italic" "Bold"
-    set_offset -1 0
+    set_offset 0 1
     set_size 18
     ;;
   work-desktop-large)
