@@ -1,32 +1,31 @@
 # -----------------------------------------------------------------------------
-# TokyoNight Alacritty Colors
-# Theme: Tokyo Night Day
-# Upstream: https://github.com/folke/tokyonight.nvim/raw/main/extras/alacritty/tokyonight_day.toml
+# Koda Alacritty Colors
+# Theme: Koda Light
 # -----------------------------------------------------------------------------
 
 # Default colors
 [colors.primary]
-background = "#e1e2e7"
-foreground = "#3760bf"
+background = "#faf9f5"
+foreground = "#555555"
 
 # Normal colors
 [colors.normal]
-black = "#b4b5b9"
-red = "#f52a65"
-green = "#587539"
-yellow = "#8c6c3e"
-blue = "#2e7de9"
-magenta = "#9854f1"
-cyan = "#007197"
-white = "#6172b0"
+black = "#e2e2e2"
+red = "#ca0043"
+green = "#407f00"
+yellow = "#926200"
+blue = "#3d3d3d"
+magenta = "#a200d1"
+cyan = "#007d7d"
+white = "#6a6a6a"
 
 # Bright colors
 [colors.bright]
-black = "#a1a6c5"
-red = "#ff4774"
-green = "#5c8524"
-yellow = "#a27629"
-blue = "#358aff"
-magenta = "#a463ff"
-cyan = "#007ea8"
-white = "#3760bf"
+black = "#ababab"
+red = "#f30052"
+green = "#4f9a00"
+yellow = "#b07700"
+blue = "#000000"
+magenta = "#c301fb"
+cyan = "#009797"
+white = "#101010"

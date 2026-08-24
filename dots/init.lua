@@ -15,7 +15,7 @@ vim.opt.termguicolors = true
 vim.call("plug#begin", "~/.config/nvim/plugged")
 
 -- Theme and appearance
-Plug("folke/tokyonight.nvim") -- Modern colorscheme
+Plug("oskarnurm/koda.nvim") -- Modern colorscheme
 Plug("hoob3rt/lualine.nvim") -- Status line
 Plug("nanozuki/tabby.nvim") -- Tab line customization
 Plug("nvim-tree/nvim-web-devicons") -- File type icons
@@ -241,36 +241,71 @@ local function write_theme_mode(mode)
 end
 
 local setup_fzf_lua
+local setup_lualine
+local dap
+local dap_statusline
 
-local function apply_tokyonight(style)
-  require("tokyonight").setup({
-    style = style, -- moon, storm, night, or day
-    light_style = "day", -- Light variant style
-    transparent = false, -- Disable to avoid transparent background
-    terminal_colors = true, -- Configure terminal colors
-    styles = {
-      comments = { italic = false }, -- Disable italic comments
-      keywords = { italic = false }, -- Disable italic keywords
-    },
-    day_brightness = 0.1, -- Brightness for day style
-    dim_inactive = false, -- Don't dim inactive windows
-    lualine_bold = false, -- Don't bold lualine headers
-    on_colors = function(colors)
-      if style == "day" then
-        colors.bg_highlight = "#daddea"
-      end
-    end, -- Color customization hook
-    on_highlights = function(highlights, colors)
-      highlights.YankFlash = { bg = colors.bg_visual }
-    end,
-  })
+require("koda").setup({
+  transparent = false,
+  auto = false, -- vim-plug is not supported by Koda's automatic plugin detection
+  cache = false,
+  styles = {
+    comments = {},
+    keywords = {},
+  },
+  on_highlights = function(highlights, colors)
+    local subtle_surface = require("koda").blend(colors.line, colors.bg, 0.4)
+    local base_text = vim.o.background == "light" and "#555555" or "#a8a8a8"
+    local git_add = colors.green
+    local git_change = colors.highlight
+    local git_delete = colors.danger
+    local git_add_bg = require("koda").blend(git_add, colors.bg, 0.25)
+    local git_change_bg = require("koda").blend(git_change, colors.bg, 0.25)
+    local git_delete_bg = require("koda").blend(git_delete, colors.bg, 0.25)
+    highlights.Normal = { fg = base_text, bg = colors.bg }
+    for _, group in ipairs({
+      "@variable",
+      "@variable.parameter",
+      "@variable.parameter.builtin",
+      "@variable.member",
+      "@module",
+      "@type.definition",
+      "@property",
+      "@constructor",
+      "@punctuation.bracket",
+      "@punctuation.special",
+      "@tag.builtin",
+    }) do
+      highlights[group] = { fg = base_text }
+    end
+    highlights.DiffAdd = { fg = git_add, bg = git_add_bg }
+    highlights.DiffChange = { fg = git_change, bg = git_change_bg }
+    highlights.DiffDelete = { fg = git_delete, bg = git_delete_bg }
+    highlights.DiffText = { fg = git_change, bg = require("koda").blend(git_change, colors.bg, 0.4) }
+    highlights.GitSignsAdd = { fg = git_add }
+    highlights.GitSignsChange = { fg = git_change }
+    highlights.GitSignsDelete = { fg = git_delete }
+    highlights.GitSignsAddLn = { fg = git_add, bg = git_add_bg }
+    highlights.GitSignsChangeLn = { fg = git_change, bg = git_change_bg }
+    highlights.GitSignsDeleteLn = { fg = git_delete, bg = git_delete_bg }
+    highlights.GitSignsAddInline = { link = "DiffAdd" }
+    highlights.GitSignsChangeInLine = { link = "DiffChange" }
+    highlights.GitSignsDeleteInline = { link = "DiffDelete" }
+    highlights.YankFlash = { bg = require("koda").blend(colors.highlight, colors.bg, 0.4) }
+    highlights.CursorLine = { bg = subtle_surface }
+    highlights.EndOfBuffer = { fg = colors.bg }
+    highlights.WinSeparator = { fg = require("koda").blend(colors.dim, colors.bg, 0.4) }
+    highlights.VertSplit = { fg = require("koda").blend(colors.dim, colors.bg, 0.7) }
+  end,
+})
 
-  vim.cmd("silent! colorscheme tokyonight-" .. style)
+local function apply_koda(mode)
+  vim.o.background = mode
+  vim.cmd("silent! colorscheme koda-" .. mode)
 end
 
 local theme_mode = read_theme_mode()
-local theme_style = theme_mode == "light" and "day" or "moon"
-apply_tokyonight(theme_style)
+apply_koda(theme_mode)
 
 vim.keymap.set("n", "<leader>T", function()
   if vim.fn.executable("theme") == 1 then
@@ -282,8 +317,7 @@ vim.keymap.set("n", "<leader>T", function()
   end
 
   local new_mode = read_theme_mode()
-  local new_style = new_mode == "light" and "day" or "moon"
-  apply_tokyonight(new_style)
+  apply_koda(new_mode)
   if setup_fzf_lua then
     setup_fzf_lua()
   end
@@ -341,56 +375,94 @@ require("notify").setup({
 })
 
 -- Lualine - Status line
-require("lualine").setup({
-  options = {
-    icons_enabled = true,
-    component_separators = {},
-    section_separators = {},
-    disabled_filetypes = {},
-  },
-  sections = {
-    lualine_a = { "branch" },
-    lualine_b = {},
-    lualine_c = {
-      {
-        "filename",
-        path = 1, -- Show relative path
-      },
+setup_lualine = function()
+  local colors = require("koda").get_palette()
+  local subtle_surface = require("koda").blend(colors.line, colors.bg, 0.3)
+  local lualine_theme = dofile(vim.api.nvim_get_runtime_file("lua/lualine/themes/auto.lua", false)[1])
+  lualine_theme.insert.a.bg = "#9d7cd8"
+  for _, sections in pairs(lualine_theme) do
+    sections.b.bg = subtle_surface
+    sections.c.bg = subtle_surface
+  end
+
+  lualine_theme.inactive = vim.deepcopy(lualine_theme.inactive)
+  for _, sections in pairs(lualine_theme.inactive) do
+    sections.bg = colors.bg
+  end
+
+  require("lualine").setup({
+    options = {
+      icons_enabled = true,
+      theme = lualine_theme,
+      component_separators = {},
+      section_separators = {},
+      disabled_filetypes = {},
     },
-    lualine_x = {
-      {
-        require("noice").api.statusline.mode.get,
-        cond = require("noice").api.statusline.mode.has,
-        color = { fg = "#ff9e64" },
+    sections = {
+      lualine_a = { "mode" },
+      lualine_b = { "branch" },
+      lualine_c = {
+        {
+          "filename",
+          path = 1, -- Show relative path
+        },
       },
-    },
-    lualine_y = {
-      {
-        "diagnostics",
-        sources = { "coc" },
-        sections = { "error", "warn", "info", "hint" },
-        symbols = { error = "● ", warn = "▲ ", info = "● ", hint = "◆ " },
+      lualine_x = {
+        {
+          function()
+            return dap_statusline and dap_statusline() or ""
+          end,
+          cond = function()
+            return dap and dap.session() ~= nil
+          end,
+          color = function()
+            local session = dap.session()
+            local colors = require("koda").get_palette()
+            return session and session.stopped_thread_id and { fg = colors.warning } or { fg = colors.info }
+          end,
+        },
+        {
+          require("noice").api.statusline.mode.get,
+          cond = require("noice").api.statusline.mode.has,
+          color = function()
+            return { fg = require("koda").get_palette().orange }
+          end,
+        },
       },
-    },
-    lualine_z = {},
-  },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {
-      {
-        "filename",
-        path = 1,
-        color = { fg = "#545c7e" }, -- Dimmed color for inactive windows
+      lualine_y = {
+        {
+          "diagnostics",
+          sources = { "coc" },
+          sections = { "error", "warn", "info", "hint" },
+          symbols = { error = "● ", warn = "▲ ", info = "● ", hint = "◆ " },
+        },
       },
+      lualine_z = {},
     },
-    lualine_x = {},
-    lualine_y = {},
-    lualine_z = {},
-  },
-  tabline = {},
-  extensions = {},
-})
+    inactive_sections = {
+      lualine_a = {},
+      lualine_b = {},
+      lualine_c = {
+        {
+          "filename",
+          path = 1,
+          color = function()
+            local colors = require("koda").get_palette()
+            return {
+              fg = colors.comment,
+              bg = colors.bg,
+            }
+          end,
+        },
+      },
+      lualine_x = {},
+      lualine_y = {},
+      lualine_z = {},
+    },
+    tabline = {},
+    extensions = {},
+  })
+end
 
 -- Tabby - Custom tabline
 require("tabby.tabline").set(function(line)
@@ -431,7 +503,7 @@ require("tabby.tabline").set(function(line)
   }
 end, {
   nerdfont = true,
-  lualine_theme = "tokyonight",
+  lualine_theme = "auto",
   tab_name = {
     name_fallback = function(tabid)
       return "tab-" .. tabid
@@ -472,10 +544,10 @@ require("toggleterm").setup({
 
 -- Debug Adapter Protocol / PHP Xdebug
 -- Start the listener with <leader>Dc, then trigger Xdebug from a browser or CLI.
-local dap = require("dap")
+dap = require("dap")
 local dapui = require("dapui")
 
-local function dap_statusline()
+dap_statusline = function()
   local session = dap.session()
   if not session then
     return ""
@@ -948,67 +1020,8 @@ vim.api.nvim_create_user_command("RunFormat", function(args)
   require("conform").format({ async = true, lsp_format = "fallback", range = range })
 end, { range = true })
 
--- Lualine - Status line
-require("lualine").setup({
-  options = {
-    icons_enabled = true,
-    component_separators = {},
-    section_separators = {},
-    disabled_filetypes = {},
-  },
-  sections = {
-    lualine_a = { "branch" },
-    lualine_b = {},
-    lualine_c = {
-      {
-        "filename",
-        path = 1, -- Show relative path
-      },
-    },
-    lualine_x = {
-      {
-        dap_statusline,
-        cond = function()
-          return dap.session() ~= nil
-        end,
-        color = function()
-          local session = dap.session()
-          return session and session.stopped_thread_id and { fg = "#e0af68" } or { fg = "#7aa2f7" }
-        end,
-      },
-      {
-        require("noice").api.statusline.mode.get,
-        cond = require("noice").api.statusline.mode.has,
-        color = { fg = "#ff9e64" },
-      },
-    },
-    lualine_y = {
-      {
-        "diagnostics",
-        sources = { "coc" },
-        sections = { "error", "warn", "info", "hint" },
-        symbols = { error = "● ", warn = "▲ ", info = "● ", hint = "◆ " },
-      },
-    },
-    lualine_z = {},
-  },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {
-      {
-        "filename",
-        path = 1,
-        color = { fg = "#545c7e" }, -- Dimmed color for inactive windows
-      },
-    },
-    lualine_x = {},
-    lualine_y = {},
-    lualine_z = {},
-  },
-  tabline = {},
-  extensions = {},
-})
+-- Configure Lualine after the DAP status helper is available.
+setup_lualine()
 
 -- Notify - Better notifications
 require("notify").setup({
@@ -1597,18 +1610,29 @@ vim.api.nvim_create_autocmd("VimResized", {
 
 -- Plugin-specific highlights should apply at startup as well as after a theme toggle.
 local function apply_plugin_highlights()
+  local colors = require("koda").get_palette()
+  local coc_float_bg = require("koda").blend(colors.line, colors.bg, 0.5)
   vim.api.nvim_set_hl(0, "CocCodeLens", { link = "Comment" })
-  vim.api.nvim_set_hl(0, "CocFloatBorder", { link = "Comment" })
+  vim.api.nvim_set_hl(0, "CocFloating", { fg = colors.fg, bg = coc_float_bg })
+  vim.api.nvim_set_hl(0, "CocFloatBorder", {
+    fg = require("koda").blend(colors.fg, colors.bg, 0.7),
+    bg = coc_float_bg,
+  })
   vim.api.nvim_set_hl(0, "CocInlayHintType", { link = "Comment" })
   vim.api.nvim_set_hl(0, "CocMenuSel", { link = "PmenuSel" })
   vim.api.nvim_set_hl(0, "CocPumDetail", { link = "Comment" })
   vim.api.nvim_set_hl(0, "CocPumMenu", { link = "Special" })
-  vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { undercurl = true, sp = "#f38ba8" })
-  vim.api.nvim_set_hl(0, "ExtraWhitespace", { bg = "#e06c75" })
+  vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { undercurl = true, sp = colors.danger })
+  vim.api.nvim_set_hl(0, "ExtraWhitespace", { bg = colors.danger })
 end
 
 apply_plugin_highlights()
 vim.api.nvim_create_autocmd("ColorScheme", {
   pattern = "*",
-  callback = apply_plugin_highlights,
+  callback = function()
+    apply_plugin_highlights()
+    if setup_lualine then
+      setup_lualine()
+    end
+  end,
 })

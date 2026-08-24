@@ -168,12 +168,12 @@ FZF_BASE_OPTS="--multi --inline-info --height 40%"
 
 __refresh_theme_env() {
   if [ -f "$HOME/.config/theme" ] && [ "$(tr -d '[:space:]' < "$HOME/.config/theme")" = "light" ]; then
-    FZF_COLOR_OPTS="--color=fg:#3760bf,bg:#e1e2e7,hl:#2e7de9,fg+:#3760bf,bg+:#d6d8e3,hl+:#2e7de9,info:#6172b0,prompt:#9854f1,pointer:#2e7de9,marker:#587539,spinner:#007197,header:#6172b0"
+    FZF_COLOR_OPTS="--color=fg:#3d3d3d,bg:#faf9f5,hl:#b07700,fg+:#000000,bg+:#ebebeb,hl+:#b07700,info:#969ba5,prompt:#000000,pointer:#000000,marker:#ca0043,spinner:#969ba5,header:#000000"
     if [ "$ALACRITTY" = "true" ]; then
       export BAT_THEME="GitHub"
     fi
   else
-    FZF_COLOR_OPTS="--color=fg:#c8d3f5,bg:#222436,hl:#82aaff,fg+:#c8d3f5,bg+:#2b2f44,hl+:#ffc777,info:#828bb8,prompt:#c099ff,pointer:#ffc777,marker:#c3e88d,spinner:#86e1fc,header:#828bb8"
+    FZF_COLOR_OPTS="--color=fg:#b0b0b0,bg:#101010,hl:#d9ba73,fg+:#ffffff,bg+:#272727,hl+:#d9ba73,info:#50585d,prompt:#ffffff,pointer:#ffffff,marker:#ff7676,spinner:#50585d,header:#ffffff"
     if [ "$ALACRITTY" = "true" ]; then
       export BAT_THEME="OneHalfDark"
     fi
