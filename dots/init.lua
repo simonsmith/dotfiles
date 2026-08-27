@@ -420,15 +420,6 @@ setup_lualine = function()
   local colors = require("koda").get_palette()
   local subtle_surface = require("koda").blend(colors.line, colors.bg, 0.3)
   local lualine_theme = dofile(vim.api.nvim_get_runtime_file("lua/lualine/themes/auto.lua", false)[1])
-  local mode_theme = {
-    i = "insert",
-    v = "visual",
-    V = "visual",
-    ["\22"] = "visual",
-    R = "replace",
-    c = "command",
-    t = "terminal",
-  }
   lualine_theme.insert.a.bg = "#9d7cd8"
   for _, sections in pairs(lualine_theme) do
     sections.b.bg = subtle_surface
@@ -454,8 +445,7 @@ setup_lualine = function()
         {
           "branch",
           color = function()
-            local theme = lualine_theme[mode_theme[vim.fn.mode():sub(1, 1)] or "normal"]
-            return { fg = theme.a.bg or colors.fg }
+            return { fg = vim.o.background == "light" and "#696969" or "#a8a8a8", gui = "bold" }
           end,
         },
       },
