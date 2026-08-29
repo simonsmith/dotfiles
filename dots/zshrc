@@ -168,7 +168,7 @@ FZF_BASE_OPTS="--multi --inline-info --height 40%"
 
 __refresh_theme_env() {
   if [ -f "$HOME/.config/theme" ] && [ "$(tr -d '[:space:]' < "$HOME/.config/theme")" = "light" ]; then
-    FZF_COLOR_OPTS="--color=fg:#3d3d3d,bg:#faf9f5,hl:#b07700,fg+:#000000,bg+:#ebebeb,hl+:#b07700,info:#969ba5,prompt:#000000,pointer:#000000,marker:#ca0043,spinner:#969ba5,header:#000000"
+    FZF_COLOR_OPTS="--color=fg:#6e6d6c,bg:#faf9f5,hl:#b07700,fg+:#6e6d6c,bg+:#ebebeb,hl+:#b07700,info:#aaaeb5,prompt:#6e6d6c,pointer:#6e6d6c,marker:#ca0043,spinner:#aaaeb5,header:#6e6d6c"
     if [ "$ALACRITTY" = "true" ]; then
       export BAT_THEME="GitHub"
     fi

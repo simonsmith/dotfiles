@@ -251,7 +251,7 @@ require("koda").setup({
   cache = false,
   theme = {
     dark = "dark",
-    light = "glade",
+    light = "light",
   },
   styles = {
     comments = {},
@@ -259,13 +259,14 @@ require("koda").setup({
   },
   on_highlights = function(highlights, colors)
     local subtle_surface = require("koda").blend(colors.line, colors.bg, 0.4)
-    local is_glade = colors.bg == "#f7f7f7"
-    local base_text = vim.o.background == "light" and "#333333" or "#a8a8a8"
-    local variable_text = vim.o.background == "light" and base_text or "#eff0f2"
-    local structural_text = vim.o.background == "light" and "#333333" or "#929292"
-    local string_text = vim.o.background == "light" and colors.string or "#bb9af7"
+    local is_light = vim.o.background == "light"
+    local light_text = require("koda").blend(colors.fg, colors.bg, 0.6)
+    local comment_text = require("koda").blend(colors.comment, colors.bg, 0.8)
+    local base_text = is_light and light_text or "#a8a8a8"
+    local variable_text = is_light and base_text or "#eff0f2"
+    local structural_text = is_light and light_text or "#929292"
+    local string_text = is_light and colors.string or "#bb9af7"
     local moss = vim.o.background == "dark" and require("koda").get_palette("moss") or nil
-    local glade = is_glade and require("koda").get_palette("glade") or nil
     local git_add = colors.green
     local git_change = colors.highlight
     local git_delete = colors.danger
@@ -290,15 +291,18 @@ require("koda").setup({
     }) do
       highlights[group] = { fg = variable_text }
     end
-    highlights.Keyword = { fg = structural_text }
+    highlights.Keyword = { fg = structural_text, bold = is_light }
+    highlights.Statement = { fg = structural_text, bold = is_light }
     highlights.Delimiter = { fg = structural_text }
-    highlights.Include = { fg = structural_text }
+    highlights.Include = { fg = structural_text, bold = is_light }
     highlights.Operator = { fg = structural_text }
     highlights.String = { fg = string_text }
-    local syntax_palette = moss or glade
+    highlights.Function = {
+      fg = is_light and require("koda").blend(colors.fg, colors.bg, 0.58) or "#a8a8a8",
+    }
+    local syntax_palette = moss
     if syntax_palette then
       -- Keep functions distinct without making frequent method calls the focal point.
-      highlights.Function = { fg = vim.o.background == "light" and "#696c6e" or "#a8a8a8" }
       highlights.String = { fg = syntax_palette.string }
       highlights.Character = { fg = syntax_palette.char }
       highlights.Constant = { fg = syntax_palette.const }
@@ -337,13 +341,24 @@ require("koda").setup({
     highlights.EndOfBuffer = { fg = colors.bg }
     highlights.WinSeparator = { fg = require("koda").blend(colors.dim, colors.bg, 0.4) }
     highlights.VertSplit = { fg = require("koda").blend(colors.dim, colors.bg, 0.7) }
+    if is_light then
+      -- soften strong neutral foregrounds without replacing Koda's accent colors
+      for _, highlight in pairs(highlights) do
+        if highlight.fg == colors.fg or highlight.fg == colors.keyword or highlight.fg == colors.emphasis then
+          highlight.fg = light_text
+        end
+      end
+      highlights.Comment = { fg = comment_text }
+      highlights.LineNr = { fg = comment_text }
+      highlights.CursorLineNr = { fg = colors.comment, bold = true }
+      highlights["@keyword.return"] = { fg = light_text, bold = true }
+    end
   end,
 })
 
 local function apply_koda(mode)
   vim.o.background = mode
-  local variant = mode == "light" and "glade" or "dark"
-  vim.cmd("silent! colorscheme koda-" .. variant)
+  vim.cmd("silent! colorscheme koda-" .. mode)
 end
 
 local theme_mode = read_theme_mode()
@@ -1661,10 +1676,11 @@ vim.api.nvim_create_autocmd("VimResized", {
 local function apply_plugin_highlights()
   local colors = require("koda").get_palette()
   local coc_float_bg = require("koda").blend(colors.line, colors.bg, 0.5)
+  local coc_float_fg = vim.o.background == "light" and require("koda").blend(colors.fg, colors.bg, 0.6) or colors.fg
   vim.api.nvim_set_hl(0, "CocCodeLens", { link = "Comment" })
-  vim.api.nvim_set_hl(0, "CocFloating", { fg = colors.fg, bg = coc_float_bg })
+  vim.api.nvim_set_hl(0, "CocFloating", { fg = coc_float_fg, bg = coc_float_bg })
   vim.api.nvim_set_hl(0, "CocFloatBorder", {
-    fg = require("koda").blend(colors.fg, colors.bg, 0.7),
+    fg = vim.o.background == "light" and coc_float_fg or require("koda").blend(colors.fg, colors.bg, 0.7),
     bg = coc_float_bg,
   })
   vim.api.nvim_set_hl(0, "CocInlayHintType", { link = "Comment" })

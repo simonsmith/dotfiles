@@ -47,7 +47,7 @@ write_tmux_theme() {
     window_active="#faf9f5"   # matches the terminal light palette
     window_inactive="#ebebeb"
     popup_bg="$window_active"
-    fzf_default_opts="--multi --inline-info --height 40% --color=fg:#3d3d3d,bg:#faf9f5,hl:#b07700,fg+:#000000,bg+:#ebebeb,hl+:#b07700,info:#969ba5,prompt:#000000,pointer:#000000,marker:#ca0043,spinner:#969ba5,header:#000000"
+    fzf_default_opts="--multi --inline-info --height 40% --color=fg:#6e6d6c,bg:#faf9f5,hl:#b07700,fg+:#6e6d6c,bg+:#ebebeb,hl+:#b07700,info:#aaaeb5,prompt:#6e6d6c,pointer:#6e6d6c,marker:#ca0043,spinner:#aaaeb5,header:#6e6d6c"
   else
     powerkit_theme="custom"
     powerkit_variant="dark"
