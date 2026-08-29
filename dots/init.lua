@@ -261,6 +261,7 @@ require("koda").setup({
     local subtle_surface = require("koda").blend(colors.line, colors.bg, 0.4)
     local is_light = vim.o.background == "light"
     local light_text = require("koda").blend(colors.fg, colors.bg, 0.6)
+    local keyword_text = "#555555"
     local comment_text = require("koda").blend(colors.comment, colors.bg, 0.8)
     local base_text = is_light and light_text or "#a8a8a8"
     local variable_text = is_light and base_text or "#eff0f2"
@@ -291,10 +292,10 @@ require("koda").setup({
     }) do
       highlights[group] = { fg = variable_text }
     end
-    highlights.Keyword = { fg = structural_text, bold = is_light }
-    highlights.Statement = { fg = structural_text, bold = is_light }
+    highlights.Keyword = { fg = is_light and keyword_text or structural_text, bold = is_light }
+    highlights.Statement = { fg = is_light and keyword_text or structural_text, bold = is_light }
     highlights.Delimiter = { fg = structural_text }
-    highlights.Include = { fg = structural_text, bold = is_light }
+    highlights.Include = { fg = is_light and keyword_text or structural_text, bold = is_light }
     highlights.Operator = { fg = structural_text }
     highlights.String = { fg = string_text }
     highlights.Function = {
@@ -351,7 +352,18 @@ require("koda").setup({
       highlights.Comment = { fg = comment_text }
       highlights.LineNr = { fg = comment_text }
       highlights.CursorLineNr = { fg = colors.comment, bold = true }
-      highlights["@keyword.return"] = { fg = light_text, bold = true }
+      highlights["@keyword.return"] = { fg = keyword_text, bold = true }
+      for _, group in ipairs({
+        "Label",
+        "PreProc",
+        "Define",
+        "PreCondit",
+        "StorageClass",
+        "Structure",
+        "Typedef",
+      }) do
+        highlights[group] = { fg = keyword_text, bold = true }
+      end
     end
   end,
 })
