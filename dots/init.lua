@@ -275,7 +275,7 @@ require("koda").setup({
     local structural_text = is_light and light_text or "#929292"
     local string_text = is_light and colors.string or "#bb9af7"
     local moss = vim.o.background == "dark" and require("koda").get_palette("moss") or nil
-    local keyword_text = is_light and "#555555" or "#dddddd"
+    local keyword_text = is_light and "#444444" or "#dddddd"
     local git_add = colors.green
     local git_change = colors.highlight
     local git_delete = colors.danger
