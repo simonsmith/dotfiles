@@ -300,10 +300,10 @@ require("koda").setup({
     }) do
       highlights[group] = { fg = variable_text }
     end
-    highlights.Keyword = { fg = keyword_text, bold = true }
-    highlights.Statement = { fg = keyword_text, bold = true }
+    highlights.Keyword = { fg = keyword_text, bold = false }
+    highlights.Statement = { fg = keyword_text, bold = false }
     highlights.Delimiter = { fg = structural_text }
-    highlights.Include = { fg = keyword_text, bold = true }
+    highlights.Include = { fg = keyword_text, bold = false }
     highlights.Operator = { fg = structural_text }
     highlights.String = { fg = string_text }
     highlights.Function = {
