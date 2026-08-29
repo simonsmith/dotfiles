@@ -261,13 +261,13 @@ require("koda").setup({
     local subtle_surface = require("koda").blend(colors.line, colors.bg, 0.4)
     local is_light = vim.o.background == "light"
     local light_text = require("koda").blend(colors.fg, colors.bg, 0.6)
-    local keyword_text = "#555555"
     local comment_text = require("koda").blend(colors.comment, colors.bg, 0.8)
     local base_text = is_light and light_text or "#a8a8a8"
-    local variable_text = is_light and base_text or "#eff0f2"
+    local variable_text = is_light and base_text or colors.fg
     local structural_text = is_light and light_text or "#929292"
     local string_text = is_light and colors.string or "#bb9af7"
     local moss = vim.o.background == "dark" and require("koda").get_palette("moss") or nil
+    local keyword_text = is_light and "#555555" or "#dddddd"
     local git_add = colors.green
     local git_change = colors.highlight
     local git_delete = colors.danger
@@ -292,10 +292,10 @@ require("koda").setup({
     }) do
       highlights[group] = { fg = variable_text }
     end
-    highlights.Keyword = { fg = is_light and keyword_text or structural_text, bold = is_light }
-    highlights.Statement = { fg = is_light and keyword_text or structural_text, bold = is_light }
+    highlights.Keyword = { fg = keyword_text, bold = true }
+    highlights.Statement = { fg = keyword_text, bold = true }
     highlights.Delimiter = { fg = structural_text }
-    highlights.Include = { fg = is_light and keyword_text or structural_text, bold = is_light }
+    highlights.Include = { fg = keyword_text, bold = true }
     highlights.Operator = { fg = structural_text }
     highlights.String = { fg = string_text }
     highlights.Function = {
@@ -312,9 +312,7 @@ require("koda").setup({
       highlights.Boolean = { fg = syntax_palette.const }
       highlights.Float = { fg = syntax_palette.const }
       highlights.Type = { fg = syntax_palette.type }
-      highlights.Keyword = { fg = syntax_palette.keyword }
       highlights.Delimiter = { fg = syntax_palette.type }
-      highlights.Include = { fg = syntax_palette.keyword }
       highlights.Operator = { fg = syntax_palette.operator }
       highlights["@type.definition"] = { fg = syntax_palette.type }
     end
@@ -352,18 +350,18 @@ require("koda").setup({
       highlights.Comment = { fg = comment_text }
       highlights.LineNr = { fg = comment_text }
       highlights.CursorLineNr = { fg = colors.comment, bold = true }
-      highlights["@keyword.return"] = { fg = keyword_text, bold = true }
-      for _, group in ipairs({
-        "Label",
-        "PreProc",
-        "Define",
-        "PreCondit",
-        "StorageClass",
-        "Structure",
-        "Typedef",
-      }) do
-        highlights[group] = { fg = keyword_text, bold = true }
-      end
+    end
+    highlights["@keyword.return"] = { fg = keyword_text, bold = true }
+    for _, group in ipairs({
+      "Label",
+      "PreProc",
+      "Define",
+      "PreCondit",
+      "StorageClass",
+      "Structure",
+      "Typedef",
+    }) do
+      highlights[group] = { fg = keyword_text, bold = true }
     end
   end,
 })
