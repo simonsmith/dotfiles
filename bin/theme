@@ -52,10 +52,10 @@ write_tmux_theme() {
     powerkit_theme="custom"
     powerkit_variant="dark"
     powerkit_custom_theme="$DOTFILES_DIR/tmux/koda-flexoki-dark.sh"
-    window_active="#101010"  # matches Koda dark background
+    window_active="#161616"  # softened Koda dark background
     window_inactive="#272727"
     popup_bg="$window_active"
-    fzf_default_opts="--multi --inline-info --height 40% --color=fg:#a8a8a8,bg:#101010,hl:#dfdf8e,fg+:#cecece,bg+:#272727,hl+:#dfdf8e,info:#8ebeec,prompt:#71ade7,pointer:#71ade7,marker:#95cb82,spinner:#8ebeec,header:#707070"
+    fzf_default_opts="--multi --inline-info --height 40% --color=fg:#a8a8a8,bg:#161616,hl:#dfdf8e,fg+:#cecece,bg+:#272727,hl+:#dfdf8e,info:#8ebeec,prompt:#71ade7,pointer:#71ade7,marker:#95cb82,spinner:#8ebeec,header:#707070"
   fi
 
   mkdir -p "$(dirname "$TMUX_THEME_FILE")"

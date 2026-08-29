@@ -245,6 +245,13 @@ local setup_lualine
 local dap
 local dap_statusline
 
+local function koda_background(colors)
+  if vim.o.background == "dark" then
+    return require("koda").blend(colors.line, colors.bg, 0.25)
+  end
+  return colors.bg
+end
+
 require("koda").setup({
   transparent = false,
   auto = false, -- vim-plug is not supported by Koda's automatic plugin detection
@@ -258,8 +265,9 @@ require("koda").setup({
     keywords = {},
   },
   on_highlights = function(highlights, colors)
-    local subtle_surface = require("koda").blend(colors.line, colors.bg, 0.4)
     local is_light = vim.o.background == "light"
+    local theme_bg = koda_background(colors)
+    local subtle_surface = require("koda").blend(colors.line, theme_bg, 0.4)
     local light_text = require("koda").blend(colors.fg, colors.bg, 0.6)
     local comment_text = require("koda").blend(colors.comment, colors.bg, 0.8)
     local base_text = is_light and light_text or "#a8a8a8"
@@ -271,12 +279,12 @@ require("koda").setup({
     local git_add = colors.green
     local git_change = colors.highlight
     local git_delete = colors.danger
-    local git_add_bg = require("koda").blend(git_add, colors.bg, 0.12)
-    local git_change_bg = require("koda").blend(git_change, colors.bg, 0.12)
-    local git_delete_bg = require("koda").blend(git_delete, colors.bg, 0.12)
-    local dap_breakpoint_bg = require("koda").blend(colors.danger, colors.bg, 0.15)
-    local dap_stopped_bg = require("koda").blend(colors.warning, colors.bg, 0.25)
-    highlights.Normal = { fg = base_text, bg = colors.bg }
+    local git_add_bg = require("koda").blend(git_add, theme_bg, 0.12)
+    local git_change_bg = require("koda").blend(git_change, theme_bg, 0.12)
+    local git_delete_bg = require("koda").blend(git_delete, theme_bg, 0.12)
+    local dap_breakpoint_bg = require("koda").blend(colors.danger, theme_bg, 0.15)
+    local dap_stopped_bg = require("koda").blend(colors.warning, theme_bg, 0.25)
+    highlights.Normal = { fg = base_text, bg = theme_bg }
     for _, group in ipairs({
       "@variable",
       "@variable.parameter",
@@ -319,7 +327,7 @@ require("koda").setup({
     highlights.DiffAdd = { fg = git_add, bg = git_add_bg }
     highlights.DiffChange = { fg = git_change, bg = git_change_bg }
     highlights.DiffDelete = { fg = git_delete, bg = git_delete_bg }
-    highlights.DiffText = { fg = git_change, bg = require("koda").blend(git_change, colors.bg, 0.4) }
+    highlights.DiffText = { fg = git_change, bg = require("koda").blend(git_change, theme_bg, 0.4) }
     highlights.GitSignsAdd = { fg = git_add }
     highlights.GitSignsChange = { fg = git_change }
     highlights.GitSignsDelete = { fg = git_delete }
@@ -335,11 +343,21 @@ require("koda").setup({
     highlights.DapStoppedLine = { bg = dap_stopped_bg }
     highlights.DapStoppedSign = { fg = colors.warning, bg = dap_stopped_bg }
     highlights.DapStoppedNumber = { fg = colors.warning, bg = dap_stopped_bg }
-    highlights.YankFlash = { bg = require("koda").blend(colors.highlight, colors.bg, 0.4) }
+    highlights.YankFlash = { bg = require("koda").blend(colors.highlight, theme_bg, 0.4) }
     highlights.CursorLine = { bg = subtle_surface }
-    highlights.EndOfBuffer = { fg = colors.bg }
-    highlights.WinSeparator = { fg = require("koda").blend(colors.dim, colors.bg, 0.4) }
-    highlights.VertSplit = { fg = require("koda").blend(colors.dim, colors.bg, 0.7) }
+    highlights.EndOfBuffer = { fg = theme_bg }
+    highlights.WinSeparator = { fg = require("koda").blend(colors.dim, theme_bg, 0.4) }
+    highlights.VertSplit = { fg = require("koda").blend(colors.dim, theme_bg, 0.7) }
+    if not is_light then
+      for _, highlight in pairs(highlights) do
+        if highlight.bg == colors.bg then
+          highlight.bg = theme_bg
+        end
+        if highlight.fg == colors.bg then
+          highlight.fg = theme_bg
+        end
+      end
+    end
     if is_light then
       -- soften strong neutral foregrounds without replacing Koda's accent colors
       for _, highlight in pairs(highlights) do
@@ -444,7 +462,8 @@ require("notify").setup({
 -- Lualine - Status line
 setup_lualine = function()
   local colors = require("koda").get_palette()
-  local subtle_surface = require("koda").blend(colors.line, colors.bg, 0.3)
+  local theme_bg = koda_background(colors)
+  local subtle_surface = require("koda").blend(colors.line, theme_bg, 0.3)
   local lualine_theme = dofile(vim.api.nvim_get_runtime_file("lua/lualine/themes/auto.lua", false)[1])
   lualine_theme.insert.a.bg = "#9d7cd8"
   for _, sections in pairs(lualine_theme) do
@@ -454,7 +473,7 @@ setup_lualine = function()
 
   lualine_theme.inactive = vim.deepcopy(lualine_theme.inactive)
   for _, sections in pairs(lualine_theme.inactive) do
-    sections.bg = colors.bg
+    sections.bg = theme_bg
   end
 
   require("lualine").setup({
@@ -524,7 +543,7 @@ setup_lualine = function()
             local colors = require("koda").get_palette()
             return {
               fg = colors.comment,
-              bg = colors.bg,
+              bg = koda_background(colors),
             }
           end,
         },
@@ -1685,7 +1704,8 @@ vim.api.nvim_create_autocmd("VimResized", {
 -- Plugin-specific highlights should apply at startup as well as after a theme toggle.
 local function apply_plugin_highlights()
   local colors = require("koda").get_palette()
-  local coc_float_bg = require("koda").blend(colors.line, colors.bg, 0.5)
+  local theme_bg = koda_background(colors)
+  local coc_float_bg = require("koda").blend(colors.line, theme_bg, 0.5)
   local coc_float_fg = vim.o.background == "light" and require("koda").blend(colors.fg, colors.bg, 0.6) or colors.fg
   vim.api.nvim_set_hl(0, "CocCodeLens", { link = "Comment" })
   vim.api.nvim_set_hl(0, "CocFloating", { fg = coc_float_fg, bg = coc_float_bg })
