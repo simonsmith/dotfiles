@@ -303,6 +303,7 @@ require("koda").setup({
       highlights.Character = { fg = syntax_palette.char }
       highlights.Constant = { fg = syntax_palette.const }
       highlights.Number = { fg = syntax_palette.const }
+      highlights.MatchParen = { fg = syntax_palette.const, bold = true }
       highlights.Boolean = { fg = syntax_palette.const }
       highlights.Float = { fg = syntax_palette.const }
       highlights.Type = { fg = syntax_palette.type }
