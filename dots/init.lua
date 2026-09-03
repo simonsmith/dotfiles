@@ -284,8 +284,8 @@ require("koda").setup({
     local git_delete_bg = require("koda").blend(git_delete, theme_bg, 0.12)
     local dap_breakpoint_bg = require("koda").blend(colors.danger, theme_bg, 0.15)
     local dap_stopped_bg = require("koda").blend(colors.warning, theme_bg, 0.25)
-    local search_bg = require("koda").blend(colors.warning, theme_bg, 0.15)
-    local current_search_bg = require("koda").blend(colors.warning, theme_bg, 0.4)
+    local search_bg = "#d3c3ec"
+    local current_search_bg = "#9d7cd8"
     highlights.Normal = { fg = base_text, bg = theme_bg }
     for _, group in ipairs({
       "@variable",
@@ -347,8 +347,8 @@ require("koda").setup({
     highlights.DapStoppedNumber = { fg = colors.warning, bg = dap_stopped_bg }
     highlights.YankFlash = { bg = require("koda").blend(colors.highlight, theme_bg, 0.4) }
     highlights.CursorLine = { bg = subtle_surface }
-    highlights.Search = { bg = search_bg }
-    highlights.CurSearch = { bg = current_search_bg, bold = true }
+    highlights.Search = { bg = search_bg, fg = "#565f89" }
+    highlights.CurSearch = { bg = current_search_bg, bold = true, fg = "#e3e5eb" }
     highlights.IncSearch = { link = "CurSearch" }
     highlights.EndOfBuffer = { fg = theme_bg }
     highlights.WinSeparator = { fg = require("koda").blend(colors.dim, theme_bg, 0.4) }
