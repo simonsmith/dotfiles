@@ -61,12 +61,12 @@ preset = 'qwerty'
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-inner.horizontal = 15
-inner.vertical =   15
-outer.left =       0
-outer.bottom =     0
-outer.top =        0
-outer.right =      0
+inner.horizontal = [{ monitor."XG49WCR" = 35 }, 10]
+inner.vertical =   [{ monitor."XG49WCR" = 35 }, 10]
+outer.left =       [{ monitor."XG49WCR" = 35 }, 0]
+outer.bottom =     [{ monitor."XG49WCR" = 35 }, 0]
+outer.top =        [{ monitor."XG49WCR" = 35 }, 0]
+outer.right =      [{ monitor."XG49WCR" = 35 }, 0]
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -128,4 +128,3 @@ shift-h = ['join-with left']
 shift-j = ['join-with down']
 shift-k = ['join-with up']
 shift-l = ['join-with right']
-
