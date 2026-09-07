@@ -63,10 +63,10 @@ preset = 'qwerty'
 [gaps]
 inner.horizontal = [{ monitor."XG49WCR" = 25 }, {monitor."DELL S3225QS" = 20}, 10]
 inner.vertical =   [{ monitor."XG49WCR" = 25 }, {monitor."DELL S3225QS" = 20}, 10]
-outer.left =       [{ monitor."XG49WCR" = 20 }, {monitor."DELL S3225QS" = 10}, 0]
-outer.bottom =     [{ monitor."XG49WCR" = 20 }, {monitor."DELL S3225QS" = 10}, 0]
-outer.top =        [{ monitor."XG49WCR" = 20 }, {monitor."DELL S3225QS" = 10}, 0]
-outer.right =      [{ monitor."XG49WCR" = 20 }, {monitor."DELL S3225QS" = 10}, 0]
+outer.left =       [{ monitor."XG49WCR" = 20 }, {monitor."DELL S3225QS" = 0}, 0]
+outer.bottom =     [{ monitor."XG49WCR" = 20 }, {monitor."DELL S3225QS" = 0}, 0]
+outer.top =        [{ monitor."XG49WCR" = 20 }, {monitor."DELL S3225QS" = 0}, 0]
+outer.right =      [{ monitor."XG49WCR" = 20 }, {monitor."DELL S3225QS" = 0}, 0]
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
