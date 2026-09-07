@@ -201,3 +201,8 @@ export FZF_TMUX_HEIGHT=40%
 command -v tree > /dev/null && export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -$LINES'"
 
 bindkey '^o' autosuggest-accept
+
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey -M viins '^X^E' edit-command-line
+bindkey -M vicmd '^X^E' edit-command-line
