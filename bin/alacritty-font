@@ -53,7 +53,7 @@ case "$1" in
   home-laptop)
     set_font "JetBrainsMono Nerd Font" "SemiBold" "Italic" "Bold"
     set_offset 0 1
-    set_size 16
+    set_size 18
     ;;
   home-desktop)
     set_font "JetBrainsMono Nerd Font" "Medium" "Italic" "SemiBold"
