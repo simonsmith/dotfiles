@@ -118,5 +118,17 @@
   ],
   "java.inlayHints.parameterNames.enabled": "none",
   "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx4G -Xms100m -Xlog:disable",
-  "java.maxConcurrentBuilds": 1
+  "java.maxConcurrentBuilds": 1,
+
+  "metals.autoImportBuilds": "all",
+
+  "languageserver": {
+    "metals": {
+      "command": "~/Library/Application Support/Coursier/bin/metals",
+      "args": ["-Dmetals.http=on"],
+      "filetypes": ["scala", "sbt", "sc"],
+      "rootPatterns": ["build.sbt", "build.sc", "build.mill", ".scala-build/"],
+      "requireRootPattern": true
+    }
+  }
 }
