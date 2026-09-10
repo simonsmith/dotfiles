@@ -5,6 +5,7 @@ node = "lts"
 pnpm = "latest"
 python = "latest"
 ruby = "latest"
+"npm:@fsouza/prettierd" = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node"]
