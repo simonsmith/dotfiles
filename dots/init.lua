@@ -129,12 +129,11 @@ vim.g.coc_disable_startup_warning = 1
 -- File handling
 vim.opt.swapfile = false -- Disable swap files
 vim.opt.backup = false -- Disable backup files
-vim.opt.writebackup = true
+vim.opt.writebackup = false -- Never make a pre-write backup, so a save can't be blocked by E509
 vim.opt.backupcopy = "yes" -- Preserve symlinks when writing
 vim.opt.undofile = true -- Enable persistent undo
 vim.opt.undolevels = 1000 -- Maximum number of undos
 vim.opt.undoreload = 10000 -- Maximum lines to save for undo on buffer reload
-vim.opt.backupdir = "$HOME/.config/nvim/backups"
 vim.opt.directory = ".,$TEMP"
 
 -- Display and appearance
