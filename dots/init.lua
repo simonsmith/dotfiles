@@ -1073,8 +1073,24 @@ local prettier_only = { "prettierd", "prettier", stop_after_first = true }
 local prettier_mdformat = { "prettierd", "prettier", "mdformat", stop_after_first = true }
 local lua_format = { "stylua", stop_after_first = true }
 local spotless_only = { "spotless_maven" }
+local scala_fmt = { "scalafmt_native" }
 
 require("conform").setup({
+  formatters = {
+    -- scalafmt-native is the only scalafmt binary on PATH (conform's built-in
+    -- scalafmt formatter expects a `scalafmt` command). --stdout is required:
+    -- without it scalafmt-native prints nothing for already-formatted input,
+    -- which would blank the buffer. cwd is the file's dir so .scalafmt.conf is
+    -- discovered upward regardless of neovim's cwd.
+    scalafmt_native = {
+      command = "scalafmt-native",
+      args = { "--stdin", "--stdout", "--assume-filename", "$FILENAME" },
+      stdin = true,
+      cwd = function(_, ctx)
+        return ctx.dirname
+      end,
+    },
+  },
   formatters_by_ft = {
     -- JavaScript/TypeScript ecosystem (Biome first, Prettier fallback)
     javascript = prettier_only,
@@ -1102,6 +1118,10 @@ require("conform").setup({
 
     -- Java formats
     java = spotless_only,
+
+    -- Scala formats
+    scala = scala_fmt,
+    sbt = scala_fmt,
   },
 })
 
