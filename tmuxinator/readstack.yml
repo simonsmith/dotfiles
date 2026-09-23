@@ -3,8 +3,8 @@ root: ~/Sites/readstack
 startup_window: nvim
 
 windows:
-  - nvim: nvim
-  - dev:
+  - edit: nvim
+  - cli:
       panes:
         - gs
   - laravel:
@@ -19,7 +19,7 @@ windows:
       root: ~/Sites/readstack/parser-service
       panes:
         - pnpm run dev:debug
-  - ssh:
+  - ai:
       root: ~/Sites/readstack/web
       panes:
-        - ssh readstack-staging
+        - codex
