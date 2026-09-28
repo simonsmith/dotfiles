@@ -49,6 +49,7 @@
   "intelephense.inlayHint.parameterNames": false,
   "intelephense.inlayHint.parameterTypes": true,
   "intelephense.inlayHint.returnTypes": true,
+  "intelephense.progress.enable": false,
 
   "phpstan.memoryLimit": "2G",
   "phpstan.download.checkOnStartup": false,
