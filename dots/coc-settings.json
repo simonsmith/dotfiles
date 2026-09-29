@@ -2,6 +2,8 @@
   "coc.preferences.colorSupport": false,
   "coc.preferences.formatOnType": true,
 
+  "fileSystemWatch.watchmanPath": "/opt/homebrew/bin/watchman",
+
   "codeLens.enable": true,
   "codeLens.position": "eol",
 
