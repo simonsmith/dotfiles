@@ -614,15 +614,6 @@ end, {
 
 vim.o.showtabline = 1 -- Show tabline only when multiple tabs
 
--- Render Markdown - Enhanced markdown rendering
-require("markview").setup({
-  preview = { enable = false },
-})
-
-wk.add({
-  { "<leader>m", "<CMD>Markview<CR>", desc = "Toggle markview preview", mode = "n" },
-})
-
 -- ----------------------------------------------------------------------------
 -- Terminal & window navigation
 -- ----------------------------------------------------------------------------
@@ -1686,6 +1677,15 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     vim.opt_local.textwidth = 72 -- Wrap at 72 characters
     vim.opt_local.spell = true -- Enable spell checking
+  end,
+})
+
+-- JSON: treesitter conceals quotes, and markview leaks conceallevel=3 to the window
+vim.api.nvim_create_autocmd("FileType", {
+  group = "file_types",
+  pattern = { "json", "jsonc", "json5" },
+  callback = function()
+    vim.opt_local.conceallevel = 0
   end,
 })
 
