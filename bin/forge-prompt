@@ -1,0 +1,106 @@
+#!/usr/bin/env python3
+
+import fcntl
+import hashlib
+import json
+import os
+from pathlib import Path
+import subprocess
+import sys
+import time
+
+
+def read_json(path):
+    try:
+        data = json.loads(path.read_text())
+        return data if isinstance(data, dict) else {}
+    except (OSError, ValueError):
+        return {}
+
+
+def needs_refresh(cache):
+    interval = 86400 if cache.get("name") else 60
+    return time.time() - cache.get("attempted_at", 0) >= interval
+
+
+def write_cache(path, cache):
+    temporary = path.with_suffix(f".{os.getpid()}.tmp")
+    temporary.write_text(json.dumps(cache))
+    temporary.replace(path)
+
+
+def refresh(path, token, base, organization, server):
+    from urllib.parse import quote
+    from urllib.request import Request, urlopen
+    from urllib.error import URLError
+
+    with path.with_suffix(".lock").open("a") as lock:
+        try:
+            fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError:
+            return
+
+        cache = read_json(path)
+        if not needs_refresh(cache):
+            return
+
+        # throttle retries even when the API is unavailable.
+        cache["attempted_at"] = time.time()
+        write_cache(path, cache)
+        request = Request(
+            f"{base.rstrip('/')}/orgs/{quote(organization, safe='')}/servers/{server}",
+            headers={
+                "Authorization": f"Bearer {token}",
+                "Accept": "application/vnd.api+json",
+                "User-Agent": "Laravel Forge CLI/starship",
+            },
+        )
+        try:
+            with urlopen(request, timeout=5) as response:
+                name = json.load(response)["data"]["attributes"]["name"]
+            if isinstance(name, str) and name.strip():
+                cache["name"] = name
+                write_cache(path, cache)
+        except (URLError, OSError, ValueError, KeyError, TypeError):
+            pass
+
+
+def main():
+    config = read_json(Path.home() / ".laravel-forge/config.json")
+    token = config.get("token", os.environ.get("FORGE_API_TOKEN"))
+    organization = config.get("organization")
+    server = config.get("server")
+    if not token or not isinstance(organization, str) or not organization:
+        return
+    if not str(server).isdigit():
+        return
+
+    base = os.environ.get("FORGE_API_BASE", "https://forge.laravel.com/api/")
+    key = hashlib.sha256(f"{base}/{organization}/{server}".encode()).hexdigest()
+    directory = Path(os.environ.get("XDG_CACHE_HOME", Path.home() / ".cache")) / "forge-prompt"
+    path = directory / f"{key}.json"
+
+    if sys.argv[1:] == ["--refresh"]:
+        directory.mkdir(parents=True, exist_ok=True)
+        refresh(path, token, base, organization, server)
+        return
+
+    cache = read_json(path)
+    label = f"{organization}/{cache.get('name') or server}"
+    print("".join(character for character in label if character.isprintable()))
+    if needs_refresh(cache):
+        subprocess.Popen(
+            [sys.executable, str(Path(__file__).resolve()), "--refresh"],
+            stdin=subprocess.DEVNULL,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            start_new_session=True,
+        )
+
+
+if __name__ == "__main__":
+    os.umask(0o077)
+    try:
+        main()
+    except (OSError, ValueError, TypeError):
+        pass

@@ -41,3 +41,18 @@ version_format = "${raw}"
 format = "[bun:\\($version\\)]($style)"
 version_format = "${raw}"
 detect_extensions = ['ts']
+
+[custom.forge]
+command = '"$HOME/dotfiles/bin/forge-prompt"'
+when = '''
+dir="$PWD"
+while [ "$dir" != / ]; do
+  [ -f "$dir/artisan" ] && exit 0
+  dir="${dir%/*}"
+  [ -n "$dir" ] || break
+done
+[ -f /artisan ]
+'''
+shell = ['sh']
+format = "[forge:\\($output\\)]($style) "
+style = "bold yellow"
