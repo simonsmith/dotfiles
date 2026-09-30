@@ -39,6 +39,7 @@ Plug("folke/persistence.nvim") -- Session management
 Plug("y3owk1n/time-machine.nvim") -- Time travel for buffers
 Plug("OXY2DEV/markview.nvim")
 Plug("fasterius/simple-zoom.nvim") -- tmux style zoom
+Plug("sindrets/winshift.nvim") -- Swap/rearrange windows
 Plug("Wansmer/treesj")
 
 -- File management
@@ -1380,6 +1381,23 @@ wk.add({
 wk.add({
   { "<leader>x", ":split<CR>", desc = "Horizontal split", mode = "n" },
   { "<leader>v", ":vsplit<CR>", desc = "Vertical split", mode = "n" },
+})
+
+-- WinShift - swap current window with a picked one
+require("winshift").setup({
+  -- lualine's refresh timer overwrites the picker letters, so pause it while picking
+  window_picker = function()
+    local lualine = require("lualine")
+    lualine.hide({ place = { "statusline" } })
+    local ok, winid = pcall(require("winshift.lib").pick_window, {
+      filter_rules = { cur_win = true, floats = true },
+    })
+    lualine.hide({ place = { "statusline" }, unhide = true })
+    return ok and winid or nil
+  end,
+})
+wk.add({
+  { "<leader>X", "<cmd>WinShift swap<CR>", desc = "Swap window with picked window", mode = "n" },
 })
 
 -- Search and replace
