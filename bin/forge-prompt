@@ -86,7 +86,7 @@ def main():
         return
 
     cache = read_json(path)
-    label = f"{organization}/{cache.get('name') or server}"
+    label = str(cache.get("name") or server)
     print("".join(character for character in label if character.isprintable()))
     if needs_refresh(cache):
         subprocess.Popen(

@@ -54,5 +54,5 @@ done
 [ -f /artisan ]
 '''
 shell = ['sh']
-format = "[forge:\\($output\\)]($style) "
+format = "([forge:\\($output\\)]($style) )"
 style = "bold yellow"
