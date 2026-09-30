@@ -1,6 +1,8 @@
 {
   "coc.preferences.colorSupport": false,
   "coc.preferences.formatOnType": true,
+  "coc.source.around.shortcut": "~",
+  "coc.source.buffer.shortcut": "~",
 
   "fileSystemWatch.watchmanPath": "/opt/homebrew/bin/watchman",
 
@@ -29,7 +31,7 @@
   "inlayHint.refreshOnInsertMode": false,
 
   "suggest.maxCompleteItemCount": 30,
-  "suggest.formatItems": ["abbr", "menu"],
+  "suggest.formatItems": ["abbr", "menu", "shortcut"],
   "suggest.floatConfig": {
     "border": true,
     "rounded": true,
