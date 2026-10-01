@@ -446,6 +446,7 @@ require("noice").setup({
     { filter = { find = "oxc" }, skip = true },
     { filter = { find = "Oxlint" }, skip = true },
     { filter = { find = "Hunk" }, skip = true },
+    { filter = { find = "intelephense" }, skip = true },
     { filter = { find = "E37" }, skip = true }, -- No write since last change
     { filter = { find = "E162" }, view = "mini" }, -- Pattern matching issues
     { filter = { find = "Invalid 'end_col': out of range" }, skip = true }, -- Treesitter highlighting errors
