@@ -39,6 +39,7 @@ Plug("folke/persistence.nvim") -- Session management
 Plug("y3owk1n/time-machine.nvim") -- Time travel for buffers
 Plug("OXY2DEV/markview.nvim")
 Plug("fasterius/simple-zoom.nvim") -- tmux style zoom
+Plug("sindrets/winshift.nvim") -- Swap/rearrange windows
 Plug("Wansmer/treesj")
 
 -- File management
@@ -445,6 +446,7 @@ require("noice").setup({
     { filter = { find = "oxc" }, skip = true },
     { filter = { find = "Oxlint" }, skip = true },
     { filter = { find = "Hunk" }, skip = true },
+    { filter = { find = "intelephense" }, skip = true },
     { filter = { find = "E37" }, skip = true }, -- No write since last change
     { filter = { find = "E162" }, view = "mini" }, -- Pattern matching issues
     { filter = { find = "Invalid 'end_col': out of range" }, skip = true }, -- Treesitter highlighting errors
@@ -613,15 +615,6 @@ end, {
 })
 
 vim.o.showtabline = 1 -- Show tabline only when multiple tabs
-
--- Render Markdown - Enhanced markdown rendering
-require("markview").setup({
-  preview = { enable = false },
-})
-
-wk.add({
-  { "<leader>m", "<CMD>Markview<CR>", desc = "Toggle markview preview", mode = "n" },
-})
 
 -- ----------------------------------------------------------------------------
 -- Terminal & window navigation
@@ -1391,6 +1384,23 @@ wk.add({
   { "<leader>v", ":vsplit<CR>", desc = "Vertical split", mode = "n" },
 })
 
+-- WinShift - swap current window with a picked one
+require("winshift").setup({
+  -- lualine's refresh timer overwrites the picker letters, so pause it while picking
+  window_picker = function()
+    local lualine = require("lualine")
+    lualine.hide({ place = { "statusline" } })
+    local ok, winid = pcall(require("winshift.lib").pick_window, {
+      filter_rules = { cur_win = true, floats = true },
+    })
+    lualine.hide({ place = { "statusline" }, unhide = true })
+    return ok and winid or nil
+  end,
+})
+wk.add({
+  { "<leader>X", "<cmd>WinShift swap<CR>", desc = "Swap window with picked window", mode = "n" },
+})
+
 -- Search and replace
 wk.add({
   { "<leader>k", ":noh<CR>", desc = "Clear search highlight", mode = "n" },
@@ -1686,6 +1696,15 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     vim.opt_local.textwidth = 72 -- Wrap at 72 characters
     vim.opt_local.spell = true -- Enable spell checking
+  end,
+})
+
+-- JSON: treesitter conceals quotes, and markview leaks conceallevel=3 to the window
+vim.api.nvim_create_autocmd("FileType", {
+  group = "file_types",
+  pattern = { "json", "jsonc", "json5" },
+  callback = function()
+    vim.opt_local.conceallevel = 0
   end,
 })
 

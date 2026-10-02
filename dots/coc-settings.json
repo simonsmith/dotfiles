@@ -1,6 +1,10 @@
 {
   "coc.preferences.colorSupport": false,
   "coc.preferences.formatOnType": true,
+  "coc.source.around.shortcut": "~",
+  "coc.source.buffer.shortcut": "~",
+
+  "fileSystemWatch.watchmanPath": "/opt/homebrew/bin/watchman",
 
   "codeLens.enable": true,
   "codeLens.position": "eol",
@@ -27,7 +31,7 @@
   "inlayHint.refreshOnInsertMode": false,
 
   "suggest.maxCompleteItemCount": 30,
-  "suggest.formatItems": ["abbr", "menu"],
+  "suggest.formatItems": ["abbr", "menu", "shortcut"],
   "suggest.floatConfig": {
     "border": true,
     "rounded": true,
@@ -49,6 +53,7 @@
   "intelephense.inlayHint.parameterNames": false,
   "intelephense.inlayHint.parameterTypes": true,
   "intelephense.inlayHint.returnTypes": true,
+  "intelephense.progress.enable": false,
 
   "phpstan.memoryLimit": "2G",
   "phpstan.download.checkOnStartup": false,
