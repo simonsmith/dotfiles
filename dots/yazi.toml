@@ -2,8 +2,9 @@
 
 [mgr]
 show_hidden = true
-ratio       = [ 1, 4, 0 ]
-sort_by     = "mtime"
+ratio       = [ 0, 1, 0 ]
+sort_by     = "natural"
+sort_sensitive = false
 sort_dir_first = true
 scrolloff   = 3
 
