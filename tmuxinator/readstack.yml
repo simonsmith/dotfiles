@@ -21,7 +21,7 @@ windows:
         - pnpm run dev:debug
   - ai:
       root: ~/Sites/readstack/web
-      layout: tiled
+      layout: even-horizontal
       panes:
         - codex
         - claude
