@@ -1292,9 +1292,20 @@ vim.api.nvim_create_autocmd("FileType", {
 -- ----------------------------------------------------------------------------
 
 -- Yazi file manager configuration
+-- needed for open_for_directories, stops netrw from handling directories
+vim.g.loaded_netrwPlugin = 1
+
 require("yazi").setup({
-  floating_window_scaling_factor = 0.8,
+  floating_window_scaling_factor = { width = 0.5, height = 0.8 },
   yazi_floating_window_winblend = 0,
+  yazi_floating_window_border = "rounded",
+  open_for_directories = true,
+  open_multiple_tabs = false,
+  highlight_hovered_buffers_in_same_directory = true,
+  integrations = {
+    grep_in_directory = "fzf-lua",
+    grep_in_selected_files = "fzf-lua",
+  },
 })
 
 wk.add({
