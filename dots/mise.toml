@@ -1,7 +1,7 @@
 [tools]
 bun = "latest"
 go = "latest"
-node = "lts"
+node = "24.15.0"
 pnpm = "latest"
 python = "latest"
 ruby = "latest"
