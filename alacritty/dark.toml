@@ -1,31 +1,29 @@
-# -----------------------------------------------------------------------------
-# Koda Alacritty Colors
-# Theme: Koda Dark surfaces with Moss code accents
-# -----------------------------------------------------------------------------
+# Kanso Ink Alacritty Colors
 
-# Default colors
 [colors.primary]
-background = '#161616'
-foreground = '#a8a8a8'
+background = '#14171d'
+foreground = '#C5C9C7'
 
-# Normal colors
 [colors.normal]
-black = '#161616'
-red = '#d2322d'
-green = '#95cb82'
-yellow = '#dfdf8e'
-blue = '#71ade7'
-magenta = '#9d7cd8'
-cyan = '#708b8d'
-white = '#cecece'
+black = '#14171d'
+red = '#c4746e'
+green = '#8a9a7b'
+yellow = '#c4b28a'
+blue = '#8ba4b0'
+magenta = '#a292a3'
+cyan = '#8ea4a2'
+white = '#c8c093'
 
-# Bright colors
 [colors.bright]
-black = '#707070'
-red = '#d2322d'
-green = '#95cb82'
-yellow = '#dfdf8e'
-blue = '#8ebeec'
-magenta = '#9d7cd8'
-cyan = '#8ebeec'
-white = '#ffffff'
+black = '#A4A7A4'
+red = '#e46876'
+green = '#87a987'
+yellow = '#e6c384'
+blue = '#7fb4ca'
+magenta = '#938aa9'
+cyan = '#7aa89f'
+white = '#C5C9C7'
+
+[colors.selection]
+background = '#393B44'
+foreground = '#C5C9C7'

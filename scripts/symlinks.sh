@@ -31,7 +31,6 @@ dots=(
   rgignore
   tmux.conf
   wgetrc
-  wezterm.lua
   zshrc
 )
 
@@ -55,6 +54,8 @@ mkdir -p "$HOME/.config/tmux-snaglord"
 mkdir -p "$HOME/.config/yazi"
 [ ! -e "$HOME/.config/yazi/yazi.toml" ] && ln -sfv $(grealpath yazi.toml) "$HOME/.config/yazi/yazi.toml"
 [ ! -e "$HOME/.config/yazi/keymap.toml" ] && ln -sfv $(grealpath keymap.toml) "$HOME/.config/yazi/keymap.toml"
+[ ! -e "$HOME/.config/yazi/theme.toml" ] && ln -sfv $(grealpath yazi-theme.toml) "$HOME/.config/yazi/theme.toml"
+[ ! -e "$HOME/.config/yazi/flavors" ] && ln -sfv $(grealpath ../yazi/flavors) "$HOME/.config/yazi/flavors"
 
 
 mkdir "$HOME/.ssh"

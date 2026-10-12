@@ -2,6 +2,10 @@ local vim = vim
 local Plug = vim.fn["plug#"]
 -- Set these early to ensure they're available for plugins
 
+local runtime_dir = vim.fn.expand("~/.cache/nvim-runtime")
+vim.fn.mkdir(runtime_dir, "p", "0700")
+vim.env.XDG_RUNTIME_DIR = runtime_dir
+
 -- Leader keys - set before any mappings
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
@@ -15,7 +19,7 @@ vim.opt.termguicolors = true
 vim.call("plug#begin", "~/.config/nvim/plugged")
 
 -- Theme and appearance
-Plug("oskarnurm/koda.nvim") -- Modern colorscheme
+Plug("webhooked/kanso.nvim") -- Colorscheme (ink dark, pearl light)
 Plug("hoob3rt/lualine.nvim") -- Status line
 Plug("nanozuki/tabby.nvim") -- Tab line customization
 Plug("nvim-tree/nvim-web-devicons") -- File type icons
@@ -149,6 +153,7 @@ vim.opt.signcolumn = "yes" -- Always show sign column
 vim.opt.title = true -- Enable window title
 vim.opt.synmaxcol = 250 -- Limit syntax highlighting to avoid lag
 vim.opt.fillchars:append({ diff = "-" })
+vim.opt.winborder = "rounded" -- Default border for floating windows
 
 -- Text formatting and layout
 vim.opt.textwidth = 80 -- Maximum line width
@@ -245,158 +250,55 @@ local setup_lualine
 local dap
 local dap_statusline
 
-local function koda_background(colors)
-  if vim.o.background == "dark" then
-    return require("koda").blend(colors.line, colors.bg, 0.25)
-  end
-  return colors.bg
+local function kanso_theme()
+  return require("kanso.colors").setup().theme
 end
 
-require("koda").setup({
-  transparent = false,
-  auto = false, -- vim-plug is not supported by Koda's automatic plugin detection
-  cache = false,
-  theme = {
-    dark = "dark",
-    light = "light",
+-- mix `alpha` of fg into bg
+local function blend(fg, bg, alpha)
+  return require("kanso.lib.color")(bg):blend(fg, alpha):to_hex()
+end
+
+require("kanso").setup({
+  italics = false,
+  background = {
+    dark = "ink",
+    light = "pearl",
   },
-  styles = {
-    comments = {},
-    keywords = {},
-  },
-  on_highlights = function(highlights, colors)
-    local is_light = vim.o.background == "light"
-    local theme_bg = koda_background(colors)
-    local subtle_surface = require("koda").blend(colors.line, theme_bg, 0.4)
-    local light_text = require("koda").blend(colors.fg, colors.bg, 0.6)
-    local comment_text = require("koda").blend(colors.comment, colors.bg, 0.8)
-    local base_text = is_light and light_text or "#a8a8a8"
-    local variable_text = is_light and base_text or colors.fg
-    local structural_text = is_light and light_text or "#929292"
-    local string_text = is_light and colors.string or "#bb9af7"
-    local moss = vim.o.background == "dark" and require("koda").get_palette("moss") or nil
-    local keyword_text = is_light and "#444444" or "#dddddd"
-    local git_add = colors.green
-    local git_change = colors.highlight
-    local git_delete = colors.danger
-    local git_add_bg = require("koda").blend(git_add, theme_bg, 0.12)
-    local git_change_bg = require("koda").blend(git_change, theme_bg, 0.12)
-    local git_delete_bg = require("koda").blend(git_delete, theme_bg, 0.12)
-    local dap_breakpoint_bg = require("koda").blend(colors.danger, theme_bg, 0.15)
-    local dap_stopped_bg = require("koda").blend(colors.warning, theme_bg, 0.25)
-    local search_bg = "#d3c3ec"
-    local current_search_bg = "#9d7cd8"
-    highlights.Normal = { fg = base_text, bg = theme_bg }
-    for _, group in ipairs({
-      "@variable",
-      "@variable.parameter",
-      "@variable.parameter.builtin",
-      "@variable.member",
-      "@module",
-      "@type.definition",
-      "@property",
-      "@constructor",
-      "@punctuation.bracket",
-      "@punctuation.special",
-      "@tag.builtin",
-    }) do
-      highlights[group] = { fg = variable_text }
-    end
-    highlights.Keyword = { fg = keyword_text, bold = false }
-    highlights.Statement = { fg = keyword_text, bold = false }
-    highlights.Delimiter = { fg = structural_text }
-    highlights.Include = { fg = keyword_text, bold = false }
-    highlights.Operator = { fg = structural_text }
-    highlights.String = { fg = string_text }
-    highlights.Function = {
-      fg = is_light and require("koda").blend(colors.fg, colors.bg, 0.58) or "#a8a8a8",
+  overrides = function(colors)
+    local theme = colors.theme
+    local bg = theme.ui.bg
+    local dap_breakpoint_bg = blend(theme.diag.error, bg, 0.15)
+    local dap_stopped_bg = blend(theme.diag.warning, bg, 0.25)
+    return {
+      DapBreakpointLine = { bg = dap_breakpoint_bg },
+      DapBreakpointSign = { fg = theme.diag.error, bg = dap_breakpoint_bg },
+      DapBreakpointNumber = { fg = theme.diag.error, bg = dap_breakpoint_bg },
+      DapStoppedLine = { bg = dap_stopped_bg },
+      DapStoppedSign = { fg = theme.diag.warning, bg = dap_stopped_bg },
+      DapStoppedNumber = { fg = theme.diag.warning, bg = dap_stopped_bg },
+      YankFlash = { bg = theme.ui.bg_search },
+      -- kanso draws separators in the background colour, keep splits visible
+      WinSeparator = { fg = theme.ui.bg_p2 },
+      CursorLine = { bg = blend(theme.ui.bg_p2, bg, 0.7) },
+      LineNr = { fg = blend(theme.ui.cursor_line_nr_foreground, bg, 0.6) },
+      CursorLineNr = { fg = theme.ui.fg_dim },
+      Comment = { fg = blend(theme.syn.comment, bg, 0.8) },
+      -- lift the yazi popup off the buffer behind it
+      YaziFloat = { fg = theme.ui.fg, bg = theme.ui.bg_p1 },
+      YaziFloatBorder = { fg = theme.ui.nontext, bg = theme.ui.bg_p1 },
     }
-    local syntax_palette = moss
-    if syntax_palette then
-      -- Keep functions distinct without making frequent method calls the focal point.
-      highlights.String = { fg = syntax_palette.string }
-      highlights.Character = { fg = syntax_palette.char }
-      highlights.Constant = { fg = syntax_palette.const }
-      highlights.Number = { fg = syntax_palette.const }
-      highlights.MatchParen = { fg = syntax_palette.const, bold = true }
-      highlights.Boolean = { fg = syntax_palette.const }
-      highlights.Float = { fg = syntax_palette.const }
-      highlights.Type = { fg = syntax_palette.type }
-      highlights.Delimiter = { fg = syntax_palette.type }
-      highlights.Operator = { fg = syntax_palette.operator }
-      highlights["@type.definition"] = { fg = syntax_palette.type }
-    end
-    highlights.DiffAdd = { fg = git_add, bg = git_add_bg }
-    highlights.DiffChange = { fg = git_change, bg = git_change_bg }
-    highlights.DiffDelete = { fg = git_delete, bg = git_delete_bg }
-    highlights.DiffText = { fg = git_change, bg = require("koda").blend(git_change, theme_bg, 0.4) }
-    highlights.GitSignsAdd = { fg = git_add }
-    highlights.GitSignsChange = { fg = git_change }
-    highlights.GitSignsDelete = { fg = git_delete }
-    highlights.GitSignsAddLn = { fg = git_add, bg = git_add_bg }
-    highlights.GitSignsChangeLn = { fg = git_change, bg = git_change_bg }
-    highlights.GitSignsDeleteLn = { fg = git_delete, bg = git_delete_bg }
-    highlights.GitSignsAddInline = { link = "DiffAdd" }
-    highlights.GitSignsChangeInLine = { link = "DiffChange" }
-    highlights.GitSignsDeleteInline = { link = "DiffDelete" }
-    highlights.DapBreakpointLine = { bg = dap_breakpoint_bg }
-    highlights.DapBreakpointSign = { fg = colors.danger, bg = dap_breakpoint_bg }
-    highlights.DapBreakpointNumber = { fg = colors.danger, bg = dap_breakpoint_bg }
-    highlights.DapStoppedLine = { bg = dap_stopped_bg }
-    highlights.DapStoppedSign = { fg = colors.warning, bg = dap_stopped_bg }
-    highlights.DapStoppedNumber = { fg = colors.warning, bg = dap_stopped_bg }
-    highlights.YankFlash = { bg = require("koda").blend(colors.highlight, theme_bg, 0.4) }
-    highlights.CursorLine = { bg = subtle_surface }
-    highlights.Search = { bg = search_bg, fg = "#565f89" }
-    highlights.CurSearch = { bg = current_search_bg, bold = true, fg = "#e3e5eb" }
-    highlights.IncSearch = { link = "CurSearch" }
-    highlights.EndOfBuffer = { fg = theme_bg }
-    highlights.WinSeparator = { fg = require("koda").blend(colors.dim, theme_bg, 0.4) }
-    highlights.VertSplit = { fg = require("koda").blend(colors.dim, theme_bg, 0.7) }
-    if not is_light then
-      for _, highlight in pairs(highlights) do
-        if highlight.bg == colors.bg then
-          highlight.bg = theme_bg
-        end
-        if highlight.fg == colors.bg then
-          highlight.fg = theme_bg
-        end
-      end
-    end
-    if is_light then
-      -- soften strong neutral foregrounds without replacing Koda's accent colors
-      for _, highlight in pairs(highlights) do
-        if highlight.fg == colors.fg or highlight.fg == colors.keyword or highlight.fg == colors.emphasis then
-          highlight.fg = light_text
-        end
-      end
-      highlights.Comment = { fg = comment_text }
-      highlights.LineNr = { fg = comment_text }
-      highlights.CursorLineNr = { fg = colors.comment, bold = true }
-    end
-    highlights["@keyword.return"] = { fg = keyword_text, bold = true }
-    for _, group in ipairs({
-      "Label",
-      "PreProc",
-      "Define",
-      "PreCondit",
-      "StorageClass",
-      "Structure",
-      "Typedef",
-    }) do
-      highlights[group] = { fg = keyword_text, bold = true }
-    end
   end,
 })
 
-local function apply_koda(mode)
-  vim.env.BAT_THEME = mode == "light" and "OneHalfLight" or "OneHalfDark"
+local function apply_kanso(mode)
+  vim.env.BAT_THEME = "ansi"
   vim.o.background = mode
-  vim.cmd("silent! colorscheme koda-" .. mode)
+  vim.cmd("silent! colorscheme kanso")
 end
 
 local theme_mode = read_theme_mode()
-apply_koda(theme_mode)
+apply_kanso(theme_mode)
 
 vim.keymap.set("n", "<leader>T", function()
   if vim.fn.executable("theme") == 1 then
@@ -408,7 +310,7 @@ vim.keymap.set("n", "<leader>T", function()
   end
 
   local new_mode = read_theme_mode()
-  apply_koda(new_mode)
+  apply_kanso(new_mode)
   if setup_fzf_lua then
     setup_fzf_lua()
   end
@@ -468,14 +370,24 @@ require("notify").setup({
 
 -- Lualine - Status line
 setup_lualine = function()
-  local colors = require("koda").get_palette()
-  local theme_bg = koda_background(colors)
-  local subtle_surface = require("koda").blend(colors.line, theme_bg, 0.3)
+  local theme = kanso_theme()
+  local theme_bg = theme.ui.bg
+  -- a step stronger than bg_p1 so the statusline separates from the buffer
+  local subtle_surface = (function(fg, bg, alpha)
+    local out = "#"
+    for i = 2, 6, 2 do
+      local f, b = tonumber(fg:sub(i, i + 1), 16), tonumber(bg:sub(i, i + 1), 16)
+      out = out .. string.format("%02x", math.floor(b + (f - b) * alpha + 0.5))
+    end
+    return out
+  end)(theme.ui.fg_dim, theme_bg, 0.12)
   local lualine_theme = dofile(vim.api.nvim_get_runtime_file("lua/lualine/themes/auto.lua", false)[1])
-  lualine_theme.insert.a.bg = "#9d7cd8"
   for _, sections in pairs(lualine_theme) do
     sections.b.bg = subtle_surface
-    sections.c.bg = subtle_surface
+    -- auto resolves to kanso's lualine theme, which only defines `c` for normal/inactive
+    if sections.c then
+      sections.c.bg = subtle_surface
+    end
   end
 
   lualine_theme.inactive = vim.deepcopy(lualine_theme.inactive)
@@ -517,15 +429,15 @@ setup_lualine = function()
           end,
           color = function()
             local session = dap.session()
-            local colors = require("koda").get_palette()
-            return session and session.stopped_thread_id and { fg = colors.warning } or { fg = colors.info }
+            local theme = kanso_theme()
+            return session and session.stopped_thread_id and { fg = theme.diag.warning } or { fg = theme.diag.info }
           end,
         },
         {
           require("noice").api.statusline.mode.get,
           cond = require("noice").api.statusline.mode.has,
           color = function()
-            return { fg = require("koda").get_palette().orange }
+            return { fg = kanso_theme().syn.constant }
           end,
         },
       },
@@ -547,10 +459,10 @@ setup_lualine = function()
           "filename",
           path = 1,
           color = function()
-            local colors = require("koda").get_palette()
+            local theme = kanso_theme()
             return {
-              fg = colors.comment,
-              bg = koda_background(colors),
+              fg = theme.syn.comment,
+              bg = theme.ui.bg,
             }
           end,
         },
@@ -871,7 +783,7 @@ setup_fzf_lua = function()
       width = 0.80, -- Wider for modern feel
       row = 0.40, -- Slightly lower than center
       border = "rounded", -- Smooth rounded corners
-      backdrop = 40, -- Very subtle backdrop
+      backdrop = 90, -- Very subtle backdrop
       preview = {
         default = "bat", -- Use bat for fast, syntax-highlighted file previews
         hidden = false, -- Show preview by default (toggle with F4)
@@ -1175,51 +1087,6 @@ require("spectre").setup({
   },
 })
 
--- Git Signs - Git integration in sign column
-require("gitsigns").setup({
-  signs = {
-    add = { text = "▎" },
-    change = { text = "▎" },
-    delete = { text = "▁" },
-    topdelete = { text = "▔" },
-    changedelete = { text = "▎" },
-    untracked = { text = "┆" },
-  },
-  on_attach = function(bufnr)
-    local gs = package.loaded.gitsigns
-
-    local function map(mode, l, r, opts)
-      opts = opts or {}
-      opts.buffer = bufnr
-      opts.mode = mode
-      wk.add({
-        vim.tbl_extend("force", { l, r }, opts),
-      })
-    end
-
-    -- Git hunk navigation
-    map("n", "]c", function()
-      if vim.wo.diff then
-        return "]c"
-      end
-      vim.schedule(function()
-        gs.next_hunk()
-      end)
-      return "<Ignore>"
-    end, { expr = true, desc = "Next git hunk" })
-
-    map("n", "[c", function()
-      if vim.wo.diff then
-        return "[c"
-      end
-      vim.schedule(function()
-        gs.prev_hunk()
-      end)
-      return "<Ignore>"
-    end, { expr = true, desc = "Previous git hunk" })
-  end,
-})
-
 -- Treesitter configuration
 -- NOTE: Parsers should be installed manually with :TSInstall, not on every startup.
 -- The new main branch uses async installation which conflicts with the FileType
@@ -1301,7 +1168,11 @@ require("yazi").setup({
   yazi_floating_window_border = "rounded",
   open_for_directories = true,
   open_multiple_tabs = false,
-  highlight_hovered_buffers_in_same_directory = true,
+  highlight_hovered_buffers_in_same_directory = false,
+  highlight_groups = {
+    -- no option to disable this one, so make it look like a normal buffer
+    hovered_buffer = { link = "Normal" },
+  },
   integrations = {
     grep_in_directory = "fzf-lua",
     grep_in_selected_files = "fzf-lua",
@@ -1758,25 +1629,33 @@ vim.api.nvim_create_autocmd("VimResized", {
 
 -- Plugin-specific highlights should apply at startup as well as after a theme toggle.
 local function apply_plugin_highlights()
-  local colors = require("koda").get_palette()
-  local theme_bg = koda_background(colors)
-  local coc_float_bg = require("koda").blend(colors.line, theme_bg, 0.5)
-  local coc_float_fg = vim.o.background == "light" and require("koda").blend(colors.fg, colors.bg, 0.6) or colors.fg
+  -- no italics anywhere, including groups set by plugins
+  for name, hl in pairs(vim.api.nvim_get_hl(0, {})) do
+    if hl.italic then
+      hl.italic = nil
+      vim.api.nvim_set_hl(0, name, hl)
+    end
+  end
+  local theme = kanso_theme()
+  local coc_float_bg = theme.ui.bg_p1
+  local coc_float_fg = theme.ui.fg
   vim.api.nvim_set_hl(0, "CocCodeLens", { link = "Comment" })
   vim.api.nvim_set_hl(0, "CocFloating", { fg = coc_float_fg, bg = coc_float_bg })
   vim.api.nvim_set_hl(0, "CocFloatBorder", {
-    fg = vim.o.background == "light" and coc_float_fg or require("koda").blend(colors.fg, colors.bg, 0.7),
+    fg = theme.ui.fg_dim,
     bg = coc_float_bg,
   })
   vim.api.nvim_set_hl(0, "CocInlayHintType", { link = "Comment" })
   vim.api.nvim_set_hl(0, "CocMenuSel", { link = "PmenuSel" })
   vim.api.nvim_set_hl(0, "CocPumDetail", { link = "Comment" })
   vim.api.nvim_set_hl(0, "CocPumMenu", { link = "Special" })
-  vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { undercurl = true, sp = colors.danger })
-  vim.api.nvim_set_hl(0, "ExtraWhitespace", { bg = colors.danger })
+  vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { undercurl = true, sp = theme.diag.error })
+  vim.api.nvim_set_hl(0, "ExtraWhitespace", { bg = theme.diag.error })
 end
 
 apply_plugin_highlights()
+-- plugins such as coc define italic groups after init.lua runs
+vim.api.nvim_create_autocmd("VimEnter", { callback = apply_plugin_highlights })
 vim.api.nvim_create_autocmd("ColorScheme", {
   pattern = "*",
   callback = function()

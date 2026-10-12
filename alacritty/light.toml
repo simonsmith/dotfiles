@@ -1,31 +1,29 @@
-# -----------------------------------------------------------------------------
-# Koda Alacritty Colors
-# Theme: Koda Light
-# -----------------------------------------------------------------------------
+# Kanso Pearl Alacritty Colors
 
-# Default colors
 [colors.primary]
-background = "#faf9f5"
-foreground = "#6e6d6c"
+background = '#f2f1ef'
+foreground = '#545464'
 
-# Normal colors
 [colors.normal]
-black = "#e2e2e2"
-red = "#ca0043"
-green = "#407f00"
-yellow = "#926200"
-blue = "#636362"
-magenta = "#a200d1"
-cyan = "#007d7d"
-white = "#6a6a6a"
+black = "#14171d"
+red = "#c84053"
+green = "#6f894e"
+yellow = "#77713f"
+blue = "#4d699b"
+magenta = "#b35b79"
+cyan = "#597b75"
+white = "#545464"
 
-# Bright colors
 [colors.bright]
-black = "#aaaeb5"
-red = "#f30052"
-green = "#4f9a00"
-yellow = "#b07700"
-blue = "#6e6d6c"
-magenta = "#c301fb"
-cyan = "#009797"
-white = "#6e6d6c"
+black = "#8a8980"
+red = "#d7474b"
+green = "#6e915f"
+yellow = "#836f4a"
+blue = "#6693bf"
+magenta = "#624c83"
+cyan = "#5e857a"
+white = "#43436c"
+
+[colors.selection]
+background = '#c9cbd1'
+foreground = '#14171d'

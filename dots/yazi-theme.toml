@@ -1,0 +1,6 @@
+#:schema https://yazi-rs.github.io/schemas/theme.json
+
+# flavors live in ~/dotfiles/yazi/flavors, yazi picks one from the terminal background
+[flavor]
+dark  = "kanso-ink"
+light = "kanso-pearl"

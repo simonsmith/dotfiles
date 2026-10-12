@@ -24,6 +24,9 @@ ALACRITTY_DIR="$XDG_CONFIG_HOME/alacritty"
 ALACRITTY_DARK="$DOTFILES_DIR/alacritty/dark.toml"
 ALACRITTY_LIGHT="$DOTFILES_DIR/alacritty/light.toml"
 
+# shellcheck source=../fzf/kanso.sh
+source "$DOTFILES_DIR/fzf/kanso.sh"
+
 read_mode() {
   if [[ -f "$THEME_FILE" ]]; then
     local mode
@@ -43,19 +46,19 @@ write_tmux_theme() {
   if [[ "$mode" == "light" ]]; then
     powerkit_theme="custom"
     powerkit_variant="light"
-    powerkit_custom_theme="$DOTFILES_DIR/tmux/koda-flexoki-light.sh"
-    window_active="#faf9f5"   # matches the terminal light palette
-    window_inactive="#ebebeb"
+    powerkit_custom_theme="$DOTFILES_DIR/tmux/kanso-pearl.sh"
+    window_active="#f2f1ef"   # kanso pearl background
+    window_inactive="#e2e1df"
     popup_bg="$window_active"
-    fzf_default_opts="--multi --inline-info --height 40% --color=fg:#6e6d6c,bg:#faf9f5,hl:#b07700,fg+:#6e6d6c,bg+:#ebebeb,hl+:#b07700,info:#aaaeb5,prompt:#6e6d6c,pointer:#6e6d6c,marker:#ca0043,spinner:#aaaeb5,header:#6e6d6c"
+    fzf_default_opts="$FZF_BASE_OPTS $FZF_COLORS_LIGHT"
   else
     powerkit_theme="custom"
     powerkit_variant="dark"
-    powerkit_custom_theme="$DOTFILES_DIR/tmux/koda-flexoki-dark.sh"
-    window_active="#161616"  # softened Koda dark background
-    window_inactive="#272727"
+    powerkit_custom_theme="$DOTFILES_DIR/tmux/kanso-ink.sh"
+    window_active="#14171d"  # kanso ink background
+    window_inactive="#1f1f26"
     popup_bg="$window_active"
-    fzf_default_opts="--multi --inline-info --height 40% --color=fg:#a8a8a8,bg:#161616,hl:#dfdf8e,fg+:#cecece,bg+:#272727,hl+:#dfdf8e,info:#8ebeec,prompt:#71ade7,pointer:#71ade7,marker:#95cb82,spinner:#8ebeec,header:#707070"
+    fzf_default_opts="$FZF_BASE_OPTS $FZF_COLORS_DARK"
   fi
 
   mkdir -p "$(dirname "$TMUX_THEME_FILE")"
