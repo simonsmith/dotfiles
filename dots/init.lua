@@ -60,7 +60,6 @@ Plug("linrongbin16/gitlinker.nvim", { ["commit"] = "63cfbb7" }) -- Generate link
 
 -- Text editing and manipulation
 Plug("tpope/vim-repeat") -- Repeat plugin commands with .
-Plug("b3nj5m1n/kommentary") -- Smart commenting
 Plug("kevinhwang91/nvim-bqf") -- Better quickfix window
 Plug("matze/vim-move") -- Move lines and selections
 Plug("nvim-mini/mini.pairs") -- Auto-close brackets, quotes, etc.
@@ -738,7 +737,7 @@ vim.api.nvim_create_autocmd("TermOpen", {
 -- Highlight yanked text briefly
 vim.api.nvim_create_autocmd("TextYankPost", {
   callback = function()
-    vim.highlight.on_yank({ higroup = "YankFlash", timeout = 300 })
+    vim.hl.on_yank({ higroup = "YankFlash", timeout = 300 })
   end,
 })
 
@@ -754,11 +753,6 @@ require("nvim-surround").setup()
 
 -- Substitute - Enhanced substitute operations
 require("substitute").setup()
-
--- Kommentary - Smart commenting
-require("kommentary.config").configure_language("default", {
-  prefer_single_line_comments = true,
-})
 
 -- ----------------------------------------------------------------------------
 -- Finding & search (buffer history, fuzzy finder, project search/replace)
@@ -1139,7 +1133,7 @@ vim.api.nvim_create_autocmd("FileType", {
     if vim.treesitter.language.add(lang) then
       -- Don't enable for very large files
       local max_filesize = 100 * 1024
-      local ok_stat, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(args.buf))
+      local ok_stat, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(args.buf))
       if ok_stat and stats and stats.size > max_filesize then
         return
       end

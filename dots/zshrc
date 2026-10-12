@@ -164,19 +164,15 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # Preview files when highlighting
 export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
 # Default options + theme colors
-FZF_BASE_OPTS="--multi --inline-info --height 40%"
+source "$HOME/dotfiles/fzf/kanso.sh"
+
+[ "$ALACRITTY" = "true" ] && export BAT_THEME="ansi"
 
 __refresh_theme_env() {
   if [ -f "$HOME/.config/theme" ] && [ "$(tr -d '[:space:]' < "$HOME/.config/theme")" = "light" ]; then
-    FZF_COLOR_OPTS="--color=fg:#6e6d6c,bg:#faf9f5,hl:#b07700,fg+:#6e6d6c,bg+:#ebebeb,hl+:#b07700,info:#aaaeb5,prompt:#6e6d6c,pointer:#6e6d6c,marker:#ca0043,spinner:#aaaeb5,header:#6e6d6c"
-    if [ "$ALACRITTY" = "true" ]; then
-      export BAT_THEME="OneHalfLight"
-    fi
+    FZF_COLOR_OPTS="$FZF_COLORS_LIGHT"
   else
-    FZF_COLOR_OPTS="--color=fg:#a8a8a8,bg:#161616,hl:#dfdf8e,fg+:#cecece,bg+:#272727,hl+:#dfdf8e,info:#8ebeec,prompt:#71ade7,pointer:#71ade7,marker:#95cb82,spinner:#8ebeec,header:#707070"
-    if [ "$ALACRITTY" = "true" ]; then
-      export BAT_THEME="OneHalfDark"
-    fi
+    FZF_COLOR_OPTS="$FZF_COLORS_DARK"
   fi
 
   export FZF_DEFAULT_OPTS="$FZF_BASE_OPTS $FZF_COLOR_OPTS"
