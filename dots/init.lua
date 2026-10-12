@@ -152,7 +152,6 @@ vim.opt.signcolumn = "yes" -- Always show sign column
 vim.opt.title = true -- Enable window title
 vim.opt.synmaxcol = 250 -- Limit syntax highlighting to avoid lag
 vim.opt.fillchars:append({ diff = "-" })
-vim.opt.winborder = "rounded" -- Default border for floating windows
 
 -- Text formatting and layout
 vim.opt.textwidth = 80 -- Maximum line width
@@ -1641,6 +1640,10 @@ local function apply_plugin_highlights()
     fg = theme.ui.fg_dim,
     bg = coc_float_bg,
   })
+  -- diagnostic popups show the message in plain text, the sign already carries the severity
+  for _, group in ipairs({ "CocErrorFloat", "CocWarningFloat", "CocInfoFloat", "CocHintFloat" }) do
+    vim.api.nvim_set_hl(0, group, { fg = coc_float_fg, bg = coc_float_bg })
+  end
   vim.api.nvim_set_hl(0, "CocInlayHintType", { link = "Comment" })
   vim.api.nvim_set_hl(0, "CocMenuSel", { link = "PmenuSel" })
   vim.api.nvim_set_hl(0, "CocPumDetail", { link = "Comment" })
