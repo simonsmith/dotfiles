@@ -1632,7 +1632,8 @@ local function apply_plugin_highlights()
     end
   end
   local theme = kanso_theme()
-  local coc_float_bg = theme.ui.bg_p1
+  -- match the editor so the filled border cells don't read as a second outline
+  local coc_float_bg = theme.ui.bg
   local coc_float_fg = theme.ui.fg
   vim.api.nvim_set_hl(0, "CocCodeLens", { link = "Comment" })
   vim.api.nvim_set_hl(0, "CocFloating", { fg = coc_float_fg, bg = coc_float_bg })
