@@ -286,6 +286,8 @@ require("kanso").setup({
       -- lift the yazi popup off the buffer behind it
       YaziFloat = { fg = theme.ui.fg, bg = theme.ui.bg_p1 },
       YaziFloatBorder = { fg = theme.ui.nontext, bg = theme.ui.bg_p1 },
+      WhichKeyNormal = { fg = theme.ui.fg, bg = blend(theme.ui.bg_p1, bg, 0.5) },
+      WhichKeyBorder = { fg = theme.ui.nontext, bg = blend(theme.ui.bg_p1, bg, 0.5) },
     }
   end,
 })

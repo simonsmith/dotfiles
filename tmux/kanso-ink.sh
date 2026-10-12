@@ -19,4 +19,4 @@ THEME_COLORS[pane-border-active]="#8992a7"
 THEME_COLORS[pane-border-inactive]="#22262d"
 # status plugins use the inactive window colour so they stay quiet next to the tabs
 THEME_COLORS[ok-base]="#393b44"
-THEME_COLORS[info-base]="#393b44"
+THEME_COLORS[info-base]="#223249"
