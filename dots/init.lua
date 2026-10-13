@@ -922,11 +922,11 @@ require("gitlinker").setup({
 -- Git Signs - Git integration in sign column
 require("gitsigns").setup({
   signs = {
-    add = { text = "▎" },
-    change = { text = "▎" },
+    add = { text = "▌" },
+    change = { text = "▌" },
     delete = { text = "▁" },
     topdelete = { text = "▔" },
-    changedelete = { text = "▎" },
+    changedelete = { text = "▌" },
     untracked = { text = "┆" },
   },
   on_attach = function(bufnr)
