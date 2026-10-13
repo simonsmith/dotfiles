@@ -81,6 +81,41 @@
 	line-numbers = true
 	width = 130
 
+# kanso colours, picked per light/dark mode through DELTA_FEATURES (see zshrc)
+[delta "kanso-pearl"]
+	light = true
+	syntax-theme = ansi
+	plus-style = syntax "#d6e6c9"
+	plus-emph-style = syntax "#b5d39c"
+	minus-style = syntax "#f5d3d3"
+	minus-emph-style = syntax "#ebaeb4"
+	line-numbers-plus-style = "#6f894e"
+	line-numbers-minus-style = "#c84053"
+	line-numbers-zero-style = "#9f9f99"
+	line-numbers-left-style = "#cacac7"
+	line-numbers-right-style = "#cacac7"
+	file-style = "#4d699b"
+	file-decoration-style = "#cacac7" ul
+	hunk-header-style = file line-number syntax
+	hunk-header-decoration-style = "#cacac7" box
+
+[delta "kanso-ink"]
+	dark = true
+	syntax-theme = ansi
+	plus-style = syntax "#2a3b2d"
+	plus-emph-style = syntax "#3e5a40"
+	minus-style = syntax "#46222a"
+	minus-emph-style = syntax "#6c2e35"
+	line-numbers-plus-style = "#87a987"
+	line-numbers-minus-style = "#c4746e"
+	line-numbers-zero-style = "#5c6066"
+	line-numbers-left-style = "#393b44"
+	line-numbers-right-style = "#393b44"
+	file-style = "#8ba4b0"
+	file-decoration-style = "#393b44" ul
+	hunk-header-style = file line-number syntax
+	hunk-header-decoration-style = "#393b44" box
+
 [interactive]
 	diffFilter = delta --color-only
 
@@ -158,3 +193,5 @@
 	required = true
 [init]
 	defaultBranch = master
+[http]
+	sslCAInfo = /Library/Application Support/AikidoSecurity/EndpointProtection/run/endpoint-protection-openssl-combined-ca.pem
