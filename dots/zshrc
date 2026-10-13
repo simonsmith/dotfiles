@@ -171,8 +171,10 @@ source "$HOME/dotfiles/fzf/kanso.sh"
 __refresh_theme_env() {
   if [ -f "$HOME/.config/theme" ] && [ "$(tr -d '[:space:]' < "$HOME/.config/theme")" = "light" ]; then
     FZF_COLOR_OPTS="$FZF_COLORS_LIGHT"
+    export DELTA_FEATURES="+kanso-pearl"
   else
     FZF_COLOR_OPTS="$FZF_COLORS_DARK"
+    export DELTA_FEATURES="+kanso-ink"
   fi
 
   export FZF_DEFAULT_OPTS="$FZF_BASE_OPTS $FZF_COLOR_OPTS"
