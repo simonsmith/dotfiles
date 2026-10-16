@@ -193,5 +193,3 @@
 	required = true
 [init]
 	defaultBranch = master
-[http]
-	sslCAInfo = /Library/Application Support/AikidoSecurity/EndpointProtection/run/endpoint-protection-openssl-combined-ca.pem
