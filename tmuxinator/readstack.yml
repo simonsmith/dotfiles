@@ -3,10 +3,12 @@ root: ~/Sites/readstack
 startup_window: nvim
 
 windows:
-  - edit: nvim
-  - cli:
+  - nvim: nvim
+  - zsh:
+      layout: even-horizontal
       panes:
         - gs
+        - watch-deploy
   - laravel:
       root: ~/Sites/readstack/web
       layout: tiled
@@ -21,7 +23,5 @@ windows:
         - pnpm run dev:debug
   - ai:
       root: ~/Sites/readstack/web
-      layout: even-horizontal
       panes:
-        - codex
         - claude
