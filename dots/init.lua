@@ -39,19 +39,15 @@ Plug("rcarriga/nvim-notify") -- Better notifications
 Plug("MunifTanjim/nui.nvim") -- UI component library
 Plug("folke/noice.nvim") -- Better command line, messages, and popupmenu
 Plug("folke/which-key.nvim") -- Key binding help
+Plug("folke/snacks.nvim") -- gutter, buffer deletion, zoom and focus modes
 Plug("folke/persistence.nvim") -- Session management
 Plug("y3owk1n/time-machine.nvim") -- Time travel for buffers
 Plug("OXY2DEV/markview.nvim")
-Plug("fasterius/simple-zoom.nvim") -- tmux style zoom
 Plug("sindrets/winshift.nvim") -- Swap/rearrange windows
 Plug("Wansmer/treesj")
 
 -- File management
 Plug("mikavilpas/yazi.nvim") -- Yazi file manager integration
-
--- Buffer management
-Plug("schickling/vim-bufonly") -- Close all buffers except current
-Plug("moll/vim-bbye") -- Better buffer deletion
 
 -- Syntax highlighting and parsing
 Plug("nvim-treesitter/nvim-treesitter", { ["branch"] = "main", ["do"] = ":TSUpdate" })
@@ -334,6 +330,20 @@ wk.setup({
   show_help = false,
   plugins = { spelling = true },
 })
+
+-- Snacks - gutter and focus modes
+local snacks = require("snacks")
+snacks.setup({
+  statuscolumn = {
+    enabled = true,
+    left = { "sign" },
+    right = { "git" },
+  },
+  dim = {
+    animate = { enabled = false },
+  },
+})
+snacks.toggle.dim():map("<leader>i")
 
 -- Noice - Better UI for messages, cmdline and popupmenu
 require("noice").setup({
@@ -964,6 +974,18 @@ require("gitsigns").setup({
   end,
 })
 
+-- let zen mode hide Git signs and restore their previous state
+snacks.toggle({
+  id = "git_signs",
+  name = "Git signs",
+  get = function()
+    return require("gitsigns.config").config.signcolumn
+  end,
+  set = function(state)
+    require("gitsigns").toggle_signs(state)
+  end,
+})
+
 -- ----------------------------------------------------------------------------
 -- Formatting (conform + range-aware format command)
 -- ----------------------------------------------------------------------------
@@ -1235,14 +1257,29 @@ wk.add({
   { "p", "p`]", desc = "Paste and keep cursor at end", mode = { "n", "v" } },
 })
 
--- Zoom buffer
+-- zoom and focus modes
 wk.add({
-  { "<leader>z", require("simple-zoom").toggle_zoom, desc = "Zoom current buffer" },
+  { "<leader>z", snacks.zen.zoom, desc = "Zoom current buffer" },
+  {
+    "<leader>Z",
+    function()
+      snacks.zen()
+    end,
+    desc = "Toggle zen mode",
+  },
 })
 
 -- Buffer navigation
 wk.add({
-  { "Q", ":silent Bdelete<CR>", desc = "Close buffer (keep window)", mode = "n", silent = true },
+  {
+    "Q",
+    function()
+      snacks.bufdelete()
+    end,
+    desc = "Close buffer (keep window)",
+    mode = "n",
+    silent = true,
+  },
 })
 
 -- Tab operations
@@ -1366,7 +1403,7 @@ wk.add({
 
 -- Buffer management
 wk.add({
-  { "<leader>B", ":BufOnly<CR>", desc = "Close other buffers", mode = "n" },
+  { "<leader>B", snacks.bufdelete.other, desc = "Close other buffers", mode = "n" },
 })
 
 -- Git operations
