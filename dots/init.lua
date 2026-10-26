@@ -278,6 +278,7 @@ require("kanso").setup({
       LineNr = { fg = blend(theme.ui.cursor_line_nr_foreground, bg, 0.6) },
       CursorLineNr = { fg = theme.ui.fg_dim },
       Comment = { fg = blend(theme.syn.comment, bg, 0.8) },
+      SnacksDim = { fg = blend(theme.syn.comment, bg, 0.45) },
       -- lift the yazi popup off the buffer behind it
       YaziFloat = { fg = theme.ui.fg, bg = theme.ui.bg_p1 },
       YaziFloatBorder = { fg = theme.ui.nontext, bg = theme.ui.bg_p1 },
@@ -341,6 +342,9 @@ snacks.setup({
   },
   dim = {
     animate = { enabled = false },
+  },
+  zen = {
+    toggles = { dim = false },
   },
 })
 snacks.toggle.dim():map("<leader>i")
