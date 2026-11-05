@@ -1,11 +1,15 @@
 [tools]
 bun = "latest"
 go = "latest"
-node = "24.15.0"
+node = "24.22.2"
 pnpm = "latest"
 python = "latest"
 ruby = "latest"
 "npm:@fsouza/prettierd" = "latest"
+"npm:@anthropic-ai/claude-code" = "latest"
+"npm:@openai/codex" = "latest"
+"npm:@shortcut-cli/shortcut-cli" = "latest"
+"npm:cf" = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node"]
