@@ -188,9 +188,9 @@ add-zsh-hook precmd __refresh_theme_env
 TRAPUSR1() {
   __refresh_theme_env
 }
-# Use a split pane in tmux
+# use a tmux popup (does not alter the pane layout)
 export FZF_TMUX=1
-export FZF_TMUX_HEIGHT=40%
+export FZF_TMUX_OPTS='-p 60%,50%'
 # Shell integration
 [ -s ~/.fzf.zsh ] && source ~/.fzf.zsh
 
