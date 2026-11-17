@@ -60,6 +60,7 @@ Plug("kevinhwang91/nvim-bqf") -- Better quickfix window
 Plug("matze/vim-move") -- Move lines and selections
 Plug("nvim-mini/mini.pairs") -- Auto-close brackets, quotes, etc.
 Plug("stevearc/conform.nvim") -- Code formatting
+Plug("mfussenegger/nvim-lint") -- CLI linters (oxlint) via vim.diagnostic
 
 -- Text objects and motions
 Plug("chaoren/vim-wordmotion") -- Better word motions (camelCase, etc.)
@@ -105,7 +106,6 @@ vim.call("plug#end")
 vim.g.coc_global_extensions = {
   "coc-tsserver", -- TypeScript/JavaScript
   "coc-eslint", -- ESLint integration
-  "coc-oxc", -- Oxlint integration
   "coc-json", -- JSON support
   "coc-css", -- CSS support
   "coc-stylelintplus", -- Stylelint integration
@@ -359,8 +359,6 @@ require("noice").setup({
     { filter = { event = "msg_show", kind = "", find = "written" }, skip = true },
     { filter = { event = "msg_show", kind = "" }, skip = true },
     { filter = { event = "msg_show", kind = "lua_error" }, view = "mini" },
-    { filter = { find = "oxc" }, skip = true },
-    { filter = { find = "Oxlint" }, skip = true },
     { filter = { find = "Hunk" }, skip = true },
     { filter = { find = "intelephense" }, skip = true },
     { filter = { find = "E37" }, skip = true }, -- No write since last change
@@ -458,7 +456,7 @@ setup_lualine = function()
       lualine_y = {
         {
           "diagnostics",
-          sources = { "coc" },
+          sources = { "coc", "nvim_diagnostic" },
           sections = { "error", "warn", "info", "hint" },
           symbols = { error = "● ", warn = "▲ ", info = "● ", hint = "◆ " },
         },
@@ -1064,6 +1062,157 @@ vim.api.nvim_create_user_command("RunFormat", function(args)
   require("conform").format({ async = true, lsp_format = "fallback", range = range })
 end, { range = true })
 
+-- ----------------------------------------------------------------------------
+-- Linting (nvim-lint runs the oxlint CLI, results go through vim.diagnostic)
+-- ----------------------------------------------------------------------------
+
+-- oxlint's language server (`oxlint --lsp`, 1.77) panics when the config loads
+-- jsPlugins, so the CLI is used instead. coc keeps handling eslint repos.
+local lint = require("lint")
+local oxlint_config_files = { ".oxlintrc.json", "oxlint.config.ts" }
+local oxlint_filetypes = {
+  javascript = true,
+  javascriptreact = true,
+  typescript = true,
+  typescriptreact = true,
+  vue = true,
+}
+
+local oxlint_parse = lint.linters.oxlint.parser
+lint.linters.oxlint.parser = function(output, bufnr, cwd)
+  local diagnostics = oxlint_parse(output, bufnr, cwd)
+  for _, diagnostic in ipairs(diagnostics) do
+    -- the github format repeats "path:line:col: " at the start of each message
+    diagnostic.message = (diagnostic.message:gsub("^.-:%d+:%d+: ", ""))
+  end
+  return diagnostics
+end
+
+-- project root holding an oxlint config, or nil when oxlint does not apply
+local function oxlint_root(bufnr)
+  if not oxlint_filetypes[vim.bo[bufnr].filetype] then
+    return nil
+  end
+  return vim.fs.root(bufnr, oxlint_config_files)
+end
+
+local function oxlint_cmd(root)
+  local local_binary = root .. "/node_modules/.bin/oxlint"
+  return vim.uv.fs_stat(local_binary) and local_binary or "oxlint"
+end
+
+vim.api.nvim_create_augroup("oxlint", { clear = true })
+vim.api.nvim_create_autocmd({ "BufReadPost", "BufWritePost" }, {
+  group = "oxlint",
+  callback = function(args)
+    local root = oxlint_root(args.buf)
+    if root then
+      lint.try_lint("oxlint", { cwd = root })
+    end
+  end,
+})
+
+-- match coc's diagnostic look: same signs, most severe sign wins on a line
+vim.diagnostic.config({
+  severity_sort = true,
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = "●",
+      [vim.diagnostic.severity.WARN] = "▲",
+      [vim.diagnostic.severity.INFO] = "●",
+      [vim.diagnostic.severity.HINT] = "◆",
+    },
+  },
+  float = {
+    border = "rounded",
+    header = "",
+    prefix = "",
+    max_width = 90,
+    max_height = 20,
+    -- mirrors coc's "%message (%source%code)" format
+    suffix = function(diagnostic)
+      return (" (%s %s)"):format(diagnostic.source, diagnostic.code), ""
+    end,
+  },
+})
+
+-- like coc's diagnostic.checkCurrentLine: show the line's diagnostics on hold
+vim.api.nvim_create_autocmd("CursorHold", {
+  group = "oxlint",
+  callback = function()
+    local lnum = vim.api.nvim_win_get_cursor(0)[1] - 1
+    if #vim.diagnostic.get(0, { lnum = lnum }) == 0 then
+      return
+    end
+    local _, win = vim.diagnostic.open_float({ scope = "line", focus = false })
+    if win then
+      vim.wo[win].winhighlight = "NormalFloat:CocFloating,FloatBorder:CocFloatBorder"
+    end
+  end,
+})
+
+-- jump to the next/previous diagnostic from either coc or vim.diagnostic, wrapping
+local function jump_diagnostic(forward)
+  local cursor = vim.api.nvim_win_get_cursor(0)
+  local here = { cursor[1], cursor[2] } -- 1-based line, 0-based col
+  local positions = {}
+  for _, diagnostic in ipairs(vim.diagnostic.get(0)) do
+    table.insert(positions, { diagnostic.lnum + 1, diagnostic.col })
+  end
+  local ok, coc_list = pcall(vim.fn.CocAction, "diagnosticList")
+  if ok and type(coc_list) == "table" then
+    local file = vim.api.nvim_buf_get_name(0)
+    for _, item in ipairs(coc_list) do
+      if item.file == file then
+        table.insert(positions, { item.lnum, item.col - 1 })
+      end
+    end
+  end
+  if #positions == 0 then
+    return
+  end
+  local function before(a, b)
+    return a[1] < b[1] or (a[1] == b[1] and a[2] < b[2])
+  end
+  table.sort(positions, before)
+  local target
+  if forward then
+    for _, pos in ipairs(positions) do
+      if before(here, pos) then
+        target = pos
+        break
+      end
+    end
+    target = target or positions[1]
+  else
+    for i = #positions, 1, -1 do
+      if before(positions[i], here) then
+        target = positions[i]
+        break
+      end
+    end
+    target = target or positions[#positions]
+  end
+  vim.api.nvim_win_set_cursor(0, target)
+end
+
+-- run `oxlint --fix` on the file, then reload it (the reload re-lints via BufReadPost)
+local function oxlint_fix(bufnr, root)
+  vim.cmd("silent update")
+  local file = vim.api.nvim_buf_get_name(bufnr)
+  vim.system({ oxlint_cmd(root), "--fix", file }, { cwd = root, text = true }, function(result)
+    vim.schedule(function()
+      -- exit code 1 only means errors remain that oxlint could not fix
+      if result.code > 1 then
+        vim.notify("oxlint --fix failed: " .. (result.stderr or ""), vim.log.levels.ERROR)
+      end
+      if vim.api.nvim_buf_is_valid(bufnr) then
+        vim.cmd.checktime(bufnr)
+      end
+    end)
+  end)
+end
+
 -- Configure Lualine after the DAP status helper is available.
 setup_lualine()
 
@@ -1448,8 +1597,24 @@ wk.add({
   },
   { "<leader>di", "<Plug>(coc-implementation)", desc = "LSP implementation", mode = "n", silent = true },
   { "<leader>dn", "<Plug>(coc-rename)", desc = "LSP rename", mode = "n", silent = true },
-  { "]e", ':call CocAction("diagnosticNext")<CR>', desc = "Next diagnostic", mode = "n", silent = true },
-  { "[e", ':call CocAction("diagnosticPrevious")<CR>', desc = "Previous diagnostic", mode = "n", silent = true },
+  {
+    "]e",
+    function()
+      jump_diagnostic(true)
+    end,
+    desc = "Next diagnostic",
+    mode = "n",
+    silent = true,
+  },
+  {
+    "[e",
+    function()
+      jump_diagnostic(false)
+    end,
+    desc = "Previous diagnostic",
+    mode = "n",
+    silent = true,
+  },
   { "<leader>e", ":CocDiagnostics<CR>", desc = "Diagnostics list", mode = "n", silent = true },
   { "<leader>r", ":CocRestart<CR>", desc = "Restart CoC", mode = "n", silent = true },
 })
@@ -1501,7 +1666,12 @@ local function fix_lint_errors()
     or filetype == "typescriptreact"
     or filetype == "vue"
   then
-    vim.cmd("CocCommand eslint.executeAutofix")
+    local root = oxlint_root(0)
+    if root then
+      oxlint_fix(vim.api.nvim_get_current_buf(), root)
+    else
+      vim.cmd("CocCommand eslint.executeAutofix")
+    end
   elseif filetype == "css" or filetype == "scss" or filetype == "sass" or filetype == "less" then
     vim.cmd("CocCommand stylelintplus.applyAutoFixes")
   else
@@ -1683,7 +1853,16 @@ local function apply_plugin_highlights()
     bg = coc_float_bg,
   })
   -- diagnostic popups show the message in plain text, the sign already carries the severity
-  for _, group in ipairs({ "CocErrorFloat", "CocWarningFloat", "CocInfoFloat", "CocHintFloat" }) do
+  for _, group in ipairs({
+    "CocErrorFloat",
+    "CocWarningFloat",
+    "CocInfoFloat",
+    "CocHintFloat",
+    "DiagnosticFloatingError",
+    "DiagnosticFloatingWarn",
+    "DiagnosticFloatingInfo",
+    "DiagnosticFloatingHint",
+  }) do
     vim.api.nvim_set_hl(0, group, { fg = coc_float_fg, bg = coc_float_bg })
   end
   vim.api.nvim_set_hl(0, "CocInlayHintType", { link = "Comment" })
