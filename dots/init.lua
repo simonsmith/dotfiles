@@ -913,7 +913,32 @@ require("diffview").setup({
       disable_diagnostics = true,
     },
   },
+  keymaps = {
+    view = { { "n", "q", "<cmd>DiffviewClose<cr>", { desc = "Close diffview" } } },
+    file_panel = { { "n", "q", "<cmd>DiffviewClose<cr>", { desc = "Close diffview" } } },
+    file_history_panel = { { "n", "q", "<cmd>DiffviewClose<cr>", { desc = "Close diffview" } } },
+  },
   hooks = {},
+})
+
+-- toggle diffview: close if focused, reuse an open view, otherwise open one
+local function diffview_toggle()
+  local lib = require("diffview.lib")
+  if lib.get_current_view() then
+    vim.cmd("DiffviewClose")
+    return
+  end
+  for _, view in ipairs(lib.views) do
+    if view.tabpage and vim.api.nvim_tabpage_is_valid(view.tabpage) then
+      vim.api.nvim_set_current_tabpage(view.tabpage)
+      return
+    end
+  end
+  vim.cmd("DiffviewOpen")
+end
+
+wk.add({
+  { "<leader>gd", diffview_toggle, desc = "Toggle diffview", mode = "n" },
 })
 
 -- Git Linker - Generate links to Git hosting
