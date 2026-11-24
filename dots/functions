@@ -210,3 +210,19 @@ if [[ -f "$HOME/dotfiles/worktree/worktree-functions" ]]; then
   # Remove wtp's alias so our function takes precedence
   unalias wt 2>/dev/null
 fi
+
+# open an nvim | agent layout in a new window (or a new session outside tmux)
+# usage: ai [dir]
+ai() {
+  local dir=${1:-$PWD}
+  dir=${dir:A}
+  local start=(new-window -c "$dir" -n code)
+  [[ -z $TMUX ]] && start=(new-session -A -s "${dir:t}" -c "$dir" -n code)
+  command tmux "${start[@]}" \; \
+    set -w @agent_layout 1 \; \
+    send-keys 'nvim' Enter \; \
+    split-window -h -c "$dir" \; \
+    send-keys 'claude' Enter \; \
+    run-shell "$HOME/dotfiles/bin/tmux-agent-fit '#{window_id}'" \; \
+    select-pane -L
+}
