@@ -1,14 +1,16 @@
 name: blinkweb
 root: ~/blink/web
-startup_window: neovim
+startup_window: code
 
 windows:
-  - neovim:
-    - nvim
+  - code:
+      layout: main-vertical
+      panes:
+        - tmux set -w @agent_layout 1; tmux-agent-fit "$(tmux display -p "#{window_id}")"; nvim
+        - claude
   - dev:
       layout: main-horizontal
       panes:
-        - gs
         -
         -
   - proxy:
