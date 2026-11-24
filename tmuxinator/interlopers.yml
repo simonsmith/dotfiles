@@ -8,7 +8,7 @@ windows:
   - nvim: nvim
   - git:
     - gs
-  - dev:
+  - cli:
       layout: main-horizontal
       panes:
         - tail -n 50 -f /opt/homebrew/var/log/httpd/access_log

@@ -8,8 +8,8 @@ windows:
       panes:
         - tmux set -w @agent_layout 1; tmux-agent-fit "$(tmux display -p "#{window_id}")"; nvim
         - claude
-  - dev:
-      layout: main-horizontal
+  - cli:
+      layout: main-vertical
       panes:
         -
         -
