@@ -1,0 +1,21 @@
+#!/bin/sh
+# size a main-vertical (nvim | agent) window so the agent pane matches one
+# nvim split, picking the split count from the window width.
+# only acts on windows tagged with: tmux set -w @agent_layout 1
+#
+# usage: tmux-agent-fit <window-id>
+
+# approx columns per nvim split / agent pane
+col_width=90
+
+win=${1:?usage: tmux-agent-fit <window-id>}
+
+[ "$(tmux show -wv -t "$win" @agent_layout 2>/dev/null)" = 1 ] || exit 0
+
+width=$(tmux display -p -t "$win" '#{window_width}')
+cols=$((width / col_width))
+# minimum: 1 nvim split + agent
+[ "$cols" -lt 2 ] && cols=2
+
+tmux set -w -t "$win" main-pane-width "$((100 * (cols - 1) / cols))%"
+tmux select-layout -t "$win" main-vertical
