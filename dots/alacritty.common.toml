@@ -71,6 +71,13 @@ chars = "\u001E"
 key = "Key6"
 mods = "Control"
 
+# Shift+Enter: send Alt+Enter (ESC CR) so apps like Claude Code insert a newline;
+# survives tmux without extended-keys
+[[keyboard.bindings]]
+chars = "\u001B\r"
+key = "Return"
+mods = "Shift"
+
 # Mouse bindings
 [[mouse.bindings]]
 action = "PasteSelection"
